@@ -47,9 +47,18 @@ struct ContentView: View {
     
     private func filteredReminders(_ reminders: [EKReminder]) -> [EKReminder] {
         if isFilterEnabled {
-            return reminders.reversed().filter{ !$0.isCompleted }
+            return reminders
+                .filter{ !$0.isCompleted }
+                .sorted(by: { $0.creationDate!.compare($1.creationDate!) == .orderedDescending })
         } else {
-            return reminders.reversed()
+            return
+                reminders
+                    .filter{ !$0.isCompleted }
+                    .sorted(by: { $0.creationDate!.compare($1.creationDate!) == .orderedDescending })
+                    +
+                    reminders
+                        .filter{ $0.isCompleted }
+                        .sorted(by: { $0.completionDate!.compare($1.completionDate!) == .orderedDescending })
         }
     }
 }
