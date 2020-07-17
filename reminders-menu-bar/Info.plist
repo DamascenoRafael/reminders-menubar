@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSRemindersUsageDescription</key>
+	<string>The App uses Apple Reminders as a source for lists and tasks. Access is required to view and edit reminders.</string>
 	<key>LSUIElement</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>

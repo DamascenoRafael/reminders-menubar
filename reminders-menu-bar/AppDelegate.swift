@@ -30,6 +30,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc func togglePopover() {
+        guard (RemindersService.instance.hasAuthorization() == .authorized) else {
+            RemindersService.instance.requestAccess()
+            return
+        }
+        
         guard let button = self.statusBarItem.button else {
             return
         }
@@ -42,4 +47,3 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
 }
-

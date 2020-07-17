@@ -1,35 +1,33 @@
 import SwiftUI
-
-struct Reminder: Identifiable {
-    var id = UUID()
-    var title: String
-}
+import EventKit
 
 struct ContentView: View {
     @State private var newTask: String = ""
-    @State private var reminders = [
-        Reminder(title: "Reminder 1"),
-        Reminder(title: "Reminder 2"),
-        Reminder(title: "Reminder 3"),
-    ]
+    @State private var remindersStore = RemindersService.instance.getReminders()
     
     var body: some View {
-        VStack (spacing: 0) {
+        VStack(spacing: 0) {
             Form {
                 TextField("New task", text: $newTask)
-                    .padding(.horizontal, 10)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(10)
             }
-            .padding(.top)
             .background(Color.darkTheme)
             List {
-                Text("Header")
-                    .font(.headline)
-                    .foregroundColor(.blue)
-                    .padding(.top, 5)
-                ForEach(reminders) { reminder in
-                    ReminderItem(reminder: reminder.title)
+                ForEach(remindersStore) { reminderList in
+                    VStack(alignment: .leading) {
+                        Text(reminderList.title)
+                            .font(.headline)
+                            .foregroundColor(Color(reminderList.color))
+                            .padding(.top, 5)
+                        ForEach(reminderList.reminders, id: \.calendarItemIdentifier) { reminder in
+                            ReminderItemView(reminder: reminder)
+                        }
+                    }
                 }
+            }
+            .onAppear {
+                self.remindersStore = RemindersService.instance.getReminders()
             }
         }
     }
