@@ -12,15 +12,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         let popover = NSPopover()
         popover.behavior = .transient
-        popover.contentSize = NSSize(width: 320, height: 400)
+        popover.contentSize = NSSize(width: 320, height: 460)
         popover.contentViewController = NSHostingController(rootView: contentView)
         self.popover = popover
         
         self.statusBarItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
         
         if let button = self.statusBarItem.button {
-            // button.image = NSImage(named: "reminders")
-            button.title = "🔖"
+            button.image = NSImage(named: "circle.filled")
+            button.image?.size = NSSize(width: 18, height: 18)
             button.action = #selector(togglePopover)
         }
     }

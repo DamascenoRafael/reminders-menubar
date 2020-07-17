@@ -2,7 +2,7 @@ import SwiftUI
 
 extension Color {
     public static var darkTheme: Color {
-        return Color(red: 29/255, green: 31/255, blue: 34/255)
+        return Color(red: 30/255, green: 30/255, blue: 30/255)
     }
     
     public static var lightTheme: Color {
