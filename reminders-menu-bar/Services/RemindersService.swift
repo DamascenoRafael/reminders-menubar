@@ -48,4 +48,19 @@ class RemindersService {
         _ = group.wait(timeout: .distantFuture)
         return remindersStore
     }
+    
+    func save(reminder: EKReminder) {
+        do {
+            try self.eventStore.save(reminder, commit: true)
+        } catch {
+            print("Erro saving reminder:", error)
+        }
+    }
+    
+    func createNew(with title: String) {
+        let newReminder = EKReminder(eventStore: eventStore)
+        newReminder.title = title
+        newReminder.calendar = eventStore.defaultCalendarForNewReminders()
+        self.save(reminder: newReminder)
+    }
 }

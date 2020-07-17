@@ -2,14 +2,20 @@ import SwiftUI
 import EventKit
 
 struct ContentView: View {
-    @State private var newTask: String = ""
+    @State private var newReminderTitle: String = ""
     @State private var remindersStore = RemindersService.instance.getReminders()
     @State private var isFilterEnabled = true
     
     var body: some View {
         VStack(spacing: 0) {
             Form {
-                TextField("New task", text: $newTask)
+                TextField("Type a new reminder and hit enter", text: $newReminderTitle, onCommit: {
+                    guard !self.newReminderTitle.isEmpty else { return }
+                    
+                    RemindersService.instance.createNew(with: self.newReminderTitle)
+                    self.newReminderTitle = ""
+                    self.reload()
+                })
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(10)
             }
@@ -22,13 +28,13 @@ struct ContentView: View {
                             .foregroundColor(Color(reminderList.color))
                             .padding(.top, 5)
                         ForEach(self.filteredReminders(reminderList.reminders), id: \.calendarItemIdentifier) { reminder in
-                            ReminderItemView(reminder: reminder)
+                            ReminderItemView(reminder: reminder, reload: { self.reload() })
                         }
                     }
                 }
             }
             .onAppear {
-                self.remindersStore = RemindersService.instance.getReminders()
+                self.reload()
             }
             HStack {
                 Button(action: {
@@ -40,9 +46,14 @@ struct ContentView: View {
                 }
             }
             .frame(maxWidth: .infinity)
-            .padding(10)
+            .padding(5)
+            .padding(.bottom, 5)
             .background(Color.darkTheme)
         }
+    }
+    
+    private func reload() {
+        self.remindersStore = RemindersService.instance.getReminders()
     }
     
     private func filteredReminders(_ reminders: [EKReminder]) -> [EKReminder] {

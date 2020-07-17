@@ -3,11 +3,14 @@ import EventKit
 
 struct ReminderItemView: View {
     @State var reminder: EKReminder
+    var reload: () -> Void
     
     var body: some View {
         HStack (alignment: .top) {
             Button(action: {
                 self.reminder.isCompleted.toggle()
+                RemindersService.instance.save(reminder: self.reminder)
+                self.reload()
             }) {
                 Image(self.reminder.isCompleted ? "circle.filled" : "circle")
                     .resizable()
