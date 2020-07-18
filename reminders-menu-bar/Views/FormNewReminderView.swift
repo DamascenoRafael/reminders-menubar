@@ -8,9 +8,8 @@ struct FormNewReminderView: View {
         Form {
             HStack {
                 TextField("Type a new reminder and hit enter", text: $newReminderTitle, onCommit: {
-                    print("before guard")
                     guard !self.newReminderTitle.isEmpty else { return }
-                    print("pass guard")
+                    
                     RemindersService.instance.createNew(with: self.newReminderTitle)
                     self.newReminderTitle = ""
                     self.reload()
@@ -31,7 +30,6 @@ struct FormNewReminderView: View {
                         RoundedRectangle(cornerRadius: 8)
                             .stroke(Color.textFieldStrock, lineWidth: 0.8)
                     )
-                
             }
             .padding(10)
         }

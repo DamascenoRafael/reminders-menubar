@@ -22,17 +22,22 @@ struct ReminderItemView: View {
                 HStack {
                     Text(reminder.title)
                     Spacer()
-                    Button(action: {
-                        RemindersService.instance.remove(reminder: self.reminder)
-                        self.reload()
-                    }) {
+                    MenuButton(label:
                         Image("ellipsis")
                             .resizable()
-                            .frame(width: 16, height: 16)
-                            .padding(.top, 1)
-                            .padding(.trailing, 10)
                             .foregroundColor(.gray)
-                    }.buttonStyle(PlainButtonStyle())
+                    ) {
+                        Button(action: {
+                            RemindersService.instance.remove(reminder: self.reminder)
+                            self.reload()
+                        }) {
+                            Text("Remove")
+                        }
+                    }
+                    .menuButtonStyle(BorderlessButtonMenuButtonStyle())
+                    .frame(width: 16, height: 16)
+                    .padding(.top, 1)
+                    .padding(.trailing, 10)
                 }
                 Spacer()
                 Divider()
