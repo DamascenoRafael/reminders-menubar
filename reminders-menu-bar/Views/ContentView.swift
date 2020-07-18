@@ -2,24 +2,12 @@ import SwiftUI
 import EventKit
 
 struct ContentView: View {
-    @State private var newReminderTitle: String = ""
     @State private var remindersStore = RemindersService.instance.getReminders()
     @State private var isFilterEnabled = true
     
     var body: some View {
         VStack(spacing: 0) {
-            Form {
-                TextField("Type a new reminder and hit enter", text: $newReminderTitle, onCommit: {
-                    guard !self.newReminderTitle.isEmpty else { return }
-                    
-                    RemindersService.instance.createNew(with: self.newReminderTitle)
-                    self.newReminderTitle = ""
-                    self.reload()
-                })
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(10)
-            }
-            .background(Color.darkTheme)
+            FormNewReminderView(reload: { self.reload() })
             List {
                 ForEach(remindersStore) { reminderList in
                     VStack(alignment: .leading) {
