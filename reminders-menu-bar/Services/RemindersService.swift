@@ -63,4 +63,12 @@ class RemindersService {
         newReminder.calendar = eventStore.defaultCalendarForNewReminders()
         self.save(reminder: newReminder)
     }
+    
+    func remove(reminder: EKReminder) {
+        do {
+            try eventStore.remove(reminder, commit: true)
+        } catch {
+            print("Erro removing reminder:", error)
+        }
+    }
 }
