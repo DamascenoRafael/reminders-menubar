@@ -25,13 +25,22 @@ struct ReminderItemView: View {
                     MenuButton(label:
                         Image("ellipsis")
                             .resizable()
+                            .aspectRatio(1, contentMode: .fit)
                             .foregroundColor(.gray)
                     ) {
                         Button(action: {
                             RemindersService.instance.remove(reminder: self.reminder)
                             self.reload()
                         }) {
-                            Text("Remove")
+                            HStack {
+                                Image("minus.circle")
+                                    .resizable()
+                                    .aspectRatio(1, contentMode: .fit)
+                                    .foregroundColor(.red)
+                                Spacer()
+                                    .frame(width: 12)
+                                Text("Remove")
+                            }
                         }
                     }
                     .menuButtonStyle(BorderlessButtonMenuButtonStyle())
