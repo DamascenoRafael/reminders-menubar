@@ -23,6 +23,19 @@ class RemindersService {
         }
     }
     
+    func getDefaultCalendar() -> EKCalendar {
+        return eventStore.defaultCalendarForNewReminders()!
+    }
+    
+    func getCalendars() -> [EKCalendar] {
+        guard let source = eventStore.sources.first else {
+            return []
+        }
+        
+        let calendars = source.calendars(for: .reminder)
+        return Array(calendars)
+    }
+    
     func getReminders() -> [ReminderList] {
         let group = DispatchGroup()
         
@@ -57,10 +70,10 @@ class RemindersService {
         }
     }
     
-    func createNew(with title: String) {
+    func createNew(with title: String, in calendar: EKCalendar) {
         let newReminder = EKReminder(eventStore: eventStore)
         newReminder.title = title
-        newReminder.calendar = eventStore.defaultCalendarForNewReminders()
+        newReminder.calendar = calendar
         self.save(reminder: newReminder)
     }
     

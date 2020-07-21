@@ -2,12 +2,13 @@ import SwiftUI
 import EventKit
 
 struct ContentView: View {
+    @State private var calendars = RemindersService.instance.getCalendars()
     @State private var remindersStore = RemindersService.instance.getReminders()
     @State private var isFilterEnabled = true
     
     var body: some View {
         VStack(spacing: 0) {
-            FormNewReminderView(reload: { self.reload() })
+            FormNewReminderView(reload: { self.reload() }, calendars: $calendars)
             List {
                 ForEach(remindersStore) { reminderList in
                     VStack(alignment: .leading) {
@@ -41,6 +42,7 @@ struct ContentView: View {
     }
     
     private func reload() {
+        self.calendars = RemindersService.instance.getCalendars()
         self.remindersStore = RemindersService.instance.getReminders()
     }
     

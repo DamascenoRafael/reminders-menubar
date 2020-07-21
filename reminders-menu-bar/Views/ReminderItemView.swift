@@ -12,7 +12,7 @@ struct ReminderItemView: View {
                 RemindersService.instance.save(reminder: self.reminder)
                 self.reload()
             }) {
-                Image(self.reminder.isCompleted ? "circle.filled" : "circle")
+                Image(self.reminder.isCompleted ? "dot.filled.circle" : "circle")
                     .resizable()
                     .frame(width: 18, height: 18)
                     .padding(.top, 1)

@@ -19,7 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.statusBarItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
         
         if let button = self.statusBarItem.button {
-            button.image = NSImage(named: "circle.filled")
+            button.image = NSImage(named: "dot.filled.circle")
             button.image?.size = NSSize(width: 18, height: 18)
             button.action = #selector(togglePopover)
         }
