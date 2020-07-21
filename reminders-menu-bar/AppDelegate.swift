@@ -9,11 +9,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         let contentView = ContentView()
+        let remindersData = RemindersData()
 
         let popover = NSPopover()
         popover.behavior = .semitransient
         popover.contentSize = NSSize(width: 320, height: 460)
-        popover.contentViewController = NSHostingController(rootView: contentView)
+        popover.contentViewController = NSHostingController(rootView: contentView.environmentObject(remindersData))
         self.popover = popover
         
         self.statusBarItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)

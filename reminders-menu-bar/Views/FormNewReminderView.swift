@@ -2,10 +2,11 @@ import SwiftUI
 import EventKit
 
 struct FormNewReminderView: View {
-    var reload: () -> Void
+    @EnvironmentObject var remindersData: RemindersData
+    
     @State var newReminderTitle = ""
     @State var selectedCalendar = RemindersService.instance.getDefaultCalendar()
-    @Binding var calendars: [EKCalendar]
+    var reload: () -> Void
     
     var body: some View {
         Form {
@@ -39,7 +40,7 @@ struct FormNewReminderView: View {
                         .frame(width: 6, height: 6)
                         .foregroundColor(Color(selectedCalendar.color))
                 ) {
-                    ForEach(calendars, id: \.calendarIdentifier) { calendar in
+                    ForEach(remindersData.calendars, id: \.calendarIdentifier) { calendar in
                         Button(action: { self.selectedCalendar = calendar }) {
                             HStack {
                                 Image("circle.filled")

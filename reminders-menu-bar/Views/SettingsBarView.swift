@@ -2,9 +2,7 @@ import SwiftUI
 import EventKit
 
 struct SettingsBarView: View {
-    @Binding var isFilterEnabled: Bool
-    @Binding var calendars: [EKCalendar]
-    @Binding var filteredCalendarIdentifiers: [String]
+    @EnvironmentObject var remindersData: RemindersData
     
     var body: some View {
         HStack {
@@ -16,13 +14,13 @@ struct SettingsBarView: View {
                         .resizable()
                         .frame(width: 16, height: 16)
                 ) {
-                    ForEach(calendars, id: \.calendarIdentifier) { calendar in
+                    ForEach(remindersData.calendars, id: \.calendarIdentifier) { calendar in
                         Button(action: {
-                            let index = self.filteredCalendarIdentifiers.firstIndex(of: calendar.calendarIdentifier)
+                            let index = self.remindersData.calendarIdentifiersFilter.firstIndex(of: calendar.calendarIdentifier)
                             if let index = index {
-                                self.filteredCalendarIdentifiers.remove(at: index)
+                                self.remindersData.calendarIdentifiersFilter.remove(at: index)
                             } else {
-                                self.filteredCalendarIdentifiers.append(calendar.calendarIdentifier)
+                                self.remindersData.calendarIdentifiersFilter.append(calendar.calendarIdentifier)
                             }
                         }) {
                             HStack {
@@ -32,7 +30,7 @@ struct SettingsBarView: View {
                                     .foregroundColor(Color(calendar.color))
                                 Text(calendar.title)
                                 Spacer(minLength: 25)
-                                if self.filteredCalendarIdentifiers.contains(calendar.calendarIdentifier) {
+                                if self.remindersData.calendarIdentifiersFilter.contains(calendar.calendarIdentifier) {
                                     Image("checkmark")
                                         .resizable()
                                         .frame(width: 8, height: 8)
@@ -48,9 +46,9 @@ struct SettingsBarView: View {
             Spacer()
             
             Button(action: {
-                self.isFilterEnabled.toggle()
+                self.remindersData.showUncompletedOnly.toggle()
             }) {
-                Image(self.isFilterEnabled ? "circle" : "dot.filled.circle")
+                Image(self.remindersData.showUncompletedOnly ? "circle" : "dot.filled.circle")
                     .resizable()
                     .frame(width: 16, height: 16)
             }

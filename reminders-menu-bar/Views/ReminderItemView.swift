@@ -2,9 +2,10 @@ import SwiftUI
 import EventKit
 
 struct ReminderItemView: View {
+    @EnvironmentObject var remindersData: RemindersData
+    
     @State var reminder: EKReminder
     var reload: () -> Void
-    @Binding var calendars: [EKCalendar]
     
     var body: some View {
         HStack (alignment: .top) {
@@ -39,7 +40,7 @@ struct ReminderItemView: View {
                                 Text("Move to ...")
                             }
                         ) {
-                            ForEach(calendars.filter({ $0.calendarIdentifier != self.reminder.calendar.calendarIdentifier }), id: \.calendarIdentifier) { calendar in
+                            ForEach(remindersData.calendars.filter({ $0.calendarIdentifier != self.reminder.calendar.calendarIdentifier }), id: \.calendarIdentifier) { calendar in
                                 Button(action: {
                                     self.reminder.calendar = calendar
                                     RemindersService.instance.save(reminder: self.reminder)
