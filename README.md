@@ -3,5 +3,16 @@
 Simple app to view and interact with reminders from the menu bar.
 
 <div align="center">
-	<img width="400" src="images/reminder-menubar.png" alt="Reminders Menu Bar App">
+	<img
+		max-width="400"
+		width="45%"
+		src="images/reminder-menubar-dark.png"
+		alt="Reminders Menu Bar in dark mode"
+	>
+	<img
+		max-width="400"
+		width="45%"
+		src="images/reminder-menubar-light.png"
+		alt="Reminders Menu Bar in light mode"
+	>
 </div>
