@@ -64,6 +64,16 @@ struct SettingsBarView: View {
                         .frame(width: 16, height: 16)
                 ) {
                     Button(action: {
+                        self.remindersData.loadCalendars()
+                    }) {
+                        Text("Reload data")
+                    }
+                    
+                    VStack {
+                        Divider()
+                    }
+                    
+                    Button(action: {
                         NSApplication.shared.terminate(self)
                     }) {
                         Text("Quit")
