@@ -39,6 +39,27 @@ struct ReminderItemView: View {
                                 Text("Move to ...")
                             }
                         ) {
+                            ForEach(calendars.filter({ $0.calendarIdentifier != self.reminder.calendar.calendarIdentifier }), id: \.calendarIdentifier) { calendar in
+                                Button(action: {
+                                    self.reminder.calendar = calendar
+                                    RemindersService.instance.save(reminder: self.reminder)
+                                    self.reload()
+                                }) {
+                                    HStack {
+                                        Image("circle.filled")
+                                            .resizable()
+                                            .frame(width: 6, height: 6)
+                                            .foregroundColor(Color(calendar.color))
+                                        Text(calendar.title)
+                                    }
+                                }
+                            }
+                        }
+                        
+                        VStack {
+                            Divider()
+                        }
+                        
                         Button(action: {
                             RemindersService.instance.remove(reminder: self.reminder)
                             self.reload()
