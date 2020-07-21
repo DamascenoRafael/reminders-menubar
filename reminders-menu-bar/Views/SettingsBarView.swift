@@ -80,7 +80,7 @@ struct SettingsBarView: View {
         .padding(.top, 5)
         .padding(.bottom, 10)
         .padding(.horizontal, 10)
-        .background(Color.darkTheme)
+        .background(Color("backgroundTheme"))
     }
 }
 

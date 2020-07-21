@@ -20,7 +20,7 @@ struct FormNewReminderView: View {
                     .padding(5)
                     .padding(.horizontal, 10)
                     .padding(.leading, 15)
-                    .background(Color.darkTextFieldBackground)
+                    .background(Color("textFieldBackground"))
                     .cornerRadius(8)
                     .textFieldStyle(PlainTextFieldStyle())
                     .overlay(
@@ -31,7 +31,7 @@ struct FormNewReminderView: View {
                     )
                     .overlay(
                         RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.textFieldStrock, lineWidth: 0.8)
+                            .stroke(Color("textFieldStrock"), lineWidth: 0.8)
                     )
                 MenuButton(label:
                     Image("circle.filled")
@@ -55,16 +55,16 @@ struct FormNewReminderView: View {
                 .frame(width: 25)
                 .padding(.vertical, 4)
                 .padding(.horizontal, 8)
-                .background(Color.darkTextFieldBackground)
+                .background(Color("textFieldBackground"))
                 .cornerRadius(8)
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.textFieldStrock, lineWidth: 0.8)
+                        .stroke(Color("textFieldStrock"), lineWidth: 0.8)
                 )
             }
             .padding(10)
         }
-        .background(Color.darkTheme)
+        .background(Color("backgroundTheme"))
     }
 }
 
