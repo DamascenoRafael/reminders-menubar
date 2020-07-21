@@ -4,6 +4,7 @@ import EventKit
 struct ReminderItemView: View {
     @State var reminder: EKReminder
     var reload: () -> Void
+    @Binding var calendars: [EKCalendar]
     
     var body: some View {
         HStack (alignment: .top) {
@@ -28,6 +29,16 @@ struct ReminderItemView: View {
                             .aspectRatio(1, contentMode: .fit)
                             .foregroundColor(.gray)
                     ) {
+                        MenuButton(label:
+                            HStack {
+                                Image("folder")
+                                    .resizable()
+                                    .aspectRatio(1, contentMode: .fit)
+                                Spacer()
+                                    .frame(width: 12)
+                                Text("Move to ...")
+                            }
+                        ) {
                         Button(action: {
                             RemindersService.instance.remove(reminder: self.reminder)
                             self.reload()

@@ -19,7 +19,7 @@ struct ContentView: View {
                             .foregroundColor(Color(reminderList.color))
                             .padding(.top, 5)
                         ForEach(self.filteredReminders(reminderList.reminders), id: \.calendarItemIdentifier) { reminder in
-                            ReminderItemView(reminder: reminder, reload: { self.reload() })
+                            ReminderItemView(reminder: reminder, reload: { self.reload() }, calendars: self.$calendars)
                         }
                     }
                 }
