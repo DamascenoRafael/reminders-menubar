@@ -2,15 +2,17 @@ import SwiftUI
 import EventKit
 
 struct ContentView: View {
-    @State private var calendars = RemindersService.instance.getCalendars()
-    @State private var remindersStore = RemindersService.instance.getReminders()
+    @State private var calendars: [EKCalendar] = []
+    @State private var filteredCalendarIdentifiers: [String] = []
     @State private var isFilterEnabled = true
+    @State var needRefreshIndicator: Bool = false
+
     
     var body: some View {
         VStack(spacing: 0) {
             FormNewReminderView(reload: { self.reload() }, calendars: $calendars)
             List {
-                ForEach(remindersStore) { reminderList in
+                ForEach(self.filteredReminderLists(by: self.filteredCalendarIdentifiers, needRefreshIndicator)) { reminderList in
                     VStack(alignment: .leading) {
                         Text(reminderList.title)
                             .font(.headline)
@@ -25,25 +27,21 @@ struct ContentView: View {
             .onAppear {
                 self.reload()
             }
-            HStack {
-                Button(action: {
-                    self.isFilterEnabled.toggle()
-                }) {
-                    Image(self.isFilterEnabled ? "circle" : "circle.filled")
-                        .resizable()
-                        .frame(width: 16, height: 16)
-                }
-            }
-            .frame(maxWidth: .infinity)
-            .padding(5)
-            .padding(.bottom, 5)
-            .background(Color.darkTheme)
+            SettingsBarView(isFilterEnabled: $isFilterEnabled, calendars: $calendars, filteredCalendarIdentifiers: $filteredCalendarIdentifiers)
         }
     }
     
     private func reload() {
-        self.calendars = RemindersService.instance.getCalendars()
-        self.remindersStore = RemindersService.instance.getReminders()
+        let calendars = RemindersService.instance.getCalendars()
+        if (self.calendars.isEmpty) {
+            self.filteredCalendarIdentifiers = calendars.map({ $0.calendarIdentifier })
+        }
+        self.calendars = calendars
+        self.needRefreshIndicator.toggle()
+    }
+    
+    private func filteredReminderLists(by filter: [String], _: Bool) -> [ReminderList] {
+        return RemindersService.instance.getReminders(of: filter)
     }
     
     private func filteredReminders(_ reminders: [EKReminder]) -> [EKReminder] {

@@ -17,6 +17,7 @@
 		712C32BB24BF939200AC75E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 712C32BA24BF939200AC75E2 /* Preview Assets.xcassets */; };
 		712C32BE24BF939200AC75E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 712C32BC24BF939200AC75E2 /* Main.storyboard */; };
 		713F234524C130D400FF0BEC /* ReminderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F234424C130D400FF0BEC /* ReminderList.swift */; };
+		71B6D1FB24C6511000E66EDB /* SettingsBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B6D1FA24C6511000E66EDB /* SettingsBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		712C32BF24BF939200AC75E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		712C32C024BF939200AC75E2 /* reminders_menu_bar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = reminders_menu_bar.entitlements; sourceTree = "<group>"; };
 		713F234424C130D400FF0BEC /* ReminderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderList.swift; sourceTree = "<group>"; };
+		71B6D1FA24C6511000E66EDB /* SettingsBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 				712C32B524BF939100AC75E2 /* ContentView.swift */,
 				71032A8E24C21F0F00A8006C /* FormNewReminderView.swift */,
 				7115461224C0ADCB007781E2 /* ReminderItemView.swift */,
+				71B6D1FA24C6511000E66EDB /* SettingsBarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7115461924C0C280007781E2 /* RemindersService.swift in Sources */,
+				71B6D1FB24C6511000E66EDB /* SettingsBarView.swift in Sources */,
 				713F234524C130D400FF0BEC /* ReminderList.swift in Sources */,
 				712C32B624BF939100AC75E2 /* ContentView.swift in Sources */,
 				7115461624C0B85D007781E2 /* Color.swift in Sources */,

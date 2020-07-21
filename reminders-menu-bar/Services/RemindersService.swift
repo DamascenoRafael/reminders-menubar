@@ -36,13 +36,15 @@ class RemindersService {
         return Array(calendars)
     }
     
-    func getReminders() -> [ReminderList] {
+    func getReminders(of calendarIdentifiers: [String]) -> [ReminderList] {
         let group = DispatchGroup()
         
         var remindersStore: [ReminderList] = []
         if let source = eventStore.sources.first {
             let reminderLists = source.calendars(for: .reminder)
             for reminderList in reminderLists {
+                guard calendarIdentifiers.contains(reminderList.calendarIdentifier) else { continue }
+                
                 group.enter()
                 
                 let predicate = eventStore.predicateForReminders(in: [reminderList])
