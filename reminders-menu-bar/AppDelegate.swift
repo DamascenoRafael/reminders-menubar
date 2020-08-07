@@ -43,7 +43,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if self.popover.isShown {
             self.popover.performClose(button)
         } else {
-            self.popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+            self.popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
         }
     }
 

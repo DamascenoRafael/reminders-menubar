@@ -4,7 +4,7 @@ import EventKit
 struct ContentView: View {
     @EnvironmentObject var remindersData: RemindersData
 
-    @State var needRefreshIndicator: Bool = false
+    @State var needRefreshIndicator = false
     
     var body: some View {
         VStack(spacing: 0) {
