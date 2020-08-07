@@ -8,7 +8,7 @@ struct ReminderItemView: View {
     var reload: () -> Void
     
     var body: some View {
-        HStack (alignment: .top) {
+        HStack(alignment: .top) {
             Button(action: {
                 self.reminder.isCompleted.toggle()
                 RemindersService.instance.save(reminder: self.reminder)
@@ -20,7 +20,7 @@ struct ReminderItemView: View {
                     .padding(.top, 1)
                     .foregroundColor(Color(reminder.calendar.color))
             }.buttonStyle(PlainButtonStyle())
-            VStack {
+            VStack(spacing: 8) {
                 HStack {
                     Text(reminder.title)
                     Spacer()
@@ -81,15 +81,36 @@ struct ReminderItemView: View {
                     .padding(.top, 1)
                     .padding(.trailing, 10)
                 }
-                Spacer()
                 Divider()
+            }
+        }
+        .background(Color("backgroundTheme"))
+    }
+}
+
+struct ReminderItemView_Previews: PreviewProvider {
+    static var reminder: EKReminder {
+        let calendar = EKCalendar(for: .reminder, eventStore: .init())
+        calendar.color = .systemTeal
+        
+        let reminder = EKReminder(eventStore: .init())
+        reminder.title = "Look for awesome projects on GitHub"
+        reminder.isCompleted = false
+        reminder.calendar = calendar
+        
+        return reminder
+    }
+    
+    static func reload() { return }
+    
+    static var previews: some View {
+        Group {
+            ForEach(ColorScheme.allCases, id: \.self) { color in
+                ReminderItemView(reminder: reminder, reload: reload)
+                    .environmentObject(RemindersData())
+                    .colorScheme(color)
+                    .previewDisplayName("\(color) mode")
             }
         }
     }
 }
-
-//struct ReminderItemView_Previews: PreviewProvider {
-//    static var previews: some View {
-////        ReminderItemView()
-//    }
-//}

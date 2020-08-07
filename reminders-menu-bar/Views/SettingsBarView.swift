@@ -92,8 +92,15 @@ struct SettingsBarView: View {
     }
 }
 
-//struct SettingsBarView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SettingsBarView(isFilterEnabled: .constant(true))
-//    }
-//}
+struct SettingsBarView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            ForEach(ColorScheme.allCases, id: \.self) { color in
+                SettingsBarView()
+                    .environmentObject(RemindersData())
+                    .colorScheme(color)
+                    .previewDisplayName("\(color) mode")
+            }
+        }
+    }
+}

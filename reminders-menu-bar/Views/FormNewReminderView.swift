@@ -69,8 +69,23 @@ struct FormNewReminderView: View {
     }
 }
 
-//struct FormNewReminderView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        FormNewReminderView(reload: {func reload() {return}})
-//    }
-//}
+struct FormNewReminderView_Previews: PreviewProvider {
+    static var calendar: EKCalendar {
+        let calendar = EKCalendar(for: .reminder, eventStore: .init())
+        calendar.color = .systemTeal
+        return calendar
+    }
+    
+    static func reload() { return }
+
+    static var previews: some View {
+        Group {
+            ForEach(ColorScheme.allCases, id: \.self) { color in
+                FormNewReminderView(selectedCalendar: calendar, reload: reload)
+                    .environmentObject(RemindersData())
+                    .colorScheme(color)
+                    .previewDisplayName("\(color) mode")
+            }
+        }
+    }
+}
