@@ -10,7 +10,7 @@ struct SettingsBarView: View {
                 print("filter button")
             }) {
                 MenuButton(label:
-                    Image("filter.circle")
+                    Image(systemName: "line.horizontal.3.decrease.circle")
                         .resizable()
                         .frame(width: 16, height: 16)
                 ) {
@@ -24,14 +24,14 @@ struct SettingsBarView: View {
                             }
                         }) {
                             HStack {
-                                Image("circle.filled")
+                                Image(systemName: "circle.fill")
                                     .resizable()
                                     .frame(width: 6, height: 6)
                                     .foregroundColor(Color(calendar.color))
                                 Text(calendar.title)
                                 Spacer(minLength: 25)
                                 if self.remindersData.calendarIdentifiersFilter.contains(calendar.calendarIdentifier) {
-                                    Image("checkmark")
+                                    Image(systemName: "checkmark")
                                         .resizable()
                                         .frame(width: 8, height: 8)
                                 }
@@ -48,7 +48,7 @@ struct SettingsBarView: View {
             Button(action: {
                 self.remindersData.showUncompletedOnly.toggle()
             }) {
-                Image(self.remindersData.showUncompletedOnly ? "circle" : "dot.filled.circle")
+                Image(systemName: self.remindersData.showUncompletedOnly ? "circle" : "largecircle.fill.circle")
                     .resizable()
                     .frame(width: 16, height: 16)
             }
@@ -59,7 +59,7 @@ struct SettingsBarView: View {
                 print("gear button")
             }) {
                 MenuButton(label:
-                    Image("gear")
+                    Image(systemName: "gear")
                         .resizable()
                         .frame(width: 16, height: 16)
                 ) {

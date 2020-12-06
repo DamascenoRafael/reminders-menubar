@@ -25,7 +25,7 @@ struct FormNewReminderView: View {
                     .cornerRadius(8)
                     .textFieldStyle(PlainTextFieldStyle())
                     .overlay(
-                        Image("plus.circle.filled")
+                        Image(systemName: "plus.circle.fill")
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .foregroundColor(.gray)
                             .padding(.leading, 5)
@@ -35,7 +35,7 @@ struct FormNewReminderView: View {
                             .stroke(Color("textFieldStrock"), lineWidth: 0.8)
                     )
                 MenuButton(label:
-                    Image("circle.filled")
+                    Image(systemName: "circle.fill")
                         .resizable()
                         .frame(width: 6, height: 6)
                         .foregroundColor(Color(selectedCalendar.color))
@@ -43,7 +43,7 @@ struct FormNewReminderView: View {
                     ForEach(remindersData.calendars, id: \.calendarIdentifier) { calendar in
                         Button(action: { self.selectedCalendar = calendar }) {
                             HStack {
-                                Image("circle.filled")
+                                Image(systemName: "circle")
                                     .resizable()
                                     .frame(width: 6, height: 6)
                                     .foregroundColor(Color(calendar.color))

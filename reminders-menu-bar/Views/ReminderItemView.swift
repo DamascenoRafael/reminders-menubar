@@ -14,7 +14,7 @@ struct ReminderItemView: View {
                 RemindersService.instance.save(reminder: self.reminder)
                 self.reload()
             }) {
-                Image(self.reminder.isCompleted ? "dot.filled.circle" : "circle")
+                Image(systemName: self.reminder.isCompleted ? "largecircle.fill.circle" : "circle")
                     .resizable()
                     .frame(width: 18, height: 18)
                     .padding(.top, 1)
@@ -25,14 +25,14 @@ struct ReminderItemView: View {
                     Text(reminder.title)
                     Spacer()
                     MenuButton(label:
-                        Image("ellipsis")
+                        Image(systemName: "ellipsis")
                             .resizable()
                             .aspectRatio(1, contentMode: .fit)
                             .foregroundColor(.gray)
                     ) {
                         MenuButton(label:
                             HStack {
-                                Image("folder")
+                                Image(systemName: "folder")
                                     .resizable()
                                     .aspectRatio(1, contentMode: .fit)
                                 Spacer()
@@ -47,7 +47,7 @@ struct ReminderItemView: View {
                                     self.reload()
                                 }) {
                                     HStack {
-                                        Image("circle.filled")
+                                        Image(systemName: "circle.fill")
                                             .resizable()
                                             .frame(width: 6, height: 6)
                                             .foregroundColor(Color(calendar.color))
@@ -66,7 +66,7 @@ struct ReminderItemView: View {
                             self.reload()
                         }) {
                             HStack {
-                                Image("minus.circle")
+                                Image(systemName: "minus.circle")
                                     .resizable()
                                     .aspectRatio(1, contentMode: .fit)
                                     .foregroundColor(.red)
