@@ -6,42 +6,38 @@ struct SettingsBarView: View {
     
     var body: some View {
         HStack {
-            Button(action: {
-                print("filter button")
-            }) {
-                MenuButton(label:
-                    Image(systemName: "line.horizontal.3.decrease.circle")
-                        .resizable()
-                        .frame(width: 16, height: 16)
-                ) {
-                    ForEach(remindersData.calendars, id: \.calendarIdentifier) { calendar in
-                        Button(action: {
-                            let index = self.remindersData.calendarIdentifiersFilter.firstIndex(of: calendar.calendarIdentifier)
-                            if let index = index {
-                                self.remindersData.calendarIdentifiersFilter.remove(at: index)
-                            } else {
-                                self.remindersData.calendarIdentifiersFilter.append(calendar.calendarIdentifier)
-                            }
-                        }) {
-                            HStack {
-                                Image(systemName: "circle.fill")
+            Menu {
+                ForEach(remindersData.calendars, id: \.calendarIdentifier) { calendar in
+                    Button(action: {
+                        let index = self.remindersData.calendarIdentifiersFilter.firstIndex(of: calendar.calendarIdentifier)
+                        if let index = index {
+                            self.remindersData.calendarIdentifiersFilter.remove(at: index)
+                        } else {
+                            self.remindersData.calendarIdentifiersFilter.append(calendar.calendarIdentifier)
+                        }
+                    }) {
+                        HStack {
+                            Image(systemName: "circle.fill")
+                                .resizable()
+                                .frame(width: 6, height: 6)
+                                .foregroundColor(Color(calendar.color))
+                            Text(calendar.title)
+                            Spacer(minLength: 25)
+                            if self.remindersData.calendarIdentifiersFilter.contains(calendar.calendarIdentifier) {
+                                Image(systemName: "checkmark")
                                     .resizable()
-                                    .frame(width: 6, height: 6)
-                                    .foregroundColor(Color(calendar.color))
-                                Text(calendar.title)
-                                Spacer(minLength: 25)
-                                if self.remindersData.calendarIdentifiersFilter.contains(calendar.calendarIdentifier) {
-                                    Image(systemName: "checkmark")
-                                        .resizable()
-                                        .frame(width: 8, height: 8)
-                                }
+                                    .frame(width: 8, height: 8)
                             }
                         }
                     }
                 }
-                .menuButtonStyle(BorderlessButtonMenuButtonStyle())
-                .frame(width: 16, height: 16)
+            } label: {
+                Image(systemName: "line.horizontal.3.decrease.circle")
+                    .resizable()
+                    .frame(width: 16, height: 16)
             }
+            .menuStyle(BorderlessButtonMenuStyle())
+            .frame(width: 32, height: 16)
             
             Spacer()
             
@@ -50,42 +46,39 @@ struct SettingsBarView: View {
             }) {
                 Image(systemName: self.remindersData.showUncompletedOnly ? "circle" : "largecircle.fill.circle")
                     .resizable()
-                    .frame(width: 16, height: 16)
+                    .frame(width: 13, height: 13)
             }
+            .buttonStyle(BorderlessButtonStyle())
             
             Spacer()
             
-            Button(action: {
-                print("gear button")
-            }) {
-                MenuButton(label:
-                    Image(systemName: "gear")
-                        .resizable()
-                        .frame(width: 16, height: 16)
-                ) {
-                    Button(action: {
-                        self.remindersData.loadCalendars()
-                    }) {
-                        Text("Reload data")
-                    }
-                    
-                    VStack {
-                        Divider()
-                    }
-                    
-                    Button(action: {
-                        NSApplication.shared.terminate(self)
-                    }) {
-                        Text("Quit")
-                    }
+            Menu {
+                Button(action: {
+                    self.remindersData.loadCalendars()
+                }) {
+                    Text("Reload data")
                 }
-                .menuButtonStyle(BorderlessButtonMenuButtonStyle())
-                .frame(width: 16, height: 16)
+                
+                VStack {
+                    Divider()
+                }
+                
+                Button(action: {
+                    NSApplication.shared.terminate(self)
+                }) {
+                    Text("Quit")
+                }
+            } label: {
+                Image(systemName: "gear")
+                    .resizable()
+                    .frame(width: 16, height: 16)
             }
+            .menuStyle(BorderlessButtonMenuStyle())
+            .frame(width: 32, height: 16)
             
         }
         .frame(maxWidth: .infinity)
-        .padding(.top, 5)
+        .padding(.top, 12)
         .padding(.bottom, 10)
         .padding(.horizontal, 10)
         .background(Color("backgroundTheme"))
