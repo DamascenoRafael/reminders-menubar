@@ -34,16 +34,12 @@ struct FormNewReminderView: View {
                         RoundedRectangle(cornerRadius: 8)
                             .stroke(Color("textFieldStrock"), lineWidth: 0.8)
                     )
-                MenuButton(label:
-                    Image(systemName: "circle.fill")
-                        .resizable()
-                        .frame(width: 6, height: 6)
-                        .foregroundColor(Color(selectedCalendar.color))
-                ) {
+                
+                Menu {
                     ForEach(remindersData.calendars, id: \.calendarIdentifier) { calendar in
                         Button(action: { self.selectedCalendar = calendar }) {
                             HStack {
-                                Image(systemName: "circle")
+                                Image(systemName: "circle.fill")
                                     .resizable()
                                     .frame(width: 6, height: 6)
                                     .foregroundColor(Color(calendar.color))
@@ -51,11 +47,15 @@ struct FormNewReminderView: View {
                             }
                         }
                     }
+                } label: {
+                    Image(systemName: "circle.fill")
+                        .resizable()
+                        .frame(width: 6, height: 6)
+                        .foregroundColor(Color(selectedCalendar.color))
                 }
-                .menuButtonStyle(BorderlessPullDownMenuButtonStyle())
-                .frame(width: 25)
-                .padding(.vertical, 4)
-                .padding(.horizontal, 8)
+                .menuStyle(BorderlessButtonMenuStyle())
+                .frame(width: 34, height: 10)
+                .padding(8)
                 .background(Color("textFieldBackground"))
                 .cornerRadius(8)
                 .overlay(
