@@ -38,25 +38,20 @@ struct FormNewReminderView: View {
                 Menu {
                     ForEach(remindersData.calendars, id: \.calendarIdentifier) { calendar in
                         Button(action: { self.selectedCalendar = calendar }) {
-                            HStack {
-                                Image(systemName: "circle.fill")
-                                    .resizable()
-                                    .frame(width: 6, height: 6)
-                                    .foregroundColor(Color(calendar.color))
-                                Text(calendar.title)
+                            let isSelected = self.selectedCalendar.calendarIdentifier == calendar.calendarIdentifier
+                            if isSelected {
+                                Image(systemName: "checkmark")
                             }
+                            let paddingText = isSelected ? "" : "      "
+                            Text(paddingText + calendar.title)
+                                .foregroundColor(Color(calendar.color))
                         }
                     }
-                } label: {
-                    Image(systemName: "circle.fill")
-                        .resizable()
-                        .frame(width: 6, height: 6)
-                        .foregroundColor(Color(selectedCalendar.color))
-                }
+                } label: { }
                 .menuStyle(BorderlessButtonMenuStyle())
-                .frame(width: 34, height: 10)
+                .frame(width: 11, height: 10)
                 .padding(8)
-                .background(Color("textFieldBackground"))
+                .background(Color(selectedCalendar.color))
                 .cornerRadius(8)
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
