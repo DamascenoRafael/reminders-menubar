@@ -26,17 +26,10 @@ struct ReminderItemView: View {
                     Spacer()
                     MenuButton(label:
                         Image(systemName: "ellipsis")
-                            .resizable()
-                            .aspectRatio(1, contentMode: .fit)
-                            .foregroundColor(.gray)
                     ) {
                         MenuButton(label:
                             HStack {
                                 Image(systemName: "folder")
-                                    .resizable()
-                                    .aspectRatio(1, contentMode: .fit)
-                                Spacer()
-                                    .frame(width: 12)
                                 Text("Move to ...")
                             }
                         ) {
@@ -46,13 +39,8 @@ struct ReminderItemView: View {
                                     RemindersService.instance.save(reminder: self.reminder)
                                     self.reload()
                                 }) {
-                                    HStack {
-                                        Image(systemName: "circle.fill")
-                                            .resizable()
-                                            .frame(width: 6, height: 6)
-                                            .foregroundColor(Color(calendar.color))
-                                        Text(calendar.title)
-                                    }
+                                    Text(calendar.title)
+                                        .foregroundColor(Color(calendar.color))
                                 }
                             }
                         }
@@ -67,11 +55,6 @@ struct ReminderItemView: View {
                         }) {
                             HStack {
                                 Image(systemName: "minus.circle")
-                                    .resizable()
-                                    .aspectRatio(1, contentMode: .fit)
-                                    .foregroundColor(.red)
-                                Spacer()
-                                    .frame(width: 12)
                                 Text("Remove")
                             }
                         }
