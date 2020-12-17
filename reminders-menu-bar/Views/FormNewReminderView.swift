@@ -58,8 +58,8 @@ struct FormNewReminderView: View {
                         .stroke(Color("textFieldStrock"), lineWidth: 0.8)
                 )
             }
-            .padding(10)
         }
+        .padding(10)
         .background(Color("backgroundTheme"))
     }
 }
