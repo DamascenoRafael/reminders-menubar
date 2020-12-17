@@ -15,11 +15,12 @@ struct ContentView: View {
                         Text(reminderList.title)
                             .font(.headline)
                             .foregroundColor(Color(reminderList.color))
-                            .padding(.top, 5)
+                            .padding(.bottom, 5)
                         ForEach(self.filteredReminders(reminderList.reminders), id: \.calendarItemIdentifier) { reminder in
                             ReminderItemView(reminder: reminder, reload: { self.reload() })
                         }
                     }
+                    .padding(.bottom, 5)
                 }
             }
             .onAppear {
