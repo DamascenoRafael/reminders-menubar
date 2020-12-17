@@ -17,17 +17,13 @@ struct SettingsBarView: View {
                         }
                     }) {
                         HStack {
-                            Image(systemName: "circle.fill")
-                                .resizable()
-                                .frame(width: 6, height: 6)
-                                .foregroundColor(Color(calendar.color))
-                            Text(calendar.title)
-                            Spacer(minLength: 25)
-                            if self.remindersData.calendarIdentifiersFilter.contains(calendar.calendarIdentifier) {
+                            let isSelected = self.remindersData.calendarIdentifiersFilter.contains(calendar.calendarIdentifier)
+                            if isSelected {
                                 Image(systemName: "checkmark")
-                                    .resizable()
-                                    .frame(width: 8, height: 8)
                             }
+                            let paddingText = isSelected ? "" : "      "
+                            Text(paddingText + calendar.title)
+                                .foregroundColor(Color(calendar.color))
                         }
                     }
                 }
