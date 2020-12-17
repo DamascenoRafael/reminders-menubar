@@ -4,6 +4,10 @@ import EventKit
 struct SettingsBarView: View {
     @EnvironmentObject var remindersData: RemindersData
     
+    @State var filterIsHovered = false
+    @State var toggleIsHovered = false
+    @State var settingsIsHovered = false
+    
     var body: some View {
         HStack {
             Menu {
@@ -29,11 +33,15 @@ struct SettingsBarView: View {
                 }
             } label: {
                 Image(systemName: "line.horizontal.3.decrease.circle")
-                    .resizable()
-                    .frame(width: 16, height: 16)
             }
             .menuStyle(BorderlessButtonMenuStyle())
             .frame(width: 32, height: 16)
+            .padding(3)
+            .background(filterIsHovered ? Color("buttonHover") : nil)
+            .cornerRadius(4)
+            .onHover { isHovered in
+                self.filterIsHovered = isHovered
+            }
             
             Spacer()
             
@@ -41,10 +49,15 @@ struct SettingsBarView: View {
                 self.remindersData.showUncompletedOnly.toggle()
             }) {
                 Image(systemName: self.remindersData.showUncompletedOnly ? "circle" : "largecircle.fill.circle")
-                    .resizable()
-                    .frame(width: 13, height: 13)
             }
             .buttonStyle(BorderlessButtonStyle())
+            .padding(4)
+            .padding(.horizontal, 4)
+            .background(toggleIsHovered ? Color("buttonHover") : nil)
+            .cornerRadius(4)
+            .onHover { isHovered in
+                self.toggleIsHovered = isHovered
+            }
             
             Spacer()
             
@@ -66,11 +79,15 @@ struct SettingsBarView: View {
                 }
             } label: {
                 Image(systemName: "gear")
-                    .resizable()
-                    .frame(width: 16, height: 16)
             }
             .menuStyle(BorderlessButtonMenuStyle())
             .frame(width: 32, height: 16)
+            .padding(3)
+            .background(settingsIsHovered ? Color("buttonHover") : nil)
+            .cornerRadius(4)
+            .onHover { isHovered in
+                self.settingsIsHovered = isHovered
+            }
             
         }
         .frame(maxWidth: .infinity)
