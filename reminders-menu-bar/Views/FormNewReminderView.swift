@@ -12,11 +12,11 @@ struct FormNewReminderView: View {
         Form {
             HStack {
                 TextField("Type a reminder and hit enter", text: $newReminderTitle, onCommit: {
-                    guard !self.newReminderTitle.isEmpty else { return }
+                    guard !newReminderTitle.isEmpty else { return }
                     
-                    RemindersService.instance.createNew(with: self.newReminderTitle, in: self.selectedCalendar)
-                    self.newReminderTitle = ""
-                    self.reload()
+                    RemindersService.instance.createNew(with: newReminderTitle, in: selectedCalendar)
+                    newReminderTitle = ""
+                    reload()
                 })
                     .padding(5)
                     .padding(.horizontal, 10)
@@ -37,8 +37,8 @@ struct FormNewReminderView: View {
                 
                 Menu {
                     ForEach(remindersData.calendars, id: \.calendarIdentifier) { calendar in
-                        Button(action: { self.selectedCalendar = calendar }) {
-                            let isSelected = self.selectedCalendar.calendarIdentifier == calendar.calendarIdentifier
+                        Button(action: { selectedCalendar = calendar }) {
+                            let isSelected = selectedCalendar.calendarIdentifier == calendar.calendarIdentifier
                             if isSelected {
                                 Image(systemName: "checkmark")
                             }

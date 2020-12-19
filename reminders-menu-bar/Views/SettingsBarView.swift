@@ -13,15 +13,15 @@ struct SettingsBarView: View {
             Menu {
                 ForEach(remindersData.calendars, id: \.calendarIdentifier) { calendar in
                     Button(action: {
-                        let index = self.remindersData.calendarIdentifiersFilter.firstIndex(of: calendar.calendarIdentifier)
+                        let index = remindersData.calendarIdentifiersFilter.firstIndex(of: calendar.calendarIdentifier)
                         if let index = index {
-                            self.remindersData.calendarIdentifiersFilter.remove(at: index)
+                            remindersData.calendarIdentifiersFilter.remove(at: index)
                         } else {
-                            self.remindersData.calendarIdentifiersFilter.append(calendar.calendarIdentifier)
+                            remindersData.calendarIdentifiersFilter.append(calendar.calendarIdentifier)
                         }
                     }) {
                         HStack {
-                            let isSelected = self.remindersData.calendarIdentifiersFilter.contains(calendar.calendarIdentifier)
+                            let isSelected = remindersData.calendarIdentifiersFilter.contains(calendar.calendarIdentifier)
                             if isSelected {
                                 Image(systemName: "checkmark")
                             }
@@ -40,15 +40,15 @@ struct SettingsBarView: View {
             .background(filterIsHovered ? Color("buttonHover") : nil)
             .cornerRadius(4)
             .onHover { isHovered in
-                self.filterIsHovered = isHovered
+                filterIsHovered = isHovered
             }
             
             Spacer()
             
             Button(action: {
-                self.remindersData.showUncompletedOnly.toggle()
+                remindersData.showUncompletedOnly.toggle()
             }) {
-                Image(systemName: self.remindersData.showUncompletedOnly ? "circle" : "largecircle.fill.circle")
+                Image(systemName: remindersData.showUncompletedOnly ? "circle" : "largecircle.fill.circle")
             }
             .buttonStyle(BorderlessButtonStyle())
             .padding(4)
@@ -56,14 +56,14 @@ struct SettingsBarView: View {
             .background(toggleIsHovered ? Color("buttonHover") : nil)
             .cornerRadius(4)
             .onHover { isHovered in
-                self.toggleIsHovered = isHovered
+                toggleIsHovered = isHovered
             }
             
             Spacer()
             
             Menu {
                 Button(action: {
-                    self.remindersData.loadCalendars()
+                    remindersData.loadCalendars()
                 }) {
                     Text("Reload data")
                 }
@@ -86,7 +86,7 @@ struct SettingsBarView: View {
             .background(settingsIsHovered ? Color("buttonHover") : nil)
             .cornerRadius(4)
             .onHover { isHovered in
-                self.settingsIsHovered = isHovered
+                settingsIsHovered = isHovered
             }
             
         }

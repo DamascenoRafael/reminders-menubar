@@ -9,8 +9,8 @@ class RemindersData: ObservableObject {
     func loadCalendars() {
         let calendars = RemindersService.instance.getCalendars()
         self.calendars = calendars
-        if self.calendarIdentifiersFilter.isEmpty {
-            self.calendarIdentifiersFilter = calendars.map({ $0.calendarIdentifier })
+        if calendarIdentifiersFilter.isEmpty {
+            calendarIdentifiersFilter = calendars.map({ $0.calendarIdentifier })
         }
     }
 }

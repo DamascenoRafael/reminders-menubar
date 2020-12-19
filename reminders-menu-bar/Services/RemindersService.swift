@@ -66,7 +66,7 @@ class RemindersService {
     
     func save(reminder: EKReminder) {
         do {
-            try self.eventStore.save(reminder, commit: true)
+            try eventStore.save(reminder, commit: true)
         } catch {
             print("Erro saving reminder:", error)
         }
@@ -76,7 +76,7 @@ class RemindersService {
         let newReminder = EKReminder(eventStore: eventStore)
         newReminder.title = title
         newReminder.calendar = calendar
-        self.save(reminder: newReminder)
+        save(reminder: newReminder)
     }
     
     func remove(reminder: EKReminder) {

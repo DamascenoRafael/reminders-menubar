@@ -15,7 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         popover.contentSize = NSSize(width: 320, height: 460)
         popover.contentViewController = NSHostingController(rootView: contentView.environmentObject(remindersData))
         
-        if let button = self.statusBarItem.button {
+        if let button = statusBarItem.button {
             button.image = NSImage(systemSymbolName: "largecircle.fill.circle", accessibilityDescription: nil)
             button.action = #selector(togglePopover)
         }
@@ -31,14 +31,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
         
-        guard let button = self.statusBarItem.button else {
+        guard let button = statusBarItem.button else {
             return
         }
         
-        if self.popover.isShown {
-            self.popover.performClose(button)
+        if popover.isShown {
+            popover.performClose(button)
         } else {
-            self.popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
+            popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
         }
     }
 }

@@ -13,10 +13,10 @@ struct ReminderItemView: View {
         HStack(alignment: .top) {
             Button(action: {
                 reminder.isCompleted.toggle()
-                RemindersService.instance.save(reminder: self.reminder)
+                RemindersService.instance.save(reminder: reminder)
                 reload()
             }) {
-                Image(systemName: self.reminder.isCompleted ? "largecircle.fill.circle" : "circle")
+                Image(systemName: reminder.isCompleted ? "largecircle.fill.circle" : "circle")
                     .resizable()
                     .frame(width: 18, height: 18)
                     .padding(.top, 1)
@@ -70,7 +70,7 @@ struct ReminderItemView: View {
                           message: Text("This action will remove '\(reminder.title)' and cannot be undone"),
                           primaryButton: .destructive(Text("Remove"), action: {
                             RemindersService.instance.remove(reminder: reminder)
-                            self.reload()
+                            reload()
                           }),
                           secondaryButton: .cancel(Text("Cancelar"))
                     )

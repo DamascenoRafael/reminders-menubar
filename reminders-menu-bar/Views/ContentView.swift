@@ -8,35 +8,35 @@ struct ContentView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            FormNewReminderView(reload: { self.reload() })
+            FormNewReminderView(reload: { reload() })
             List {
-                ForEach(self.filteredReminderLists(needRefreshIndicator)) { reminderList in
+                ForEach(filteredReminderLists(needRefreshIndicator)) { reminderList in
                     VStack(alignment: .leading) {
                         Text(reminderList.title)
                             .font(.headline)
                             .foregroundColor(Color(reminderList.color))
                             .padding(.bottom, 5)
-                        ForEach(self.filteredReminders(reminderList.reminders), id: \.calendarItemIdentifier) { reminder in
-                            ReminderItemView(reminder: reminder, reload: { self.reload() })
+                        ForEach(filteredReminders(reminderList.reminders), id: \.calendarItemIdentifier) { reminder in
+                            ReminderItemView(reminder: reminder, reload: { reload() })
                         }
                     }
                     .padding(.bottom, 5)
                 }
             }
             .onAppear {
-                self.remindersData.loadCalendars()
-                self.reload()
+                remindersData.loadCalendars()
+                reload()
             }
             SettingsBarView()
         }
     }
     
     private func reload() {
-        self.needRefreshIndicator.toggle()
+        needRefreshIndicator.toggle()
     }
     
     private func filteredReminderLists(_: Bool) -> [ReminderList] {
-        return RemindersService.instance.getReminders(of: self.remindersData.calendarIdentifiersFilter)
+        return RemindersService.instance.getReminders(of: remindersData.calendarIdentifiersFilter)
     }
     
     private func filteredReminders(_ reminders: [EKReminder]) -> [EKReminder] {
