@@ -4,15 +4,17 @@ import EventKit
 struct ReminderItemView: View {
     @EnvironmentObject var remindersData: RemindersData
     
+    @State private var showingRemoveAlert = false
+    
     @State var reminder: EKReminder
     var reload: () -> Void
     
     var body: some View {
         HStack(alignment: .top) {
             Button(action: {
-                self.reminder.isCompleted.toggle()
+                reminder.isCompleted.toggle()
                 RemindersService.instance.save(reminder: self.reminder)
-                self.reload()
+                reload()
             }) {
                 Image(systemName: self.reminder.isCompleted ? "largecircle.fill.circle" : "circle")
                     .resizable()
@@ -33,11 +35,11 @@ struct ReminderItemView: View {
                                 Text("Move to ...")
                             }
                         ) {
-                            ForEach(remindersData.calendars.filter({ $0.calendarIdentifier != self.reminder.calendar.calendarIdentifier }), id: \.calendarIdentifier) { calendar in
+                            ForEach(remindersData.calendars.filter({ $0.calendarIdentifier != reminder.calendar.calendarIdentifier }), id: \.calendarIdentifier) { calendar in
                                 Button(action: {
-                                    self.reminder.calendar = calendar
-                                    RemindersService.instance.save(reminder: self.reminder)
-                                    self.reload()
+                                    reminder.calendar = calendar
+                                    RemindersService.instance.save(reminder: reminder)
+                                    reload()
                                 }) {
                                     Text(calendar.title)
                                         .foregroundColor(Color(calendar.color))
@@ -50,8 +52,7 @@ struct ReminderItemView: View {
                         }
                         
                         Button(action: {
-                            RemindersService.instance.remove(reminder: self.reminder)
-                            self.reload()
+                            showingRemoveAlert = true
                         }) {
                             HStack {
                                 Image(systemName: "minus.circle")
@@ -63,6 +64,16 @@ struct ReminderItemView: View {
                     .frame(width: 16, height: 16)
                     .padding(.top, 1)
                     .padding(.trailing, 10)
+                }
+                .alert(isPresented: $showingRemoveAlert) {
+                    Alert(title: Text("Remove reminder?"),
+                          message: Text("This action will remove '\(reminder.title)' and cannot be undone"),
+                          primaryButton: .destructive(Text("Remove"), action: {
+                            RemindersService.instance.remove(reminder: reminder)
+                            self.reload()
+                          }),
+                          secondaryButton: .cancel(Text("Cancelar"))
+                    )
                 }
                 Divider()
             }
