@@ -4,20 +4,16 @@ import SwiftUI
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    var popover: NSPopover!
-    var statusBarItem: NSStatusItem!
+    let popover = NSPopover()
+    let statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         let contentView = ContentView()
         let remindersData = RemindersData()
 
-        let popover = NSPopover()
         popover.behavior = .semitransient
         popover.contentSize = NSSize(width: 320, height: 460)
         popover.contentViewController = NSHostingController(rootView: contentView.environmentObject(remindersData))
-        self.popover = popover
-        
-        self.statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         
         if let button = self.statusBarItem.button {
             button.image = NSImage(systemSymbolName: "largecircle.fill.circle", accessibilityDescription: nil)
