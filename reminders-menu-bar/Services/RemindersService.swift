@@ -9,12 +9,12 @@ class RemindersService {
         // This prevents others from using the default '()' initializer for this class.
     }
     
-    func hasAuthorization() -> EKAuthorizationStatus  {
+    func hasAuthorization() -> EKAuthorizationStatus {
         return EKEventStore.authorizationStatus(for: .reminder)
     }
     
     func requestAccess() {
-        eventStore.requestAccess(to: .reminder) { (granted, error) in
+        eventStore.requestAccess(to: .reminder) { granted, error in
             guard granted else {
                 print("Access to store not granted:")
                 print(error ?? "no error")
@@ -48,7 +48,7 @@ class RemindersService {
                 group.enter()
                 
                 let predicate = eventStore.predicateForReminders(in: [reminderList])
-                eventStore.fetchReminders(matching: predicate) { (reminders) in
+                eventStore.fetchReminders(matching: predicate) { reminders in
                     guard let reminders = reminders else {
                         print("reminders was nil")
                         return

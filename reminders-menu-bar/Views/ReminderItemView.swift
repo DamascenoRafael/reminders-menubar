@@ -35,7 +35,10 @@ struct ReminderItemView: View {
                                 Text("Move to ...")
                             }
                         ) {
-                            ForEach(remindersData.calendars.filter({ $0.calendarIdentifier != reminder.calendar.calendarIdentifier }), id: \.calendarIdentifier) { calendar in
+                            let availableCalendars = remindersData.calendars.filter {
+                                $0.calendarIdentifier != reminder.calendar.calendarIdentifier
+                            }
+                            ForEach(availableCalendars, id: \.calendarIdentifier) { calendar in
                                 Button(action: {
                                     reminder.calendar = calendar
                                     RemindersService.instance.save(reminder: reminder)

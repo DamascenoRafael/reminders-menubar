@@ -126,6 +126,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 712C32C324BF939200AC75E2 /* Build configuration list for PBXNativeTarget "reminders-menu-bar" */;
 			buildPhases = (
+				7133C87225918BD700F7E0AA /* SwiftLint */,
 				712C32AC24BF939100AC75E2 /* Sources */,
 				712C32AD24BF939100AC75E2 /* Frameworks */,
 				712C32AE24BF939100AC75E2 /* Resources */,
@@ -185,6 +186,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7133C87225918BD700F7E0AA /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		712C32AC24BF939100AC75E2 /* Sources */ = {

@@ -85,8 +85,7 @@ struct SettingsBarView: View {
             .cornerRadius(4)
             .onHover { isHovered in
                 settingsIsHovered = isHovered
-            }
-            
+            }      
         }
         .frame(maxWidth: .infinity)
         .padding(.top, 12)

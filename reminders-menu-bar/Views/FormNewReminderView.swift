@@ -47,7 +47,8 @@ struct FormNewReminderView: View {
                                 .foregroundColor(Color(calendar.color))
                         }
                     }
-                } label: { }
+                } label: {
+                }
                 .menuStyle(BorderlessButtonMenuStyle())
                 .frame(width: 11, height: 10)
                 .padding(8)

@@ -41,14 +41,14 @@ struct ContentView: View {
     
     private func filteredReminders(_ reminders: [EKReminder]) -> [EKReminder] {
         let uncompletedReminders = reminders
-            .filter{ !$0.isCompleted }
+            .filter { !$0.isCompleted }
             .sorted(by: { $0.creationDate!.compare($1.creationDate!) == .orderedDescending })
         
         if remindersData.showUncompletedOnly {
             return uncompletedReminders
         } else {
             let completedReminders = reminders
-                .filter{ $0.isCompleted }
+                .filter { $0.isCompleted }
                 .sorted(by: { $0.completionDate!.compare($1.completionDate!) == .orderedDescending })
             
             return uncompletedReminders + completedReminders
@@ -56,9 +56,8 @@ struct ContentView: View {
     }
 }
 
-
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView().environmentObject(RemindersData())
-//    }
-//}
+// struct ContentView_Previews: PreviewProvider {
+//     static var previews: some View {
+//         ContentView().environmentObject(RemindersData())
+//     }
+// }
