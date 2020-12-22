@@ -20,15 +20,13 @@ struct SettingsBarView: View {
                             remindersData.calendarIdentifiersFilter.append(calendar.calendarIdentifier)
                         }
                     }) {
-                        HStack {
-                            let isSelected = remindersData.calendarIdentifiersFilter.contains(calendar.calendarIdentifier)
-                            if isSelected {
-                                Image(systemName: "checkmark")
-                            }
-                            let paddingText = isSelected ? "" : "      "
-                            Text(paddingText + calendar.title)
-                                .foregroundColor(Color(calendar.color))
+                        let isSelected = remindersData.calendarIdentifiersFilter.contains(calendar.calendarIdentifier)
+                        if isSelected {
+                            Image(systemName: "checkmark")
                         }
+                        let paddingText = isSelected ? "" : "      "
+                        Text(paddingText + calendar.title)
+                            .foregroundColor(Color(calendar.color))
                     }
                 }
             } label: {
