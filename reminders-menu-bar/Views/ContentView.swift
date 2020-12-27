@@ -23,6 +23,7 @@ struct ContentView: View {
                     .padding(.bottom, 5)
                 }
             }
+            .background(Color("backgroundTheme"))
             .onAppear {
                 remindersData.loadCalendars()
                 reload()
