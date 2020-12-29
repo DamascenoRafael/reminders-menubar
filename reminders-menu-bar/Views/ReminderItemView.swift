@@ -4,10 +4,12 @@ import EventKit
 struct ReminderItemView: View {
     @EnvironmentObject var remindersData: RemindersData
     
-    @State private var showingRemoveAlert = false
-    
     @State var reminder: EKReminder
     var reload: () -> Void
+    
+    @State private var showingRemoveAlert = false
+    
+    weak var appDelegate = NSApplication.shared.delegate as? AppDelegate
     
     var body: some View {
         HStack(alignment: .top) {
@@ -83,10 +85,20 @@ struct ReminderItemView: View {
                           secondaryButton: .cancel(Text("Cancelar"))
                     )
                 }
+                .onChange(of: showingRemoveAlert) { isShowing in
+                    if isShowing {
+                        appDelegate?.changeBehaviorToKeepVisible()
+                    } else {
+                        appDelegate?.changeBehaviorToDismissIfNeeded()
+                    }
+                }
                 Divider()
             }
         }
         .background(Color("backgroundTheme"))
+        .onDisappear(perform: {
+            appDelegate?.changeBehaviorToDismissIfNeeded()
+        })
     }
 }
 

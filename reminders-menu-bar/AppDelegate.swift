@@ -11,14 +11,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let contentView = ContentView()
         let remindersData = RemindersData()
 
-        popover.behavior = .semitransient
-        popover.contentSize = NSSize(width: 320, height: 460)
+        changeBehaviorToDismissIfNeeded()
+        popover.contentSize = NSSize(width: 340, height: 460)
         popover.contentViewController = NSHostingController(rootView: contentView.environmentObject(remindersData))
         
         if let button = statusBarItem.button {
             button.image = NSImage(systemSymbolName: "largecircle.fill.circle", accessibilityDescription: nil)
             button.action = #selector(togglePopover)
         }
+    }
+    
+    func changeBehaviorToDismissIfNeeded() {
+        popover.behavior = .transient
+    }
+    
+    func changeBehaviorToKeepVisible() {
+        popover.behavior = .semitransient
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
