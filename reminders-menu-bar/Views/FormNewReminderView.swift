@@ -58,6 +58,7 @@ struct FormNewReminderView: View {
                     RoundedRectangle(cornerRadius: 8)
                         .stroke(Color("textFieldStrock"), lineWidth: 0.8)
                 )
+                .help("Select where new reminders will be saved")
             }
         }
         .padding(10)

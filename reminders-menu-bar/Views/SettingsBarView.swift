@@ -40,6 +40,7 @@ struct SettingsBarView: View {
             .onHover { isHovered in
                 filterIsHovered = isHovered
             }
+            .help("Filter which reminders to show")
             
             Spacer()
             
@@ -56,6 +57,7 @@ struct SettingsBarView: View {
             .onHover { isHovered in
                 toggleIsHovered = isHovered
             }
+            .help("Toggle between showing all reminders or only uncompleted ones")
             
             Spacer()
             
@@ -85,7 +87,8 @@ struct SettingsBarView: View {
             .cornerRadius(4)
             .onHover { isHovered in
                 settingsIsHovered = isHovered
-            }      
+            }
+            .help("Settings")
         }
         .frame(maxWidth: .infinity)
         .padding(.top, 12)

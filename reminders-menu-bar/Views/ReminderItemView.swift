@@ -74,6 +74,7 @@ struct ReminderItemView: View {
                     .frame(width: 16, height: 16)
                     .padding(.top, 1)
                     .padding(.trailing, 10)
+                    .help("Options for editing the reminder")
                 }
                 .alert(isPresented: $showingRemoveAlert) {
                     Alert(title: Text("Remove reminder?"),
