@@ -39,6 +39,11 @@ struct ReminderItemView: View {
                                 $0.calendarIdentifier != reminder.calendar.calendarIdentifier
                             }
                             ForEach(availableCalendars, id: \.calendarIdentifier) { calendar in
+                                // TODO: Fix the warning from Xcode when editing the reminder calendar:
+                                // [utility] You are about to trigger decoding the resolution token map from JSON data.
+                                // This is probably not what you want for performance to trigger it from -isEqual:,
+                                // unless you are running Tests then it's fine
+                                // {class: REMAccountStorage, self-map: (null), other-map: (null)}
                                 Button(action: {
                                     reminder.calendar = calendar
                                     RemindersService.instance.save(reminder: reminder)
