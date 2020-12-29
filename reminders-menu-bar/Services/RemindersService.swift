@@ -16,8 +16,8 @@ class RemindersService {
     func requestAccess() {
         eventStore.requestAccess(to: .reminder) { granted, error in
             guard granted else {
-                print("Access to store not granted:")
-                print(error ?? "no error")
+                let errorDescription = error?.localizedDescription ?? "no error description"
+                print("Access to store not granted:", errorDescription)
                 return
             }
         }
@@ -50,7 +50,7 @@ class RemindersService {
                 let predicate = eventStore.predicateForReminders(in: [reminderList])
                 eventStore.fetchReminders(matching: predicate) { reminders in
                     guard let reminders = reminders else {
-                        print("reminders was nil")
+                        print("Reminders was nil during 'fetchReminders'")
                         return
                     }
                     
@@ -68,7 +68,7 @@ class RemindersService {
         do {
             try eventStore.save(reminder, commit: true)
         } catch {
-            print("Erro saving reminder:", error)
+            print("Error saving reminder:", error.localizedDescription)
         }
     }
     
@@ -83,7 +83,7 @@ class RemindersService {
         do {
             try eventStore.remove(reminder, commit: true)
         } catch {
-            print("Erro removing reminder:", error)
+            print("Error removing reminder:", error.localizedDescription)
         }
     }
 }
