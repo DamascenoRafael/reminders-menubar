@@ -1,9 +1,19 @@
-# Reminders Menu Bar
-
-Simple macOS menu bar app to view and interact with reminders.
-
-[Features](#features) •
-[Getting Started](#getting-started)
+<div align="center">
+	<img
+		src="images/reminders-icon.png"
+		alt="Reminders Menu Bar"
+	>
+	<h1>
+		Reminders Menu Bar
+	</h1>
+	<p>
+		Simple macOS menu bar app to view and interact with reminders.
+	</p>
+	<p>
+  		<a href="#features">Features</a> •
+  		<a href="#getting-started">Getting Started</a>
+	</p>
+</div>
 
 <div align="center">
 	<img
