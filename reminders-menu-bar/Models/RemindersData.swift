@@ -3,8 +3,24 @@ import EventKit
 
 class RemindersData: ObservableObject {
     @Published var calendars: [EKCalendar] = []
-    @Published var calendarIdentifiersFilter: [String] = []
-    @Published var showUncompletedOnly = true
+    
+    @Published var calendarIdentifiersFilter = UserPreferences.instance.calendarIdentifiersFilter {
+        didSet {
+            UserPreferences.instance.calendarIdentifiersFilter = calendarIdentifiersFilter
+        }
+    }
+    
+    @Published var calendarForSaving = UserPreferences.instance.calendarForSaving {
+        didSet {
+            UserPreferences.instance.calendarForSaving = calendarForSaving
+        }
+    }
+    
+    @Published var showUncompletedOnly = UserPreferences.instance.showUncompletedOnly {
+        didSet {
+            UserPreferences.instance.showUncompletedOnly = showUncompletedOnly
+        }
+    }
     
     func loadCalendars() {
         let calendars = RemindersService.instance.getCalendars()

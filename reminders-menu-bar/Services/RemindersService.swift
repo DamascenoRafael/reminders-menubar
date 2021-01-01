@@ -23,12 +23,20 @@ class RemindersService {
         }
     }
     
-    func getDefaultCalendar() -> EKCalendar {
-        return eventStore.defaultCalendarForNewReminders() ?? eventStore.calendars(for: .reminder).first!
+    func isValid(calendarIdentifier: String) -> Bool {
+        return eventStore.calendar(withIdentifier: calendarIdentifier) != nil
+    }
+    
+    func getCalendar(withIdentifier calendarIdentifier: String) -> EKCalendar? {
+        return eventStore.calendar(withIdentifier: calendarIdentifier)
     }
     
     func getCalendars() -> [EKCalendar] {
         return eventStore.calendars(for: .reminder).sorted(by: { $0.title.compare($1.title) == .orderedAscending })
+    }
+    
+    func getDefaultCalendar() -> EKCalendar {
+        return eventStore.defaultCalendarForNewReminders() ?? eventStore.calendars(for: .reminder).first!
     }
     
     func getReminders(of calendarIdentifiers: [String]) -> [ReminderList] {

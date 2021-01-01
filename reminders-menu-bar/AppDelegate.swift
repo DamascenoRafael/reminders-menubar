@@ -6,14 +6,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     let popover = NSPopover()
     let statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
-
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
+    var contentViewController: NSViewController {
         let contentView = ContentView()
         let remindersData = RemindersData()
+        return NSHostingController(rootView: contentView.environmentObject(remindersData))
+    }
 
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         changeBehaviorToDismissIfNeeded()
         popover.contentSize = NSSize(width: 340, height: 460)
-        popover.contentViewController = NSHostingController(rootView: contentView.environmentObject(remindersData))
         
         if let button = statusBarItem.button {
             button.image = NSImage(systemSymbolName: "largecircle.fill.circle", accessibilityDescription: nil)
@@ -41,6 +42,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         guard let button = statusBarItem.button else {
             return
+        }
+        
+        if popover.contentViewController == nil {
+            popover.contentViewController = contentViewController
         }
         
         if popover.isShown {
