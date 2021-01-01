@@ -32,27 +32,29 @@ class RemindersService {
     }
     
     func getReminders(of calendarIdentifiers: [String]) -> [ReminderList] {
-        let group = DispatchGroup()
-        
         var remindersStore: [ReminderList] = []
-        if let source = eventStore.sources.first {
-            let reminderLists = source.calendars(for: .reminder)
-            for reminderList in reminderLists {
-                guard calendarIdentifiers.contains(reminderList.calendarIdentifier) else { continue }
-                
-                group.enter()
-                
-                let predicate = eventStore.predicateForReminders(in: [reminderList])
-                eventStore.fetchReminders(matching: predicate) { reminders in
-                    guard let reminders = reminders else {
-                        print("Reminders was nil during 'fetchReminders'")
-                        return
-                    }
-                    
-                    remindersStore.append(ReminderList(for: reminderList, with: reminders))
-                    group.leave()
-                }
+        
+        let calendars = getCalendars().filter({ calendarIdentifiers.contains($0.calendarIdentifier) })
+        let predicate = eventStore.predicateForReminders(in: calendars)
+        
+        // TODO: Remove use of DispatchGroup
+        let group = DispatchGroup()
+        group.enter()
+        eventStore.fetchReminders(matching: predicate) { allReminders in
+            guard let allReminders = allReminders else {
+                print("Reminders was nil during 'fetchReminders'")
+                group.leave()
+                return
             }
+            
+            for calendar in calendars {
+                let reminders = allReminders.filter({
+                    $0.calendar.calendarIdentifier == calendar.calendarIdentifier
+                })
+                
+                remindersStore.append(ReminderList(for: calendar, with: reminders))
+            }
+            group.leave()
         }
         
         _ = group.wait(timeout: .distantFuture)
