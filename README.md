@@ -11,7 +11,8 @@
 	</p>
 	<p>
   		<a href="#features">Features</a> •
-  		<a href="#getting-started">Getting Started</a>
+  		<a href="#installation">Installation</a> •
+		<a href="#license">License</a>
 	</p>
 </div>
 
@@ -39,8 +40,35 @@
 * Remove reminders or Move reminders between lists
 * Filter reminders through lists or through completed status
 
-## Getting Started
+## Installation
 
-App requires macOS Big Sur 11 or later.
+*Reminders Menu Bar requires macOS Big Sur 11 or later.*
 
-[[ Instructions coming soon ]]
+**Note**: The app is not signed by an account enrolled in the Apple Developer Program; As a result you will probably see a message saying it cannot be opened since it is not from an Identified Developer.
+
+To open the app follow the steps below:
+
+1. Try to run the app and when you see the message just click *OK*;
+2. Open *System Preferences* > *Security and Privacy*;
+3. Check the message saying that the app was blocked;
+4. Finally click on *Open Anyway*.
+
+See [Apple Support: Open a Mac app from an unidentified developer](https://support.apple.com/guide/mac-help/mh40616/mac).
+
+### Homebrew
+
+Reminders Menu Bar can be installed using [Homebrew](http://brew.sh).
+
+```bash
+brew install --cask DamascenoRafael/tap/reminders-menubar
+```
+
+### Direct Download
+
+Direct downloads can be found on the [releases page](https://github.com/DamascenoRafael/reminders-menubar/releases).  
+After downloading and extracting, just drag the *.app* file to the Applications folder.
+
+## License
+
+This project is licensed under the terms of the GNU General Public License v3.0.  
+See [LICENSE](LICENSE) for details.
