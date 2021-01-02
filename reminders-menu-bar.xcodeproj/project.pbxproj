@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,7 +27,7 @@
 		71032A8E24C21F0F00A8006C /* FormNewReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormNewReminderView.swift; sourceTree = "<group>"; };
 		7115461224C0ADCB007781E2 /* ReminderItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderItemView.swift; sourceTree = "<group>"; };
 		7115461824C0C280007781E2 /* RemindersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersService.swift; sourceTree = "<group>"; };
-		712C32B024BF939100AC75E2 /* reminders-menu-bar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "reminders-menu-bar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		712C32B024BF939100AC75E2 /* Reminders Menu Bar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reminders Menu Bar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		712C32B324BF939100AC75E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		712C32B524BF939100AC75E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		712C32B724BF939200AC75E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 		712C32B124BF939100AC75E2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				712C32B024BF939100AC75E2 /* reminders-menu-bar.app */,
+				712C32B024BF939100AC75E2 /* Reminders Menu Bar.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,9 +136,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		712C32AF24BF939100AC75E2 /* reminders-menu-bar */ = {
+		712C32AF24BF939100AC75E2 /* Reminders Menu Bar */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 712C32C324BF939200AC75E2 /* Build configuration list for PBXNativeTarget "reminders-menu-bar" */;
+			buildConfigurationList = 712C32C324BF939200AC75E2 /* Build configuration list for PBXNativeTarget "Reminders Menu Bar" */;
 			buildPhases = (
 				7133C87225918BD700F7E0AA /* SwiftLint */,
 				712C32AC24BF939100AC75E2 /* Sources */,
@@ -149,9 +149,9 @@
 			);
 			dependencies = (
 			);
-			name = "reminders-menu-bar";
+			name = "Reminders Menu Bar";
 			productName = "reminders-menu-bar";
-			productReference = 712C32B024BF939100AC75E2 /* reminders-menu-bar.app */;
+			productReference = 712C32B024BF939100AC75E2 /* Reminders Menu Bar.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -170,7 +170,7 @@
 				};
 			};
 			buildConfigurationList = 712C32AB24BF939100AC75E2 /* Build configuration list for PBXProject "reminders-menu-bar" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -182,7 +182,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				712C32AF24BF939100AC75E2 /* reminders-menu-bar */,
+				712C32AF24BF939100AC75E2 /* Reminders Menu Bar */,
 			);
 		};
 /* End PBXProject section */
@@ -378,6 +378,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"reminders-menu-bar/Preview Content\"";
+				DEVELOPMENT_TEAM = 3398VKLH28;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "reminders-menu-bar/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -400,6 +402,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"reminders-menu-bar/Preview Content\"";
+				DEVELOPMENT_TEAM = 3398VKLH28;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "reminders-menu-bar/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -425,7 +429,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		712C32C324BF939200AC75E2 /* Build configuration list for PBXNativeTarget "reminders-menu-bar" */ = {
+		712C32C324BF939200AC75E2 /* Build configuration list for PBXNativeTarget "Reminders Menu Bar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				712C32C424BF939200AC75E2 /* Debug */,
