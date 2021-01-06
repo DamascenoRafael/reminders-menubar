@@ -40,6 +40,8 @@
 * Remove reminders or Move reminders between lists
 * Filter reminders through lists or through completed status
 
+![Reminders Menu Bar demo](images/reminders-menubar-demo.gif)
+
 ## Installation
 
 *Reminders Menu Bar requires macOS Big Sur 11 or later.*
