@@ -27,7 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func changeBehaviorToKeepVisible() {
-        popover.behavior = .semitransient
+        popover.behavior = .applicationDefined
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -40,7 +40,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
         
-        guard let button = statusBarItem.button else {
+        guard popover.behavior != .applicationDefined,
+              let button = statusBarItem.button else {
             return
         }
         
