@@ -15,7 +15,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         changeBehaviorToDismissIfNeeded()
         popover.contentSize = NSSize(width: 340, height: 460)
-        
+        popover.animates = false
+
         if let button = statusBarItem.button {
             button.image = NSImage(systemSymbolName: "largecircle.fill.circle", accessibilityDescription: nil)
             button.action = #selector(togglePopover)
