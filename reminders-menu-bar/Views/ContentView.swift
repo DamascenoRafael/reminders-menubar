@@ -16,8 +16,12 @@ struct ContentView: View {
                             .font(.headline)
                             .foregroundColor(Color(reminderList.color))
                             .padding(.bottom, 5)
-                        ForEach(filteredReminders(reminderList.reminders), id: \.calendarItemIdentifier) { reminder in
-                            ReminderItemView(reminder: reminder, reload: { reload() })
+                        if let reminders = filteredReminders(reminderList.reminders), !reminders.isEmpty {
+                            ForEach(reminders, id: \.calendarItemIdentifier) { reminder in
+                                ReminderItemView(reminder: reminder, reload: { reload() })
+                            }
+                        } else {
+                            NoReminderItemsView(calendarIsEmpty: reminderList.reminders.isEmpty)
                         }
                     }
                     .padding(.bottom, 5)
