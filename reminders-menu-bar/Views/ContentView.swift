@@ -12,10 +12,7 @@ struct ContentView: View {
             List {
                 ForEach(filteredReminderLists(needRefreshIndicator)) { reminderList in
                     VStack(alignment: .leading) {
-                        Text(reminderList.title)
-                            .font(.headline)
-                            .foregroundColor(Color(reminderList.color))
-                            .padding(.bottom, 5)
+                        CalendarTitleView(calendar: reminderList.calendar)
                         if let reminders = filteredReminders(reminderList.reminders), !reminders.isEmpty {
                             ForEach(reminders, id: \.calendarItemIdentifier) { reminder in
                                 ReminderItemView(reminder: reminder, reload: { reload() })

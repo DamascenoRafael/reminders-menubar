@@ -3,14 +3,12 @@ import AppKit
 
 struct ReminderList: Identifiable {
     let id: String
-    let title: String
-    let color: NSColor
+    let calendar: EKCalendar
     let reminders: [EKReminder]
     
-    init(for reminderList: EKCalendar, with reminders: [EKReminder]) {
-        self.id = reminderList.calendarIdentifier
-        self.title = reminderList.title
-        self.color = reminderList.color
+    init(for calendar: EKCalendar, with reminders: [EKReminder]) {
+        self.id = calendar.calendarIdentifier
+        self.calendar = calendar
         self.reminders = reminders
     }
 }
