@@ -1,19 +1,19 @@
 <div align="center">
-	<img
-		src="images/reminders-icon.png"
-		alt="Reminders Menu Bar"
-	>
-	<h1>
-		Reminders Menu Bar
-	</h1>
-	<p>
-		Simple macOS menu bar app to view and interact with reminders.
-	</p>
-	<p>
-  		<a href="#features">Features</a> •
-  		<a href="#installation">Installation</a> •
-		<a href="#license">License</a>
-	</p>
+  <img
+    src="images/reminders-icon.png"
+    alt="Reminders Menu Bar"
+  >
+  <h1>
+    Reminders Menu Bar
+  </h1>
+  <p>
+    Simple macOS menu bar app to view and interact with reminders.
+  </p>
+  <p>
+    <a href="#features">Features</a> •
+    <a href="#installation">Installation</a> •
+    <a href="#license">License</a>
+  </p>
 </div>
 
 <div align="center">
@@ -40,7 +40,12 @@
 * Remove reminders or Move reminders between lists
 * Filter reminders through lists or through completed status
 
-![Reminders Menu Bar demo](images/reminders-menubar-demo.gif)
+<div align="center">
+  <img
+    src="images/reminders-menubar-demo.gif"
+    alt="Reminders Menu Bar demo"
+  >
+</div>
 
 ## Installation
 
