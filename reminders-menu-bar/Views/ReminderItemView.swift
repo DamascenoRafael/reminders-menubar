@@ -93,6 +93,24 @@ struct ReminderItemView: View {
                         appDelegate?.changeBehaviorToDismissIfNeeded()
                     }
                 }
+                
+                if let dateDescription = reminder.relativeDateDescription {
+                    HStack {
+                        HStack {
+                            Image(systemName: "calendar")
+                            Text(dateDescription)
+                                .foregroundColor(reminder.isExpired ? .red : nil)
+                        }
+                        .padding(.trailing, 5)
+                        
+                        if reminder.hasRecurrenceRules {
+                            Image(systemName: "repeat")
+                        }
+                    }
+                    .font(.footnote)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                
                 Divider()
             }
         }
