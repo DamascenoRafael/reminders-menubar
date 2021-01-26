@@ -46,16 +46,20 @@
 
 *Reminders Menu Bar requires macOS Big Sur 11 or later.*
 
-**Note**: The app is not signed by an account enrolled in the Apple Developer Program; As a result you will probably see a message saying it cannot be opened since it is not from an Identified Developer.
-
-To open the app follow the steps below:
-
-1. Try to run the app and when you see the message just click *OK*;
-2. Open *System Preferences* > *Security and Privacy*;
-3. Check the message saying that the app was blocked;
-4. Finally click on *Open Anyway*.
-
+**Note**: The app is not signed by an account enrolled in the Apple Developer Program; As a result you will probably see a message saying it cannot be opened since it is not from an Identified Developer.  
 See [Apple Support: Open a Mac app from an unidentified developer](https://support.apple.com/guide/mac-help/mh40616/mac).
+
+<details>
+  <summary>
+  Click here to learn how to open an app from an unidentified developer
+  </summary>
+
+  1. Try to run the app and when you see the message just click *OK*;
+  2. Open *System Preferences* > *Security and Privacy*;
+  3. Check the message saying that the app was blocked;
+  4. Finally click on *Open Anyway*.
+
+</details>
 
 ### Homebrew
 
@@ -68,7 +72,7 @@ brew install --cask DamascenoRafael/tap/reminders-menubar
 ### Direct Download
 
 Direct downloads can be found on the [releases page](https://github.com/DamascenoRafael/reminders-menubar/releases).  
-After downloading and extracting, just drag the *.app* file to the Applications folder.
+After downloading and extracting, just drag the *.app* file to the *Applications* folder.
 
 ## License
 
