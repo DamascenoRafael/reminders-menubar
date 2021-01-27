@@ -3,19 +3,17 @@ import EventKit
 
 struct ContentView: View {
     @EnvironmentObject var remindersData: RemindersData
-
-    @State var needRefreshIndicator = false
     
     var body: some View {
         VStack(spacing: 0) {
-            FormNewReminderView(reload: { reload() })
+            FormNewReminderView()
             List {
-                ForEach(filteredReminderLists(needRefreshIndicator)) { reminderList in
+                ForEach(remindersData.filteredReminderLists) { reminderList in
                     VStack(alignment: .leading) {
                         CalendarTitleView(calendar: reminderList.calendar)
                         if let reminders = filteredReminders(reminderList.reminders), !reminders.isEmpty {
                             ForEach(reminders, id: \.calendarItemIdentifier) { reminder in
-                                ReminderItemView(reminder: reminder, reload: { reload() })
+                                ReminderItemView(reminder: reminder)
                             }
                         } else {
                             NoReminderItemsView(calendarIsEmpty: reminderList.reminders.isEmpty)
@@ -26,19 +24,10 @@ struct ContentView: View {
             }
             .background(Color("backgroundTheme"))
             .onAppear {
-                remindersData.loadCalendars()
-                reload()
+                remindersData.update()
             }
             SettingsBarView()
         }
-    }
-    
-    private func reload() {
-        needRefreshIndicator.toggle()
-    }
-    
-    private func filteredReminderLists(_: Bool) -> [ReminderList] {
-        return RemindersService.instance.getReminders(of: remindersData.calendarIdentifiersFilter)
     }
     
     private func filteredReminders(_ reminders: [EKReminder]) -> [EKReminder] {

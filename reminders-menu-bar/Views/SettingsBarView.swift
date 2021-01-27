@@ -63,7 +63,7 @@ struct SettingsBarView: View {
             
             Menu {
                 Button(action: {
-                    remindersData.loadCalendars()
+                    remindersData.update()
                 }) {
                     Text("Reload data")
                 }

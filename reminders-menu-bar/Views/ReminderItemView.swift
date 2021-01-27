@@ -4,9 +4,7 @@ import EventKit
 struct ReminderItemView: View {
     @EnvironmentObject var remindersData: RemindersData
     
-    @State var reminder: EKReminder
-    var reload: () -> Void
-    
+    var reminder: EKReminder
     @State private var showingRemoveAlert = false
     
     weak var appDelegate = NSApplication.shared.delegate as? AppDelegate
@@ -16,7 +14,6 @@ struct ReminderItemView: View {
             Button(action: {
                 reminder.isCompleted.toggle()
                 RemindersService.instance.save(reminder: reminder)
-                reload()
             }) {
                 Image(systemName: reminder.isCompleted ? "largecircle.fill.circle" : "circle")
                     .resizable()
@@ -49,7 +46,6 @@ struct ReminderItemView: View {
                                 Button(action: {
                                     reminder.calendar = calendar
                                     RemindersService.instance.save(reminder: reminder)
-                                    reload()
                                 }) {
                                     Text(calendar.title)
                                         .foregroundColor(Color(calendar.color))
@@ -81,7 +77,7 @@ struct ReminderItemView: View {
                           message: Text("This action will remove '\(reminder.title)' and cannot be undone"),
                           primaryButton: .destructive(Text("Remove"), action: {
                             RemindersService.instance.remove(reminder: reminder)
-                            reload()
+                            remindersData.update()
                           }),
                           secondaryButton: .cancel(Text("Cancelar"))
                     )
@@ -134,12 +130,10 @@ struct ReminderItemView_Previews: PreviewProvider {
         return reminder
     }
     
-    static func reload() { return }
-    
     static var previews: some View {
         Group {
             ForEach(ColorScheme.allCases, id: \.self) { color in
-                ReminderItemView(reminder: reminder, reload: reload)
+                ReminderItemView(reminder: reminder)
                     .environmentObject(RemindersData())
                     .colorScheme(color)
                     .previewDisplayName("\(color) mode")

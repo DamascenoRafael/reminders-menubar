@@ -5,7 +5,6 @@ struct FormNewReminderView: View {
     @EnvironmentObject var remindersData: RemindersData
     
     @State var newReminderTitle = ""
-    var reload: () -> Void
     
     var body: some View {
         Form {
@@ -15,7 +14,6 @@ struct FormNewReminderView: View {
                     
                     RemindersService.instance.createNew(with: newReminderTitle, in: remindersData.calendarForSaving)
                     newReminderTitle = ""
-                    reload()
                 })
                     .padding(.vertical, 8)
                     .padding(.horizontal, 8)
@@ -60,12 +58,10 @@ struct FormNewReminderView: View {
 }
 
 struct FormNewReminderView_Previews: PreviewProvider {
-    static func reload() { return }
-
     static var previews: some View {
         Group {
             ForEach(ColorScheme.allCases, id: \.self) { color in
-                FormNewReminderView(reload: reload)
+                FormNewReminderView()
                     .environmentObject(RemindersData())
                     .colorScheme(color)
                     .previewDisplayName("\(color) mode")

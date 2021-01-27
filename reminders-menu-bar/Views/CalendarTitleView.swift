@@ -4,7 +4,7 @@ import EventKit
 struct CalendarTitleView: View {
     @EnvironmentObject var remindersData: RemindersData
     
-    @State var calendar: EKCalendar
+    var calendar: EKCalendar
     @State var calendarFolderIsHovered = false
     
     var body: some View {
