@@ -7,6 +7,11 @@ class RemindersData: ObservableObject {
                                                selector: #selector(update),
                                                name: .EKEventStoreChanged,
                                                object: nil)
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(update),
+                                               name: .NSCalendarDayChanged,
+                                               object: nil)
     }
     
     @Published var calendars: [EKCalendar] = []
@@ -33,11 +38,15 @@ class RemindersData: ObservableObject {
     }
     
     @objc func update() {
-        let calendars = RemindersService.instance.getCalendars()
-        self.calendars = calendars
-        if calendarIdentifiersFilter.isEmpty {
-            calendarIdentifiersFilter = calendars.map({ $0.calendarIdentifier })
+        // TODO: Prefer receive(on:options:) over explicit use of dispatch queues when performing work in subscribers.
+        // https://developer.apple.com/documentation/combine/fail/receive(on:options:)
+        DispatchQueue.main.async {
+            let calendars = RemindersService.instance.getCalendars()
+            self.calendars = calendars
+            if self.calendarIdentifiersFilter.isEmpty {
+                self.calendarIdentifiersFilter = calendars.map({ $0.calendarIdentifier })
+            }
+            self.filteredReminderLists = RemindersService.instance.getReminders(of: self.calendarIdentifiersFilter)
         }
-        filteredReminderLists = RemindersService.instance.getReminders(of: calendarIdentifiersFilter)
     }
 }
