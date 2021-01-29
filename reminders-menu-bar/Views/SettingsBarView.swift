@@ -73,6 +73,12 @@ struct SettingsBarView: View {
                 }
                 
                 Button(action: {
+                    AboutView.showWindow()
+                }) {
+                    Text("About")
+                }
+                
+                Button(action: {
                     NSApplication.shared.terminate(self)
                 }) {
                     Text("Quit")

@@ -24,6 +24,7 @@
 		71B4AD5325B7F37D00214219 /* NSTextFiel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B4AD5225B7F37D00214219 /* NSTextFiel+Extensions.swift */; };
 		71B4AD6625B9118000214219 /* NoReminderItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B4AD6525B9118000214219 /* NoReminderItemsView.swift */; };
 		71B6D1FB24C6511000E66EDB /* SettingsBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B6D1FA24C6511000E66EDB /* SettingsBarView.swift */; };
+		71E51D5825BFB8CF009A4B56 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E51D5725BFB8CF009A4B56 /* AboutView.swift */; };
 		71F301FA259FB5CF00CDD81E /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F301F9259FB5CF00CDD81E /* UserPreferences.swift */; };
 		71F9726A25981EDF00D0A118 /* NSTableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F9726925981EDF00D0A118 /* NSTableView+Extensions.swift */; };
 /* End PBXBuildFile section */
@@ -49,6 +50,7 @@
 		71B4AD5225B7F37D00214219 /* NSTextFiel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextFiel+Extensions.swift"; sourceTree = "<group>"; };
 		71B4AD6525B9118000214219 /* NoReminderItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoReminderItemsView.swift; sourceTree = "<group>"; };
 		71B6D1FA24C6511000E66EDB /* SettingsBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBarView.swift; sourceTree = "<group>"; };
+		71E51D5725BFB8CF009A4B56 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		71F301F9259FB5CF00CDD81E /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		71F9726925981EDF00D0A118 /* NSTableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +75,7 @@
 				7115461224C0ADCB007781E2 /* ReminderItemView.swift */,
 				71B4AD6525B9118000214219 /* NoReminderItemsView.swift */,
 				71B6D1FA24C6511000E66EDB /* SettingsBarView.swift */,
+				71E51D5725BFB8CF009A4B56 /* AboutView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71E51D5825BFB8CF009A4B56 /* AboutView.swift in Sources */,
 				7115461924C0C280007781E2 /* RemindersService.swift in Sources */,
 				71B6D1FB24C6511000E66EDB /* SettingsBarView.swift in Sources */,
 				713F234524C130D400FF0BEC /* ReminderList.swift in Sources */,
