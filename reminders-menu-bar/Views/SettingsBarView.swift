@@ -48,10 +48,10 @@ struct SettingsBarView: View {
                 remindersData.showUncompletedOnly.toggle()
             }) {
                 Image(systemName: remindersData.showUncompletedOnly ? "circle" : "largecircle.fill.circle")
+                    .padding(4)
+                    .padding(.horizontal, 4)
             }
             .buttonStyle(BorderlessButtonStyle())
-            .padding(4)
-            .padding(.horizontal, 4)
             .background(toggleIsHovered ? Color("buttonHover") : nil)
             .cornerRadius(4)
             .onHover { isHovered in
