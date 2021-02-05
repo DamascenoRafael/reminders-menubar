@@ -2,7 +2,6 @@ import SwiftUI
 
 struct AboutView: View {
     
-    let githubPage = "https://github.com/DamascenoRafael/reminders-menubar"
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "-"
     
     var body: some View {
@@ -35,7 +34,7 @@ struct AboutView: View {
                 .frame(maxHeight: .infinity)
                 
                 Button(action: {
-                    if let url = URL(string: githubPage) {
+                    if let url = URL(string: Constants.githubPageUrlString) {
                         NSWorkspace.shared.open(url)
                     }
                 }) {
