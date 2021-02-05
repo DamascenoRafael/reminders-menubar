@@ -1,5 +1,5 @@
-import Foundation
 import EventKit
+import ServiceManagement
 
 private struct PreferencesKeys {
     static let calendarIdentifiersFilter = "calendarIdentifiersFilter"
@@ -61,6 +61,18 @@ class UserPreferences {
         
         set {
             defaults.set(newValue, forKey: PreferencesKeys.showUncompletedOnly)
+        }
+    }
+    
+    var launchAtLoginIsEnabled: Bool {
+        get {
+            let allJobs = SMCopyAllJobDictionaries(kSMDomainUserLaunchd).takeRetainedValue() as? [[String: AnyObject]]
+            let launcherJob = allJobs?.first { $0["Label"] as? String == Constants.launcherAppBundleId }
+            return launcherJob?["OnDemand"] as? Bool ?? false
+        }
+        
+        set {
+            SMLoginItemSetEnabled(Constants.launcherAppBundleId as CFString, newValue)
         }
     }
 }

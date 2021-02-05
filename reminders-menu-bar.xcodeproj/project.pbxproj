@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		71032A8F24C21F0F00A8006C /* FormNewReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71032A8E24C21F0F00A8006C /* FormNewReminderView.swift */; };
+		71059DAB25CA5244001F3063 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71059DAA25CA5244001F3063 /* AppDelegate.swift */; };
+		71059DE125CA5C86001F3063 /* RemindersLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71059DA825CA5244001F3063 /* RemindersLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7115461324C0ADCB007781E2 /* ReminderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115461224C0ADCB007781E2 /* ReminderItemView.swift */; };
 		7115461924C0C280007781E2 /* RemindersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115461824C0C280007781E2 /* RemindersService.swift */; };
 		712C32B424BF939100AC75E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712C32B324BF939100AC75E2 /* AppDelegate.swift */; };
@@ -17,9 +19,12 @@
 		712C32BE24BF939200AC75E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 712C32BC24BF939200AC75E2 /* Main.storyboard */; };
 		71359E9824C6C0B5001D4C40 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71359E9724C6C0B5001D4C40 /* Colors.xcassets */; };
 		713F234524C130D400FF0BEC /* ReminderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F234424C130D400FF0BEC /* ReminderList.swift */; };
+		714E6F6125CCF66000BA0099 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714E6F6025CCF66000BA0099 /* Constants.swift */; };
+		714E6F6225CCF66000BA0099 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714E6F6025CCF66000BA0099 /* Constants.swift */; };
 		7172A74824C776E6001F96F1 /* RemindersData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7172A74724C776E6001F96F1 /* RemindersData.swift */; };
 		71A3834325BCA69C00975B4C /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A3834225BCA69C00975B4C /* Date+Extensions.swift */; };
 		71A3834625BDD2AC00975B4C /* EKReminder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A3834525BDD2AC00975B4C /* EKReminder+Extensions.swift */; };
+		71A73E8A25CCC6960064D528 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A73E8925CCC6960064D528 /* main.swift */; };
 		71B4AD4F25B7D06400214219 /* CalendarTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B4AD4E25B7D06400214219 /* CalendarTitleView.swift */; };
 		71B4AD5325B7F37D00214219 /* NSTextFiel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B4AD5225B7F37D00214219 /* NSTextFiel+Extensions.swift */; };
 		71B4AD6625B9118000214219 /* NoReminderItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B4AD6525B9118000214219 /* NoReminderItemsView.swift */; };
@@ -29,8 +34,25 @@
 		71F9726A25981EDF00D0A118 /* NSTableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F9726925981EDF00D0A118 /* NSTableView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		71059DBD25CA5323001F3063 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				71059DE125CA5C86001F3063 /* RemindersLauncher.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		71032A8E24C21F0F00A8006C /* FormNewReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormNewReminderView.swift; sourceTree = "<group>"; };
+		71059DA825CA5244001F3063 /* RemindersLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemindersLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		71059DAA25CA5244001F3063 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		71059DB625CA5245001F3063 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		71059DB725CA5245001F3063 /* RemindersLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RemindersLauncher.entitlements; sourceTree = "<group>"; };
 		7115461224C0ADCB007781E2 /* ReminderItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderItemView.swift; sourceTree = "<group>"; };
 		7115461824C0C280007781E2 /* RemindersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersService.swift; sourceTree = "<group>"; };
 		712C32B024BF939100AC75E2 /* Reminders Menu Bar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reminders Menu Bar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,9 +65,11 @@
 		712C32C024BF939200AC75E2 /* reminders_menu_bar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = reminders_menu_bar.entitlements; sourceTree = "<group>"; };
 		71359E9724C6C0B5001D4C40 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		713F234424C130D400FF0BEC /* ReminderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderList.swift; sourceTree = "<group>"; };
+		714E6F6025CCF66000BA0099 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7172A74724C776E6001F96F1 /* RemindersData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersData.swift; sourceTree = "<group>"; };
 		71A3834225BCA69C00975B4C /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		71A3834525BDD2AC00975B4C /* EKReminder+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EKReminder+Extensions.swift"; sourceTree = "<group>"; };
+		71A73E8925CCC6960064D528 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		71B4AD4E25B7D06400214219 /* CalendarTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTitleView.swift; sourceTree = "<group>"; };
 		71B4AD5225B7F37D00214219 /* NSTextFiel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextFiel+Extensions.swift"; sourceTree = "<group>"; };
 		71B4AD6525B9118000214219 /* NoReminderItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoReminderItemsView.swift; sourceTree = "<group>"; };
@@ -56,6 +80,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		71059DA525CA5244001F3063 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		712C32AD24BF939100AC75E2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -66,6 +97,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		71059DA925CA5244001F3063 /* RemindersLauncher */ = {
+			isa = PBXGroup;
+			children = (
+				71059DAA25CA5244001F3063 /* AppDelegate.swift */,
+				71A73E8925CCC6960064D528 /* main.swift */,
+				71059DB625CA5245001F3063 /* Info.plist */,
+				71059DB725CA5245001F3063 /* RemindersLauncher.entitlements */,
+			);
+			path = RemindersLauncher;
+			sourceTree = "<group>";
+		};
 		7115461124C0AC74007781E2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				712C32B224BF939100AC75E2 /* reminders-menu-bar */,
+				71059DA925CA5244001F3063 /* RemindersLauncher */,
 				712C32B124BF939100AC75E2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -101,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				712C32B024BF939100AC75E2 /* Reminders Menu Bar.app */,
+				71059DA825CA5244001F3063 /* RemindersLauncher.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -113,6 +157,7 @@
 				7115461724C0C273007781E2 /* Services */,
 				7115461124C0AC74007781E2 /* Views */,
 				712C32B324BF939100AC75E2 /* AppDelegate.swift */,
+				714E6F6025CCF66000BA0099 /* Constants.swift */,
 				712C32B724BF939200AC75E2 /* Assets.xcassets */,
 				71359E9724C6C0B5001D4C40 /* Colors.xcassets */,
 				712C32BC24BF939200AC75E2 /* Main.storyboard */,
@@ -154,6 +199,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		71059DA725CA5244001F3063 /* RemindersLauncher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 71059DBA25CA5245001F3063 /* Build configuration list for PBXNativeTarget "RemindersLauncher" */;
+			buildPhases = (
+				71059DA425CA5244001F3063 /* Sources */,
+				71059DA525CA5244001F3063 /* Frameworks */,
+				71059DA625CA5244001F3063 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RemindersLauncher;
+			productName = RemindersLauncher;
+			productReference = 71059DA825CA5244001F3063 /* RemindersLauncher.app */;
+			productType = "com.apple.product-type.application";
+		};
 		712C32AF24BF939100AC75E2 /* Reminders Menu Bar */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 712C32C324BF939200AC75E2 /* Build configuration list for PBXNativeTarget "Reminders Menu Bar" */;
@@ -162,6 +224,7 @@
 				712C32AC24BF939100AC75E2 /* Sources */,
 				712C32AD24BF939100AC75E2 /* Frameworks */,
 				712C32AE24BF939100AC75E2 /* Resources */,
+				71059DBD25CA5323001F3063 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -178,10 +241,13 @@
 		712C32A824BF939100AC75E2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1150;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Rafael Damasceno";
 				TargetAttributes = {
+					71059DA725CA5244001F3063 = {
+						CreatedOnToolsVersion = 12.4;
+					};
 					712C32AF24BF939100AC75E2 = {
 						CreatedOnToolsVersion = 11.5;
 					};
@@ -201,11 +267,19 @@
 			projectRoot = "";
 			targets = (
 				712C32AF24BF939100AC75E2 /* Reminders Menu Bar */,
+				71059DA725CA5244001F3063 /* RemindersLauncher */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		71059DA625CA5244001F3063 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		712C32AE24BF939100AC75E2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -241,6 +315,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		71059DA425CA5244001F3063 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71A73E8A25CCC6960064D528 /* main.swift in Sources */,
+				714E6F6225CCF66000BA0099 /* Constants.swift in Sources */,
+				71059DAB25CA5244001F3063 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		712C32AC24BF939100AC75E2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -255,6 +339,7 @@
 				71F301FA259FB5CF00CDD81E /* UserPreferences.swift in Sources */,
 				71A3834625BDD2AC00975B4C /* EKReminder+Extensions.swift in Sources */,
 				71B4AD6625B9118000214219 /* NoReminderItemsView.swift in Sources */,
+				714E6F6125CCF66000BA0099 /* Constants.swift in Sources */,
 				71F9726A25981EDF00D0A118 /* NSTableView+Extensions.swift in Sources */,
 				71A3834325BCA69C00975B4C /* Date+Extensions.swift in Sources */,
 				712C32B424BF939100AC75E2 /* AppDelegate.swift in Sources */,
@@ -278,6 +363,54 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		71059DB825CA5245001F3063 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RemindersLauncher/RemindersLauncher.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 3398VKLH28;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = RemindersLauncher/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.damascenorafael.RemindersLauncher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		71059DB925CA5245001F3063 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RemindersLauncher/RemindersLauncher.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 3398VKLH28;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = RemindersLauncher/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.damascenorafael.RemindersLauncher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		712C32C124BF939200AC75E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -398,7 +531,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "reminders-menu-bar/reminders_menu_bar.entitlements";
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"reminders-menu-bar/Preview Content\"";
@@ -423,7 +556,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "reminders-menu-bar/reminders_menu_bar.entitlements";
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"reminders-menu-bar/Preview Content\"";
@@ -446,6 +579,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		71059DBA25CA5245001F3063 /* Build configuration list for PBXNativeTarget "RemindersLauncher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				71059DB825CA5245001F3063 /* Debug */,
+				71059DB925CA5245001F3063 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		712C32AB24BF939100AC75E2 /* Build configuration list for PBXProject "reminders-menu-bar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

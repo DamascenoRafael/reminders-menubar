@@ -63,6 +63,19 @@ struct SettingsBarView: View {
             
             Menu {
                 Button(action: {
+                    UserPreferences.instance.launchAtLoginIsEnabled.toggle()
+                }) {
+                    if UserPreferences.instance.launchAtLoginIsEnabled {
+                        Image(systemName: "checkmark")
+                    }
+                    Text("Launch at login")
+                }
+                
+                VStack {
+                    Divider()
+                }
+                
+                Button(action: {
                     remindersData.update()
                 }) {
                     Text("Reload data")
