@@ -8,6 +8,8 @@ struct SettingsBarView: View {
     @State var toggleIsHovered = false
     @State var settingsIsHovered = false
     
+    @ObservedObject var appUpdateCheckHelper = AppUpdateCheckHelper.instance
+    
     var body: some View {
         HStack {
             Menu {
@@ -62,6 +64,21 @@ struct SettingsBarView: View {
             Spacer()
             
             Menu {
+                if appUpdateCheckHelper.isOutdated {
+                    Button(action: {
+                        if let url = URL(string: GithubConstants.latestReleasePage) {
+                            NSWorkspace.shared.open(url)
+                        }
+                    }) {
+                        Image(systemName: "exclamationmark.circle")
+                        Text("Update avaiable")
+                    }
+                    
+                    VStack {
+                        Divider()
+                    }
+                }
+                
                 Button(action: {
                     UserPreferences.instance.launchAtLoginIsEnabled.toggle()
                 }) {
@@ -97,7 +114,7 @@ struct SettingsBarView: View {
                     Text("Quit")
                 }
             } label: {
-                Image(systemName: "gear")
+                Image(systemName: appUpdateCheckHelper.isOutdated ? "exclamationmark.circle" : "gear")
             }
             .menuStyle(BorderlessButtonMenuStyle())
             .frame(width: 32, height: 16)

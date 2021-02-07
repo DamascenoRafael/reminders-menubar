@@ -19,11 +19,14 @@
 		712C32BE24BF939200AC75E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 712C32BC24BF939200AC75E2 /* Main.storyboard */; };
 		71359E9824C6C0B5001D4C40 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71359E9724C6C0B5001D4C40 /* Colors.xcassets */; };
 		713F234524C130D400FF0BEC /* ReminderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F234424C130D400FF0BEC /* ReminderList.swift */; };
+		7141456325CF9693006695B2 /* Release.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7141456225CF9693006695B2 /* Release.swift */; };
 		714E6F6125CCF66000BA0099 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714E6F6025CCF66000BA0099 /* Constants.swift */; };
 		714E6F6225CCF66000BA0099 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714E6F6025CCF66000BA0099 /* Constants.swift */; };
 		7172A74824C776E6001F96F1 /* RemindersData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7172A74724C776E6001F96F1 /* RemindersData.swift */; };
+		71A0B2DC25CE20AC004E06AE /* AppUpdateCheckHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A0B2DB25CE20AC004E06AE /* AppUpdateCheckHelper.swift */; };
 		71A3834325BCA69C00975B4C /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A3834225BCA69C00975B4C /* Date+Extensions.swift */; };
 		71A3834625BDD2AC00975B4C /* EKReminder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A3834525BDD2AC00975B4C /* EKReminder+Extensions.swift */; };
+		71A4163725CED8FE00CA4F81 /* GithubService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A4163625CED8FE00CA4F81 /* GithubService.swift */; };
 		71A73E8A25CCC6960064D528 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A73E8925CCC6960064D528 /* main.swift */; };
 		71B4AD4F25B7D06400214219 /* CalendarTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B4AD4E25B7D06400214219 /* CalendarTitleView.swift */; };
 		71B4AD5325B7F37D00214219 /* NSTextFiel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B4AD5225B7F37D00214219 /* NSTextFiel+Extensions.swift */; };
@@ -65,10 +68,13 @@
 		712C32C024BF939200AC75E2 /* reminders_menu_bar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = reminders_menu_bar.entitlements; sourceTree = "<group>"; };
 		71359E9724C6C0B5001D4C40 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		713F234424C130D400FF0BEC /* ReminderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderList.swift; sourceTree = "<group>"; };
+		7141456225CF9693006695B2 /* Release.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Release.swift; sourceTree = "<group>"; };
 		714E6F6025CCF66000BA0099 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7172A74724C776E6001F96F1 /* RemindersData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersData.swift; sourceTree = "<group>"; };
+		71A0B2DB25CE20AC004E06AE /* AppUpdateCheckHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUpdateCheckHelper.swift; sourceTree = "<group>"; };
 		71A3834225BCA69C00975B4C /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		71A3834525BDD2AC00975B4C /* EKReminder+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EKReminder+Extensions.swift"; sourceTree = "<group>"; };
+		71A4163625CED8FE00CA4F81 /* GithubService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubService.swift; sourceTree = "<group>"; };
 		71A73E8925CCC6960064D528 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		71B4AD4E25B7D06400214219 /* CalendarTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTitleView.swift; sourceTree = "<group>"; };
 		71B4AD5225B7F37D00214219 /* NSTextFiel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextFiel+Extensions.swift"; sourceTree = "<group>"; };
@@ -126,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				7115461824C0C280007781E2 /* RemindersService.swift */,
+				71A4163625CED8FE00CA4F81 /* GithubService.swift */,
 				71F301F9259FB5CF00CDD81E /* UserPreferences.swift */,
 			);
 			path = Services;
@@ -157,6 +164,7 @@
 				7115461724C0C273007781E2 /* Services */,
 				7115461124C0AC74007781E2 /* Views */,
 				712C32B324BF939100AC75E2 /* AppDelegate.swift */,
+				71A0B2DB25CE20AC004E06AE /* AppUpdateCheckHelper.swift */,
 				714E6F6025CCF66000BA0099 /* Constants.swift */,
 				712C32B724BF939200AC75E2 /* Assets.xcassets */,
 				71359E9724C6C0B5001D4C40 /* Colors.xcassets */,
@@ -181,6 +189,7 @@
 			children = (
 				713F234424C130D400FF0BEC /* ReminderList.swift */,
 				7172A74724C776E6001F96F1 /* RemindersData.swift */,
+				7141456225CF9693006695B2 /* Release.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -329,6 +338,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71A4163725CED8FE00CA4F81 /* GithubService.swift in Sources */,
+				7141456325CF9693006695B2 /* Release.swift in Sources */,
 				71E51D5825BFB8CF009A4B56 /* AboutView.swift in Sources */,
 				7115461924C0C280007781E2 /* RemindersService.swift in Sources */,
 				71B6D1FB24C6511000E66EDB /* SettingsBarView.swift in Sources */,
@@ -346,6 +357,7 @@
 				71032A8F24C21F0F00A8006C /* FormNewReminderView.swift in Sources */,
 				7172A74824C776E6001F96F1 /* RemindersData.swift in Sources */,
 				71B4AD5325B7F37D00214219 /* NSTextFiel+Extensions.swift in Sources */,
+				71A0B2DC25CE20AC004E06AE /* AppUpdateCheckHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
