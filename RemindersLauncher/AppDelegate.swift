@@ -7,12 +7,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             NSApp.terminate(self)
         }
         
-        guard NSRunningApplication.runningApplications(withBundleIdentifier: Constants.mainAppBundleId).isEmpty else {
+        guard NSRunningApplication.runningApplications(withBundleIdentifier: AppConstants.mainBundleId).isEmpty else {
             // main app is already running
             return
         }
         
-        guard let appUrl = NSWorkspace.shared.urlForApplication(withBundleIdentifier: Constants.mainAppBundleId) else {
+        guard let appUrl = NSWorkspace.shared.urlForApplication(withBundleIdentifier: AppConstants.mainBundleId) else {
             // could not found URL for the main app
             return
         }

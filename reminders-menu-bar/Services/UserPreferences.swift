@@ -67,12 +67,12 @@ class UserPreferences {
     var launchAtLoginIsEnabled: Bool {
         get {
             let allJobs = SMCopyAllJobDictionaries(kSMDomainUserLaunchd).takeRetainedValue() as? [[String: AnyObject]]
-            let launcherJob = allJobs?.first { $0["Label"] as? String == Constants.launcherAppBundleId }
+            let launcherJob = allJobs?.first { $0["Label"] as? String == AppConstants.launcherBundleId }
             return launcherJob?["OnDemand"] as? Bool ?? false
         }
         
         set {
-            SMLoginItemSetEnabled(Constants.launcherAppBundleId as CFString, newValue)
+            SMLoginItemSetEnabled(AppConstants.launcherBundleId as CFString, newValue)
         }
     }
 }

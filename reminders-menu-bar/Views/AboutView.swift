@@ -2,8 +2,6 @@ import SwiftUI
 
 struct AboutView: View {
     
-    let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "-"
-    
     var body: some View {
         HStack(alignment: .center) {
             Image(nsImage: NSApp.applicationIconImage)
@@ -18,7 +16,7 @@ struct AboutView: View {
                 VStack(alignment: .leading) {
                     Text("Reminders Menu Bar")
                         .font(Font.title.weight(.thin))
-                    Text("Version \(appVersion)")
+                    Text("Version \(AppConstants.currentVersion)")
                         .font(Font.callout.weight(.light))
                 }
                 .padding(.bottom, 8)
@@ -34,7 +32,7 @@ struct AboutView: View {
                 .frame(maxHeight: .infinity)
                 
                 Button(action: {
-                    if let url = URL(string: Constants.githubPageUrlString) {
+                    if let url = URL(string: GithubConstants.pageUrlString) {
                         NSWorkspace.shared.open(url)
                     }
                 }) {
