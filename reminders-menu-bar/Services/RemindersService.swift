@@ -3,11 +3,11 @@ import EventKit
 class RemindersService {
     static let instance = RemindersService()
     
-    let eventStore = EKEventStore()
-    
     private init() {
         // This prevents others from using the default '()' initializer for this class.
     }
+    
+    private let eventStore = EKEventStore()
     
     func hasAuthorization() -> EKAuthorizationStatus {
         return EKEventStore.authorizationStatus(for: .reminder)
