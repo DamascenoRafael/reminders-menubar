@@ -15,5 +15,5 @@ struct AppConstants {
 
 struct GithubConstants {
     static let repository = "DamascenoRafael/reminders-menubar"
-    static let pageUrlString = "https://github.com/\(repository)"
+    static let repositoryPage = "https://github.com/\(repository)"
 }

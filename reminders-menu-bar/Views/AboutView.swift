@@ -32,7 +32,7 @@ struct AboutView: View {
                 .frame(maxHeight: .infinity)
                 
                 Button(action: {
-                    if let url = URL(string: GithubConstants.pageUrlString) {
+                    if let url = URL(string: GithubConstants.repositoryPage) {
                         NSWorkspace.shared.open(url)
                     }
                 }) {
