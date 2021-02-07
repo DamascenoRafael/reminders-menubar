@@ -242,7 +242,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Rafael Damasceno";
 				TargetAttributes = {
 					71059DA725CA5244001F3063 = {
@@ -373,6 +373,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 3398VKLH28;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = RemindersLauncher/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -397,6 +398,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 3398VKLH28;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = RemindersLauncher/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
