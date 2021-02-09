@@ -22,9 +22,7 @@ class UserPreferences {
                 return []
             }
             
-            let filteredIdentifiers = identifiers.filter({ RemindersService.instance.isValid(calendarIdentifier: $0) })
-            self.calendarIdentifiersFilter = filteredIdentifiers
-            return filteredIdentifiers
+            return identifiers
         }
         
         set {
