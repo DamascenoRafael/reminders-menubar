@@ -12,6 +12,7 @@
   <p>
     <a href="#features">Features</a> •
     <a href="#installation">Installation</a> •
+    <a href="#contributing">Contributing</a> •
     <a href="#license">License</a>
   </p>
 </div>
@@ -78,6 +79,10 @@ brew install --cask DamascenoRafael/tap/reminders-menubar
 
 Direct downloads can be found on the [releases page](https://github.com/DamascenoRafael/reminders-menubar/releases).  
 After downloading and extracting, just drag the *.app* file to the *Applications* folder.
+
+## Contributing
+
+Feel free to share, open issues and contribute to this project! :heart:
 
 ## License
 
