@@ -6,6 +6,7 @@ struct ReminderItemView: View {
     
     var reminder: EKReminder
     @State private var showingRemoveAlert = false
+    @State private var hasBeenRemoved = false
     
     weak var appDelegate = NSApplication.shared.delegate as? AppDelegate
     
@@ -77,7 +78,7 @@ struct ReminderItemView: View {
                           message: Text("This action will remove '\(reminder.title)' and cannot be undone"),
                           primaryButton: .destructive(Text("Remove"), action: {
                             RemindersService.instance.remove(reminder: reminder)
-                            remindersData.update()
+                            hasBeenRemoved = true
                           }),
                           secondaryButton: .cancel(Text("Cancelar"))
                     )
@@ -113,6 +114,9 @@ struct ReminderItemView: View {
         .background(Color("backgroundTheme"))
         .onDisappear(perform: {
             appDelegate?.changeBehaviorToDismissIfNeeded()
+            if hasBeenRemoved {
+                RemindersService.instance.commitChanges()
+            }
         })
     }
 }
