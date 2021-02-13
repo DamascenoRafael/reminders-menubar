@@ -12,6 +12,7 @@
 		71059DE125CA5C86001F3063 /* RemindersLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71059DA825CA5244001F3063 /* RemindersLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7115461324C0ADCB007781E2 /* ReminderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115461224C0ADCB007781E2 /* ReminderItemView.swift */; };
 		7115461924C0C280007781E2 /* RemindersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115461824C0C280007781E2 /* RemindersService.swift */; };
+		7119C2F025D85B75002C8013 /* SelectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7119C2EF25D85B75002C8013 /* SelectableView.swift */; };
 		712C32B424BF939100AC75E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712C32B324BF939100AC75E2 /* AppDelegate.swift */; };
 		712C32B624BF939100AC75E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712C32B524BF939100AC75E2 /* ContentView.swift */; };
 		712C32B824BF939200AC75E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 712C32B724BF939200AC75E2 /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		71059DB725CA5245001F3063 /* RemindersLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RemindersLauncher.entitlements; sourceTree = "<group>"; };
 		7115461224C0ADCB007781E2 /* ReminderItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderItemView.swift; sourceTree = "<group>"; };
 		7115461824C0C280007781E2 /* RemindersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersService.swift; sourceTree = "<group>"; };
+		7119C2EF25D85B75002C8013 /* SelectableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableView.swift; sourceTree = "<group>"; };
 		712C32B024BF939100AC75E2 /* Reminders Menu Bar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reminders Menu Bar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		712C32B324BF939100AC75E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		712C32B524BF939100AC75E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 		7115461124C0AC74007781E2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7119C2F625D86397002C8013 /* Helpers */,
 				712C32B524BF939100AC75E2 /* ContentView.swift */,
 				71032A8E24C21F0F00A8006C /* FormNewReminderView.swift */,
 				71B4AD4E25B7D06400214219 /* CalendarTitleView.swift */,
@@ -136,6 +139,14 @@
 				71F301F9259FB5CF00CDD81E /* UserPreferences.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		7119C2F625D86397002C8013 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7119C2EF25D85B75002C8013 /* SelectableView.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		712C32A724BF939100AC75E2 = {
@@ -344,6 +355,7 @@
 				7115461924C0C280007781E2 /* RemindersService.swift in Sources */,
 				71B6D1FB24C6511000E66EDB /* SettingsBarView.swift in Sources */,
 				713F234524C130D400FF0BEC /* ReminderList.swift in Sources */,
+				7119C2F025D85B75002C8013 /* SelectableView.swift in Sources */,
 				712C32B624BF939100AC75E2 /* ContentView.swift in Sources */,
 				71B4AD4F25B7D06400214219 /* CalendarTitleView.swift in Sources */,
 				7115461324C0ADCB007781E2 /* ReminderItemView.swift in Sources */,

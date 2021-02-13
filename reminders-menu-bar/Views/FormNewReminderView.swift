@@ -33,12 +33,7 @@ struct FormNewReminderView: View {
                         Button(action: { remindersData.calendarForSaving = calendar }) {
                             let isSelected =
                                 remindersData.calendarForSaving.calendarIdentifier == calendar.calendarIdentifier
-                            if isSelected {
-                                Image(systemName: "checkmark")
-                            }
-                            let paddingText = isSelected ? "" : "      "
-                            Text(paddingText + calendar.title)
-                                .foregroundColor(Color(calendar.color))
+                            SelectableView(title: calendar.title, isSelected: isSelected, color: Color(calendar.color))
                         }
                     }
                 } label: {

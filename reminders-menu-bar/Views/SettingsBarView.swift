@@ -23,12 +23,7 @@ struct SettingsBarView: View {
                         }
                     }) {
                         let isSelected = remindersData.calendarIdentifiersFilter.contains(calendar.calendarIdentifier)
-                        if isSelected {
-                            Image(systemName: "checkmark")
-                        }
-                        let paddingText = isSelected ? "" : "      "
-                        Text(paddingText + calendar.title)
-                            .foregroundColor(Color(calendar.color))
+                        SelectableView(title: calendar.title, isSelected: isSelected, color: Color(calendar.color))
                     }
                 }
             } label: {
@@ -82,10 +77,8 @@ struct SettingsBarView: View {
                 Button(action: {
                     UserPreferences.instance.launchAtLoginIsEnabled.toggle()
                 }) {
-                    if UserPreferences.instance.launchAtLoginIsEnabled {
-                        Image(systemName: "checkmark")
-                    }
-                    Text("Launch at login")
+                    let isSelected = UserPreferences.instance.launchAtLoginIsEnabled
+                    SelectableView(title: "Launch at login", isSelected: isSelected, withPadding: false)
                 }
                 
                 VStack {
