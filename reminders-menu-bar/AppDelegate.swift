@@ -34,13 +34,35 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         popover.behavior = .applicationDefined
     }
 
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
+    func requestAuthorization() {
+        let authorization = RemindersService.instance.authorizationStatus()
+        if authorization == .restricted || authorization == .denied {
+            let alert = NSAlert()
+            alert.messageText = "Access to Reminders is not enabled for Reminders Menu Bar"
+            alert.informativeText = """
+                Reminders Menu Bar needs access to your reminders to work properly.
+                Grant permission in System Preferences to use Reminders Menu Bar.
+                """
+            alert.addButton(withTitle: "Ok")
+            alert.addButton(withTitle: "Open System Preferences")
+            alert.addButton(withTitle: "Quit").hasDestructiveAction = true
+            
+            NSApp.activate(ignoringOtherApps: true)
+            let modalResponse = alert.runModal()
+            if modalResponse == .alertSecondButtonReturn,
+               let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Reminders") {
+                NSWorkspace.shared.open(url)
+            } else if modalResponse == .alertThirdButtonReturn {
+                NSApp.terminate(self)
+            }
+        } else {
+            RemindersService.instance.requestAccess()
+        }
     }
 
     @objc func togglePopover() {
-        guard RemindersService.instance.hasAuthorization() == .authorized else {
-            RemindersService.instance.requestAccess()
+        guard RemindersService.instance.authorizationStatus() == .authorized else {
+            requestAuthorization()
             return
         }
         

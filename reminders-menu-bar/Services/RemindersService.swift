@@ -9,7 +9,7 @@ class RemindersService {
     
     private let eventStore = EKEventStore()
     
-    func hasAuthorization() -> EKAuthorizationStatus {
+    func authorizationStatus() -> EKAuthorizationStatus {
         return EKEventStore.authorizationStatus(for: .reminder)
     }
     
