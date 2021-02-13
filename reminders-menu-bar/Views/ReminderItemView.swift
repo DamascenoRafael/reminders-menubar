@@ -111,7 +111,6 @@ struct ReminderItemView: View {
                 Divider()
             }
         }
-        .background(Color("backgroundTheme"))
         .onDisappear(perform: {
             appDelegate?.changeBehaviorToDismissIfNeeded()
             if hasBeenRemoved {

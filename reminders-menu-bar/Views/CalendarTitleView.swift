@@ -34,7 +34,6 @@ struct CalendarTitleView: View {
             }
             .padding(.horizontal, 7.5)
         }
-        .background(Color("backgroundTheme"))
     }
 }
 

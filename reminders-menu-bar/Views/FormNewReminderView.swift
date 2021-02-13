@@ -53,7 +53,6 @@ struct FormNewReminderView: View {
             }
         }
         .padding(10)
-        .background(Color("backgroundTheme"))
     }
 }
 

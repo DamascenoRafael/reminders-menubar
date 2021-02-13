@@ -22,12 +22,12 @@ struct ContentView: View {
                     .padding(.bottom, 5)
                 }
             }
-            .background(Color("backgroundTheme"))
             .onAppear {
                 remindersData.update()
             }
             SettingsBarView()
         }
+        .background(Color("backgroundTheme"))
     }
     
     private func filteredReminders(_ reminders: [EKReminder]) -> [EKReminder] {

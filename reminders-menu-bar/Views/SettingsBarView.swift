@@ -130,7 +130,6 @@ struct SettingsBarView: View {
         .padding(.top, 12)
         .padding(.bottom, 10)
         .padding(.horizontal, 10)
-        .background(Color("backgroundTheme"))
     }
 }
 

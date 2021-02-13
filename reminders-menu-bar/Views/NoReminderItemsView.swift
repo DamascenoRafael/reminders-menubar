@@ -14,7 +14,6 @@ struct NoReminderItemsView: View {
         .font(.callout)
         .padding(.leading, 0.5)
         .padding(.bottom, 4)
-        .background(Color("backgroundTheme"))
     }
 }
 
