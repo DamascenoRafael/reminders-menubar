@@ -3,6 +3,7 @@ import EventKit
 
 struct FormNewReminderView: View {
     @EnvironmentObject var remindersData: RemindersData
+    @ObservedObject var userPreferences = UserPreferences.instance
     
     @State var newReminderTitle = ""
     
@@ -18,7 +19,11 @@ struct FormNewReminderView: View {
                     .padding(.vertical, 8)
                     .padding(.horizontal, 8)
                     .padding(.leading, 22)
-                    .background(Color("textFieldBackground"))
+                    .background(
+                        userPreferences.backgroundIsTransparent ?
+                            Color("textFieldBackgroundTransparent") :
+                            Color("textFieldBackground")
+                    )
                     .cornerRadius(8)
                     .textFieldStyle(PlainTextFieldStyle())
                     .overlay(

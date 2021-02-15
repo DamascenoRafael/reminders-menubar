@@ -5,9 +5,10 @@ private struct PreferencesKeys {
     static let calendarIdentifiersFilter = "calendarIdentifiersFilter"
     static let calendarIdentifierForSaving = "calendarIdentifierForSaving"
     static let showUncompletedOnly = "showUncompletedOnly"
+    static let backgroundIsTransparent = "backgroundIsTransparent"
 }
 
-class UserPreferences {
+class UserPreferences: ObservableObject {
     static let instance = UserPreferences()
     
     private init() {
@@ -71,6 +72,13 @@ class UserPreferences {
         
         set {
             SMLoginItemSetEnabled(AppConstants.launcherBundleId as CFString, newValue)
+        }
+    }
+    
+    @Published var backgroundIsTransparent =
+        UserDefaults.standard.bool(forKey: PreferencesKeys.backgroundIsTransparent) {
+        didSet {
+            defaults.set(backgroundIsTransparent, forKey: PreferencesKeys.backgroundIsTransparent)
         }
     }
 }

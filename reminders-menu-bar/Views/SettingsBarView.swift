@@ -85,6 +85,28 @@ struct SettingsBarView: View {
                     Divider()
                 }
                 
+                Menu {
+                    Button(action: {
+                        UserPreferences.instance.backgroundIsTransparent = false
+                    }) {
+                        let isSelected = !UserPreferences.instance.backgroundIsTransparent
+                        SelectableView(title: "More opaque", isSelected: isSelected)
+                    }
+                    
+                    Button(action: {
+                        UserPreferences.instance.backgroundIsTransparent = true
+                    }) {
+                        let isSelected = UserPreferences.instance.backgroundIsTransparent
+                        SelectableView(title: "More transparent", isSelected: isSelected)
+                    }
+                } label: {
+                    Text("Appearance")
+                }
+                
+                VStack {
+                    Divider()
+                }
+                
                 Button(action: {
                     remindersData.update()
                 }) {
