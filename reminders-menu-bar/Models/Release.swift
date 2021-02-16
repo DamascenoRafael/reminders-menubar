@@ -9,15 +9,15 @@ struct Release: Decodable {
 }
 
 extension Release {
-  static func == (lhs: Release, rhs: Release) -> Bool {
-    return lhs.version.compare(rhs.version, options: .numeric) == .orderedSame
-  }
-
-  static func < (lhs: Release, rhs: Release) -> Bool {
-    return lhs.version.compare(rhs.version, options: .numeric) == .orderedAscending
-  }
-
-  static func > (lhs: Release, rhs: Release) -> Bool {
-    return lhs.version.compare(rhs.version, options: .numeric) == .orderedDescending
-  }
+    static func == (lhs: Release, rhs: Release) -> Bool {
+        return lhs.version.compare(rhs.version, options: .numeric) == .orderedSame
+    }
+    
+    static func < (lhs: Release, rhs: Release) -> Bool {
+        return lhs.version.compare(rhs.version, options: .numeric) == .orderedAscending
+    }
+    
+    static func > (lhs: Release, rhs: Release) -> Bool {
+        return lhs.version.compare(rhs.version, options: .numeric) == .orderedDescending
+    }
 }
