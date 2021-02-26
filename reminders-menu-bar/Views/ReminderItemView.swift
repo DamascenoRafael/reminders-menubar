@@ -25,6 +25,7 @@ struct ReminderItemView: View {
             VStack(spacing: 8) {
                 HStack {
                     Text(reminder.title)
+                        .fixedSize(horizontal: false, vertical: true)
                     Spacer()
                     MenuButton(label:
                         Image(systemName: "ellipsis")
