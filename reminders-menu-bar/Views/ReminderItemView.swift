@@ -29,33 +29,15 @@ struct ReminderItemView: View {
                     MenuButton(label:
                         Image(systemName: "ellipsis")
                     ) {
-                        MenuButton(label:
-                            HStack {
-                                Image(systemName: "folder")
-                                Text("Move to ...")
-                            }
-                        ) {
-                            let availableCalendars = remindersData.calendars.filter {
-                                $0.calendarIdentifier != reminder.calendar.calendarIdentifier
-                            }
-                            ForEach(availableCalendars, id: \.calendarIdentifier) { calendar in
-                                // TODO: Fix the warning from Xcode when editing the reminder calendar:
-                                // [utility] You are about to trigger decoding the resolution token map from JSON data.
-                                // This is probably not what you want for performance to trigger it from -isEqual:,
-                                // unless you are running Tests then it's fine
-                                // {class: REMAccountStorage, self-map: (null), other-map: (null)}
-                                Button(action: {
-                                    reminder.calendar = calendar
-                                    RemindersService.instance.save(reminder: reminder)
-                                }) {
-                                    Text(calendar.title)
-                                        .foregroundColor(Color(calendar.color))
-                                }
-                            }
+                        let otherCalendars = remindersData.calendars.filter {
+                            $0.calendarIdentifier != reminder.calendar.calendarIdentifier
                         }
-                        
-                        VStack {
-                            Divider()
+                        if !otherCalendars.isEmpty {
+                            MoveToOptionMenu(reminder: reminder, availableCalendars: otherCalendars)
+                            
+                            VStack {
+                                Divider()
+                            }
                         }
                         
                         Button(action: {
@@ -117,6 +99,35 @@ struct ReminderItemView: View {
                 RemindersService.instance.commitChanges()
             }
         })
+    }
+}
+
+struct MoveToOptionMenu: View {
+    var reminder: EKReminder
+    var availableCalendars: [EKCalendar]
+    
+    var body: some View {
+        MenuButton(label:
+            HStack {
+                Image(systemName: "folder")
+                Text("Move to ...")
+            }
+        ) {
+            ForEach(availableCalendars, id: \.calendarIdentifier) { calendar in
+                // TODO: Fix the warning from Xcode when editing the reminder calendar:
+                // [utility] You are about to trigger decoding the resolution token map from JSON data.
+                // This is probably not what you want for performance to trigger it from -isEqual:,
+                // unless you are running Tests then it's fine
+                // {class: REMAccountStorage, self-map: (null), other-map: (null)}
+                Button(action: {
+                    reminder.calendar = calendar
+                    RemindersService.instance.save(reminder: reminder)
+                }) {
+                    Text(calendar.title)
+                        .foregroundColor(Color(calendar.color))
+                }
+            }
+        }
     }
 }
 
