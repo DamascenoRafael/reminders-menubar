@@ -21,7 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         popover.animates = false
 
         if let button = statusBarItem.button {
-            button.image = NSImage(systemSymbolName: "largecircle.fill.circle", accessibilityDescription: nil)
+            button.image = NSImage(systemSymbolName: "list.bullet", accessibilityDescription: nil)
             button.action = #selector(togglePopover)
         }
     }
