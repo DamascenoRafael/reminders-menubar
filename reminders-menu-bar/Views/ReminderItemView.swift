@@ -5,6 +5,7 @@ struct ReminderItemView: View {
     @EnvironmentObject var remindersData: RemindersData
     
     var reminder: EKReminder
+    @State var reminderItemIsHovered = false
     @State private var showingRemoveAlert = false
     @State private var hasBeenRemoved = false
     
@@ -28,7 +29,7 @@ struct ReminderItemView: View {
                         .fixedSize(horizontal: false, vertical: true)
                     Spacer()
                     MenuButton(label:
-                        Image(systemName: "ellipsis")
+                        reminderItemIsHovered ? Image(systemName: "ellipsis") : nil
                     ) {
                         let otherCalendars = remindersData.calendars.filter {
                             $0.calendarIdentifier != reminder.calendar.calendarIdentifier
@@ -93,6 +94,9 @@ struct ReminderItemView: View {
                 
                 Divider()
             }
+        }
+        .onHover { isHovered in
+            reminderItemIsHovered = isHovered
         }
         .onDisappear(perform: {
             appDelegate?.changeBehaviorToDismissIfNeeded()
