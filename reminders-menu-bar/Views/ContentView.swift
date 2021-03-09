@@ -12,12 +12,13 @@ struct ContentView: View {
                 ForEach(remindersData.filteredReminderLists) { reminderList in
                     VStack(alignment: .leading) {
                         CalendarTitleView(calendar: reminderList.calendar)
-                        if let reminders = filteredReminders(reminderList.reminders), !reminders.isEmpty {
-                            ForEach(reminders, id: \.calendarItemIdentifier) { reminder in
-                                ReminderItemView(reminder: reminder)
-                            }
-                        } else {
-                            NoReminderItemsView(calendarIsEmpty: reminderList.reminders.isEmpty)
+                        let reminders = filteredReminders(reminderList.reminders)
+                        if reminders.isEmpty {
+                            let calendarIsEmpty = reminderList.reminders.isEmpty
+                            NoReminderItemsView(emptyList: calendarIsEmpty ? .noReminders : .allItemsCompleted)
+                        }
+                        ForEach(reminders, id: \.calendarItemIdentifier) { reminder in
+                            ReminderItemView(reminder: reminder)
                         }
                     }
                     .padding(.bottom, 5)
