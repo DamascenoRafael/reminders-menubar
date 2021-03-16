@@ -16,6 +16,15 @@ class RemindersData: ObservableObject {
     
     @Published var calendars: [EKCalendar] = []
     
+    @Published var upcomingRemindersInterval = UserPreferences.instance.upcomingRemindersInterval {
+        didSet {
+            UserPreferences.instance.upcomingRemindersInterval = upcomingRemindersInterval
+            upcomingReminders = RemindersService.instance.getUpcomingReminders(upcomingRemindersInterval)
+        }
+    }
+    
+    @Published var upcomingReminders: [EKReminder] = []
+    
     @Published var calendarIdentifiersFilter = UserPreferences.instance.calendarIdentifiersFilter {
         didSet {
             UserPreferences.instance.calendarIdentifiersFilter = calendarIdentifiersFilter
@@ -53,6 +62,8 @@ class RemindersData: ObservableObject {
                 self.calendarForSaving = RemindersService.instance.getDefaultCalendar()
             }
             self.filteredReminderLists = RemindersService.instance.getReminders(of: self.calendarIdentifiersFilter)
+            
+            self.upcomingReminders = RemindersService.instance.getUpcomingReminders(self.upcomingRemindersInterval)
         }
     }
 }

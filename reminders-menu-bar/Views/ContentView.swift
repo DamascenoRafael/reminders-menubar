@@ -9,6 +9,9 @@ struct ContentView: View {
         VStack(spacing: 0) {
             FormNewReminderView()
             List {
+                if userPreferences.showUpcomingReminders {
+                    UpcomingRemindersList()
+                }
                 ForEach(remindersData.filteredReminderLists) { reminderList in
                     VStack(alignment: .leading) {
                         CalendarTitleView(calendar: reminderList.calendar)

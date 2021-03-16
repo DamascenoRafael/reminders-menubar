@@ -5,6 +5,7 @@ struct ReminderItemView: View {
     @EnvironmentObject var remindersData: RemindersData
     
     var reminder: EKReminder
+    var showCalendarTitleOnDueDate = false
     @State var reminderItemIsHovered = false
     @State private var showingRemoveAlert = false
     @State private var hasBeenRemoved = false
@@ -87,9 +88,16 @@ struct ReminderItemView: View {
                         if reminder.hasRecurrenceRules {
                             Image(systemName: "repeat")
                         }
+                        
+                        if showCalendarTitleOnDueDate {
+                            Spacer()
+                            
+                            Text(reminder.calendar.title)
+                        }
                     }
                     .font(.footnote)
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.trailing, 12)
                 }
                 
                 Divider()

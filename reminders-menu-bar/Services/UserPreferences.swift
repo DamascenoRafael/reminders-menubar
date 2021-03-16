@@ -6,6 +6,8 @@ private struct PreferencesKeys {
     static let calendarIdentifierForSaving = "calendarIdentifierForSaving"
     static let showUncompletedOnly = "showUncompletedOnly"
     static let backgroundIsTransparent = "backgroundIsTransparent"
+    static let showUpcomingReminders = "showUpcomingReminders"
+    static let upcomingRemindersInterval = "upcomingRemindersInterval"
 }
 
 class UserPreferences: ObservableObject {
@@ -60,6 +62,32 @@ class UserPreferences: ObservableObject {
         
         set {
             defaults.set(newValue, forKey: PreferencesKeys.showUncompletedOnly)
+        }
+    }
+    
+    var upcomingRemindersInterval: ReminderInterval {
+        get {
+            guard let intervalData = defaults.data(forKey: PreferencesKeys.upcomingRemindersInterval),
+                  let interval = try? JSONDecoder().decode(ReminderInterval.self, from: intervalData) else {
+                return .today
+            }
+            return interval
+        }
+        
+        set {
+            let intervalData = try? JSONEncoder().encode(newValue)
+            defaults.set(intervalData, forKey: PreferencesKeys.upcomingRemindersInterval)
+        }
+    }
+    
+    @Published var showUpcomingReminders: Bool = {
+        guard UserDefaults.standard.object(forKey: PreferencesKeys.showUpcomingReminders) != nil else {
+            return true
+        }
+        return UserDefaults.standard.bool(forKey: PreferencesKeys.showUpcomingReminders)
+    }() {
+        didSet {
+            defaults.set(showUpcomingReminders, forKey: PreferencesKeys.showUpcomingReminders)
         }
     }
     

@@ -77,6 +77,21 @@ class RemindersService {
         return remindersStore
     }
     
+    func getUpcomingReminders(_ interval: ReminderInterval) -> [EKReminder] {
+        let calendars = getCalendars()
+        let predicate = eventStore.predicateForIncompleteReminders(withDueDateStarting: nil,
+                                                                   ending: interval.endingDate,
+                                                                   calendars: calendars)
+        
+        let reminders = fetchRemindersSynchronously(matching: predicate)
+        
+        return reminders.sorted(by: {
+            let firstDate = $0.dueDateComponents?.date ?? .distantPast
+            let secondDate = $1.dueDateComponents?.date ?? .distantPast
+            return firstDate.compare(secondDate) == .orderedAscending
+        })
+    }
+    
     func save(reminder: EKReminder) {
         do {
             try eventStore.save(reminder, commit: true)

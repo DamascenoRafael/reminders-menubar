@@ -13,6 +13,17 @@ struct SettingsBarView: View {
     var body: some View {
         HStack {
             Menu {
+                Button(action: {
+                    UserPreferences.instance.showUpcomingReminders.toggle()
+                }) {
+                    let isSelected = UserPreferences.instance.showUpcomingReminders
+                    SelectableView(title: "Upcoming reminders", isSelected: isSelected)
+                }
+                
+                VStack {
+                    Divider()
+                }
+                
                 ForEach(remindersData.calendars, id: \.calendarIdentifier) { calendar in
                     Button(action: {
                         let index = remindersData.calendarIdentifiersFilter.firstIndex(of: calendar.calendarIdentifier)

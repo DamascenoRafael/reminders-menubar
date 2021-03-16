@@ -6,6 +6,7 @@ struct NoReminderItemsView: View {
     enum EmptyListType {
         case noReminders
         case allItemsCompleted
+        case noUpcomingReminders
         
         var message: String {
             switch self {
@@ -13,6 +14,8 @@ struct NoReminderItemsView: View {
                 return "No reminders"
             case .allItemsCompleted:
                 return "All items completed"
+            case .noUpcomingReminders:
+                return "No upcoming reminders"
             }
         }
     }
