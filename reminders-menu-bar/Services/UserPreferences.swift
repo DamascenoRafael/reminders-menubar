@@ -75,8 +75,12 @@ class UserPreferences: ObservableObject {
         }
     }
     
-    @Published var backgroundIsTransparent =
-        UserDefaults.standard.bool(forKey: PreferencesKeys.backgroundIsTransparent) {
+    @Published var backgroundIsTransparent: Bool = {
+        guard UserDefaults.standard.object(forKey: PreferencesKeys.backgroundIsTransparent) != nil else {
+            return true
+        }
+        return UserDefaults.standard.bool(forKey: PreferencesKeys.backgroundIsTransparent)
+    }() {
         didSet {
             defaults.set(backgroundIsTransparent, forKey: PreferencesKeys.backgroundIsTransparent)
         }
