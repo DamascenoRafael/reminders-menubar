@@ -39,12 +39,8 @@ class RemindersService {
         return eventStore.defaultCalendarForNewReminders() ?? eventStore.calendars(for: .reminder).first!
     }
     
-    func getReminders(of calendarIdentifiers: [String]) -> [ReminderList] {
-        var remindersStore: [ReminderList] = []
-        
-        let calendars = getCalendars().filter({ calendarIdentifiers.contains($0.calendarIdentifier) })
-        let predicate = eventStore.predicateForReminders(in: calendars)
-        
+    private func fetchRemindersSynchronously(matching predicate: NSPredicate) -> [EKReminder] {
+        var reminders: [EKReminder] = []
         // TODO: Remove use of DispatchGroup
         let group = DispatchGroup()
         group.enter()
@@ -55,17 +51,29 @@ class RemindersService {
                 return
             }
             
-            for calendar in calendars {
-                let reminders = allReminders.filter({
-                    $0.calendar.calendarIdentifier == calendar.calendarIdentifier
-                })
-                
-                remindersStore.append(ReminderList(for: calendar, with: reminders))
-            }
+            reminders = allReminders
             group.leave()
         }
         
         _ = group.wait(timeout: .distantFuture)
+        
+        return reminders
+    }
+
+    func getReminders(of calendarIdentifiers: [String]) -> [ReminderList] {
+        let calendars = getCalendars().filter({ calendarIdentifiers.contains($0.calendarIdentifier) })
+        let predicate = eventStore.predicateForReminders(in: calendars)
+        
+        let allReminders = fetchRemindersSynchronously(matching: predicate)
+        var remindersStore: [ReminderList] = []
+        
+        for calendar in calendars {
+            let reminders = allReminders.filter({
+                $0.calendar.calendarIdentifier == calendar.calendarIdentifier
+            })
+            remindersStore.append(ReminderList(for: calendar, with: reminders))
+        }
+        
         return remindersStore
     }
     
