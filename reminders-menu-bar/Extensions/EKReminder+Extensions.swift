@@ -19,6 +19,23 @@ extension EKReminder {
         return dueDateComponents?.hour != nil
     }
     
+    var ekPriority: EKReminderPriority {
+        return EKReminderPriority(rawValue: UInt(self.priority)) ?? .none
+    }
+    
+    var prioritySystemImage: String? {
+        switch self.ekPriority {
+        case .high:
+            return "exclamationmark.3"
+        case .medium:
+            return "exclamationmark.2"
+        case .low:
+            return "exclamationmark"
+        default:
+            return nil
+        }
+    }
+    
     var isExpired: Bool {
         maxDueDate?.isPast ?? false
     }

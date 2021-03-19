@@ -25,7 +25,11 @@ struct ReminderItemView: View {
                     .foregroundColor(Color(reminder.calendar.color))
             }.buttonStyle(PlainButtonStyle())
             VStack(spacing: 8) {
-                HStack {
+                HStack(spacing: 4) {
+                    if let prioritySystemImage = reminder.prioritySystemImage {
+                        Image(systemName: prioritySystemImage)
+                            .foregroundColor(Color(reminder.calendar.color))
+                    }
                     Text(reminder.title)
                         .fixedSize(horizontal: false, vertical: true)
                     Spacer()
