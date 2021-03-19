@@ -15,6 +15,10 @@ extension EKReminder {
         return Calendar.current.date(byAdding: .day, value: 1, to: date)
     }
     
+    var hasDueDate: Bool {
+        return dueDateComponents != nil
+    }
+    
     var hasTime: Bool {
         return dueDateComponents?.hour != nil
     }

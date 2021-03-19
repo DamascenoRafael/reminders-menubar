@@ -36,27 +36,14 @@ struct ContentView: View {
     }
     
     private func filteredReminders(_ reminders: [EKReminder]) -> [EKReminder] {
-        let uncompletedReminders = reminders
-            .filter { !$0.isCompleted }
-            .sorted(by: {
-                let firstDate = $0.creationDate ?? Date.distantPast
-                let secondDate = $1.creationDate ?? Date.distantPast
-                return firstDate.compare(secondDate) == .orderedDescending
-            })
+        let uncompletedReminders = reminders.filter { !$0.isCompleted }.sortedReminders
         
         if remindersData.showUncompletedOnly {
             return uncompletedReminders
-        } else {
-            let completedReminders = reminders
-                .filter { $0.isCompleted }
-                .sorted(by: {
-                    let firstDate = $0.completionDate ?? Date.distantPast
-                    let secondDate = $1.completionDate ?? Date.distantPast
-                    return firstDate.compare(secondDate) == .orderedDescending
-                })
-            
-            return uncompletedReminders + completedReminders
         }
+        
+        let completedReminders = reminders.filter { $0.isCompleted }.sortedReminders
+        return uncompletedReminders + completedReminders
     }
 }
 
