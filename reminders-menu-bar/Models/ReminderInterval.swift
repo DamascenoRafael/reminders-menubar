@@ -9,7 +9,7 @@ enum ReminderInterval: String, Codable, CaseIterable {
     var endingDate: Date? {
         switch self {
         case .today:
-            return Calendar.current.date(byAdding: .day, value: 1, to: Date())
+            return Calendar.current.endOfDay(for: Date())
         case .week:
             return Calendar.current.date(byAdding: .weekOfMonth, value: 1, to: Date())
         case .month:
