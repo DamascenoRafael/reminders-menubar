@@ -12,6 +12,8 @@ class RemindersData: ObservableObject {
                                                selector: #selector(update),
                                                name: .NSCalendarDayChanged,
                                                object: nil)
+        
+        update()
     }
     
     @Published var calendars: [EKCalendar] = []
