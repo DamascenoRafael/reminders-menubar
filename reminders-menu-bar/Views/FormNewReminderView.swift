@@ -13,7 +13,7 @@ struct FormNewReminderView: View {
                 TextField("Type a reminder and hit enter", text: $newReminderTitle, onCommit: {
                     guard !newReminderTitle.isEmpty else { return }
                     
-                    RemindersService.instance.createNew(with: newReminderTitle, in: remindersData.calendarForSaving)
+                    RemindersService.instance.createNew(with: newReminderTitle, in: userPreferences.calendarForSaving)
                     newReminderTitle = ""
                 })
                 .padding(.vertical, 8)
@@ -35,9 +35,9 @@ struct FormNewReminderView: View {
                 
                 Menu {
                     ForEach(remindersData.calendars, id: \.calendarIdentifier) { calendar in
-                        Button(action: { remindersData.calendarForSaving = calendar }) {
+                        Button(action: { userPreferences.calendarForSaving = calendar }) {
                             let isSelected =
-                                remindersData.calendarForSaving.calendarIdentifier == calendar.calendarIdentifier
+                                userPreferences.calendarForSaving.calendarIdentifier == calendar.calendarIdentifier
                             SelectableView(title: calendar.title, isSelected: isSelected, color: Color(calendar.color))
                         }
                     }
@@ -47,7 +47,7 @@ struct FormNewReminderView: View {
                 .frame(width: 14, height: 16)
                 .padding(8)
                 .padding(.trailing, 2)
-                .background(Color(remindersData.calendarForSaving.color))
+                .background(Color(userPreferences.calendarForSaving.color))
                 .cornerRadius(8)
                 .help("Select where new reminders will be saved")
             }

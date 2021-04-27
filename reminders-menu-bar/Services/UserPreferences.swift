@@ -17,77 +17,68 @@ class UserPreferences: ObservableObject {
         // This prevents others from using the default '()' initializer for this class.
     }
     
-    private let defaults = UserDefaults.standard
-        
-    var calendarIdentifiersFilter: [String] {
-        get {
-            guard let identifiers = defaults.stringArray(forKey: PreferencesKeys.calendarIdentifiersFilter) else {
-                return []
-            }
-            
-            return identifiers
+    private static let defaults = UserDefaults.standard
+    
+    @Published var calendarIdentifiersFilter: [String] = {
+        guard let identifiers = defaults.stringArray(forKey: PreferencesKeys.calendarIdentifiersFilter) else {
+            return []
         }
         
-        set {
-            defaults.set(newValue, forKey: PreferencesKeys.calendarIdentifiersFilter)
+        return identifiers
+    }() {
+        didSet {
+            UserPreferences.defaults.set(calendarIdentifiersFilter, forKey: PreferencesKeys.calendarIdentifiersFilter)
         }
     }
     
-    var calendarForSaving: EKCalendar {
-        get {
-            guard let identifier = defaults.string(forKey: PreferencesKeys.calendarIdentifierForSaving),
-                  let calendar = RemindersService.instance.getCalendar(withIdentifier: identifier) else {
-                let defaultCalendar = RemindersService.instance.getDefaultCalendar()
-                self.calendarForSaving = defaultCalendar
-                return defaultCalendar
-            }
-            
-            return calendar
+    @Published var calendarForSaving: EKCalendar = {
+        guard let identifier = defaults.string(forKey: PreferencesKeys.calendarIdentifierForSaving),
+              let calendar = RemindersService.instance.getCalendar(withIdentifier: identifier) else {
+            let defaultCalendar = RemindersService.instance.getDefaultCalendar()
+            return defaultCalendar
         }
         
-        set {
-            let identifier = newValue.calendarIdentifier
-            defaults.set(identifier, forKey: PreferencesKeys.calendarIdentifierForSaving)
+        return calendar
+    }() {
+        didSet {
+            let identifier = calendarForSaving.calendarIdentifier
+            UserPreferences.defaults.set(identifier, forKey: PreferencesKeys.calendarIdentifierForSaving)
         }
     }
     
-    var showUncompletedOnly: Bool {
-        get {
-            guard defaults.object(forKey: PreferencesKeys.showUncompletedOnly) != nil else {
-                return true
-            }
-            
-            return defaults.bool(forKey: PreferencesKeys.showUncompletedOnly)
+    @Published var showUncompletedOnly: Bool = {
+        guard defaults.object(forKey: PreferencesKeys.showUncompletedOnly) != nil else {
+            return true
         }
         
-        set {
-            defaults.set(newValue, forKey: PreferencesKeys.showUncompletedOnly)
+        return defaults.bool(forKey: PreferencesKeys.showUncompletedOnly)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(showUncompletedOnly, forKey: PreferencesKeys.showUncompletedOnly)
         }
     }
     
-    var upcomingRemindersInterval: ReminderInterval {
-        get {
-            guard let intervalData = defaults.data(forKey: PreferencesKeys.upcomingRemindersInterval),
-                  let interval = try? JSONDecoder().decode(ReminderInterval.self, from: intervalData) else {
-                return .today
-            }
-            return interval
+    @Published var upcomingRemindersInterval: ReminderInterval = {
+        guard let intervalData = defaults.data(forKey: PreferencesKeys.upcomingRemindersInterval),
+              let interval = try? JSONDecoder().decode(ReminderInterval.self, from: intervalData) else {
+            return .today
         }
-        
-        set {
-            let intervalData = try? JSONEncoder().encode(newValue)
-            defaults.set(intervalData, forKey: PreferencesKeys.upcomingRemindersInterval)
+        return interval
+    }() {
+        didSet {
+            let intervalData = try? JSONEncoder().encode(upcomingRemindersInterval)
+            UserPreferences.defaults.set(intervalData, forKey: PreferencesKeys.upcomingRemindersInterval)
         }
     }
     
     @Published var showUpcomingReminders: Bool = {
-        guard UserDefaults.standard.object(forKey: PreferencesKeys.showUpcomingReminders) != nil else {
+        guard defaults.object(forKey: PreferencesKeys.showUpcomingReminders) != nil else {
             return true
         }
         return UserDefaults.standard.bool(forKey: PreferencesKeys.showUpcomingReminders)
     }() {
         didSet {
-            defaults.set(showUpcomingReminders, forKey: PreferencesKeys.showUpcomingReminders)
+            UserPreferences.defaults.set(showUpcomingReminders, forKey: PreferencesKeys.showUpcomingReminders)
         }
     }
     
@@ -110,7 +101,7 @@ class UserPreferences: ObservableObject {
         return UserDefaults.standard.bool(forKey: PreferencesKeys.backgroundIsTransparent)
     }() {
         didSet {
-            defaults.set(backgroundIsTransparent, forKey: PreferencesKeys.backgroundIsTransparent)
+            UserPreferences.defaults.set(backgroundIsTransparent, forKey: PreferencesKeys.backgroundIsTransparent)
         }
     }
 }

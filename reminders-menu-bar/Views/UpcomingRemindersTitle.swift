@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct UpcomingRemindersTitle: View {
-    @EnvironmentObject var remindersData: RemindersData
+    @ObservedObject var userPreferences = UserPreferences.instance
     
     @State var intervalButtonIsHovered = false
     
@@ -16,13 +16,13 @@ struct UpcomingRemindersTitle: View {
             
             Menu {
                 ForEach(ReminderInterval.allCases, id: \.rawValue) { interval in
-                    Button(action: { remindersData.upcomingRemindersInterval = interval }) {
-                        let isSelected = interval == remindersData.upcomingRemindersInterval
+                    Button(action: { userPreferences.upcomingRemindersInterval = interval }) {
+                        let isSelected = interval == userPreferences.upcomingRemindersInterval
                         SelectableView(title: interval.rawValue, isSelected: isSelected)
                     }
                 }
             } label: {
-                Label(remindersData.upcomingRemindersInterval.rawValue, systemImage: "calendar")
+                Label(userPreferences.upcomingRemindersInterval.rawValue, systemImage: "calendar")
             }
             .menuStyle(BorderlessButtonMenuStyle())
             .padding(.vertical, 5)
@@ -41,6 +41,6 @@ struct UpcomingRemindersTitle: View {
 
 struct UpcomingRemindersTitle_Previews: PreviewProvider {
     static var previews: some View {
-        UpcomingRemindersTitle().environmentObject(RemindersData())
+        UpcomingRemindersTitle()
     }
 }

@@ -1,8 +1,19 @@
 import SwiftUI
+import Combine
 import EventKit
 
 class RemindersData: ObservableObject {
+    
+    let userPreferences = UserPreferences.instance
+    
+    var cancellationTokens: [AnyCancellable] = []
+    
     init () {
+        addObservers()
+        update()
+    }
+    
+    private func addObservers() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(update),
                                                name: .EKEventStoreChanged,
@@ -13,40 +24,24 @@ class RemindersData: ObservableObject {
                                                name: .NSCalendarDayChanged,
                                                object: nil)
         
-        update()
+        cancellationTokens.append(
+            userPreferences.$upcomingRemindersInterval.dropFirst().sink { [weak self] upcomingRemindersInterval in
+                self?.upcomingReminders = RemindersService.instance.getUpcomingReminders(upcomingRemindersInterval)
+            }
+        )
+        
+        cancellationTokens.append(
+            userPreferences.$calendarIdentifiersFilter.dropFirst().sink { [weak self] calendarIdentifiersFilter in
+                self?.filteredReminderLists = RemindersService.instance.getReminders(of: calendarIdentifiersFilter)
+            }
+        )
     }
     
     @Published var calendars: [EKCalendar] = []
     
-    @Published var upcomingRemindersInterval = UserPreferences.instance.upcomingRemindersInterval {
-        didSet {
-            UserPreferences.instance.upcomingRemindersInterval = upcomingRemindersInterval
-            upcomingReminders = RemindersService.instance.getUpcomingReminders(upcomingRemindersInterval)
-        }
-    }
-    
     @Published var upcomingReminders: [EKReminder] = []
     
-    @Published var calendarIdentifiersFilter = UserPreferences.instance.calendarIdentifiersFilter {
-        didSet {
-            UserPreferences.instance.calendarIdentifiersFilter = calendarIdentifiersFilter
-            filteredReminderLists = RemindersService.instance.getReminders(of: calendarIdentifiersFilter)
-        }
-    }
-    
     @Published var filteredReminderLists: [ReminderList] = []
-    
-    @Published var calendarForSaving = UserPreferences.instance.calendarForSaving {
-        didSet {
-            UserPreferences.instance.calendarForSaving = calendarForSaving
-        }
-    }
-    
-    @Published var showUncompletedOnly = UserPreferences.instance.showUncompletedOnly {
-        didSet {
-            UserPreferences.instance.showUncompletedOnly = showUncompletedOnly
-        }
-    }
     
     @objc func update() {
         // TODO: Prefer receive(on:options:) over explicit use of dispatch queues when performing work in subscribers.
@@ -54,18 +49,21 @@ class RemindersData: ObservableObject {
         DispatchQueue.main.async {
             let calendars = RemindersService.instance.getCalendars()
             self.calendars = calendars
-            self.calendarIdentifiersFilter = self.calendarIdentifiersFilter.filter({
+            
+            self.userPreferences.calendarIdentifiersFilter = self.userPreferences.calendarIdentifiersFilter.filter({
                 RemindersService.instance.isValid(calendarIdentifier: $0)
             })
-            if self.calendarIdentifiersFilter.isEmpty {
-                self.calendarIdentifiersFilter = calendars.map({ $0.calendarIdentifier })
+            if self.userPreferences.calendarIdentifiersFilter.isEmpty {
+                self.userPreferences.calendarIdentifiersFilter = calendars.map({ $0.calendarIdentifier })
             }
-            if !RemindersService.instance.isValid(calendarIdentifier: self.calendarForSaving.calendarIdentifier) {
-                self.calendarForSaving = RemindersService.instance.getDefaultCalendar()
-            }
-            self.filteredReminderLists = RemindersService.instance.getReminders(of: self.calendarIdentifiersFilter)
             
-            self.upcomingReminders = RemindersService.instance.getUpcomingReminders(self.upcomingRemindersInterval)
+            let calendarForSavingIdentifier = self.userPreferences.calendarForSaving.calendarIdentifier
+            if !RemindersService.instance.isValid(calendarIdentifier: calendarForSavingIdentifier) {
+                self.userPreferences.calendarForSaving = RemindersService.instance.getDefaultCalendar()
+            }
+            
+            let upcomingRemindersInterval = self.userPreferences.upcomingRemindersInterval
+            self.upcomingReminders = RemindersService.instance.getUpcomingReminders(upcomingRemindersInterval)
         }
     }
 }

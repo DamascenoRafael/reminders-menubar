@@ -2,7 +2,7 @@ import SwiftUI
 import EventKit
 
 struct CalendarTitleView: View {
-    @EnvironmentObject var remindersData: RemindersData
+    @ObservedObject var userPreferences = UserPreferences.instance
     
     var calendar: EKCalendar
     @State var calendarFolderIsHovered = false
@@ -17,9 +17,9 @@ struct CalendarTitleView: View {
             Spacer()
             
             Button(action: {
-                remindersData.calendarForSaving = calendar
+                userPreferences.calendarForSaving = calendar
             }) {
-                let isSelected = remindersData.calendarForSaving.calendarIdentifier == calendar.calendarIdentifier
+                let isSelected = userPreferences.calendarForSaving.calendarIdentifier == calendar.calendarIdentifier
                 Image(systemName: isSelected ? "folder.fill" : "folder")
                     .font(Font.headline.weight(.medium))
                     .foregroundColor(calendarFolderIsHovered ? Color(calendar.color): nil)
@@ -50,7 +50,6 @@ struct CalendarTitleView_Previews: PreviewProvider {
         Group {
             ForEach(ColorScheme.allCases, id: \.self) { color in
                 CalendarTitleView(calendar: calendar)
-                    .environmentObject(RemindersData())
                     .colorScheme(color)
                     .previewDisplayName("\(color) mode")
             }

@@ -3,6 +3,7 @@ import EventKit
 
 struct SettingsBarView: View {
     @EnvironmentObject var remindersData: RemindersData
+    @ObservedObject var userPreferences = UserPreferences.instance
     
     @State var filterIsHovered = false
     @State var toggleIsHovered = false
@@ -25,15 +26,16 @@ struct SettingsBarView: View {
                 }
                 
                 ForEach(remindersData.calendars, id: \.calendarIdentifier) { calendar in
+                    let calendarIdentifier = calendar.calendarIdentifier
                     Button(action: {
-                        let index = remindersData.calendarIdentifiersFilter.firstIndex(of: calendar.calendarIdentifier)
+                        let index = userPreferences.calendarIdentifiersFilter.firstIndex(of: calendarIdentifier)
                         if let index = index {
-                            remindersData.calendarIdentifiersFilter.remove(at: index)
+                            userPreferences.calendarIdentifiersFilter.remove(at: index)
                         } else {
-                            remindersData.calendarIdentifiersFilter.append(calendar.calendarIdentifier)
+                            userPreferences.calendarIdentifiersFilter.append(calendarIdentifier)
                         }
                     }) {
-                        let isSelected = remindersData.calendarIdentifiersFilter.contains(calendar.calendarIdentifier)
+                        let isSelected = userPreferences.calendarIdentifiersFilter.contains(calendarIdentifier)
                         SelectableView(title: calendar.title, isSelected: isSelected, color: Color(calendar.color))
                     }
                 }
@@ -53,9 +55,9 @@ struct SettingsBarView: View {
             Spacer()
             
             Button(action: {
-                remindersData.showUncompletedOnly.toggle()
+                userPreferences.showUncompletedOnly.toggle()
             }) {
-                Image(systemName: remindersData.showUncompletedOnly ? "circle" : "largecircle.fill.circle")
+                Image(systemName: userPreferences.showUncompletedOnly ? "circle" : "largecircle.fill.circle")
                     .padding(4)
                     .padding(.horizontal, 4)
             }
