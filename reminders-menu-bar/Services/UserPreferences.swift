@@ -8,6 +8,7 @@ private struct PreferencesKeys {
     static let backgroundIsTransparent = "backgroundIsTransparent"
     static let showUpcomingReminders = "showUpcomingReminders"
     static let upcomingRemindersInterval = "upcomingRemindersInterval"
+    static let showMenuBarTodayCount = "showMenuBarTodayCount"
 }
 
 class UserPreferences: ObservableObject {
@@ -102,6 +103,17 @@ class UserPreferences: ObservableObject {
     }() {
         didSet {
             UserPreferences.defaults.set(backgroundIsTransparent, forKey: PreferencesKeys.backgroundIsTransparent)
+        }
+    }
+    
+    @Published var showMenuBarTodayCount: Bool = {
+        guard UserDefaults.standard.object(forKey: PreferencesKeys.showMenuBarTodayCount) != nil else {
+            return true
+        }
+        return UserDefaults.standard.bool(forKey: PreferencesKeys.showMenuBarTodayCount)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(showMenuBarTodayCount, forKey: PreferencesKeys.showMenuBarTodayCount)
         }
     }
 }

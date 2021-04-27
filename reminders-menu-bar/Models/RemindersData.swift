@@ -4,6 +4,8 @@ import EventKit
 
 class RemindersData: ObservableObject {
     
+    weak var appDelegate = NSApplication.shared.delegate as? AppDelegate
+    
     let userPreferences = UserPreferences.instance
     
     var cancellationTokens: [AnyCancellable] = []
@@ -23,6 +25,12 @@ class RemindersData: ObservableObject {
                                                selector: #selector(update),
                                                name: .NSCalendarDayChanged,
                                                object: nil)
+        
+        cancellationTokens.append(
+            userPreferences.$showMenuBarTodayCount.dropFirst().sink { [weak self] showMenuBarTodayCount in
+                self?.updateMenuBarTodayCount(showMenuBarTodayCount)
+            }
+        )
         
         cancellationTokens.append(
             userPreferences.$upcomingRemindersInterval.dropFirst().sink { [weak self] upcomingRemindersInterval in
@@ -64,6 +72,16 @@ class RemindersData: ObservableObject {
             
             let upcomingRemindersInterval = self.userPreferences.upcomingRemindersInterval
             self.upcomingReminders = RemindersService.instance.getUpcomingReminders(upcomingRemindersInterval)
+            
+            self.updateMenuBarTodayCount(self.userPreferences.showMenuBarTodayCount)
         }
+    }
+    
+    private func updateMenuBarTodayCount(_ showMenuBarTodayCount: Bool) {
+        var todayCount = -1
+        if showMenuBarTodayCount {
+            todayCount = RemindersService.instance.getUpcomingReminders(.today).count
+        }
+        self.appDelegate?.updateMenuBarTodayCount(to: todayCount)
     }
 }

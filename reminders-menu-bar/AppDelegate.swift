@@ -5,7 +5,7 @@ import SwiftUI
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     let popover = NSPopover()
-    let statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
+    let statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     var contentViewController: NSViewController {
         let contentView = ContentView()
         let remindersData = RemindersData()
@@ -31,7 +31,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     private func configureMenuBarButton() {
         statusBarItem.button?.image = NSImage(systemSymbolName: "list.bullet", accessibilityDescription: nil)
+        statusBarItem.button?.imagePosition = .imageLeading
         statusBarItem.button?.action = #selector(togglePopover)
+    }
+    
+    func updateMenuBarTodayCount(to todayCount: Int) {
+        let buttonTitle = todayCount > 0 ? String(todayCount) : ""
+        statusBarItem.button?.title = buttonTitle
     }
     
     func changeBehaviorToDismissIfNeeded() {

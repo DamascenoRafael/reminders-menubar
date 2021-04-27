@@ -112,6 +112,17 @@ struct SettingsBarView: View {
                         let isSelected = UserPreferences.instance.backgroundIsTransparent
                         SelectableView(title: "More transparent", isSelected: isSelected)
                     }
+                    
+                    VStack {
+                        Divider()
+                    }
+                    
+                    Button(action: {
+                        UserPreferences.instance.showMenuBarTodayCount.toggle()
+                    }) {
+                        let isSelected = UserPreferences.instance.showMenuBarTodayCount
+                        SelectableView(title: "Show today count in the menu bar", isSelected: isSelected)
+                    }
                 } label: {
                     Text("Appearance")
                 }
