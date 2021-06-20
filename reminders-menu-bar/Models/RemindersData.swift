@@ -10,7 +10,7 @@ class RemindersData: ObservableObject {
     
     var cancellationTokens: [AnyCancellable] = []
     
-    init () {
+    init() {
         addObservers()
         update()
     }
