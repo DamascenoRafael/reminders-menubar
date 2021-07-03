@@ -1,0 +1,45 @@
+"newReminderTextFielPlaceholder" = "Type a reminder and hit enter";
+"newReminderCalendarSelectionToSaveHelp" = "Select where new reminders will be saved";
+"remindersOptionsButtonHelp" = "Options for editing the reminder";
+"removeReminderOptionButton" = "Remove";
+"removeReminderAlertTitle" = "Remove reminder?";
+"removeReminderAlertMessage" = "This action will remove '%@' and cannot be undone";
+"removeReminderAlertConfirmButton" = "Remove";
+"removeReminderAlertCancelButton" = "Cancel";
+"reminderMoveToMenuOption" = "Move to ...";
+"emptyListNoRemindersMessage" = "No reminders";
+"emptyListAllItemsCompletedMessage" = "All items completed";
+"emptyListNoUpcomingRemindersMessage" = "No upcoming reminders";
+"upcomingRemindersTitle" = "Upcoming reminders";
+"remindersFilterSelectionHelp" = "Filter which reminders to show";
+"showCompletedRemindersToggleButtonHelp" = "Toggle between showing all reminders or only uncompleted ones";
+"updateAvaiableNoticeButton" = "Update avaiable";
+"launchAtLoginOptionButton" = "Launch at login";
+"appAppearanceMenu" = "Appearance";
+"appAppearanceMoreOpaqueOptionButton" = "More opaque";
+"appAppearanceMoreTransparentOptionButton" = "More transparent";
+"showMenuBarTodayCountOptionButton" = "Show today count in the menu bar";
+"reloadRemindersDataButton" = "Reload data";
+"appAboutButton" = "About";
+"appQuitButton" = "Quit";
+"settingsButtonHelp" = "Settings";
+"aboutRemindersMenuBarWindowTitle" = "About Reminders Menu Bar";
+"appVersionDescription" = "Version %@";
+"remindersMenuBarAppAboutDescription" = "
+Reminders Menu Bar is an open source software \
+licensed under the terms of the %@.
+";
+"remindersMenuBarGitHubAboutDescription" = "Features and updates available on GitHub";
+"seeMoreOnGitHubButton" = "See more on GitHub";
+"upcomingRemindersIntervalSelectionHelp" = "Select range of upcoming reminders to be shown";
+"upcomingRemindersTodayTitle" = "Today";
+"upcomingRemindersInAWeekTitle" = "In a Week";
+"upcomingRemindersInAMonthTitle" = "In a Month";
+"upcomingRemindersAllTitle" = "All";
+"appNoRemindersAccessAlertMessage" = "Access to Reminders is not enabled for Reminders Menu Bar";
+"appNoRemindersAccessAlertDescription" = "
+Reminders Menu Bar needs access to your reminders to work properly.
+Grant permission in System Preferences to use Reminders Menu Bar.
+";
+"openSystemPreferencesButton" = "Open System Preferences";
+"okButton" = "Ok";

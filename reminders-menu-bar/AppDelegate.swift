@@ -59,14 +59,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     private func presentNoAuthorizationAlert() {
         let alert = NSAlert()
-        alert.messageText = "Access to Reminders is not enabled for Reminders Menu Bar"
-        alert.informativeText = """
-            Reminders Menu Bar needs access to your reminders to work properly.
-            Grant permission in System Preferences to use Reminders Menu Bar.
-            """
-        alert.addButton(withTitle: "Ok")
-        alert.addButton(withTitle: "Open System Preferences")
-        alert.addButton(withTitle: "Quit").hasDestructiveAction = true
+        alert.messageText = rmbLocalized(.appNoRemindersAccessAlertMessage)
+        alert.informativeText = rmbLocalized(.appNoRemindersAccessAlertDescription)
+        alert.addButton(withTitle: rmbLocalized(.okButton))
+        alert.addButton(withTitle: rmbLocalized(.openSystemPreferencesButton))
+        alert.addButton(withTitle: rmbLocalized(.appQuitButton)).hasDestructiveAction = true
         
         NSApp.activate(ignoringOtherApps: true)
         let modalResponse = alert.runModal()

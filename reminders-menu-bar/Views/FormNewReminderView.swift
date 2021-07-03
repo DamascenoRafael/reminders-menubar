@@ -10,7 +10,7 @@ struct FormNewReminderView: View {
     var body: some View {
         Form {
             HStack {
-                TextField("Type a reminder and hit enter", text: $newReminderTitle, onCommit: {
+                TextField(rmbLocalized(.newReminderTextFielPlaceholder), text: $newReminderTitle, onCommit: {
                     guard !newReminderTitle.isEmpty else { return }
                     
                     RemindersService.instance.createNew(with: newReminderTitle, in: userPreferences.calendarForSaving)
@@ -49,7 +49,7 @@ struct FormNewReminderView: View {
                 .padding(.trailing, 2)
                 .background(Color(userPreferences.calendarForSaving.color))
                 .cornerRadius(8)
-                .help("Select where new reminders will be saved")
+                .help(rmbLocalized(.newReminderCalendarSelectionToSaveHelp))
             }
         }
         .padding(10)

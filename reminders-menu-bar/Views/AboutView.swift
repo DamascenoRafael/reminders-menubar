@@ -16,17 +16,15 @@ struct AboutView: View {
                 VStack(alignment: .leading) {
                     Text("Reminders Menu Bar")
                         .font(Font.title.weight(.thin))
-                    Text("Version \(AppConstants.currentVersion)")
+                    Text(rmbLocalized(.appVersionDescription, arguments: AppConstants.currentVersion))
                         .font(Font.callout.weight(.light))
                 }
                 .padding(.bottom, 8)
 
                 VStack(alignment: .leading, spacing: 14) {
-                    Text("""
-                    Reminders Menu Bar is an open source software \
-                    licensed under the terms of the GNU General Public License v3.0.
-                    """)
-                    Text("Features and updates available on GitHub")
+                    Text(rmbLocalized(.remindersMenuBarAppAboutDescription,
+                                      arguments: "GNU General Public License v3.0"))
+                    Text(rmbLocalized(.remindersMenuBarGitHubAboutDescription))
                 }
                 .font(.system(size: 11))
                 .frame(maxHeight: .infinity)
@@ -36,7 +34,7 @@ struct AboutView: View {
                         NSWorkspace.shared.open(url)
                     }
                 }) {
-                    Text("See more on GitHub")
+                    Text(rmbLocalized(.seeMoreOnGitHubButton))
                 }
             }
         }
@@ -51,7 +49,7 @@ struct AboutView: View {
         let windowController = NSWindowController(window: NSWindow(contentViewController: viewController))
         
         if let window = windowController.window {
-            window.title = "About Reminders Menu Bar"
+            window.title = rmbLocalized(.aboutRemindersMenuBarWindowTitle)
             window.titleVisibility = .hidden
             window.titlebarAppearsTransparent = true
             window.animationBehavior = .alertPanel

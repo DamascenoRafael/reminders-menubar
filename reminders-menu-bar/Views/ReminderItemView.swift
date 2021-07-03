@@ -52,7 +52,7 @@ struct ReminderItemView: View {
                         }) {
                             HStack {
                                 Image(systemName: "minus.circle")
-                                Text("Remove")
+                                Text(rmbLocalized(.removeReminderOptionButton))
                             }
                         }
                     }
@@ -60,16 +60,16 @@ struct ReminderItemView: View {
                     .frame(width: 16, height: 16)
                     .padding(.top, 1)
                     .padding(.trailing, 10)
-                    .help("Options for editing the reminder")
+                    .help(rmbLocalized(.remindersOptionsButtonHelp))
                 }
                 .alert(isPresented: $showingRemoveAlert) {
-                    Alert(title: Text("Remove reminder?"),
-                          message: Text("This action will remove '\(reminder.title)' and cannot be undone"),
-                          primaryButton: .destructive(Text("Remove"), action: {
+                    Alert(title: Text(rmbLocalized(.removeReminderAlertTitle)),
+                          message: Text(rmbLocalized(.removeReminderAlertMessage, arguments: reminder.title)),
+                          primaryButton: .destructive(Text(rmbLocalized(.removeReminderAlertConfirmButton)), action: {
                             RemindersService.instance.remove(reminder: reminder)
                             hasBeenRemoved = true
                           }),
-                          secondaryButton: .cancel(Text("Cancelar"))
+                          secondaryButton: .cancel(Text(rmbLocalized(.removeReminderAlertCancelButton)))
                     )
                 }
                 .onChange(of: showingRemoveAlert) { isShowing in
@@ -127,7 +127,7 @@ struct MoveToOptionMenu: View {
         MenuButton(label:
             HStack {
                 Image(systemName: "folder")
-                Text("Move to ...")
+                Text(rmbLocalized(.reminderMoveToMenuOption))
             }
         ) {
             ForEach(availableCalendars, id: \.calendarIdentifier) { calendar in

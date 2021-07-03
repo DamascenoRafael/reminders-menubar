@@ -9,7 +9,7 @@ extension Date {
         let relativeDateFormatter = DateFormatter()
         relativeDateFormatter.timeStyle = showTimeDescription ? .short : .none
         relativeDateFormatter.dateStyle = .medium
-        relativeDateFormatter.locale = Locale(identifier: "en_US")
+        relativeDateFormatter.locale = rmbCurrentLocale()
         relativeDateFormatter.doesRelativeDateFormatting = true
         
         return relativeDateFormatter.string(from: self)

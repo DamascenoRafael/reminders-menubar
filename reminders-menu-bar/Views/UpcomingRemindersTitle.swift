@@ -7,7 +7,7 @@ struct UpcomingRemindersTitle: View {
     
     var body: some View {
         HStack(alignment: .center) {
-            Text("Upcoming reminders")
+            Text(rmbLocalized(.upcomingRemindersTitle))
                 .font(.headline)
                 .foregroundColor(.red)
                 .padding(.bottom, 5)
@@ -18,11 +18,11 @@ struct UpcomingRemindersTitle: View {
                 ForEach(ReminderInterval.allCases, id: \.rawValue) { interval in
                     Button(action: { userPreferences.upcomingRemindersInterval = interval }) {
                         let isSelected = interval == userPreferences.upcomingRemindersInterval
-                        SelectableView(title: interval.rawValue, isSelected: isSelected)
+                        SelectableView(title: interval.title, isSelected: isSelected)
                     }
                 }
             } label: {
-                Label(userPreferences.upcomingRemindersInterval.rawValue, systemImage: "calendar")
+                Label(userPreferences.upcomingRemindersInterval.title, systemImage: "calendar")
             }
             .menuStyle(BorderlessButtonMenuStyle())
             .padding(.vertical, 5)
@@ -34,7 +34,7 @@ struct UpcomingRemindersTitle: View {
             }
             .padding(.trailing, 1)
             .fixedSize(horizontal: true, vertical: true)
-            .help("Select range of upcoming reminders to be shown")
+            .help(rmbLocalized(.upcomingRemindersIntervalSelectionHelp))
         }
     }
 }

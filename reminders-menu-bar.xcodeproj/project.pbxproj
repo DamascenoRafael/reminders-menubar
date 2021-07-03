@@ -23,9 +23,11 @@
 		71359E9824C6C0B5001D4C40 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71359E9724C6C0B5001D4C40 /* Colors.xcassets */; };
 		713F234524C130D400FF0BEC /* ReminderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F234424C130D400FF0BEC /* ReminderList.swift */; };
 		7141456325CF9693006695B2 /* Release.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7141456225CF9693006695B2 /* Release.swift */; };
+		714C4980267FA56F00721516 /* remindersLocalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714C497F267FA56F00721516 /* remindersLocalized.swift */; };
 		714D03B226042416003063F7 /* Calendar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714D03B126042416003063F7 /* Calendar+Extensions.swift */; };
 		714E6F6125CCF66000BA0099 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714E6F6025CCF66000BA0099 /* Constants.swift */; };
 		714E6F6225CCF66000BA0099 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714E6F6025CCF66000BA0099 /* Constants.swift */; };
+		7151CC98265E0388002D7F1D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7151CC9A265E0388002D7F1D /* Localizable.strings */; };
 		7156443A26030591005E81FD /* ArrayEKReminder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156443926030591005E81FD /* ArrayEKReminder+Extension.swift */; };
 		7156444226031CA9005E81FD /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156444126031CA9005E81FD /* Array+Extension.swift */; };
 		71564448260324FA005E81FD /* PrioritizedReminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564447260324FA005E81FD /* PrioritizedReminders.swift */; };
@@ -80,8 +82,10 @@
 		71359E9724C6C0B5001D4C40 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		713F234424C130D400FF0BEC /* ReminderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderList.swift; sourceTree = "<group>"; };
 		7141456225CF9693006695B2 /* Release.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Release.swift; sourceTree = "<group>"; };
+		714C497F267FA56F00721516 /* remindersLocalized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = remindersLocalized.swift; sourceTree = "<group>"; };
 		714D03B126042416003063F7 /* Calendar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extensions.swift"; sourceTree = "<group>"; };
 		714E6F6025CCF66000BA0099 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7151CC99265E0388002D7F1D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7156443926030591005E81FD /* ArrayEKReminder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArrayEKReminder+Extension.swift"; sourceTree = "<group>"; };
 		7156444126031CA9005E81FD /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		71564447260324FA005E81FD /* PrioritizedReminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrioritizedReminders.swift; sourceTree = "<group>"; };
@@ -227,6 +231,8 @@
 			children = (
 				712C32B724BF939200AC75E2 /* Assets.xcassets */,
 				71359E9724C6C0B5001D4C40 /* Colors.xcassets */,
+				7151CC9A265E0388002D7F1D /* Localizable.strings */,
+				714C497F267FA56F00721516 /* remindersLocalized.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -333,6 +339,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7151CC98265E0388002D7F1D /* Localizable.strings in Resources */,
 				712C32BE24BF939200AC75E2 /* Main.storyboard in Resources */,
 				71359E9824C6C0B5001D4C40 /* Colors.xcassets in Resources */,
 				712C32BB24BF939200AC75E2 /* Preview Assets.xcassets in Resources */,
@@ -398,6 +405,7 @@
 				71564448260324FA005E81FD /* PrioritizedReminders.swift in Sources */,
 				7156443A26030591005E81FD /* ArrayEKReminder+Extension.swift in Sources */,
 				71A3834325BCA69C00975B4C /* Date+Extensions.swift in Sources */,
+				714C4980267FA56F00721516 /* remindersLocalized.swift in Sources */,
 				71D12FF625EA196F00A1A0E6 /* UpcomingRemindersTitle.swift in Sources */,
 				714D03B226042416003063F7 /* Calendar+Extensions.swift in Sources */,
 				712C32B424BF939100AC75E2 /* AppDelegate.swift in Sources */,
@@ -418,6 +426,14 @@
 				712C32BD24BF939200AC75E2 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7151CC9A265E0388002D7F1D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7151CC99265E0388002D7F1D /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -477,6 +493,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -538,6 +555,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

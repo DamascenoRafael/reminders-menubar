@@ -18,7 +18,7 @@ struct SettingsBarView: View {
                     UserPreferences.instance.showUpcomingReminders.toggle()
                 }) {
                     let isSelected = UserPreferences.instance.showUpcomingReminders
-                    SelectableView(title: "Upcoming reminders", isSelected: isSelected)
+                    SelectableView(title: rmbLocalized(.upcomingRemindersTitle), isSelected: isSelected)
                 }
                 
                 VStack {
@@ -50,7 +50,7 @@ struct SettingsBarView: View {
             .onHover { isHovered in
                 filterIsHovered = isHovered
             }
-            .help("Filter which reminders to show")
+            .help(rmbLocalized(.remindersFilterSelectionHelp))
             
             Spacer()
             
@@ -67,7 +67,7 @@ struct SettingsBarView: View {
             .onHover { isHovered in
                 toggleIsHovered = isHovered
             }
-            .help("Toggle between showing all reminders or only uncompleted ones")
+            .help(rmbLocalized(.showCompletedRemindersToggleButtonHelp))
             
             Spacer()
             
@@ -79,7 +79,7 @@ struct SettingsBarView: View {
                         }
                     }) {
                         Image(systemName: "exclamationmark.circle")
-                        Text("Update avaiable")
+                        Text(rmbLocalized(.updateAvaiableNoticeButton))
                     }
                     
                     VStack {
@@ -91,7 +91,9 @@ struct SettingsBarView: View {
                     UserPreferences.instance.launchAtLoginIsEnabled.toggle()
                 }) {
                     let isSelected = UserPreferences.instance.launchAtLoginIsEnabled
-                    SelectableView(title: "Launch at login", isSelected: isSelected, withPadding: false)
+                    SelectableView(title: rmbLocalized(.launchAtLoginOptionButton),
+                                   isSelected: isSelected,
+                                   withPadding: false)
                 }
                 
                 VStack {
@@ -103,14 +105,16 @@ struct SettingsBarView: View {
                         UserPreferences.instance.backgroundIsTransparent = false
                     }) {
                         let isSelected = !UserPreferences.instance.backgroundIsTransparent
-                        SelectableView(title: "More opaque", isSelected: isSelected)
+                        SelectableView(title: rmbLocalized(.appAppearanceMoreOpaqueOptionButton),
+                                       isSelected: isSelected)
                     }
                     
                     Button(action: {
                         UserPreferences.instance.backgroundIsTransparent = true
                     }) {
                         let isSelected = UserPreferences.instance.backgroundIsTransparent
-                        SelectableView(title: "More transparent", isSelected: isSelected)
+                        SelectableView(title: rmbLocalized(.appAppearanceMoreTransparentOptionButton),
+                                       isSelected: isSelected)
                     }
                     
                     VStack {
@@ -121,10 +125,10 @@ struct SettingsBarView: View {
                         UserPreferences.instance.showMenuBarTodayCount.toggle()
                     }) {
                         let isSelected = UserPreferences.instance.showMenuBarTodayCount
-                        SelectableView(title: "Show today count in the menu bar", isSelected: isSelected)
+                        SelectableView(title: rmbLocalized(.showMenuBarTodayCountOptionButton), isSelected: isSelected)
                     }
                 } label: {
-                    Text("Appearance")
+                    Text(rmbLocalized(.appAppearanceMenu))
                 }
                 
                 VStack {
@@ -134,7 +138,7 @@ struct SettingsBarView: View {
                 Button(action: {
                     remindersData.update()
                 }) {
-                    Text("Reload data")
+                    Text(rmbLocalized(.reloadRemindersDataButton))
                 }
                 
                 VStack {
@@ -144,13 +148,13 @@ struct SettingsBarView: View {
                 Button(action: {
                     AboutView.showWindow()
                 }) {
-                    Text("About")
+                    Text(rmbLocalized(.appAboutButton))
                 }
                 
                 Button(action: {
                     NSApplication.shared.terminate(self)
                 }) {
-                    Text("Quit")
+                    Text(rmbLocalized(.appQuitButton))
                 }
             } label: {
                 Image(systemName: appUpdateCheckHelper.isOutdated ? "exclamationmark.circle" : "gear")
@@ -163,7 +167,7 @@ struct SettingsBarView: View {
             .onHover { isHovered in
                 settingsIsHovered = isHovered
             }
-            .help("Settings")
+            .help(rmbLocalized(.settingsButtonHelp))
         }
         .frame(maxWidth: .infinity)
         .padding(.top, 12)

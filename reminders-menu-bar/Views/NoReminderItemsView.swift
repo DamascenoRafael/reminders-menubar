@@ -11,11 +11,11 @@ struct NoReminderItemsView: View {
         var message: String {
             switch self {
             case .noReminders:
-                return "No reminders"
+                return rmbLocalized(.emptyListNoRemindersMessage)
             case .allItemsCompleted:
-                return "All items completed"
+                return rmbLocalized(.emptyListAllItemsCompletedMessage)
             case .noUpcomingReminders:
-                return "No upcoming reminders"
+                return rmbLocalized(.emptyListNoUpcomingRemindersMessage)
             }
         }
     }
