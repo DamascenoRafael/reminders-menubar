@@ -1,0 +1,45 @@
+"newReminderTextFielPlaceholder" = "Digita un promemoria e premi invio";
+"newReminderCalendarSelectionToSaveHelp" = "Seleziona dove verranno salvati i nuovi promemoria";
+"remindersOptionsButtonHelp" = "Opzioni per modificare il promemoria";
+"removeReminderOptionButton" = "Rimuovi";
+"removeReminderAlertTitle" = "Rimuovi promemoria?";
+"removeReminderAlertMessage" = "Questa azione rimuoverà '%@' e non può essere annullata";
+"removeReminderAlertConfirmButton" = "Rimuovi";
+"removeReminderAlertCancelButton" = "Annulla";
+"reminderMoveToMenuOption" = "Sposta in ...";
+"emptyListNoRemindersMessage" = "Nessun promemoria";
+"emptyListAllItemsCompletedMessage" = "Tutti gli elementi sono stati completati";
+"emptyListNoUpcomingRemindersMessage" = "Nessun promemoria in arrivo";
+"upcomingRemindersTitle" = "Prossimi promemoria";
+"remindersFilterSelectionHelp" = "Filtra i promemoria da mostrare";
+"showCompletedRemindersToggleButtonHelp" = "Sposta tra la visualizzazione di tutti i promemoria o solo quelli non completati";
+"updateAvaiableNoticeButton" = "Aggiornamento disponibile";
+"launchAtLoginOptionButton" = "Avvia all'accesso";
+"appAppearanceMenu" = "Aspetto";
+"appAppearanceMoreOpaqueOptionButton" = "Più opaco";
+"appAppearanceMoreTransparentOptionButton" = "Più trasparente";
+"showMenuBarTodayCountOptionButton" = "Mostra il conteggio di oggi nella barra dei menu";
+"reloadRemindersDataButton" = "Ricarica dati";
+"appAboutButton" = "Informazioni";
+"appQuitButton" = "Esci";
+"settingsButtonHelp" = "Impostazioni";
+"aboutRemindersMenuBarWindowTitle" = "Informazioni sulla barra dei menu dei promemoria";
+"appVersionDescription" = "Versione %@";
+"remindersMenuBarAppAboutDescription" = "
+Promemoria Menu Bar è un software open source \
+concesso in licenza secondo i termini del %@.
+";
+"remindersMenuBarGitHubAboutDescription" = "Funzionalità e aggiornamenti disponibili su GitHub";
+"seeMoreOnGitHubButton" = "Vedi di più su GitHub";
+"upcomingRemindersIntervalSelectionHelp" = "Seleziona l'intervallo dei prossimi promemoria da mostrare";
+"upcomingRemindersTodayTitle" = "Oggi";
+"upcomingRemindersInAWeekTitle" = "Tra una settimana";
+"upcomingRemindersInAMonthTitle" = "Tra un mese";
+"upcomingRemindersAllTitle" = "Tutti";
+"appNoRemindersAccessAlertMessage" = "L'accesso ai promemoria non è abilitato per la barra dei menu dei promemoria";
+"appNoRemindersAccessAlertDescription" = "
+Promemoria Menu Bar ha bisogno di accedere ai tuoi promemoria per funzionare correttamente.
+Concedi l'autorizzazione in Preferenze di Sistema per utilizzare la barra dei menu Promemoria.
+";
+"openSystemPreferencesButton" = "Apri Preferenze di Sistema";
+"okButton" = "Ok";

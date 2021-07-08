@@ -103,6 +103,8 @@
 		71E51D5725BFB8CF009A4B56 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		71F301F9259FB5CF00CDD81E /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		71F9726925981EDF00D0A118 /* NSTableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableView+Extensions.swift"; sourceTree = "<group>"; };
+		A346D6F92696EC3800A63A5D /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Main.strings; sourceTree = "<group>"; };
+		A346D6FA2696EC3800A63A5D /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,6 +317,7 @@
 			knownRegions = (
 				en,
 				Base,
+				it,
 			);
 			mainGroup = 712C32A724BF939100AC75E2;
 			productRefGroup = 712C32B124BF939100AC75E2 /* Products */;
@@ -424,6 +427,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				712C32BD24BF939200AC75E2 /* Base */,
+				A346D6F92696EC3800A63A5D /* it */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -432,6 +436,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				7151CC99265E0388002D7F1D /* en */,
+				A346D6FA2696EC3800A63A5D /* it */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
