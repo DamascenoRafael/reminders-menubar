@@ -25,10 +25,7 @@
 "settingsButtonHelp" = "Impostazioni";
 "aboutRemindersMenuBarWindowTitle" = "Informazioni su Reminders Menu Bar";
 "appVersionDescription" = "Versione %@";
-"remindersMenuBarAppAboutDescription" = "
-Reminders Menu Bar è un software open source \
-concesso in licenza secondo i termini del %@.
-";
+"remindersMenuBarAppAboutDescription" = "Reminders Menu Bar è un software open source concesso in licenza secondo i termini del %@.";
 "remindersMenuBarGitHubAboutDescription" = "Funzionalità e aggiornamenti disponibili su GitHub";
 "seeMoreOnGitHubButton" = "Vedi di più su GitHub";
 "upcomingRemindersIntervalSelectionHelp" = "Seleziona l'intervallo dei prossimi promemoria da mostrare";

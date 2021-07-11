@@ -7,10 +7,15 @@ struct UpcomingRemindersTitle: View {
     
     var body: some View {
         HStack(alignment: .center) {
+            // TODO: Remove the 'scaledToFit' and 'minimumScaleFactor' properties from the title
+            // and apply it to the Menu. It is expected that the Menu will occupy as little horizontal space as possible
+            // and be resized if necessary, but the Menu behavior without the 'fixedSize' property is different.
             Text(rmbLocalized(.upcomingRemindersTitle))
                 .font(.headline)
                 .foregroundColor(.red)
                 .padding(.bottom, 5)
+                .scaledToFit()
+                .minimumScaleFactor(0.8)
             
             Spacer()
             

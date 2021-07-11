@@ -25,10 +25,7 @@
 "settingsButtonHelp" = "Settings";
 "aboutRemindersMenuBarWindowTitle" = "About Reminders Menu Bar";
 "appVersionDescription" = "Version %@";
-"remindersMenuBarAppAboutDescription" = "
-Reminders Menu Bar is an open source software \
-licensed under the terms of the %@.
-";
+"remindersMenuBarAppAboutDescription" = "Reminders Menu Bar is an open source software licensed under the terms of the %@.";
 "remindersMenuBarGitHubAboutDescription" = "Features and updates available on GitHub";
 "seeMoreOnGitHubButton" = "See more on GitHub";
 "upcomingRemindersIntervalSelectionHelp" = "Select range of upcoming reminders to be shown";

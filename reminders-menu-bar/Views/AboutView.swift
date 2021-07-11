@@ -19,7 +19,7 @@ struct AboutView: View {
                     Text(rmbLocalized(.appVersionDescription, arguments: AppConstants.currentVersion))
                         .font(Font.callout.weight(.light))
                 }
-                .padding(.bottom, 8)
+                .padding(.bottom, 4)
 
                 VStack(alignment: .leading, spacing: 14) {
                     Text(rmbLocalized(.remindersMenuBarAppAboutDescription,
