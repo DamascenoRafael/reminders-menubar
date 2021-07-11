@@ -23,10 +23,10 @@
 "appAboutButton" = "Informazioni";
 "appQuitButton" = "Esci";
 "settingsButtonHelp" = "Impostazioni";
-"aboutRemindersMenuBarWindowTitle" = "Informazioni sulla barra dei menu dei promemoria";
+"aboutRemindersMenuBarWindowTitle" = "Informazioni su Reminders Menu Bar";
 "appVersionDescription" = "Versione %@";
 "remindersMenuBarAppAboutDescription" = "
-Promemoria Menu Bar è un software open source \
+Reminders Menu Bar è un software open source \
 concesso in licenza secondo i termini del %@.
 ";
 "remindersMenuBarGitHubAboutDescription" = "Funzionalità e aggiornamenti disponibili su GitHub";
@@ -36,10 +36,10 @@ concesso in licenza secondo i termini del %@.
 "upcomingRemindersInAWeekTitle" = "Tra una settimana";
 "upcomingRemindersInAMonthTitle" = "Tra un mese";
 "upcomingRemindersAllTitle" = "Tutti";
-"appNoRemindersAccessAlertMessage" = "L'accesso ai promemoria non è abilitato per la barra dei menu dei promemoria";
+"appNoRemindersAccessAlertMessage" = "L'accesso ai promemoria non è abilitato per Reminders Menu Bar";
 "appNoRemindersAccessAlertDescription" = "
-Promemoria Menu Bar ha bisogno di accedere ai tuoi promemoria per funzionare correttamente.
-Concedi l'autorizzazione in Preferenze di Sistema per utilizzare la barra dei menu Promemoria.
+Reminders Menu Bar ha bisogno di accedere ai tuoi promemoria per funzionare correttamente.
+Concedi l'autorizzazione in Preferenze di Sistema per utilizzare Reminders Menu Bar.
 ";
 "openSystemPreferencesButton" = "Apri Preferenze di Sistema";
 "okButton" = "Ok";
