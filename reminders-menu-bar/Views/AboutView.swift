@@ -14,7 +14,7 @@ struct AboutView: View {
             
             VStack(alignment: .leading, spacing: 8) {
                 VStack(alignment: .leading) {
-                    Text("Reminders Menu Bar")
+                    Text(AppConstants.appName)
                         .font(Font.title.weight(.thin))
                     Text(rmbLocalized(.appVersionDescription, arguments: AppConstants.currentVersion))
                         .font(Font.callout.weight(.light))
@@ -23,7 +23,8 @@ struct AboutView: View {
 
                 VStack(alignment: .leading, spacing: 14) {
                     Text(rmbLocalized(.remindersMenuBarAppAboutDescription,
-                                      arguments: "GNU General Public License v3.0"))
+                                      arguments: AppConstants.appName,
+                                      "GNU General Public License v3.0"))
                     Text(rmbLocalized(.remindersMenuBarGitHubAboutDescription))
                 }
                 .font(.system(size: 11))
@@ -49,7 +50,7 @@ struct AboutView: View {
         let windowController = NSWindowController(window: NSWindow(contentViewController: viewController))
         
         if let window = windowController.window {
-            window.title = rmbLocalized(.aboutRemindersMenuBarWindowTitle)
+            window.title = rmbLocalized(.aboutRemindersMenuBarWindowTitle, arguments: AppConstants.appName)
             window.titleVisibility = .hidden
             window.titlebarAppearsTransparent = true
             window.animationBehavior = .alertPanel

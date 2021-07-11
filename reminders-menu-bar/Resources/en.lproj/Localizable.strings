@@ -23,9 +23,9 @@
 "appAboutButton" = "About";
 "appQuitButton" = "Quit";
 "settingsButtonHelp" = "Settings";
-"aboutRemindersMenuBarWindowTitle" = "About Reminders Menu Bar";
+"aboutRemindersMenuBarWindowTitle" = "About %@";
 "appVersionDescription" = "Version %@";
-"remindersMenuBarAppAboutDescription" = "Reminders Menu Bar is an open source software licensed under the terms of the %@.";
+"remindersMenuBarAppAboutDescription" = "%@ is an open source software licensed under the terms of the %@.";
 "remindersMenuBarGitHubAboutDescription" = "Features and updates available on GitHub";
 "seeMoreOnGitHubButton" = "See more on GitHub";
 "upcomingRemindersIntervalSelectionHelp" = "Select range of upcoming reminders to be shown";
@@ -33,10 +33,10 @@
 "upcomingRemindersInAWeekTitle" = "In a Week";
 "upcomingRemindersInAMonthTitle" = "In a Month";
 "upcomingRemindersAllTitle" = "All";
-"appNoRemindersAccessAlertMessage" = "Access to Reminders is not enabled for Reminders Menu Bar";
+"appNoRemindersAccessAlertMessage" = "Access to Reminders is not enabled for %@";
 "appNoRemindersAccessAlertDescription" = "
-Reminders Menu Bar needs access to your reminders to work properly.
-Grant permission in System Preferences to use Reminders Menu Bar.
+%@ needs access to your reminders to work properly.
+Grant permission in System Preferences to use %@.
 ";
 "openSystemPreferencesButton" = "Open System Preferences";
 "okButton" = "Ok";

@@ -23,9 +23,9 @@
 "appAboutButton" = "Informazioni";
 "appQuitButton" = "Esci";
 "settingsButtonHelp" = "Impostazioni";
-"aboutRemindersMenuBarWindowTitle" = "Informazioni su Reminders Menu Bar";
+"aboutRemindersMenuBarWindowTitle" = "Informazioni su %@";
 "appVersionDescription" = "Versione %@";
-"remindersMenuBarAppAboutDescription" = "Reminders Menu Bar è un software open source concesso in licenza secondo i termini del %@.";
+"remindersMenuBarAppAboutDescription" = "%@ è un software open source concesso in licenza secondo i termini del %@.";
 "remindersMenuBarGitHubAboutDescription" = "Funzionalità e aggiornamenti disponibili su GitHub";
 "seeMoreOnGitHubButton" = "Vedi di più su GitHub";
 "upcomingRemindersIntervalSelectionHelp" = "Seleziona l'intervallo dei prossimi promemoria da mostrare";
@@ -33,10 +33,10 @@
 "upcomingRemindersInAWeekTitle" = "Tra una settimana";
 "upcomingRemindersInAMonthTitle" = "Tra un mese";
 "upcomingRemindersAllTitle" = "Tutti";
-"appNoRemindersAccessAlertMessage" = "L'accesso ai promemoria non è abilitato per Reminders Menu Bar";
+"appNoRemindersAccessAlertMessage" = "L'accesso ai promemoria non è abilitato per %@";
 "appNoRemindersAccessAlertDescription" = "
-Reminders Menu Bar ha bisogno di accedere ai tuoi promemoria per funzionare correttamente.
-Concedi l'autorizzazione in Preferenze di Sistema per utilizzare Reminders Menu Bar.
+%@ ha bisogno di accedere ai tuoi promemoria per funzionare correttamente.
+Concedi l'autorizzazione in Preferenze di Sistema per utilizzare %@.
 ";
 "openSystemPreferencesButton" = "Apri Preferenze di Sistema";
 "okButton" = "Ok";

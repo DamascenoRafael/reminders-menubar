@@ -59,8 +59,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     private func presentNoAuthorizationAlert() {
         let alert = NSAlert()
-        alert.messageText = rmbLocalized(.appNoRemindersAccessAlertMessage)
-        alert.informativeText = rmbLocalized(.appNoRemindersAccessAlertDescription)
+        alert.messageText = rmbLocalized(.appNoRemindersAccessAlertMessage, arguments: AppConstants.appName)
+        alert.informativeText = rmbLocalized(.appNoRemindersAccessAlertDescription,
+                                             arguments: AppConstants.appName,
+                                             AppConstants.appName)
         alert.addButton(withTitle: rmbLocalized(.okButton))
         alert.addButton(withTitle: rmbLocalized(.openSystemPreferencesButton))
         alert.addButton(withTitle: rmbLocalized(.appQuitButton)).hasDestructiveAction = true
