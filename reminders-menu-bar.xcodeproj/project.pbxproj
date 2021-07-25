@@ -37,6 +37,7 @@
 		71A3834625BDD2AC00975B4C /* EKReminder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A3834525BDD2AC00975B4C /* EKReminder+Extensions.swift */; };
 		71A4163725CED8FE00CA4F81 /* GithubService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A4163625CED8FE00CA4F81 /* GithubService.swift */; };
 		71A73E8A25CCC6960064D528 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A73E8925CCC6960064D528 /* main.swift */; };
+		71B1836526AE145700A5C397 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71B1836726AE145700A5C397 /* InfoPlist.strings */; };
 		71B4AD4F25B7D06400214219 /* CalendarTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B4AD4E25B7D06400214219 /* CalendarTitleView.swift */; };
 		71B4AD5325B7F37D00214219 /* NSTextFiel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B4AD5225B7F37D00214219 /* NSTextFiel+Extensions.swift */; };
 		71B4AD6625B9118000214219 /* NoReminderItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B4AD6525B9118000214219 /* NoReminderItemsView.swift */; };
@@ -95,6 +96,8 @@
 		71A3834525BDD2AC00975B4C /* EKReminder+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EKReminder+Extensions.swift"; sourceTree = "<group>"; };
 		71A4163625CED8FE00CA4F81 /* GithubService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubService.swift; sourceTree = "<group>"; };
 		71A73E8925CCC6960064D528 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		71B1836626AE145700A5C397 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		71B1836826AE148E00A5C397 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		71B4AD4E25B7D06400214219 /* CalendarTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTitleView.swift; sourceTree = "<group>"; };
 		71B4AD5225B7F37D00214219 /* NSTextFiel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextFiel+Extensions.swift"; sourceTree = "<group>"; };
 		71B4AD6525B9118000214219 /* NoReminderItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoReminderItemsView.swift; sourceTree = "<group>"; };
@@ -201,6 +204,7 @@
 				714E6F6025CCF66000BA0099 /* Constants.swift */,
 				712C32BC24BF939200AC75E2 /* Main.storyboard */,
 				712C32BF24BF939200AC75E2 /* Info.plist */,
+				71B1836726AE145700A5C397 /* InfoPlist.strings */,
 				712C32C024BF939200AC75E2 /* reminders_menu_bar.entitlements */,
 				712C32B924BF939200AC75E2 /* Preview Content */,
 			);
@@ -342,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7151CC98265E0388002D7F1D /* Localizable.strings in Resources */,
+				71B1836526AE145700A5C397 /* InfoPlist.strings in Resources */,
 				712C32BE24BF939200AC75E2 /* Main.storyboard in Resources */,
 				71359E9824C6C0B5001D4C40 /* Colors.xcassets in Resources */,
 				712C32BB24BF939200AC75E2 /* Preview Assets.xcassets in Resources */,
@@ -437,6 +442,15 @@
 				A346D6FA2696EC3800A63A5D /* it */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		71B1836726AE145700A5C397 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				71B1836626AE145700A5C397 /* en */,
+				71B1836826AE148E00A5C397 /* it */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
