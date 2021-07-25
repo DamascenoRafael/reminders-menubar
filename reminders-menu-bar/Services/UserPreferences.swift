@@ -9,6 +9,7 @@ private struct PreferencesKeys {
     static let showUpcomingReminders = "showUpcomingReminders"
     static let upcomingRemindersInterval = "upcomingRemindersInterval"
     static let showMenuBarTodayCount = "showMenuBarTodayCount"
+    static let preferredLanguage = "preferredLanguage"
 }
 
 class UserPreferences: ObservableObject {
@@ -114,6 +115,14 @@ class UserPreferences: ObservableObject {
     }() {
         didSet {
             UserPreferences.defaults.set(showMenuBarTodayCount, forKey: PreferencesKeys.showMenuBarTodayCount)
+        }
+    }
+    
+    @Published var preferredLanguage: String? = {
+        return UserDefaults.standard.string(forKey: PreferencesKeys.preferredLanguage)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(preferredLanguage, forKey: PreferencesKeys.preferredLanguage)
         }
     }
 }

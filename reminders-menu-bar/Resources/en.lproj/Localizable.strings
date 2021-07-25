@@ -40,3 +40,5 @@ Grant permission in System Preferences to use %@.
 ";
 "openSystemPreferencesButton" = "Open System Preferences";
 "okButton" = "Ok";
+"preferredLanguageMenu" = "Preferred language";
+"preferredLanguageSystemOptionButton" = "Use system language";

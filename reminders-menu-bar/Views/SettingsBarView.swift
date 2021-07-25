@@ -131,6 +131,32 @@ struct SettingsBarView: View {
                     Text(rmbLocalized(.appAppearanceMenu))
                 }
                 
+                Menu {
+                    Button(action: {
+                        UserPreferences.instance.preferredLanguage = nil
+                    }) {
+                        let isSelected = UserPreferences.instance.preferredLanguage == nil
+                        SelectableView(title: rmbLocalized(.preferredLanguageSystemOptionButton),
+                                       isSelected: isSelected)
+                    }
+                    
+                    VStack {
+                        Divider()
+                    }
+                                    
+                    ForEach(rmbAvailableLocales(), id: \.identifier) { locale in
+                        let localeIdentifier = locale.identifier
+                        Button(action: {
+                            UserPreferences.instance.preferredLanguage = localeIdentifier
+                        }) {
+                            let isSelected = UserPreferences.instance.preferredLanguage == localeIdentifier
+                            SelectableView(title: locale.name, isSelected: isSelected)
+                        }
+                    }
+                } label: {
+                    Text(rmbLocalized(.preferredLanguageMenu))
+                }
+                
                 VStack {
                     Divider()
                 }

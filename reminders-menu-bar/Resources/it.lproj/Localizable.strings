@@ -40,3 +40,5 @@ Concedi l'autorizzazione in Preferenze di Sistema per utilizzare %@.
 ";
 "openSystemPreferencesButton" = "Apri Preferenze di Sistema";
 "okButton" = "Ok";
+"preferredLanguageMenu" = "Preferred language"; // TODO: Update to proper translation
+"preferredLanguageSystemOptionButton" = "Use system language"; // TODO: Update to proper translation

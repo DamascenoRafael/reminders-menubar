@@ -40,11 +40,33 @@ enum RemindersMenuBarLocalizedKeys: String {
     case appNoRemindersAccessAlertDescription
     case openSystemPreferencesButton
     case okButton
+    case preferredLanguageMenu
+    case preferredLanguageSystemOptionButton
+}
+
+struct ReminderMenuBarLocale {
+    let identifier: String
+    let name: String
 }
 
 func rmbLocalized(_ key: RemindersMenuBarLocalizedKeys, arguments: CVarArg...) -> String {
-    let localizedString = NSLocalizedString(key.rawValue, comment: "")
+    let preferredLanguage = UserPreferences.instance.preferredLanguage
+    let localePath = Bundle.main.path(forResource: preferredLanguage, ofType: "lproj") ?? ""
+    let localeBundle = Bundle(path: localePath) ?? Bundle.main
+    
+    let localizedString = NSLocalizedString(key.rawValue, bundle: localeBundle, comment: "")
     return String(format: localizedString, arguments: arguments)
+}
+
+func rmbAvailableLocales() -> [ReminderMenuBarLocale] {
+    let currentLocale = rmbCurrentLocale()
+    
+    return Bundle.main.localizations.compactMap { identifier -> ReminderMenuBarLocale? in
+        guard let name = currentLocale.localizedString(forIdentifier: identifier) else {
+            return nil
+        }
+        return ReminderMenuBarLocale(identifier: identifier, name: name)
+    }
 }
 
 func rmbCurrentLocale() -> Locale {
