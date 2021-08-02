@@ -12,7 +12,7 @@
 "emptyListNoUpcomingRemindersMessage" = "No upcoming reminders";
 "upcomingRemindersTitle" = "Upcoming reminders";
 "remindersFilterSelectionHelp" = "Filter which reminders to show";
-"showCompletedRemindersToggleButtonHelp" = "Toggle between showing all reminders or only uncompleted ones";
+"showCompletedRemindersToggleButtonHelp" = "Toggle between showing the completed reminders or not";
 "updateAvaiableNoticeButton" = "Update avaiable";
 "launchAtLoginOptionButton" = "Launch at login";
 "appAppearanceMenu" = "Appearance";
