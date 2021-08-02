@@ -1,0 +1,44 @@
+"newReminderTextFielPlaceholder" = "Digite um lembrete e aperte enter";
+"newReminderCalendarSelectionToSaveHelp" = "Selecione onde o novo lembrete será salvo";
+"remindersOptionsButtonHelp" = "Opções para editar o lembrete";
+"removeReminderOptionButton" = "Remover";
+"removeReminderAlertTitle" = "Remover lembrete?";
+"removeReminderAlertMessage" = "Essa ação irá remover '%@' e não pode ser desfeita";
+"removeReminderAlertConfirmButton" = "Remover";
+"removeReminderAlertCancelButton" = "Cancelar";
+"reminderMoveToMenuOption" = "Mover para ...";
+"emptyListNoRemindersMessage" = "Sem lembretes";
+"emptyListAllItemsCompletedMessage" = "Todos os itens concluídos";
+"emptyListNoUpcomingRemindersMessage" = "Sem lembretes próximos";
+"upcomingRemindersTitle" = "Próximos lembretes";
+"remindersFilterSelectionHelp" = "Filtre quais lembretes mostrar";
+"showCompletedRemindersToggleButtonHelp" = "Alternar entre mostrar os lembretes concluídos ou não";
+"updateAvaiableNoticeButton" = "Atualização disponível";
+"launchAtLoginOptionButton" = "Iniciar no login";
+"appAppearanceMenu" = "Aparência";
+"appAppearanceMoreOpaqueOptionButton" = "Mais opaco";
+"appAppearanceMoreTransparentOptionButton" = "Mais transparente";
+"showMenuBarTodayCountOptionButton" = "Mostrar contagem para hoje na barra de menu";
+"reloadRemindersDataButton" = "Recarregar dados";
+"appAboutButton" = "Sobre";
+"appQuitButton" = "Sair";
+"settingsButtonHelp" = "Configurações";
+"aboutRemindersMenuBarWindowTitle" = "Sobre %@";
+"appVersionDescription" = "Versão %@";
+"remindersMenuBarAppAboutDescription" = "%@ é um software open source licenciado sob os termos da %@.";
+"remindersMenuBarGitHubAboutDescription" = "Recursos e atualizações disponíveis no GitHub";
+"seeMoreOnGitHubButton" = "Veja mais no GitHub";
+"upcomingRemindersIntervalSelectionHelp" = "Selecione o intervalo para os próximos lembretes a serem mostrados";
+"upcomingRemindersTodayTitle" = "Hoje";
+"upcomingRemindersInAWeekTitle" = "Em uma Semana";
+"upcomingRemindersInAMonthTitle" = "Em um Mês";
+"upcomingRemindersAllTitle" = "Todos";
+"appNoRemindersAccessAlertMessage" = "Acesso aos Lembretes não está habilitado para %@";
+"appNoRemindersAccessAlertDescription" = "
+%@ precisa de acesso aos seus lembretes para funcionar corretamente.
+Conceda permissão nas Preferências do Sistema para usar %@.
+";
+"openSystemPreferencesButton" = "Abrir Preferências do Sistema";
+"okButton" = "Ok";
+"preferredLanguageMenu" = "Idioma preferido";
+"preferredLanguageSystemOptionButton" = "Usar idioma do sistema";
