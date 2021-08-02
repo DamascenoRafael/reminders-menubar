@@ -70,7 +70,10 @@ func rmbAvailableLocales() -> [ReminderMenuBarLocale] {
 }
 
 func rmbCurrentLocale() -> Locale {
-    let currentLocale = Locale.current
+    var currentLocale = Locale.current
+    if let preferredLanguage = UserPreferences.instance.preferredLanguage {
+        currentLocale = Locale(identifier: preferredLanguage)
+    }
     if Bundle.main.path(forResource: currentLocale.identifier, ofType: "lproj") == nil {
         // Return the default locale if translation to system language does not exist
         return Locale(identifier: "en_US")
