@@ -65,7 +65,7 @@ func rmbAvailableLocales() -> [ReminderMenuBarLocale] {
         guard let name = currentLocale.localizedString(forIdentifier: identifier) else {
             return nil
         }
-        return ReminderMenuBarLocale(identifier: identifier, name: name)
+        return ReminderMenuBarLocale(identifier: identifier, name: name.capitalized)
     }
 }
 
