@@ -12,7 +12,7 @@
 "emptyListNoUpcomingRemindersMessage" = "Nessun promemoria in arrivo";
 "upcomingRemindersTitle" = "Prossimi promemoria";
 "remindersFilterSelectionHelp" = "Filtra i promemoria da mostrare";
-"showCompletedRemindersToggleButtonHelp" = "Sposta tra la visualizzazione di tutti i promemoria o solo quelli non completati";
+"showCompletedRemindersToggleButtonHelp" = "Alterna tra mostrare o meno i promemoria completati";
 "updateAvaiableNoticeButton" = "Aggiornamento disponibile";
 "launchAtLoginOptionButton" = "Avvia all'accesso";
 "appAppearanceMenu" = "Aspetto";
