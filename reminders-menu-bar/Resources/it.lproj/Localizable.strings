@@ -12,7 +12,7 @@
 "emptyListNoUpcomingRemindersMessage" = "Nessun promemoria in arrivo";
 "upcomingRemindersTitle" = "Prossimi promemoria";
 "remindersFilterSelectionHelp" = "Filtra i promemoria da mostrare";
-"showCompletedRemindersToggleButtonHelp" = "Sposta tra la visualizzazione di tutti i promemoria o solo quelli non completati";
+"showCompletedRemindersToggleButtonHelp" = "Alterna tra mostrare o meno i promemoria completati";
 "updateAvaiableNoticeButton" = "Aggiornamento disponibile";
 "launchAtLoginOptionButton" = "Avvia all'accesso";
 "appAppearanceMenu" = "Aspetto";
@@ -40,5 +40,5 @@ Concedi l'autorizzazione in Preferenze di Sistema per utilizzare %@.
 ";
 "openSystemPreferencesButton" = "Apri Preferenze di Sistema";
 "okButton" = "Ok";
-"preferredLanguageMenu" = "Preferred language"; // TODO: Update to proper translation
-"preferredLanguageSystemOptionButton" = "Use system language"; // TODO: Update to proper translation
+"preferredLanguageMenu" = "Lingua preferita"; // TODO: Update to proper translation
+"preferredLanguageSystemOptionButton" = "Usa la lingua di sistema"; // TODO: Update to proper translation
