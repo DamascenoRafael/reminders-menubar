@@ -13,6 +13,7 @@
     <a href="#features">Features</a> •
     <a href="#installation">Installation</a> •
     <a href="#contributing">Contributing</a> •
+    <a href="#languages">Languages</a> •
     <a href="#license">License</a>
   </p>
 </div>
@@ -84,6 +85,23 @@ After downloading and extracting, just drag the *.app* file to the *Applications
 ## Contributing
 
 Feel free to share, open issues and contribute to this project! :heart:
+
+## Languages
+
+🇺🇸 English • 🇧🇷 Brazilian Portuguese • 🇮🇹 Italian
+
+<details>
+  <summary>
+  Click here to learn how to add new languages :globe_with_meridians:
+  </summary>
+
+1. In Project navigator select the project reminders-menu-bar (first item)
+2. In the list of projects and targets select the project reminders-menu-bar (not the target)
+3. In the "Info" tab under "Localizations" select the "+" button and choose the new location
+4. In the list of resources, **uncheck "Main.storyboard"** and click on "Finish"
+5. Edit the new location version of the **Localizable.strings** and **InfoPlist.strings** files with the translations
+
+</details>
 
 ## License
 
