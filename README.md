@@ -64,7 +64,7 @@ See [Apple Support: Open a Mac app from an unidentified developer](https://suppo
 
   1. Try to run the app and when you see the message just click *OK*;
   2. Open *System Preferences* > *Security and Privacy*;
-  3. Check the message saying that the app was blocked;
+  3. On the *General* tab check the message saying that the app was blocked;
   4. Finally click on *Open Anyway*.
 
 </details>
