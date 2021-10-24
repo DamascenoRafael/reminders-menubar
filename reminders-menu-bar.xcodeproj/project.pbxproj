@@ -61,6 +61,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		12A1E2A8271EDE98004C48C4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		12A1E2A9271EDE98004C48C4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		7102422F25F55D5600451D15 /* ReminderInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderInterval.swift; sourceTree = "<group>"; };
 		71032A8E24C21F0F00A8006C /* FormNewReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormNewReminderView.swift; sourceTree = "<group>"; };
 		71059DA825CA5244001F3063 /* RemindersLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemindersLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -321,6 +323,7 @@
 				Base,
 				it,
 				"pt-BR",
+				"zh-Hans",
 			);
 			mainGroup = 712C32A724BF939100AC75E2;
 			productRefGroup = 712C32B124BF939100AC75E2 /* Products */;
@@ -432,6 +435,7 @@
 				7151CC99265E0388002D7F1D /* en */,
 				A346D6FA2696EC3800A63A5D /* it */,
 				71B1836926AE241600A5C397 /* pt-BR */,
+				12A1E2A8271EDE98004C48C4 /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -442,6 +446,7 @@
 				71B1836626AE145700A5C397 /* en */,
 				71B1836826AE148E00A5C397 /* it */,
 				71B1836A26AE241600A5C397 /* pt-BR */,
+				12A1E2A9271EDE98004C48C4 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
