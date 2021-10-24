@@ -19,7 +19,6 @@
 		712C32B624BF939100AC75E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712C32B524BF939100AC75E2 /* ContentView.swift */; };
 		712C32B824BF939200AC75E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 712C32B724BF939200AC75E2 /* Assets.xcassets */; };
 		712C32BB24BF939200AC75E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 712C32BA24BF939200AC75E2 /* Preview Assets.xcassets */; };
-		712C32BE24BF939200AC75E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 712C32BC24BF939200AC75E2 /* Main.storyboard */; };
 		71359E9824C6C0B5001D4C40 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71359E9724C6C0B5001D4C40 /* Colors.xcassets */; };
 		713F234524C130D400FF0BEC /* ReminderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F234424C130D400FF0BEC /* ReminderList.swift */; };
 		7141456325CF9693006695B2 /* Release.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7141456225CF9693006695B2 /* Release.swift */; };
@@ -77,7 +76,6 @@
 		712C32B524BF939100AC75E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		712C32B724BF939200AC75E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		712C32BA24BF939200AC75E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		712C32BD24BF939200AC75E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		712C32BF24BF939200AC75E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		712C32C024BF939200AC75E2 /* reminders_menu_bar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = reminders_menu_bar.entitlements; sourceTree = "<group>"; };
 		71359E9724C6C0B5001D4C40 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -204,7 +202,6 @@
 				712C32B324BF939100AC75E2 /* AppDelegate.swift */,
 				71A0B2DB25CE20AC004E06AE /* AppUpdateCheckHelper.swift */,
 				714E6F6025CCF66000BA0099 /* Constants.swift */,
-				712C32BC24BF939200AC75E2 /* Main.storyboard */,
 				712C32BF24BF939200AC75E2 /* Info.plist */,
 				71B1836726AE145700A5C397 /* InfoPlist.strings */,
 				712C32C024BF939200AC75E2 /* reminders_menu_bar.entitlements */,
@@ -350,7 +347,6 @@
 			files = (
 				7151CC98265E0388002D7F1D /* Localizable.strings in Resources */,
 				71B1836526AE145700A5C397 /* InfoPlist.strings in Resources */,
-				712C32BE24BF939200AC75E2 /* Main.storyboard in Resources */,
 				71359E9824C6C0B5001D4C40 /* Colors.xcassets in Resources */,
 				712C32BB24BF939200AC75E2 /* Preview Assets.xcassets in Resources */,
 				712C32B824BF939200AC75E2 /* Assets.xcassets in Resources */,
@@ -430,14 +426,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		712C32BC24BF939200AC75E2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				712C32BD24BF939200AC75E2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		7151CC9A265E0388002D7F1D /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

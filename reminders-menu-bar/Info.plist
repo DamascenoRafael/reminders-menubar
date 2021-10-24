@@ -28,8 +28,6 @@
 	<true/>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2020 Rafael Damasceno. All rights reserved.</string>
-	<key>NSMainStoryboardFile</key>
-	<string>Main</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>NSRemindersUsageDescription</key>

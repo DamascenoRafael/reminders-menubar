@@ -1,11 +1,22 @@
 import Cocoa
 import SwiftUI
 
-@NSApplicationMain
+@main
+struct RemindersMenuBar: App {
+    // swiftlint:disable:next weak_delegate
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
+    var body: some Scene {
+        Settings {
+            EmptyView()
+        }
+    }
+}
+
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     let popover = NSPopover()
-    let statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    lazy var statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     var contentViewController: NSViewController {
         let contentView = ContentView()
         let remindersData = RemindersData()
