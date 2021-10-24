@@ -50,7 +50,7 @@ struct ReminderMenuBarLocale {
 }
 
 func rmbLocalized(_ key: RemindersMenuBarLocalizedKeys, arguments: CVarArg...) -> String {
-    let preferredLanguage = UserPreferences.instance.preferredLanguage
+    let preferredLanguage = rmbCurrentLocale().identifier
     let localePath = Bundle.main.path(forResource: preferredLanguage, ofType: "lproj") ?? ""
     let localeBundle = Bundle(path: localePath) ?? Bundle.main
     
