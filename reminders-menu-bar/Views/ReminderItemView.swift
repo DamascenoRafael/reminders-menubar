@@ -10,8 +10,6 @@ struct ReminderItemView: View {
     @State private var showingRemoveAlert = false
     @State private var hasBeenRemoved = false
     
-    weak var appDelegate = NSApplication.shared.delegate as? AppDelegate
-    
     var body: some View {
         HStack(alignment: .top) {
             Button(action: {
@@ -74,9 +72,9 @@ struct ReminderItemView: View {
                 }
                 .onChange(of: showingRemoveAlert) { isShowing in
                     if isShowing {
-                        appDelegate?.changeBehaviorToKeepVisible()
+                        AppDelegate.instance.changeBehaviorToKeepVisible()
                     } else {
-                        appDelegate?.changeBehaviorToDismissIfNeeded()
+                        AppDelegate.instance.changeBehaviorToDismissIfNeeded()
                     }
                 }
                 
@@ -111,7 +109,7 @@ struct ReminderItemView: View {
             reminderItemIsHovered = isHovered
         }
         .onDisappear(perform: {
-            appDelegate?.changeBehaviorToDismissIfNeeded()
+            AppDelegate.instance.changeBehaviorToDismissIfNeeded()
             if hasBeenRemoved {
                 RemindersService.instance.commitChanges()
             }

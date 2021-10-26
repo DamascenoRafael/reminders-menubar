@@ -4,8 +4,6 @@ import EventKit
 
 class RemindersData: ObservableObject {
     
-    weak var appDelegate = NSApplication.shared.delegate as? AppDelegate
-    
     let userPreferences = UserPreferences.instance
     
     var cancellationTokens: [AnyCancellable] = []
@@ -82,6 +80,6 @@ class RemindersData: ObservableObject {
         if showMenuBarTodayCount {
             todayCount = RemindersService.instance.getUpcomingReminders(.today).count
         }
-        self.appDelegate?.updateMenuBarTodayCount(to: todayCount)
+        AppDelegate.instance.updateMenuBarTodayCount(to: todayCount)
     }
 }

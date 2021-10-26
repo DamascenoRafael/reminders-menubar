@@ -14,6 +14,8 @@ struct RemindersMenuBar: App {
 }
 
 class AppDelegate: NSObject, NSApplicationDelegate {
+    
+    static private(set) var instance: AppDelegate!
 
     let popover = NSPopover()
     lazy var statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -24,6 +26,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        AppDelegate.instance = self
+        
         AppUpdateCheckHelper.instance.startBackgroundActivity()
         
         changeBehaviorToDismissIfNeeded()
