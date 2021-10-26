@@ -61,12 +61,14 @@ func rmbLocalized(_ key: RemindersMenuBarLocalizedKeys, arguments: CVarArg...) -
 func rmbAvailableLocales() -> [ReminderMenuBarLocale] {
     let currentLocale = rmbCurrentLocale()
     
-    return Bundle.main.localizations.compactMap { identifier -> ReminderMenuBarLocale? in
+    let locales = Bundle.main.localizations.compactMap { identifier -> ReminderMenuBarLocale? in
         guard let name = currentLocale.localizedString(forIdentifier: identifier) else {
             return nil
         }
         return ReminderMenuBarLocale(identifier: identifier, name: name.capitalized)
     }
+    
+    return locales.sorted(by: { $0.name < $1.name })
 }
 
 func rmbCurrentLocale() -> Locale {
