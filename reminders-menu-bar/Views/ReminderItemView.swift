@@ -32,7 +32,7 @@ struct ReminderItemView: View {
                         .fixedSize(horizontal: false, vertical: true)
                     Spacer()
                     MenuButton(label:
-                        reminderItemIsHovered ? Image(systemName: "ellipsis") : nil
+                        Image(systemName: "ellipsis")
                     ) {
                         let otherCalendars = remindersData.calendars.filter {
                             $0.calendarIdentifier != reminder.calendar.calendarIdentifier
@@ -59,6 +59,7 @@ struct ReminderItemView: View {
                     .padding(.top, 1)
                     .padding(.trailing, 10)
                     .help(rmbLocalized(.remindersOptionsButtonHelp))
+                    .opacity(reminderItemIsHovered ? 1 : 0)
                 }
                 .alert(isPresented: $showingRemoveAlert) {
                     Alert(title: Text(rmbLocalized(.removeReminderAlertTitle)),
