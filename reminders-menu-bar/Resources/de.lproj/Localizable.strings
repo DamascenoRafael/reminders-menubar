@@ -1,0 +1,44 @@
+"newReminderTextFielPlaceholder" = "Erinnerung eingeben und Enter drücken";
+"newReminderCalendarSelectionToSaveHelp" = "Auswählen wo die Erinnerung gespeichert wird";
+"remindersOptionsButtonHelp" = "Optionen für die Bearbeitung der Erinnerung";
+"removeReminderOptionButton" = "Löschen";
+"removeReminderAlertTitle" = "Erinnerung löschen?";
+"removeReminderAlertMessage" = "Hierdurch wird die Erinnerung '%@' gelöscht, dies kann nicht rückgängig gemacht werden";
+"removeReminderAlertConfirmButton" = "Entfernen";
+"removeReminderAlertCancelButton" = "Abbrechen";
+"reminderMoveToMenuOption" = "Verschieben nach ...";
+"emptyListNoRemindersMessage" = "Keine Erinnerungen";
+"emptyListAllItemsCompletedMessage" = "Keine offenen Erinnerungen";
+"emptyListNoUpcomingRemindersMessage" = "Keine zukünftigen Erinnerungen";
+"upcomingRemindersTitle" = "Zukünftige Erinnerungen";
+"remindersFilterSelectionHelp" = "Filtern, welche Erinnerungen angezeigt werden sollen";
+"showCompletedRemindersToggleButtonHelp" = "Umschalten zwischen abgeschlossene Erinnerungen Ein- und Ausblenden";
+"updateAvaiableNoticeButton" = "Update verfügbar";
+"launchAtLoginOptionButton" = "Bei Login automatisch starten";
+"appAppearanceMenu" = "Erscheinungsbild";
+"appAppearanceMoreOpaqueOptionButton" = "Hintergrund undurchsichtig";
+"appAppearanceMoreTransparentOptionButton" = "Hintergrund transparenter";
+"showMenuBarTodayCountOptionButton" = "Anzahl der offenen Erinnerungen in der Menüleiste anzeigen";
+"reloadRemindersDataButton" = "Erinnerungen aktualisieren";
+"appAboutButton" = "Über";
+"appQuitButton" = "Beenden";
+"settingsButtonHelp" = "Einstellungen";
+"aboutRemindersMenuBarWindowTitle" = "Über %@";
+"appVersionDescription" = "Version %@";
+"remindersMenuBarAppAboutDescription" = "%@ ist eine Open-Source-Software, die unter den Bedingungen der  %@ steht.";
+"remindersMenuBarGitHubAboutDescription" = "Informationen zur Funktion und Updates verfügbar auf GitHub";
+"seeMoreOnGitHubButton" = "Weiteres auf GitHub";
+"upcomingRemindersIntervalSelectionHelp" = "Auswählen welcher Zeitraum für Erinnerungen angezeigt werden soll";
+"upcomingRemindersTodayTitle" = "Heute";
+"upcomingRemindersInAWeekTitle" = "In einer Woche";
+"upcomingRemindersInAMonthTitle" = "In einem Monat";
+"upcomingRemindersAllTitle" = "Alle";
+"appNoRemindersAccessAlertMessage" = "Zugriff auf Erinnerungen ist für %@ nicht aktiviert";
+"appNoRemindersAccessAlertDescription" = "
+%@ muss auf Ihre Erinnerungen zugreifen können, um richtig zu funktionieren.
+Erteilen Sie in den Systemeinstellungen die Erlaubnis zur Verwendung von %@.
+";
+"openSystemPreferencesButton" = "Systemeinstellungen öffnen";
+"okButton" = "Ok";
+"preferredLanguageMenu" = "Bevorzugte Sprache";
+"preferredLanguageSystemOptionButton" = "Systemsprache verwenden";
