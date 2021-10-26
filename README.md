@@ -88,7 +88,7 @@ Feel free to share, open issues and contribute to this project! :heart:
 
 ## Languages
 
-🇺🇸 English • 🇧🇷 Brazilian Portuguese • 🇮🇹 Italian • 🇨🇳 Chinese (Simplified)
+🇺🇸 English • 🇧🇷 Brazilian Portuguese • 🇮🇹 Italian • 🇨🇳 Chinese (Simplified) • 🇩🇪 German
 
 <details>
   <summary>
