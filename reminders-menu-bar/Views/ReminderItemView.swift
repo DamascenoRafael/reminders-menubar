@@ -139,8 +139,9 @@ struct MoveToOptionMenu: View {
                     reminder.calendar = calendar
                     RemindersService.instance.save(reminder: reminder)
                 }) {
-                    Text(calendar.title)
+                    Text("● ")
                         .foregroundColor(Color(calendar.color))
+                    + Text(calendar.title)
                 }
             }
         }
