@@ -6,6 +6,7 @@ struct SelectableView: View {
     var isSelected: Bool
     var color: Color?
     var withPadding = true
+    var withDot = false
     
     var body: some View {
         if isSelected {
@@ -13,14 +14,19 @@ struct SelectableView: View {
                 .frame(minWidth: 0, minHeight: 0)
         }
         let paddingText = !isSelected && withPadding ? "      " : ""
-        Text(paddingText + "● ")
-            .foregroundColor(color)
-        + Text(title)
+        if withDot{
+            Text(paddingText + "● ")
+                .foregroundColor(color)
+            + Text(title)
+        }else{
+            Text(paddingText+title)
+        }
     }
 }
 
 struct SelectableButton_Previews: PreviewProvider {
     static var previews: some View {
-        SelectableView(title: "Option", isSelected: true)
+        HStack{SelectableView(title: "Option", isSelected: true, withDot: true)}
+        HStack{SelectableView(title: "Option", isSelected: false, withDot: true)}
     }
 }

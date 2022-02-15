@@ -38,7 +38,7 @@ struct FormNewReminderView: View {
                         Button(action: { userPreferences.calendarForSaving = calendar }) {
                             let isSelected =
                                 userPreferences.calendarForSaving.calendarIdentifier == calendar.calendarIdentifier
-                            SelectableView(title: calendar.title, isSelected: isSelected, color: Color(calendar.color))
+                            SelectableView(title: calendar.title, isSelected: isSelected, color: Color(calendar.color), withDot: true)
                         }
                     }
                 } label: {
