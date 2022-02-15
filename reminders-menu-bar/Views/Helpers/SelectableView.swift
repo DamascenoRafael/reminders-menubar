@@ -10,6 +10,7 @@ struct SelectableView: View {
     var body: some View {
         if isSelected {
             Image(systemName: "checkmark")
+                .frame(minWidth: 0, minHeight: 0)
         }
         let paddingText = !isSelected && withPadding ? "      " : ""
         Text(paddingText + "● ")
