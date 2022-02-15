@@ -12,8 +12,9 @@ struct SelectableView: View {
             Image(systemName: "checkmark")
         }
         let paddingText = !isSelected && withPadding ? "      " : ""
-        Text(paddingText + title)
+        Text(paddingText + "● ")
             .foregroundColor(color)
+        + Text(title)
     }
 }
 
