@@ -11,9 +11,15 @@ struct SelectableView: View {
         if isSelected {
             Image(systemName: "checkmark")
         }
+        
         let paddingText = !isSelected && withPadding ? "      " : ""
-        Text(paddingText + title)
-            .foregroundColor(color)
+        let coloredDot = color != nil ? Text("●  ").foregroundColor(color) : Text("")
+        
+        Group {
+            Text(paddingText).font(.system(size: 11.9)) +
+            coloredDot +
+            Text(title)
+        }
     }
 }
 
