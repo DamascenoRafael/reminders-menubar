@@ -1,6 +1,11 @@
 "newReminderTextFielPlaceholder" = "输入提醒事项";
 "newReminderCalendarSelectionToSaveHelp" = "选择新提醒事项的储存位置";
 "remindersOptionsButtonHelp" = "关于编辑提醒事项的选项";
+"renameReminderOptionButton" = "Rename"; // TODO: translate
+"renameReminderAlertTitle" = "Rename"; // TODO: translate
+"renameReminderAlertMessage" = "This action will rename the reminder and cannot be undone"; // TODO: translate
+"renameReminderAlertConfirmButton" = "Save"; // TODO: translate
+"renameReminderAlertCancelButton" = "Cancel"; // TODO: translate
 "removeReminderOptionButton" = "删除";
 "removeReminderAlertTitle" = "删除提醒事项？";
 "removeReminderAlertMessage" = "此操作将会删除 '%@' 且无法撤回";

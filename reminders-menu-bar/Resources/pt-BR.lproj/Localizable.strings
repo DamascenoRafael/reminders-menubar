@@ -1,6 +1,11 @@
 "newReminderTextFielPlaceholder" = "Digite um lembrete e aperte enter";
 "newReminderCalendarSelectionToSaveHelp" = "Selecione onde o novo lembrete será salvo";
 "remindersOptionsButtonHelp" = "Opções para editar o lembrete";
+"renameReminderOptionButton" = "Renomear";
+"renameReminderAlertTitle" = "Renomear";
+"renameReminderAlertMessage" = "Essa ação irá renomear o lembrete e não pode ser desfeita";
+"renameReminderAlertConfirmButton" = "Salvar";
+"renameReminderAlertCancelButton" = "Cancelar";
 "removeReminderOptionButton" = "Remover";
 "removeReminderAlertTitle" = "Remover lembrete?";
 "removeReminderAlertMessage" = "Essa ação irá remover '%@' e não pode ser desfeita";

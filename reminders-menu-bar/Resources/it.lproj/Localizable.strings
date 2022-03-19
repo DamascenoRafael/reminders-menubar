@@ -1,6 +1,11 @@
 "newReminderTextFielPlaceholder" = "Digita un promemoria e premi invio";
 "newReminderCalendarSelectionToSaveHelp" = "Seleziona dove verranno salvati i nuovi promemoria";
 "remindersOptionsButtonHelp" = "Opzioni per modificare il promemoria";
+"renameReminderOptionButton" = "Rename"; // TODO: translate
+"renameReminderAlertTitle" = "Rename"; // TODO: translate
+"renameReminderAlertMessage" = "This action will rename the reminder and cannot be undone"; // TODO: translate
+"renameReminderAlertConfirmButton" = "Save"; // TODO: translate
+"renameReminderAlertCancelButton" = "Cancel"; // TODO: translate
 "removeReminderOptionButton" = "Rimuovi";
 "removeReminderAlertTitle" = "Rimuovi promemoria?";
 "removeReminderAlertMessage" = "Questa azione rimuoverà '%@' e non può essere annullata";

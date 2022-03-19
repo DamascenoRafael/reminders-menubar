@@ -7,6 +7,10 @@ struct ReminderItemView: View {
     var reminder: EKReminder
     var showCalendarTitleOnDueDate = false
     @State var reminderItemIsHovered = false
+    
+    @State private var showingRenameSheet = false
+    @State private var possibleNewTitle = ""
+    
     @State private var showingRemoveAlert = false
     @State private var hasBeenRemoved = false
     
@@ -39,10 +43,20 @@ struct ReminderItemView: View {
                         }
                         if !otherCalendars.isEmpty {
                             MoveToOptionMenu(reminder: reminder, availableCalendars: otherCalendars)
-                            
-                            VStack {
-                                Divider()
+                        }
+                        
+                        Button(action: {
+                            possibleNewTitle = reminder.title
+                            showingRenameSheet = true
+                        }) {
+                            HStack {
+                                Image(systemName: "pencil")
+                                Text(rmbLocalized(.renameReminderOptionButton))
                             }
+                        }
+                        
+                        VStack {
+                            Divider()
                         }
                         
                         Button(action: {
@@ -62,21 +76,16 @@ struct ReminderItemView: View {
                     .opacity(reminderItemIsHovered ? 1 : 0)
                 }
                 .alert(isPresented: $showingRemoveAlert) {
-                    Alert(title: Text(rmbLocalized(.removeReminderAlertTitle)),
-                          message: Text(rmbLocalized(.removeReminderAlertMessage, arguments: reminder.title)),
-                          primaryButton: .destructive(Text(rmbLocalized(.removeReminderAlertConfirmButton)), action: {
-                            RemindersService.instance.remove(reminder: reminder)
-                            hasBeenRemoved = true
-                          }),
-                          secondaryButton: .cancel(Text(rmbLocalized(.removeReminderAlertCancelButton)))
-                    )
+                    removeReminderAlert()
                 }
                 .onChange(of: showingRemoveAlert) { isShowing in
-                    if isShowing {
-                        AppDelegate.instance.changeBehaviorToKeepVisible()
-                    } else {
-                        AppDelegate.instance.changeBehaviorToDismissIfNeeded()
-                    }
+                    changeBehaviorBasedOnModal(isShowing: isShowing)
+                }
+                .sheet(isPresented: $showingRenameSheet) {
+                    renameReminderSheet()
+                }
+                .onChange(of: showingRenameSheet) { isShowing in
+                    changeBehaviorBasedOnModal(isShowing: isShowing)
                 }
                 
                 if let dateDescription = reminder.relativeDateDescription {
@@ -115,6 +124,93 @@ struct ReminderItemView: View {
                 RemindersService.instance.commitChanges()
             }
         })
+    }
+    
+    func renameReminder(newTitle: String) {
+        reminder.title = newTitle
+        RemindersService.instance.save(reminder: reminder)
+    }
+    
+    func changeBehaviorBasedOnModal(isShowing: Bool) {
+        if isShowing {
+            AppDelegate.instance.changeBehaviorToKeepVisible()
+        } else {
+            AppDelegate.instance.changeBehaviorToDismissIfNeeded()
+        }
+    }
+    
+    func removeReminderAlert() -> Alert {
+        Alert(title: Text(rmbLocalized(.removeReminderAlertTitle)),
+              message: Text(rmbLocalized(.removeReminderAlertMessage, arguments: reminder.title)),
+              primaryButton: .destructive(Text(rmbLocalized(.removeReminderAlertConfirmButton)), action: {
+                RemindersService.instance.remove(reminder: reminder)
+                hasBeenRemoved = true
+              }),
+              secondaryButton: .cancel(Text(rmbLocalized(.removeReminderAlertCancelButton)))
+        )
+    }
+    
+    @ViewBuilder
+    func renameReminderSheet() -> some View {
+        VStack {
+            Text(rmbLocalized(.renameReminderAlertTitle))
+                .font(.headline)
+                .padding()
+            
+            Text(rmbLocalized(.renameReminderAlertMessage))
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
+                .padding(.horizontal)
+                .padding(.bottom)
+            
+            TextEditor(text: Binding(
+                get: {
+                    possibleNewTitle
+                },
+                set: { value in
+                    var newValue = value
+                    let userInsertLineBreak = value.contains("\n")
+                    // NOTE: User may have copied a line break along with the new title, so we check if
+                    // the value of 'possibleNewTitle' has increased by only one character (only the line break).
+                    let userHitEnter = userInsertLineBreak && newValue.count == possibleNewTitle.count + 1
+                    if userInsertLineBreak {
+                        newValue = newValue.replacingOccurrences(of: "\n", with: "")
+                    }
+                    possibleNewTitle = newValue
+                    if userHitEnter {
+                        showingRenameSheet = false
+                        renameReminder(newTitle: possibleNewTitle)
+                    }
+                }
+            ))
+                .padding(8)
+                .background(Color("textFieldBackground"))
+                .cornerRadius(8)
+                .fixedSize(horizontal: false, vertical: true)
+                .lineSpacing(5)
+                .padding(.horizontal)
+            
+            HStack {
+                Button {
+                    showingRenameSheet = false
+                } label: {
+                    Text(rmbLocalized(.renameReminderAlertCancelButton))
+                        .frame(maxWidth: .infinity)
+                }
+                .keyboardShortcut(.cancelAction)
+
+                Button {
+                    showingRenameSheet = false
+                    renameReminder(newTitle: possibleNewTitle)
+                } label: {
+                    Text(rmbLocalized(.renameReminderAlertConfirmButton))
+                        .frame(maxWidth: .infinity)
+                }
+            }
+            .padding()
+        }
+        .frame(width: 250, alignment: .center)
+        .padding()
     }
 }
 
