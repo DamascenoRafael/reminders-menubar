@@ -18,7 +18,7 @@
 "upcomingRemindersTitle" = "Upcoming reminders";
 "remindersFilterSelectionHelp" = "Filter which reminders to show";
 "showCompletedRemindersToggleButtonHelp" = "Toggle between showing the completed reminders or not";
-"updateAvaiableNoticeButton" = "Update avaiable";
+"updateAvailableNoticeButton" = "Update available";
 "launchAtLoginOptionButton" = "Launch at login";
 "appAppearanceMenu" = "Appearance";
 "appAppearanceMoreOpaqueOptionButton" = "More opaque";

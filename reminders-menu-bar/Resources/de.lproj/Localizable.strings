@@ -18,7 +18,7 @@
 "upcomingRemindersTitle" = "Zukünftige Erinnerungen";
 "remindersFilterSelectionHelp" = "Filtern, welche Erinnerungen angezeigt werden sollen";
 "showCompletedRemindersToggleButtonHelp" = "Umschalten zwischen abgeschlossene Erinnerungen Ein- und Ausblenden";
-"updateAvaiableNoticeButton" = "Update verfügbar";
+"updateAvailableNoticeButton" = "Update verfügbar";
 "launchAtLoginOptionButton" = "Bei Login automatisch starten";
 "appAppearanceMenu" = "Erscheinungsbild";
 "appAppearanceMoreOpaqueOptionButton" = "Hintergrund undurchsichtig";

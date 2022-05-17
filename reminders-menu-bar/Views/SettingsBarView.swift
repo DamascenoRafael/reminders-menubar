@@ -79,7 +79,7 @@ struct SettingsBarView: View {
                         }
                     }) {
                         Image(systemName: "exclamationmark.circle")
-                        Text(rmbLocalized(.updateAvaiableNoticeButton))
+                        Text(rmbLocalized(.updateAvailableNoticeButton))
                     }
                     
                     VStack {

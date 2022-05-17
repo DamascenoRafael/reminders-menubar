@@ -18,7 +18,7 @@
 "upcomingRemindersTitle" = "Próximos lembretes";
 "remindersFilterSelectionHelp" = "Filtre quais lembretes mostrar";
 "showCompletedRemindersToggleButtonHelp" = "Alternar entre mostrar os lembretes concluídos ou não";
-"updateAvaiableNoticeButton" = "Atualização disponível";
+"updateAvailableNoticeButton" = "Atualização disponível";
 "launchAtLoginOptionButton" = "Iniciar no login";
 "appAppearanceMenu" = "Aparência";
 "appAppearanceMoreOpaqueOptionButton" = "Mais opaco";

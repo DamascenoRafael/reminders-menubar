@@ -18,7 +18,7 @@
 "upcomingRemindersTitle" = "Prossimi promemoria";
 "remindersFilterSelectionHelp" = "Filtra i promemoria da mostrare";
 "showCompletedRemindersToggleButtonHelp" = "Alterna tra mostrare o meno i promemoria completati";
-"updateAvaiableNoticeButton" = "Aggiornamento disponibile";
+"updateAvailableNoticeButton" = "Aggiornamento disponibile";
 "launchAtLoginOptionButton" = "Avvia all'accesso";
 "appAppearanceMenu" = "Aspetto";
 "appAppearanceMoreOpaqueOptionButton" = "Più opaco";

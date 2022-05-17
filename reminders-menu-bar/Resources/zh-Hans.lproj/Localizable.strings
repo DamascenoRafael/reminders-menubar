@@ -18,7 +18,7 @@
 "upcomingRemindersTitle" = "即将发生的提醒事项";
 "remindersFilterSelectionHelp" = "选择显示的提醒事项";
 "showCompletedRemindersToggleButtonHelp" = "是否显示已完成的提醒事项";
-"updateAvaiableNoticeButton" = "有更新可用";
+"updateAvailableNoticeButton" = "有更新可用";
 "launchAtLoginOptionButton" = "登陆时启动";
 "appAppearanceMenu" = "外观";
 "appAppearanceMoreOpaqueOptionButton" = "不透明";

@@ -21,7 +21,7 @@ enum RemindersMenuBarLocalizedKeys: String {
     case upcomingRemindersTitle
     case remindersFilterSelectionHelp
     case showCompletedRemindersToggleButtonHelp
-    case updateAvaiableNoticeButton
+    case updateAvailableNoticeButton
     case launchAtLoginOptionButton
     case appAppearanceMenu
     case appAppearanceMoreOpaqueOptionButton
