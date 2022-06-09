@@ -6,6 +6,6 @@ import SwiftUI
 extension NSTextField {
     open override var focusRingType: NSFocusRingType {
         get { .none }
-        set { } // swiftlint:disable:this unused_setter_value
+        set { }
     }
 }
