@@ -13,8 +13,8 @@
 "removeReminderAlertCancelButton" = "Annulla";
 "reminderMoveToMenuOption" = "Sposta in ...";
 "emptyListNoRemindersMessage" = "Nessun promemoria";
-"emptyListNoRemindersFilterTitle" = "No reminders to show"; // TODO: translate
-"emptyListNoRemindersFilterMessage" = "Change the reminders filter options"; // TODO: translate
+"emptyListNoRemindersFilterTitle" = "Nessun promemoria da mostrare";
+"emptyListNoRemindersFilterMessage" = "Modifica le opzioni del filtro dei promemoria";
 "emptyListAllItemsCompletedMessage" = "Tutti gli elementi sono stati completati";
 "emptyListNoUpcomingRemindersMessage" = "Nessun promemoria in arrivo";
 "upcomingRemindersTitle" = "Prossimi promemoria";
