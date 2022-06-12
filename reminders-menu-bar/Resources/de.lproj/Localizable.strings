@@ -14,7 +14,7 @@
 "reminderMoveToMenuOption" = "Verschieben nach ...";
 "emptyListNoRemindersMessage" = "Keine Erinnerungen";
 "emptyListNoRemindersFilterTitle" = "Keine Erinnerungen anzeigbar";
-"emptyListNoRemindersFilterMessage" = "Passe die Filteropntionen an";
+"emptyListNoRemindersFilterMessage" = "Passe die Filteroptionen an";
 "emptyListAllItemsCompletedMessage" = "Keine offenen Erinnerungen";
 "emptyListNoUpcomingRemindersMessage" = "Keine zukünftigen Erinnerungen";
 "upcomingRemindersTitle" = "Zukünftige Erinnerungen";
