@@ -88,6 +88,10 @@ class UserPreferences: ObservableObject {
         }
     }
     
+    var atLeastOneFilterIsSelected: Bool {
+        return showUpcomingReminders || !self.calendarIdentifiersFilter.isEmpty
+    }
+    
     var launchAtLoginIsEnabled: Bool {
         get {
             let allJobs = SMCopyAllJobDictionaries(kSMDomainUserLaunchd).takeRetainedValue() as? [[String: AnyObject]]

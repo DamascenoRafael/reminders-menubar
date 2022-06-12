@@ -13,6 +13,8 @@
 "removeReminderAlertCancelButton" = "Cancelar";
 "reminderMoveToMenuOption" = "Mover para ...";
 "emptyListNoRemindersMessage" = "Sem lembretes";
+"emptyListNoRemindersFilterTitle" = "Sem lembretes para mostrar";
+"emptyListNoRemindersFilterMessage" = "Altere as opções de filtro de lembretes";
 "emptyListAllItemsCompletedMessage" = "Todos os itens concluídos";
 "emptyListNoUpcomingRemindersMessage" = "Sem lembretes próximos";
 "upcomingRemindersTitle" = "Próximos lembretes";

@@ -16,6 +16,8 @@ enum RemindersMenuBarLocalizedKeys: String {
     case removeReminderAlertCancelButton
     case reminderMoveToMenuOption
     case emptyListNoRemindersMessage
+    case emptyListNoRemindersFilterTitle
+    case emptyListNoRemindersFilterMessage
     case emptyListAllItemsCompletedMessage
     case emptyListNoUpcomingRemindersMessage
     case upcomingRemindersTitle

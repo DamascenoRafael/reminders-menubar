@@ -13,6 +13,8 @@
 "removeReminderAlertCancelButton" = "Abbrechen";
 "reminderMoveToMenuOption" = "Verschieben nach ...";
 "emptyListNoRemindersMessage" = "Keine Erinnerungen";
+"emptyListNoRemindersFilterTitle" = "No reminders to show"; // TODO: translate
+"emptyListNoRemindersFilterMessage" = "Change the reminders filter options"; // TODO: translate
 "emptyListAllItemsCompletedMessage" = "Keine offenen Erinnerungen";
 "emptyListNoUpcomingRemindersMessage" = "Keine zukünftigen Erinnerungen";
 "upcomingRemindersTitle" = "Zukünftige Erinnerungen";

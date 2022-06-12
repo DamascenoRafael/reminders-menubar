@@ -13,6 +13,8 @@
 "removeReminderAlertCancelButton" = "Cancel";
 "reminderMoveToMenuOption" = "Move to ...";
 "emptyListNoRemindersMessage" = "No reminders";
+"emptyListNoRemindersFilterTitle" = "No reminders to show";
+"emptyListNoRemindersFilterMessage" = "Change the reminders filter options";
 "emptyListAllItemsCompletedMessage" = "All items completed";
 "emptyListNoUpcomingRemindersMessage" = "No upcoming reminders";
 "upcomingRemindersTitle" = "Upcoming reminders";
