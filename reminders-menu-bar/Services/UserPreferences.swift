@@ -23,7 +23,10 @@ class UserPreferences: ObservableObject {
     
     @Published var calendarIdentifiersFilter: [String] = {
         guard let identifiers = defaults.stringArray(forKey: PreferencesKeys.calendarIdentifiersFilter) else {
-            return []
+            // NOTE: On first use it will load all reminder lists.
+            let calendars = RemindersService.instance.getCalendars()
+            let allIdentifiers = calendars.map({ $0.calendarIdentifier })
+            return allIdentifiers
         }
         
         return identifiers
