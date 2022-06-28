@@ -96,8 +96,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         popover.behavior = .transient
     }
     
-    func changeBehaviorToKeepVisible() {
+    private func changeBehaviorToKeepVisible() {
         popover.behavior = .applicationDefined
+    }
+    
+    func changeBehaviorBasedOnModal(isShowing: Bool) {
+        if isShowing {
+            changeBehaviorToKeepVisible()
+        } else {
+            changeBehaviorToDismissIfNeeded()
+        }
     }
 
     private func requestAuthorization() {

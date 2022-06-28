@@ -79,13 +79,13 @@ struct ReminderItemView: View {
                     removeReminderAlert()
                 }
                 .onChange(of: showingRemoveAlert) { isShowing in
-                    changeBehaviorBasedOnModal(isShowing: isShowing)
+                    AppDelegate.instance.changeBehaviorBasedOnModal(isShowing: isShowing)
                 }
                 .sheet(isPresented: $showingRenameSheet) {
                     renameReminderSheet()
                 }
                 .onChange(of: showingRenameSheet) { isShowing in
-                    changeBehaviorBasedOnModal(isShowing: isShowing)
+                    AppDelegate.instance.changeBehaviorBasedOnModal(isShowing: isShowing)
                 }
                 
                 if let dateDescription = reminder.relativeDateDescription {
@@ -129,14 +129,6 @@ struct ReminderItemView: View {
     func renameReminder(newTitle: String) {
         reminder.title = newTitle
         RemindersService.instance.save(reminder: reminder)
-    }
-    
-    func changeBehaviorBasedOnModal(isShowing: Bool) {
-        if isShowing {
-            AppDelegate.instance.changeBehaviorToKeepVisible()
-        } else {
-            AppDelegate.instance.changeBehaviorToDismissIfNeeded()
-        }
     }
     
     func removeReminderAlert() -> Alert {
