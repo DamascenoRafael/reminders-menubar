@@ -48,13 +48,13 @@ struct ContentView: View {
     }
     
     private func filteredReminders(_ reminders: [EKReminder]) -> [EKReminder] {
-        let uncompletedReminders = reminders.filter { !$0.isCompleted }.sortedReminders
+        let uncompletedReminders = reminders.filter { !$0.isCompleted }.sortedRemindersByPriority
         
         if userPreferences.showUncompletedOnly {
             return uncompletedReminders
         }
         
-        let completedReminders = reminders.filter { $0.isCompleted }.sortedReminders
+        let completedReminders = reminders.filter { $0.isCompleted }.sortedRemindersByPriority
         return uncompletedReminders + completedReminders
     }
 }
