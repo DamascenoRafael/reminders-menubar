@@ -11,7 +11,7 @@
 "removeReminderAlertMessage" = "Esta acción eliminará '%@' y no se puede deshaser";
 "removeReminderAlertConfirmButton" = "Eliminar";
 "removeReminderAlertCancelButton" = "Cancelar";
-"reminderMoveToMenuOption" = "Mover a...";
+"reminderMoveToMenuOption" = "Mover a ...";
 "emptyListNoRemindersMessage" = "Sin recordatorios";
 "emptyListNoRemindersFilterTitle" = "No hay recordatorios para mostrar";
 "emptyListNoRemindersFilterMessage" = "Cambiar las opciones de filtro de recordatorios";
