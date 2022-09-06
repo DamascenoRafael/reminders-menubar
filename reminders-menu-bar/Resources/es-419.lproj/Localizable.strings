@@ -21,7 +21,7 @@
 "remindersFilterSelectionHelp" = "Filtrar qué recordatorios mostrar";
 "showCompletedRemindersToggleButtonHelp" = "Alternar entre mostrar los recordatorios completados o no";
 "updateAvailableNoticeButton" = "Actualización disponible";
-"launchAtLoginOptionButton" = "Iniciar al iniciar la sesión";
+"launchAtLoginOptionButton" = "Iniciar automáticamente";
 "appAppearanceMenu" = "Apariencia";
 "appAppearanceMoreOpaqueOptionButton" = "Más opaco";
 "appAppearanceMoreTransparentOptionButton" = "Más transparente";
@@ -34,7 +34,7 @@
 "appVersionDescription" = "Versión %@";
 "remindersMenuBarAppAboutDescription" = "%@ es un software de código abierto licenciado bajo los términos del %@.";
 "remindersMenuBarGitHubAboutDescription" = "Funciones y actualizaciones disponibles en GitHub";
-"seeMoreOnGitHubButton" = "Ver más en GitHub";
+"seeMoreOnGitHubButton" = "Ver en GitHub";
 "upcomingRemindersIntervalSelectionHelp" = "Seleccione el rango de los próximos recordatorios que se mostrarán";
 "upcomingRemindersTodayTitle" = "Hoy";
 "upcomingRemindersInAWeekTitle" = "En una semana";
