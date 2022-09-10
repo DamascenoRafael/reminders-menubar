@@ -54,11 +54,10 @@ struct FormNewReminderView: View {
     @ViewBuilder
     func newReminderTextField(text: Binding<String>, placeholder: String) -> some View {
         if #available(macOS 12.0, *) {
-            let placeholdderText = Text(placeholder)
-            TextField("", text: text, prompt: placeholdderText)
-            .onSubmit {
-                createNewReminder()
-            }
+            NewReminderTextFieldView(placeholder: placeholder, text: text)
+                .onSubmit {
+                    createNewReminder()
+                }
         } else {
             TextField(placeholder, text: text, onCommit: {
                 createNewReminder()
@@ -71,6 +70,26 @@ struct FormNewReminderView: View {
         
         RemindersService.instance.createNew(with: newReminderTitle, in: userPreferences.calendarForSaving)
         newReminderTitle = ""
+    }
+}
+
+@available(macOS 12.0, *)
+struct NewReminderTextFieldView: View {
+    @FocusState private var newReminderTextFieldInFocus: Bool
+    @ObservedObject var userPreferences = UserPreferences.instance
+    
+    var placeholder: String
+    var text: Binding<String>
+    
+    var body: some View {
+        let placeholdderText = Text(placeholder)
+        TextField("", text: text, prompt: placeholdderText)
+            .focused($newReminderTextFieldInFocus)
+            .onReceive(userPreferences.$remindersMenuBarOpeningEvent) { _ in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    self.newReminderTextFieldInFocus = true
+                }
+            }
     }
 }
 

@@ -156,6 +156,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             popover.performClose(button)
         } else {
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
+            UserPreferences.instance.remindersMenuBarOpeningEvent.toggle()
         }
     }
 }
