@@ -21,6 +21,8 @@ class UserPreferences: ObservableObject {
     
     private static let defaults = UserDefaults.standard
     
+    @Published var remindersMenuBarOpeningEvent = false
+    
     @Published var calendarIdentifiersFilter: [String] = {
         guard let identifiers = defaults.stringArray(forKey: PreferencesKeys.calendarIdentifiersFilter) else {
             // NOTE: On first use it will load all reminder lists.

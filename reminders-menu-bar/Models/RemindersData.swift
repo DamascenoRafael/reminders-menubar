@@ -4,9 +4,9 @@ import EventKit
 
 class RemindersData: ObservableObject {
     
-    let userPreferences = UserPreferences.instance
+    private let userPreferences = UserPreferences.instance
     
-    var cancellationTokens: [AnyCancellable] = []
+    private var cancellationTokens: [AnyCancellable] = []
     
     init() {
         addObservers()
