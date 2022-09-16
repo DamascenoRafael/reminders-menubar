@@ -65,6 +65,8 @@
 		12A1E2A9271EDE98004C48C4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		197D6DE32726AC650011E1AB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		197D6DE42726AC650011E1AB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2BCB5C5128D4EFDA00CD1AC9 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2BCB5C5228D4EFFF00CD1AC9 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		65E1D67F28B72C610032D987 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		65E1D68028B72C620032D987 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		7102422F25F55D5600451D15 /* ReminderInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderInterval.swift; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 				"zh-Hans",
 				de,
 				"es-419",
+				nl,
 			);
 			mainGroup = 712C32A724BF939100AC75E2;
 			productRefGroup = 712C32B124BF939100AC75E2 /* Products */;
@@ -445,6 +448,7 @@
 				12A1E2A8271EDE98004C48C4 /* zh-Hans */,
 				197D6DE32726AC650011E1AB /* de */,
 				65E1D67F28B72C610032D987 /* es-419 */,
+				2BCB5C5228D4EFFF00CD1AC9 /* nl */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -458,6 +462,7 @@
 				12A1E2A9271EDE98004C48C4 /* zh-Hans */,
 				197D6DE42726AC650011E1AB /* de */,
 				65E1D68028B72C620032D987 /* es-419 */,
+				2BCB5C5128D4EFDA00CD1AC9 /* nl */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
