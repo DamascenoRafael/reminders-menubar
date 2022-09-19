@@ -1,7 +1,7 @@
 import SwiftUI
 import EventKit
 
-struct CalendarTitleView: View {
+struct CalendarTitle: View {
     @ObservedObject var userPreferences = UserPreferences.instance
     
     var calendar: EKCalendar
@@ -49,7 +49,7 @@ struct CalendarTitleView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             ForEach(ColorScheme.allCases, id: \.self) { color in
-                CalendarTitleView(calendar: calendar)
+                CalendarTitle(calendar: calendar)
                     .colorScheme(color)
                     .previewDisplayName("\(color) mode")
             }

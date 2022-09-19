@@ -12,11 +12,11 @@ struct ContentView: View {
             if userPreferences.atLeastOneFilterIsSelected {
                 List {
                     if userPreferences.showUpcomingReminders {
-                        UpcomingRemindersList()
+                        UpcomingRemindersView()
                     }
                     ForEach(remindersData.filteredReminderLists) { reminderList in
                         VStack(alignment: .leading) {
-                            CalendarTitleView(calendar: reminderList.calendar)
+                            CalendarTitle(calendar: reminderList.calendar)
                             let reminders = filteredReminders(reminderList.reminders)
                             if reminders.isEmpty {
                                 let calendarIsEmpty = reminderList.reminders.isEmpty

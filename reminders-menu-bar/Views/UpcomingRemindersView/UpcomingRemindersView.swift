@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct UpcomingRemindersList: View {
+struct UpcomingRemindersView: View {
     @EnvironmentObject var remindersData: RemindersData
     
     var body: some View {
@@ -18,6 +18,6 @@ struct UpcomingRemindersList: View {
 
 struct UpcomingRemindersList_Previews: PreviewProvider {
     static var previews: some View {
-        UpcomingRemindersList().environmentObject(RemindersData())
+        UpcomingRemindersView().environmentObject(RemindersData())
     }
 }
