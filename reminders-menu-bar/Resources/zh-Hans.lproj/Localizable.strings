@@ -26,6 +26,7 @@
 "appAppearanceMoreOpaqueOptionButton" = "不透明";
 "appAppearanceMoreTransparentOptionButton" = "透明";
 "showMenuBarTodayCountOptionButton" = "在任务栏显示今日计数";
+"keyboardShortcutOptionButton" = "Keyboard shortcut"; // TODO: translate
 "reloadRemindersDataButton" = "重新加载数据";
 "appAboutButton" = "关于";
 "appQuitButton" = "退出";
@@ -35,6 +36,9 @@
 "remindersMenuBarAppAboutDescription" = "%@ 为开源软件，受到 %@ 约束。";
 "remindersMenuBarGitHubAboutDescription" = "功能和更新可在 GitHub 上获得";
 "seeMoreOnGitHubButton" = "在 GitHub 上查看更多";
+"keyboardShortcutWindowTitle" = "Keyboard shortcut settings"; // TODO: translate
+"keyboardShortcutEnableOpenShortcutOption" = "Enable keyboard shortcut to open Reminders Menu Bar"; // TODO: translate
+"keyboardShortcutRestoreDefaultButton" = "Restore default"; // TODO: translate
 "upcomingRemindersIntervalSelectionHelp" = "选择需要显示的提醒事项";
 "upcomingRemindersTodayTitle" = "今天";
 "upcomingRemindersInAWeekTitle" = "本周";

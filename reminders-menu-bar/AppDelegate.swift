@@ -70,6 +70,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         changeBehaviorToDismissIfNeeded()
         configurePopover()
         configureMenuBarButton()
+        configureKeyboardShortcut()
     }
     
     private func configurePopover() {
@@ -85,6 +86,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusBarItem.button?.image = NSImage(systemSymbolName: "list.bullet", accessibilityDescription: nil)
         statusBarItem.button?.imagePosition = .imageLeading
         statusBarItem.button?.action = #selector(togglePopover)
+    }
+    
+    private func configureKeyboardShortcut() {
+        KeyboardShortcutService.instance.action(for: .openRemindersMenuBar) { [weak self] in
+            self?.togglePopover()
+        }
     }
     
     func updateMenuBarTodayCount(to todayCount: Int) {

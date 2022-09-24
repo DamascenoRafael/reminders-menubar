@@ -29,6 +29,7 @@ enum RemindersMenuBarLocalizedKeys: String {
     case appAppearanceMoreOpaqueOptionButton
     case appAppearanceMoreTransparentOptionButton
     case showMenuBarTodayCountOptionButton
+    case keyboardShortcutOptionButton
     case reloadRemindersDataButton
     case appAboutButton
     case appQuitButton
@@ -38,6 +39,9 @@ enum RemindersMenuBarLocalizedKeys: String {
     case remindersMenuBarAppAboutDescription
     case remindersMenuBarGitHubAboutDescription
     case seeMoreOnGitHubButton
+    case keyboardShortcutWindowTitle
+    case keyboardShortcutEnableOpenShortcutOption
+    case keyboardShortcutRestoreDefaultButton
     case upcomingRemindersIntervalSelectionHelp
     case upcomingRemindersTodayTitle
     case upcomingRemindersInAWeekTitle

@@ -6,6 +6,7 @@ struct SettingsBarGearMenu: View {
     @State var gearIsHovered = false
     
     @ObservedObject var appUpdateCheckHelper = AppUpdateCheckHelper.instance
+    @ObservedObject var keyboardShortcutService = KeyboardShortcutService.instance
     
     var body: some View {
         Menu {
@@ -33,6 +34,16 @@ struct SettingsBarGearMenu: View {
                 }
                 
                 visualCustomizationOptions()
+                
+                Button {
+                    KeyboardShortcutView.showWindow()
+                } label: {
+                    let activeShortcut = keyboardShortcutService.activeShortcut(for: .openRemindersMenuBar)
+                    let activeShortcutText = Text("     \(activeShortcut)").foregroundColor(.gray)
+                    Text(rmbLocalized(.keyboardShortcutOptionButton)) + activeShortcutText
+                }
+                
+                Divider()
                 
                 Button(action: {
                     remindersData.update()
