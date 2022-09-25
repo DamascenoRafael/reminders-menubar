@@ -26,7 +26,7 @@
 "appAppearanceMoreOpaqueOptionButton" = "Ondoorzichtig";
 "appAppearanceMoreTransparentOptionButton" = "Transparanter";
 "showMenuBarTodayCountOptionButton" = "Toon items voor vandaag in de menu balk";
-"keyboardShortcutOptionButton" = "Keyboard shortcut"; // TODO: translate
+"keyboardShortcutOptionButton" = "Sneltoets";
 "reloadRemindersDataButton" = "Data herladen";
 "appAboutButton" = "Over";
 "appQuitButton" = "Sluiten";
@@ -36,9 +36,9 @@
 "remindersMenuBarAppAboutDescription" = "%@ is open source software die is gelicentieerd onder de voorwaarden van de %@.";
 "remindersMenuBarGitHubAboutDescription" = "Functies en updates beschikbaar op GitHub";
 "seeMoreOnGitHubButton" = "Zie meer op GitHub";
-"keyboardShortcutWindowTitle" = "Keyboard shortcut settings"; // TODO: translate
-"keyboardShortcutEnableOpenShortcutOption" = "Enable keyboard shortcut to open Reminders Menu Bar"; // TODO: translate
-"keyboardShortcutRestoreDefaultButton" = "Restore default"; // TODO: translate
+"keyboardShortcutWindowTitle" = "Instellingen voor sneltoetsen";
+"keyboardShortcutEnableOpenShortcutOption" = "Sneltoets inschakelen om de menubalk Herinneringen te openen";
+"keyboardShortcutRestoreDefaultButton" = "Standaardwaardes herstellen";
 "upcomingRemindersIntervalSelectionHelp" = "Selecteer een reeks aankomende herinneringen die moeten worden weergegeven";
 "upcomingRemindersTodayTitle" = "Vandaag";
 "upcomingRemindersInAWeekTitle" = "In een Week";
