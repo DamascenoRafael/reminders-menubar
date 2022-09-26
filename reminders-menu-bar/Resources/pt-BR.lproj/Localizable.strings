@@ -26,6 +26,7 @@
 "appAppearanceMoreOpaqueOptionButton" = "Mais opaco";
 "appAppearanceMoreTransparentOptionButton" = "Mais transparente";
 "showMenuBarTodayCountOptionButton" = "Mostrar contagem para hoje na barra de menu";
+"keyboardShortcutOptionButton" = "Atalho de teclado";
 "reloadRemindersDataButton" = "Recarregar dados";
 "appAboutButton" = "Sobre";
 "appQuitButton" = "Sair";
@@ -35,6 +36,9 @@
 "remindersMenuBarAppAboutDescription" = "%@ é um software open source licenciado sob os termos da %@.";
 "remindersMenuBarGitHubAboutDescription" = "Recursos e atualizações disponíveis no GitHub";
 "seeMoreOnGitHubButton" = "Veja mais no GitHub";
+"keyboardShortcutWindowTitle" = "Configurações de atalho de teclado";
+"keyboardShortcutEnableOpenShortcutOption" = "Habilitar atalho de teclado para abrir Reminders Menu Bar";
+"keyboardShortcutRestoreDefaultButton" = "Restaurar padrão";
 "upcomingRemindersIntervalSelectionHelp" = "Selecione o intervalo para os próximos lembretes a serem mostrados";
 "upcomingRemindersTodayTitle" = "Hoje";
 "upcomingRemindersInAWeekTitle" = "Em uma Semana";

@@ -26,6 +26,7 @@
 "appAppearanceMoreOpaqueOptionButton" = "More opaque";
 "appAppearanceMoreTransparentOptionButton" = "More transparent";
 "showMenuBarTodayCountOptionButton" = "Show today count in the menu bar";
+"keyboardShortcutOptionButton" = "Keyboard shortcut";
 "reloadRemindersDataButton" = "Reload data";
 "appAboutButton" = "About";
 "appQuitButton" = "Quit";
@@ -35,6 +36,9 @@
 "remindersMenuBarAppAboutDescription" = "%@ is an open source software licensed under the terms of the %@.";
 "remindersMenuBarGitHubAboutDescription" = "Features and updates available on GitHub";
 "seeMoreOnGitHubButton" = "See more on GitHub";
+"keyboardShortcutWindowTitle" = "Keyboard shortcut settings";
+"keyboardShortcutEnableOpenShortcutOption" = "Enable keyboard shortcut to open Reminders Menu Bar";
+"keyboardShortcutRestoreDefaultButton" = "Restore default";
 "upcomingRemindersIntervalSelectionHelp" = "Select range of upcoming reminders to be shown";
 "upcomingRemindersTodayTitle" = "Today";
 "upcomingRemindersInAWeekTitle" = "In a Week";

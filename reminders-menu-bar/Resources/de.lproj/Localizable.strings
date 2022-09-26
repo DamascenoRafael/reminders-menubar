@@ -26,6 +26,7 @@
 "appAppearanceMoreOpaqueOptionButton" = "Hintergrund undurchsichtig";
 "appAppearanceMoreTransparentOptionButton" = "Hintergrund transparenter";
 "showMenuBarTodayCountOptionButton" = "Anzahl der offenen Erinnerungen in der Menüleiste anzeigen";
+"keyboardShortcutOptionButton" = "Tastaturkürzel";
 "reloadRemindersDataButton" = "Erinnerungen aktualisieren";
 "appAboutButton" = "Über";
 "appQuitButton" = "Beenden";
@@ -35,6 +36,9 @@
 "remindersMenuBarAppAboutDescription" = "%@ ist eine Open-Source-Software, die unter den Bedingungen der  %@ steht.";
 "remindersMenuBarGitHubAboutDescription" = "Informationen zur Funktion und Updates verfügbar auf GitHub";
 "seeMoreOnGitHubButton" = "Weiteres auf GitHub";
+"keyboardShortcutWindowTitle" = "Einstellungen für Tastaturkürzel";
+"keyboardShortcutEnableOpenShortcutOption" = "Tastaturkürzel zum Öffnen der Erinnerungsmenüleiste aktivieren";
+"keyboardShortcutRestoreDefaultButton" = "Standard wiederherstellen";
 "upcomingRemindersIntervalSelectionHelp" = "Auswählen welcher Zeitraum für Erinnerungen angezeigt werden soll";
 "upcomingRemindersTodayTitle" = "Heute";
 "upcomingRemindersInAWeekTitle" = "In einer Woche";

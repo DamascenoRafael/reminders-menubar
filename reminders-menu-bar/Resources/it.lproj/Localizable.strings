@@ -26,6 +26,7 @@
 "appAppearanceMoreOpaqueOptionButton" = "Più opaco";
 "appAppearanceMoreTransparentOptionButton" = "Più trasparente";
 "showMenuBarTodayCountOptionButton" = "Mostra il conteggio di oggi nella barra dei menu";
+"keyboardShortcutOptionButton" = "Scorciatoia da tastiera";
 "reloadRemindersDataButton" = "Ricarica dati";
 "appAboutButton" = "Informazioni";
 "appQuitButton" = "Esci";
@@ -35,6 +36,9 @@
 "remindersMenuBarAppAboutDescription" = "%@ è un software open source concesso in licenza secondo i termini del %@.";
 "remindersMenuBarGitHubAboutDescription" = "Funzionalità e aggiornamenti disponibili su GitHub";
 "seeMoreOnGitHubButton" = "Vedi di più su GitHub";
+"keyboardShortcutWindowTitle" = "Impostazioni scorciatoia da tastiera";
+"keyboardShortcutEnableOpenShortcutOption" = "Attiva la scorciatoia da tastiera per aprire la barra dei menu dei promemoria";
+"keyboardShortcutRestoreDefaultButton" = "Ripristina l'impostazione predefinita";
 "upcomingRemindersIntervalSelectionHelp" = "Seleziona l'intervallo dei prossimi promemoria da mostrare";
 "upcomingRemindersTodayTitle" = "Oggi";
 "upcomingRemindersInAWeekTitle" = "Tra una settimana";
