@@ -37,7 +37,7 @@
 "remindersMenuBarGitHubAboutDescription" = "Funzionalità e aggiornamenti disponibili su GitHub";
 "seeMoreOnGitHubButton" = "Vedi di più su GitHub";
 "keyboardShortcutWindowTitle" = "Impostazioni scorciatoia da tastiera";
-"keyboardShortcutEnableOpenShortcutOption" = "Attiva la scorciatoia da tastiera per aprire la barra dei menu dei promemoria";
+"keyboardShortcutEnableOpenShortcutOption" = "Attiva la scorciatoia da tastiera per aprire %@";
 "keyboardShortcutRestoreDefaultButton" = "Ripristina l'impostazione predefinita";
 "upcomingRemindersIntervalSelectionHelp" = "Seleziona l'intervallo dei prossimi promemoria da mostrare";
 "upcomingRemindersTodayTitle" = "Oggi";
