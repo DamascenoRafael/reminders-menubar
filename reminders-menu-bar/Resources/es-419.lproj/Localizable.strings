@@ -26,7 +26,7 @@
 "appAppearanceMoreOpaqueOptionButton" = "Más opaco";
 "appAppearanceMoreTransparentOptionButton" = "Más transparente";
 "showMenuBarTodayCountOptionButton" = "Mostrar recuento de hoy en la barra de menú";
-"keyboardShortcutOptionButton" = "Keyboard shortcut"; // TODO: translate
+"keyboardShortcutOptionButton" = "Atajos del teclado";
 "reloadRemindersDataButton" = "Actualizar datos";
 "appAboutButton" = "Acerca de";
 "appQuitButton" = "Salir";
@@ -36,9 +36,9 @@
 "remindersMenuBarAppAboutDescription" = "%@ es un software de código abierto licenciado bajo los términos del %@.";
 "remindersMenuBarGitHubAboutDescription" = "Funciones y actualizaciones disponibles en GitHub";
 "seeMoreOnGitHubButton" = "Ver en GitHub";
-"keyboardShortcutWindowTitle" = "Keyboard shortcut settings"; // TODO: translate
-"keyboardShortcutEnableOpenShortcutOption" = "Enable keyboard shortcut to open Reminders Menu Bar"; // TODO: translate
-"keyboardShortcutRestoreDefaultButton" = "Restore default"; // TODO: translate
+"keyboardShortcutWindowTitle" = "Preferencias de los atajos";
+"keyboardShortcutEnableOpenShortcutOption" = "Habilitar atajos del teclado para abrir Reminders Menu Bar";
+"keyboardShortcutRestoreDefaultButton" = "Restaurar los ajustes predeterminados";
 "upcomingRemindersIntervalSelectionHelp" = "Seleccione el rango de los próximos recordatorios que se mostrarán";
 "upcomingRemindersTodayTitle" = "Hoy";
 "upcomingRemindersInAWeekTitle" = "En una semana";
