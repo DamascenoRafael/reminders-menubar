@@ -37,7 +37,7 @@
 "remindersMenuBarGitHubAboutDescription" = "機能やアップデートはGitHubで利用可能です";
 "seeMoreOnGitHubButton" = "GitHubでもっと見る";
 "keyboardShortcutWindowTitle" = "キーボードショートカット設定";
-"keyboardShortcutEnableOpenShortcutOption" = "キーボード ショートカットを有効にしてReminders Menu Barを開く";
+"keyboardShortcutEnableOpenShortcutOption" = "キーボード ショートカットを有効にして%@を開く";
 "keyboardShortcutRestoreDefaultButton" = "デフォルトに戻す";
 "upcomingRemindersIntervalSelectionHelp" = "今後のリマインダーの表示範囲を設定";
 "upcomingRemindersTodayTitle" = "今日";
