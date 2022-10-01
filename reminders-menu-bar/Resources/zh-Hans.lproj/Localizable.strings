@@ -37,7 +37,7 @@
 "remindersMenuBarGitHubAboutDescription" = "功能和更新可在 GitHub 上获得";
 "seeMoreOnGitHubButton" = "在 GitHub 上查看更多";
 "keyboardShortcutWindowTitle" = "键盘快捷键设置";
-"keyboardShortcutEnableOpenShortcutOption" = "启用键盘快捷键打开菜单栏提醒事项";
+"keyboardShortcutEnableOpenShortcutOption" = "启用键盘快捷键打开 %@";
 "keyboardShortcutRestoreDefaultButton" = "恢复默认";
 "upcomingRemindersIntervalSelectionHelp" = "选择需要显示的提醒事项";
 "upcomingRemindersTodayTitle" = "今天";
