@@ -46,7 +46,9 @@
 "upcomingRemindersAllTitle" = "すべて";
 "appNoRemindersAccessAlertMessage" = "%@はリマインダーにアクセスできません";
 "appNoRemindersAccessAlertDescription" = "
-%@はリマインダーへのアクセスが必要です。%システム環境設定から、@にリマインダーへのアクセスを許可してください。";
+%@はリマインダーへのアクセスが必要です。
+システム環境設定から、%@にリマインダーへのアクセスを許可してください。
+";
 "openSystemPreferencesButton" = "システム環境設定を開く";
 "okButton" = "OK";
 "preferredLanguageMenu" = "優先する言語";
