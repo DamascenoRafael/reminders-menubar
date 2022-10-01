@@ -37,7 +37,7 @@
 "remindersMenuBarGitHubAboutDescription" = "Features and updates available on GitHub";
 "seeMoreOnGitHubButton" = "See more on GitHub";
 "keyboardShortcutWindowTitle" = "Keyboard shortcut settings";
-"keyboardShortcutEnableOpenShortcutOption" = "Enable keyboard shortcut to open Reminders Menu Bar";
+"keyboardShortcutEnableOpenShortcutOption" = "Enable keyboard shortcut to open %@";
 "keyboardShortcutRestoreDefaultButton" = "Restore default";
 "upcomingRemindersIntervalSelectionHelp" = "Select range of upcoming reminders to be shown";
 "upcomingRemindersTodayTitle" = "Today";
