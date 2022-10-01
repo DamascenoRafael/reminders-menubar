@@ -37,7 +37,7 @@
 "remindersMenuBarGitHubAboutDescription" = "Functies en updates beschikbaar op GitHub";
 "seeMoreOnGitHubButton" = "Zie meer op GitHub";
 "keyboardShortcutWindowTitle" = "Instellingen voor sneltoetsen";
-"keyboardShortcutEnableOpenShortcutOption" = "Sneltoets inschakelen om de menubalk Herinneringen te openen";
+"keyboardShortcutEnableOpenShortcutOption" = "Sneltoets inschakelen om %@ te openen";
 "keyboardShortcutRestoreDefaultButton" = "Standaardwaardes herstellen";
 "upcomingRemindersIntervalSelectionHelp" = "Selecteer een reeks aankomende herinneringen die moeten worden weergegeven";
 "upcomingRemindersTodayTitle" = "Vandaag";
