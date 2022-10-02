@@ -3,9 +3,9 @@ import SwiftUI
 struct AppCommands: Commands {
     @CommandsBuilder var body: some Commands {
         CommandMenu("Edit") {
-            // NOTE: macOS 12.0 already has the below shortcuts for TextField.
-            // Shortcuts only need to be registered for versions earlier than macOS 12.0.
-            if #unavailable(macOS 12.0) {
+            // NOTE: macOS 13.0 already has the below shortcuts for TextField.
+            // Shortcuts only need to be registered for versions earlier than macOS 13.0.
+            if #unavailable(macOS 13.0) {
                 Button("Select All") {
                     NSApp.sendAction(#selector(NSText.selectAll(_:)), to: nil, from: nil)
                 }
