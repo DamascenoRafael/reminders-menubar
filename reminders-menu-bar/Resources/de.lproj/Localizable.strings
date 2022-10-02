@@ -37,7 +37,7 @@
 "remindersMenuBarGitHubAboutDescription" = "Informationen zur Funktion und Updates verfügbar auf GitHub";
 "seeMoreOnGitHubButton" = "Weiteres auf GitHub";
 "keyboardShortcutWindowTitle" = "Einstellungen für Tastaturkürzel";
-"keyboardShortcutEnableOpenShortcutOption" = "Tastaturkürzel zum Öffnen der Erinnerungsmenüleiste aktivieren";
+"keyboardShortcutEnableOpenShortcutOption" = "Tastaturkürzel zum Öffnen der %@ aktivieren";
 "keyboardShortcutRestoreDefaultButton" = "Standard wiederherstellen";
 "upcomingRemindersIntervalSelectionHelp" = "Auswählen welcher Zeitraum für Erinnerungen angezeigt werden soll";
 "upcomingRemindersTodayTitle" = "Heute";
