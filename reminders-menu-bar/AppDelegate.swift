@@ -11,41 +11,7 @@ struct RemindersMenuBar: App {
             EmptyView()
         }
         .commands {
-            CommandMenu("Edit") {
-                Section {
-                    Button("Select All") {
-                        NSApp.sendAction(#selector(NSText.selectAll(_:)), to: nil, from: nil)
-                    }
-                    .keyboardShortcut(KeyEquivalent("a"), modifiers: .command)
-                    
-                    Button("Cut") {
-                        NSApp.sendAction(#selector(NSText.cut(_:)), to: nil, from: nil)
-                    }
-                    .keyboardShortcut(KeyEquivalent("x"), modifiers: .command)
-                    
-                    Button("Copy") {
-                        NSApp.sendAction(#selector(NSText.copy(_:)), to: nil, from: nil)
-                    }
-                    .keyboardShortcut(KeyEquivalent("c"), modifiers: .command)
-                    
-                    Button("Paste") {
-                        NSApp.sendAction(#selector(NSText.paste(_:)), to: nil, from: nil)
-                    }
-                    .keyboardShortcut(KeyEquivalent("v"), modifiers: .command)
-                    
-                    // TODO: Find a better way to perform 'undo' and 'redo' without using the old Selector method.
-                    Button("Undo") {
-                        NSApp.sendAction(Selector(("undo:")), to: nil, from: nil)
-                    }
-                    .keyboardShortcut(KeyEquivalent("z"), modifiers: .command)
-                    
-                    // TODO: Find a better way to perform 'undo' and 'redo' without using the old Selector method.
-                    Button("Redo") {
-                        NSApp.sendAction(Selector(("redo:")), to: nil, from: nil)
-                    }
-                    .keyboardShortcut(KeyEquivalent("z"), modifiers: [.command, .shift])
-                }
-            }
+            AppCommands()
         }
     }
 }

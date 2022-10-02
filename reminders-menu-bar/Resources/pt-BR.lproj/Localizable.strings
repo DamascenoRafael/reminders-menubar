@@ -37,7 +37,7 @@
 "remindersMenuBarGitHubAboutDescription" = "Recursos e atualizações disponíveis no GitHub";
 "seeMoreOnGitHubButton" = "Veja mais no GitHub";
 "keyboardShortcutWindowTitle" = "Configurações de atalho de teclado";
-"keyboardShortcutEnableOpenShortcutOption" = "Habilitar atalho de teclado para abrir Reminders Menu Bar";
+"keyboardShortcutEnableOpenShortcutOption" = "Habilitar atalho de teclado para abrir %@";
 "keyboardShortcutRestoreDefaultButton" = "Restaurar padrão";
 "upcomingRemindersIntervalSelectionHelp" = "Selecione o intervalo para os próximos lembretes a serem mostrados";
 "upcomingRemindersTodayTitle" = "Hoje";
