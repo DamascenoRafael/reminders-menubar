@@ -9,7 +9,13 @@ struct ReminderItemView: View {
     @State var reminderItemIsHovered = false
     
     @State private var showingRenameSheet = false
+    @State private var showingRescheduleSheet = false
+    
     @State private var possibleNewTitle = ""
+    
+    @State private var newDeadline = Date()
+    @State private var hasDueDate = false
+    @State private var hasDueTime = false
     
     @State private var showingRemoveAlert = false
     @State private var hasBeenRemoved = false
@@ -55,6 +61,22 @@ struct ReminderItemView: View {
                             }
                         }
                         
+                        Button(action: {
+                            showingRescheduleSheet = true
+                            hasDueTime = reminder.hasTime
+                            hasDueDate = reminder.hasDueDate
+                            if let reminderDueDateComponents = reminder.dueDateComponents{
+                                if let reminderDueDate = Calendar.current.date(from: reminderDueDateComponents) {
+                                    newDeadline = reminderDueDate
+                                }
+                            }
+                        }) {
+                            HStack {
+                                Image(systemName: "calendar")
+                                Text("Move Alert Day and Time")
+                            }
+                        }
+                        
                         VStack {
                             Divider()
                         }
@@ -83,6 +105,9 @@ struct ReminderItemView: View {
                 }
                 .sheet(isPresented: $showingRenameSheet) {
                     renameReminderSheet()
+                }
+                .sheet(isPresented: $showingRescheduleSheet) {
+                    rescheduleReminderSheet()
                 }
                 .onChange(of: showingRenameSheet) { isShowing in
                     AppDelegate.instance.changeBehaviorBasedOnModal(isShowing: isShowing)
@@ -128,6 +153,19 @@ struct ReminderItemView: View {
     
     func renameReminder(newTitle: String) {
         reminder.title = newTitle
+        RemindersService.instance.save(reminder: reminder)
+    }
+    
+    func rescheduleReminder(newDeadline: Date, hasDueDate: Bool, hasDueTime: Bool) {
+        if hasDueDate {
+            if hasDueTime {
+                reminder.dueDateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: newDeadline)
+            } else {
+                reminder.dueDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: newDeadline)
+            }
+        } else {
+            reminder.dueDateComponents = nil
+        }
         RemindersService.instance.save(reminder: reminder)
     }
     
@@ -202,6 +240,51 @@ struct ReminderItemView: View {
             .padding()
         }
         .frame(width: 250, alignment: .center)
+        .padding()
+    }
+    
+    @ViewBuilder
+    func rescheduleReminderSheet() -> some View {
+        VStack {
+            Text("Reschedule Reminder Alert Day and Time")
+                .font(.headline)
+                .padding()
+            
+            Text("This action will change the reminder alert day and time and cannot be undone")
+                .padding(.bottom)
+                .padding(.horizontal)
+            
+            Toggle("Remind on a Day", isOn: $hasDueDate)
+            if hasDueDate {
+                DatePicker("", selection: $newDeadline, displayedComponents: .date)
+                    .datePickerStyle(.field)
+                Toggle("At a Time", isOn: $hasDueTime)
+                if hasDueTime {
+                    DatePicker("", selection: $newDeadline, displayedComponents: .hourAndMinute)
+                        .datePickerStyle(.field)
+                }
+            }
+            
+            HStack {
+                Button {
+                    showingRescheduleSheet = false
+                } label: {
+                    Text(rmbLocalized(.renameReminderAlertCancelButton))
+                        .frame(maxWidth: .infinity)
+                }
+                .keyboardShortcut(.cancelAction)
+
+                Button {
+                    showingRescheduleSheet = false
+                    rescheduleReminder(newDeadline: newDeadline, hasDueDate: hasDueDate, hasDueTime: hasDueTime)
+                } label: {
+                    Text(rmbLocalized(.renameReminderAlertConfirmButton))
+                        .frame(maxWidth: .infinity)
+                }
+            }
+            .padding()
+        }
+        .frame(width: 250, height: 300, alignment: .center)
         .padding()
     }
 }
