@@ -15,13 +15,8 @@ struct SelectableView: View {
         }
         
         let paddingText = !isSelected && withPadding ? "      " : ""
-        let coloredDot = color != nil ? Text("●  ").foregroundColor(color) : Text("")
-        
-        Group {
-            Text(paddingText).font(.system(size: 11.9)) +
-            coloredDot +
-            Text(title)
-        }
+        Text(paddingText + title)
+            .foregroundColor(color)
     }
 }
 
