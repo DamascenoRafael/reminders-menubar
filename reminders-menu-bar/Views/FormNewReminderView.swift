@@ -12,7 +12,7 @@ struct FormNewReminderView: View {
     @State var hasDueTime = false
     
     var body: some View {
-        VStack {
+        Form {
             HStack {
                 let placeholder = rmbLocalized(.newReminderTextFielPlaceholder)
                 newReminderTextField(text: $newReminderTitle, placeholder: placeholder, date: $date, hasDueDate: $hasDueDate, hasDueTime: $hasDueTime)
