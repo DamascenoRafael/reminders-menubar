@@ -112,6 +112,9 @@ struct ReminderItemView: View {
                 .onChange(of: showingRenameSheet) { isShowing in
                     AppDelegate.instance.changeBehaviorBasedOnModal(isShowing: isShowing)
                 }
+                .onChange(of: showingRescheduleSheet) { isShowing in
+                    AppDelegate.instance.changeBehaviorBasedOnModal(isShowing: isShowing)
+                }
                 
                 if let dateDescription = reminder.relativeDateDescription {
                     HStack {
