@@ -4,6 +4,10 @@ import EventKit
 struct FormNewReminderView: View {
     @EnvironmentObject var remindersData: RemindersData
     @ObservedObject var userPreferences = UserPreferences.instance
+    @State var date = Date()
+    @State var showPopover = false
+    @State var hasDueDate = false
+    @State var hasDueTime = false
     
     @State var newReminderTitle = ""
     
@@ -11,7 +15,7 @@ struct FormNewReminderView: View {
         VStack {
             HStack {
                 let placeholder = rmbLocalized(.newReminderTextFielPlaceholder)
-                newReminderTextField(text: $newReminderTitle, placeholder: placeholder)
+                newReminderTextField(text: $newReminderTitle, placeholder: placeholder, date: $date, hasDueDate: $hasDueDate, hasDueTime: $hasDueTime)
                 .padding(.vertical, 8)
                 .padding(.horizontal, 8)
                 .padding(.leading, 22)
@@ -52,16 +56,58 @@ struct FormNewReminderView: View {
     }
     
     @ViewBuilder
-    func newReminderTextField(text: Binding<String>, placeholder: String) -> some View {
-        if #available(macOS 12.0, *) {
-            NewReminderTextFieldView(placeholder: placeholder, text: text)
-                .onSubmit {
+    func newReminderTextField(text: Binding<String>, placeholder: String, date: Binding<Date>, hasDueDate: Binding<Bool>, hasDueTime: Binding<Bool>) -> some View {
+        VStack{
+            if #available(macOS 15.0, *) {
+                NewReminderTextFieldView(placeholder: placeholder, text: text)
+                    .onSubmit {
+                        createNewReminder()
+                    }
+            } else {
+                TextField(placeholder, text: text, onCommit: {
                     createNewReminder()
+                })
+            }
+            HStack{
+                if hasDueDate.wrappedValue {
+                    HStack(spacing: 0){
+                        DatePicker(selection: date, displayedComponents: .date){
+                            Image(systemName: "calendar")
+                        }
+                            .datePickerStyle(.field)
+                        Button {
+                            hasDueDate.wrappedValue = false
+                        } label: {
+                            Image(systemName: "xmark")
+                        }
+                    }
+                    if hasDueTime.wrappedValue {
+                        HStack(spacing: 0){
+                            DatePicker(selection: date, displayedComponents: .hourAndMinute){
+                                Image(systemName: "clock")
+                            }
+                                .datePickerStyle(.field)
+                            Button {
+                                hasDueTime.wrappedValue = false
+                            } label: {
+                                Image(systemName: "xmark")
+                            }
+                        }
+                    }else{
+                        Button {
+                            hasDueTime.wrappedValue = true
+                        } label: {
+                            Label("Add Time", systemImage: "clock")
+                        }
+                    }
+                }else{
+                    Button {
+                        hasDueDate.wrappedValue = true
+                    } label: {
+                        Label("Add Date", systemImage: "calendar")
+                    }
                 }
-        } else {
-            TextField(placeholder, text: text, onCommit: {
-                createNewReminder()
-            })
+            }
         }
     }
     
