@@ -64,9 +64,8 @@ struct FormNewReminderView: View {
                         createNewReminder()
                     }
             } else {
-                TextField(placeholder, text: text, onCommit: {
-                    createNewReminder()
-                })
+                LegacyReminderTitleTextFieldView(placeholder: placeholder, text: text, onSubmit: createNewReminder)
+                Text(text.wrappedValue)
             }
             HStack{
                 if hasDueDate.wrappedValue {
@@ -136,6 +135,59 @@ struct NewReminderTextFieldView: View {
                     self.newReminderTextFieldInFocus = true
                 }
             }
+    }
+}
+
+struct LegacyReminderTitleTextFieldView: NSViewRepresentable{
+    let placeholder: String
+    var text: Binding<String>
+    var onSubmit: () -> Void
+    
+    @ObservedObject var userPreferences = UserPreferences.instance
+    
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(self)
+    }
+    
+    func makeNSView(context: Context) -> NSTextField {
+        let textField = NSTextField()
+        textField.delegate = context.coordinator
+        textField.placeholderString = placeholder
+        textField.isBordered = false
+        textField.font = .systemFont(ofSize: NSFont.systemFontSize)
+        
+        textField.backgroundColor = NSColor.clear
+        
+        return textField
+    }
+    
+    func updateNSView(_ nsView: NSTextField, context: Context) {}
+    
+    class Coordinator: NSObject, NSTextFieldDelegate{
+        var parent: LegacyReminderTitleTextFieldView
+        
+        init(_ parent: LegacyReminderTitleTextFieldView){
+            self.parent = parent
+        }
+        
+        func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
+            if (commandSelector == #selector(NSResponder.insertNewline(_:))) {
+                guard !textView.string.isEmpty else {
+                    return false
+                }
+                self.parent.onSubmit()
+                textView.string = ""
+                self.parent.text.wrappedValue = ""
+                return true
+            }
+            return false
+        }
+        
+        func controlTextDidChange(_ obj: Notification) {
+            if let textField = obj.object as? NSTextField{
+                self.parent.text.wrappedValue = textField.stringValue
+            }
+        }
     }
 }
 
