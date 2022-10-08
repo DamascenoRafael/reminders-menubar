@@ -13,13 +13,14 @@ struct SelectableView: View {
             Image(systemName: "checkmark")
                 .frame(minWidth: 0, minHeight: 0)
         }
-        let paddingText = !isSelected && withPadding ? "      " : ""
-        if withDot{
-            Text(paddingText + "● ")
-                .foregroundColor(color)
-            + Text(title)
-        }else{
-            Text(paddingText+title)
+        
+        let paddingText = !isSelected && withPadding ? "      " : ""
+        let coloredDot = color != nil ? Text("●  ").foregroundColor(color) : Text("")
+        
+        Group {
+            Text(paddingText).font(.system(size: 11.9)) +
+            coloredDot +
+            Text(title)
         }
     }
 }

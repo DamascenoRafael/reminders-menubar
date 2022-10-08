@@ -8,41 +8,53 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 0) {
             FormNewReminderView()
-            List {
-                if userPreferences.showUpcomingReminders {
-                    UpcomingRemindersList()
-                }
-                ForEach(remindersData.filteredReminderLists) { reminderList in
-                    VStack(alignment: .leading) {
-                        CalendarTitleView(calendar: reminderList.calendar)
-                        let reminders = filteredReminders(reminderList.reminders)
-                        if reminders.isEmpty {
-                            let calendarIsEmpty = reminderList.reminders.isEmpty
-                            NoReminderItemsView(emptyList: calendarIsEmpty ? .noReminders : .allItemsCompleted)
-                        }
-                        ForEach(reminders, id: \.calendarItemIdentifier) { reminder in
-                            ReminderItemView(reminder: reminder)
-                        }
+            
+            if userPreferences.atLeastOneFilterIsSelected {
+                List {
+                    if userPreferences.showUpcomingReminders {
+                        UpcomingRemindersView()
                     }
-                    .padding(.bottom, 5)
+                    ForEach(remindersData.filteredReminderLists) { reminderList in
+                        VStack(alignment: .leading) {
+                            CalendarTitle(calendar: reminderList.calendar)
+                            let reminders = filteredReminders(reminderList.reminders)
+                            if reminders.isEmpty {
+                                let calendarIsEmpty = reminderList.reminders.isEmpty
+                                NoReminderItemsView(emptyList: calendarIsEmpty ? .noReminders : .allItemsCompleted)
+                            }
+                            ForEach(reminders, id: \.calendarItemIdentifier) { reminder in
+                                ReminderItemView(reminder: reminder)
+                            }
+                        }
+                        .padding(.bottom, 5)
+                    }
                 }
+            } else {
+                VStack(spacing: 4) {
+                    Text(rmbLocalized(.emptyListNoRemindersFilterTitle))
+                        .multilineTextAlignment(.center)
+                    Text(rmbLocalized(.emptyListNoRemindersFilterMessage))
+                        .multilineTextAlignment(.center)
+                }
+                .frame(maxHeight: .infinity)
             }
-            .onAppear {
-                remindersData.update()
-            }
+            
             SettingsBarView()
+        }
+        .onAppear {
+            remindersData.update()
         }
         .background(Color("backgroundTheme").opacity(userPreferences.backgroundIsTransparent ? 0.3 : 1.0))
     }
     
     private func filteredReminders(_ reminders: [EKReminder]) -> [EKReminder] {
-        let uncompletedReminders = reminders.filter { !$0.isCompleted }.sortedReminders
+        let uncompletedReminders = reminders.filter { !$0.isCompleted }.sortedRemindersByPriority
         
         if userPreferences.showUncompletedOnly {
             return uncompletedReminders
         }
         
-        let completedReminders = reminders.filter { $0.isCompleted }.sortedReminders
+        let completedReminders = reminders.filter { $0.isCompleted }.sortedRemindersByPriority
         return uncompletedReminders + completedReminders
     }
 }

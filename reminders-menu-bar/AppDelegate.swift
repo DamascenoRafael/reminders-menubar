@@ -10,6 +10,9 @@ struct RemindersMenuBar: App {
         Settings {
             EmptyView()
         }
+        .commands {
+            AppCommands()
+        }
     }
 }
 
@@ -33,6 +36,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         changeBehaviorToDismissIfNeeded()
         configurePopover()
         configureMenuBarButton()
+        configureKeyboardShortcut()
     }
     
     private func configurePopover() {
@@ -50,6 +54,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusBarItem.button?.action = #selector(togglePopover)
     }
     
+    private func configureKeyboardShortcut() {
+        KeyboardShortcutService.instance.action(for: .openRemindersMenuBar) { [weak self] in
+            self?.togglePopover()
+        }
+    }
+    
     func updateMenuBarTodayCount(to todayCount: Int) {
         let buttonTitle = todayCount > 0 ? String(todayCount) : ""
         statusBarItem.button?.title = buttonTitle
@@ -59,8 +69,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         popover.behavior = .transient
     }
     
-    func changeBehaviorToKeepVisible() {
+    private func changeBehaviorToKeepVisible() {
         popover.behavior = .applicationDefined
+    }
+    
+    func changeBehaviorBasedOnModal(isShowing: Bool) {
+        if isShowing {
+            changeBehaviorToKeepVisible()
+        } else {
+            changeBehaviorToDismissIfNeeded()
+        }
     }
 
     private func requestAuthorization() {
@@ -111,6 +129,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             popover.performClose(button)
         } else {
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
+            UserPreferences.instance.remindersMenuBarOpeningEvent.toggle()
         }
     }
 }

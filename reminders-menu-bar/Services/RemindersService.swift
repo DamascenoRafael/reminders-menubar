@@ -32,7 +32,7 @@ class RemindersService {
     }
     
     func getCalendars() -> [EKCalendar] {
-        return eventStore.calendars(for: .reminder).sorted(by: { $0.title.compare($1.title) == .orderedAscending })
+        return eventStore.calendars(for: .reminder)
     }
     
     func getDefaultCalendar() -> EKCalendar {
@@ -84,12 +84,7 @@ class RemindersService {
                                                                    calendars: calendars)
         
         let reminders = fetchRemindersSynchronously(matching: predicate)
-        
-        return reminders.sorted(by: {
-            let firstDate = $0.dueDateComponents?.date ?? .distantPast
-            let secondDate = $1.dueDateComponents?.date ?? .distantPast
-            return firstDate.compare(secondDate) == .orderedAscending
-        })
+        return reminders.sortedReminders
     }
     
     func save(reminder: EKReminder) {

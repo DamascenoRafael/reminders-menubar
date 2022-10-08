@@ -21,9 +21,14 @@ class UserPreferences: ObservableObject {
     
     private static let defaults = UserDefaults.standard
     
+    @Published var remindersMenuBarOpeningEvent = false
+    
     @Published var calendarIdentifiersFilter: [String] = {
         guard let identifiers = defaults.stringArray(forKey: PreferencesKeys.calendarIdentifiersFilter) else {
-            return []
+            // NOTE: On first use it will load all reminder lists.
+            let calendars = RemindersService.instance.getCalendars()
+            let allIdentifiers = calendars.map({ $0.calendarIdentifier })
+            return allIdentifiers
         }
         
         return identifiers
@@ -81,11 +86,15 @@ class UserPreferences: ObservableObject {
         guard defaults.object(forKey: PreferencesKeys.showUpcomingReminders) != nil else {
             return true
         }
-        return UserDefaults.standard.bool(forKey: PreferencesKeys.showUpcomingReminders)
+        return defaults.bool(forKey: PreferencesKeys.showUpcomingReminders)
     }() {
         didSet {
             UserPreferences.defaults.set(showUpcomingReminders, forKey: PreferencesKeys.showUpcomingReminders)
         }
+    }
+    
+    var atLeastOneFilterIsSelected: Bool {
+        return showUpcomingReminders || !self.calendarIdentifiersFilter.isEmpty
     }
     
     var launchAtLoginIsEnabled: Bool {
@@ -101,10 +110,10 @@ class UserPreferences: ObservableObject {
     }
     
     @Published var backgroundIsTransparent: Bool = {
-        guard UserDefaults.standard.object(forKey: PreferencesKeys.backgroundIsTransparent) != nil else {
+        guard defaults.object(forKey: PreferencesKeys.backgroundIsTransparent) != nil else {
             return true
         }
-        return UserDefaults.standard.bool(forKey: PreferencesKeys.backgroundIsTransparent)
+        return defaults.bool(forKey: PreferencesKeys.backgroundIsTransparent)
     }() {
         didSet {
             UserPreferences.defaults.set(backgroundIsTransparent, forKey: PreferencesKeys.backgroundIsTransparent)
@@ -112,10 +121,10 @@ class UserPreferences: ObservableObject {
     }
     
     @Published var showMenuBarTodayCount: Bool = {
-        guard UserDefaults.standard.object(forKey: PreferencesKeys.showMenuBarTodayCount) != nil else {
+        guard defaults.object(forKey: PreferencesKeys.showMenuBarTodayCount) != nil else {
             return true
         }
-        return UserDefaults.standard.bool(forKey: PreferencesKeys.showMenuBarTodayCount)
+        return defaults.bool(forKey: PreferencesKeys.showMenuBarTodayCount)
     }() {
         didSet {
             UserPreferences.defaults.set(showMenuBarTodayCount, forKey: PreferencesKeys.showMenuBarTodayCount)
@@ -123,7 +132,7 @@ class UserPreferences: ObservableObject {
     }
     
     @Published var preferredLanguage: String? = {
-        return UserDefaults.standard.string(forKey: PreferencesKeys.preferredLanguage)
+        return defaults.string(forKey: PreferencesKeys.preferredLanguage)
     }() {
         didSet {
             UserPreferences.defaults.set(preferredLanguage, forKey: PreferencesKeys.preferredLanguage)

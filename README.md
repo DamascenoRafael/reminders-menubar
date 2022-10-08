@@ -39,7 +39,7 @@
 * Keep everything in sync with Apple Reminders
 * Create new reminders in your chosen list
 * Mark reminders as completed / uncompleted
-* Remove reminders or Move reminders between lists
+* Rename reminders, Remove reminders or Move reminders between lists
 * View a list of upcoming reminders
 * Filter reminders through lists or through completed status
 
@@ -88,7 +88,7 @@ Feel free to share, open issues and contribute to this project! :heart:
 
 ## Languages
 
-🇺🇸 English • 🇧🇷 Brazilian Portuguese • 🇮🇹 Italian • 🇨🇳 Chinese (Simplified) • 🇩🇪 German
+🇺🇸 English • 🇧🇷 Brazilian Portuguese • 🇨🇳 Chinese (Simplified) • 🇳🇱 Dutch • 🇩🇪 German • 🇮🇹 Italian • 🇯🇵 Japanese • 🇲🇽 Spanish (Latin America)
 
 <details>
   <summary>

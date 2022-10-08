@@ -10,10 +10,8 @@ opt_in_rules:
 - file_header
 - first_where
 - force_unwrapping
-- implicit_return
 - implicitly_unwrapped_optional
 - joined_default_parameter
-- missing_docs
 - multiline_arguments
 - multiline_function_chains
 - multiline_parameters
@@ -40,10 +38,6 @@ attributes:
 identifier_name:
   excluded:
   - id
-
-implicit_return:
-  included:
-  - closure
 
 multiline_arguments:
   only_enforce_after_first_closure_on_first_line: true

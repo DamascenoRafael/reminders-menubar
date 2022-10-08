@@ -2,15 +2,19 @@ import EventKit
 
 extension Array where Element == EKReminder {
     var sortedReminders: [EKReminder] {
-        let remindersByPriority = PrioritizedReminders(self)
-        
-        return sortedRemindersCategory(remindersByPriority.high) +
-            sortedRemindersCategory(remindersByPriority.medium) +
-            sortedRemindersCategory(remindersByPriority.low) +
-            sortedRemindersCategory(remindersByPriority.none)
+        return sortedReminders(self)
     }
     
-    private func sortedRemindersCategory(_ reminders: [EKReminder]) -> [EKReminder] {
+    var sortedRemindersByPriority: [EKReminder] {
+        let remindersByPriority = PrioritizedReminders(self)
+        
+        return sortedReminders(remindersByPriority.high) +
+            sortedReminders(remindersByPriority.medium) +
+            sortedReminders(remindersByPriority.low) +
+            sortedReminders(remindersByPriority.none)
+    }
+    
+    private func sortedReminders(_ reminders: [EKReminder]) -> [EKReminder] {
         var (dueDateReminders, undatedReminders) = reminders.separeted(by: { $0.hasDueDate })
         
         dueDateReminders.sort(by: {

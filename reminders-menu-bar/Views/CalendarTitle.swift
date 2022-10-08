@@ -1,7 +1,7 @@
 import SwiftUI
 import EventKit
 
-struct CalendarTitleView: View {
+struct CalendarTitle: View {
     @ObservedObject var userPreferences = UserPreferences.instance
     
     var calendar: EKCalendar
@@ -22,7 +22,7 @@ struct CalendarTitleView: View {
                 let isSelected = userPreferences.calendarForSaving.calendarIdentifier == calendar.calendarIdentifier
                 Image(systemName: isSelected ? "folder.fill" : "folder")
                     .font(Font.headline.weight(.medium))
-                    .foregroundColor(calendarFolderIsHovered ? Color(calendar.color): nil)
+                    .foregroundColor(calendarFolderIsHovered ? Color(calendar.color) : nil)
                     .frame(width: 15, height: 15, alignment: .center)
                     .padding(5)
             }
@@ -49,7 +49,7 @@ struct CalendarTitleView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             ForEach(ColorScheme.allCases, id: \.self) { color in
-                CalendarTitleView(calendar: calendar)
+                CalendarTitle(calendar: calendar)
                     .colorScheme(color)
                     .previewDisplayName("\(color) mode")
             }

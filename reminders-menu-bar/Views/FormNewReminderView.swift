@@ -10,12 +10,8 @@ struct FormNewReminderView: View {
     var body: some View {
         VStack {
             HStack {
-                TextField(rmbLocalized(.newReminderTextFielPlaceholder), text: $newReminderTitle, onCommit: {
-                    guard !newReminderTitle.isEmpty else { return }
-                    
-                    RemindersService.instance.createNew(with: newReminderTitle, in: userPreferences.calendarForSaving)
-                    newReminderTitle = ""
-                })
+                let placeholder = rmbLocalized(.newReminderTextFielPlaceholder)
+                newReminderTextField(text: $newReminderTitle, placeholder: placeholder)
                 .padding(.vertical, 8)
                 .padding(.horizontal, 8)
                 .padding(.leading, 22)
@@ -53,6 +49,47 @@ struct FormNewReminderView: View {
             }
         }
         .padding(10)
+    }
+    
+    @ViewBuilder
+    func newReminderTextField(text: Binding<String>, placeholder: String) -> some View {
+        if #available(macOS 12.0, *) {
+            NewReminderTextFieldView(placeholder: placeholder, text: text)
+                .onSubmit {
+                    createNewReminder()
+                }
+        } else {
+            TextField(placeholder, text: text, onCommit: {
+                createNewReminder()
+            })
+        }
+    }
+    
+    func createNewReminder() {
+        guard !newReminderTitle.isEmpty else { return }
+        
+        RemindersService.instance.createNew(with: newReminderTitle, in: userPreferences.calendarForSaving)
+        newReminderTitle = ""
+    }
+}
+
+@available(macOS 12.0, *)
+struct NewReminderTextFieldView: View {
+    @FocusState private var newReminderTextFieldInFocus: Bool
+    @ObservedObject var userPreferences = UserPreferences.instance
+    
+    var placeholder: String
+    var text: Binding<String>
+    
+    var body: some View {
+        let placeholdderText = Text(placeholder)
+        TextField("", text: text, prompt: placeholdderText)
+            .focused($newReminderTextFieldInFocus)
+            .onReceive(userPreferences.$remindersMenuBarOpeningEvent) { _ in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    self.newReminderTextFieldInFocus = true
+                }
+            }
     }
 }
 

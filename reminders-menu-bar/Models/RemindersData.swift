@@ -4,9 +4,9 @@ import EventKit
 
 class RemindersData: ObservableObject {
     
-    let userPreferences = UserPreferences.instance
+    private let userPreferences = UserPreferences.instance
     
-    var cancellationTokens: [AnyCancellable] = []
+    private var cancellationTokens: [AnyCancellable] = []
     
     init() {
         addObservers()
@@ -59,9 +59,6 @@ class RemindersData: ObservableObject {
             self.userPreferences.calendarIdentifiersFilter = self.userPreferences.calendarIdentifiersFilter.filter({
                 RemindersService.instance.isValid(calendarIdentifier: $0)
             })
-            if self.userPreferences.calendarIdentifiersFilter.isEmpty {
-                self.userPreferences.calendarIdentifiersFilter = calendars.map({ $0.calendarIdentifier })
-            }
             
             let calendarForSavingIdentifier = self.userPreferences.calendarForSaving.calendarIdentifier
             if !RemindersService.instance.isValid(calendarIdentifier: calendarForSavingIdentifier) {
