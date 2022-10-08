@@ -160,7 +160,9 @@ struct LegacyReminderTitleTextFieldView: NSViewRepresentable{
         return textField
     }
     
-    func updateNSView(_ nsView: NSTextField, context: Context) {}
+    func updateNSView(_ nsView: NSTextField, context: Context) {
+        nsView.stringValue = self.text.wrappedValue
+    }
     
     class Coordinator: NSObject, NSTextFieldDelegate{
         var parent: LegacyReminderTitleTextFieldView
@@ -175,8 +177,6 @@ struct LegacyReminderTitleTextFieldView: NSViewRepresentable{
                     return false
                 }
                 self.parent.onSubmit()
-                textView.string = ""
-                self.parent.text.wrappedValue = ""
                 return true
             }
             return false
