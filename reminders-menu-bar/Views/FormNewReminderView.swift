@@ -57,7 +57,7 @@ struct FormNewReminderView: View {
     
     @ViewBuilder
     func newReminderTextField(text: Binding<String>, placeholder: String, date: Binding<Date>, hasDueDate: Binding<Bool>, hasDueTime: Binding<Bool>) -> some View {
-        VStack{
+        VStack(alignment: .leading){
             if #available(macOS 15.0, *) {
                 NewReminderTextFieldView(placeholder: placeholder, text: text)
                     .onSubmit {
@@ -66,44 +66,49 @@ struct FormNewReminderView: View {
             } else {
                 LegacyReminderTitleTextFieldView(placeholder: placeholder, text: text, onSubmit: createNewReminder)
             }
-            HStack{
-                if hasDueDate.wrappedValue {
+            newReminderDateField(date: date, hasDueDate: hasDueDate, hasDueTime: hasDueTime)
+        }
+    }
+    
+    @ViewBuilder
+    func newReminderDateField(date: Binding<Date>, hasDueDate: Binding<Bool>, hasDueTime: Binding<Bool>) -> some View {
+        HStack{
+            if hasDueDate.wrappedValue {
+                HStack(spacing: 0){
+                    DatePicker(selection: date, displayedComponents: .date){
+                        Image(systemName: "calendar")
+                    }
+                        .datePickerStyle(.field)
+                    Button {
+                        hasDueDate.wrappedValue = false
+                    } label: {
+                        Image(systemName: "xmark")
+                    }
+                }
+                if hasDueTime.wrappedValue {
                     HStack(spacing: 0){
-                        DatePicker(selection: date, displayedComponents: .date){
-                            Image(systemName: "calendar")
+                        DatePicker(selection: date, displayedComponents: .hourAndMinute){
+                            Image(systemName: "clock")
                         }
                             .datePickerStyle(.field)
                         Button {
-                            hasDueDate.wrappedValue = false
+                            hasDueTime.wrappedValue = false
                         } label: {
                             Image(systemName: "xmark")
                         }
                     }
-                    if hasDueTime.wrappedValue {
-                        HStack(spacing: 0){
-                            DatePicker(selection: date, displayedComponents: .hourAndMinute){
-                                Image(systemName: "clock")
-                            }
-                                .datePickerStyle(.field)
-                            Button {
-                                hasDueTime.wrappedValue = false
-                            } label: {
-                                Image(systemName: "xmark")
-                            }
-                        }
-                    }else{
-                        Button {
-                            hasDueTime.wrappedValue = true
-                        } label: {
-                            Label("Add Time", systemImage: "clock")
-                        }
-                    }
                 }else{
                     Button {
-                        hasDueDate.wrappedValue = true
+                        hasDueTime.wrappedValue = true
                     } label: {
-                        Label("Add Date", systemImage: "calendar")
+                        Label("Add Time", systemImage: "clock")
                     }
+                }
+            }else{
+                Button {
+                    hasDueDate.wrappedValue = true
+                } label: {
+                    Label("Add Date", systemImage: "calendar")
                 }
             }
         }
@@ -112,7 +117,7 @@ struct FormNewReminderView: View {
     func createNewReminder() {
         guard !newReminderTitle.isEmpty else { return }
         
-        RemindersService.instance.createNew(with: newReminderTitle, in: userPreferences.calendarForSaving)
+        RemindersService.instance.createNew(with: newReminderTitle, in: userPreferences.calendarForSaving, deadline: date, hasDueDate: hasDueDate, hasDueTime: hasDueTime)
         newReminderTitle = ""
     }
 }
