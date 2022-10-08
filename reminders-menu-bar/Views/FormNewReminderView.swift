@@ -4,12 +4,12 @@ import EventKit
 struct FormNewReminderView: View {
     @EnvironmentObject var remindersData: RemindersData
     @ObservedObject var userPreferences = UserPreferences.instance
+    
+    @State var newReminderTitle = ""
     @State var date = Date()
     @State var showPopover = false
     @State var hasDueDate = false
     @State var hasDueTime = false
-    
-    @State var newReminderTitle = ""
     
     var body: some View {
         VStack {
@@ -53,6 +53,7 @@ struct FormNewReminderView: View {
             }
         }
         .padding(10)
+        .animation(.default)
     }
     
     @ViewBuilder
@@ -66,7 +67,9 @@ struct FormNewReminderView: View {
             } else {
                 LegacyReminderTitleTextFieldView(placeholder: placeholder, text: text, onSubmit: createNewReminder)
             }
-            newReminderDateField(date: date, hasDueDate: hasDueDate, hasDueTime: hasDueTime)
+            if !text.wrappedValue.isEmpty {
+                newReminderDateField(date: date, hasDueDate: hasDueDate, hasDueTime: hasDueTime)
+            }
         }
     }
     
@@ -112,6 +115,7 @@ struct FormNewReminderView: View {
                 }
             }
         }
+        .animation(.none)
     }
     
     func createNewReminder() {
@@ -119,6 +123,9 @@ struct FormNewReminderView: View {
         
         RemindersService.instance.createNew(with: newReminderTitle, in: userPreferences.calendarForSaving, deadline: date, hasDueDate: hasDueDate, hasDueTime: hasDueTime)
         newReminderTitle = ""
+        hasDueDate = false
+        hasDueTime = false
+        date = Date()
     }
 }
 
