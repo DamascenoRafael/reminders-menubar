@@ -38,7 +38,7 @@ struct FormNewReminderView: View {
                         Button(action: { userPreferences.calendarForSaving = calendar }) {
                             let isSelected =
                                 userPreferences.calendarForSaving.calendarIdentifier == calendar.calendarIdentifier
-                            SelectableView(title: calendar.title, isSelected: isSelected, color: Color(calendar.color), withDot: true)
+                            SelectableView(title: calendar.title, isSelected: isSelected, color: Color(calendar.color))
                         }
                     }
                 } label: {
@@ -59,7 +59,7 @@ struct FormNewReminderView: View {
     @ViewBuilder
     func newReminderTextField(text: Binding<String>, placeholder: String, date: Binding<Date>, hasDueDate: Binding<Bool>, hasDueTime: Binding<Bool>) -> some View {
         VStack(alignment: .leading){
-            if #available(macOS 15.0, *) {
+            if #available(macOS 12.0, *) {
                 NewReminderTextFieldView(placeholder: placeholder, text: text)
                     .onSubmit {
                         createNewReminder()
