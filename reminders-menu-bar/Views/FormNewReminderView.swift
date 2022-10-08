@@ -65,7 +65,6 @@ struct FormNewReminderView: View {
                     }
             } else {
                 LegacyReminderTitleTextFieldView(placeholder: placeholder, text: text, onSubmit: createNewReminder)
-                Text(text.wrappedValue)
             }
             HStack{
                 if hasDueDate.wrappedValue {
