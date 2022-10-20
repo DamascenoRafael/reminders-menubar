@@ -23,7 +23,7 @@ struct ContentView: View {
                                 NoReminderItemsView(emptyList: calendarIsEmpty ? .noReminders : .allItemsCompleted)
                             }
                             ForEach(reminders, id: \.calendarItemIdentifier) { reminder in
-                                ReminderItemView(reminder: reminder)
+                                ReminderItemView(reminder: reminder, stateReminder: reminder)
                             }
                         }
                         .padding(.bottom, 5)
@@ -59,8 +59,8 @@ struct ContentView: View {
     }
 }
 
-// struct ContentView_Previews: PreviewProvider {
-//     static var previews: some View {
-//         ContentView().environmentObject(RemindersData())
-//     }
-// }
+ struct ContentView_Previews: PreviewProvider {
+     static var previews: some View {
+         ContentView().environmentObject(RemindersData())
+     }
+ }

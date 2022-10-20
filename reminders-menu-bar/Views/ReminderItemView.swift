@@ -14,6 +14,8 @@ struct ReminderItemView: View {
     @State private var showingRemoveAlert = false
     @State private var hasBeenRemoved = false
     
+    @State var stateReminder: EKReminder
+    
     var body: some View {
         HStack(alignment: .top) {
             Button(action: {
@@ -32,8 +34,9 @@ struct ReminderItemView: View {
                         Image(systemName: prioritySystemImage)
                             .foregroundColor(Color(reminder.calendar.color))
                     }
-                    Text(reminder.title)
+                    TextEditor(text: $stateReminder.title)
                         .fixedSize(horizontal: false, vertical: true)
+                        .padding(.top, 4.0)
                     Spacer()
                     MenuButton(label:
                         Image(systemName: "ellipsis")
@@ -253,7 +256,7 @@ struct ReminderItemView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             ForEach(ColorScheme.allCases, id: \.self) { color in
-                ReminderItemView(reminder: reminder)
+                ReminderItemView(reminder: reminder, stateReminder: reminder)
                     .environmentObject(RemindersData())
                     .colorScheme(color)
                     .previewDisplayName("\(color) mode")
