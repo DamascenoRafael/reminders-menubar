@@ -65,7 +65,7 @@ struct ReminderItemView: View {
                             showingRescheduleSheet = true
                             hasDueTime = reminder.hasTime
                             hasDueDate = reminder.hasDueDate
-                            if let reminderDueDateComponents = reminder.dueDateComponents{
+                            if let reminderDueDateComponents = reminder.dueDateComponents {
                                 if let reminderDueDate = Calendar.current.date(from: reminderDueDateComponents) {
                                     newDeadline = reminderDueDate
                                 }
@@ -162,7 +162,9 @@ struct ReminderItemView: View {
     func rescheduleReminder(newDeadline: Date, hasDueDate: Bool, hasDueTime: Bool) {
         if hasDueDate {
             if hasDueTime {
-                reminder.dueDateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: newDeadline)
+                reminder.dueDateComponents = Calendar.current.dateComponents(
+                    [.year, .month, .day, .hour, .minute], from: newDeadline
+                )
             } else {
                 reminder.dueDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: newDeadline)
             }

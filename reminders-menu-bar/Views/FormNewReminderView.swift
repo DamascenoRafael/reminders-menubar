@@ -15,7 +15,13 @@ struct FormNewReminderView: View {
         Form {
             HStack {
                 let placeholder = rmbLocalized(.newReminderTextFielPlaceholder)
-                newReminderTextField(text: $newReminderTitle, placeholder: placeholder, date: $date, hasDueDate: $hasDueDate, hasDueTime: $hasDueTime)
+                newReminderTextField(
+                    text: $newReminderTitle,
+                    placeholder: placeholder,
+                    date: $date,
+                    hasDueDate: $hasDueDate,
+                    hasDueTime: $hasDueTime
+                )
                 .padding(.vertical, 8)
                 .padding(.horizontal, 8)
                 .padding(.leading, 22)
@@ -57,8 +63,14 @@ struct FormNewReminderView: View {
     }
     
     @ViewBuilder
-    func newReminderTextField(text: Binding<String>, placeholder: String, date: Binding<Date>, hasDueDate: Binding<Bool>, hasDueTime: Binding<Bool>) -> some View {
-        VStack(alignment: .leading){
+    func newReminderTextField(
+        text: Binding<String>,
+        placeholder: String,
+        date: Binding<Date>,
+        hasDueDate: Binding<Bool>,
+        hasDueTime: Binding<Bool>
+    ) -> some View {
+        VStack(alignment: .leading) {
             if #available(macOS 12.0, *) {
                 NewReminderTextFieldView(placeholder: placeholder, text: text)
                     .onSubmit {
@@ -75,10 +87,10 @@ struct FormNewReminderView: View {
     
     @ViewBuilder
     func newReminderDateField(date: Binding<Date>, hasDueDate: Binding<Bool>, hasDueTime: Binding<Bool>) -> some View {
-        HStack{
+        HStack {
             if hasDueDate.wrappedValue {
-                HStack(spacing: 0){
-                    DatePicker(selection: date, displayedComponents: .date){
+                HStack(spacing: 0) {
+                    DatePicker(selection: date, displayedComponents: .date) {
                         Image(systemName: "calendar")
                     }
                         .datePickerStyle(.field)
@@ -89,8 +101,8 @@ struct FormNewReminderView: View {
                     }
                 }
                 if hasDueTime.wrappedValue {
-                    HStack(spacing: 0){
-                        DatePicker(selection: date, displayedComponents: .hourAndMinute){
+                    HStack(spacing: 0) {
+                        DatePicker(selection: date, displayedComponents: .hourAndMinute) {
                             Image(systemName: "clock")
                         }
                             .datePickerStyle(.field)
@@ -100,14 +112,14 @@ struct FormNewReminderView: View {
                             Image(systemName: "xmark")
                         }
                     }
-                }else{
+                } else {
                     Button {
                         hasDueTime.wrappedValue = true
                     } label: {
                         Label("Add Time", systemImage: "clock")
                     }
                 }
-            }else{
+            } else {
                 Button {
                     hasDueDate.wrappedValue = true
                 } label: {
@@ -121,7 +133,13 @@ struct FormNewReminderView: View {
     func createNewReminder() {
         guard !newReminderTitle.isEmpty else { return }
         
-        RemindersService.instance.createNew(with: newReminderTitle, in: userPreferences.calendarForSaving, deadline: date, hasDueDate: hasDueDate, hasDueTime: hasDueTime)
+        RemindersService.instance.createNew(
+            with: newReminderTitle,
+            in: userPreferences.calendarForSaving,
+            deadline: date,
+            hasDueDate: hasDueDate,
+            hasDueTime: hasDueTime
+        )
         newReminderTitle = ""
         hasDueDate = false
         hasDueTime = false
@@ -149,7 +167,7 @@ struct NewReminderTextFieldView: View {
     }
 }
 
-struct LegacyReminderTitleTextFieldView: NSViewRepresentable{
+struct LegacyReminderTitleTextFieldView: NSViewRepresentable {
     let placeholder: String
     var text: Binding<String>
     var onSubmit: () -> Void
@@ -176,15 +194,15 @@ struct LegacyReminderTitleTextFieldView: NSViewRepresentable{
         nsView.stringValue = self.text.wrappedValue
     }
     
-    class Coordinator: NSObject, NSTextFieldDelegate{
+    class Coordinator: NSObject, NSTextFieldDelegate {
         var parent: LegacyReminderTitleTextFieldView
         
-        init(_ parent: LegacyReminderTitleTextFieldView){
+        init(_ parent: LegacyReminderTitleTextFieldView) {
             self.parent = parent
         }
         
         func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
-            if (commandSelector == #selector(NSResponder.insertNewline(_:))) {
+            if commandSelector == #selector(NSResponder.insertNewline(_:)) {
                 guard !textView.string.isEmpty else {
                     return false
                 }
@@ -195,7 +213,7 @@ struct LegacyReminderTitleTextFieldView: NSViewRepresentable{
         }
         
         func controlTextDidChange(_ obj: Notification) {
-            if let textField = obj.object as? NSTextField{
+            if let textField = obj.object as? NSTextField {
                 self.parent.text.wrappedValue = textField.stringValue
             }
         }

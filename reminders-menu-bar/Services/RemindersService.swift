@@ -99,12 +99,18 @@ class RemindersService {
         let newReminder = EKReminder(eventStore: eventStore)
         newReminder.title = title
         newReminder.calendar = calendar
-        if let deadline = deadline{
+        if let deadline = deadline {
             if hasDueDate {
                 if hasDueTime {
-                    newReminder.dueDateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: deadline)
+                    newReminder.dueDateComponents = Calendar.current.dateComponents(
+                        [.year, .month, .day, .hour, .minute],
+                        from: deadline
+                    )
                 } else {
-                    newReminder.dueDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: deadline)
+                    newReminder.dueDateComponents = Calendar.current.dateComponents(
+                        [.year, .month, .day],
+                        from: deadline
+                    )
                 }
             }
         }
