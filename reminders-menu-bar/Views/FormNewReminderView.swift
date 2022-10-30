@@ -9,7 +9,7 @@ struct FormNewReminderView: View {
     @State var date = Date()
     @State var showPopover = false
     @State var hasDueDate = false
-    @State var hasDueTime = false
+    @State var hasTime = false
     
     var body: some View {
         Form {
@@ -20,7 +20,7 @@ struct FormNewReminderView: View {
                     placeholder: placeholder,
                     date: $date,
                     hasDueDate: $hasDueDate,
-                    hasDueTime: $hasDueTime
+                    hasDueTime: $hasTime
                 )
                 .padding(.vertical, 8)
                 .padding(.horizontal, 8)
@@ -133,16 +133,18 @@ struct FormNewReminderView: View {
     func createNewReminder() {
         guard !newReminderTitle.isEmpty else { return }
         
-        RemindersService.instance.createNew(
-            with: newReminderTitle,
-            in: userPreferences.calendarForSaving,
-            deadline: date,
-            hasDueDate: hasDueDate,
-            hasDueTime: hasDueTime
-        )
+        let rmbReminder = RmbReminder(title: newReminderTitle,
+                                      notes: nil,
+                                      date: date,
+                                      hasDueDate: hasDueDate,
+                                      hasTime: hasTime,
+                                      priority: .none)
+        
+        RemindersService.instance.createNew(with: rmbReminder, in: userPreferences.calendarForSaving)
+        
         newReminderTitle = ""
         hasDueDate = false
-        hasDueTime = false
+        hasTime = false
         date = Date()
     }
 }

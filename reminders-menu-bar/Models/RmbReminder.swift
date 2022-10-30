@@ -13,7 +13,9 @@ struct RmbReminder {
         }
     }
     var priority: EKReminderPriority
-    
+}
+
+extension RmbReminder {
     init(reminder: EKReminder) {
         title = reminder.title
         notes = reminder.notes
