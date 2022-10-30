@@ -24,7 +24,12 @@ extension EKReminder {
     }
     
     var ekPriority: EKReminderPriority {
-        return EKReminderPriority(rawValue: UInt(self.priority)) ?? .none
+        get {
+            return EKReminderPriority(rawValue: UInt(self.priority)) ?? .none
+        }
+        set {
+            self.priority = Int(newValue.rawValue)
+        }
     }
     
     var prioritySystemImage: String? {
@@ -50,5 +55,17 @@ extension EKReminder {
         }
         
         return date.relativeDateDescription(withTime: hasTime)
+    }
+    
+    func update(with rmbReminder: RmbReminder) {
+        if !rmbReminder.title.trimmingCharacters(in: .whitespaces).isEmpty {
+            title = rmbReminder.title
+        }
+        notes = rmbReminder.notes
+
+        let rmbDateComponents = rmbReminder.date.dateComponentes(withTime: rmbReminder.hasTime)
+        dueDateComponents = rmbReminder.hasDueDate ? rmbDateComponents : nil
+
+        ekPriority = rmbReminder.priority
     }
 }
