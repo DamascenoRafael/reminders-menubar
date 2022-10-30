@@ -6,12 +6,22 @@ struct FormNewReminderView: View {
     @ObservedObject var userPreferences = UserPreferences.instance
     
     @State var newReminderTitle = ""
+    @State var date = Date()
+    @State var showPopover = false
+    @State var hasDueDate = false
+    @State var hasDueTime = false
     
     var body: some View {
         Form {
             HStack {
                 let placeholder = rmbLocalized(.newReminderTextFielPlaceholder)
-                newReminderTextField(text: $newReminderTitle, placeholder: placeholder)
+                newReminderTextField(
+                    text: $newReminderTitle,
+                    placeholder: placeholder,
+                    date: $date,
+                    hasDueDate: $hasDueDate,
+                    hasDueTime: $hasDueTime
+                )
                 .padding(.vertical, 8)
                 .padding(.horizontal, 8)
                 .padding(.leading, 22)
@@ -49,27 +59,91 @@ struct FormNewReminderView: View {
             }
         }
         .padding(10)
+        .animation(.default)
     }
     
     @ViewBuilder
-    func newReminderTextField(text: Binding<String>, placeholder: String) -> some View {
-        if #available(macOS 12.0, *) {
-            NewReminderTextFieldView(placeholder: placeholder, text: text)
-                .onSubmit {
-                    createNewReminder()
-                }
-        } else {
-            TextField(placeholder, text: text, onCommit: {
-                createNewReminder()
-            })
+    func newReminderTextField(
+        text: Binding<String>,
+        placeholder: String,
+        date: Binding<Date>,
+        hasDueDate: Binding<Bool>,
+        hasDueTime: Binding<Bool>
+    ) -> some View {
+        VStack(alignment: .leading) {
+            if #available(macOS 12.0, *) {
+                NewReminderTextFieldView(placeholder: placeholder, text: text)
+                    .onSubmit {
+                        createNewReminder()
+                    }
+            } else {
+                LegacyReminderTitleTextFieldView(placeholder: placeholder, text: text, onSubmit: createNewReminder)
+            }
+            if !text.wrappedValue.isEmpty {
+                newReminderDateField(date: date, hasDueDate: hasDueDate, hasDueTime: hasDueTime)
+            }
         }
+    }
+    
+    @ViewBuilder
+    func newReminderDateField(date: Binding<Date>, hasDueDate: Binding<Bool>, hasDueTime: Binding<Bool>) -> some View {
+        HStack {
+            if hasDueDate.wrappedValue {
+                HStack(spacing: 0) {
+                    DatePicker(selection: date, displayedComponents: .date) {
+                        Image(systemName: "calendar")
+                    }
+                        .datePickerStyle(.field)
+                    Button {
+                        hasDueDate.wrappedValue = false
+                    } label: {
+                        Image(systemName: "xmark")
+                    }
+                }
+                if hasDueTime.wrappedValue {
+                    HStack(spacing: 0) {
+                        DatePicker(selection: date, displayedComponents: .hourAndMinute) {
+                            Image(systemName: "clock")
+                        }
+                            .datePickerStyle(.field)
+                        Button {
+                            hasDueTime.wrappedValue = false
+                        } label: {
+                            Image(systemName: "xmark")
+                        }
+                    }
+                } else {
+                    Button {
+                        hasDueTime.wrappedValue = true
+                    } label: {
+                        Label("Add Time", systemImage: "clock")
+                    }
+                }
+            } else {
+                Button {
+                    hasDueDate.wrappedValue = true
+                } label: {
+                    Label("Add Date", systemImage: "calendar")
+                }
+            }
+        }
+        .animation(.none)
     }
     
     func createNewReminder() {
         guard !newReminderTitle.isEmpty else { return }
         
-        RemindersService.instance.createNew(with: newReminderTitle, in: userPreferences.calendarForSaving)
+        RemindersService.instance.createNew(
+            with: newReminderTitle,
+            in: userPreferences.calendarForSaving,
+            deadline: date,
+            hasDueDate: hasDueDate,
+            hasDueTime: hasDueTime
+        )
         newReminderTitle = ""
+        hasDueDate = false
+        hasDueTime = false
+        date = Date()
     }
 }
 
@@ -90,6 +164,59 @@ struct NewReminderTextFieldView: View {
                     self.newReminderTextFieldInFocus = true
                 }
             }
+    }
+}
+
+struct LegacyReminderTitleTextFieldView: NSViewRepresentable {
+    let placeholder: String
+    var text: Binding<String>
+    var onSubmit: () -> Void
+    
+    @ObservedObject var userPreferences = UserPreferences.instance
+    
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(self)
+    }
+    
+    func makeNSView(context: Context) -> NSTextField {
+        let textField = NSTextField()
+        textField.delegate = context.coordinator
+        textField.placeholderString = placeholder
+        textField.isBordered = false
+        textField.font = .systemFont(ofSize: NSFont.systemFontSize)
+        
+        textField.backgroundColor = NSColor.clear
+        
+        return textField
+    }
+    
+    func updateNSView(_ nsView: NSTextField, context: Context) {
+        nsView.stringValue = self.text.wrappedValue
+    }
+    
+    class Coordinator: NSObject, NSTextFieldDelegate {
+        var parent: LegacyReminderTitleTextFieldView
+        
+        init(_ parent: LegacyReminderTitleTextFieldView) {
+            self.parent = parent
+        }
+        
+        func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
+            if commandSelector == #selector(NSResponder.insertNewline(_:)) {
+                guard !textView.string.isEmpty else {
+                    return false
+                }
+                self.parent.onSubmit()
+                return true
+            }
+            return false
+        }
+        
+        func controlTextDidChange(_ obj: Notification) {
+            if let textField = obj.object as? NSTextField {
+                self.parent.text.wrappedValue = textField.stringValue
+            }
+        }
     }
 }
 
