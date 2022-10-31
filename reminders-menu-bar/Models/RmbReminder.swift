@@ -13,13 +13,19 @@ struct RmbReminder {
         }
     }
     var priority: EKReminderPriority
-}
 
-extension RmbReminder {
+    init() {
+        title = ""
+        date = .currentNextHour()
+        hasDueDate = false
+        hasTime = false
+        priority = .none
+    }
+    
     init(reminder: EKReminder) {
         title = reminder.title
         notes = reminder.notes
-        date = reminder.dueDateComponents?.date ?? Date.currentNextHour()
+        date = reminder.dueDateComponents?.date ?? .currentNextHour()
         hasDueDate = reminder.hasDueDate
         hasTime = reminder.hasTime
         priority = reminder.ekPriority

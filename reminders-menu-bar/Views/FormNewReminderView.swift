@@ -5,23 +5,13 @@ struct FormNewReminderView: View {
     @EnvironmentObject var remindersData: RemindersData
     @ObservedObject var userPreferences = UserPreferences.instance
     
-    @State var newReminderTitle = ""
-    @State var date = Date()
-    @State var showPopover = false
-    @State var hasDueDate = false
-    @State var hasTime = false
+    @State var rmbReminder = RmbReminder()
     
     var body: some View {
         Form {
             HStack {
                 let placeholder = rmbLocalized(.newReminderTextFielPlaceholder)
-                newReminderTextField(
-                    text: $newReminderTitle,
-                    placeholder: placeholder,
-                    date: $date,
-                    hasDueDate: $hasDueDate,
-                    hasDueTime: $hasTime
-                )
+                newReminderTextField(placeholder: placeholder)
                 .padding(.vertical, 8)
                 .padding(.horizontal, 8)
                 .padding(.leading, 22)
@@ -63,103 +53,99 @@ struct FormNewReminderView: View {
     }
     
     @ViewBuilder
-    func newReminderTextField(
-        text: Binding<String>,
-        placeholder: String,
-        date: Binding<Date>,
-        hasDueDate: Binding<Bool>,
-        hasDueTime: Binding<Bool>
-    ) -> some View {
+    func newReminderTextField(placeholder: String) -> some View {
         VStack(alignment: .leading) {
             if #available(macOS 12.0, *) {
-                NewReminderTextFieldView(placeholder: placeholder, text: text)
-                    .onSubmit {
-                        createNewReminder()
-                    }
+                ReminderTextFieldView(placeholder: placeholder, text: $rmbReminder.title, onSubmit: createNewReminder)
             } else {
-                LegacyReminderTitleTextFieldView(placeholder: placeholder, text: text, onSubmit: createNewReminder)
+                LegacyReminderTextFieldView(placeholder: placeholder, text: $rmbReminder.title, onSubmit: createNewReminder)
             }
-            if !text.wrappedValue.isEmpty {
-                newReminderDateField(date: date, hasDueDate: hasDueDate, hasDueTime: hasDueTime)
+            if !rmbReminder.title.isEmpty {
+                reminderDueDateOptionsView(date: $rmbReminder.date, hasDueDate: $rmbReminder.hasDueDate, hasTime: $rmbReminder.hasTime)
             }
         }
     }
     
     @ViewBuilder
-    func newReminderDateField(date: Binding<Date>, hasDueDate: Binding<Bool>, hasDueTime: Binding<Bool>) -> some View {
+    func reminderDueDateOptionsView(date: Binding<Date>, hasDueDate: Binding<Bool>, hasTime: Binding<Bool>) -> some View {
         HStack {
+            reminderRemindDateOptionView(date: date, hasDueDate: hasDueDate)
             if hasDueDate.wrappedValue {
-                HStack(spacing: 0) {
-                    DatePicker(selection: date, displayedComponents: .date) {
-                        Image(systemName: "calendar")
-                    }
-                        .datePickerStyle(.field)
-                    Button {
-                        hasDueDate.wrappedValue = false
-                    } label: {
-                        Image(systemName: "xmark")
-                    }
-                }
-                if hasDueTime.wrappedValue {
-                    HStack(spacing: 0) {
-                        DatePicker(selection: date, displayedComponents: .hourAndMinute) {
-                            Image(systemName: "clock")
-                        }
-                            .datePickerStyle(.field)
-                        Button {
-                            hasDueTime.wrappedValue = false
-                        } label: {
-                            Image(systemName: "xmark")
-                        }
-                    }
-                } else {
-                    Button {
-                        hasDueTime.wrappedValue = true
-                    } label: {
-                        Label("Add Time", systemImage: "clock")
-                    }
-                }
-            } else {
-                Button {
-                    hasDueDate.wrappedValue = true
-                } label: {
-                    Label("Add Date", systemImage: "calendar")
-                }
+                reminderRemindTimeOptionView(date: date, hasTime: hasTime)
             }
         }
         .animation(.none)
     }
     
+    @ViewBuilder
+    func reminderRemindDateOptionView(date: Binding<Date>, hasDueDate: Binding<Bool>) -> some View {
+        if hasDueDate.wrappedValue {
+            HStack(spacing: 0) {
+                DatePicker(selection: date, displayedComponents: .date) {
+                    Image(systemName: "calendar")
+                }
+                    .datePickerStyle(.field)
+                Button {
+                    hasDueDate.wrappedValue = false
+                } label: {
+                    Image(systemName: "xmark")
+                }
+            }
+        } else {
+            Button {
+                hasDueDate.wrappedValue = true
+            } label: {
+                Label("Add Date", systemImage: "calendar")
+            }
+        }
+    }
+    
+    @ViewBuilder
+    func reminderRemindTimeOptionView(date: Binding<Date>, hasTime: Binding<Bool>) -> some View {
+        if hasTime.wrappedValue {
+            HStack(spacing: 0) {
+                DatePicker(selection: date, displayedComponents: .hourAndMinute) {
+                    Image(systemName: "clock")
+                }
+                    .datePickerStyle(.field)
+                Button {
+                    hasTime.wrappedValue = false
+                } label: {
+                    Image(systemName: "xmark")
+                }
+            }
+        } else {
+            Button {
+                hasTime.wrappedValue = true
+            } label: {
+                Label("Add Time", systemImage: "clock")
+            }
+        }
+    }
+    
     func createNewReminder() {
-        guard !newReminderTitle.isEmpty else { return }
-        
-        let rmbReminder = RmbReminder(title: newReminderTitle,
-                                      notes: nil,
-                                      date: date,
-                                      hasDueDate: hasDueDate,
-                                      hasTime: hasTime,
-                                      priority: .none)
+        guard !rmbReminder.title.isEmpty else { return }
         
         RemindersService.instance.createNew(with: rmbReminder, in: userPreferences.calendarForSaving)
-        
-        newReminderTitle = ""
-        hasDueDate = false
-        hasTime = false
-        date = Date()
+        rmbReminder = RmbReminder()
     }
 }
 
 @available(macOS 12.0, *)
-struct NewReminderTextFieldView: View {
+struct ReminderTextFieldView: View {
     @FocusState private var newReminderTextFieldInFocus: Bool
     @ObservedObject var userPreferences = UserPreferences.instance
     
     var placeholder: String
     var text: Binding<String>
+    var onSubmit: () -> Void
     
     var body: some View {
         let placeholdderText = Text(placeholder)
         TextField("", text: text, prompt: placeholdderText)
+            .onSubmit {
+                onSubmit()
+            }
             .focused($newReminderTextFieldInFocus)
             .onReceive(userPreferences.$remindersMenuBarOpeningEvent) { _ in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -169,12 +155,12 @@ struct NewReminderTextFieldView: View {
     }
 }
 
-struct LegacyReminderTitleTextFieldView: NSViewRepresentable {
+struct LegacyReminderTextFieldView: NSViewRepresentable {
+    @ObservedObject var userPreferences = UserPreferences.instance
+    
     let placeholder: String
     var text: Binding<String>
     var onSubmit: () -> Void
-    
-    @ObservedObject var userPreferences = UserPreferences.instance
     
     func makeCoordinator() -> Coordinator {
         return Coordinator(self)
@@ -197,9 +183,9 @@ struct LegacyReminderTitleTextFieldView: NSViewRepresentable {
     }
     
     class Coordinator: NSObject, NSTextFieldDelegate {
-        var parent: LegacyReminderTitleTextFieldView
+        var parent: LegacyReminderTextFieldView
         
-        init(_ parent: LegacyReminderTitleTextFieldView) {
+        init(_ parent: LegacyReminderTextFieldView) {
             self.parent = parent
         }
         
