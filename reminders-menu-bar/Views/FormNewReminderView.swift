@@ -156,8 +156,6 @@ struct ReminderTextFieldView: View {
 }
 
 struct LegacyReminderTextFieldView: NSViewRepresentable {
-    @ObservedObject var userPreferences = UserPreferences.instance
-    
     let placeholder: String
     var text: Binding<String>
     var onSubmit: () -> Void
