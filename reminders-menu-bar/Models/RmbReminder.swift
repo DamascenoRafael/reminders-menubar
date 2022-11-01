@@ -5,7 +5,15 @@ struct RmbReminder {
     var title: String
     var notes: String?
     var date: Date
-    var hasDueDate: Bool
+    var hasDueDate: Bool {
+        didSet {
+            // NOTE: When the hasDueDate option is disabled, it must disable hasTime
+            // so that, if enabled again, it does not have "remind me at a time" enabled
+            if !hasDueDate {
+                hasTime = false
+            }
+        }
+    }
     var hasTime: Bool {
         didSet {
             // NOTE: When enabling the option to add a time the suggestion will be the next hour of the current moment
