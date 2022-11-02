@@ -62,9 +62,17 @@ extension EKReminder {
             title = rmbReminder.title
         }
         notes = rmbReminder.notes
-
-        let rmbDateComponents = rmbReminder.date.dateComponentes(withTime: rmbReminder.hasTime)
-        dueDateComponents = rmbReminder.hasDueDate ? rmbDateComponents : nil
+        
+        if hasDueDate {
+            let rmbDateComponents = rmbReminder.date.dateComponentes(withTime: rmbReminder.hasTime)
+            dueDateComponents = rmbDateComponents
+            
+            let ekAlarm = EKAlarm(absoluteDate: rmbDateComponents.date!)
+            alarms = [ekAlarm]
+        } else {
+            dueDateComponents = nil
+            alarms = nil
+        }
 
         ekPriority = rmbReminder.priority
     }
