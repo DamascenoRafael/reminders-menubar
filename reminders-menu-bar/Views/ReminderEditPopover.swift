@@ -26,20 +26,16 @@ struct ReminderEditPopover: View {
                 Toggle(rmbLocalized(.editReminderRemindDateOption), isOn: $rmbReminder.hasDueDate)
                 
                 if rmbReminder.hasDueDate {
-                    DatePicker("", selection: $rmbReminder.date, displayedComponents: .date)
-                        .labelsHidden()
-                        .datePickerStyle(.field)
+                    RmbDatePicker(selection: $rmbReminder.date, displayedComponents: .yearMonthDay)
                         .fixedSize(horizontal: true, vertical: false)
-                        .padding(.leading, 18)
+                        .padding(.leading, 16)
                     
                     Toggle(rmbLocalized(.editReminderRemindTimeOption), isOn: $rmbReminder.hasTime)
                     
                     if rmbReminder.hasTime {
-                        DatePicker("", selection: $rmbReminder.date, displayedComponents: .hourAndMinute)
-                            .labelsHidden()
-                            .datePickerStyle(.field)
+                        RmbDatePicker(selection: $rmbReminder.date, displayedComponents: .hourMinute)
                             .fixedSize(horizontal: true, vertical: false)
-                            .padding(.leading, 18)
+                            .padding(.leading, 16)
                     }
                 }
             }
