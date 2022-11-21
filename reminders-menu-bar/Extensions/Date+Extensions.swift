@@ -24,8 +24,11 @@ extension Date {
         return relativeDateFormatter.string(from: self)
     }
     
-    func dateComponentes(withTime: Bool) -> DateComponents {
-        let components: Set<Calendar.Component> = withTime ? [.year, .month, .day, .hour, .minute] : [.year, .month, .day]
+    func dateComponents(withTime: Bool) -> DateComponents {
+        var components: Set<Calendar.Component> = [.calendar, .era, .year, .month, .day]
+        if withTime {
+            components.formUnion([.timeZone, .hour, .minute, .second])
+        }
         return Calendar.current.dateComponents(components, from: self)
     }
 }

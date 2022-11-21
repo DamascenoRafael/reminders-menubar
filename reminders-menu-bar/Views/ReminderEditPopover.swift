@@ -99,7 +99,7 @@ struct ReminderEditPopover_Previews: PreviewProvider {
         reminder.title = "Look for awesome projects on GitHub"
         reminder.isCompleted = false
         reminder.calendar = calendar
-        reminder.dueDateComponents = Date().dateComponentes(withTime: true)
+        reminder.dueDateComponents = Date().dateComponents(withTime: true)
         reminder.ekPriority = .high
         
         return reminder
