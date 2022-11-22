@@ -3,7 +3,12 @@ import SwiftUI
 struct RmbDatePicker: NSViewRepresentable {
     @Binding var selection: Date
     var displayedComponents: NSDatePicker.ElementFlags
-    var font: NSFont?
+    private var font: NSFont?
+    
+    init(selection: Binding<Date>, displayedComponents: NSDatePicker.ElementFlags) {
+        _selection = selection
+        self.displayedComponents = displayedComponents
+    }
 
     func makeNSView(context: Context) -> NSDatePicker {
         let picker = NSDatePicker()
@@ -36,6 +41,14 @@ struct RmbDatePicker: NSViewRepresentable {
                 owner.selection = picker.dateValue
             }
         }
+    }
+}
+
+extension RmbDatePicker {
+    func font(_ font: NSFont?) -> RmbDatePicker {
+        var view = self
+        view.font = font
+        return view
     }
 }
 
