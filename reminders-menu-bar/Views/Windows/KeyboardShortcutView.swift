@@ -19,7 +19,8 @@ struct KeyboardShortcutView: View {
                             
                             Button(action: {
                                 KeyboardShortcutService.instance.reset(.openRemindersMenuBar)
-                                removeFocusFromShortcutRecorder()
+                                // Remove focus from ShortcutRecorder
+                                removeFocusFromFirstResponder()
                             }) {
                                 Text(rmbLocalized(.keyboardShortcutRestoreDefaultButton))
                                     .padding(.horizontal, 4)
@@ -38,14 +39,9 @@ struct KeyboardShortcutView: View {
         .padding(.bottom, 24)
         .padding(.horizontal, 32)
         .frame(width: 520, height: 180)
-        .onAppear(perform: {
-            removeFocusFromShortcutRecorder()
-        })
-    }
-    
-    private func removeFocusFromShortcutRecorder() {
-        DispatchQueue.main.async {
-            NSApp.keyWindow?.makeFirstResponder(nil)
+        .onAppear {
+            // Remove focus from ShortcutRecorder
+            removeFocusFromFirstResponder()
         }
     }
     
