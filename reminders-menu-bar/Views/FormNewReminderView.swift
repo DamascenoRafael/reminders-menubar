@@ -211,10 +211,28 @@ struct LegacyReminderTextField: NSViewRepresentable {
 }
 
 struct FormNewReminderView_Previews: PreviewProvider {
+    static var reminder: EKReminder {
+        let calendar = EKCalendar(for: .reminder, eventStore: .init())
+        calendar.color = .systemTeal
+        
+        let reminder = EKReminder(eventStore: .init())
+        reminder.title = "Look for awesome projects on GitHub"
+        reminder.isCompleted = false
+        reminder.calendar = calendar
+        
+        let dateComponents = Date().dateComponents(withTime: true)
+        reminder.dueDateComponents = dateComponents
+        
+        let ekAlarm = EKAlarm(absoluteDate: dateComponents.date!) // swiftlint:disable:this force_unwrapping
+        reminder.alarms = [ekAlarm]
+        
+        return reminder
+    }
+    
     static var previews: some View {
         Group {
             ForEach(ColorScheme.allCases, id: \.self) { color in
-                FormNewReminderView()
+                FormNewReminderView(rmbReminder: RmbReminder(reminder: reminder), isShowingDueDateOptions: true)
                     .environmentObject(RemindersData())
                     .colorScheme(color)
                     .previewDisplayName("\(color) mode")
