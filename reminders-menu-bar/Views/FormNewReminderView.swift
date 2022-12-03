@@ -77,27 +77,30 @@ struct FormNewReminderView: View {
     @ViewBuilder
     func reminderDueDateOptionsView(date: Binding<Date>, hasDueDate: Binding<Bool>, hasTime: Binding<Bool>) -> some View {
         HStack {
-            reminderRemindDateOptionView(date: date, hasDueDate: hasDueDate)
+            reminderRemindDateTimeOptionView(date: date, components: .date, hasComponent: hasDueDate)
                 .modifier(RemindDateTimeCapsuleStyle())
             if hasDueDate.wrappedValue {
-                reminderRemindTimeOptionView(date: date, hasTime: hasTime)
+                reminderRemindDateTimeOptionView(date: date, components: .time, hasComponent: hasTime)
                     .modifier(RemindDateTimeCapsuleStyle())
             }
         }
     }
     
     @ViewBuilder
-    func reminderRemindDateOptionView(date: Binding<Date>, hasDueDate: Binding<Bool>) -> some View {
-        if hasDueDate.wrappedValue {
+    func reminderRemindDateTimeOptionView(date: Binding<Date>, components: RmbDatePicker.DateComponents, hasComponent: Binding<Bool>) -> some View {
+        let pickerIcon = components == .time ? "clock" : "calendar"
+        let pickerAddComponentText = components == .time ? "Add Time" : "Add Date"
+        
+        if hasComponent.wrappedValue {
             HStack {
-                Image(systemName: "calendar")
+                Image(systemName: pickerIcon)
                     .font(.system(size: 12))
-                RmbDatePicker(selection: date, displayedComponents: .yearMonthDay)
+                RmbDatePicker(selection: date, components: components)
                     .font(.systemFont(ofSize: 12, weight: .light))
                     .fixedSize(horizontal: true, vertical: true)
                     .padding(.top, 2)
                 Button {
-                    hasDueDate.wrappedValue = false
+                    hasComponent.wrappedValue = false
                 } label: {
                     Image(systemName: "xmark")
                         .font(.system(size: 12))
@@ -107,39 +110,9 @@ struct FormNewReminderView: View {
             }
         } else {
             Button {
-                hasDueDate.wrappedValue = true
+                hasComponent.wrappedValue = true
             } label: {
-                Label("Add Date", systemImage: "calendar")
-                    .font(.system(size: 12))
-            }
-            .buttonStyle(.borderless)
-        }
-    }
-    
-    @ViewBuilder
-    func reminderRemindTimeOptionView(date: Binding<Date>, hasTime: Binding<Bool>) -> some View {
-        if hasTime.wrappedValue {
-            HStack {
-                Image(systemName: "clock")
-                    .font(.system(size: 12))
-                RmbDatePicker(selection: date, displayedComponents: .hourMinute)
-                    .font(.systemFont(ofSize: 12, weight: .light))
-                    .fixedSize(horizontal: true, vertical: true)
-                    .padding(.top, 2)
-                Button {
-                    hasTime.wrappedValue = false
-                } label: {
-                    Image(systemName: "xmark")
-                        .font(.system(size: 12))
-                }
-                .buttonStyle(.borderless)
-                .frame(width: 5, height: 5, alignment: .center)
-            }
-        } else {
-            Button {
-                hasTime.wrappedValue = true
-            } label: {
-                Label("Add Time", systemImage: "clock")
+                Label(pickerAddComponentText, systemImage: pickerIcon)
                     .font(.system(size: 12))
             }
             .buttonStyle(.borderless)

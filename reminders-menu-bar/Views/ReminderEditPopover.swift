@@ -26,14 +26,14 @@ struct ReminderEditPopover: View {
                 Toggle(rmbLocalized(.editReminderRemindDateOption), isOn: $rmbReminder.hasDueDate)
                 
                 if rmbReminder.hasDueDate {
-                    RmbDatePicker(selection: $rmbReminder.date, displayedComponents: .yearMonthDay)
+                    RmbDatePicker(selection: $rmbReminder.date, components: .date)
                         .fixedSize(horizontal: true, vertical: false)
                         .padding(.leading, 16)
                     
                     Toggle(rmbLocalized(.editReminderRemindTimeOption), isOn: $rmbReminder.hasTime)
                     
                     if rmbReminder.hasTime {
-                        RmbDatePicker(selection: $rmbReminder.date, displayedComponents: .hourMinute)
+                        RmbDatePicker(selection: $rmbReminder.date, components: .time)
                             .fixedSize(horizontal: true, vertical: false)
                             .padding(.leading, 16)
                     }

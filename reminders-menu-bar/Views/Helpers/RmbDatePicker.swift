@@ -5,11 +5,25 @@ struct RmbDatePicker: NSViewRepresentable {
     var displayedComponents: NSDatePicker.ElementFlags
     private var font: NSFont?
     
-    init(selection: Binding<Date>, displayedComponents: NSDatePicker.ElementFlags) {
+    init(selection: Binding<Date>, components: DatePickerComponents) {
         _selection = selection
-        self.displayedComponents = displayedComponents
+        self.displayedComponents = components.displayedComponents
     }
 
+    enum DatePickerComponents {
+        case date
+        case time
+        
+        var displayedComponents: NSDatePicker.ElementFlags {
+            switch self {
+            case .date:
+                return .yearMonthDay
+            case .time:
+                return .hourMinute
+            }
+        }
+    }
+    
     func makeNSView(context: Context) -> NSDatePicker {
         let picker = NSDatePicker()
         picker.font = font ?? picker.font
@@ -56,6 +70,6 @@ struct RmbDatePicker_Previews: PreviewProvider {
     static var date = Date()
     
     static var previews: some View {
-        RmbDatePicker(selection: .constant(date), displayedComponents: .yearMonthDay)
+        RmbDatePicker(selection: .constant(date), components: .date)
     }
 }
