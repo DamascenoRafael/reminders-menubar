@@ -54,6 +54,9 @@ struct FormNewReminderView: View {
             withAnimation(.easeOut(duration: 0.3)) {
                 isShowingDueDateOptions = !newValue.isEmpty
             }
+            if newValue.isEmpty {
+                rmbReminder = RmbReminder()
+            }
         }
     }
     
