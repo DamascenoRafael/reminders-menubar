@@ -89,7 +89,7 @@ struct FormNewReminderView: View {
     @ViewBuilder
     func reminderRemindDateTimeOptionView(date: Binding<Date>, components: RmbDatePicker.DatePickerComponents, hasComponent: Binding<Bool>) -> some View {
         let pickerIcon = components == .time ? "clock" : "calendar"
-        let pickerAddComponentText = components == .time ? "Add Time" : "Add Date"
+        let pickerAddComponentText = components == .time ? rmbLocalized(.newReminderAddTimeButton) : rmbLocalized(.newReminderAddDateButton)
         
         if hasComponent.wrappedValue {
             HStack {

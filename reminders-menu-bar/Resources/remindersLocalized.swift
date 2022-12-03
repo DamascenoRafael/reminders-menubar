@@ -3,6 +3,8 @@ import Foundation
 enum RemindersMenuBarLocalizedKeys: String {
     case newReminderTextFielPlaceholder
     case newReminderCalendarSelectionToSaveHelp
+    case newReminderAddDateButton
+    case newReminderAddTimeButton
     case remindersOptionsButtonHelp
     case editReminderOptionButton
     case editReminderTitleTextFieldPlaceholder
