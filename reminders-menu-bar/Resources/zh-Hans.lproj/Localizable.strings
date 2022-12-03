@@ -1,7 +1,7 @@
 "newReminderTextFielPlaceholder" = "输入提醒事项";
 "newReminderCalendarSelectionToSaveHelp" = "选择新提醒事项的储存位置";
 "newReminderAddDateButton" = "Add Date"; // TODO: Translate (please follow the format used in Apple Reminders)
-"newReminderAddTimeButton" = "Add Time"; // TODO: Translate (please follow the format used in Apple Reminders)
+"newReminderAddTimeButton" = "Add Time"; // TODO: Translate (please follow the format used in Apple Reminders - If the text becomes too large to display, consider translating it as just "Time")
 "remindersOptionsButtonHelp" = "关于编辑提醒事项的选项";
 "editReminderOptionButton" = "Edit"; // TODO: Translate
 "editReminderTitleTextFieldPlaceholder" = "Title"; // TODO: Translate (please follow the format used in Apple Reminders)
