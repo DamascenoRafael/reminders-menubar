@@ -63,7 +63,7 @@ extension EKReminder {
         }
         notes = rmbReminder.notes
         
-        if hasDueDate {
+        if rmbReminder.hasDueDate {
             let rmbDateComponents = rmbReminder.date.dateComponents(withTime: rmbReminder.hasTime)
             dueDateComponents = rmbDateComponents
             
