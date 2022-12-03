@@ -69,53 +69,10 @@ struct FormNewReminderView: View {
                 LegacyReminderTextField(placeholder: placeholder, text: $rmbReminder.title, onSubmit: createNewReminder)
             }
             if isShowingDueDateOptions {
-                reminderDueDateOptionsView(date: $rmbReminder.date, hasDueDate: $rmbReminder.hasDueDate, hasTime: $rmbReminder.hasTime)
+                reminderDueDateOptionsView(date: $rmbReminder.date,
+                                           hasDueDate: $rmbReminder.hasDueDate,
+                                           hasTime: $rmbReminder.hasTime)
             }
-        }
-    }
-    
-    @ViewBuilder
-    func reminderDueDateOptionsView(date: Binding<Date>, hasDueDate: Binding<Bool>, hasTime: Binding<Bool>) -> some View {
-        HStack {
-            reminderRemindDateTimeOptionView(date: date, components: .date, hasComponent: hasDueDate)
-                .modifier(RemindDateTimeCapsuleStyle())
-            if hasDueDate.wrappedValue {
-                reminderRemindDateTimeOptionView(date: date, components: .time, hasComponent: hasTime)
-                    .modifier(RemindDateTimeCapsuleStyle())
-            }
-        }
-    }
-    
-    @ViewBuilder
-    func reminderRemindDateTimeOptionView(date: Binding<Date>, components: RmbDatePicker.DatePickerComponents, hasComponent: Binding<Bool>) -> some View {
-        let pickerIcon = components == .time ? "clock" : "calendar"
-        let pickerAddComponentText = components == .time ? rmbLocalized(.newReminderAddTimeButton) : rmbLocalized(.newReminderAddDateButton)
-        
-        if hasComponent.wrappedValue {
-            HStack {
-                Image(systemName: pickerIcon)
-                    .font(.system(size: 12))
-                RmbDatePicker(selection: date, components: components)
-                    .font(.systemFont(ofSize: 12, weight: .light))
-                    .fixedSize(horizontal: true, vertical: true)
-                    .padding(.top, 2)
-                Button {
-                    hasComponent.wrappedValue = false
-                } label: {
-                    Image(systemName: "xmark")
-                        .font(.system(size: 12))
-                }
-                .buttonStyle(.borderless)
-                .frame(width: 5, height: 5, alignment: .center)
-            }
-        } else {
-            Button {
-                hasComponent.wrappedValue = true
-            } label: {
-                Label(pickerAddComponentText, systemImage: pickerIcon)
-                    .font(.system(size: 12))
-            }
-            .buttonStyle(.borderless)
         }
     }
     
@@ -199,6 +156,56 @@ struct LegacyReminderTextField: NSViewRepresentable {
                 self.parent.text.wrappedValue = textField.stringValue
             }
         }
+    }
+}
+
+@ViewBuilder
+func reminderDueDateOptionsView(date: Binding<Date>, hasDueDate: Binding<Bool>, hasTime: Binding<Bool>) -> some View {
+    HStack {
+        reminderRemindDateTimeOptionView(date: date, components: .date, hasComponent: hasDueDate)
+            .modifier(RemindDateTimeCapsuleStyle())
+        if hasDueDate.wrappedValue {
+            reminderRemindDateTimeOptionView(date: date, components: .time, hasComponent: hasTime)
+                .modifier(RemindDateTimeCapsuleStyle())
+        }
+    }
+}
+
+@ViewBuilder
+func reminderRemindDateTimeOptionView(date: Binding<Date>,
+                                      components: RmbDatePicker.DatePickerComponents,
+                                      hasComponent: Binding<Bool>) -> some View {
+    let pickerIcon = components == .time ? "clock" : "calendar"
+    
+    let addTimeButtonText = rmbLocalized(.newReminderAddTimeButton)
+    let addDateButtonText = rmbLocalized(.newReminderAddDateButton)
+    let pickerAddComponentText = components == .time ? addTimeButtonText : addDateButtonText
+    
+    if hasComponent.wrappedValue {
+        HStack {
+            Image(systemName: pickerIcon)
+                .font(.system(size: 12))
+            RmbDatePicker(selection: date, components: components)
+                .font(.systemFont(ofSize: 12, weight: .light))
+                .fixedSize(horizontal: true, vertical: true)
+                .padding(.top, 2)
+            Button {
+                hasComponent.wrappedValue = false
+            } label: {
+                Image(systemName: "xmark")
+                    .font(.system(size: 12))
+            }
+            .buttonStyle(.borderless)
+            .frame(width: 5, height: 5, alignment: .center)
+        }
+    } else {
+        Button {
+            hasComponent.wrappedValue = true
+        } label: {
+            Label(pickerAddComponentText, systemImage: pickerIcon)
+                .font(.system(size: 12))
+        }
+        .buttonStyle(.borderless)
     }
 }
 
