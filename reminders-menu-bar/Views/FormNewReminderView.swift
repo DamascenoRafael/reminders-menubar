@@ -9,7 +9,7 @@ struct FormNewReminderView: View {
     
     var body: some View {
         Form {
-            HStack {
+            HStack(alignment: .top) {
                 let placeholder = rmbLocalized(.newReminderTextFielPlaceholder)
                 newReminderTextFieldView(placeholder: placeholder)
                 .padding(.vertical, 8)
@@ -24,9 +24,9 @@ struct FormNewReminderView: View {
                 .textFieldStyle(PlainTextFieldStyle())
                 .overlay(
                     Image(systemName: "plus.circle.fill")
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                         .foregroundColor(.gray)
-                        .padding(.leading, 8)
+                        .padding([.top, .leading], 8)
                 )
                 
                 Menu {
