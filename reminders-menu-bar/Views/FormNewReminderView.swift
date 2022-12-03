@@ -6,6 +6,7 @@ struct FormNewReminderView: View {
     @ObservedObject var userPreferences = UserPreferences.instance
     
     @State var rmbReminder = RmbReminder()
+    @State var isShowingDueDateOptions = false
     
     var body: some View {
         Form {
@@ -49,7 +50,11 @@ struct FormNewReminderView: View {
             }
         }
         .padding(10)
-        .animation(.default)
+        .onChange(of: rmbReminder.title) { newValue in
+            withAnimation(.easeOut(duration: 0.3)) {
+                isShowingDueDateOptions = !newValue.isEmpty
+            }
+        }
     }
     
     @ViewBuilder
@@ -60,7 +65,7 @@ struct FormNewReminderView: View {
             } else {
                 LegacyReminderTextField(placeholder: placeholder, text: $rmbReminder.title, onSubmit: createNewReminder)
             }
-            if !rmbReminder.title.isEmpty {
+            if isShowingDueDateOptions {
                 reminderDueDateOptionsView(date: $rmbReminder.date, hasDueDate: $rmbReminder.hasDueDate, hasTime: $rmbReminder.hasTime)
             }
         }
@@ -74,7 +79,6 @@ struct FormNewReminderView: View {
                 reminderRemindTimeOptionView(date: date, hasTime: hasTime)
             }
         }
-        .animation(.none)
     }
     
     @ViewBuilder
