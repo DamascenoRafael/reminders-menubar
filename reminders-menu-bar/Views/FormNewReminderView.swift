@@ -11,7 +11,7 @@ struct FormNewReminderView: View {
         Form {
             HStack {
                 let placeholder = rmbLocalized(.newReminderTextFielPlaceholder)
-                newReminderTextField(placeholder: placeholder)
+                newReminderTextFieldView(placeholder: placeholder)
                 .padding(.vertical, 8)
                 .padding(.horizontal, 8)
                 .padding(.leading, 22)
@@ -53,12 +53,12 @@ struct FormNewReminderView: View {
     }
     
     @ViewBuilder
-    func newReminderTextField(placeholder: String) -> some View {
+    func newReminderTextFieldView(placeholder: String) -> some View {
         VStack(alignment: .leading) {
             if #available(macOS 12.0, *) {
-                ReminderTextFieldView(placeholder: placeholder, text: $rmbReminder.title, onSubmit: createNewReminder)
+                ReminderTextField(placeholder: placeholder, text: $rmbReminder.title, onSubmit: createNewReminder)
             } else {
-                LegacyReminderTextFieldView(placeholder: placeholder, text: $rmbReminder.title, onSubmit: createNewReminder)
+                LegacyReminderTextField(placeholder: placeholder, text: $rmbReminder.title, onSubmit: createNewReminder)
             }
             if !rmbReminder.title.isEmpty {
                 reminderDueDateOptionsView(date: $rmbReminder.date, hasDueDate: $rmbReminder.hasDueDate, hasTime: $rmbReminder.hasTime)
@@ -132,7 +132,7 @@ struct FormNewReminderView: View {
 }
 
 @available(macOS 12.0, *)
-struct ReminderTextFieldView: View {
+struct ReminderTextField: View {
     @FocusState private var newReminderTextFieldInFocus: Bool
     @ObservedObject var userPreferences = UserPreferences.instance
     
@@ -155,7 +155,7 @@ struct ReminderTextFieldView: View {
     }
 }
 
-struct LegacyReminderTextFieldView: NSViewRepresentable {
+struct LegacyReminderTextField: NSViewRepresentable {
     let placeholder: String
     var text: Binding<String>
     var onSubmit: () -> Void
@@ -181,9 +181,9 @@ struct LegacyReminderTextFieldView: NSViewRepresentable {
     }
     
     class Coordinator: NSObject, NSTextFieldDelegate {
-        var parent: LegacyReminderTextFieldView
+        var parent: LegacyReminderTextField
         
-        init(_ parent: LegacyReminderTextFieldView) {
+        init(_ parent: LegacyReminderTextField) {
             self.parent = parent
         }
         
