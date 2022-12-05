@@ -95,9 +95,9 @@ class RemindersService {
         }
     }
     
-    func createNew(with title: String, in calendar: EKCalendar) {
+    func createNew(with rmbReminder: RmbReminder, in calendar: EKCalendar) {
         let newReminder = EKReminder(eventStore: eventStore)
-        newReminder.title = title
+        newReminder.update(with: rmbReminder)
         newReminder.calendar = calendar
         save(reminder: newReminder)
     }
