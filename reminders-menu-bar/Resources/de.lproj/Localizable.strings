@@ -43,3 +43,21 @@
 "appVersionDescription" = "Version %@";
 "remindersMenuBarAppAboutDescription" = "%@ ist eine Open-Source-Software, die unter den Bedingungen der  %@ steht.";
 "remindersMenuBarGitHubAboutDescription" = "Informationen zur Funktion und Updates verfügbar auf GitHub";
+"seeMoreOnGitHubButton" = "Weiteres auf GitHub";
+"keyboardShortcutWindowTitle" = "Einstellungen für Tastaturkürzel";
+"keyboardShortcutEnableOpenShortcutOption" = "Tastaturkürzel zum Öffnen der %@ aktivieren";
+"keyboardShortcutRestoreDefaultButton" = "Standard wiederherstellen";
+"upcomingRemindersIntervalSelectionHelp" = "Auswählen welcher Zeitraum für Erinnerungen angezeigt werden soll";
+"upcomingRemindersTodayTitle" = "Heute";
+"upcomingRemindersInAWeekTitle" = "In einer Woche";
+"upcomingRemindersInAMonthTitle" = "In einem Monat";
+"upcomingRemindersAllTitle" = "Alle";
+"appNoRemindersAccessAlertMessage" = "Zugriff auf Erinnerungen ist für %@ nicht aktiviert";
+"appNoRemindersAccessAlertDescription" = "
+%@ muss auf Ihre Erinnerungen zugreifen können, um richtig zu funktionieren.
+Erteilen Sie in den Systemeinstellungen die Erlaubnis zur Verwendung von %@.
+";
+"openSystemPreferencesButton" = "Systemeinstellungen öffnen";
+"okButton" = "Ok";
+"preferredLanguageMenu" = "Bevorzugte Sprache";
+"preferredLanguageSystemOptionButton" = "Systemsprache verwenden";
