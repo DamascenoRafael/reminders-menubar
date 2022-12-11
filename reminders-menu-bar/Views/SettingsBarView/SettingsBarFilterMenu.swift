@@ -22,7 +22,7 @@ struct SettingsBarFilterMenu: View {
                     let calendarIdentifier = calendar.calendarIdentifier
                     Button(action: {
                         let index = userPreferences.calendarIdentifiersFilter.firstIndex(of: calendarIdentifier)
-                        if let index = index {
+                        if let index {
                             userPreferences.calendarIdentifiersFilter.remove(at: index)
                         } else {
                             userPreferences.calendarIdentifiersFilter.append(calendarIdentifier)

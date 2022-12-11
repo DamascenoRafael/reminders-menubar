@@ -22,7 +22,7 @@ class AppUpdateCheckHelper: ObservableObject {
     
     private(set) var latestRelease: Release? {
         didSet {
-            guard let latestRelease = latestRelease else {
+            guard let latestRelease else {
                 return
             }
             
