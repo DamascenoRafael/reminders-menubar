@@ -17,14 +17,14 @@ struct RmbReminder {
     var hasTime: Bool {
         didSet {
             // NOTE: When enabling the option to add a time the suggestion will be the next hour of the current moment
-            date = Date.currentNextHour(of: date)
+            date = .nextHour(of: date)
         }
     }
     var priority: EKReminderPriority
 
     init() {
         title = ""
-        date = .currentNextHour()
+        date = .nextHour()
         hasDueDate = false
         hasTime = false
         priority = .none
@@ -33,7 +33,7 @@ struct RmbReminder {
     init(reminder: EKReminder) {
         title = reminder.title
         notes = reminder.notes
-        date = reminder.dueDateComponents?.date ?? .currentNextHour()
+        date = reminder.dueDateComponents?.date ?? .nextHour()
         hasDueDate = reminder.hasDueDate
         hasTime = reminder.hasTime
         priority = reminder.ekPriority

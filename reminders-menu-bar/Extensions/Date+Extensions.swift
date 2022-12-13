@@ -5,7 +5,7 @@ extension Date {
         return self.timeIntervalSinceNow < 0
     }
     
-    static func currentNextHour(of date: Date = Date()) -> Date {
+    static func nextHour(of date: Date = Date()) -> Date {
         let now = Date()
         let dateComponentsWithoutTime = Calendar.current.dateComponents([.year, .month, .day], from: date)
         let dateWithoutTime = Calendar.current.date(from: dateComponentsWithoutTime)!
