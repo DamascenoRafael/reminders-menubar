@@ -232,9 +232,6 @@ struct FormNewReminderView_Previews: PreviewProvider {
         let dateComponents = Date().dateComponents(withTime: true)
         reminder.dueDateComponents = dateComponents
         
-        let ekAlarm = EKAlarm(absoluteDate: dateComponents.date!) // swiftlint:disable:this force_unwrapping
-        reminder.alarms = [ekAlarm]
-        
         return reminder
     }
     

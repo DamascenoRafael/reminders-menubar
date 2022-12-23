@@ -67,8 +67,10 @@ extension EKReminder {
             let rmbDateComponents = rmbReminder.date.dateComponents(withTime: rmbReminder.hasTime)
             dueDateComponents = rmbDateComponents
             
-            let ekAlarm = EKAlarm(absoluteDate: rmbDateComponents.date!)
-            alarms = [ekAlarm]
+            // NOTE: Removing the alarms will make Apple Reminders rely only on dueDateComponents.
+            alarms?.forEach { alarm in
+                removeAlarm(alarm)
+            }
         } else {
             dueDateComponents = nil
             alarms = nil
