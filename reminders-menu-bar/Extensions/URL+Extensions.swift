@@ -2,9 +2,10 @@ import Foundation
 
 extension URL {
     var displayedUrl: String {
-        if self.absoluteString.starts(with: "http") {
-            return self.host ?? self.absoluteString
+        var displayedUrlString = self.absoluteString
+        if self.absoluteString.starts(with: "http"), let host = self.host {
+            displayedUrlString = host
         }
-        return self.absoluteString
+        return displayedUrlString.replacingOccurrences(of: "^www.", with: "", options: .regularExpression)
     }
 }
