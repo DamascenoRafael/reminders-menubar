@@ -33,7 +33,8 @@
 "appAppearanceMenu" = "外观";
 "appAppearanceMoreOpaqueOptionButton" = "不透明";
 "appAppearanceMoreTransparentOptionButton" = "透明";
-"showMenuBarTodayCountOptionButton" = "在任务栏显示今日计数";
+"menuBarSettingsMenu" = "Menu bar"; // TODO: Translate
+"showMenuBarTodayCountOptionButton" = "在任务栏显示今日计数"; // TODO: Update this to be equivalent to "Show today count" (since this option will be inside MenuBarSettingsMenu).
 "keyboardShortcutOptionButton" = "键盘快捷键";
 "reloadRemindersDataButton" = "重新加载数据";
 "appAboutButton" = "关于";

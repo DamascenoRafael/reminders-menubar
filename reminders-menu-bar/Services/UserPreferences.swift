@@ -2,6 +2,7 @@ import EventKit
 import ServiceManagement
 
 private struct PreferencesKeys {
+    static let reminderMenuBarIcon = "reminderMenuBarIcon"
     static let calendarIdentifiersFilter = "calendarIdentifiersFilter"
     static let calendarIdentifierForSaving = "calendarIdentifierForSaving"
     static let showUncompletedOnly = "showUncompletedOnly"
@@ -22,6 +23,17 @@ class UserPreferences: ObservableObject {
     private static let defaults = UserDefaults.standard
     
     @Published var remindersMenuBarOpeningEvent = false
+    
+    @Published var reminderMenuBarIcon: RmbIcon = {
+        guard let menuBarIconString = defaults.string(forKey: PreferencesKeys.reminderMenuBarIcon) else {
+            return RmbIcon.defaultIcon
+        }
+        return RmbIcon(rawValue: menuBarIconString) ?? RmbIcon.defaultIcon
+    }() {
+        didSet {
+            UserPreferences.defaults.set(reminderMenuBarIcon.rawValue, forKey: PreferencesKeys.reminderMenuBarIcon)
+        }
+    }
     
     @Published var calendarIdentifiersFilter: [String] = {
         guard let identifiers = defaults.stringArray(forKey: PreferencesKeys.calendarIdentifiersFilter) else {

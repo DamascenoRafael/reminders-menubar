@@ -37,6 +37,7 @@
 		715B4DD928D59D8D008C6683 /* SettingsBarToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B4DD828D59D8D008C6683 /* SettingsBarToggleButton.swift */; };
 		716BCF0E28C97C7100537081 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 716BCF0D28C97C7100537081 /* KeyboardShortcuts */; };
 		7172A74824C776E6001F96F1 /* RemindersData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7172A74724C776E6001F96F1 /* RemindersData.swift */; };
+		717748F829622FCB00654CAA /* RmbIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717748F729622FCB00654CAA /* RmbIcon.swift */; };
 		718C813628D01CCE00BAC2D0 /* KeyboardShortcutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718C813528D01CCE00BAC2D0 /* KeyboardShortcutView.swift */; };
 		71A0B2DC25CE20AC004E06AE /* AppUpdateCheckHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A0B2DB25CE20AC004E06AE /* AppUpdateCheckHelper.swift */; };
 		71A3834325BCA69C00975B4C /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A3834225BCA69C00975B4C /* Date+Extensions.swift */; };
@@ -115,6 +116,7 @@
 		715B4DD628D59BF2008C6683 /* SettingsBarFilterMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBarFilterMenu.swift; sourceTree = "<group>"; };
 		715B4DD828D59D8D008C6683 /* SettingsBarToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBarToggleButton.swift; sourceTree = "<group>"; };
 		7172A74724C776E6001F96F1 /* RemindersData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersData.swift; sourceTree = "<group>"; };
+		717748F729622FCB00654CAA /* RmbIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbIcon.swift; sourceTree = "<group>"; };
 		718C813528D01CCE00BAC2D0 /* KeyboardShortcutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcutView.swift; sourceTree = "<group>"; };
 		71A0B2DB25CE20AC004E06AE /* AppUpdateCheckHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUpdateCheckHelper.swift; sourceTree = "<group>"; };
 		71A3834225BCA69C00975B4C /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				7102422F25F55D5600451D15 /* ReminderInterval.swift */,
 				71564447260324FA005E81FD /* PrioritizedReminders.swift */,
 				71ED5D6A290B6B3C00626185 /* RmbReminder.swift */,
+				717748F729622FCB00654CAA /* RmbIcon.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				71A3834625BDD2AC00975B4C /* EKReminder+Extensions.swift in Sources */,
 				71B4AD6625B9118000214219 /* NoReminderItemsView.swift in Sources */,
 				714E6F6125CCF66000BA0099 /* Constants.swift in Sources */,
+				717748F829622FCB00654CAA /* RmbIcon.swift in Sources */,
 				71F9726A25981EDF00D0A118 /* NSTableView+Extensions.swift in Sources */,
 				71564448260324FA005E81FD /* PrioritizedReminders.swift in Sources */,
 				7156443A26030591005E81FD /* ArrayEKReminder+Extension.swift in Sources */,

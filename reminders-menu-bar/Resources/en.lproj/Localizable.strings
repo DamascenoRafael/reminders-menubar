@@ -33,7 +33,8 @@
 "appAppearanceMenu" = "Appearance";
 "appAppearanceMoreOpaqueOptionButton" = "More opaque";
 "appAppearanceMoreTransparentOptionButton" = "More transparent";
-"showMenuBarTodayCountOptionButton" = "Show today count in the menu bar";
+"menuBarSettingsMenu" = "Menu bar";
+"showMenuBarTodayCountOptionButton" = "Show today count";
 "keyboardShortcutOptionButton" = "Keyboard shortcut";
 "reloadRemindersDataButton" = "Reload data";
 "appAboutButton" = "About";

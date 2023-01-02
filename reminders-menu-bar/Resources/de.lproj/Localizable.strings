@@ -33,7 +33,8 @@
 "appAppearanceMenu" = "Erscheinungsbild";
 "appAppearanceMoreOpaqueOptionButton" = "Hintergrund undurchsichtig";
 "appAppearanceMoreTransparentOptionButton" = "Hintergrund transparenter";
-"showMenuBarTodayCountOptionButton" = "Anzahl der offenen Erinnerungen in der Menüleiste anzeigen";
+"menuBarSettingsMenu" = "Menu bar"; // TODO: Translate
+"showMenuBarTodayCountOptionButton" = "Anzahl der offenen Erinnerungen in der Menüleiste anzeigen"; // TODO: Update this to be equivalent to "Show today count" (since this option will be inside MenuBarSettingsMenu).
 "keyboardShortcutOptionButton" = "Tastaturkürzel";
 "reloadRemindersDataButton" = "Erinnerungen aktualisieren";
 "appAboutButton" = "Über";

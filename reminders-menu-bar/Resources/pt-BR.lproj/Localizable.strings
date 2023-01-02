@@ -33,7 +33,8 @@
 "appAppearanceMenu" = "Aparência";
 "appAppearanceMoreOpaqueOptionButton" = "Mais opaco";
 "appAppearanceMoreTransparentOptionButton" = "Mais transparente";
-"showMenuBarTodayCountOptionButton" = "Mostrar contagem para hoje na barra de menu";
+"MenuBarSettingsMenu" = "Barra de menu";
+"showMenuBarTodayCountOptionButton" = "Mostrar contagem para hoje";
 "keyboardShortcutOptionButton" = "Atalho de teclado";
 "reloadRemindersDataButton" = "Recarregar dados";
 "appAboutButton" = "Sobre";

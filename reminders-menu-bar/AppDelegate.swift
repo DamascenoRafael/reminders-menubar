@@ -48,8 +48,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
+    func loadMenuBarIcon() {
+        let menuBarIcon = UserPreferences.instance.reminderMenuBarIcon
+        statusBarItem.button?.image = menuBarIcon.image
+    }
+    
     private func configureMenuBarButton() {
-        statusBarItem.button?.image = NSImage(systemSymbolName: "list.bullet", accessibilityDescription: nil)
+        loadMenuBarIcon()
         statusBarItem.button?.imagePosition = .imageLeading
         statusBarItem.button?.action = #selector(togglePopover)
     }

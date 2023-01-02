@@ -83,6 +83,16 @@ struct SettingsBarGearMenu: View {
     func visualCustomizationOptions() -> some View {
         Divider()
         
+        appAppearanceMenu()
+        
+        menuBarSettingsMenu()
+        
+        preferredLanguageMenu()
+        
+        Divider()
+    }
+    
+    func appAppearanceMenu() -> some View {
         Menu {
             Button(action: {
                 UserPreferences.instance.backgroundIsTransparent = false
@@ -99,19 +109,37 @@ struct SettingsBarGearMenu: View {
                 SelectableView(title: rmbLocalized(.appAppearanceMoreTransparentOptionButton),
                                isSelected: isSelected)
             }
-            
-            Divider()
-            
+        } label: {
+            Text(rmbLocalized(.appAppearanceMenu))
+        }
+    }
+    
+    func menuBarSettingsMenu() -> some View {
+        Menu {
             Button(action: {
                 UserPreferences.instance.showMenuBarTodayCount.toggle()
             }) {
                 let isSelected = UserPreferences.instance.showMenuBarTodayCount
                 SelectableView(title: rmbLocalized(.showMenuBarTodayCountOptionButton), isSelected: isSelected)
             }
+            
+            Divider()
+            
+            ForEach(RmbIcon.allCases, id: \.self) { icon in
+                Button(action: {
+                    UserPreferences.instance.reminderMenuBarIcon = icon
+                    AppDelegate.instance.loadMenuBarIcon()
+                }) {
+                    Image(nsImage: icon.image)
+                    Text(icon.name)
+                }
+            }
         } label: {
-            Text(rmbLocalized(.appAppearanceMenu))
+            Text(rmbLocalized(.menuBarSettingsMenu))
         }
-        
+    }
+    
+    func preferredLanguageMenu() -> some View {
         Menu {
             Button(action: {
                 UserPreferences.instance.preferredLanguage = nil
@@ -135,8 +163,6 @@ struct SettingsBarGearMenu: View {
         } label: {
             Text(rmbLocalized(.preferredLanguageMenu))
         }
-        
-        Divider()
     }
 }
 
