@@ -57,6 +57,28 @@ extension EKReminder {
         return date.relativeDateDescription(withTime: hasTime)
     }
     
+    // NOTE: This is a workaround to access the URL saved in a reminder.
+    // This property is not accessible through the conventional API.
+    var attachedUrl: URL? {
+        let backingObjectSelector = NSSelectorFromString("backingObject")
+        let reminderSelector = NSSelectorFromString("_reminder")
+        let attachmentsSelector = NSSelectorFromString("attachments")
+        
+        if let unmanagedBackingObject = self.perform(backingObjectSelector),
+           let unmanagedReminder = unmanagedBackingObject.takeUnretainedValue().perform(reminderSelector),
+           let unmanagedAttachments = unmanagedReminder.takeUnretainedValue().perform(attachmentsSelector),
+           let attachments = unmanagedAttachments.takeUnretainedValue() as? [AnyObject] {
+            for item in attachments {
+                guard let unmanagedUrl = item.perform(NSSelectorFromString("url")),
+                      let url = unmanagedUrl.takeUnretainedValue() as? URL else {
+                          continue
+                      }
+                return url
+            }
+         }
+        return nil
+    }
+    
     func update(with rmbReminder: RmbReminder) {
         if !rmbReminder.title.trimmingCharacters(in: .whitespaces).isEmpty {
             title = rmbReminder.title

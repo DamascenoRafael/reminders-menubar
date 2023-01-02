@@ -107,6 +107,22 @@ struct ReminderItemView: View {
                     .padding(.trailing, 12)
                 }
                 
+                if let url = reminder.attachedUrl {
+                    HStack {
+                        Link(destination: url) {
+                            Image(systemName: "safari")
+                            Text(url.displayedUrl)
+                        }
+                        .foregroundColor(.primary)
+                        .frame(height: 25)
+                        .padding(.horizontal, 8)
+                        .background(Color.secondary.opacity(0.2))
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        
+                        Spacer()
+                    }
+                }
+                
                 Divider()
             }
         }
