@@ -19,7 +19,7 @@ struct CalendarTitle: View {
             Button(action: {
                 userPreferences.calendarForSaving = calendar
             }) {
-                let isSelected = userPreferences.calendarForSaving.calendarIdentifier == calendar.calendarIdentifier
+                let isSelected = userPreferences.calendarForSaving?.calendarIdentifier == calendar.calendarIdentifier
                 Image(systemName: isSelected ? "folder.fill" : "folder")
                     .font(Font.headline.weight(.medium))
                     .foregroundColor(calendarFolderIsHovered ? Color(calendar.color) : nil)

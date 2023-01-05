@@ -34,7 +34,7 @@ struct FormNewReminderView: View {
                     ForEach(remindersData.calendars, id: \.calendarIdentifier) { calendar in
                         Button(action: { userPreferences.calendarForSaving = calendar }) {
                             let isSelected =
-                                userPreferences.calendarForSaving.calendarIdentifier == calendar.calendarIdentifier
+                                userPreferences.calendarForSaving?.calendarIdentifier == calendar.calendarIdentifier
                             SelectableView(title: calendar.title, isSelected: isSelected, color: Color(calendar.color))
                         }
                     }
@@ -44,7 +44,7 @@ struct FormNewReminderView: View {
                 .frame(width: 14, height: 16)
                 .padding(8)
                 .padding(.trailing, 2)
-                .background(Color(userPreferences.calendarForSaving.color))
+                .background(Color(userPreferences.calendarForSaving?.color ?? .white))
                 .cornerRadius(8)
                 .help(rmbLocalized(.newReminderCalendarSelectionToSaveHelp))
             }
@@ -77,9 +77,12 @@ struct FormNewReminderView: View {
     }
     
     func createNewReminder() {
-        guard !rmbReminder.title.isEmpty else { return }
+        guard !rmbReminder.title.isEmpty,
+              let calendarForSaving = userPreferences.calendarForSaving else {
+            return
+        }
         
-        RemindersService.instance.createNew(with: rmbReminder, in: userPreferences.calendarForSaving)
+        RemindersService.instance.createNew(with: rmbReminder, in: calendarForSaving)
         rmbReminder = RmbReminder()
     }
 }

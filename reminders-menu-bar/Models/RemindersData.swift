@@ -60,11 +60,6 @@ class RemindersData: ObservableObject {
                 RemindersService.instance.isValid(calendarIdentifier: $0)
             })
             
-            let calendarForSavingIdentifier = self.userPreferences.calendarForSaving.calendarIdentifier
-            if !RemindersService.instance.isValid(calendarIdentifier: calendarForSavingIdentifier) {
-                self.userPreferences.calendarForSaving = RemindersService.instance.getDefaultCalendar()
-            }
-            
             let upcomingRemindersInterval = self.userPreferences.upcomingRemindersInterval
             self.upcomingReminders = RemindersService.instance.getUpcomingReminders(upcomingRemindersInterval)
             

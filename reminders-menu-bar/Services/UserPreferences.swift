@@ -50,13 +50,13 @@ class UserPreferences: ObservableObject {
         }
     }
     
-    @Published var calendarForSaving: EKCalendar = {
+    @Published var calendarForSaving: EKCalendar? = {
+        guard RemindersService.instance.authorizationStatus() == .authorized else {
+            return nil
+        }
+        
         guard let identifier = defaults.string(forKey: PreferencesKeys.calendarIdentifierForSaving),
               let calendar = RemindersService.instance.getCalendar(withIdentifier: identifier) else {
-            // TODO: Find a way to load this property only when the authorization status is authorized
-            guard RemindersService.instance.authorizationStatus() == .authorized else {
-                return EKCalendar()
-            }
             let defaultCalendar = RemindersService.instance.getDefaultCalendar()
             return defaultCalendar
         }
@@ -64,7 +64,7 @@ class UserPreferences: ObservableObject {
         return calendar
     }() {
         didSet {
-            let identifier = calendarForSaving.calendarIdentifier
+            let identifier = calendarForSaving?.calendarIdentifier
             UserPreferences.defaults.set(identifier, forKey: PreferencesKeys.calendarIdentifierForSaving)
         }
     }
