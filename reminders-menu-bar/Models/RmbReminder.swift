@@ -2,6 +2,20 @@ import Foundation
 import EventKit
 
 struct RmbReminder {
+    private var originalReminder: EKReminder?
+    
+    var hasDateChanges: Bool {
+        guard let originalReminder else {
+            return true
+        }
+        
+        let hasChanges =
+            hasDueDate != originalReminder.hasDueDate ||
+            hasTime != originalReminder.hasTime ||
+            date != originalReminder.dueDateComponents?.date
+        return hasChanges
+    }
+    
     var title: String
     var notes: String?
     var date: Date
@@ -31,6 +45,7 @@ struct RmbReminder {
     }
     
     init(reminder: EKReminder) {
+        originalReminder = reminder
         title = reminder.title
         notes = reminder.notes
         date = reminder.dueDateComponents?.date ?? .nextHour()

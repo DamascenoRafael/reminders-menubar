@@ -93,21 +93,35 @@ extension EKReminder {
         if !rmbReminder.title.trimmingCharacters(in: .whitespaces).isEmpty {
             title = rmbReminder.title
         }
+        
         notes = rmbReminder.notes
         
+        // NOTE: Preventing unnecessary reminder dueDate/EKAlarm overwriting.
+        if rmbReminder.hasDateChanges {
+            removeDueDateAndAlarms()
+            addDueDateAndAlarm(from: rmbReminder)
+        }
+        
+        ekPriority = rmbReminder.priority
+    }
+    
+    private func removeDueDateAndAlarms() {
+        dueDateComponents = nil
+        alarms?.forEach { alarm in
+            removeAlarm(alarm)
+        }
+    }
+    
+    private func addDueDateAndAlarm(from rmbReminder: RmbReminder) {
         if rmbReminder.hasDueDate {
             let rmbDateComponents = rmbReminder.date.dateComponents(withTime: rmbReminder.hasTime)
             dueDateComponents = rmbDateComponents
             
-            // NOTE: Removing the alarms will make Apple Reminders rely only on dueDateComponents.
-            alarms?.forEach { alarm in
-                removeAlarm(alarm)
+            // NOTE: In Apple Reminders only reminders with time have an alarm.
+            if rmbReminder.hasTime {
+                let ekAlarm = EKAlarm(absoluteDate: rmbDateComponents.date!)
+                addAlarm(ekAlarm)
             }
-        } else {
-            dueDateComponents = nil
-            alarms = nil
         }
-
-        ekPriority = rmbReminder.priority
     }
 }
