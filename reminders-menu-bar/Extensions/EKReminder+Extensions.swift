@@ -64,18 +64,28 @@ extension EKReminder {
         let reminderSelector = NSSelectorFromString("_reminder")
         let attachmentsSelector = NSSelectorFromString("attachments")
         
-        if let unmanagedBackingObject = self.perform(backingObjectSelector),
-           let unmanagedReminder = unmanagedBackingObject.takeUnretainedValue().perform(reminderSelector),
-           let unmanagedAttachments = unmanagedReminder.takeUnretainedValue().perform(attachmentsSelector),
-           let attachments = unmanagedAttachments.takeUnretainedValue() as? [AnyObject] {
-            for item in attachments {
-                guard let unmanagedUrl = item.perform(NSSelectorFromString("url")),
-                      let url = unmanagedUrl.takeUnretainedValue() as? URL else {
-                          continue
-                      }
-                return url
+        guard let unmanagedBackingObject = self.perform(backingObjectSelector),
+              let unmanagedReminder = unmanagedBackingObject.takeUnretainedValue().perform(reminderSelector),
+              let unmanagedAttachments = unmanagedReminder.takeUnretainedValue().perform(attachmentsSelector),
+              let attachments = unmanagedAttachments.takeUnretainedValue() as? [AnyObject] else {
+            return nil
+        }
+        
+        for item in attachments {
+            // NOTE: Attachments can be of type REMURLAttachment or REMImageAttachment.
+            let attachmentType = type(of: item).description()
+            guard attachmentType == "REMURLAttachment" else {
+                continue
             }
-         }
+            
+            guard let unmanagedUrl = item.perform(NSSelectorFromString("url")),
+                  let url = unmanagedUrl.takeUnretainedValue() as? URL else {
+                continue
+            }
+            
+            return url
+        }
+        
         return nil
     }
     
