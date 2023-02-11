@@ -44,7 +44,6 @@ class NLPDateParser{
         let parsedResults = parser.parse(text: string, refDate: Date(), opt:[.forwardDate: 1])
         if parsedResults.count == 0 {return nil}
         let startDateInfo: [ComponentUnit: Int] = parsedResults[0].start.knownValues
-        print(startDateInfo)
         let todayComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
         var startDateComponents = DateComponents()
         startDateComponents.year = startDateInfo[SwiftyChrono.ComponentUnit.year] ?? todayComponents.year
@@ -52,7 +51,6 @@ class NLPDateParser{
         startDateComponents.day = startDateInfo[SwiftyChrono.ComponentUnit.day] ?? todayComponents.day
         startDateComponents.hour = startDateInfo[SwiftyChrono.ComponentUnit.hour]
         startDateComponents.minute = startDateInfo[SwiftyChrono.ComponentUnit.minute]
-        startDateComponents.second = startDateInfo[SwiftyChrono.ComponentUnit.second]
         self.isTimeDefined = checkTimeDefined(from: startDateComponents)
         self.isDateDefined = checkDateDefined(from: startDateComponents)
         let userCalendar = Calendar(identifier: .gregorian) //TODO: idk if this has to be changed with user's calendar
@@ -60,7 +58,16 @@ class NLPDateParser{
         guard let finalDateTime = finalDateTime else {
             return nil
         }
-        if finalDateTime < Date() {return nil}
+        if finalDateTime < Date() {
+            // If the date is in the past, and the time it's not defined, then it's not valid
+            if !isTimeDefined {
+                return nil
+            }
+            // Otherwise, we assume that the user is referring to the time for the next day
+            startDateComponents.day! += 1
+            let finalDateTime = userCalendar.date(from: startDateComponents)
+            return finalDateTime
+        }
         return finalDateTime
     }
     

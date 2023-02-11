@@ -58,10 +58,13 @@ struct FormNewReminderView: View {
                 guard let parsedDate = dateParser.buildDate(from: newValue) else {
                     return
                 }
-
+                
                 rmbReminder.hasDueDate = dateParser.isDateDefined || dateParser.isTimeDefined
                 rmbReminder.hasTime = dateParser.isTimeDefined
                 rmbReminder.date = parsedDate
+               
+                
+                
             }
             if newValue.isEmpty {
                 rmbReminder = RmbReminder()
