@@ -54,9 +54,11 @@ struct FormNewReminderView: View {
         .onChange(of: rmbReminder.title) { newValue in
             withAnimation(.easeOut(duration: 0.3)) {
                 isShowingDueDateOptions = !newValue.isEmpty
+                if !dateParser.isLanguageSupported {return}
                 guard let parsedDate = dateParser.buildDate(from: newValue) else {
                     return
                 }
+
                 rmbReminder.hasDueDate = true // TODO: Check if this is true by looking in parsedDate
                 rmbReminder.hasTime = true // TODO: Check if this is true by looking in parsedDate
                 rmbReminder.date = parsedDate

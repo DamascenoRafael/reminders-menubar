@@ -9,13 +9,33 @@
 import Foundation
 import SwiftyChrono
 
+
+
 class NLPDateParser{
     let parser: Chrono
-    
+    let userPreferences: UserPreferences
+    var isLanguageSupported: Bool {
+        Chrono.preferredLanguage != nil
+    }
+
     init(){
         self.parser = Chrono()
-        //TODO: Select language by checking the user's selected language
-        Chrono.preferredLanguage = .english
+        self.userPreferences = UserPreferences.instance
+        //TODO: for now this is set only when the parser is initialized, is has to be changed in order to change every time the language is changes in the application by the user
+        Chrono.preferredLanguage = self.getPreferredLanguage(from: rmbCurrentLocale().languageCode)
+    }
+    
+    private func getPreferredLanguage(from languageCode: String?) -> SwiftyChrono.Language? {
+        // SwiftyChrono in date 11 Febraury 2023 only supports the listed languages, in case the language is not supported from SwiftyChrono, then the NLP Date parser won't be available
+        guard let languageCode = languageCode else {return nil}
+        switch languageCode{
+        case "en": return .english
+        case "fr": return .french
+        case "ja": return .japanese
+        case "es": return .spanish
+        case "zh": return .chinese
+        default: return nil
+        }
     }
     
     func buildDate(from string: String) -> Date?{
