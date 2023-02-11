@@ -59,8 +59,8 @@ struct FormNewReminderView: View {
                     return
                 }
 
-                rmbReminder.hasDueDate = true // TODO: Check if this is true by looking in parsedDate
-                rmbReminder.hasTime = true // TODO: Check if this is true by looking in parsedDate
+                rmbReminder.hasDueDate = dateParser.isDateDefined || dateParser.isTimeDefined
+                rmbReminder.hasTime = dateParser.isTimeDefined
                 rmbReminder.date = parsedDate
             }
             if newValue.isEmpty {

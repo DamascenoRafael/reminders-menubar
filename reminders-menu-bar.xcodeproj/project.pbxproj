@@ -150,6 +150,7 @@
 		71F9726925981EDF00D0A118 /* NSTableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableView+Extensions.swift"; sourceTree = "<group>"; };
 		829A1D87B41D2AC0C5F53580 /* Pods_RemindersLauncher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RemindersLauncher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96234A392997B86100A9BEC6 /* NLPDateParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPDateParser.swift; sourceTree = "<group>"; };
+		96234A3B2997C86C00A9BEC6 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A346D6FA2696EC3800A63A5D /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA810D5F28E52C54008BCAD0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA810D6028E52C54008BCAD0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -230,6 +231,7 @@
 		712C32A724BF939100AC75E2 = {
 			isa = PBXGroup;
 			children = (
+				96234A3B2997C86C00A9BEC6 /* MyPlayground.playground */,
 				712C32B224BF939100AC75E2 /* reminders-menu-bar */,
 				71059DA925CA5244001F3063 /* RemindersLauncher */,
 				712C32B124BF939100AC75E2 /* Products */,

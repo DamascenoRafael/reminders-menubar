@@ -17,6 +17,8 @@ class NLPDateParser{
     var isLanguageSupported: Bool {
         Chrono.preferredLanguage != nil
     }
+    var isTimeDefined: Bool = false
+    var isDateDefined: Bool = false
 
     init(){
         self.parser = Chrono()
@@ -49,13 +51,36 @@ class NLPDateParser{
         startDateComponents.hour = startDateInfo[SwiftyChrono.ComponentUnit.hour]
         startDateComponents.minute = startDateInfo[SwiftyChrono.ComponentUnit.minute]
         startDateComponents.second = startDateInfo[SwiftyChrono.ComponentUnit.second]
-        let userCalendar = Calendar(identifier: .gregorian) // since the components above (like year 1980) are for Gregorian
+        self.isTimeDefined = checkTimeDefined(from: startDateComponents)
+        self.isDateDefined = checkDateDefined(from: startDateComponents)
+        if !isDateDefined && isTimeDefined{
+            let todayComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+            startDateComponents.year = todayComponents.year
+            startDateComponents.month = todayComponents.month
+            startDateComponents.day = todayComponents.day
+            print(startDateComponents)
+        }
+        let userCalendar = Calendar(identifier: .gregorian) //TODO: idk if this has to be changed with user's calendar
         let finalDateTime = userCalendar.date(from: startDateComponents)
         guard let finalDateTime = finalDateTime else {
             return nil
         }
         if finalDateTime < Date() {return nil}
         return finalDateTime
+    }
+    
+    func checkTimeDefined(from date: DateComponents) -> Bool{
+        guard let _ = date.minute, let _ = date.hour else {
+            return false
+        }
+        return true
+    }
+    
+    func checkDateDefined(from date: DateComponents) -> Bool{
+        guard let _ = date.year, let _ = date.month, let _ = date.day else {
+            return false
+        }
+        return true
     }
     
 }
