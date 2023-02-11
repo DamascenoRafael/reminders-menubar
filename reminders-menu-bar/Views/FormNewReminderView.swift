@@ -7,6 +7,7 @@ struct FormNewReminderView: View {
     
     @State var rmbReminder = RmbReminder()
     @State var isShowingDueDateOptions = false
+    @State var dateParser = NLPDateParser()
     
     var body: some View {
         Form {
@@ -53,6 +54,12 @@ struct FormNewReminderView: View {
         .onChange(of: rmbReminder.title) { newValue in
             withAnimation(.easeOut(duration: 0.3)) {
                 isShowingDueDateOptions = !newValue.isEmpty
+                guard let parsedDate = dateParser.buildDate(from: newValue) else {
+                    return
+                }
+                rmbReminder.hasDueDate = true // TODO: Check if this is true by looking in parsedDate
+                rmbReminder.hasTime = true // TODO: Check if this is true by looking in parsedDate
+                rmbReminder.date = parsedDate
             }
             if newValue.isEmpty {
                 rmbReminder = RmbReminder()

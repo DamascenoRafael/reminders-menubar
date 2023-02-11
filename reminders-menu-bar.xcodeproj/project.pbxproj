@@ -60,6 +60,7 @@
 		71F301FA259FB5CF00CDD81E /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F301F9259FB5CF00CDD81E /* UserPreferences.swift */; };
 		71F84A4629541D6700C5A24D /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F84A4529541D6700C5A24D /* URL+Extensions.swift */; };
 		71F9726A25981EDF00D0A118 /* NSTableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F9726925981EDF00D0A118 /* NSTableView+Extensions.swift */; };
+		96234A3A2997B86100A9BEC6 /* NLPDateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96234A392997B86100A9BEC6 /* NLPDateParser.swift */; };
 		A63D052C3F3F8C7946E67D47 /* Pods_Reminders_Menu_Bar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C99437AFB3641E4F0962BF /* Pods_Reminders_Menu_Bar.framework */; };
 /* End PBXBuildFile section */
 
@@ -148,6 +149,7 @@
 		71F84A4529541D6700C5A24D /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		71F9726925981EDF00D0A118 /* NSTableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableView+Extensions.swift"; sourceTree = "<group>"; };
 		829A1D87B41D2AC0C5F53580 /* Pods_RemindersLauncher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RemindersLauncher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		96234A392997B86100A9BEC6 /* NLPDateParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPDateParser.swift; sourceTree = "<group>"; };
 		A346D6FA2696EC3800A63A5D /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA810D5F28E52C54008BCAD0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA810D6028E52C54008BCAD0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				71564447260324FA005E81FD /* PrioritizedReminders.swift */,
 				71ED5D6A290B6B3C00626185 /* RmbReminder.swift */,
 				717748F729622FCB00654CAA /* RmbIcon.swift */,
+				96234A392997B86100A9BEC6 /* NLPDateParser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -598,6 +601,7 @@
 				713F234524C130D400FF0BEC /* ReminderList.swift in Sources */,
 				7119C2F025D85B75002C8013 /* SelectableView.swift in Sources */,
 				712C32B624BF939100AC75E2 /* ContentView.swift in Sources */,
+				96234A3A2997B86100A9BEC6 /* NLPDateParser.swift in Sources */,
 				71A6583A2908B0DD006F3A50 /* ReminderEditPopover.swift in Sources */,
 				71B4AD4F25B7D06400214219 /* CalendarTitle.swift in Sources */,
 				7115461324C0ADCB007781E2 /* ReminderItemView.swift in Sources */,
