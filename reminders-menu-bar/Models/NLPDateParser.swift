@@ -58,7 +58,6 @@ class NLPDateParser{
             startDateComponents.year = todayComponents.year
             startDateComponents.month = todayComponents.month
             startDateComponents.day = todayComponents.day
-            print(startDateComponents)
         }
         let userCalendar = Calendar(identifier: .gregorian) //TODO: idk if this has to be changed with user's calendar
         let finalDateTime = userCalendar.date(from: startDateComponents)
