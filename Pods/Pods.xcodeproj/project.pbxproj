@@ -160,15 +160,15 @@
 		88E40D63964FFAD631C546F2D713838E /* DEMergeDateRangeRefiner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DEMergeDateRangeRefiner.swift; path = Sources/Refiners/DE/DEMergeDateRangeRefiner.swift; sourceTree = "<group>"; };
 		890A196F789C719E2B681B1A7662F2B8 /* Pods-Reminders Menu Bar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Reminders Menu Bar-dummy.m"; sourceTree = "<group>"; };
 		9634DAE835F9DF3EF64819315FAAFDB0 /* ZHWeekdayParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZHWeekdayParser.swift; path = Sources/Parsers/ZH/ZHWeekdayParser.swift; sourceTree = "<group>"; };
-		98916A574C28FE6B8021DEA7DA596103 /* Pods-Reminders Menu Bar */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Reminders Menu Bar"; path = Pods_Reminders_Menu_Bar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		98916A574C28FE6B8021DEA7DA596103 /* Pods_Reminders_Menu_Bar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reminders_Menu_Bar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E1A6359A5CDB18F0F14C126C28BB628 /* Refiner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Refiner.swift; path = Sources/Refiners/Refiner.swift; sourceTree = "<group>"; };
 		9FC5CE1086BDADF966A2069D3ED1F770 /* DESlashDateFormatParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DESlashDateFormatParser.swift; path = Sources/Parsers/DE/DESlashDateFormatParser.swift; sourceTree = "<group>"; };
 		A4D665210FAFDBB318065D29B2560D4B /* ENUtil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ENUtil.swift; path = Sources/Utils/ENUtil.swift; sourceTree = "<group>"; };
 		AAB3EE2EB695D4EC0C9B4CC8711EE7CB /* DEDeadlineFormatParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DEDeadlineFormatParser.swift; path = Sources/Parsers/DE/DEDeadlineFormatParser.swift; sourceTree = "<group>"; };
 		ACF2D1A3B4E3AC465A2D014F76FFBDAE /* ENDeadlineFormatParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ENDeadlineFormatParser.swift; path = Sources/Parsers/EN/ENDeadlineFormatParser.swift; sourceTree = "<group>"; };
 		B45FB951D2893131E71C11926CB4A89A /* DETimeExpressionParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DETimeExpressionParser.swift; path = Sources/Parsers/DE/DETimeExpressionParser.swift; sourceTree = "<group>"; };
-		B509D97DE9F0E94C5896001B3024D656 /* Pods-RemindersLauncher */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-RemindersLauncher"; path = Pods_RemindersLauncher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B509D97DE9F0E94C5896001B3024D656 /* Pods_RemindersLauncher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RemindersLauncher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5342A06342EE075351635C05BD383ED /* Options.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Options.swift; path = Sources/Options.swift; sourceTree = "<group>"; };
 		B7B35376F0DF860FE808ABBE2694F88E /* ENMonthNameMiddleEndianParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ENMonthNameMiddleEndianParser.swift; path = Sources/Parsers/EN/ENMonthNameMiddleEndianParser.swift; sourceTree = "<group>"; };
 		B8FBC0A4B585B8DB15055085BD9F3EF9 /* ZHUtil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZHUtil.swift; path = Sources/Utils/ZHUtil.swift; sourceTree = "<group>"; };
@@ -181,7 +181,7 @@
 		C4C06E50F74DFB8A1E54C1B7FBAB4455 /* OverlapRemovalRefiner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OverlapRemovalRefiner.swift; path = Sources/Refiners/OverlapRemovalRefiner.swift; sourceTree = "<group>"; };
 		C7A1B3DCF80A8336D2C506E96D2C5362 /* ESCasualDateParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ESCasualDateParser.swift; path = Sources/Parsers/ES/ESCasualDateParser.swift; sourceTree = "<group>"; };
 		D280BBFCE8013FA92C0BB207EBD55905 /* JPUtil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JPUtil.swift; path = Sources/Utils/JPUtil.swift; sourceTree = "<group>"; };
-		D4436B79B29EFDD5FC5D6EB6B02B11C7 /* SwiftyChrono */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyChrono; path = SwiftyChrono.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4436B79B29EFDD5FC5D6EB6B02B11C7 /* SwiftyChrono.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyChrono.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4B7AF290790F23B12BAF6DD5DD355E9 /* ESDeadlineFormatParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ESDeadlineFormatParser.swift; path = Sources/Parsers/ES/ESDeadlineFormatParser.swift; sourceTree = "<group>"; };
 		D88D05DB0E126484FEAE0E54A1DE0139 /* SwiftyChrono-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftyChrono-Info.plist"; sourceTree = "<group>"; };
 		D8C864631D709ED4784D46E13624F449 /* SwiftyChrono.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyChrono.modulemap; sourceTree = "<group>"; };
@@ -276,9 +276,9 @@
 		4108A4E3601B7A90B6B08895EAEEC310 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				98916A574C28FE6B8021DEA7DA596103 /* Pods-Reminders Menu Bar */,
-				B509D97DE9F0E94C5896001B3024D656 /* Pods-RemindersLauncher */,
-				D4436B79B29EFDD5FC5D6EB6B02B11C7 /* SwiftyChrono */,
+				98916A574C28FE6B8021DEA7DA596103 /* Pods_Reminders_Menu_Bar.framework */,
+				B509D97DE9F0E94C5896001B3024D656 /* Pods_RemindersLauncher.framework */,
+				D4436B79B29EFDD5FC5D6EB6B02B11C7 /* SwiftyChrono.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -411,7 +411,6 @@
 				9634DAE835F9DF3EF64819315FAAFDB0 /* ZHWeekdayParser.swift */,
 				0F9A7924A4257784C4A1F0F737071357 /* Support Files */,
 			);
-			name = SwiftyChrono;
 			path = SwiftyChrono;
 			sourceTree = "<group>";
 		};
@@ -460,7 +459,7 @@
 			);
 			name = SwiftyChrono;
 			productName = SwiftyChrono;
-			productReference = D4436B79B29EFDD5FC5D6EB6B02B11C7 /* SwiftyChrono */;
+			productReference = D4436B79B29EFDD5FC5D6EB6B02B11C7 /* SwiftyChrono.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		44710D2457F8CD3C73349B8616A12BF4 /* Pods-Reminders Menu Bar */ = {
@@ -479,7 +478,7 @@
 			);
 			name = "Pods-Reminders Menu Bar";
 			productName = Pods_Reminders_Menu_Bar;
-			productReference = 98916A574C28FE6B8021DEA7DA596103 /* Pods-Reminders Menu Bar */;
+			productReference = 98916A574C28FE6B8021DEA7DA596103 /* Pods_Reminders_Menu_Bar.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		838CDB23C0473EB37FE78C3649ACFDFA /* Pods-RemindersLauncher */ = {
@@ -497,7 +496,7 @@
 			);
 			name = "Pods-RemindersLauncher";
 			productName = Pods_RemindersLauncher;
-			productReference = B509D97DE9F0E94C5896001B3024D656 /* Pods-RemindersLauncher */;
+			productReference = B509D97DE9F0E94C5896001B3024D656 /* Pods_RemindersLauncher.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -507,7 +506,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1300;
-				LastUpgradeCheck = 1300;
+				LastUpgradeCheck = 1420;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 12.0";
@@ -667,12 +666,12 @@
 			baseConfigurationReference = E8A8241B139595B3FDF0C9A4CE9FAF38 /* Pods-RemindersLauncher.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -704,12 +703,12 @@
 			baseConfigurationReference = BCC5452E2F49E088F68457C42815DA2C /* Pods-RemindersLauncher.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -740,13 +739,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 74C25ABB6D5E6B1723C296247B08F3B4 /* SwiftyChrono.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -759,7 +758,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MODULEMAP_FILE = "Target Support Files/SwiftyChrono/SwiftyChrono.modulemap";
 				PRODUCT_MODULE_NAME = SwiftyChrono;
 				PRODUCT_NAME = SwiftyChrono;
@@ -777,12 +776,12 @@
 			baseConfigurationReference = 56812FDC7D1D859E0A1FD08B30D74124 /* Pods-Reminders Menu Bar.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -844,6 +843,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -875,13 +875,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3433F45F9B6DDA31A7FE723E36F4ED69 /* SwiftyChrono.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -894,7 +894,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MODULEMAP_FILE = "Target Support Files/SwiftyChrono/SwiftyChrono.modulemap";
 				PRODUCT_MODULE_NAME = SwiftyChrono;
 				PRODUCT_NAME = SwiftyChrono;
@@ -912,12 +912,12 @@
 			baseConfigurationReference = 578C7D0529B99BF32CDC339E8F902DF5 /* Pods-Reminders Menu Bar.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -979,6 +979,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
