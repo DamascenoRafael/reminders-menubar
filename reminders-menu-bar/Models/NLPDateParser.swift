@@ -44,21 +44,17 @@ class NLPDateParser{
         let parsedResults = parser.parse(text: string, refDate: Date(), opt:[.forwardDate: 1])
         if parsedResults.count == 0 {return nil}
         let startDateInfo: [ComponentUnit: Int] = parsedResults[0].start.knownValues
+        print(startDateInfo)
+        let todayComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
         var startDateComponents = DateComponents()
-        startDateComponents.year = startDateInfo[SwiftyChrono.ComponentUnit.year]
-        startDateComponents.month = startDateInfo[SwiftyChrono.ComponentUnit.month]
-        startDateComponents.day = startDateInfo[SwiftyChrono.ComponentUnit.day]
+        startDateComponents.year = startDateInfo[SwiftyChrono.ComponentUnit.year] ?? todayComponents.year
+        startDateComponents.month = startDateInfo[SwiftyChrono.ComponentUnit.month] ?? todayComponents.month
+        startDateComponents.day = startDateInfo[SwiftyChrono.ComponentUnit.day] ?? todayComponents.day
         startDateComponents.hour = startDateInfo[SwiftyChrono.ComponentUnit.hour]
         startDateComponents.minute = startDateInfo[SwiftyChrono.ComponentUnit.minute]
         startDateComponents.second = startDateInfo[SwiftyChrono.ComponentUnit.second]
         self.isTimeDefined = checkTimeDefined(from: startDateComponents)
         self.isDateDefined = checkDateDefined(from: startDateComponents)
-        if !isDateDefined && isTimeDefined{
-            let todayComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
-            startDateComponents.year = todayComponents.year
-            startDateComponents.month = todayComponents.month
-            startDateComponents.day = todayComponents.day
-        }
         let userCalendar = Calendar(identifier: .gregorian) //TODO: idk if this has to be changed with user's calendar
         let finalDateTime = userCalendar.date(from: startDateComponents)
         guard let finalDateTime = finalDateTime else {
