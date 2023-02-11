@@ -17,6 +17,7 @@ struct RmbReminder {
     }
     
     var title: String
+    var dateRelatedText: String
     var notes: String?
     var date: Date
     var hasDueDate: Bool {
@@ -38,6 +39,7 @@ struct RmbReminder {
 
     init() {
         title = ""
+        dateRelatedText = ""
         date = .nextHour()
         hasDueDate = false
         hasTime = false
@@ -47,6 +49,7 @@ struct RmbReminder {
     init(reminder: EKReminder) {
         originalReminder = reminder
         title = reminder.title
+        dateRelatedText = ""
         notes = reminder.notes
         date = reminder.dueDateComponents?.date ?? .nextHour()
         hasDueDate = reminder.hasDueDate
