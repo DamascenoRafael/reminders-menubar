@@ -1,0 +1,6 @@
+framework module Pods_Reminders_Menu_Bar {
+  umbrella header "Pods-Reminders Menu Bar-umbrella.h"
+
+  export *
+  module * { export * }
+}

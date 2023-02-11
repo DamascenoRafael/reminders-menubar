@@ -1,0 +1,16 @@
+PODS:
+  - SwiftyChrono (1.1.0)
+
+DEPENDENCIES:
+  - SwiftyChrono
+
+SPEC REPOS:
+  trunk:
+    - SwiftyChrono
+
+SPEC CHECKSUMS:
+  SwiftyChrono: 233460655232c082ced7ac0e3a6a3b23d57a077d
+
+PODFILE CHECKSUM: 131cc4ac953b0a78de7ff456b21712f3a0eba568
+
+COCOAPODS: 1.11.3
