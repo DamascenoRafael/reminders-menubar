@@ -9,11 +9,12 @@ class NLPDateParser {
     }
     var isTimeDefined = false
     var isDateDefined = false
+    var userCalendar: Calendar
 
     init() {
         self.parser = Chrono()
         self.userPreferences = UserPreferences.instance
-        // change every time the language is changes in the application by the user
+        self.userCalendar = Calendar(identifier: .gregorian)
         Chrono.preferredLanguage = NLPDateParser.getPreferredLanguage(from: rmbCurrentLocale().languageCode)
     }
     
@@ -40,43 +41,86 @@ class NLPDateParser {
     func buildDate(from string: String) -> (Date, String)? {
         let parsedResults = parser.parse(text: string, refDate: Date(), opt: [.forwardDate: 1])
         if parsedResults.isEmpty {return nil}
+        
         let startDateInfo: [ComponentUnit: Int] = parsedResults[0].start.knownValues
         let dateRelatedText: String = parsedResults[0].text
-        let todayComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+        let todayComponents = userCalendar.dateComponents([.year, .month, .day, .hour, .minute], from: Date())
         var startDateComponents = DateComponents()
-        startDateComponents.year = startDateInfo[SwiftyChrono.ComponentUnit.year] ?? todayComponents.year
-        startDateComponents.month = startDateInfo[SwiftyChrono.ComponentUnit.month] ?? todayComponents.month
-        startDateComponents.day = startDateInfo[SwiftyChrono.ComponentUnit.day] ?? todayComponents.day
+        startDateComponents.year = startDateInfo[SwiftyChrono.ComponentUnit.year]
+        startDateComponents.month = startDateInfo[SwiftyChrono.ComponentUnit.month]
+        startDateComponents.day = startDateInfo[SwiftyChrono.ComponentUnit.day]
         startDateComponents.hour = startDateInfo[SwiftyChrono.ComponentUnit.hour]
         startDateComponents.minute = startDateInfo[SwiftyChrono.ComponentUnit.minute]
         
-        let userCalendar = Calendar(identifier: .gregorian) // TODO: idk if this has to be changed with user's calendar
-        let finalDateTime = userCalendar.date(from: startDateComponents)
-        guard let finalDateTime else { return nil }
-        self.isDateDefined = checkDateDefined(from: startDateComponents)
-        self.isTimeDefined = checkTimeDefined(from: startDateComponents)
-        // If the date is "Today", and the time is not defined, then return today date
-        if startDateComponents.day == todayComponents.day && startDateComponents.month == todayComponents.month && startDateComponents.year == todayComponents.year && !isTimeDefined { return (finalDateTime, dateRelatedText) }
-        if finalDateTime < Date() {
-            // If the date is in the past, and the time is not defined, then it's not valid
-            if !isTimeDefined { return nil }
-            // Otherwise, we assume that the user is referring to the time for the next day
-            if startDateComponents.day == (todayComponents.day! - 1){
-                startDateComponents.day? += 1
+        isDateDefined = checkDateDefined(from: startDateComponents)
+        isTimeDefined = checkTimeDefined(from: startDateComponents)
+        
+        // If only the time is defined, and it's a past time, then we assume the user
+        // is referring to the time for the next day, otherwise we assume it's for the current day
+        if !isDateDefined && isTimeDefined {
+            guard let isPastTime = checkPastTime(from: startDateComponents) else { return nil }
+            if isPastTime {
+                startDateComponents.year = todayComponents.year
+                startDateComponents.month = todayComponents.month
+                startDateComponents.day = todayComponents.day! + 1
                 let finalDateTime = userCalendar.date(from: startDateComponents)
                 guard let finalDateTime else { return nil }
+                isDateDefined = true
+                return (finalDateTime, dateRelatedText)
+            } else {
+                startDateComponents.year = todayComponents.year
+                startDateComponents.month = todayComponents.month
+                startDateComponents.day = todayComponents.day
+                let finalDateTime = userCalendar.date(from: startDateComponents)
+                guard let finalDateTime else { return nil }
+                isDateDefined = true
                 return (finalDateTime, dateRelatedText)
             }
-            
         }
+        
+        let finalDateTime = userCalendar.date(from: startDateComponents)
+        guard var finalDateTime else {return nil}
+
+        // If the user insert "Today" without time, then just return it
+        if checkIfToday(from: startDateComponents) && !isTimeDefined { return (finalDateTime, dateRelatedText) }
+        
+        // If the date is in the past, then it's not valid
+        if isDateDefined && startDateComponents.year == nil {
+            startDateComponents.year = todayComponents.year
+            finalDateTime = userCalendar.date(from: startDateComponents)!
+        }
+        guard let isPastDay = checkIfPastDay(from: startDateComponents) else { return nil }
+        if isPastDay { return nil }
         return (finalDateTime, dateRelatedText)
     }
     
-    func checkTimeDefined(from date: DateComponents) -> Bool {
+    
+    private func checkIfToday(from date: DateComponents) -> Bool {
+        let todayComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+        return date.day == todayComponents.day
+            && date.month == todayComponents.month
+            && date.year == todayComponents.year
+    }
+    
+    private func checkIfPastDay(from date: DateComponents) -> Bool? {
+        if date.year == nil || date.month == nil || date.day == nil { return nil }
+        return Calendar.current.date(from: date)! < Date()
+    }
+    
+    private func checkPastTime(from date: DateComponents) -> Bool? {
+        let todayComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: Date())
+        if date.hour == nil || date.minute == nil { return nil }
+        let isPastHour = date.hour! < todayComponents.hour!
+        let isPastMinute = date.hour! == todayComponents.hour!
+            && date.minute! < todayComponents.minute!
+        return isPastHour || isPastMinute
+    }
+    
+    private func checkTimeDefined(from date: DateComponents) -> Bool {
         return date.minute != nil && date.hour != nil
     }
     
-    func checkDateDefined(from date: DateComponents) -> Bool {
-        return date.year != nil && date.month != nil && date.day != nil
+    private func checkDateDefined(from date: DateComponents) -> Bool {
+        return date.month != nil && date.day != nil
     }
 }
