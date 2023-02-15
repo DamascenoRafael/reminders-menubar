@@ -13,6 +13,7 @@ class NLPDateParser {
     init() {
         self.parser = Chrono()
         self.userPreferences = UserPreferences.instance
+        // change every time the language is changes in the application by the user
         Chrono.preferredLanguage = NLPDateParser.getPreferredLanguage(from: rmbCurrentLocale().languageCode)
     }
     
@@ -48,11 +49,12 @@ class NLPDateParser {
         startDateComponents.day = startDateInfo[SwiftyChrono.ComponentUnit.day] ?? todayComponents.day
         startDateComponents.hour = startDateInfo[SwiftyChrono.ComponentUnit.hour]
         startDateComponents.minute = startDateInfo[SwiftyChrono.ComponentUnit.minute]
-        self.isTimeDefined = checkTimeDefined(from: startDateComponents)
-        self.isDateDefined = checkDateDefined(from: startDateComponents)
+        
         let userCalendar = Calendar(identifier: .gregorian) // TODO: idk if this has to be changed with user's calendar
         let finalDateTime = userCalendar.date(from: startDateComponents)
         guard let finalDateTime else { return nil }
+        self.isDateDefined = checkDateDefined(from: startDateComponents)
+        self.isTimeDefined = checkTimeDefined(from: startDateComponents)
         if finalDateTime < Date() {
             // If the date is in the past, and the time it's not defined, then it's not valid
             if !isTimeDefined { return nil }
@@ -70,6 +72,6 @@ class NLPDateParser {
     }
     
     func checkDateDefined(from date: DateComponents) -> Bool {
-        return date.year != nil && date.month != nil
+        return date.year != nil && date.month != nil && date.day != nil
     }
 }

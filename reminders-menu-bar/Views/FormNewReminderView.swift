@@ -56,11 +56,13 @@ struct FormNewReminderView: View {
                 isShowingDueDateOptions = !newValue.isEmpty
                 if !dateParser.isLanguageSupported {return}
                 guard let (parsedDate, dateRelatedText) = dateParser.buildDate(from: newValue) else {
+                    rmbReminder.hasTime = false
+                    rmbReminder.hasDueDate = false
                     return
                 }
                 rmbReminder.dateRelatedText = dateRelatedText
-                rmbReminder.hasDueDate = dateParser.isDateDefined || dateParser.isTimeDefined
                 rmbReminder.hasTime = dateParser.isTimeDefined
+                rmbReminder.hasDueDate = dateParser.isDateDefined
                 rmbReminder.date = parsedDate
             }
             if newValue.isEmpty {
