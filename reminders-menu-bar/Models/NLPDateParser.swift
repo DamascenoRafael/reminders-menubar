@@ -13,12 +13,10 @@ class NLPDateParser {
     init() {
         self.parser = Chrono()
         self.userPreferences = UserPreferences.instance
-        // TODO: for now this is set only when the parser is initialized, is has to be changed in order to
-        // change every time the language is changes in the application by the user
-        Chrono.preferredLanguage = self.getPreferredLanguage(from: rmbCurrentLocale().languageCode)
+        Chrono.preferredLanguage = NLPDateParser.getPreferredLanguage(from: rmbCurrentLocale().languageCode)
     }
     
-    private func getPreferredLanguage(from languageCode: String?) -> SwiftyChrono.Language? {
+    static func getPreferredLanguage(from languageCode: String?) -> SwiftyChrono.Language? {
         // SwiftyChrono in date 11 Febraury 2023 only supports the listed languages, in case the language is
         // not supported from SwiftyChrono, then the NLP Date parser won't be available
         guard let languageCode else { return nil }
