@@ -55,14 +55,19 @@ class NLPDateParser {
         guard let finalDateTime else { return nil }
         self.isDateDefined = checkDateDefined(from: startDateComponents)
         self.isTimeDefined = checkTimeDefined(from: startDateComponents)
+        // If the date is "Today", and the time is not defined, then return today date
+        if startDateComponents.day == todayComponents.day && startDateComponents.month == todayComponents.month && startDateComponents.year == todayComponents.year && !isTimeDefined { return (finalDateTime, dateRelatedText) }
         if finalDateTime < Date() {
-            // If the date is in the past, and the time it's not defined, then it's not valid
+            // If the date is in the past, and the time is not defined, then it's not valid
             if !isTimeDefined { return nil }
             // Otherwise, we assume that the user is referring to the time for the next day
-            startDateComponents.day? += 1
-            let finalDateTime = userCalendar.date(from: startDateComponents)
-            guard let finalDateTime else { return nil }
-            return (finalDateTime, dateRelatedText)
+            if startDateComponents.day == (todayComponents.day! - 1){
+                startDateComponents.day? += 1
+                let finalDateTime = userCalendar.date(from: startDateComponents)
+                guard let finalDateTime else { return nil }
+                return (finalDateTime, dateRelatedText)
+            }
+            
         }
         return (finalDateTime, dateRelatedText)
     }
