@@ -42,7 +42,10 @@ class NLPDateParser {
         let parsedResults = parser.parse(text: string, refDate: Date(), opt: [.forwardDate: 1])
         if parsedResults.isEmpty {return nil}
         
-        let startDateInfo: [ComponentUnit: Int] = parsedResults[0].start.knownValues
+        var startDateInfo: [ComponentUnit: Int] = parsedResults[0].start.knownValues
+        if startDateInfo.isEmpty {
+            startDateInfo = parsedResults[0].start.impliedValues
+        }
         let dateRelatedText: String = parsedResults[0].text
         let todayComponents = userCalendar.dateComponents([.year, .month, .day, .hour, .minute], from: Date())
         var startDateComponents = DateComponents()
@@ -54,6 +57,8 @@ class NLPDateParser {
         
         isDateDefined = checkDateDefined(from: startDateComponents)
         isTimeDefined = checkTimeDefined(from: startDateComponents)
+        
+        print(parsedResults)
         
         // If only the time is defined, and it's a past time, then we assume the user
         // is referring to the time for the next day, otherwise we assume it's for the current day
