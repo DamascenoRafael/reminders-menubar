@@ -58,8 +58,6 @@ class NLPDateParser {
         isDateDefined = checkDateDefined(from: startDateComponents)
         isTimeDefined = checkTimeDefined(from: startDateComponents)
         
-        print(parsedResults)
-        
         // If only the time is defined, and it's a past time, then we assume the user
         // is referring to the time for the next day, otherwise we assume it's for the current day
         if !isDateDefined && isTimeDefined {
