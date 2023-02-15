@@ -6,7 +6,7 @@
 "editReminderOptionButton" = "Modifica";
 "editReminderTitleTextFieldPlaceholder" = "Titolo";
 "editReminderNotesTextFieldPlaceholder" = "Note";
-"editReminderRemindMeSection" = "ricordamelo";
+"editReminderRemindMeSection" = "Ricordamelo";
 "editReminderRemindDateOption" = "Un giorno";
 "editReminderRemindTimeOption" = "A un orario";
 "editReminderPrioritySection" = "priorità";
