@@ -97,12 +97,11 @@ class NLPDateParser {
         return (finalDateTime, dateRelatedText)
     }
     
+    /**
+     This is done to avoid a bug in the SwiftyChrono package where some words cause a
+     Fatal error in the SwiftyChrono/DEMonthNameLittleEndianParser.swift file
+     */
     public func avoidParserPanic(parsedResults: [String]) -> [String] {
-        /**
-         This is done to avoid a bug in the SwiftyChrono package where some words cause a
-         Fatal error in the SwiftyChrono/DEMonthNameLittleEndianParser.swift file
-         */
-        
         // Matches that cause the bug
         let matchesToAvoid = [
             "jan.",
