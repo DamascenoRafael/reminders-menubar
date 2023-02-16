@@ -97,6 +97,43 @@ class NLPDateParser {
         return (finalDateTime, dateRelatedText)
     }
     
+    public func avoidParserPanic(parsedResults: [String]) -> [String] {
+        /**
+         This is done to avoid a bug in the SwiftyChrono package where some words cause a
+         Fatal error in the SwiftyChrono/DEMonthNameLittleEndianParser.swift file
+         */
+        
+        // Matches that cause the bug
+        let matchesToAvoid = [
+            "jan.",
+            "feb.",
+            "mär.",
+            "apr.",
+            "jun.",
+            "jul.",
+            "aug.",
+            "sep.",
+            "sept.",
+            "okt.",
+            "nov.",
+            "dez."
+        ]
+         
+        let matchesToAvoidPattern = "(?:" + matchesToAvoid.joined(separator: "|") + ")"
+
+        var safeParsedResults: [String] = []
+        
+        for result in parsedResults {
+            let isMatch = result.range(of: matchesToAvoidPattern, options: .regularExpression, range: nil, locale: nil) != nil
+            if isMatch {
+                // Gets only the first 3 letters of the month to avoid the bug
+                safeParsedResults.append(String(result.prefix(3)))
+            } else {
+                safeParsedResults.append(result)
+            }
+        }
+        return safeParsedResults
+    }
     
     private func checkIfToday(from date: DateComponents) -> Bool {
         let todayComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
