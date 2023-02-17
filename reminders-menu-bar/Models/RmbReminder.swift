@@ -22,13 +22,12 @@ struct RmbReminder {
             if !dateParser.isLanguageSupported { return }
             let safeResult = dateParser.avoidParserPanic(parsedResults: title.components(separatedBy: " "))
             let safeValue = safeResult.joined(separator: " ")
-            guard let (parsedDate, dateRelatedText) =
-                dateParser.buildDate(from: safeValue) else {
+            guard let parsedDate = dateParser.buildDate(from: safeValue) else {
                 hasTime = false
                 hasDueDate = false
                 return
             }
-            self.dateRelatedText = dateRelatedText
+            dateParser.dateRelatedText = dateRelatedText
             hasTime = dateParser.isTimeDefined
             hasDueDate = dateParser.isDateDefined
             date = parsedDate
