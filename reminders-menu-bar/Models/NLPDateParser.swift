@@ -92,7 +92,7 @@ class NLPDateParser {
     }
     
     func buildDate(from string: String) -> Date? {
-        clear()
+        self.parsedDateComponents = DateComponents() 
         let parsedResults = parser.parse(text: string, refDate: Date(), opt: [.forwardDate: 1])
         if parsedResults.isEmpty {return nil}
         
@@ -112,11 +112,6 @@ class NLPDateParser {
         if finalDate < Date() && !isToday { return nil}
         
         return finalDate
-    }
-    
-    private func clear() {
-        self.parsedDateComponents = DateComponents()
-        self.dateRelatedText = ""
     }
     
     /**
