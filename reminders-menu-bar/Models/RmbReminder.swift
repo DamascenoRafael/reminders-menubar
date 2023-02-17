@@ -27,7 +27,7 @@ struct RmbReminder {
                 hasDueDate = false
                 return
             }
-            dateParser.dateRelatedText = dateRelatedText
+            dateRelatedText = dateParser.dateRelatedText
             hasTime = dateParser.isTimeDefined
             hasDueDate = dateParser.isDateDefined
             date = parsedDate
