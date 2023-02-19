@@ -3,7 +3,7 @@ import EventKit
 
 struct RmbReminder {
     private var originalReminder: EKReminder?
-    private let dateParser = NLPDateParser()
+    private let dateParser: NLPDateParser
     
     var hasDateChanges: Bool {
         guard let originalReminder else {
@@ -17,22 +17,7 @@ struct RmbReminder {
         return hasChanges
     }
     
-    var title: String {
-        didSet {
-            if !dateParser.isLanguageSupported { return }
-            let safeResult = dateParser.avoidParserPanic(parsedResults: title.components(separatedBy: " "))
-            let safeValue = safeResult.joined(separator: " ")
-            guard let parsedDate = dateParser.buildDate(from: safeValue) else {
-                hasTime = false
-                hasDueDate = false
-                return
-            }
-            dateRelatedText = dateParser.dateRelatedText
-            hasTime = dateParser.isTimeDefined
-            hasDueDate = dateParser.isDateDefined
-            date = parsedDate
-        }
-    }
+    var title: String
     var dateRelatedText: String
     var notes: String?
     var date: Date
@@ -55,6 +40,7 @@ struct RmbReminder {
 
     init() {
         title = ""
+        dateParser = NLPDateParser()
         dateRelatedText = ""
         date = .nextHour()
         hasDueDate = false
@@ -64,6 +50,7 @@ struct RmbReminder {
     
     init(reminder: EKReminder) {
         originalReminder = reminder
+        dateParser = NLPDateParser()
         title = reminder.title
         dateRelatedText = ""
         notes = reminder.notes
@@ -71,5 +58,19 @@ struct RmbReminder {
         hasDueDate = reminder.hasDueDate
         hasTime = reminder.hasTime
         priority = reminder.ekPriority
+    }
+    
+    mutating func udpateWithDateParser() {
+        if !dateParser.isLanguageSupported { return }
+        let safeResult = dateParser.avoidParserPanic(parsedResults: title.components(separatedBy: " "))
+        let safeValue = safeResult.joined(separator: " ")
+        if let parsedDate = dateParser.buildDate(from: safeValue) {
+            dateRelatedText = dateParser.dateRelatedText
+            hasTime = dateParser.isTimeDefined
+            hasDueDate = dateParser.isDateDefined
+            date = parsedDate
+        } else {
+            hasDueDate = false
+        }
     }
 }

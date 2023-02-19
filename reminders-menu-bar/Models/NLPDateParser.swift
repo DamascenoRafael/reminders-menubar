@@ -47,7 +47,6 @@ class NLPDateParser {
     
     var parsedDateComponents: DateComponents {
         didSet {
-            
             if !isDateDefined && isTimeDefined {
                 parsedDateComponents.day = todayDateComponents.day
                 parsedDateComponents.month = todayDateComponents.month
@@ -92,9 +91,9 @@ class NLPDateParser {
     }
     
     func buildDate(from string: String) -> Date? {
-        self.parsedDateComponents = DateComponents() 
+        parsedDateComponents = DateComponents()
         let parsedResults = parser.parse(text: string, refDate: Date(), opt: [.forwardDate: 1])
-        if parsedResults.isEmpty {return nil}
+        if parsedResults.isEmpty { return nil }
         
         var startDateInfo: [ComponentUnit: Int] = parsedResults[0].start.knownValues
         if startDateInfo.isEmpty {
@@ -109,7 +108,8 @@ class NLPDateParser {
         parsedDateComponents.minute = startDateInfo[SwiftyChrono.ComponentUnit.minute]
         
         guard let finalDate = userCalendar.date(from: parsedDateComponents) else { return nil }
-        if finalDate < Date() && !isToday { return nil}
+        
+        if finalDate < Date() && !isToday { return nil }
         
         return finalDate
     }
