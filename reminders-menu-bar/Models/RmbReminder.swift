@@ -3,7 +3,6 @@ import EventKit
 
 struct RmbReminder {
     private var originalReminder: EKReminder?
-    private let dateParser: NLPDateParser
     
     var hasDateChanges: Bool {
         guard let originalReminder else {
@@ -40,7 +39,6 @@ struct RmbReminder {
 
     init() {
         title = ""
-        dateParser = NLPDateParser()
         dateRelatedText = ""
         date = .nextHour()
         hasDueDate = false
@@ -50,7 +48,6 @@ struct RmbReminder {
     
     init(reminder: EKReminder) {
         originalReminder = reminder
-        dateParser = NLPDateParser()
         title = reminder.title
         dateRelatedText = ""
         notes = reminder.notes
@@ -61,16 +58,16 @@ struct RmbReminder {
     }
     
     mutating func udpateWithDateParser() {
-        if !dateParser.isLanguageSupported { return }
-        let safeResult = dateParser.avoidParserPanic(parsedResults: title.components(separatedBy: " "))
-        let safeValue = safeResult.joined(separator: " ")
-        if let parsedDate = dateParser.buildDate(from: safeValue) {
-            dateRelatedText = dateParser.dateRelatedText
-            hasTime = dateParser.isTimeDefined
-            hasDueDate = dateParser.isDateDefined
-            date = parsedDate
-        } else {
+        let dateResult = DateParser.instance.getDate(from: title)
+        guard let dateResult else {
             hasDueDate = false
+            hasTime = false
+            dateRelatedText = ""
+            return
         }
+        hasTime = dateResult.hasTime
+        hasDueDate = true
+        date = dateResult.date
+        dateRelatedText = dateResult.dateRelatedWords
     }
 }

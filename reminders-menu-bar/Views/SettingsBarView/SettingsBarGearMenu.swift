@@ -156,7 +156,6 @@ struct SettingsBarGearMenu: View {
                 let localeIdentifier = locale.identifier
                 Button(action: {
                     UserPreferences.instance.preferredLanguage = localeIdentifier
-                    Chrono.preferredLanguage = NLPDateParser.getPreferredLanguage(from: localeIdentifier)
                 }) {
                     let isSelected = UserPreferences.instance.preferredLanguage == localeIdentifier
                     SelectableView(title: locale.name, isSelected: isSelected)

@@ -14,6 +14,20 @@ extension Date {
         return Calendar.current.date(byAdding: hourComponent, to: dateWithoutTime)!
     }
     
+    static func nextYear(of date: Date = Date()) -> Date {
+        var dateComponents = DateComponents()
+        dateComponents.year = 1
+        let newDate = Calendar.current.date(byAdding: dateComponents, to: date)!
+        return newDate
+    }
+    
+    static func nextDay(of date: Date = Date()) -> Date {
+        var dateComponents = DateComponents()
+        dateComponents.day = 1
+        let newDate = Calendar.current.date(byAdding: dateComponents, to: date)!
+        return newDate
+    }
+    
     func relativeDateDescription(withTime showTimeDescription: Bool) -> String {
         let relativeDateFormatter = DateFormatter()
         relativeDateFormatter.timeStyle = showTimeDescription ? .short : .none
