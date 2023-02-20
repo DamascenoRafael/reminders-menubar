@@ -225,7 +225,6 @@
 				712C32B224BF939100AC75E2 /* reminders-menu-bar */,
 				71059DA925CA5244001F3063 /* RemindersLauncher */,
 				712C32B124BF939100AC75E2 /* Products */,
-				E719521B73CE3CE8C2DC1E3C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -345,13 +344,6 @@
 				96A54A6C29A3B1A90060403F /* String+Extensions.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		E719521B73CE3CE8C2DC1E3C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

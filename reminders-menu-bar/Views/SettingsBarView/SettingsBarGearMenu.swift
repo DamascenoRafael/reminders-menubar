@@ -1,5 +1,4 @@
 import SwiftUI
-import SwiftyChrono
 
 struct SettingsBarGearMenu: View {
     @EnvironmentObject var remindersData: RemindersData
