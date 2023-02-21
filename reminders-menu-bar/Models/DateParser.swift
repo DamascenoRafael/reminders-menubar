@@ -19,14 +19,14 @@ class DateParser {
     
     private func adjustDateAccordingToNow(_ dateResult: DateParseResult) -> DateParseResult? {
         // If the date it's not in the current year, then it's not valid
-        if !checkIfSameYear(from: dateResult.date) {
+        if dateResult.date.isPastYear {
             return nil
         }
         
         // If only the time is defined, and it's past the current time, then we assume it's for the next day
-        if checkIfToday(from: dateResult.date)
+        if dateResult.date.isToday
             && dateResult.hasTime
-            && checkIfPastTime(from: dateResult.date) {
+            && dateResult.date.isPast {
             return DateParseResult(date: Date.nextDay(of: dateResult.date),
                                    hasTime: dateResult.hasTime,
                                    dateRelatedWords: dateResult.dateRelatedWords)
@@ -61,29 +61,4 @@ class DateParser {
         
         return adjustDateAccordingToNow(dateResult)
     }
-    
-    private func checkIfToday(from date: Date) -> Bool {
-        let todayDateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: Date())
-        let inputDateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
-        return inputDateComponents.day == todayDateComponents.day
-            && inputDateComponents.month == todayDateComponents.month
-            && inputDateComponents.year == todayDateComponents.year
-    }
-    
-    private func checkIfPastTime(from date: Date) -> Bool {
-        let todayDateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: Date())
-        let inputDateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
-        
-        let isPastHour = inputDateComponents.hour! < todayDateComponents.hour!
-        let isPastMinute = inputDateComponents.hour! == todayDateComponents.hour!
-            && inputDateComponents.minute! < todayDateComponents.minute!
-        return isPastHour || isPastMinute
-    }
-    
-    private func checkIfSameYear(from date: Date) -> Bool {
-        let todayDateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: Date())
-        let inputDateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
-        return todayDateComponents.year == inputDateComponents.year
-    }
-    
 }

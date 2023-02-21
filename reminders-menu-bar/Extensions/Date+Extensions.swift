@@ -5,6 +5,20 @@ extension Date {
         return self.timeIntervalSinceNow < 0
     }
     
+    var isToday: Bool {
+        let todayDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+        let inputDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: self)
+        return inputDateComponents.day == todayDateComponents.day
+            && inputDateComponents.month == todayDateComponents.month
+            && inputDateComponents.year == todayDateComponents.year
+    }
+                                                                   
+    var isPastYear: Bool {
+        let todayDateComponents = Calendar.current.dateComponents([.year], from: Date())
+        let inputDateComponents = Calendar.current.dateComponents([.year], from: self)
+        return inputDateComponents.year! < todayDateComponents.year!
+    }
+    
     static func nextHour(of date: Date = Date()) -> Date {
         let now = Date()
         let dateComponentsWithoutTime = Calendar.current.dateComponents([.year, .month, .day], from: date)
