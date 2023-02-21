@@ -98,6 +98,7 @@ class RemindersService {
     func createNew(with rmbReminder: RmbReminder, in calendar: EKCalendar) {
         let newReminder = EKReminder(eventStore: eventStore)
         newReminder.update(with: rmbReminder)
+        newReminder.title = rmbReminder.title.replacingOccurrences(of: rmbReminder.dateRelatedText, with:"")
         newReminder.calendar = calendar
         save(reminder: newReminder)
     }
