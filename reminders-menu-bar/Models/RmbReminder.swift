@@ -17,7 +17,6 @@ struct RmbReminder {
     }
     
     var title: String
-    var dateRelatedText: String
     var notes: String?
     var date: Date
     var hasDueDate: Bool {
@@ -36,38 +35,39 @@ struct RmbReminder {
         }
     }
     var priority: EKReminderPriority
+    var dateRelatedString: String
 
     init() {
         title = ""
-        dateRelatedText = ""
         date = .nextHour()
         hasDueDate = false
         hasTime = false
         priority = .none
+        dateRelatedString = ""
     }
     
     init(reminder: EKReminder) {
         originalReminder = reminder
         title = reminder.title
-        dateRelatedText = ""
         notes = reminder.notes
         date = reminder.dueDateComponents?.date ?? .nextHour()
         hasDueDate = reminder.hasDueDate
         hasTime = reminder.hasTime
         priority = reminder.ekPriority
+        dateRelatedString = ""
     }
     
-    mutating func udpateWithDateParser() {
+    mutating func updateWithDateParser() {
         let dateResult = DateParser.instance.getDate(from: title)
         guard let dateResult else {
             hasDueDate = false
             hasTime = false
-            dateRelatedText = ""
+            dateRelatedString = ""
             return
         }
         hasTime = dateResult.hasTime
         hasDueDate = true
         date = dateResult.date
-        dateRelatedText = dateResult.dateRelatedWords
+        dateRelatedString = dateResult.dateRelatedString
     }
 }

@@ -8,7 +8,7 @@ class DateParser {
     struct DateParseResult {
         let date: Date
         let hasTime: Bool
-        let dateRelatedWords: String
+        let dateRelatedString: String
     }
     
     private init() {
@@ -29,15 +29,15 @@ class DateParser {
             && dateResult.date.isPast {
             return DateParseResult(date: Date.nextDay(of: dateResult.date),
                                    hasTime: dateResult.hasTime,
-                                   dateRelatedWords: dateResult.dateRelatedWords)
+                                   dateRelatedString: dateResult.dateRelatedString)
         }
         
         // If the day it's defined, and it's from the same year as the current date, but it's in the past,
         // then we assume it's for the next year
-        if dateResult.date < Date() {
+        if dateResult.date.isPast {
             return DateParseResult(date: Date.nextYear(of: dateResult.date),
                                    hasTime: dateResult.hasTime,
-                                   dateRelatedWords: dateResult.dateRelatedWords)
+                                   dateRelatedString: dateResult.dateRelatedString)
         }
         return dateResult
     }
@@ -56,8 +56,8 @@ class DateParser {
             hasTime = match.value(forKey: timeIsSignificantKey) as? Bool ?? false
         }
         
-        let stringWithoutDateRelatedText = textString.substringRange(match.range)
-        let dateResult = DateParseResult(date: date, hasTime: hasTime, dateRelatedWords: stringWithoutDateRelatedText)
+        let dateRelatedString = textString.substringRange(match.range)
+        let dateResult = DateParseResult(date: date, hasTime: hasTime, dateRelatedString: dateRelatedString)
         
         return adjustDateAccordingToNow(dateResult)
     }

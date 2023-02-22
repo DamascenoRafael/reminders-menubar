@@ -53,7 +53,7 @@ struct FormNewReminderView: View {
         .onChange(of: rmbReminder.title) { newValue in
             withAnimation(.easeOut(duration: 0.3)) {
                 isShowingDueDateOptions = !newValue.isEmpty
-                rmbReminder.udpateWithDateParser()
+                rmbReminder.updateWithDateParser()
             }
             if newValue.isEmpty {
                 rmbReminder = RmbReminder()
