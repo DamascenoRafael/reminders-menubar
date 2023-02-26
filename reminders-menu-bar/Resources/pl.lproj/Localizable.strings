@@ -2,6 +2,7 @@
 "newReminderCalendarSelectionToSaveHelp" = "Wybierz, gdzie nowe przypomnienia będą zapisywane";
 "newReminderAddDateButton" = "Dodaj Datę";
 "newReminderAddTimeButton" = "Dodaj Czas";
+"newReminderAutoSuggestTodayOption" = "Auto suggest today as date"; // TODO: Translate
 "newReminderRemoveParsedDateOption" = "Remove parsed date from title"; // TODO: Translate
 "remindersOptionsButtonHelp" = "Opcję edycji przypomnienia";
 "editReminderOptionButton" = "Edytuj";

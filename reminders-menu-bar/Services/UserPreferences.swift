@@ -5,6 +5,7 @@ private struct PreferencesKeys {
     static let reminderMenuBarIcon = "reminderMenuBarIcon"
     static let calendarIdentifiersFilter = "calendarIdentifiersFilter"
     static let calendarIdentifierForSaving = "calendarIdentifierForSaving"
+    static let autoSuggestTodayForNewReminders = "autoSuggestTodayForNewReminders"
     static let removeParsedDateFromTitle = "removeParsedDateFromTitle"
     static let showUncompletedOnly = "showUncompletedOnly"
     static let backgroundIsTransparent = "backgroundIsTransparent"
@@ -67,6 +68,14 @@ class UserPreferences: ObservableObject {
         didSet {
             let identifier = calendarForSaving?.calendarIdentifier
             UserPreferences.defaults.set(identifier, forKey: PreferencesKeys.calendarIdentifierForSaving)
+        }
+    }
+    
+    @Published var autoSuggestToday: Bool = {
+        return defaults.bool(forKey: PreferencesKeys.autoSuggestTodayForNewReminders)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(autoSuggestToday, forKey: PreferencesKeys.autoSuggestTodayForNewReminders)
         }
     }
     

@@ -5,6 +5,7 @@ enum RemindersMenuBarLocalizedKeys: String {
     case newReminderCalendarSelectionToSaveHelp
     case newReminderAddDateButton
     case newReminderAddTimeButton
+    case newReminderAutoSuggestTodayOption
     case newReminderRemoveParsedDateOption
     case remindersOptionsButtonHelp
     case editReminderOptionButton

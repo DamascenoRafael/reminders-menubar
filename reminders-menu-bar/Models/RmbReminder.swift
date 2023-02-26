@@ -52,6 +52,11 @@ struct RmbReminder {
         priority = .none
     }
     
+    init(hasDueDate: Bool) {
+        self.init()
+        self.hasDueDate = hasDueDate
+    }
+    
     init(reminder: EKReminder) {
         originalReminder = reminder
         title = reminder.title

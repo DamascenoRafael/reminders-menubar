@@ -41,6 +41,17 @@ struct FormNewReminderView: View {
                     
                     Divider()
                     
+                    Button(action: {
+                        userPreferences.autoSuggestToday.toggle()
+                        if rmbReminder.title.isEmpty {
+                            rmbReminder = newRmbReminder()
+                        }
+                    }) {
+                        let isSelected = userPreferences.autoSuggestToday
+                        SelectableView(title: rmbLocalized(.newReminderAutoSuggestTodayOption),
+                                       isSelected: isSelected)
+                    }
+                    
                     Button(action: { userPreferences.removeParsedDateFromTitle.toggle() }) {
                         let isSelected = userPreferences.removeParsedDateFromTitle
                         SelectableView(title: rmbLocalized(.newReminderRemoveParsedDateOption),
@@ -64,8 +75,11 @@ struct FormNewReminderView: View {
             }
             rmbReminder.updateWithDateParser()
             if newValue.isEmpty {
-                rmbReminder = RmbReminder()
+                rmbReminder = newRmbReminder()
             }
+        }
+        .onAppear {
+            rmbReminder = newRmbReminder()
         }
     }
     
@@ -85,6 +99,10 @@ struct FormNewReminderView: View {
         }
     }
     
+    func newRmbReminder() -> RmbReminder {
+        return RmbReminder(hasDueDate: userPreferences.autoSuggestToday)
+    }
+    
     func createNewReminder() {
         guard !rmbReminder.title.isEmpty,
               let calendarForSaving = userPreferences.calendarForSaving else {
@@ -96,7 +114,7 @@ struct FormNewReminderView: View {
         }
         
         RemindersService.shared.createNew(with: rmbReminder, in: calendarForSaving)
-        rmbReminder = RmbReminder()
+        rmbReminder = newRmbReminder()
     }
 }
 
