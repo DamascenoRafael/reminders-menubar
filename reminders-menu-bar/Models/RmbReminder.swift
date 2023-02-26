@@ -18,7 +18,13 @@ struct RmbReminder {
     
     var title: String
     var notes: String?
-    var date: Date
+    var date: Date {
+        didSet {
+            // NOTE: When the date is changed, we assume that it was done by the user.
+            // If it was changed by DateParser it is necessary to change dateRelatedString after changing the date.
+            dateRelatedString = ""
+        }
+    }
     var hasDueDate: Bool {
         didSet {
             // NOTE: When the hasDueDate option is disabled, it must disable hasTime
@@ -35,7 +41,8 @@ struct RmbReminder {
         }
     }
     var priority: EKReminderPriority
-    var dateRelatedString: String
+    
+    var dateRelatedString = ""
 
     init() {
         title = ""
@@ -43,7 +50,6 @@ struct RmbReminder {
         hasDueDate = false
         hasTime = false
         priority = .none
-        dateRelatedString = ""
     }
     
     init(reminder: EKReminder) {
@@ -54,19 +60,24 @@ struct RmbReminder {
         hasDueDate = reminder.hasDueDate
         hasTime = reminder.hasTime
         priority = reminder.ekPriority
-        dateRelatedString = ""
     }
     
     mutating func updateWithDateParser() {
-        let dateResult = DateParser.instance.getDate(from: title)
-        guard let dateResult else {
+        // NOTE: If a date was defined by the user then the DateParser should not be applied.
+        if hasDueDate && dateRelatedString.isEmpty {
+            return
+        }
+        
+        guard let dateResult = DateParser.instance.getDate(from: title) else {
             hasDueDate = false
             hasTime = false
+            date = .nextHour()
             dateRelatedString = ""
             return
         }
-        hasTime = dateResult.hasTime
+        
         hasDueDate = true
+        hasTime = dateResult.hasTime
         date = dateResult.date
         dateRelatedString = dateResult.dateRelatedString
     }
