@@ -68,7 +68,7 @@ struct RmbReminder {
             return
         }
         
-        guard let dateResult = DateParser.instance.getDate(from: title) else {
+        guard let dateResult = DateParser.shared.getDate(from: title) else {
             hasDueDate = false
             hasTime = false
             date = .nextHour()

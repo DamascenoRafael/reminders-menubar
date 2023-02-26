@@ -5,8 +5,8 @@ struct SettingsBarGearMenu: View {
     
     @State var gearIsHovered = false
     
-    @ObservedObject var appUpdateCheckHelper = AppUpdateCheckHelper.instance
-    @ObservedObject var keyboardShortcutService = KeyboardShortcutService.instance
+    @ObservedObject var appUpdateCheckHelper = AppUpdateCheckHelper.shared
+    @ObservedObject var keyboardShortcutService = KeyboardShortcutService.shared
     
     var body: some View {
         Menu {
@@ -25,9 +25,9 @@ struct SettingsBarGearMenu: View {
                 }
                 
                 Button(action: {
-                    UserPreferences.instance.launchAtLoginIsEnabled.toggle()
+                    UserPreferences.shared.launchAtLoginIsEnabled.toggle()
                 }) {
-                    let isSelected = UserPreferences.instance.launchAtLoginIsEnabled
+                    let isSelected = UserPreferences.shared.launchAtLoginIsEnabled
                     SelectableView(title: rmbLocalized(.launchAtLoginOptionButton),
                                    isSelected: isSelected,
                                    withPadding: false)
@@ -95,17 +95,17 @@ struct SettingsBarGearMenu: View {
     func appAppearanceMenu() -> some View {
         Menu {
             Button(action: {
-                UserPreferences.instance.backgroundIsTransparent = false
+                UserPreferences.shared.backgroundIsTransparent = false
             }) {
-                let isSelected = !UserPreferences.instance.backgroundIsTransparent
+                let isSelected = !UserPreferences.shared.backgroundIsTransparent
                 SelectableView(title: rmbLocalized(.appAppearanceMoreOpaqueOptionButton),
                                isSelected: isSelected)
             }
             
             Button(action: {
-                UserPreferences.instance.backgroundIsTransparent = true
+                UserPreferences.shared.backgroundIsTransparent = true
             }) {
-                let isSelected = UserPreferences.instance.backgroundIsTransparent
+                let isSelected = UserPreferences.shared.backgroundIsTransparent
                 SelectableView(title: rmbLocalized(.appAppearanceMoreTransparentOptionButton),
                                isSelected: isSelected)
             }
@@ -117,9 +117,9 @@ struct SettingsBarGearMenu: View {
     func menuBarSettingsMenu() -> some View {
         Menu {
             Button(action: {
-                UserPreferences.instance.showMenuBarTodayCount.toggle()
+                UserPreferences.shared.showMenuBarTodayCount.toggle()
             }) {
-                let isSelected = UserPreferences.instance.showMenuBarTodayCount
+                let isSelected = UserPreferences.shared.showMenuBarTodayCount
                 SelectableView(title: rmbLocalized(.showMenuBarTodayCountOptionButton), isSelected: isSelected)
             }
             
@@ -127,8 +127,8 @@ struct SettingsBarGearMenu: View {
             
             ForEach(RmbIcon.allCases, id: \.self) { icon in
                 Button(action: {
-                    UserPreferences.instance.reminderMenuBarIcon = icon
-                    AppDelegate.instance.loadMenuBarIcon()
+                    UserPreferences.shared.reminderMenuBarIcon = icon
+                    AppDelegate.shared.loadMenuBarIcon()
                 }) {
                     Image(nsImage: icon.image)
                     Text(icon.name)
@@ -142,9 +142,9 @@ struct SettingsBarGearMenu: View {
     func preferredLanguageMenu() -> some View {
         Menu {
             Button(action: {
-                UserPreferences.instance.preferredLanguage = nil
+                UserPreferences.shared.preferredLanguage = nil
             }) {
-                let isSelected = UserPreferences.instance.preferredLanguage == nil
+                let isSelected = UserPreferences.shared.preferredLanguage == nil
                 SelectableView(title: rmbLocalized(.preferredLanguageSystemOptionButton),
                                isSelected: isSelected)
             }
@@ -154,9 +154,9 @@ struct SettingsBarGearMenu: View {
             ForEach(rmbAvailableLocales(), id: \.identifier) { locale in
                 let localeIdentifier = locale.identifier
                 Button(action: {
-                    UserPreferences.instance.preferredLanguage = localeIdentifier
+                    UserPreferences.shared.preferredLanguage = localeIdentifier
                 }) {
-                    let isSelected = UserPreferences.instance.preferredLanguage == localeIdentifier
+                    let isSelected = UserPreferences.shared.preferredLanguage == localeIdentifier
                     SelectableView(title: locale.name, isSelected: isSelected)
                 }
             }

@@ -93,7 +93,7 @@ func rmbAvailableLocales() -> [ReminderMenuBarLocale] {
 
 func rmbCurrentLocale() -> Locale {
     var currentLocale = Locale.current
-    if let preferredLanguage = UserPreferences.instance.preferredLanguage {
+    if let preferredLanguage = UserPreferences.shared.preferredLanguage {
         currentLocale = Locale(identifier: preferredLanguage)
     }
     if Bundle.main.path(forResource: currentLocale.identifier, ofType: "lproj") == nil {

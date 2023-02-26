@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct UpcomingRemindersTitle: View {
-    @ObservedObject var userPreferences = UserPreferences.instance
+    @ObservedObject var userPreferences = UserPreferences.shared
     
     @State var intervalButtonIsHovered = false
     

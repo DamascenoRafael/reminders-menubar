@@ -3,7 +3,7 @@ import EventKit
 
 struct FormNewReminderView: View {
     @EnvironmentObject var remindersData: RemindersData
-    @ObservedObject var userPreferences = UserPreferences.instance
+    @ObservedObject var userPreferences = UserPreferences.shared
     
     @State var rmbReminder = RmbReminder()
     @State var isShowingDueDateOptions = false
@@ -83,7 +83,7 @@ struct FormNewReminderView: View {
             return
         }
         
-        RemindersService.instance.createNew(with: rmbReminder, in: calendarForSaving)
+        RemindersService.shared.createNew(with: rmbReminder, in: calendarForSaving)
         rmbReminder = RmbReminder()
     }
 }
@@ -91,7 +91,7 @@ struct FormNewReminderView: View {
 @available(macOS 12.0, *)
 struct ReminderTextField: View {
     @FocusState private var newReminderTextFieldInFocus: Bool
-    @ObservedObject var userPreferences = UserPreferences.instance
+    @ObservedObject var userPreferences = UserPreferences.shared
     
     var placeholder: String
     var text: Binding<String>

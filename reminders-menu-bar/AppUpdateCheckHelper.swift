@@ -1,7 +1,7 @@
 import SwiftUI
 
 class AppUpdateCheckHelper: ObservableObject {
-    static let instance = AppUpdateCheckHelper()
+    static let shared = AppUpdateCheckHelper()
     
     private init() {
         // This prevents others from using the default '()' initializer for this class.

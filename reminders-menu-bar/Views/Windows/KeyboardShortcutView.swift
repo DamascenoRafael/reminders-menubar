@@ -2,7 +2,7 @@ import SwiftUI
 import KeyboardShortcuts
 
 struct KeyboardShortcutView: View {
-    @ObservedObject var keyboardShortcutService = KeyboardShortcutService.instance
+    @ObservedObject var keyboardShortcutService = KeyboardShortcutService.shared
     
     var body: some View {
         HStack {
@@ -18,7 +18,7 @@ struct KeyboardShortcutView: View {
                             KeyboardShortcuts.Recorder(for: .openRemindersMenuBar)
                             
                             Button(action: {
-                                KeyboardShortcutService.instance.reset(.openRemindersMenuBar)
+                                KeyboardShortcutService.shared.reset(.openRemindersMenuBar)
                                 // Remove focus from ShortcutRecorder
                                 removeFocusFromFirstResponder()
                             }) {

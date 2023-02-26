@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SettingsBarToggleButton: View {
-    @ObservedObject var userPreferences = UserPreferences.instance
+    @ObservedObject var userPreferences = UserPreferences.shared
     
     @State var toggleIsHovered = false
     

@@ -2,7 +2,7 @@ import SwiftUI
 import EventKit
 
 struct CalendarTitle: View {
-    @ObservedObject var userPreferences = UserPreferences.instance
+    @ObservedObject var userPreferences = UserPreferences.shared
     
     var calendar: EKCalendar
     @State var calendarFolderIsHovered = false

@@ -1,7 +1,7 @@
 import Foundation
 
 class DateParser {
-    static let instance = DateParser()
+    static let shared = DateParser()
     
     private let detector: NSDataDetector?
     

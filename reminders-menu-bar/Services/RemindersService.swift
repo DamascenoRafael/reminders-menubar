@@ -1,7 +1,7 @@
 import EventKit
 
 class RemindersService {
-    static let instance = RemindersService()
+    static let shared = RemindersService()
     
     private init() {
         // This prevents others from using the default '()' initializer for this class.

@@ -14,7 +14,7 @@ private struct PreferencesKeys {
 }
 
 class UserPreferences: ObservableObject {
-    static let instance = UserPreferences()
+    static let shared = UserPreferences()
     
     private init() {
         // This prevents others from using the default '()' initializer for this class.
@@ -38,7 +38,7 @@ class UserPreferences: ObservableObject {
     @Published var calendarIdentifiersFilter: [String] = {
         guard let identifiers = defaults.stringArray(forKey: PreferencesKeys.calendarIdentifiersFilter) else {
             // NOTE: On first use it will load all reminder lists.
-            let calendars = RemindersService.instance.getCalendars()
+            let calendars = RemindersService.shared.getCalendars()
             let allIdentifiers = calendars.map({ $0.calendarIdentifier })
             return allIdentifiers
         }
@@ -51,13 +51,13 @@ class UserPreferences: ObservableObject {
     }
     
     @Published var calendarForSaving: EKCalendar? = {
-        guard RemindersService.instance.authorizationStatus() == .authorized else {
+        guard RemindersService.shared.authorizationStatus() == .authorized else {
             return nil
         }
         
         guard let identifier = defaults.string(forKey: PreferencesKeys.calendarIdentifierForSaving),
-              let calendar = RemindersService.instance.getCalendar(withIdentifier: identifier) else {
-            let defaultCalendar = RemindersService.instance.getDefaultCalendar()
+              let calendar = RemindersService.shared.getCalendar(withIdentifier: identifier) else {
+            let defaultCalendar = RemindersService.shared.getDefaultCalendar()
             return defaultCalendar
         }
         

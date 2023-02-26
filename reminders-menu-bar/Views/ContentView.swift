@@ -3,7 +3,7 @@ import EventKit
 
 struct ContentView: View {
     @EnvironmentObject var remindersData: RemindersData
-    @ObservedObject var userPreferences = UserPreferences.instance
+    @ObservedObject var userPreferences = UserPreferences.shared
     
     var body: some View {
         VStack(spacing: 0) {

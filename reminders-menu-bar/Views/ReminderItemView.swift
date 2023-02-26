@@ -17,7 +17,7 @@ struct ReminderItemView: View {
         HStack(alignment: .top) {
             Button(action: {
                 reminder.isCompleted.toggle()
-                RemindersService.instance.save(reminder: reminder)
+                RemindersService.shared.save(reminder: reminder)
             }) {
                 Image(systemName: reminder.isCompleted ? "largecircle.fill.circle" : "circle")
                     .resizable()
@@ -80,7 +80,7 @@ struct ReminderItemView: View {
                     removeReminderAlert()
                 }
                 .onChange(of: showingRemoveAlert) { isShowing in
-                    AppDelegate.instance.changeBehaviorBasedOnModal(isShowing: isShowing)
+                    AppDelegate.shared.changeBehaviorBasedOnModal(isShowing: isShowing)
                 }
                 
                 if let dateDescription = reminder.relativeDateDescription {
@@ -130,9 +130,9 @@ struct ReminderItemView: View {
             reminderItemIsHovered = isHovered
         }
         .onDisappear(perform: {
-            AppDelegate.instance.changeBehaviorToDismissIfNeeded()
+            AppDelegate.shared.changeBehaviorToDismissIfNeeded()
             if hasBeenRemoved {
-                RemindersService.instance.commitChanges()
+                RemindersService.shared.commitChanges()
             }
         })
     }
@@ -145,7 +145,7 @@ struct ReminderItemView: View {
         Alert(title: Text(rmbLocalized(.removeReminderAlertTitle)),
               message: Text(rmbLocalized(.removeReminderAlertMessage, arguments: reminder.title)),
               primaryButton: .destructive(Text(rmbLocalized(.removeReminderAlertConfirmButton)), action: {
-                RemindersService.instance.remove(reminder: reminder)
+                RemindersService.shared.remove(reminder: reminder)
                 hasBeenRemoved = true
               }),
               secondaryButton: .cancel(Text(rmbLocalized(.removeReminderAlertCancelButton)))
@@ -172,7 +172,7 @@ struct MoveToOptionMenu: View {
                 // {class: REMAccountStorage, self-map: (null), other-map: (null)}
                 Button(action: {
                     reminder.calendar = calendar
-                    RemindersService.instance.save(reminder: reminder)
+                    RemindersService.shared.save(reminder: reminder)
                 }) {
                     Group {
                         Text("●  ").foregroundColor(Color(calendar.color)) +
