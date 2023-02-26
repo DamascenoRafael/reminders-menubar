@@ -1,7 +1,8 @@
 "newReminderTextFielPlaceholder" = "リマインダーを入力";
 "newReminderCalendarSelectionToSaveHelp" = "リマインダーの保存場所を選択";
 "newReminderAddDateButton" = "日付を追加";
-"newReminderAddTimeButton" = "時刻を追加"; 
+"newReminderAddTimeButton" = "時刻を追加";
+"newReminderRemoveParsedDateOption" = "Remove parsed date from title"; // TODO: Translate
 "remindersOptionsButtonHelp" = "リマインダーの編集オプション";
 "editReminderOptionButton" = "編集";
 "editReminderTitleTextFieldPlaceholder" = "タイトル";

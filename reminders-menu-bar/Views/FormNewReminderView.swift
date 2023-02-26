@@ -38,6 +38,14 @@ struct FormNewReminderView: View {
                             SelectableView(title: calendar.title, isSelected: isSelected, color: Color(calendar.color))
                         }
                     }
+                    
+                    Divider()
+                    
+                    Button(action: { userPreferences.removeParsedDateFromTitle.toggle() }) {
+                        let isSelected = userPreferences.removeParsedDateFromTitle
+                        SelectableView(title: rmbLocalized(.newReminderRemoveParsedDateOption),
+                                       isSelected: isSelected)
+                    }
                 } label: {
                 }
                 .menuStyle(BorderlessButtonMenuStyle())
@@ -53,8 +61,8 @@ struct FormNewReminderView: View {
         .onChange(of: rmbReminder.title) { newValue in
             withAnimation(.easeOut(duration: 0.3)) {
                 isShowingDueDateOptions = !newValue.isEmpty
-                rmbReminder.updateWithDateParser()
             }
+            rmbReminder.updateWithDateParser()
             if newValue.isEmpty {
                 rmbReminder = RmbReminder()
             }
@@ -81,6 +89,10 @@ struct FormNewReminderView: View {
         guard !rmbReminder.title.isEmpty,
               let calendarForSaving = userPreferences.calendarForSaving else {
             return
+        }
+        
+        if userPreferences.removeParsedDateFromTitle {
+            rmbReminder.title = rmbReminder.title.replacingOccurrences(of: rmbReminder.dateRelatedString, with: "")
         }
         
         RemindersService.shared.createNew(with: rmbReminder, in: calendarForSaving)

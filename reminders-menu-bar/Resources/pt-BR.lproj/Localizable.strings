@@ -2,6 +2,7 @@
 "newReminderCalendarSelectionToSaveHelp" = "Selecione onde o novo lembrete será salvo";
 "newReminderAddDateButton" = "Adicionar Data";
 "newReminderAddTimeButton" = "Horário";
+"newReminderRemoveParsedDateOption" = "Remover data analisada do título";
 "remindersOptionsButtonHelp" = "Opções para editar o lembrete";
 "editReminderOptionButton" = "Editar";
 "editReminderTitleTextFieldPlaceholder" = "Título";

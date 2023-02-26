@@ -90,8 +90,9 @@ extension EKReminder {
     }
     
     func update(with rmbReminder: RmbReminder) {
-        if !rmbReminder.title.trimmingCharacters(in: .whitespaces).isEmpty {
-            title = rmbReminder.title
+        let trimmedTitle = rmbReminder.title.trimmingCharacters(in: .whitespaces)
+        if !trimmedTitle.isEmpty {
+            title = trimmedTitle
         }
         
         notes = rmbReminder.notes

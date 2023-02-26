@@ -2,6 +2,7 @@
 "newReminderCalendarSelectionToSaveHelp" = "选择新提醒事项的储存位置";
 "newReminderAddDateButton" = "添加日期";
 "newReminderAddTimeButton" = "添加时间";
+"newReminderRemoveParsedDateOption" = "Remove parsed date from title"; // TODO: Translate
 "remindersOptionsButtonHelp" = "关于编辑提醒事项的选项";
 "editReminderOptionButton" = "编辑";
 "editReminderTitleTextFieldPlaceholder" = "标题";

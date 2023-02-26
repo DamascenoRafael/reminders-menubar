@@ -2,6 +2,7 @@
 "newReminderCalendarSelectionToSaveHelp" = "Seleziona dove verranno salvati i nuovi promemoria";
 "newReminderAddDateButton" = "Aggiungi data";
 "newReminderAddTimeButton" = "Aggiungi ora";
+"newReminderRemoveParsedDateOption" = "Remove parsed date from title"; // TODO: Translate
 "remindersOptionsButtonHelp" = "Opzioni per modificare il promemoria";
 "editReminderOptionButton" = "Modifica";
 "editReminderTitleTextFieldPlaceholder" = "Titolo";

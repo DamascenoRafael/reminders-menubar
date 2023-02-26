@@ -2,6 +2,7 @@
 "newReminderCalendarSelectionToSaveHelp" = "Auswählen wo die Erinnerung gespeichert wird";
 "newReminderAddDateButton" = "Datum";
 "newReminderAddTimeButton" = "Uhrzeit";
+"newReminderRemoveParsedDateOption" = "Remove parsed date from title"; // TODO: Translate
 "remindersOptionsButtonHelp" = "Optionen für die Bearbeitung der Erinnerung";
 "editReminderOptionButton" = "Bearbeiten";
 "editReminderTitleTextFieldPlaceholder" = "Neue Erinnerung";
