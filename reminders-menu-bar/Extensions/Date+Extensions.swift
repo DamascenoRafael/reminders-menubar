@@ -13,10 +13,10 @@ extension Date {
             && inputDateComponents.year == todayDateComponents.year
     }
                                                                    
-    var isPastYear: Bool {
+    var isThisYear: Bool {
         let todayDateComponents = Calendar.current.dateComponents([.year], from: Date())
         let inputDateComponents = Calendar.current.dateComponents([.year], from: self)
-        return inputDateComponents.year! < todayDateComponents.year!
+        return inputDateComponents.year! == todayDateComponents.year!
     }
     
     static func nextHour(of date: Date = Date()) -> Date {

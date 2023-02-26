@@ -18,28 +18,29 @@ class DateParser {
     }
     
     private func adjustDateAccordingToNow(_ dateResult: DateParseResult) -> DateParseResult? {
-        // If the date it's not in the current year, then it's not valid
-        if dateResult.date.isPastYear {
-            return nil
+        // NOTE: Date will be adjusted only if it is in the past.
+        guard dateResult.date.isPast else {
+            return dateResult
         }
         
-        // If only the time is defined, and it's past the current time, then we assume it's for the next day
-        if dateResult.date.isToday
-            && dateResult.hasTime
-            && dateResult.date.isPast {
-            return DateParseResult(date: Date.nextDay(of: dateResult.date),
+        // NOTE: If the time is set for today, but it's past time today, then we assume it's next day.
+        // "Do something at 9am" - when it's already 2pm.
+        if dateResult.hasTime && dateResult.date.isToday {
+            return DateParseResult(date: .nextDay(of: dateResult.date),
                                    hasTime: dateResult.hasTime,
                                    dateRelatedString: dateResult.dateRelatedString)
         }
         
-        // If the day it's defined, and it's from the same year as the current date, but it's in the past,
-        // then we assume it's for the next year
-        if dateResult.date.isPast {
-            return DateParseResult(date: Date.nextYear(of: dateResult.date),
+        // NOTE: If the date is set to a day in the current year, but it's past that day, then we assume it's next year.
+        // "Do something on February 2nd" - when it's already March.
+        if dateResult.date.isThisYear {
+            return DateParseResult(date: .nextYear(of: dateResult.date),
                                    hasTime: dateResult.hasTime,
                                    dateRelatedString: dateResult.dateRelatedString)
         }
-        return dateResult
+        
+        // NOTE: If the date is not adjusted we prefer not to suggest a date that is in the past.
+        return nil
     }
     
     func getDate(from textString: String) -> DateParseResult? {
