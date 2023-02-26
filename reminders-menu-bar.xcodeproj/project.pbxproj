@@ -203,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				7115461824C0C280007781E2 /* RemindersService.swift */,
+				96A54A6A29A3ADB70060403F /* DateParser.swift */,
 				71A4163625CED8FE00CA4F81 /* GithubService.swift */,
 				71F301F9259FB5CF00CDD81E /* UserPreferences.swift */,
 				715B4DD428D56FE5008C6683 /* KeyboardShortcutService.swift */,
@@ -284,7 +285,6 @@
 				71564447260324FA005E81FD /* PrioritizedReminders.swift */,
 				71ED5D6A290B6B3C00626185 /* RmbReminder.swift */,
 				717748F729622FCB00654CAA /* RmbIcon.swift */,
-				96A54A6A29A3ADB70060403F /* DateParser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
