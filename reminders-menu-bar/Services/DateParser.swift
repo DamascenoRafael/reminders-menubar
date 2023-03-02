@@ -19,7 +19,9 @@ class DateParser {
     
     private func adjustDateAccordingToNow(_ dateResult: DateParseResult) -> DateParseResult? {
         // NOTE: Date will be adjusted only if it is in the past.
-        guard dateResult.date.isPast else {
+        let dateIsPastAndHasTime = dateResult.hasTime && dateResult.date.isPast
+        let dateIsPastAndHasNoTime = !dateResult.hasTime && dateResult.date.isPast && !dateResult.date.isToday
+        guard dateIsPastAndHasTime || dateIsPastAndHasNoTime else {
             return dateResult
         }
         
