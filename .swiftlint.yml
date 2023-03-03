@@ -8,6 +8,7 @@ opt_in_rules:
 - explicit_init
 - fallthrough
 - file_header
+- file_name_no_space
 - first_where
 - force_unwrapping
 - implicitly_unwrapped_optional
@@ -19,6 +20,7 @@ opt_in_rules:
 - overridden_super_call
 - redundant_nil_coalescing
 - redundant_type_annotation
+- shorthand_optional_binding
 - sorted_first_last
 - switch_case_on_newline
 - toggle_bool
@@ -41,6 +43,10 @@ identifier_name:
 
 multiline_arguments:
   only_enforce_after_first_closure_on_first_line: true
+
+excluded: 
+ - Carthage
+ - Pods
 
 custom_rules:
   comments_space:

@@ -1,7 +1,7 @@
 import SwiftUI
 
 class AppUpdateCheckHelper: ObservableObject {
-    static let instance = AppUpdateCheckHelper()
+    static let shared = AppUpdateCheckHelper()
     
     private init() {
         // This prevents others from using the default '()' initializer for this class.
@@ -22,7 +22,7 @@ class AppUpdateCheckHelper: ObservableObject {
     
     private(set) var latestRelease: Release? {
         didSet {
-            guard let latestRelease = latestRelease else {
+            guard let latestRelease else {
                 return
             }
             

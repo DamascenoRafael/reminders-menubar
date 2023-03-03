@@ -62,7 +62,7 @@ struct ReminderEditPopover: View {
         .onDisappear {
             ekReminder.update(with: rmbReminder)
             if ekReminder.hasChanges {
-                RemindersService.instance.save(reminder: ekReminder)
+                RemindersService.shared.save(reminder: ekReminder)
             }
         }
     }

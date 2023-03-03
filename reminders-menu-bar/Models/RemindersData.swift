@@ -4,7 +4,7 @@ import EventKit
 
 class RemindersData: ObservableObject {
     
-    private let userPreferences = UserPreferences.instance
+    private let userPreferences = UserPreferences.shared
     
     private var cancellationTokens: [AnyCancellable] = []
     
@@ -32,13 +32,13 @@ class RemindersData: ObservableObject {
         
         cancellationTokens.append(
             userPreferences.$upcomingRemindersInterval.dropFirst().sink { [weak self] upcomingRemindersInterval in
-                self?.upcomingReminders = RemindersService.instance.getUpcomingReminders(upcomingRemindersInterval)
+                self?.upcomingReminders = RemindersService.shared.getUpcomingReminders(upcomingRemindersInterval)
             }
         )
         
         cancellationTokens.append(
             userPreferences.$calendarIdentifiersFilter.dropFirst().sink { [weak self] calendarIdentifiersFilter in
-                self?.filteredReminderLists = RemindersService.instance.getReminders(of: calendarIdentifiersFilter)
+                self?.filteredReminderLists = RemindersService.shared.getReminders(of: calendarIdentifiersFilter)
             }
         )
     }
@@ -53,20 +53,15 @@ class RemindersData: ObservableObject {
         // TODO: Prefer receive(on:options:) over explicit use of dispatch queues when performing work in subscribers.
         // https://developer.apple.com/documentation/combine/fail/receive(on:options:)
         DispatchQueue.main.async {
-            let calendars = RemindersService.instance.getCalendars()
+            let calendars = RemindersService.shared.getCalendars()
             self.calendars = calendars
             
             self.userPreferences.calendarIdentifiersFilter = self.userPreferences.calendarIdentifiersFilter.filter({
-                RemindersService.instance.isValid(calendarIdentifier: $0)
+                RemindersService.shared.isValid(calendarIdentifier: $0)
             })
             
-            let calendarForSavingIdentifier = self.userPreferences.calendarForSaving.calendarIdentifier
-            if !RemindersService.instance.isValid(calendarIdentifier: calendarForSavingIdentifier) {
-                self.userPreferences.calendarForSaving = RemindersService.instance.getDefaultCalendar()
-            }
-            
             let upcomingRemindersInterval = self.userPreferences.upcomingRemindersInterval
-            self.upcomingReminders = RemindersService.instance.getUpcomingReminders(upcomingRemindersInterval)
+            self.upcomingReminders = RemindersService.shared.getUpcomingReminders(upcomingRemindersInterval)
             
             self.updateMenuBarTodayCount(self.userPreferences.showMenuBarTodayCount)
         }
@@ -75,8 +70,8 @@ class RemindersData: ObservableObject {
     private func updateMenuBarTodayCount(_ showMenuBarTodayCount: Bool) {
         var todayCount = -1
         if showMenuBarTodayCount {
-            todayCount = RemindersService.instance.getUpcomingReminders(.today).count
+            todayCount = RemindersService.shared.getUpcomingReminders(.today).count
         }
-        AppDelegate.instance.updateMenuBarTodayCount(to: todayCount)
+        AppDelegate.shared.updateMenuBarTodayCount(to: todayCount)
     }
 }

@@ -10,7 +10,7 @@ private struct ShortcutsKeys {
 }
 
 class KeyboardShortcutService: ObservableObject {
-    static let instance = KeyboardShortcutService()
+    static let shared = KeyboardShortcutService()
     
     private init() {
         // This prevents others from using the default '()' initializer for this class.

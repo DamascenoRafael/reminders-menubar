@@ -11,8 +11,8 @@ class GithubService {
         let request = URLRequest(url: latestReleaseUrl, cachePolicy: .reloadIgnoringLocalCacheData)
         
         urlSession.dataTask(with: request) { data, _, error in
-            guard let data = data else {
-                if let error = error {
+            guard let data else {
+                if let error {
                     completion(.failure(error))
                 }
                 return

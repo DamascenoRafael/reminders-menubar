@@ -18,7 +18,7 @@ struct RemindersMenuBar: App {
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-    static private(set) var instance: AppDelegate!
+    static private(set) var shared: AppDelegate!
 
     let popover = NSPopover()
     lazy var statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -29,9 +29,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        AppDelegate.instance = self
+        AppDelegate.shared = self
         
-        AppUpdateCheckHelper.instance.startBackgroundActivity()
+        AppUpdateCheckHelper.shared.startBackgroundActivity()
         
         changeBehaviorToDismissIfNeeded()
         configurePopover()
@@ -43,19 +43,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         popover.contentSize = NSSize(width: 340, height: 460)
         popover.animates = false
         
-        if RemindersService.instance.authorizationStatus() == .authorized {
+        if RemindersService.shared.authorizationStatus() == .authorized {
             popover.contentViewController = contentViewController
         }
     }
     
+    func loadMenuBarIcon() {
+        let menuBarIcon = UserPreferences.shared.reminderMenuBarIcon
+        statusBarItem.button?.image = menuBarIcon.image
+    }
+    
     private func configureMenuBarButton() {
-        statusBarItem.button?.image = NSImage(systemSymbolName: "list.bullet", accessibilityDescription: nil)
+        loadMenuBarIcon()
         statusBarItem.button?.imagePosition = .imageLeading
         statusBarItem.button?.action = #selector(togglePopover)
     }
     
     private func configureKeyboardShortcut() {
-        KeyboardShortcutService.instance.action(for: .openRemindersMenuBar) { [weak self] in
+        KeyboardShortcutService.shared.action(for: .openRemindersMenuBar) { [weak self] in
             self?.togglePopover()
         }
     }
@@ -82,11 +87,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func requestAuthorization() {
-        let authorization = RemindersService.instance.authorizationStatus()
+        let authorization = RemindersService.shared.authorizationStatus()
         if authorization == .restricted || authorization == .denied {
             presentNoAuthorizationAlert()
         } else {
-            RemindersService.instance.requestAccess()
+            RemindersService.shared.requestAccess()
         }
     }
     
@@ -111,7 +116,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc private func togglePopover() {
-        guard RemindersService.instance.authorizationStatus() == .authorized else {
+        guard RemindersService.shared.authorizationStatus() == .authorized else {
             requestAuthorization()
             return
         }
@@ -129,7 +134,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             popover.performClose(button)
         } else {
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
-            UserPreferences.instance.remindersMenuBarOpeningEvent.toggle()
+            UserPreferences.shared.remindersMenuBarOpeningEvent.toggle()
         }
     }
 }

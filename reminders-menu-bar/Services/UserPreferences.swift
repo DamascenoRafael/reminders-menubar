@@ -2,8 +2,11 @@ import EventKit
 import ServiceManagement
 
 private struct PreferencesKeys {
+    static let reminderMenuBarIcon = "reminderMenuBarIcon"
     static let calendarIdentifiersFilter = "calendarIdentifiersFilter"
     static let calendarIdentifierForSaving = "calendarIdentifierForSaving"
+    static let autoSuggestTodayForNewReminders = "autoSuggestTodayForNewReminders"
+    static let removeParsedDateFromTitle = "removeParsedDateFromTitle"
     static let showUncompletedOnly = "showUncompletedOnly"
     static let backgroundIsTransparent = "backgroundIsTransparent"
     static let showUpcomingReminders = "showUpcomingReminders"
@@ -13,7 +16,7 @@ private struct PreferencesKeys {
 }
 
 class UserPreferences: ObservableObject {
-    static let instance = UserPreferences()
+    static let shared = UserPreferences()
     
     private init() {
         // This prevents others from using the default '()' initializer for this class.
@@ -23,10 +26,21 @@ class UserPreferences: ObservableObject {
     
     @Published var remindersMenuBarOpeningEvent = false
     
+    @Published var reminderMenuBarIcon: RmbIcon = {
+        guard let menuBarIconString = defaults.string(forKey: PreferencesKeys.reminderMenuBarIcon) else {
+            return RmbIcon.defaultIcon
+        }
+        return RmbIcon(rawValue: menuBarIconString) ?? RmbIcon.defaultIcon
+    }() {
+        didSet {
+            UserPreferences.defaults.set(reminderMenuBarIcon.rawValue, forKey: PreferencesKeys.reminderMenuBarIcon)
+        }
+    }
+    
     @Published var calendarIdentifiersFilter: [String] = {
         guard let identifiers = defaults.stringArray(forKey: PreferencesKeys.calendarIdentifiersFilter) else {
             // NOTE: On first use it will load all reminder lists.
-            let calendars = RemindersService.instance.getCalendars()
+            let calendars = RemindersService.shared.getCalendars()
             let allIdentifiers = calendars.map({ $0.calendarIdentifier })
             return allIdentifiers
         }
@@ -38,22 +52,38 @@ class UserPreferences: ObservableObject {
         }
     }
     
-    @Published var calendarForSaving: EKCalendar = {
+    @Published var calendarForSaving: EKCalendar? = {
+        guard RemindersService.shared.authorizationStatus() == .authorized else {
+            return nil
+        }
+        
         guard let identifier = defaults.string(forKey: PreferencesKeys.calendarIdentifierForSaving),
-              let calendar = RemindersService.instance.getCalendar(withIdentifier: identifier) else {
-            // TODO: Find a way to load this property only when the authorization status is authorized
-            guard RemindersService.instance.authorizationStatus() == .authorized else {
-                return EKCalendar()
-            }
-            let defaultCalendar = RemindersService.instance.getDefaultCalendar()
+              let calendar = RemindersService.shared.getCalendar(withIdentifier: identifier) else {
+            let defaultCalendar = RemindersService.shared.getDefaultCalendar()
             return defaultCalendar
         }
         
         return calendar
     }() {
         didSet {
-            let identifier = calendarForSaving.calendarIdentifier
+            let identifier = calendarForSaving?.calendarIdentifier
             UserPreferences.defaults.set(identifier, forKey: PreferencesKeys.calendarIdentifierForSaving)
+        }
+    }
+    
+    @Published var autoSuggestToday: Bool = {
+        return defaults.bool(forKey: PreferencesKeys.autoSuggestTodayForNewReminders)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(autoSuggestToday, forKey: PreferencesKeys.autoSuggestTodayForNewReminders)
+        }
+    }
+    
+    @Published var removeParsedDateFromTitle: Bool = {
+        return defaults.bool(forKey: PreferencesKeys.removeParsedDateFromTitle)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(removeParsedDateFromTitle, forKey: PreferencesKeys.removeParsedDateFromTitle)
         }
     }
     

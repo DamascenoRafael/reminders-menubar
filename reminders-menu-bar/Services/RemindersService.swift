@@ -1,7 +1,7 @@
 import EventKit
 
 class RemindersService {
-    static let instance = RemindersService()
+    static let shared = RemindersService()
     
     private init() {
         // This prevents others from using the default '()' initializer for this class.
@@ -45,7 +45,7 @@ class RemindersService {
         let group = DispatchGroup()
         group.enter()
         eventStore.fetchReminders(matching: predicate) { allReminders in
-            guard let allReminders = allReminders else {
+            guard let allReminders else {
                 print("Reminders was nil during 'fetchReminders'")
                 group.leave()
                 return

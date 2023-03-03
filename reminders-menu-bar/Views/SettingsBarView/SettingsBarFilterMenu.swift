@@ -2,7 +2,7 @@ import SwiftUI
 
 struct SettingsBarFilterMenu: View {
     @EnvironmentObject var remindersData: RemindersData
-    @ObservedObject var userPreferences = UserPreferences.instance
+    @ObservedObject var userPreferences = UserPreferences.shared
     
     @State var filterIsHovered = false
     
@@ -10,9 +10,9 @@ struct SettingsBarFilterMenu: View {
         Menu {
             VStack {
                 Button(action: {
-                    UserPreferences.instance.showUpcomingReminders.toggle()
+                    UserPreferences.shared.showUpcomingReminders.toggle()
                 }) {
-                    let isSelected = UserPreferences.instance.showUpcomingReminders
+                    let isSelected = UserPreferences.shared.showUpcomingReminders
                     SelectableView(title: rmbLocalized(.upcomingRemindersTitle), isSelected: isSelected)
                 }
                 
@@ -22,7 +22,7 @@ struct SettingsBarFilterMenu: View {
                     let calendarIdentifier = calendar.calendarIdentifier
                     Button(action: {
                         let index = userPreferences.calendarIdentifiersFilter.firstIndex(of: calendarIdentifier)
-                        if let index = index {
+                        if let index {
                             userPreferences.calendarIdentifiersFilter.remove(at: index)
                         } else {
                             userPreferences.calendarIdentifiersFilter.append(calendarIdentifier)

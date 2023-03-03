@@ -2,6 +2,8 @@
 "newReminderCalendarSelectionToSaveHelp" = "Select where new reminders will be saved";
 "newReminderAddDateButton" = "Add Date";
 "newReminderAddTimeButton" = "Add Time";
+"newReminderAutoSuggestTodayOption" = "Auto suggest today as date";
+"newReminderRemoveParsedDateOption" = "Remove parsed date from title";
 "remindersOptionsButtonHelp" = "Options for editing the reminder";
 "editReminderOptionButton" = "Edit";
 "editReminderTitleTextFieldPlaceholder" = "Title";
@@ -33,7 +35,8 @@
 "appAppearanceMenu" = "Appearance";
 "appAppearanceMoreOpaqueOptionButton" = "More opaque";
 "appAppearanceMoreTransparentOptionButton" = "More transparent";
-"showMenuBarTodayCountOptionButton" = "Show today count in the menu bar";
+"menuBarSettingsMenu" = "Menu bar";
+"showMenuBarTodayCountOptionButton" = "Show today count";
 "keyboardShortcutOptionButton" = "Keyboard shortcut";
 "reloadRemindersDataButton" = "Reload data";
 "appAboutButton" = "About";

@@ -3,7 +3,7 @@ import EventKit
 
 struct FormNewReminderView: View {
     @EnvironmentObject var remindersData: RemindersData
-    @ObservedObject var userPreferences = UserPreferences.instance
+    @ObservedObject var userPreferences = UserPreferences.shared
     
     @State var rmbReminder = RmbReminder()
     @State var isShowingDueDateOptions = false
@@ -34,9 +34,28 @@ struct FormNewReminderView: View {
                     ForEach(remindersData.calendars, id: \.calendarIdentifier) { calendar in
                         Button(action: { userPreferences.calendarForSaving = calendar }) {
                             let isSelected =
-                                userPreferences.calendarForSaving.calendarIdentifier == calendar.calendarIdentifier
+                                userPreferences.calendarForSaving?.calendarIdentifier == calendar.calendarIdentifier
                             SelectableView(title: calendar.title, isSelected: isSelected, color: Color(calendar.color))
                         }
+                    }
+                    
+                    Divider()
+                    
+                    Button(action: {
+                        userPreferences.autoSuggestToday.toggle()
+                        if rmbReminder.title.isEmpty {
+                            rmbReminder = newRmbReminder()
+                        }
+                    }) {
+                        let isSelected = userPreferences.autoSuggestToday
+                        SelectableView(title: rmbLocalized(.newReminderAutoSuggestTodayOption),
+                                       isSelected: isSelected)
+                    }
+                    
+                    Button(action: { userPreferences.removeParsedDateFromTitle.toggle() }) {
+                        let isSelected = userPreferences.removeParsedDateFromTitle
+                        SelectableView(title: rmbLocalized(.newReminderRemoveParsedDateOption),
+                                       isSelected: isSelected)
                     }
                 } label: {
                 }
@@ -44,7 +63,7 @@ struct FormNewReminderView: View {
                 .frame(width: 14, height: 16)
                 .padding(8)
                 .padding(.trailing, 2)
-                .background(Color(userPreferences.calendarForSaving.color))
+                .background(Color(userPreferences.calendarForSaving?.color ?? .white))
                 .cornerRadius(8)
                 .help(rmbLocalized(.newReminderCalendarSelectionToSaveHelp))
             }
@@ -54,9 +73,13 @@ struct FormNewReminderView: View {
             withAnimation(.easeOut(duration: 0.3)) {
                 isShowingDueDateOptions = !newValue.isEmpty
             }
+            rmbReminder.updateWithDateParser()
             if newValue.isEmpty {
-                rmbReminder = RmbReminder()
+                rmbReminder = newRmbReminder()
             }
+        }
+        .onAppear {
+            rmbReminder = newRmbReminder()
         }
     }
     
@@ -76,18 +99,29 @@ struct FormNewReminderView: View {
         }
     }
     
+    func newRmbReminder() -> RmbReminder {
+        return RmbReminder(hasDueDate: userPreferences.autoSuggestToday)
+    }
+    
     func createNewReminder() {
-        guard !rmbReminder.title.isEmpty else { return }
+        guard !rmbReminder.title.isEmpty,
+              let calendarForSaving = userPreferences.calendarForSaving else {
+            return
+        }
         
-        RemindersService.instance.createNew(with: rmbReminder, in: userPreferences.calendarForSaving)
-        rmbReminder = RmbReminder()
+        if userPreferences.removeParsedDateFromTitle {
+            rmbReminder.title = rmbReminder.title.replacingOccurrences(of: rmbReminder.dateRelatedString, with: "")
+        }
+        
+        RemindersService.shared.createNew(with: rmbReminder, in: calendarForSaving)
+        rmbReminder = newRmbReminder()
     }
 }
 
 @available(macOS 12.0, *)
 struct ReminderTextField: View {
     @FocusState private var newReminderTextFieldInFocus: Bool
-    @ObservedObject var userPreferences = UserPreferences.instance
+    @ObservedObject var userPreferences = UserPreferences.shared
     
     var placeholder: String
     var text: Binding<String>
@@ -231,9 +265,6 @@ struct FormNewReminderView_Previews: PreviewProvider {
         
         let dateComponents = Date().dateComponents(withTime: true)
         reminder.dueDateComponents = dateComponents
-        
-        let ekAlarm = EKAlarm(absoluteDate: dateComponents.date!) // swiftlint:disable:this force_unwrapping
-        reminder.alarms = [ekAlarm]
         
         return reminder
     }

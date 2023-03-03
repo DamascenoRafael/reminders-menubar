@@ -2,6 +2,8 @@
 "newReminderCalendarSelectionToSaveHelp" = "Selecione onde o novo lembrete será salvo";
 "newReminderAddDateButton" = "Adicionar Data";
 "newReminderAddTimeButton" = "Horário";
+"newReminderAutoSuggestTodayOption" = "Auto sugerir hoje como data";
+"newReminderRemoveParsedDateOption" = "Remover data analisada do título";
 "remindersOptionsButtonHelp" = "Opções para editar o lembrete";
 "editReminderOptionButton" = "Editar";
 "editReminderTitleTextFieldPlaceholder" = "Título";
@@ -33,7 +35,8 @@
 "appAppearanceMenu" = "Aparência";
 "appAppearanceMoreOpaqueOptionButton" = "Mais opaco";
 "appAppearanceMoreTransparentOptionButton" = "Mais transparente";
-"showMenuBarTodayCountOptionButton" = "Mostrar contagem para hoje na barra de menu";
+"menuBarSettingsMenu" = "Barra de menu";
+"showMenuBarTodayCountOptionButton" = "Mostrar contagem para hoje";
 "keyboardShortcutOptionButton" = "Atalho de teclado";
 "reloadRemindersDataButton" = "Recarregar dados";
 "appAboutButton" = "Sobre";
