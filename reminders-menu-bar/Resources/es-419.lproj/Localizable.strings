@@ -2,8 +2,8 @@
 "newReminderCalendarSelectionToSaveHelp" = "Selecciona donde quieres que tu recordatorio se guarde";
 "newReminderAddDateButton" = "Añadir fecha";
 "newReminderAddTimeButton" = "Añadir hora";
-"newReminderAutoSuggestTodayOption" = "Auto suggest today as date"; // TODO: Translate
-"newReminderRemoveParsedDateOption" = "Remove parsed date from title"; // TODO: Translate
+"newReminderAutoSuggestTodayOption" = "Auto sugerir hoy como la fecha";
+"newReminderRemoveParsedDateOption" = "Eliminar fecha analizada del títuloe";
 "remindersOptionsButtonHelp" = "Opciones para editar un recordatorio";
 "editReminderOptionButton" = "Editar";
 "editReminderTitleTextFieldPlaceholder" = "Título";
@@ -35,8 +35,8 @@
 "appAppearanceMenu" = "Apariencia";
 "appAppearanceMoreOpaqueOptionButton" = "Más opaco";
 "appAppearanceMoreTransparentOptionButton" = "Más transparente";
-"menuBarSettingsMenu" = "Menu bar"; // TODO: Translate
-"showMenuBarTodayCountOptionButton" = "Mostrar recuento de hoy en la barra de menú"; // TODO: Update this to be equivalent to "Show today count" (since this option will be inside MenuBarSettingsMenu).
+"menuBarSettingsMenu" = "Menu bar";
+"showMenuBarTodayCountOptionButton" = "Mostrar la cuenta de hoy en la barra de menú";
 "keyboardShortcutOptionButton" = "Atajos del teclado";
 "reloadRemindersDataButton" = "Actualizar datos";
 "appAboutButton" = "Acerca de";
