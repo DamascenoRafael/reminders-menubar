@@ -2,8 +2,8 @@
 "newReminderCalendarSelectionToSaveHelp" = "选择新提醒事项的储存位置";
 "newReminderAddDateButton" = "添加日期";
 "newReminderAddTimeButton" = "添加时间";
-"newReminderAutoSuggestTodayOption" = "Auto suggest today as date"; // TODO: Translate
-"newReminderRemoveParsedDateOption" = "Remove parsed date from title"; // TODO: Translate
+"newReminderAutoSuggestTodayOption" = "自动建议将今天作为日期";
+"newReminderRemoveParsedDateOption" = "从标题中删除已识别的日期";
 "remindersOptionsButtonHelp" = "关于编辑提醒事项的选项";
 "editReminderOptionButton" = "编辑";
 "editReminderTitleTextFieldPlaceholder" = "标题";
@@ -35,8 +35,8 @@
 "appAppearanceMenu" = "外观";
 "appAppearanceMoreOpaqueOptionButton" = "不透明";
 "appAppearanceMoreTransparentOptionButton" = "透明";
-"menuBarSettingsMenu" = "Menu bar"; // TODO: Translate
-"showMenuBarTodayCountOptionButton" = "在任务栏显示今日计数"; // TODO: Update this to be equivalent to "Show today count" (since this option will be inside MenuBarSettingsMenu).
+"menuBarSettingsMenu" = "任务栏";
+"showMenuBarTodayCountOptionButton" = "显示今日计数";
 "keyboardShortcutOptionButton" = "键盘快捷键";
 "reloadRemindersDataButton" = "重新加载数据";
 "appAboutButton" = "关于";
