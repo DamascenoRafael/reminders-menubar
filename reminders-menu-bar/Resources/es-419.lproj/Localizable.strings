@@ -3,7 +3,7 @@
 "newReminderAddDateButton" = "Añadir fecha";
 "newReminderAddTimeButton" = "Añadir hora";
 "newReminderAutoSuggestTodayOption" = "Auto sugerir hoy como la fecha";
-"newReminderRemoveParsedDateOption" = "Eliminar fecha analizada del títuloe";
+"newReminderRemoveParsedDateOption" = "Eliminar fecha analizada del título";
 "remindersOptionsButtonHelp" = "Opciones para editar un recordatorio";
 "editReminderOptionButton" = "Editar";
 "editReminderTitleTextFieldPlaceholder" = "Título";
@@ -36,7 +36,7 @@
 "appAppearanceMoreOpaqueOptionButton" = "Más opaco";
 "appAppearanceMoreTransparentOptionButton" = "Más transparente";
 "menuBarSettingsMenu" = "Menu bar";
-"showMenuBarTodayCountOptionButton" = "Mostrar la cuenta de hoy en la barra de menú";
+"showMenuBarTodayCountOptionButton" = "Mostrar el conteo de hoy en la barra de menú";
 "keyboardShortcutOptionButton" = "Atajos del teclado";
 "reloadRemindersDataButton" = "Actualizar datos";
 "appAboutButton" = "Acerca de";
