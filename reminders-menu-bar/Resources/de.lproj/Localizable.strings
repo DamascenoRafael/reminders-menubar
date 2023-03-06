@@ -2,8 +2,8 @@
 "newReminderCalendarSelectionToSaveHelp" = "Auswählen wo die Erinnerung gespeichert wird";
 "newReminderAddDateButton" = "Datum";
 "newReminderAddTimeButton" = "Uhrzeit";
-"newReminderAutoSuggestTodayOption" = "Auto suggest today as date"; // TODO: Translate
-"newReminderRemoveParsedDateOption" = "Remove parsed date from title"; // TODO: Translate
+"newReminderAutoSuggestTodayOption" = "Automatisch heute als Datum vorschlagen";
+"newReminderRemoveParsedDateOption" = "Automatisch erkanntes Datum aus Titel entfernen";
 "remindersOptionsButtonHelp" = "Optionen für die Bearbeitung der Erinnerung";
 "editReminderOptionButton" = "Bearbeiten";
 "editReminderTitleTextFieldPlaceholder" = "Neue Erinnerung";
@@ -35,7 +35,7 @@
 "appAppearanceMenu" = "Erscheinungsbild";
 "appAppearanceMoreOpaqueOptionButton" = "Hintergrund undurchsichtig";
 "appAppearanceMoreTransparentOptionButton" = "Hintergrund transparenter";
-"menuBarSettingsMenu" = "Menu bar"; // TODO: Translate
+"menuBarSettingsMenu" = "Menüleiste";
 "showMenuBarTodayCountOptionButton" = "Anzahl der offenen Erinnerungen in der Menüleiste anzeigen"; // TODO: Update this to be equivalent to "Show today count" (since this option will be inside MenuBarSettingsMenu).
 "keyboardShortcutOptionButton" = "Tastaturkürzel";
 "reloadRemindersDataButton" = "Erinnerungen aktualisieren";
