@@ -80,7 +80,7 @@ class UserPreferences: ObservableObject {
     }
     
     @Published var removeParsedDateFromTitle: Bool = {
-        return defaults.bool(forKey: PreferencesKeys.removeParsedDateFromTitle)
+        return defaults.boolWithDefaultValueTrue(forKey: PreferencesKeys.removeParsedDateFromTitle)
     }() {
         didSet {
             UserPreferences.defaults.set(removeParsedDateFromTitle, forKey: PreferencesKeys.removeParsedDateFromTitle)
