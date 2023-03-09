@@ -88,11 +88,7 @@ class UserPreferences: ObservableObject {
     }
     
     @Published var showUncompletedOnly: Bool = {
-        guard defaults.object(forKey: PreferencesKeys.showUncompletedOnly) != nil else {
-            return true
-        }
-        
-        return defaults.bool(forKey: PreferencesKeys.showUncompletedOnly)
+        return defaults.boolWithDefaultValueTrue(forKey: PreferencesKeys.showUncompletedOnly)
     }() {
         didSet {
             UserPreferences.defaults.set(showUncompletedOnly, forKey: PreferencesKeys.showUncompletedOnly)
@@ -113,10 +109,7 @@ class UserPreferences: ObservableObject {
     }
     
     @Published var showUpcomingReminders: Bool = {
-        guard defaults.object(forKey: PreferencesKeys.showUpcomingReminders) != nil else {
-            return true
-        }
-        return defaults.bool(forKey: PreferencesKeys.showUpcomingReminders)
+        return defaults.boolWithDefaultValueTrue(forKey: PreferencesKeys.showUpcomingReminders)
     }() {
         didSet {
             UserPreferences.defaults.set(showUpcomingReminders, forKey: PreferencesKeys.showUpcomingReminders)
@@ -140,10 +133,7 @@ class UserPreferences: ObservableObject {
     }
     
     @Published var backgroundIsTransparent: Bool = {
-        guard defaults.object(forKey: PreferencesKeys.backgroundIsTransparent) != nil else {
-            return true
-        }
-        return defaults.bool(forKey: PreferencesKeys.backgroundIsTransparent)
+        return defaults.boolWithDefaultValueTrue(forKey: PreferencesKeys.backgroundIsTransparent)
     }() {
         didSet {
             UserPreferences.defaults.set(backgroundIsTransparent, forKey: PreferencesKeys.backgroundIsTransparent)
@@ -151,10 +141,7 @@ class UserPreferences: ObservableObject {
     }
     
     @Published var showMenuBarTodayCount: Bool = {
-        guard defaults.object(forKey: PreferencesKeys.showMenuBarTodayCount) != nil else {
-            return true
-        }
-        return defaults.bool(forKey: PreferencesKeys.showMenuBarTodayCount)
+        return defaults.boolWithDefaultValueTrue(forKey: PreferencesKeys.showMenuBarTodayCount)
     }() {
         didSet {
             UserPreferences.defaults.set(showMenuBarTodayCount, forKey: PreferencesKeys.showMenuBarTodayCount)
