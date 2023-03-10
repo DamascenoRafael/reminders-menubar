@@ -3,10 +3,10 @@
 "newReminderAddDateButton" = "Ajouter une date";
 "newReminderAddTimeButton" = "Ajouter une heure";
 "newReminderAutoSuggestTodayOption" = "Suggérer Aujourd'hui par défaut";
-"newReminderRemoveParsedDateOption" = "Ne pas détecter la date";
+"newReminderRemoveParsedDateOption" = "Ne pas conserver de date détectée dans l'intitulé";
 "remindersOptionsButtonHelp" = "Options des rappels";
 "editReminderOptionButton" = "Modifier";
-"editReminderTitleTextFieldPlaceholder" = "Titre";
+"editReminderTitleTextFieldPlaceholder" = "Intitulé";
 "editReminderNotesTextFieldPlaceholder" = "Note";
 "editReminderRemindMeSection" = "M'avertir";
 "editReminderRemindDateOption" = "Un jour";
