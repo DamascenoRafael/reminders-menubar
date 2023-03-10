@@ -2,8 +2,8 @@
 "newReminderCalendarSelectionToSaveHelp" = "Selecteer waar nieuwe herinneringen worden opgeslagen";
 "newReminderAddDateButton" = "Datum";
 "newReminderAddTimeButton" = "Tijd";
-"newReminderAutoSuggestTodayOption" = "Auto suggest today as date"; // TODO: Translate
-"newReminderRemoveParsedDateOption" = "Remove parsed date from title"; // TODO: Translate
+"newReminderAutoSuggestTodayOption" = "Stel vandaag automatisch voor als datum";
+"newReminderRemoveParsedDateOption" = "Verwijder de verwerkte datum uit de titel";
 "remindersOptionsButtonHelp" = "Opties voor het bewerken van de herinnering";
 "editReminderOptionButton" = "Bewerken";
 "editReminderTitleTextFieldPlaceholder" = "Titel";
@@ -35,8 +35,8 @@
 "appAppearanceMenu" = "Weergave";
 "appAppearanceMoreOpaqueOptionButton" = "Ondoorzichtig";
 "appAppearanceMoreTransparentOptionButton" = "Transparanter";
-"menuBarSettingsMenu" = "Menu bar"; // TODO: Translate
-"showMenuBarTodayCountOptionButton" = "Toon items voor vandaag in de menu balk"; // TODO: Update this to be equivalent to "Show today count" (since this option will be inside MenuBarSettingsMenu).
+"menuBarSettingsMenu" = "Menubalk";
+"showMenuBarTodayCountOptionButton" = "Toon het aantal items van vandaag";
 "keyboardShortcutOptionButton" = "Sneltoets";
 "reloadRemindersDataButton" = "Data herladen";
 "appAboutButton" = "Over";
