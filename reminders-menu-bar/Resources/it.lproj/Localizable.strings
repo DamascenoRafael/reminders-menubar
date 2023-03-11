@@ -2,8 +2,8 @@
 "newReminderCalendarSelectionToSaveHelp" = "Seleziona dove verranno salvati i nuovi promemoria";
 "newReminderAddDateButton" = "Aggiungi data";
 "newReminderAddTimeButton" = "Aggiungi ora";
-"newReminderAutoSuggestTodayOption" = "Auto suggest today as date"; // TODO: Translate
-"newReminderRemoveParsedDateOption" = "Remove parsed date from title"; // TODO: Translate
+"newReminderAutoSuggestTodayOption" = "Suggerisci "oggi" come data";
+"newReminderRemoveParsedDateOption" = "Rimuovi data rilevata dal titolo";
 "remindersOptionsButtonHelp" = "Opzioni per modificare il promemoria";
 "editReminderOptionButton" = "Modifica";
 "editReminderTitleTextFieldPlaceholder" = "Titolo";
