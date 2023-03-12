@@ -2,8 +2,8 @@
 "newReminderCalendarSelectionToSaveHelp" = "リマインダーの保存場所を選択";
 "newReminderAddDateButton" = "日付を追加";
 "newReminderAddTimeButton" = "時刻を追加";
-"newReminderAutoSuggestTodayOption" = "Auto suggest today as date"; // TODO: Translate
-"newReminderRemoveParsedDateOption" = "Remove parsed date from title"; // TODO: Translate
+"newReminderAutoSuggestTodayOption" = "今日の日付を自動で提案";
+"newReminderRemoveParsedDateOption" = "タイトルから解析された日付を削除";
 "remindersOptionsButtonHelp" = "リマインダーの編集オプション";
 "editReminderOptionButton" = "編集";
 "editReminderTitleTextFieldPlaceholder" = "タイトル";
@@ -35,8 +35,8 @@
 "appAppearanceMenu" = "表示";
 "appAppearanceMoreOpaqueOptionButton" = "不透明";
 "appAppearanceMoreTransparentOptionButton" = "半透明";
-"menuBarSettingsMenu" = "Menu bar"; // TODO: Translate
-"showMenuBarTodayCountOptionButton" = "今日の件数をメニューバーに表示"; // TODO: Update this to be equivalent to "Show today count" (since this option will be inside MenuBarSettingsMenu).
+"menuBarSettingsMenu" = "メニューバー";
+"showMenuBarTodayCountOptionButton" = "今日の件数を表示";
 "keyboardShortcutOptionButton" = "キーボードショートカット";
 "reloadRemindersDataButton" = "再読み込み";
 "appAboutButton" = "Reminders Menu Barについて";
