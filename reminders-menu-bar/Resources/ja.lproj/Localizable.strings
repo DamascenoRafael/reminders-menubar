@@ -35,7 +35,7 @@
 "appAppearanceMenu" = "表示";
 "appAppearanceMoreOpaqueOptionButton" = "不透明";
 "appAppearanceMoreTransparentOptionButton" = "半透明";
-"menuBarSettingsMenu" = "Menu bar"; // TODO: Translate
+"menuBarSettingsMenu" = "メニューバー";
 "showMenuBarTodayCountOptionButton" = "今日の件数を表示";
 "keyboardShortcutOptionButton" = "キーボードショートカット";
 "reloadRemindersDataButton" = "再読み込み";
