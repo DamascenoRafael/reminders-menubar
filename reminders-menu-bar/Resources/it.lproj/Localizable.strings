@@ -2,7 +2,7 @@
 "newReminderCalendarSelectionToSaveHelp" = "Seleziona dove verranno salvati i nuovi promemoria";
 "newReminderAddDateButton" = "Aggiungi data";
 "newReminderAddTimeButton" = "Aggiungi ora";
-"newReminderAutoSuggestTodayOption" = "Suggerisci "oggi" come data";
+"newReminderAutoSuggestTodayOption" = "Suggerisci oggi come data";
 "newReminderRemoveParsedDateOption" = "Rimuovi data rilevata dal titolo";
 "remindersOptionsButtonHelp" = "Opzioni per modificare il promemoria";
 "editReminderOptionButton" = "Modifica";
