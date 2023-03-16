@@ -44,7 +44,7 @@ struct ContentView: View {
         .onAppear {
             remindersData.update()
         }
-        .background(Color("backgroundTheme").opacity(userPreferences.backgroundIsTransparent ? 0.3 : 1.0))
+        .background(Color("backgroundTheme").opacity(userPreferences.backgroundIsTransparent ? 0.3 : 1.0).padding(-80))
     }
     
     private func filteredReminders(_ reminders: [EKReminder]) -> [EKReminder] {
