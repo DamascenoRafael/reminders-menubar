@@ -10,9 +10,9 @@ struct SettingsBarFilterMenu: View {
         Menu {
             VStack {
                 Button(action: {
-                    UserPreferences.shared.showUpcomingReminders.toggle()
+                    userPreferences.showUpcomingReminders.toggle()
                 }) {
-                    let isSelected = UserPreferences.shared.showUpcomingReminders
+                    let isSelected = userPreferences.showUpcomingReminders
                     SelectableView(title: rmbLocalized(.upcomingRemindersTitle), isSelected: isSelected)
                 }
                 
