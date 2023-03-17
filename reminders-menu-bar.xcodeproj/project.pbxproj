@@ -58,6 +58,7 @@
 		71E7126D2908EBD100DA97BD /* RemoveFocusFromFirstResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E7126C2908EBD100DA97BD /* RemoveFocusFromFirstResponder.swift */; };
 		71ED5D6B290B6B3C00626185 /* RmbReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ED5D6A290B6B3C00626185 /* RmbReminder.swift */; };
 		71F301FA259FB5CF00CDD81E /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F301F9259FB5CF00CDD81E /* UserPreferences.swift */; };
+		71F36A9A29C2BA0C0099D337 /* RmbColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F36A9929C2BA0C0099D337 /* RmbColorScheme.swift */; };
 		71F84A4629541D6700C5A24D /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F84A4529541D6700C5A24D /* URL+Extensions.swift */; };
 		71F9726A25981EDF00D0A118 /* NSTableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F9726925981EDF00D0A118 /* NSTableView+Extensions.swift */; };
 		96A54A6B29A3ADB70060403F /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A54A6A29A3ADB70060403F /* DateParser.swift */; };
@@ -145,6 +146,7 @@
 		71E7126C2908EBD100DA97BD /* RemoveFocusFromFirstResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveFocusFromFirstResponder.swift; sourceTree = "<group>"; };
 		71ED5D6A290B6B3C00626185 /* RmbReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbReminder.swift; sourceTree = "<group>"; };
 		71F301F9259FB5CF00CDD81E /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
+		71F36A9929C2BA0C0099D337 /* RmbColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbColorScheme.swift; sourceTree = "<group>"; };
 		71F84A4529541D6700C5A24D /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		71F9726925981EDF00D0A118 /* NSTableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableView+Extensions.swift"; sourceTree = "<group>"; };
 		8206522829B779B500CE522F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 				7151CC9A265E0388002D7F1D /* Localizable.strings */,
 				71B1836726AE145700A5C397 /* InfoPlist.strings */,
 				714C497F267FA56F00721516 /* remindersLocalized.swift */,
+				71F36A9929C2BA0C0099D337 /* RmbColorScheme.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 				71F9726A25981EDF00D0A118 /* NSTableView+Extensions.swift in Sources */,
 				71564448260324FA005E81FD /* PrioritizedReminders.swift in Sources */,
 				7156443A26030591005E81FD /* ArrayEKReminder+Extension.swift in Sources */,
+				71F36A9A29C2BA0C0099D337 /* RmbColorScheme.swift in Sources */,
 				718C813628D01CCE00BAC2D0 /* KeyboardShortcutView.swift in Sources */,
 				71A3834325BCA69C00975B4C /* Date+Extensions.swift in Sources */,
 				71E5C75529B7D45600568292 /* UserDefaults+Extensions.swift in Sources */,

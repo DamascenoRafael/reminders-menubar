@@ -35,6 +35,9 @@
 "appAppearanceMenu" = "Aspetto";
 "appAppearanceMoreOpaqueOptionButton" = "Più opaco";
 "appAppearanceMoreTransparentOptionButton" = "Più trasparente";
+"appAppearanceColorSchemeSystemOptionButton" = "System appearance"; // TODO: Translate
+"appAppearanceColorSchemeLightOptionButton" = "Light mode"; // TODO: Translate
+"appAppearanceColorSchemeDarkOptionButton" = "Dark mode"; // TODO: Translate
 "menuBarSettingsMenu" = "Barra dei menu";
 "showMenuBarTodayCountOptionButton" = "Mostra il conteggio di oggi";
 "keyboardShortcutOptionButton" = "Scorciatoia da tastiera";

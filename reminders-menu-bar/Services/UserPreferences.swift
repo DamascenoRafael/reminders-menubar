@@ -8,6 +8,7 @@ private struct PreferencesKeys {
     static let autoSuggestTodayForNewReminders = "autoSuggestTodayForNewReminders"
     static let removeParsedDateFromTitle = "removeParsedDateFromTitle"
     static let showUncompletedOnly = "showUncompletedOnly"
+    static let rmbColorScheme = "rmbColorScheme"
     static let backgroundIsTransparent = "backgroundIsTransparent"
     static let showUpcomingReminders = "showUpcomingReminders"
     static let upcomingRemindersInterval = "upcomingRemindersInterval"
@@ -129,6 +130,17 @@ class UserPreferences: ObservableObject {
         
         set {
             SMLoginItemSetEnabled(AppConstants.launcherBundleId as CFString, newValue)
+        }
+    }
+    
+    @Published var rmbColorScheme: RmbColorScheme = {
+        guard let rmbColorSchemeString = defaults.string(forKey: PreferencesKeys.rmbColorScheme) else {
+            return .system
+        }
+        return RmbColorScheme(rawValue: rmbColorSchemeString) ?? .system
+    }() {
+        didSet {
+            UserPreferences.defaults.set(rmbColorScheme.rawValue, forKey: PreferencesKeys.rmbColorScheme)
         }
     }
     

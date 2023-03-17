@@ -96,6 +96,32 @@ struct SettingsBarGearMenu: View {
     func appAppearanceMenu() -> some View {
         Menu {
             Button(action: {
+                changeColorScheme(to: .system)
+            }) {
+                let isSelected = userPreferences.rmbColorScheme == .system
+                SelectableView(title: rmbLocalized(.appAppearanceColorSchemeSystemOptionButton),
+                               isSelected: isSelected)
+            }
+            
+            Button(action: {
+                changeColorScheme(to: .light)
+            }) {
+                let isSelected = userPreferences.rmbColorScheme == .light
+                SelectableView(title: rmbLocalized(.appAppearanceColorSchemeLightOptionButton),
+                               isSelected: isSelected)
+            }
+            
+            Button(action: {
+                changeColorScheme(to: .dark)
+            }) {
+                let isSelected = userPreferences.rmbColorScheme == .dark
+                SelectableView(title: rmbLocalized(.appAppearanceColorSchemeDarkOptionButton),
+                               isSelected: isSelected)
+            }
+            
+            Divider()
+            
+            Button(action: {
                 userPreferences.backgroundIsTransparent = false
             }) {
                 let isSelected = !userPreferences.backgroundIsTransparent
@@ -164,6 +190,11 @@ struct SettingsBarGearMenu: View {
         } label: {
             Text(rmbLocalized(.preferredLanguageMenu))
         }
+    }
+    
+    func changeColorScheme(to rmbColorScheme: RmbColorScheme) {
+        userPreferences.rmbColorScheme = rmbColorScheme
+        AppDelegate.shared.configureAppColorScheme()
     }
 }
 

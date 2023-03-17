@@ -35,6 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         changeBehaviorToDismissIfNeeded()
         configurePopover()
+        configureAppColorScheme()
         configureMenuBarButton()
         configureKeyboardShortcut()
     }
@@ -46,6 +47,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if RemindersService.shared.authorizationStatus() == .authorized {
             popover.contentViewController = contentViewController
         }
+    }
+    
+    func configureAppColorScheme() {
+        let colorScheme = UserPreferences.shared.rmbColorScheme
+        NSApplication.shared.appearance = colorScheme.nsAppearance
     }
     
     func loadMenuBarIcon() {
