@@ -3,6 +3,7 @@ import EventKit
 
 struct CalendarTitle: View {
     @ObservedObject var userPreferences = UserPreferences.shared
+    @Environment(\.colorSchemeContrast) private var colorSchemeContrast
     
     var calendar: EKCalendar
     @State var calendarFolderIsHovered = false
@@ -27,7 +28,7 @@ struct CalendarTitle: View {
                     .padding(5)
             }
             .buttonStyle(BorderlessButtonStyle())
-            .background(calendarFolderIsHovered ? Color("buttonHover") : nil)
+            .background(calendarFolderIsHovered ? Color.rmbColor(for: .buttonHover, and: colorSchemeContrast) : nil)
             .cornerRadius(6)
             .onHover { isHovered in
                 calendarFolderIsHovered = isHovered

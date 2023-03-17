@@ -4,6 +4,7 @@ import EventKit
 struct ContentView: View {
     @EnvironmentObject var remindersData: RemindersData
     @ObservedObject var userPreferences = UserPreferences.shared
+    @Environment(\.colorSchemeContrast) private var colorSchemeContrast
     
     var body: some View {
         VStack(spacing: 0) {
@@ -44,7 +45,7 @@ struct ContentView: View {
         .onAppear {
             remindersData.update()
         }
-        .background(Color("backgroundTheme").opacity(userPreferences.backgroundIsTransparent ? 0.3 : 1.0).padding(-80))
+        .background(Color.rmbColor(for: .backgroundTheme, and: colorSchemeContrast).padding(-80))
     }
     
     private func filteredReminders(_ reminders: [EKReminder]) -> [EKReminder] {

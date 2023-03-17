@@ -3,6 +3,7 @@ import SwiftUI
 struct SettingsBarGearMenu: View {
     @EnvironmentObject var remindersData: RemindersData
     @ObservedObject var userPreferences = UserPreferences.shared
+    @Environment(\.colorSchemeContrast) private var colorSchemeContrast
     
     @State var gearIsHovered = false
     
@@ -72,7 +73,7 @@ struct SettingsBarGearMenu: View {
         .menuStyle(BorderlessButtonMenuStyle())
         .frame(width: 32, height: 16)
         .padding(3)
-        .background(gearIsHovered ? Color("buttonHover") : nil)
+        .background(gearIsHovered ? Color.rmbColor(for: .buttonHover, and: colorSchemeContrast) : nil)
         .cornerRadius(4)
         .onHover { isHovered in
             gearIsHovered = isHovered
@@ -121,21 +122,26 @@ struct SettingsBarGearMenu: View {
             
             Divider()
             
+            let isIncreasedContrastEnabled = colorSchemeContrast == .increased
+            let isTransparencyEnabled = userPreferences.backgroundIsTransparent && !isIncreasedContrastEnabled
+            
             Button(action: {
                 userPreferences.backgroundIsTransparent = false
             }) {
-                let isSelected = !userPreferences.backgroundIsTransparent
+                let isSelected = !isTransparencyEnabled
                 SelectableView(title: rmbLocalized(.appAppearanceMoreOpaqueOptionButton),
                                isSelected: isSelected)
             }
+            .disabled(isIncreasedContrastEnabled)
             
             Button(action: {
                 userPreferences.backgroundIsTransparent = true
             }) {
-                let isSelected = userPreferences.backgroundIsTransparent
+                let isSelected = isTransparencyEnabled
                 SelectableView(title: rmbLocalized(.appAppearanceMoreTransparentOptionButton),
                                isSelected: isSelected)
             }
+            .disabled(isIncreasedContrastEnabled)
         } label: {
             Text(rmbLocalized(.appAppearanceMenu))
         }

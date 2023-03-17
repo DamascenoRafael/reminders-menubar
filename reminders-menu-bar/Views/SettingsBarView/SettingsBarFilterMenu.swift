@@ -3,6 +3,7 @@ import SwiftUI
 struct SettingsBarFilterMenu: View {
     @EnvironmentObject var remindersData: RemindersData
     @ObservedObject var userPreferences = UserPreferences.shared
+    @Environment(\.colorSchemeContrast) private var colorSchemeContrast
     
     @State var filterIsHovered = false
     
@@ -39,7 +40,7 @@ struct SettingsBarFilterMenu: View {
         .menuStyle(BorderlessButtonMenuStyle())
         .frame(width: 32, height: 16)
         .padding(3)
-        .background(filterIsHovered ? Color("buttonHover") : nil)
+        .background(filterIsHovered ? Color.rmbColor(for: .buttonHover, and: colorSchemeContrast) : nil)
         .cornerRadius(4)
         .onHover { isHovered in
             filterIsHovered = isHovered

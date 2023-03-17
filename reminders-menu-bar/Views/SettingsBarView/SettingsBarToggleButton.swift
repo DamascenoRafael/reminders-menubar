@@ -2,6 +2,7 @@ import SwiftUI
 
 struct SettingsBarToggleButton: View {
     @ObservedObject var userPreferences = UserPreferences.shared
+    @Environment(\.colorSchemeContrast) private var colorSchemeContrast
     
     @State var toggleIsHovered = false
     
@@ -14,7 +15,7 @@ struct SettingsBarToggleButton: View {
                 .padding(.horizontal, 4)
         }
         .buttonStyle(BorderlessButtonStyle())
-        .background(toggleIsHovered ? Color("buttonHover") : nil)
+        .background(toggleIsHovered ? Color.rmbColor(for: .buttonHover, and: colorSchemeContrast) : nil)
         .cornerRadius(4)
         .onHover { isHovered in
             toggleIsHovered = isHovered

@@ -4,6 +4,7 @@ import EventKit
 struct FormNewReminderView: View {
     @EnvironmentObject var remindersData: RemindersData
     @ObservedObject var userPreferences = UserPreferences.shared
+    @Environment(\.colorSchemeContrast) private var colorSchemeContrast
     
     @State var rmbReminder = RmbReminder()
     @State var isShowingDueDateOptions = false
@@ -16,11 +17,7 @@ struct FormNewReminderView: View {
                 .padding(.vertical, 8)
                 .padding(.horizontal, 8)
                 .padding(.leading, 22)
-                .background(
-                    userPreferences.backgroundIsTransparent ?
-                        Color("textFieldBackgroundTransparent") :
-                        Color("textFieldBackground")
-                )
+                .background(Color.rmbColor(for: .textFieldBackground, and: colorSchemeContrast))
                 .cornerRadius(8)
                 .textFieldStyle(PlainTextFieldStyle())
                 .overlay(
