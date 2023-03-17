@@ -99,7 +99,7 @@ struct SettingsBarGearMenu: View {
                 changeColorScheme(to: .system)
             }) {
                 let isSelected = userPreferences.rmbColorScheme == .system
-                SelectableView(title: rmbLocalized(.appAppearanceColorSchemeSystemOptionButton),
+                SelectableView(title: rmbLocalized(.appAppearanceColorSystemModeOptionButton),
                                isSelected: isSelected)
             }
             
@@ -107,7 +107,7 @@ struct SettingsBarGearMenu: View {
                 changeColorScheme(to: .light)
             }) {
                 let isSelected = userPreferences.rmbColorScheme == .light
-                SelectableView(title: rmbLocalized(.appAppearanceColorSchemeLightOptionButton),
+                SelectableView(title: rmbLocalized(.appAppearanceColorLightModeOptionButton),
                                isSelected: isSelected)
             }
             
@@ -115,7 +115,7 @@ struct SettingsBarGearMenu: View {
                 changeColorScheme(to: .dark)
             }) {
                 let isSelected = userPreferences.rmbColorScheme == .dark
-                SelectableView(title: rmbLocalized(.appAppearanceColorSchemeDarkOptionButton),
+                SelectableView(title: rmbLocalized(.appAppearanceColorDarkModeOptionButton),
                                isSelected: isSelected)
             }
             

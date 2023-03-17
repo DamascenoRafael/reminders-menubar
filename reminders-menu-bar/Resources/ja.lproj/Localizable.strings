@@ -35,9 +35,9 @@
 "appAppearanceMenu" = "表示";
 "appAppearanceMoreOpaqueOptionButton" = "不透明";
 "appAppearanceMoreTransparentOptionButton" = "半透明";
-"appAppearanceColorSchemeSystemOptionButton" = "System appearance"; // TODO: Translate
-"appAppearanceColorSchemeLightOptionButton" = "Light mode"; // TODO: Translate
-"appAppearanceColorSchemeDarkOptionButton" = "Dark mode"; // TODO: Translate
+"appAppearanceColorSystemModeOptionButton" = "System appearance"; // TODO: Translate
+"appAppearanceColorLightModeOptionButton" = "Light mode"; // TODO: Translate
+"appAppearanceColorDarkModeOptionButton" = "Dark mode"; // TODO: Translate
 "menuBarSettingsMenu" = "メニューバー";
 "showMenuBarTodayCountOptionButton" = "今日の件数を表示";
 "keyboardShortcutOptionButton" = "キーボードショートカット";

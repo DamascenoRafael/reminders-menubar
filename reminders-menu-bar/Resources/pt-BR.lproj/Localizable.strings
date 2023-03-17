@@ -35,9 +35,9 @@
 "appAppearanceMenu" = "Aparência";
 "appAppearanceMoreOpaqueOptionButton" = "Mais opaco";
 "appAppearanceMoreTransparentOptionButton" = "Mais transparente";
-"appAppearanceColorSchemeSystemOptionButton" = "Aparência do sistema";
-"appAppearanceColorSchemeLightOptionButton" = "Modo claro";
-"appAppearanceColorSchemeDarkOptionButton" = "Modo escuro";
+"appAppearanceColorSystemModeOptionButton" = "Aparência do sistema";
+"appAppearanceColorLightModeOptionButton" = "Modo claro";
+"appAppearanceColorDarkModeOptionButton" = "Modo escuro";
 "menuBarSettingsMenu" = "Barra de menu";
 "showMenuBarTodayCountOptionButton" = "Mostrar contagem para hoje";
 "keyboardShortcutOptionButton" = "Atalho de teclado";

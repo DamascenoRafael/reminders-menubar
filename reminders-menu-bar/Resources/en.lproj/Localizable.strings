@@ -35,9 +35,9 @@
 "appAppearanceMenu" = "Appearance";
 "appAppearanceMoreOpaqueOptionButton" = "More opaque";
 "appAppearanceMoreTransparentOptionButton" = "More transparent";
-"appAppearanceColorSchemeSystemOptionButton" = "System appearance";
-"appAppearanceColorSchemeLightOptionButton" = "Light mode";
-"appAppearanceColorSchemeDarkOptionButton" = "Dark mode";
+"appAppearanceColorSystemModeOptionButton" = "System appearance";
+"appAppearanceColorLightModeOptionButton" = "Light mode";
+"appAppearanceColorDarkModeOptionButton" = "Dark mode";
 "menuBarSettingsMenu" = "Menu bar";
 "showMenuBarTodayCountOptionButton" = "Show today count";
 "keyboardShortcutOptionButton" = "Keyboard shortcut";

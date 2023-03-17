@@ -35,9 +35,9 @@
 "appAppearanceMenu" = "外观";
 "appAppearanceMoreOpaqueOptionButton" = "不透明";
 "appAppearanceMoreTransparentOptionButton" = "透明";
-"appAppearanceColorSchemeSystemOptionButton" = "System appearance"; // TODO: Translate
-"appAppearanceColorSchemeLightOptionButton" = "Light mode"; // TODO: Translate
-"appAppearanceColorSchemeDarkOptionButton" = "Dark mode"; // TODO: Translate
+"appAppearanceColorSystemModeOptionButton" = "System appearance"; // TODO: Translate
+"appAppearanceColorLightModeOptionButton" = "Light mode"; // TODO: Translate
+"appAppearanceColorDarkModeOptionButton" = "Dark mode"; // TODO: Translate
 "menuBarSettingsMenu" = "任务栏";
 "showMenuBarTodayCountOptionButton" = "显示今日计数";
 "keyboardShortcutOptionButton" = "键盘快捷键";

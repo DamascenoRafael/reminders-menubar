@@ -35,9 +35,9 @@
 "appAppearanceMenu" = "Wygląd";
 "appAppearanceMoreOpaqueOptionButton" = "Bardziej nieprzejrzysty";
 "appAppearanceMoreTransparentOptionButton" = "Bardziej przejrzysty";
-"appAppearanceColorSchemeSystemOptionButton" = "System appearance"; // TODO: Translate
-"appAppearanceColorSchemeLightOptionButton" = "Light mode"; // TODO: Translate
-"appAppearanceColorSchemeDarkOptionButton" = "Dark mode"; // TODO: Translate
+"appAppearanceColorSystemModeOptionButton" = "System appearance"; // TODO: Translate
+"appAppearanceColorLightModeOptionButton" = "Light mode"; // TODO: Translate
+"appAppearanceColorDarkModeOptionButton" = "Dark mode"; // TODO: Translate
 "menuBarSettingsMenu" = "Pasek Menu";
 "showMenuBarTodayCountOptionButton" = "Pokaż dzisiejszy licznik";
 "keyboardShortcutOptionButton" = "Skrót klawiaturowy";
