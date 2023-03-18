@@ -20,6 +20,7 @@ struct FormNewReminderView: View {
                 .background(Color.rmbColor(for: .textFieldBackground, and: colorSchemeContrast))
                 .cornerRadius(8)
                 .textFieldStyle(PlainTextFieldStyle())
+                .modifier(ContrastBorderOverlay())
                 .overlay(
                     Image(systemName: "plus.circle.fill")
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
@@ -62,6 +63,7 @@ struct FormNewReminderView: View {
                 .padding(.trailing, 2)
                 .background(Color(userPreferences.calendarForSaving?.color ?? .white))
                 .cornerRadius(8)
+                .modifier(ContrastBorderOverlay())
                 .help(rmbLocalized(.newReminderCalendarSelectionToSaveHelp))
             }
         }
@@ -237,6 +239,22 @@ func reminderRemindDateTimeOptionView(date: Binding<Date>,
                 .font(.system(size: 12))
         }
         .buttonStyle(.borderless)
+    }
+}
+
+struct ContrastBorderOverlay: ViewModifier {
+    @Environment(\.colorSchemeContrast) private var colorSchemeContrast
+    private var isEnabled: Bool { colorSchemeContrast == .increased }
+    
+    func body(content: Content) -> some View {
+        return content
+            .overlay(
+                isEnabled
+                ? RoundedRectangle(cornerRadius: 8)
+                    .strokeBorder(style: StrokeStyle(lineWidth: 1))
+                    .foregroundColor(Color.rmbColor(for: .borderContrast, and: colorSchemeContrast))
+                : nil
+            )
     }
 }
 

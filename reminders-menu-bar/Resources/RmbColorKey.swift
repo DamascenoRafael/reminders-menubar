@@ -4,6 +4,7 @@ enum RmbColorKey: String {
     case buttonHover
     case backgroundTheme
     case textFieldBackground // textFieldBackgroundTransparent
+    case borderContrast
     
     private var transparencyPostfix: String { "Transparent" }
     
