@@ -38,8 +38,9 @@
 * All interactions through the macOS menu bar
 * Keep everything in sync with Apple Reminders
 * Create new reminders in your chosen list
+* Set a reminder's due date using natural language
 * Mark reminders as completed / uncompleted
-* Rename reminders, Remove reminders or Move reminders between lists
+* Edit reminders, Remove reminders or Move reminders between lists
 * View a list of upcoming reminders
 * Filter reminders through lists or through completed status
 
