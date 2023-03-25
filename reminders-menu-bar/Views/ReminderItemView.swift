@@ -107,20 +107,8 @@ struct ReminderItemView: View {
                     .padding(.trailing, 12)
                 }
                 
-                if let url = reminder.attachedUrl {
-                    HStack {
-                        Link(destination: url) {
-                            Image(systemName: "safari")
-                            Text(url.displayedUrl)
-                        }
-                        .foregroundColor(.primary)
-                        .frame(height: 25)
-                        .padding(.horizontal, 8)
-                        .background(Color.secondary.opacity(0.2))
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
-                        
-                        Spacer()
-                    }
+                if reminder.attachedUrl != nil || reminder.mailUrl != nil {
+                    ExternalLinksView(attachedUrl: reminder.attachedUrl, mailUrl: reminder.mailUrl)
                 }
                 
                 Divider()
@@ -181,6 +169,43 @@ struct MoveToOptionMenu: View {
                 }
             }
         }
+    }
+}
+
+struct ExternalLinksView: View {
+    var attachedUrl: URL?
+    var mailUrl: URL?
+    
+    var body: some View {
+        HStack {
+            if let attachedUrl {
+                Link(destination: attachedUrl) {
+                    Image(systemName: "safari")
+                    Text(attachedUrl.displayedUrl)
+                }
+                .modifier(ReminderExternalLinkStyle())
+            }
+            
+            if let mailUrl {
+                Link(destination: mailUrl) {
+                    Image(systemName: "envelope")
+                }
+                .modifier(ReminderExternalLinkStyle())
+            }
+            
+            Spacer()
+        }
+    }
+}
+
+struct ReminderExternalLinkStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        return content
+            .foregroundColor(.primary)
+            .frame(height: 25)
+            .padding(.horizontal, 8)
+            .background(Color.secondary.opacity(0.2))
+            .clipShape(RoundedRectangle(cornerRadius: 8))
     }
 }
 

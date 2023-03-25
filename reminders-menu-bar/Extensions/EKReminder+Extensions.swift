@@ -57,16 +57,24 @@ extension EKReminder {
         return date.relativeDateDescription(withTime: hasTime)
     }
     
+    private var reminderBackingObject: AnyObject? {
+        let backingObjectSelector = NSSelectorFromString("backingObject")
+        let reminderSelector = NSSelectorFromString("_reminder")
+        
+        guard let unmanagedBackingObject = self.perform(backingObjectSelector),
+              let unmanagedReminder = unmanagedBackingObject.takeUnretainedValue().perform(reminderSelector) else {
+            return nil
+        }
+        
+        return unmanagedReminder.takeUnretainedValue()
+    }
+    
     // NOTE: This is a workaround to access the URL saved in a reminder.
     // This property is not accessible through the conventional API.
     var attachedUrl: URL? {
-        let backingObjectSelector = NSSelectorFromString("backingObject")
-        let reminderSelector = NSSelectorFromString("_reminder")
         let attachmentsSelector = NSSelectorFromString("attachments")
         
-        guard let unmanagedBackingObject = self.perform(backingObjectSelector),
-              let unmanagedReminder = unmanagedBackingObject.takeUnretainedValue().perform(reminderSelector),
-              let unmanagedAttachments = unmanagedReminder.takeUnretainedValue().perform(attachmentsSelector),
+        guard let unmanagedAttachments = reminderBackingObject?.perform(attachmentsSelector),
               let attachments = unmanagedAttachments.takeUnretainedValue() as? [AnyObject] else {
             return nil
         }
@@ -87,6 +95,28 @@ extension EKReminder {
         }
         
         return nil
+    }
+    
+    // NOTE: This is a workaround to access the mail linked to a reminder.
+    // This property is not accessible through the conventional API.
+    var mailUrl: URL? {
+        let userActivitySelector = NSSelectorFromString("userActivity")
+        let storageSelector = NSSelectorFromString("storage")
+        
+        guard let unmanagedUserActivity = reminderBackingObject?.perform(userActivitySelector),
+              let unmanagedUserActivityStorage = unmanagedUserActivity.takeUnretainedValue().perform(storageSelector),
+              let userActivityStorageData = unmanagedUserActivityStorage.takeUnretainedValue() as? Data else {
+            return nil
+        }
+        
+        // NOTE: UserActivity type is UniversalLink, so in theory it could be targeting apps other than Mail.
+        // If it starts with "message:" then it is related to Mail.
+        let userActivityStorageString = String(decoding: userActivityStorageData, as: UTF8.self)
+        guard userActivityStorageString.starts(with: "message:") else {
+            return nil
+        }
+        
+        return URL(string: userActivityStorageString)
     }
     
     func update(with rmbReminder: RmbReminder) {
