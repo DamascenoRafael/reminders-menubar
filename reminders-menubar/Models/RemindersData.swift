@@ -50,6 +50,8 @@ class RemindersData: ObservableObject {
     @Published var filteredReminderLists: [ReminderList] = []
     
     @objc func update() {
+        userPreferences.forceUpdate()
+        
         // TODO: Prefer receive(on:options:) over explicit use of dispatch queues when performing work in subscribers.
         // https://developer.apple.com/documentation/combine/fail/receive(on:options:)
         DispatchQueue.main.async {

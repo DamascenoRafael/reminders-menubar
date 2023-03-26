@@ -17,13 +17,17 @@ private struct PreferencesKeys {
 }
 
 class UserPreferences: ObservableObject {
-    static let shared = UserPreferences()
+    static private(set) var shared = UserPreferences()
     
     private init() {
         // This prevents others from using the default '()' initializer for this class.
     }
     
     private static let defaults = UserDefaults.standard
+    
+    func forceUpdate() {
+        UserPreferences.shared = UserPreferences()
+    }
     
     @Published var remindersMenuBarOpeningEvent = false
     
