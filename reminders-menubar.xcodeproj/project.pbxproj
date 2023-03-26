@@ -107,7 +107,7 @@
 		712C32B724BF939200AC75E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		712C32BA24BF939200AC75E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		712C32BF24BF939200AC75E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		712C32C024BF939200AC75E2 /* reminders_menu_bar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = reminders_menu_bar.entitlements; sourceTree = "<group>"; };
+		712C32C024BF939200AC75E2 /* reminders_menubar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = reminders_menubar.entitlements; sourceTree = "<group>"; };
 		71359E9724C6C0B5001D4C40 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		713F234424C130D400FF0BEC /* ReminderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderList.swift; sourceTree = "<group>"; };
 		7141456225CF9693006695B2 /* Release.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Release.swift; sourceTree = "<group>"; };
@@ -233,7 +233,7 @@
 		712C32A724BF939100AC75E2 = {
 			isa = PBXGroup;
 			children = (
-				712C32B224BF939100AC75E2 /* reminders-menu-bar */,
+				712C32B224BF939100AC75E2 /* reminders-menubar */,
 				71059DA925CA5244001F3063 /* RemindersLauncher */,
 				712C32B124BF939100AC75E2 /* Products */,
 			);
@@ -248,7 +248,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		712C32B224BF939100AC75E2 /* reminders-menu-bar */ = {
+		712C32B224BF939100AC75E2 /* reminders-menubar */ = {
 			isa = PBXGroup;
 			children = (
 				71F9726825981EC800D0A118 /* Extensions */,
@@ -262,10 +262,10 @@
 				71A0B2DB25CE20AC004E06AE /* AppUpdateCheckHelper.swift */,
 				714E6F6025CCF66000BA0099 /* Constants.swift */,
 				712C32BF24BF939200AC75E2 /* Info.plist */,
-				712C32C024BF939200AC75E2 /* reminders_menu_bar.entitlements */,
+				712C32C024BF939200AC75E2 /* reminders_menubar.entitlements */,
 				712C32B924BF939200AC75E2 /* Preview Content */,
 			);
-			path = "reminders-menu-bar";
+			path = "reminders-menubar";
 			sourceTree = "<group>";
 		};
 		712C32B924BF939200AC75E2 /* Preview Content */ = {
@@ -398,7 +398,7 @@
 			packageProductDependencies = (
 				716BCF0D28C97C7100537081 /* KeyboardShortcuts */,
 			);
-			productName = "reminders-menu-bar";
+			productName = "reminders-menubar";
 			productReference = 712C32B024BF939100AC75E2 /* Reminders Menu Bar.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -420,7 +420,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 712C32AB24BF939100AC75E2 /* Build configuration list for PBXProject "reminders-menu-bar" */;
+			buildConfigurationList = 712C32AB24BF939100AC75E2 /* Build configuration list for PBXProject "reminders-menubar" */;
 			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -776,16 +776,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "reminders-menu-bar/reminders_menu_bar.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "reminders-menubar/reminders_menubar.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"reminders-menu-bar/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"reminders-menubar/Preview Content\"";
 				DEVELOPMENT_TEAM = 3398VKLH28;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "reminders-menu-bar/Info.plist";
+				INFOPLIST_FILE = "reminders-menubar/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -793,7 +793,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.15.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.damascenorafael.reminders-menu-bar";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.damascenorafael.reminders-menubar";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -803,16 +803,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "reminders-menu-bar/reminders_menu_bar.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "reminders-menubar/reminders_menubar.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"reminders-menu-bar/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"reminders-menubar/Preview Content\"";
 				DEVELOPMENT_TEAM = 3398VKLH28;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "reminders-menu-bar/Info.plist";
+				INFOPLIST_FILE = "reminders-menubar/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -820,7 +820,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.15.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.damascenorafael.reminders-menu-bar";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.damascenorafael.reminders-menubar";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -838,7 +838,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		712C32AB24BF939100AC75E2 /* Build configuration list for PBXProject "reminders-menu-bar" */ = {
+		712C32AB24BF939100AC75E2 /* Build configuration list for PBXProject "reminders-menubar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				712C32C124BF939200AC75E2 /* Debug */,

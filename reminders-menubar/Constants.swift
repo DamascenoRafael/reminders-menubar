@@ -10,7 +10,7 @@ struct AppConstants {
     }()
     
     static let appName = "Reminders Menu Bar"
-    static let mainBundleId = "br.com.damascenorafael.reminders-menu-bar"
+    static let mainBundleId = "br.com.damascenorafael.reminders-menubar"
     static let launcherBundleId = "br.com.damascenorafael.RemindersLauncher"
 }
 
