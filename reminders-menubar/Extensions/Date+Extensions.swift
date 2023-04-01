@@ -19,6 +19,10 @@ extension Date {
         return inputDateComponents.year! == todayDateComponents.year!
     }
     
+    var elapsedTimeInterval: TimeInterval {
+        return Date().timeIntervalSince(self)
+    }
+    
     static func nextHour(of date: Date = Date()) -> Date {
         let now = Date()
         let dateComponentsWithoutTime = Calendar.current.dateComponents([.year, .month, .day], from: date)

@@ -1,5 +1,6 @@
 import Cocoa
 import SwiftUI
+import Combine
 
 @main
 struct RemindersMenuBar: App {
@@ -19,6 +20,9 @@ struct RemindersMenuBar: App {
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     static private(set) var shared: AppDelegate!
+    
+    private var didCloseCancellationToken: AnyCancellable?
+    private var didCloseEventDate = Date.distantPast
 
     let popover = NSPopover()
     lazy var statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -38,6 +42,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         configureAppColorScheme()
         configureMenuBarButton()
         configureKeyboardShortcut()
+        configureDidCloseNotification()
     }
     
     private func configurePopover() {
@@ -69,6 +74,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         KeyboardShortcutService.shared.action(for: .openRemindersMenuBar) { [weak self] in
             self?.togglePopover()
         }
+    }
+    
+    private func configureDidCloseNotification() {
+        // NOTE: There is an issue where if the menu bar button is clicked on its top part to close the popover
+        // there will be a didClose event and then togglePopover will be called (reopening the popover).
+        // didCloseEventDate is saved to figure out if the event is recent and the popover should not be reopened.
+        didCloseCancellationToken = NotificationCenter.default
+            .publisher(for: NSPopover.didCloseNotification, object: popover)
+            .sink { [weak self] _ in
+                self?.didCloseEventDate = Date()
+            }
     }
     
     func updateMenuBarTodayCount(to todayCount: Int) {
@@ -136,7 +152,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             popover.contentViewController = contentViewController
         }
         
-        if popover.isShown {
+        if popover.isShown || didCloseEventDate.elapsedTimeInterval < 0.01 {
+            didCloseEventDate = .distantPast
             popover.performClose(button)
         } else {
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
