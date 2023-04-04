@@ -101,7 +101,7 @@
 		71163AFB298A0169008FEDBD /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		71163AFC298A0169008FEDBD /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7119C2EF25D85B75002C8013 /* SelectableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableView.swift; sourceTree = "<group>"; };
-		712C32B024BF939100AC75E2 /* Reminders Menu Bar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reminders Menu Bar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		712C32B024BF939100AC75E2 /* Reminders MenuBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reminders MenuBar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		712C32B324BF939100AC75E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		712C32B524BF939100AC75E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		712C32B724BF939200AC75E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -242,7 +242,7 @@
 		712C32B124BF939100AC75E2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				712C32B024BF939100AC75E2 /* Reminders Menu Bar.app */,
+				712C32B024BF939100AC75E2 /* Reminders MenuBar.app */,
 				71059DA825CA5244001F3063 /* RemindersLauncher.app */,
 			);
 			name = Products;
@@ -380,9 +380,9 @@
 			productReference = 71059DA825CA5244001F3063 /* RemindersLauncher.app */;
 			productType = "com.apple.product-type.application";
 		};
-		712C32AF24BF939100AC75E2 /* Reminders Menu Bar */ = {
+		712C32AF24BF939100AC75E2 /* Reminders MenuBar */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 712C32C324BF939200AC75E2 /* Build configuration list for PBXNativeTarget "Reminders Menu Bar" */;
+			buildConfigurationList = 712C32C324BF939200AC75E2 /* Build configuration list for PBXNativeTarget "Reminders MenuBar" */;
 			buildPhases = (
 				7133C87225918BD700F7E0AA /* SwiftLint */,
 				712C32AC24BF939100AC75E2 /* Sources */,
@@ -394,12 +394,12 @@
 			);
 			dependencies = (
 			);
-			name = "Reminders Menu Bar";
+			name = "Reminders MenuBar";
 			packageProductDependencies = (
 				716BCF0D28C97C7100537081 /* KeyboardShortcuts */,
 			);
 			productName = "reminders-menubar";
-			productReference = 712C32B024BF939100AC75E2 /* Reminders Menu Bar.app */;
+			productReference = 712C32B024BF939100AC75E2 /* Reminders MenuBar.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -445,7 +445,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				712C32AF24BF939100AC75E2 /* Reminders Menu Bar */,
+				712C32AF24BF939100AC75E2 /* Reminders MenuBar */,
 				71059DA725CA5244001F3063 /* RemindersLauncher */,
 			);
 		};
@@ -847,7 +847,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		712C32C324BF939200AC75E2 /* Build configuration list for PBXNativeTarget "Reminders Menu Bar" */ = {
+		712C32C324BF939200AC75E2 /* Build configuration list for PBXNativeTarget "Reminders MenuBar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				712C32C424BF939200AC75E2 /* Debug */,

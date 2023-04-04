@@ -1,10 +1,10 @@
 <div align="center">
   <img
     src="images/reminders-icon.png"
-    alt="Reminders Menu Bar"
+    alt="Reminders MenuBar"
   >
   <h1>
-    Reminders Menu Bar
+    Reminders MenuBar
   </h1>
   <p>
     Simple macOS menu bar app to view and interact with reminders.
@@ -23,13 +23,13 @@
     max-width="400"
     width="45%"
     src="images/reminder-menubar-light.png"
-    alt="Reminders Menu Bar in light mode"
+    alt="Reminders MenuBar in light mode"
   >
   <img
     max-width="400"
     width="45%"
     src="images/reminder-menubar-dark.png"
-    alt="Reminders Menu Bar in dark mode"
+    alt="Reminders MenuBar in dark mode"
   >
 </div>
 
@@ -47,17 +47,17 @@
 <div align="center">
   <img
     src="images/reminders-menubar-demo.gif"
-    alt="Reminders Menu Bar demo"
+    alt="Reminders MenuBar demo"
   >
 </div>
 
 ## Installation
 
-*Reminders Menu Bar requires macOS Big Sur 11 or later.*
+*Reminders MenuBar requires macOS Big Sur 11 or later.*
 
 ### Homebrew
 
-Reminders Menu Bar can be installed using [Homebrew](http://brew.sh).
+Reminders MenuBar can be installed using [Homebrew](http://brew.sh).
 
 ```bash
 brew install --cask DamascenoRafael/tap/reminders-menubar
