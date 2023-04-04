@@ -408,8 +408,9 @@
 		712C32A824BF939100AC75E2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1400;
+				LastUpgradeCheck = 1430;
 				ORGANIZATIONNAME = "Rafael Damasceno";
 				TargetAttributes = {
 					71059DA725CA5244001F3063 = {
