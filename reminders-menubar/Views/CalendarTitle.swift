@@ -2,7 +2,7 @@ import SwiftUI
 import EventKit
 
 struct CalendarTitle: View {
-    @ObservedObject var userPreferences = UserPreferences.shared
+    @EnvironmentObject var remindersData: RemindersData
     @Environment(\.colorSchemeContrast) private var colorSchemeContrast
     
     var calendar: EKCalendar
@@ -18,9 +18,9 @@ struct CalendarTitle: View {
             Spacer()
             
             Button(action: {
-                userPreferences.calendarForSaving = calendar
+                remindersData.calendarForSaving = calendar
             }) {
-                let isSelected = userPreferences.calendarForSaving?.calendarIdentifier == calendar.calendarIdentifier
+                let isSelected = remindersData.calendarForSaving?.calendarIdentifier == calendar.calendarIdentifier
                 Image(systemName: isSelected ? "folder.fill" : "folder")
                     .font(Font.headline.weight(.medium))
                     .foregroundColor(calendarFolderIsHovered ? Color(calendar.color) : nil)

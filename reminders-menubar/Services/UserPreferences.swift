@@ -1,4 +1,4 @@
-import EventKit
+import SwiftUI
 import ServiceManagement
 
 private struct PreferencesKeys {
@@ -25,10 +25,6 @@ class UserPreferences: ObservableObject {
     
     private static let defaults = UserDefaults.standard
     
-    func forceUpdate() {
-        UserPreferences.shared = UserPreferences()
-    }
-    
     @Published var remindersMenuBarOpeningEvent = false
     
     @Published var reminderMenuBarIcon: RmbIcon = {
@@ -42,37 +38,21 @@ class UserPreferences: ObservableObject {
         }
     }
     
-    @Published var calendarIdentifiersFilter: [String] = {
-        guard let identifiers = defaults.stringArray(forKey: PreferencesKeys.calendarIdentifiersFilter) else {
-            // NOTE: On first use it will load all reminder lists.
-            let calendars = RemindersService.shared.getCalendars()
-            let allIdentifiers = calendars.map({ $0.calendarIdentifier })
-            return allIdentifiers
+    var preferredCalendarIdentifiersFilter: [String]? {
+        get {
+            return UserPreferences.defaults.stringArray(forKey: PreferencesKeys.calendarIdentifiersFilter)
         }
-        
-        return identifiers
-    }() {
-        didSet {
-            UserPreferences.defaults.set(calendarIdentifiersFilter, forKey: PreferencesKeys.calendarIdentifiersFilter)
+        set {
+            UserPreferences.defaults.set(newValue, forKey: PreferencesKeys.calendarIdentifiersFilter)
         }
     }
     
-    @Published var calendarForSaving: EKCalendar? = {
-        guard RemindersService.shared.authorizationStatus() == .authorized else {
-            return nil
+    var preferredCalendarIdentifierForSaving: String? {
+        get {
+            return UserPreferences.defaults.string(forKey: PreferencesKeys.calendarIdentifierForSaving)
         }
-        
-        guard let identifier = defaults.string(forKey: PreferencesKeys.calendarIdentifierForSaving),
-              let calendar = RemindersService.shared.getCalendar(withIdentifier: identifier) else {
-            let defaultCalendar = RemindersService.shared.getDefaultCalendar()
-            return defaultCalendar
-        }
-        
-        return calendar
-    }() {
-        didSet {
-            let identifier = calendarForSaving?.calendarIdentifier
-            UserPreferences.defaults.set(identifier, forKey: PreferencesKeys.calendarIdentifierForSaving)
+        set {
+            UserPreferences.defaults.set(newValue, forKey: PreferencesKeys.calendarIdentifierForSaving)
         }
     }
     
@@ -122,7 +102,7 @@ class UserPreferences: ObservableObject {
     }
     
     var atLeastOneFilterIsSelected: Bool {
-        return showUpcomingReminders || !self.calendarIdentifiersFilter.isEmpty
+        return showUpcomingReminders || preferredCalendarIdentifiersFilter == nil || !preferredCalendarIdentifiersFilter!.isEmpty
     }
     
     var launchAtLoginIsEnabled: Bool {

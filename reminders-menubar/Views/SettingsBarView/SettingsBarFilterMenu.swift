@@ -22,14 +22,14 @@ struct SettingsBarFilterMenu: View {
                 ForEach(remindersData.calendars, id: \.calendarIdentifier) { calendar in
                     let calendarIdentifier = calendar.calendarIdentifier
                     Button(action: {
-                        let index = userPreferences.calendarIdentifiersFilter.firstIndex(of: calendarIdentifier)
+                        let index = remindersData.calendarIdentifiersFilter.firstIndex(of: calendarIdentifier)
                         if let index {
-                            userPreferences.calendarIdentifiersFilter.remove(at: index)
+                            remindersData.calendarIdentifiersFilter.remove(at: index)
                         } else {
-                            userPreferences.calendarIdentifiersFilter.append(calendarIdentifier)
+                            remindersData.calendarIdentifiersFilter.append(calendarIdentifier)
                         }
                     }) {
-                        let isSelected = userPreferences.calendarIdentifiersFilter.contains(calendarIdentifier)
+                        let isSelected = remindersData.calendarIdentifiersFilter.contains(calendarIdentifier)
                         SelectableView(title: calendar.title, isSelected: isSelected, color: Color(calendar.color))
                     }
                 }

@@ -30,9 +30,9 @@ struct FormNewReminderView: View {
                 
                 Menu {
                     ForEach(remindersData.calendars, id: \.calendarIdentifier) { calendar in
-                        Button(action: { userPreferences.calendarForSaving = calendar }) {
+                        Button(action: { remindersData.calendarForSaving = calendar }) {
                             let isSelected =
-                                userPreferences.calendarForSaving?.calendarIdentifier == calendar.calendarIdentifier
+                                remindersData.calendarForSaving?.calendarIdentifier == calendar.calendarIdentifier
                             SelectableView(title: calendar.title, isSelected: isSelected, color: Color(calendar.color))
                         }
                     }
@@ -61,7 +61,7 @@ struct FormNewReminderView: View {
                 .frame(width: 14, height: 16)
                 .padding(8)
                 .padding(.trailing, 2)
-                .background(Color(userPreferences.calendarForSaving?.color ?? .white))
+                .background(Color(remindersData.calendarForSaving?.color ?? .white))
                 .cornerRadius(8)
                 .modifier(ContrastBorderOverlay())
                 .help(rmbLocalized(.newReminderCalendarSelectionToSaveHelp))
@@ -104,7 +104,7 @@ struct FormNewReminderView: View {
     
     func createNewReminder() {
         guard !rmbReminder.title.isEmpty,
-              let calendarForSaving = userPreferences.calendarForSaving else {
+              let calendarForSaving = remindersData.calendarForSaving else {
             return
         }
         

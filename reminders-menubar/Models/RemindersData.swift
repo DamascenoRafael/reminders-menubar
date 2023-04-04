@@ -3,7 +3,6 @@ import Combine
 import EventKit
 
 class RemindersData: ObservableObject {
-    
     private let userPreferences = UserPreferences.shared
     
     private var cancellationTokens: [AnyCancellable] = []
@@ -37,7 +36,7 @@ class RemindersData: ObservableObject {
         )
         
         cancellationTokens.append(
-            userPreferences.$calendarIdentifiersFilter.dropFirst().sink { [weak self] calendarIdentifiersFilter in
+            $calendarIdentifiersFilter.dropFirst().sink { [weak self] calendarIdentifiersFilter in
                 self?.filteredReminderLists = RemindersService.shared.getReminders(of: calendarIdentifiersFilter)
             }
         )
@@ -49,16 +48,47 @@ class RemindersData: ObservableObject {
     
     @Published var filteredReminderLists: [ReminderList] = []
     
-    @objc func update() {
-        userPreferences.forceUpdate()
+    @Published var calendarIdentifiersFilter: [String] = {
+        guard let identifiers = UserPreferences.shared.preferredCalendarIdentifiersFilter else {
+            // NOTE: On first use it will load all reminder lists.
+            let calendars = RemindersService.shared.getCalendars()
+            let allIdentifiers = calendars.map({ $0.calendarIdentifier })
+            return allIdentifiers
+        }
         
+        return identifiers
+    }() {
+        didSet {
+            UserPreferences.shared.preferredCalendarIdentifiersFilter = calendarIdentifiersFilter
+        }
+    }
+    
+    @Published var calendarForSaving: EKCalendar? = {
+        guard RemindersService.shared.authorizationStatus() == .authorized else {
+            return nil
+        }
+        
+        guard let identifier = UserPreferences.shared.preferredCalendarIdentifierForSaving,
+              let calendar = RemindersService.shared.getCalendar(withIdentifier: identifier) else {
+            return RemindersService.shared.getDefaultCalendar()
+        }
+        
+        return calendar
+    }() {
+        didSet {
+            let identifier = calendarForSaving?.calendarIdentifier
+            UserPreferences.shared.preferredCalendarIdentifierForSaving = identifier
+        }
+    }
+    
+    @objc func update() {
         // TODO: Prefer receive(on:options:) over explicit use of dispatch queues when performing work in subscribers.
         // https://developer.apple.com/documentation/combine/fail/receive(on:options:)
         DispatchQueue.main.async {
             let calendars = RemindersService.shared.getCalendars()
             self.calendars = calendars
             
-            self.userPreferences.calendarIdentifiersFilter = self.userPreferences.calendarIdentifiersFilter.filter({
+            self.calendarIdentifiersFilter = self.calendarIdentifiersFilter.filter({
                 RemindersService.shared.isValid(calendarIdentifier: $0)
             })
             
