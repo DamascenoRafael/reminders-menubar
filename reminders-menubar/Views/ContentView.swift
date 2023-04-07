@@ -42,9 +42,6 @@ struct ContentView: View {
             
             SettingsBarView()
         }
-        .onAppear {
-            remindersData.update()
-        }
         .background(Color.rmbColor(for: .backgroundTheme, and: colorSchemeContrast).padding(-80))
     }
     
