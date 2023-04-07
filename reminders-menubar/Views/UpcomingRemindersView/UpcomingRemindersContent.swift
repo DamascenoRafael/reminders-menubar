@@ -1,11 +1,10 @@
 import SwiftUI
 
-struct UpcomingRemindersView: View {
+struct UpcomingRemindersContent: View {
     @EnvironmentObject var remindersData: RemindersData
     
     var body: some View {
-        VStack(alignment: .leading) {
-            UpcomingRemindersTitle()
+        Group{
             if remindersData.upcomingReminders.isEmpty {
                 NoReminderItemsView(emptyList: .noUpcomingReminders)
             }
@@ -16,8 +15,8 @@ struct UpcomingRemindersView: View {
     }
 }
 
-struct UpcomingRemindersList_Previews: PreviewProvider {
+struct UpcomingRemindersContent_Previews: PreviewProvider {
     static var previews: some View {
-        UpcomingRemindersView().environmentObject(RemindersData())
+        UpcomingRemindersContent().environmentObject(RemindersData())
     }
 }

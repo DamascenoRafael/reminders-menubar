@@ -13,11 +13,13 @@ struct ContentView: View {
             if userPreferences.atLeastOneFilterIsSelected {
                 List {
                     if userPreferences.showUpcomingReminders {
-                        UpcomingRemindersView()
+                        Section(header: UpcomingRemindersTitle()) {
+                            UpcomingRemindersContent()
+                        }
+                        .modifier(ListSectionSpacing())
                     }
                     ForEach(remindersData.filteredReminderLists) { reminderList in
-                        VStack(alignment: .leading) {
-                            CalendarTitle(calendar: reminderList.calendar)
+                        Section(header: CalendarTitle(calendar: reminderList.calendar)) {
                             let reminders = filteredReminders(reminderList.reminders)
                             if reminders.isEmpty {
                                 let calendarIsEmpty = reminderList.reminders.isEmpty
@@ -27,9 +29,10 @@ struct ContentView: View {
                                 ReminderItemView(reminder: reminder)
                             }
                         }
-                        .padding(.bottom, 5)
+                        .modifier(ListSectionSpacing())
                     }
                 }
+                .listStyle(.plain)
             } else {
                 VStack(spacing: 4) {
                     Text(rmbLocalized(.emptyListNoRemindersFilterTitle))
@@ -54,6 +57,14 @@ struct ContentView: View {
         
         let completedReminders = reminders.filter { $0.isCompleted }.sortedRemindersByPriority
         return uncompletedReminders + completedReminders
+    }
+}
+
+struct ListSectionSpacing: ViewModifier {
+    func body(content: Content) -> some View {
+        return content
+            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+            .padding(.horizontal, 8)
     }
 }
 
