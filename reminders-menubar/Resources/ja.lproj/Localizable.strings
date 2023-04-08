@@ -42,7 +42,7 @@
 "showMenuBarTodayCountOptionButton" = "今日の件数を表示";
 "keyboardShortcutOptionButton" = "キーボードショートカット";
 "reloadRemindersDataButton" = "再読み込み";
-"appAboutButton" = "Reminders Menu Barについて";
+"appAboutButton" = "Reminders MenuBarについて";
 "appQuitButton" = "終了";
 "settingsButtonHelp" = "設定";
 "aboutRemindersMenuBarWindowTitle" = "%@について";
