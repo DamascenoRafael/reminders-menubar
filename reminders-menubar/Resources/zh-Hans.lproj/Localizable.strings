@@ -31,7 +31,7 @@
 "remindersFilterSelectionHelp" = "选择显示的提醒事项";
 "showCompletedRemindersToggleButtonHelp" = "是否显示已完成的提醒事项";
 "updateAvailableNoticeButton" = "有更新可用";
-"launchAtLoginOptionButton" = "登陆时启动";
+"launchAtLoginOptionButton" = "登录时启动";
 "appAppearanceMenu" = "外观";
 "appAppearanceMoreOpaqueOptionButton" = "不透明";
 "appAppearanceMoreTransparentOptionButton" = "透明";
