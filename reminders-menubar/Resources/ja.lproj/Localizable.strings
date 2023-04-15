@@ -38,8 +38,11 @@
 "appAppearanceColorSystemModeOptionButton" = "System appearance"; // TODO: Translate
 "appAppearanceColorLightModeOptionButton" = "Light mode"; // TODO: Translate
 "appAppearanceColorDarkModeOptionButton" = "Dark mode"; // TODO: Translate
-"menuBarSettingsMenu" = "メニューバー";
+"menuBarIconSettingsMenu" = "メニューバー"; // TODO: Adjust to match "Menu bar icon"
+"menuBarCounterSettingsMenu" = "Menu bar counter"; // TODO: Translate
 "showMenuBarTodayCountOptionButton" = "今日の件数を表示";
+"showMenuBarAllRemindersCountOptionButton" = "Show all reminders count"; // TODO: Translate
+"showMenuBarNoCountOptionButton" = "Don't show count"; // TODO: Translate
 "keyboardShortcutOptionButton" = "キーボードショートカット";
 "reloadRemindersDataButton" = "再読み込み";
 "appAboutButton" = "Reminders MenuBarについて";

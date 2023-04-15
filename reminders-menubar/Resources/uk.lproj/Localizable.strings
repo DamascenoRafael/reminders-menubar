@@ -38,8 +38,11 @@
 "appAppearanceColorSystemModeOptionButton" = "Системний";
 "appAppearanceColorLightModeOptionButton" = "Світлий режим";
 "appAppearanceColorDarkModeOptionButton" = "Темний режим";
-"menuBarSettingsMenu" = "Смуга меню";
+"menuBarIconSettingsMenu" = "Смуга меню"; // TODO: Adjust to match "Menu bar icon"
+"menuBarCounterSettingsMenu" = "Menu bar counter"; // TODO: Translate
 "showMenuBarTodayCountOptionButton" = "Показати кількість на сьогодні";
+"showMenuBarAllRemindersCountOptionButton" = "Show all reminders count"; // TODO: Translate
+"showMenuBarNoCountOptionButton" = "Don't show count"; // TODO: Translate
 "keyboardShortcutOptionButton" = "Комбінації клавіш";
 "reloadRemindersDataButton" = "Оновити дані";
 "appAboutButton" = "Про додаток";

@@ -38,8 +38,11 @@
 "appAppearanceColorSystemModeOptionButton" = "Aparência do sistema";
 "appAppearanceColorLightModeOptionButton" = "Modo claro";
 "appAppearanceColorDarkModeOptionButton" = "Modo escuro";
-"menuBarSettingsMenu" = "Barra de menu";
+"menuBarIconSettingsMenu" = "Ícone da barra de menu";
+"menuBarCounterSettingsMenu" = "Contagem da barra de menu";
 "showMenuBarTodayCountOptionButton" = "Mostrar contagem para hoje";
+"showMenuBarAllRemindersCountOptionButton" = "Mostrar contagem de todos os lembretes";
+"showMenuBarNoCountOptionButton" = "Não mostrar contagem";
 "keyboardShortcutOptionButton" = "Atalho de teclado";
 "reloadRemindersDataButton" = "Recarregar dados";
 "appAboutButton" = "Sobre";

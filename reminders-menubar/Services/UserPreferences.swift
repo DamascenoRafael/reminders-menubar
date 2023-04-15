@@ -12,7 +12,7 @@ private struct PreferencesKeys {
     static let backgroundIsTransparent = "backgroundIsTransparent"
     static let showUpcomingReminders = "showUpcomingReminders"
     static let upcomingRemindersInterval = "upcomingRemindersInterval"
-    static let showMenuBarTodayCount = "showMenuBarTodayCount"
+    static let menuBarCounterType = "menuBarCounterType"
     static let preferredLanguage = "preferredLanguage"
 }
 
@@ -139,11 +139,16 @@ class UserPreferences: ObservableObject {
         }
     }
     
-    @Published var showMenuBarTodayCount: Bool = {
-        return defaults.boolWithDefaultValueTrue(forKey: PreferencesKeys.showMenuBarTodayCount)
+    @Published var menuBarCounterType: RmbMenuBarCounterType = {
+        guard let counterTypeData = defaults.data(forKey: PreferencesKeys.menuBarCounterType),
+              let counterType = try? JSONDecoder().decode(RmbMenuBarCounterType.self, from: counterTypeData) else {
+            return .today
+        }
+        return counterType
     }() {
         didSet {
-            UserPreferences.defaults.set(showMenuBarTodayCount, forKey: PreferencesKeys.showMenuBarTodayCount)
+            let counterTypeData = try? JSONEncoder().encode(menuBarCounterType)
+            UserPreferences.defaults.set(counterTypeData, forKey: PreferencesKeys.menuBarCounterType)
         }
     }
     

@@ -38,8 +38,11 @@
 "appAppearanceColorSystemModeOptionButton" = "System appearance"; // TODO: Translate
 "appAppearanceColorLightModeOptionButton" = "Light mode"; // TODO: Translate
 "appAppearanceColorDarkModeOptionButton" = "Dark mode"; // TODO: Translate
-"menuBarSettingsMenu" = "Menüleiste";
+"menuBarIconSettingsMenu" = "Menüleiste"; // TODO: Adjust to match "Menu bar icon"
+"menuBarCounterSettingsMenu" = "Menu bar counter"; // TODO: Translate
 "showMenuBarTodayCountOptionButton" = "Heutige Anzahl anzeigen";
+"showMenuBarAllRemindersCountOptionButton" = "Show all reminders count"; // TODO: Translate
+"showMenuBarNoCountOptionButton" = "Don't show count"; // TODO: Translate
 "keyboardShortcutOptionButton" = "Tastaturkürzel";
 "reloadRemindersDataButton" = "Erinnerungen aktualisieren";
 "appAboutButton" = "Über";

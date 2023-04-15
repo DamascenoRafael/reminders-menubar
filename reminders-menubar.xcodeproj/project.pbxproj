@@ -19,6 +19,7 @@
 		712C32B624BF939100AC75E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712C32B524BF939100AC75E2 /* ContentView.swift */; };
 		712C32B824BF939200AC75E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 712C32B724BF939200AC75E2 /* Assets.xcassets */; };
 		712C32BB24BF939200AC75E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 712C32BA24BF939200AC75E2 /* Preview Assets.xcassets */; };
+		712C836229E6635200BF6C24 /* RmbMenuBarCounterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712C836129E6635200BF6C24 /* RmbMenuBarCounterType.swift */; };
 		71359E9824C6C0B5001D4C40 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71359E9724C6C0B5001D4C40 /* Colors.xcassets */; };
 		713F234524C130D400FF0BEC /* ReminderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F234424C130D400FF0BEC /* ReminderList.swift */; };
 		7141456325CF9693006695B2 /* Release.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7141456225CF9693006695B2 /* Release.swift */; };
@@ -110,6 +111,7 @@
 		712C32BA24BF939200AC75E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		712C32BF24BF939200AC75E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		712C32C024BF939200AC75E2 /* reminders_menubar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = reminders_menubar.entitlements; sourceTree = "<group>"; };
+		712C836129E6635200BF6C24 /* RmbMenuBarCounterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbMenuBarCounterType.swift; sourceTree = "<group>"; };
 		71359E9724C6C0B5001D4C40 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		713F234424C130D400FF0BEC /* ReminderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderList.swift; sourceTree = "<group>"; };
 		7141456225CF9693006695B2 /* Release.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Release.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				71564447260324FA005E81FD /* PrioritizedReminders.swift */,
 				71ED5D6A290B6B3C00626185 /* RmbReminder.swift */,
 				717748F729622FCB00654CAA /* RmbIcon.swift */,
+				712C836129E6635200BF6C24 /* RmbMenuBarCounterType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				71E7126D2908EBD100DA97BD /* RemoveFocusFromFirstResponder.swift in Sources */,
 				715B4DD728D59BF2008C6683 /* SettingsBarFilterMenu.swift in Sources */,
 				71B6D1FB24C6511000E66EDB /* SettingsBarView.swift in Sources */,
+				712C836229E6635200BF6C24 /* RmbMenuBarCounterType.swift in Sources */,
 				710980D22600419F001F69B2 /* UpcomingRemindersContent.swift in Sources */,
 				713F234524C130D400FF0BEC /* ReminderList.swift in Sources */,
 				7119C2F025D85B75002C8013 /* SelectableView.swift in Sources */,

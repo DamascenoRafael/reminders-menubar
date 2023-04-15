@@ -86,6 +86,14 @@ class RemindersService {
         return reminders.sortedReminders
     }
     
+    func getAllRemindersCount() -> Int {
+        let predicate = eventStore.predicateForIncompleteReminders(withDueDateStarting: nil,
+                                                                   ending: nil,
+                                                                   calendars: nil)
+        let reminders = fetchRemindersSynchronously(matching: predicate)
+        return reminders.count
+    }
+    
     func save(reminder: EKReminder) {
         do {
             try eventStore.save(reminder, commit: true)

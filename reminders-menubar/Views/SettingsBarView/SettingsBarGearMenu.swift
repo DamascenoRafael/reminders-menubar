@@ -87,7 +87,9 @@ struct SettingsBarGearMenu: View {
         
         appAppearanceMenu()
         
-        menuBarSettingsMenu()
+        menuBarIconMenu()
+        
+        menuBarCounterMenu()
         
         preferredLanguageMenu()
         
@@ -147,17 +149,8 @@ struct SettingsBarGearMenu: View {
         }
     }
     
-    func menuBarSettingsMenu() -> some View {
+    func menuBarIconMenu() -> some View {
         Menu {
-            Button(action: {
-                userPreferences.showMenuBarTodayCount.toggle()
-            }) {
-                let isSelected = userPreferences.showMenuBarTodayCount
-                SelectableView(title: rmbLocalized(.showMenuBarTodayCountOptionButton), isSelected: isSelected)
-            }
-            
-            Divider()
-            
             ForEach(RmbIcon.allCases, id: \.self) { icon in
                 Button(action: {
                     userPreferences.reminderMenuBarIcon = icon
@@ -168,7 +161,34 @@ struct SettingsBarGearMenu: View {
                 }
             }
         } label: {
-            Text(rmbLocalized(.menuBarSettingsMenu))
+            Text(rmbLocalized(.menuBarIconSettingsMenu))
+        }
+    }
+    
+    func menuBarCounterMenu() -> some View {
+        Menu {
+            Button(action: {
+                userPreferences.menuBarCounterType = .today
+            }) {
+                let isSelected = userPreferences.menuBarCounterType == .today
+                SelectableView(title: rmbLocalized(.showMenuBarTodayCountOptionButton), isSelected: isSelected)
+            }
+            
+            Button(action: {
+                userPreferences.menuBarCounterType = .allReminders
+            }) {
+                let isSelected = userPreferences.menuBarCounterType == .allReminders
+                SelectableView(title: rmbLocalized(.showMenuBarAllRemindersCountOptionButton), isSelected: isSelected)
+            }
+            
+            Button(action: {
+                userPreferences.menuBarCounterType = .disabled
+            }) {
+                let isSelected = userPreferences.menuBarCounterType == .disabled
+                SelectableView(title: rmbLocalized(.showMenuBarNoCountOptionButton), isSelected: isSelected)
+            }
+        } label: {
+            Text(rmbLocalized(.menuBarCounterSettingsMenu))
         }
     }
     

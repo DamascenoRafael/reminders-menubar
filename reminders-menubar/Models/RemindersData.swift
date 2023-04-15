@@ -24,8 +24,8 @@ class RemindersData: ObservableObject {
                                                object: nil)
         
         cancellationTokens.append(
-            userPreferences.$showMenuBarTodayCount.dropFirst().sink { [weak self] showMenuBarTodayCount in
-                self?.updateMenuBarTodayCount(showMenuBarTodayCount)
+            userPreferences.$menuBarCounterType.dropFirst().sink { [weak self] menuBarCounterType in
+                self?.updateMenuBarCount(menuBarCounterType)
             }
         )
         
@@ -95,15 +95,17 @@ class RemindersData: ObservableObject {
             let upcomingRemindersInterval = self.userPreferences.upcomingRemindersInterval
             self.upcomingReminders = RemindersService.shared.getUpcomingReminders(upcomingRemindersInterval)
             
-            self.updateMenuBarTodayCount(self.userPreferences.showMenuBarTodayCount)
+            self.updateMenuBarCount(self.userPreferences.menuBarCounterType)
         }
     }
     
-    private func updateMenuBarTodayCount(_ showMenuBarTodayCount: Bool) {
-        var todayCount = -1
-        if showMenuBarTodayCount {
-            todayCount = RemindersService.shared.getUpcomingReminders(.today).count
+    private func updateMenuBarCount(_ menuBarCounterType: RmbMenuBarCounterType) {
+        var count = -1
+        if menuBarCounterType == .today {
+            count = RemindersService.shared.getUpcomingReminders(.today).count
+        } else if menuBarCounterType == .allReminders {
+            count = RemindersService.shared.getAllRemindersCount()
         }
-        AppDelegate.shared.updateMenuBarTodayCount(to: todayCount)
+        AppDelegate.shared.updateMenuBarTodayCount(to: count)
     }
 }
