@@ -802,7 +802,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.16.1;
+				MARKETING_VERSION = 1.17.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.damascenorafael.reminders-menubar";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -829,7 +829,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.16.1;
+				MARKETING_VERSION = 1.17.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.damascenorafael.reminders-menubar";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
