@@ -102,7 +102,10 @@ class UserPreferences: ObservableObject {
     }
     
     var atLeastOneFilterIsSelected: Bool {
-        return showUpcomingReminders || preferredCalendarIdentifiersFilter == nil || !preferredCalendarIdentifiersFilter!.isEmpty
+        return
+            showUpcomingReminders ||
+            preferredCalendarIdentifiersFilter == nil ||
+            !preferredCalendarIdentifiersFilter!.isEmpty
     }
     
     var launchAtLoginIsEnabled: Bool {

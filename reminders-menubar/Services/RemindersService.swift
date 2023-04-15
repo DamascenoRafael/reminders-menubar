@@ -82,7 +82,6 @@ class RemindersService {
         let predicate = eventStore.predicateForIncompleteReminders(withDueDateStarting: nil,
                                                                    ending: interval.endingDate,
                                                                    calendars: calendars)
-        
         let reminders = fetchRemindersSynchronously(matching: predicate)
         return reminders.sortedReminders
     }
