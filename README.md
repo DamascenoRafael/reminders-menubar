@@ -60,7 +60,7 @@
 Reminders MenuBar can be installed using [Homebrew](http://brew.sh).
 
 ```bash
-brew install --cask DamascenoRafael/tap/reminders-menubar
+brew install --cask reminders-menubar
 ```
 
 ### Direct Download
