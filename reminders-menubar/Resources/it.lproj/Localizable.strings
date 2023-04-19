@@ -8,10 +8,10 @@
 "editReminderOptionButton" = "Modifica";
 "editReminderTitleTextFieldPlaceholder" = "Titolo";
 "editReminderNotesTextFieldPlaceholder" = "Note";
-"editReminderRemindMeSection" = "Ricordamelo";
+"editReminderRemindMeSection" = "ricordamelo";
 "editReminderRemindDateOption" = "Un giorno";
 "editReminderRemindTimeOption" = "A un orario";
-"editReminderPrioritySection" = "Priorità";
+"editReminderPrioritySection" = "priorità";
 "editReminderPriorityLowOption" = "Bassa";
 "editReminderPriorityMediumOption" = "Media";
 "editReminderPriorityHighOption" = "Alta";
