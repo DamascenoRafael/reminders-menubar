@@ -64,9 +64,9 @@
 "appNoRemindersAccessAlertMessage" = "Acesso aos Lembretes não está habilitado para %@";
 "appNoRemindersAccessAlertDescription" = "
 %@ precisa de acesso aos seus lembretes para funcionar corretamente.
-Conceda permissão nas Preferências do Sistema para usar %@.
+Conceda permissão nas Ajustes do Sistema para usar %@.
 ";
-"openSystemPreferencesButton" = "Abrir Preferências do Sistema";
+"openSystemPreferencesButton" = "Abrir Ajustes do Sistema";
 "okButton" = "Ok";
 "preferredLanguageMenu" = "Idioma preferido";
 "preferredLanguageSystemOptionButton" = "Usar idioma do sistema";

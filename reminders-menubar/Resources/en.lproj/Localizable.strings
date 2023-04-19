@@ -64,9 +64,9 @@
 "appNoRemindersAccessAlertMessage" = "Access to Reminders is not enabled for %@";
 "appNoRemindersAccessAlertDescription" = "
 %@ needs access to your reminders to work properly.
-Grant permission in System Preferences to use %@.
+Grant permission in System Settings to use %@.
 ";
-"openSystemPreferencesButton" = "Open System Preferences";
+"openSystemPreferencesButton" = "Open System Settings";
 "okButton" = "Ok";
 "preferredLanguageMenu" = "Preferred language";
 "preferredLanguageSystemOptionButton" = "Use system language";
