@@ -20,8 +20,8 @@ enum RmbIcon: String, CaseIterable {
     }
     
     var image: NSImage {
-        return NSImage(named: self.rawValue)!
-    }
+    return NSImage(named: self.rawValue) ?? NSImage(systemSymbolName: self.rawValue, accessibilityDescription: nil)!
+}
 
     var name: String {
         return self.rawValue
