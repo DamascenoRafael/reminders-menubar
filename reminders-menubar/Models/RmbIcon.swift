@@ -11,8 +11,8 @@ enum RmbIcon: String, CaseIterable {
     case reminder1 = "icon-reminder-1"
     case reminder2 = "icon-reminder-2"
     case reminder3 = "icon-reminder-3"
-    case reminder4 = "icon-reminder-4"
-    case reminder5 = "icon-reminder-5"
+    case sfsymbols1 = "checklist"
+    case sfsymbols2 = "circle.inset.filled"
     case smalldot = "icon-small-dot"
     
     static var defaultIcon: RmbIcon {
