@@ -4,7 +4,7 @@ struct UpcomingRemindersContent: View {
     @EnvironmentObject var remindersData: RemindersData
     
     var body: some View {
-        Group{
+        Group {
             if remindersData.upcomingReminders.isEmpty {
                 NoReminderItemsView(emptyList: .noUpcomingReminders)
             }
