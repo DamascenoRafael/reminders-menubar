@@ -11,14 +11,17 @@ enum RmbIcon: String, CaseIterable {
     case reminder1 = "icon-reminder-1"
     case reminder2 = "icon-reminder-2"
     case reminder3 = "icon-reminder-3"
+    case sfsymbols1 = "checklist"
+    case sfsymbols2 = "circle.inset.filled"
+    case smalldot = "icon-small-dot"
     
     static var defaultIcon: RmbIcon {
         return self.note1
     }
     
     var image: NSImage {
-        return NSImage(named: self.rawValue)!
-    }
+    return NSImage(named: self.rawValue) ?? NSImage(systemSymbolName: self.rawValue, accessibilityDescription: nil)!
+}
 
     var name: String {
         return self.rawValue
