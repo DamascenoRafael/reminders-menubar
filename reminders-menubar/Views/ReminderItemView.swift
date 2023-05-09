@@ -9,6 +9,7 @@ struct ReminderItemView: View {
     @State var reminderItemIsHovered = false
     
     @State private var showingEditPopover = false
+    @State private var isEditingTitle = false
     
     @State private var showingRemoveAlert = false
     @State private var hasBeenRemoved = false
@@ -33,6 +34,10 @@ struct ReminderItemView: View {
                     }
                     Text(reminder.title)
                         .fixedSize(horizontal: false, vertical: true)
+                        .onTapGesture {
+                            isEditingTitle = true
+                            showingEditPopover = true
+                        }
                     Spacer()
                     MenuButton(label:
                         Image(systemName: "ellipsis")
@@ -73,7 +78,9 @@ struct ReminderItemView: View {
                     .help(rmbLocalized(.remindersOptionsButtonHelp))
                     .opacity(shouldShowEllipsisButton() ? 1 : 0)
                     .popover(isPresented: $showingEditPopover, arrowEdge: .trailing) {
-                        ReminderEditPopover(reminder: reminder)
+                        ReminderEditPopover(isPresented: $showingEditPopover,
+                                            focusOnTitle: $isEditingTitle,
+                                            reminder: reminder)
                     }
                 }
                 .alert(isPresented: $showingRemoveAlert) {

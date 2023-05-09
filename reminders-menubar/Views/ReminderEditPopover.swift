@@ -2,11 +2,15 @@ import SwiftUI
 import EventKit
 
 struct ReminderEditPopover: View {
+    @Binding var isPresented: Bool
+    @Binding var focusOnTitle: Bool
     
-    var ekReminder: EKReminder
     @State var rmbReminder: RmbReminder
+    var ekReminder: EKReminder
     
-    init(reminder: EKReminder) {
+    init(isPresented: Binding<Bool>, focusOnTitle: Binding<Bool>, reminder: EKReminder) {
+        _isPresented = isPresented
+        _focusOnTitle = focusOnTitle
         self.ekReminder = reminder
         _rmbReminder = State(initialValue: RmbReminder(reminder: reminder))
     }
@@ -16,6 +20,7 @@ struct ReminderEditPopover: View {
             TextField(rmbLocalized(.editReminderTitleTextFieldPlaceholder), text: $rmbReminder.title)
                 .textFieldStyle(PlainTextFieldStyle())
                 .font(.title3)
+                .modifier(FocusOnAppear(isEnabled: focusOnTitle))
             
             TextField(rmbLocalized(.editReminderNotesTextFieldPlaceholder), text: $rmbReminder.notes ?? "")
                 .textFieldStyle(PlainTextFieldStyle())
@@ -56,10 +61,14 @@ struct ReminderEditPopover: View {
         }
         .frame(width: 300, alignment: .center)
         .padding()
+        .modifier(OnKeyboardShortcut(shortcut: .defaultAction, action: {
+            isPresented = false
+        }))
         .onAppear {
             removeFocusFromFirstResponder()
         }
         .onDisappear {
+            focusOnTitle = false
             ekReminder.update(with: rmbReminder)
             if ekReminder.hasChanges {
                 RemindersService.shared.save(reminder: ekReminder)
@@ -106,6 +115,6 @@ struct ReminderEditPopover_Previews: PreviewProvider {
     }
     
     static var previews: some View {
-        ReminderEditPopover(reminder: reminder)
+        ReminderEditPopover(isPresented: .constant(true), focusOnTitle: .constant(false), reminder: reminder)
     }
 }
