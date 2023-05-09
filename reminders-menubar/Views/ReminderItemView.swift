@@ -169,10 +169,7 @@ struct MoveToOptionMenu: View {
                     reminder.calendar = calendar
                     RemindersService.shared.save(reminder: reminder)
                 }) {
-                    Group {
-                        Text("●  ").foregroundColor(Color(calendar.color)) +
-                        Text(calendar.title)
-                    }
+                    SelectableView(title: calendar.title, color: Color(calendar.color))
                 }
             }
         }
