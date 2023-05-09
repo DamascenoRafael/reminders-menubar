@@ -26,6 +26,8 @@
 		714598D329295330008CAA43 /* RmbDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714598D229295330008CAA43 /* RmbDatePicker.swift */; };
 		714C28A22A07573A00734DAF /* FocusOnAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714C28A12A07573A00734DAF /* FocusOnAppear.swift */; };
 		714C28A42A082E0000734DAF /* OnKeyboardShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714C28A32A082E0000734DAF /* OnKeyboardShortcut.swift */; };
+		714C28A82A0A056600734DAF /* RmbHighlightedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714C28A72A0A056600734DAF /* RmbHighlightedTextField.swift */; };
+		714C28AC2A0AE37600734DAF /* FocusOnReceive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714C28AB2A0AE37600734DAF /* FocusOnReceive.swift */; };
 		714C4980267FA56F00721516 /* remindersLocalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714C497F267FA56F00721516 /* remindersLocalized.swift */; };
 		714D03B226042416003063F7 /* Calendar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714D03B126042416003063F7 /* Calendar+Extensions.swift */; };
 		714E6F6125CCF66000BA0099 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714E6F6025CCF66000BA0099 /* Constants.swift */; };
@@ -122,6 +124,8 @@
 		714598D229295330008CAA43 /* RmbDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbDatePicker.swift; sourceTree = "<group>"; };
 		714C28A12A07573A00734DAF /* FocusOnAppear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusOnAppear.swift; sourceTree = "<group>"; };
 		714C28A32A082E0000734DAF /* OnKeyboardShortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnKeyboardShortcut.swift; sourceTree = "<group>"; };
+		714C28A72A0A056600734DAF /* RmbHighlightedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbHighlightedTextField.swift; sourceTree = "<group>"; };
+		714C28AB2A0AE37600734DAF /* FocusOnReceive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusOnReceive.swift; sourceTree = "<group>"; };
 		714C497F267FA56F00721516 /* remindersLocalized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = remindersLocalized.swift; sourceTree = "<group>"; };
 		714D03B126042416003063F7 /* Calendar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extensions.swift"; sourceTree = "<group>"; };
 		714E6F6025CCF66000BA0099 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -235,8 +239,10 @@
 			isa = PBXGroup;
 			children = (
 				7119C2EF25D85B75002C8013 /* SelectableView.swift */,
+				714C28A72A0A056600734DAF /* RmbHighlightedTextField.swift */,
 				714598D229295330008CAA43 /* RmbDatePicker.swift */,
 				714C28A12A07573A00734DAF /* FocusOnAppear.swift */,
+				714C28AB2A0AE37600734DAF /* FocusOnReceive.swift */,
 				714C28A32A082E0000734DAF /* OnKeyboardShortcut.swift */,
 			);
 			path = Helpers;
@@ -531,7 +537,9 @@
 				7141456325CF9693006695B2 /* Release.swift in Sources */,
 				71F36A9829C16B7A0099D337 /* RmbColorKey.swift in Sources */,
 				71E7126A2908C6D100DA97BD /* NilCoalescingBindingOverload.swift in Sources */,
+				714C28AC2A0AE37600734DAF /* FocusOnReceive.swift in Sources */,
 				714C28A42A082E0000734DAF /* OnKeyboardShortcut.swift in Sources */,
+				714C28A82A0A056600734DAF /* RmbHighlightedTextField.swift in Sources */,
 				71E51D5825BFB8CF009A4B56 /* AboutView.swift in Sources */,
 				714C28A22A07573A00734DAF /* FocusOnAppear.swift in Sources */,
 				7115461924C0C280007781E2 /* RemindersService.swift in Sources */,

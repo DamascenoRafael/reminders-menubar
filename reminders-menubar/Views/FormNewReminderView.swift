@@ -72,7 +72,6 @@ struct FormNewReminderView: View {
             withAnimation(.easeOut(duration: 0.3)) {
                 isShowingDueDateOptions = !newValue.isEmpty
             }
-            rmbReminder.updateWithDateParser()
             if newValue.isEmpty {
                 rmbReminder = newRmbReminder()
             }
@@ -85,11 +84,12 @@ struct FormNewReminderView: View {
     @ViewBuilder
     func newReminderTextFieldView(placeholder: String) -> some View {
         VStack(alignment: .leading) {
-            if #available(macOS 12.0, *) {
-                ReminderTextField(placeholder: placeholder, text: $rmbReminder.title, onSubmit: createNewReminder)
-            } else {
-                LegacyReminderTextField(placeholder: placeholder, text: $rmbReminder.title, onSubmit: createNewReminder)
-            }
+            RmbHighlightedTextField(placeholder: placeholder,
+                         text: $rmbReminder.title,
+                         highlightedTextRange: rmbReminder.textDateResult.range,
+                         onSubmit: createNewReminder)
+            .modifier(FocusOnReceive(userPreferences.$remindersMenuBarOpeningEvent))
+
             if isShowingDueDateOptions {
                 reminderDueDateOptionsView(date: $rmbReminder.date,
                                            hasDueDate: $rmbReminder.hasDueDate,
@@ -109,86 +109,11 @@ struct FormNewReminderView: View {
         }
         
         if userPreferences.removeParsedDateFromTitle {
-            rmbReminder.title = rmbReminder.title.replacingOccurrences(of: rmbReminder.dateRelatedString, with: "")
+            rmbReminder.title = rmbReminder.title.replacingOccurrences(of: rmbReminder.textDateResult.string, with: "")
         }
         
         RemindersService.shared.createNew(with: rmbReminder, in: calendarForSaving)
         rmbReminder = newRmbReminder()
-    }
-}
-
-@available(macOS 12.0, *)
-struct ReminderTextField: View {
-    @FocusState private var newReminderTextFieldInFocus: Bool
-    @ObservedObject var userPreferences = UserPreferences.shared
-    
-    var placeholder: String
-    var text: Binding<String>
-    var onSubmit: () -> Void
-    
-    var body: some View {
-        let placeholdderText = Text(placeholder)
-        TextField("", text: text, prompt: placeholdderText)
-            .onSubmit {
-                onSubmit()
-            }
-            .focused($newReminderTextFieldInFocus)
-            .onReceive(userPreferences.$remindersMenuBarOpeningEvent) { _ in
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                    self.newReminderTextFieldInFocus = true
-                }
-            }
-    }
-}
-
-struct LegacyReminderTextField: NSViewRepresentable {
-    let placeholder: String
-    var text: Binding<String>
-    var onSubmit: () -> Void
-    
-    func makeCoordinator() -> Coordinator {
-        return Coordinator(self)
-    }
-    
-    func makeNSView(context: Context) -> NSTextField {
-        let textField = NSTextField()
-        textField.delegate = context.coordinator
-        textField.placeholderString = placeholder
-        textField.isBordered = false
-        textField.font = .systemFont(ofSize: NSFont.systemFontSize)
-        
-        textField.backgroundColor = NSColor.clear
-        
-        return textField
-    }
-    
-    func updateNSView(_ nsView: NSTextField, context: Context) {
-        nsView.stringValue = self.text.wrappedValue
-    }
-    
-    class Coordinator: NSObject, NSTextFieldDelegate {
-        var parent: LegacyReminderTextField
-        
-        init(_ parent: LegacyReminderTextField) {
-            self.parent = parent
-        }
-        
-        func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
-            if commandSelector == #selector(NSResponder.insertNewline(_:)) {
-                guard !textView.string.isEmpty else {
-                    return false
-                }
-                self.parent.onSubmit()
-                return true
-            }
-            return false
-        }
-        
-        func controlTextDidChange(_ obj: Notification) {
-            if let textField = obj.object as? NSTextField {
-                self.parent.text.wrappedValue = textField.stringValue
-            }
-        }
     }
 }
 
