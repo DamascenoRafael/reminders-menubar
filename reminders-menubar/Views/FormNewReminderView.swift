@@ -103,7 +103,7 @@ struct FormNewReminderView: View {
     }
     
     func createNewReminder() {
-        guard !rmbReminder.title.isEmpty,
+        guard !rmbReminder.title.trimmingCharacters(in: .whitespaces).isEmpty,
               let calendarForSaving = remindersData.calendarForSaving else {
             return
         }
