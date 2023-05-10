@@ -108,6 +108,7 @@ struct FormNewReminderView: View {
             return
         }
         
+        rmbReminder.prepareToSave()
         if userPreferences.removeParsedDateFromTitle {
             rmbReminder.title = rmbReminder.title.replacingOccurrences(of: rmbReminder.textDateResult.string, with: "")
         }
