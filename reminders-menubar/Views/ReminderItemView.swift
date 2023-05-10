@@ -51,6 +51,8 @@ struct ReminderItemView: View {
                             }
                         }
                         
+                        ChangePriorityOptionMenu(reminder: reminder)
+                        
                         let otherCalendars = remindersData.calendars.filter {
                             $0.calendarIdentifier != reminder.calendar.calendarIdentifier
                         }
@@ -145,6 +147,36 @@ struct ReminderItemView: View {
               }),
               secondaryButton: .cancel(Text(rmbLocalized(.removeReminderAlertCancelButton)))
         )
+    }
+}
+
+struct ChangePriorityOptionMenu: View {
+    var reminder: EKReminder
+    
+    @ViewBuilder
+    func changePriorityButton(_ priority: EKReminderPriority, text: String) -> some View {
+        let isSelected = priority == reminder.ekPriority
+        Button(action: {
+            reminder.ekPriority = priority
+            RemindersService.shared.save(reminder: reminder)
+        }) {
+            SelectableView(title: text, isSelected: isSelected)
+        }
+    }
+    
+    var body: some View {
+        MenuButton(label:
+            HStack {
+                Image(systemName: "exclamationmark.circle")
+                Text(rmbLocalized(.changeReminderPriorityMenuOption))
+            }
+        ) {
+            changePriorityButton(.low, text: rmbLocalized(.editReminderPriorityLowOption))
+            changePriorityButton(.medium, text: rmbLocalized(.editReminderPriorityMediumOption))
+            changePriorityButton(.high, text: rmbLocalized(.editReminderPriorityHighOption))
+            Divider()
+            changePriorityButton(.none, text: rmbLocalized(.editReminderPriorityNoneOption))
+        }
     }
 }
 

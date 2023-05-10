@@ -12,6 +12,7 @@
 "editReminderRemindDateOption" = "Dnia";
 "editReminderRemindTimeOption" = "O Godzinie";
 "editReminderPrioritySection" = "priorytet";
+"changeReminderPriorityMenuOption" = "Priorytet";
 "editReminderPriorityLowOption" = "Niski";
 "editReminderPriorityMediumOption" = "Średni";
 "editReminderPriorityHighOption" = "Wysoki";

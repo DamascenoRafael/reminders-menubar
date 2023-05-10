@@ -12,6 +12,7 @@
 "editReminderRemindDateOption" = "У день";
 "editReminderRemindTimeOption" = "У час події";
 "editReminderPrioritySection" = "пріорітет";
+"changeReminderPriorityMenuOption" = "пріорітет";
 "editReminderPriorityLowOption" = "Низький";
 "editReminderPriorityMediumOption" = "Середній";
 "editReminderPriorityHighOption" = "Високий";

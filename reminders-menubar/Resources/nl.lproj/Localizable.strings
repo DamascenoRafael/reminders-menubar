@@ -12,6 +12,7 @@
 "editReminderRemindDateOption" = "Op een dag";
 "editReminderRemindTimeOption" = "Tijd";
 "editReminderPrioritySection" = "Prioriteit";
+"changeReminderPriorityMenuOption" = "Prioriteit";
 "editReminderPriorityLowOption" = "Laag";
 "editReminderPriorityMediumOption" = "Normaal";
 "editReminderPriorityHighOption" = "Hoog";

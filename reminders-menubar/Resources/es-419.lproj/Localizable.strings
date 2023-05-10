@@ -12,6 +12,7 @@
 "editReminderRemindDateOption" = "En un día";
 "editReminderRemindTimeOption" = "En un momento";
 "editReminderPrioritySection" = "prioridad";
+"changeReminderPriorityMenuOption" = "Prioridad";
 "editReminderPriorityLowOption" = "Baja";
 "editReminderPriorityMediumOption" = "Media";
 "editReminderPriorityHighOption" = "Alta";

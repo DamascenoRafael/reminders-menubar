@@ -12,6 +12,7 @@
 "editReminderRemindDateOption" = "특정 날짜";
 "editReminderRemindTimeOption" = "특정 시간";
 "editReminderPrioritySection" = "우선 순위";
+"changeReminderPriorityMenuOption" = "우선 순위";
 "editReminderPriorityLowOption" = "낮음";
 "editReminderPriorityMediumOption" = "중간";
 "editReminderPriorityHighOption" = "높음";

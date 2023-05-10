@@ -12,6 +12,7 @@
 "editReminderRemindDateOption" = "日期提醒";
 "editReminderRemindTimeOption" = "在指定的时间";
 "editReminderPrioritySection" = "优先级";
+"changeReminderPriorityMenuOption" = "优先级";
 "editReminderPriorityLowOption" = "低";
 "editReminderPriorityMediumOption" = "中";
 "editReminderPriorityHighOption" = "高";
