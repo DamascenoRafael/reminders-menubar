@@ -12,8 +12,7 @@ struct FormNewReminderView: View {
     var body: some View {
         Form {
             HStack(alignment: .top) {
-                let placeholder = rmbLocalized(.newReminderTextFielPlaceholder)
-                newReminderTextFieldView(placeholder: placeholder)
+                newReminderTextFieldView()
                 .padding(.vertical, 8)
                 .padding(.horizontal, 8)
                 .padding(.leading, 22)
@@ -82,12 +81,12 @@ struct FormNewReminderView: View {
     }
     
     @ViewBuilder
-    func newReminderTextFieldView(placeholder: String) -> some View {
+    func newReminderTextFieldView() -> some View {
         VStack(alignment: .leading) {
-            RmbHighlightedTextField(placeholder: placeholder,
-                         text: $rmbReminder.title,
-                         highlightedTextRange: rmbReminder.textDateResult.range,
-                         onSubmit: createNewReminder)
+            RmbHighlightedTextField(placeholder: rmbLocalized(.newReminderTextFielPlaceholder),
+                                    text: $rmbReminder.title,
+                                    highlightedTextRange: rmbReminder.textDateResult.range,
+                                    onSubmit: createNewReminder)
             .modifier(FocusOnReceive(userPreferences.$remindersMenuBarOpeningEvent))
 
             if isShowingDueDateOptions {
