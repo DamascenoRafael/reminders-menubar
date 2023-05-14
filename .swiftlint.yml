@@ -35,7 +35,8 @@ disabled_rules:
 attributes:
   always_on_same_line:
   - '@objc'
-  - '@IBAction'
+  - '@NSApplicationDelegateAdaptor'
+  - '@Environment'
 
 identifier_name:
   excluded:
