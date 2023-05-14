@@ -67,12 +67,14 @@ struct FormNewReminderView: View {
             }
         }
         .padding(10)
-        .onChange(of: rmbReminder.title) { newValue in
+        .onChange(of: rmbReminder.title) { [oldValue = rmbReminder.title] newValue in
             withAnimation(.easeOut(duration: 0.3)) {
                 isShowingDueDateOptions = !newValue.isEmpty
             }
-            if newValue.isEmpty {
-                rmbReminder = newRmbReminder()
+
+            // NOTE: When the first character is typed we re-instantiate RmbReminder to ensure the date is as expected.
+            if oldValue.isEmpty && newValue.count == 1 {
+                rmbReminder = newRmbReminder(withTitle: newValue)
             }
         }
         .onAppear {
@@ -97,8 +99,10 @@ struct FormNewReminderView: View {
         }
     }
     
-    func newRmbReminder() -> RmbReminder {
-        return RmbReminder(hasDueDate: userPreferences.autoSuggestToday)
+    func newRmbReminder(withTitle title: String = "") -> RmbReminder {
+        var rmbReminder = RmbReminder(hasDueDate: userPreferences.autoSuggestToday)
+        rmbReminder.title = title
+        return rmbReminder
     }
     
     func createNewReminder() {
