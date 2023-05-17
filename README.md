@@ -7,14 +7,7 @@
     Reminders MenuBar
   </h1>
   <p>
-    Simple macOS menu bar app to view and interact with reminders.
-  </p>
-  <p>
-    <a href="#features">Features</a> •
-    <a href="#installation">Installation</a> •
-    <a href="#contributing">Contributing</a> •
-    <a href="#languages">Languages</a> •
-    <a href="#license">License</a>
+     Hatırlatıcıları görüntülemek ve bunlarla etkileşim kurmak için basit macOS menü çubuğu uygulaması.
   </p>
 </div>
 
@@ -33,16 +26,16 @@
   >
 </div>
 
-## Features
+## Özellikler
 
-* All interactions through the macOS menu bar
-* Keep everything in sync with Apple Reminders
-* Create new reminders in your chosen list
-* Set a reminder's due date using natural language
-* Mark reminders as completed / uncompleted
-* Edit reminders, Remove reminders or Move reminders between lists
-* View a list of upcoming reminders
-* Filter reminders through lists or through completed status
+* Tüm etkileşimler macOS menü çubuğu üzerinden yapılır
+* Her şeyi Apple Hatırlatmalar ile senkronize tutar
+* Seçtiğiniz listede yeni hatırlatıcılar oluşturabilirsiniz
+* Hatırlatıcıların tamamlanma tarihini doğal dil kullanarak ayarlayabilirsiniz
+* Hatırlatıcıları tamamlanmış / tamamlanmamış olarak işaretleyebilirsiniz
+* Hatırlatıcıları düzenleyebilir, kaldırabilir veya listeler arasında taşıyabilirsiniz
+* Yaklaşan hatırlatıcılar listesini görüntüleyebilirsiniz
+* Hatırlatıcıları listeler veya tamamlanma durumu üzerinden filtreleyebilirsiniz
 
 <div align="center">
   <img
@@ -51,45 +44,45 @@
   >
 </div>
 
-## Installation
+## Kurulum
 
-*Reminders MenuBar requires macOS Big Sur 11 or later.*
+* Reminders MenuBar, macOS Big Sur 11 veya daha yeni bir sürüm gerektirir.
 
 ### Homebrew
 
-Reminders MenuBar can be installed using [Homebrew](http://brew.sh).
+Reminders MenuBar, [Homebrew](http://brew.sh) kullanılarak yüklenebilir.
 
 ```bash
 brew install --cask reminders-menubar
 ```
 
-### Direct Download
+### Doğrudan Yükleme
 
-Direct downloads can be found on the [releases page](https://github.com/DamascenoRafael/reminders-menubar/releases).  
-After downloading and extracting, just drag the *.app* file to the *Applications* folder.
+Doğrudan indirmek için [releases page](https://github.com/DamascenoRafael/reminders-menubar/releases) sayfasına  gidebilirsiniz.  
+İndirdikten ve çıkardıktan sonra, sadece .app uzantılı dosyayı Applications klasörüne sürükleyin.
 
-## Contributing
+## Katkıda Bulun
 
-Feel free to share, open issues and contribute to this project! :heart:
+Bu projeyi paylaşmaktan, sorunları açmaktan ve katkıda bulunmaktan çekinmeyin!  :heart:
 
-## Languages
+## Diller
 
-🇺🇸 English • 🇧🇷 Brazilian Portuguese • 🇨🇳 Chinese (Simplified) • 🇳🇱 Dutch • 🇫🇷 French • 🇩🇪 German • 🇮🇹 Italian • 🇯🇵 Japanese • 🇰🇷 Korean • 🇵🇱 Polish • 🇲🇽 Spanish (Latin America) • 🇺🇦 Ukrainian
+🇺🇸 English • 🇧🇷 Brazilian Portuguese • 🇨🇳 Chinese (Simplified) • 🇳🇱 Dutch • 🇫🇷 French • 🇩🇪 German • 🇮🇹 Italian • 🇯🇵 Japanese • 🇰🇷 Korean • 🇵🇱 Polish • 🇲🇽 Spanish (Latin America) • 🇺🇦 Ukrainian  •:tr: Turkish
 
 <details>
   <summary>
-  Click here to learn how to add new languages :globe_with_meridians:
+  Yeni dillerin nasıl ekleneceğini öğrenmek için buraya tıklayın :globe_with_meridians:
   </summary>
 
-1. In Project navigator select the project reminders-menubar (first item)
-2. In the list of projects and targets select the project reminders-menubar (not the target)
-3. In the "Info" tab under "Localizations" select the "+" button and choose the new location
-4. In the list of resources, make sure all files are checked and click on "Finish"
-5. Edit the new location version of the **Localizable.strings** and **InfoPlist.strings** files with the translations
+1. Projeyi Navigator'da seçin ve projenin reminders-menubar (ilk öğe) olduğundan emin olun.
+2. Projeler ve hedefler listesinde, projeyi reminders-menubar (hedef değil) olarak seçin.
+3. "Info" sekmesinde, "Localizations" altında "+" düğmesini seçin ve yeni konumu seçin.
+4. Kaynaklar listesinde tüm dosyaların işaretlendiğinden emin olun ve "Tamamla"yı tıklayın.
+5. Yeni konumda bulunan Localizable.strings ve InfoPlist.strings dosyalarını çevirilerle düzenleyin.
 
 </details>
 
-## License
-
+## Lisans
+Bu proje GNU Genel Kamu Lisansı v3.0 şartları altında lisanslanmıştır.
 This project is licensed under the terms of the GNU General Public License v3.0.  
-See [LICENSE](LICENSE) for details.
+Detayları görmek için [LICENSE](LICENSE)
