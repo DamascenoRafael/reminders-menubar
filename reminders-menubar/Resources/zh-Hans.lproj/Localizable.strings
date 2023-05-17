@@ -36,14 +36,14 @@
 "appAppearanceMenu" = "外观";
 "appAppearanceMoreOpaqueOptionButton" = "不透明";
 "appAppearanceMoreTransparentOptionButton" = "透明";
-"appAppearanceColorSystemModeOptionButton" = "System appearance"; // TODO: Translate
-"appAppearanceColorLightModeOptionButton" = "Light mode"; // TODO: Translate
-"appAppearanceColorDarkModeOptionButton" = "Dark mode"; // TODO: Translate
-"menuBarIconSettingsMenu" = "任务栏"; // TODO: Adjust to match "Menu bar icon"
-"menuBarCounterSettingsMenu" = "Menu bar counter"; // TODO: Translate
+"appAppearanceColorSystemModeOptionButton" = "系统外观";
+"appAppearanceColorLightModeOptionButton" = "浅色模式";
+"appAppearanceColorDarkModeOptionButton" = "深色模式";
+"menuBarIconSettingsMenu" = "菜单栏图标";
+"menuBarCounterSettingsMenu" = "菜单栏计数";
 "showMenuBarTodayCountOptionButton" = "显示今日计数";
-"showMenuBarAllRemindersCountOptionButton" = "Show all reminders count"; // TODO: Translate
-"showMenuBarNoCountOptionButton" = "Don't show count"; // TODO: Translate
+"showMenuBarAllRemindersCountOptionButton" = "显示所有计数";
+"showMenuBarNoCountOptionButton" = "不显示计数";
 "keyboardShortcutOptionButton" = "键盘快捷键";
 "reloadRemindersDataButton" = "重新加载数据";
 "appAboutButton" = "关于";
@@ -68,6 +68,6 @@
 在系统偏好设置中授权以使用 %@。
 ";
 "openSystemPreferencesButton" = "打开系统偏好设置";
-"okButton" = "Ok";
+"okButton" = "OK";
 "preferredLanguageMenu" = "首选语言";
 "preferredLanguageSystemOptionButton" = "使用系统语言";
