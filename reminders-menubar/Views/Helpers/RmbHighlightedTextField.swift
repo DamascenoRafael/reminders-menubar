@@ -20,6 +20,7 @@ struct RmbHighlightedTextField: NSViewRepresentable {
     
     func updateNSView(_ nsView: NSTextField, context: Context) {
         nsView.attributedStringValue = getAttributedString(from: text.wrappedValue)
+        nsView.placeholderAttributedString = getPlaceholderAttributedString(from: placeholder)
     }
     
     private func getAttributedString(from text: String) -> NSMutableAttributedString {
@@ -36,6 +37,22 @@ struct RmbHighlightedTextField: NSViewRepresentable {
         attributedString.addAttribute(.foregroundColor,
                                       value: NSColor.systemBlue,
                                       range: highlightedTextRange)
+        attributedString.endEditing()
+        
+        return attributedString
+    }
+    
+    private func getPlaceholderAttributedString(from text: String) -> NSMutableAttributedString {
+        let fullRange = text.fullRange
+        
+        let attributedString = NSMutableAttributedString(string: text)
+        attributedString.beginEditing()
+        attributedString.addAttribute(.foregroundColor,
+                                       value: NSColor.systemGray.withAlphaComponent(0.5),
+                                       range: fullRange)
+        attributedString.addAttribute(.font,
+                                      value: NSFont.preferredFont(forTextStyle: .callout),
+                                      range: fullRange)
         attributedString.endEditing()
         
         return attributedString
