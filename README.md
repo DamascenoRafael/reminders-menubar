@@ -74,7 +74,7 @@ Feel free to share, open issues and contribute to this project! :heart:
 
 ## Languages
 
-🇺🇸 English • 🇧🇷 Brazilian Portuguese • 🇨🇳 Chinese (Simplified) • 🇳🇱 Dutch • 🇫🇷 French • 🇩🇪 German • 🇮🇹 Italian • 🇯🇵 Japanese • 🇰🇷 Korean • 🇵🇱 Polish • 🇲🇽 Spanish (Latin America) • 🇺🇦 Ukrainian
+🇺🇸 English • 🇧🇷 Brazilian Portuguese • 🇨🇳 Chinese (Simplified) • 🇳🇱 Dutch • 🇫🇷 French • 🇩🇪 German • 🇮🇹 Italian • 🇯🇵 Japanese • 🇰🇷 Korean • 🇵🇱 Polish • 🇲🇽 Spanish (Latin America) • 🇺🇦 Ukrainian • 🇻🇳 Vietnamese
 
 <details>
   <summary>
