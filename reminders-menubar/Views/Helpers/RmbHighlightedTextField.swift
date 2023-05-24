@@ -9,7 +9,6 @@ struct RmbHighlightedTextField: NSViewRepresentable {
     func makeNSView(context: Context) -> NSTextField {
         let textField = NSTextField(frame: .infinite)
         textField.delegate = context.coordinator
-        textField.placeholderString = placeholder
         textField.isBordered = false
         textField.backgroundColor = NSColor.clear
         textField.cell?.wraps = false
