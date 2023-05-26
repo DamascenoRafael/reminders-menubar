@@ -1,6 +1,6 @@
 <div align="center">
   <img
-    src="images/reminders-icon.png"
+    src="/images/reminders-icon.png"
     alt="Reminders MenuBar"
   >
   <h1>
@@ -15,13 +15,13 @@
   <img
     max-width="400"
     width="45%"
-    src="images/reminder-menubar-light.png"
+    src="/images/reminder-menubar-light.png"
     alt="Reminders MenuBar in light mode"
   >
   <img
     max-width="400"
     width="45%"
-    src="images/reminder-menubar-dark.png"
+    src="/images/reminder-menubar-dark.png"
     alt="Reminders MenuBar in dark mode"
   >
 </div>
