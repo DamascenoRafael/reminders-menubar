@@ -10,6 +10,7 @@ struct RmbHighlightedTextField: NSViewRepresentable {
         let textField = NSTextField(frame: .infinite)
         textField.delegate = context.coordinator
         textField.isBordered = false
+        textField.placeholderAttributedString = getPlaceholderAttributedString(from: placeholder)
         textField.backgroundColor = NSColor.clear
         textField.cell?.wraps = false
         textField.cell?.isScrollable = true
@@ -19,7 +20,6 @@ struct RmbHighlightedTextField: NSViewRepresentable {
     
     func updateNSView(_ nsView: NSTextField, context: Context) {
         nsView.attributedStringValue = getAttributedString(from: text.wrappedValue)
-        nsView.placeholderAttributedString = getPlaceholderAttributedString(from: placeholder)
     }
     
     private func getAttributedString(from text: String) -> NSMutableAttributedString {
