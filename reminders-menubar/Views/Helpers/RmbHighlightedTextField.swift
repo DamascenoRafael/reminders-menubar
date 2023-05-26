@@ -49,7 +49,8 @@ struct RmbHighlightedTextField: NSViewRepresentable {
         withScheme colorScheme: ColorSchemeContrast
     ) -> NSAttributedString {
         let attributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: colorScheme == .standard ? NSColor.systemGray.withAlphaComponent(0.5) : NSColor.systemGray,
+            .foregroundColor: colorScheme == .standard ?
+            NSColor.systemGray.withAlphaComponent(0.5) : NSColor.systemGray,
             .font: NSFont.preferredFont(forTextStyle: .callout)
         ]
         
