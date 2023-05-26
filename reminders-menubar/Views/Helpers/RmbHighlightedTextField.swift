@@ -43,7 +43,7 @@ struct RmbHighlightedTextField: NSViewRepresentable {
     
     private func getPlaceholderAttributedString(from text: String) -> NSAttributedString {
         let attributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: NSColor.systemGray.withAlphaComponent(0.5),
+            .foregroundColor: NSColor.systemGray,
             .font: NSFont.preferredFont(forTextStyle: .callout)
         ]
         
