@@ -41,20 +41,13 @@ struct RmbHighlightedTextField: NSViewRepresentable {
         return attributedString
     }
     
-    private func getPlaceholderAttributedString(from text: String) -> NSMutableAttributedString {
-        let fullRange = text.fullRange
+    private func getPlaceholderAttributedString(from text: String) -> NSAttributedString {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: NSColor.systemGray.withAlphaComponent(0.5),
+            .font: NSFont.preferredFont(forTextStyle: .callout)
+        ]
         
-        let attributedString = NSMutableAttributedString(string: text)
-        attributedString.beginEditing()
-        attributedString.addAttribute(.foregroundColor,
-                                       value: NSColor.systemGray.withAlphaComponent(0.5),
-                                       range: fullRange)
-        attributedString.addAttribute(.font,
-                                      value: NSFont.preferredFont(forTextStyle: .callout),
-                                      range: fullRange)
-        attributedString.endEditing()
-        
-        return attributedString
+        return NSAttributedString(string: text, attributes: attributes)
     }
     
     func makeCoordinator() -> Coordinator {
