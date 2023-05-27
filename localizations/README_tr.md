@@ -1,13 +1,13 @@
 <div align="center">
   <img
-    src="/images/reminders-icon.png"
+    src="../images/reminders-icon.png"
     alt="Reminders MenuBar"
   >
   <h1>
     Reminders MenuBar
   </h1>
   <p>
-     Hatırlatıcıları görüntülemek ve bunlarla etkileşim kurmak için basit macOS menü çubuğu uygulaması.
+    Hatırlatıcıları görüntülemek ve bunlarla etkileşim kurmak için basit macOS menü çubuğu uygulaması.
   </p>
 </div>
 
@@ -15,13 +15,13 @@
   <img
     max-width="400"
     width="45%"
-    src="/images/reminder-menubar-light.png"
+    src="../images/reminder-menubar-light.png"
     alt="Reminders MenuBar in light mode"
   >
   <img
     max-width="400"
     width="45%"
-    src="/images/reminder-menubar-dark.png"
+    src="../images/reminder-menubar-dark.png"
     alt="Reminders MenuBar in dark mode"
   >
 </div>
@@ -39,14 +39,14 @@
 
 <div align="center">
   <img
-    src="images/reminders-menubar-demo.gif"
+    src="../images/reminders-menubar-demo.gif"
     alt="Reminders MenuBar demo"
   >
 </div>
 
 ## Kurulum
 
-* Reminders MenuBar, macOS Big Sur 11 veya daha yeni bir sürüm gerektirir.
+*Reminders MenuBar, macOS Big Sur 11 veya daha yeni bir sürüm gerektirir.*
 
 ### Homebrew
 
@@ -59,11 +59,11 @@ brew install --cask reminders-menubar
 ### Doğrudan Yükleme
 
 Doğrudan indirmek için [releases page](https://github.com/DamascenoRafael/reminders-menubar/releases) sayfasına  gidebilirsiniz.  
-İndirdikten ve çıkardıktan sonra, sadece .app uzantılı dosyayı Applications klasörüne sürükleyin.
+İndirdikten ve çıkardıktan sonra, sadece *.app* uzantılı dosyayı *Applications* klasörüne sürükleyin.
 
 ## Katkıda Bulun
 
-Bu projeyi paylaşmaktan, sorunları açmaktan ve katkıda bulunmaktan çekinmeyin!  :heart:
+Bu projeyi paylaşmaktan, sorunları açmaktan ve katkıda bulunmaktan çekinmeyin! :heart:
 
 ## Diller
 
