@@ -63,29 +63,3 @@ brew install --cask reminders-menubar
 
 Doğrudan indirmek için [releases page](https://github.com/DamascenoRafael/reminders-menubar/releases) sayfasına  gidebilirsiniz.  
 İndirdikten ve çıkardıktan sonra, sadece *.app* uzantılı dosyayı *Applications* klasörüne sürükleyin.
-
-## Katkıda Bulun
-
-Bu projeyi paylaşmaktan, sorunları açmaktan ve katkıda bulunmaktan çekinmeyin! :heart:
-
-## Diller
-
-🇺🇸 English • 🇧🇷 Brazilian Portuguese • 🇨🇳 Chinese (Simplified) • 🇳🇱 Dutch • 🇫🇷 French • 🇩🇪 German • 🇮🇹 Italian • 🇯🇵 Japanese • 🇰🇷 Korean • 🇵🇱 Polish • 🇲🇽 Spanish (Latin America) • 🇹🇷 Turkish • 🇺🇦 Ukrainian  
-
-<details>
-  <summary>
-  Yeni dillerin nasıl ekleneceğini öğrenmek için buraya tıklayın :globe_with_meridians:
-  </summary>
-
-1. Projeyi Navigator'da seçin ve projenin reminders-menubar (ilk öğe) olduğundan emin olun.
-2. Projeler ve hedefler listesinde, projeyi reminders-menubar (hedef değil) olarak seçin.
-3. "Info" sekmesinde, "Localizations" altında "+" düğmesini seçin ve yeni konumu seçin.
-4. Kaynaklar listesinde tüm dosyaların işaretlendiğinden emin olun ve "Tamamla"yı tıklayın.
-5. Yeni konumda bulunan Localizable.strings ve InfoPlist.strings dosyalarını çevirilerle düzenleyin.
-
-</details>
-
-## Lisans
-Bu proje GNU Genel Kamu Lisansı v3.0 şartları altında lisanslanmıştır.
-This project is licensed under the terms of the GNU General Public License v3.0.  
-Detayları görmek için [LICENSE](LICENSE)
