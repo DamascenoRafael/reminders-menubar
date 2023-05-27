@@ -86,6 +86,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1021C8982A14D20600E5F6C2 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1021C8992A14D20600E5F6C2 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		12A1E2A8271EDE98004C48C4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		12A1E2A9271EDE98004C48C4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		197D6DE32726AC650011E1AB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 				uk,
 				ko,
 				tr,
+				vi,
 			);
 			mainGroup = 712C32A724BF939100AC75E2;
 			packageReferences = (
@@ -610,6 +613,7 @@
 				4672933A29E052CC00120D57 /* uk */,
 				4905903729EDCA40003A8252 /* ko */,
 				C3A1E3B02A14C843000EFABA /* tr */,
+				1021C8982A14D20600E5F6C2 /* vi */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -630,6 +634,7 @@
 				4672933B29E052CC00120D57 /* uk */,
 				4905903829EDCA40003A8252 /* ko */,
 				C3A1E3B12A14C843000EFABA /* tr */,
+				1021C8992A14D20600E5F6C2 /* vi */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
