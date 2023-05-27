@@ -1,3 +1,6 @@
+Please read the original *README* for the most up-to-date content:  
+[![en](https://img.shields.io/badge/README-English-blue.svg)](https://github.com/DamascenoRafael/reminders-menubar)
+
 <div align="center">
   <img
     src="../images/reminders-icon.png"
