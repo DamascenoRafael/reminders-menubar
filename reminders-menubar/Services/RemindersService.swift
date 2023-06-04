@@ -66,6 +66,7 @@ class RemindersService {
         
         let allReminders = fetchRemindersSynchronously(matching: predicate)
         var remindersStore: [ReminderList] = []
+        remindersStore.reserveCapacity(calendars.count)
         
         for calendar in calendars {
             let reminders = allReminders.filter({
