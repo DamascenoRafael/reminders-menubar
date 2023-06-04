@@ -9,7 +9,7 @@ struct RmbHighlightedTextField: NSViewRepresentable {
     func makeNSView(context: Context) -> NSTextField {
         let textField = NSTextField(frame: .infinite)
         textField.delegate = context.coordinator
-        textField.placeholderString = placeholder
+        textField.placeholderAttributedString = getPlaceholderAttributedString(from: placeholder)
         textField.isBordered = false
         textField.backgroundColor = NSColor.clear
         textField.cell?.wraps = false
@@ -39,6 +39,15 @@ struct RmbHighlightedTextField: NSViewRepresentable {
         attributedString.endEditing()
         
         return attributedString
+    }
+    
+    private func getPlaceholderAttributedString(from text: String) -> NSAttributedString {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: NSColor.systemGray,
+            .font: NSFont.preferredFont(forTextStyle: .callout)
+        ]
+        
+        return NSAttributedString(string: text, attributes: attributes)
     }
     
     func makeCoordinator() -> Coordinator {
