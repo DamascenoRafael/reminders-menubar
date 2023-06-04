@@ -12,7 +12,6 @@ struct ReminderItemView: View {
     @State private var isEditingTitle = false
     
     @State private var showingRemoveAlert = false
-    @State private var hasBeenRemoved = false
     
     var body: some View {
         HStack(alignment: .top) {
@@ -128,9 +127,6 @@ struct ReminderItemView: View {
         }
         .onDisappear(perform: {
             AppDelegate.shared.changeBehaviorToDismissIfNeeded()
-            if hasBeenRemoved {
-                RemindersService.shared.commitChanges()
-            }
         })
     }
     
@@ -143,7 +139,6 @@ struct ReminderItemView: View {
               message: Text(rmbLocalized(.removeReminderAlertMessage, arguments: reminder.title)),
               primaryButton: .destructive(Text(rmbLocalized(.removeReminderAlertConfirmButton)), action: {
                 RemindersService.shared.remove(reminder: reminder)
-                hasBeenRemoved = true
               }),
               secondaryButton: .cancel(Text(rmbLocalized(.removeReminderAlertCancelButton)))
         )

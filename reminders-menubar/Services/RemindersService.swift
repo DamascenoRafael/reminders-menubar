@@ -111,23 +111,10 @@ class RemindersService {
     }
     
     func remove(reminder: EKReminder) {
-        // TODO: Commit changes while removing the reminder
-        // Ideally, this function should commit changes directly.
-        // But this ends up generating unexpected behavior in ReminderItemView.
         do {
-            try eventStore.remove(reminder, commit: false)
+            try eventStore.remove(reminder, commit: true)
         } catch {
             print("Error removing reminder:", error.localizedDescription)
-        }
-        
-        NotificationCenter.default.post(name: .EKEventStoreChanged, object: nil)
-    }
-    
-    func commitChanges() {
-        do {
-            try eventStore.commit()
-        } catch {
-            print("Error commiting changes:", error.localizedDescription)
         }
     }
 }
