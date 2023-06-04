@@ -20,13 +20,21 @@ struct ContentView: View {
                     }
                     ForEach(remindersData.filteredReminderLists) { reminderList in
                         Section(header: CalendarTitle(calendar: reminderList.calendar)) {
-                            let reminders = filteredReminders(reminderList.reminders)
-                            if reminders.isEmpty {
-                                let calendarIsEmpty = reminderList.reminders.isEmpty
+                            let uncompletedIsEmpty = reminderList.uncompletedReminders.isEmpty
+                            let completedIsEmpty = reminderList.completedReminders.isEmpty
+                            let calendarIsEmpty = uncompletedIsEmpty && completedIsEmpty
+                            let isShowingCompleted = !userPreferences.showUncompletedOnly
+                            let viewIsEmpty = isShowingCompleted ? calendarIsEmpty : uncompletedIsEmpty
+                            if viewIsEmpty {
                                 NoReminderItemsView(emptyList: calendarIsEmpty ? .noReminders : .allItemsCompleted)
                             }
-                            ForEach(reminders, id: \.calendarItemIdentifier) { reminder in
+                            ForEach(reminderList.uncompletedReminders, id: \.calendarItemIdentifier) { reminder in
                                 ReminderItemView(reminder: reminder)
+                            }
+                            if isShowingCompleted {
+                                ForEach(reminderList.completedReminders, id: \.calendarItemIdentifier) { reminder in
+                                    ReminderItemView(reminder: reminder)
+                                }
                             }
                         }
                         .modifier(ListSectionSpacing())
@@ -46,17 +54,6 @@ struct ContentView: View {
             SettingsBarView()
         }
         .background(Color.rmbColor(for: .backgroundTheme, and: colorSchemeContrast).padding(-80))
-    }
-    
-    private func filteredReminders(_ reminders: [EKReminder]) -> [EKReminder] {
-        let uncompletedReminders = reminders.filter { !$0.isCompleted }.sortedRemindersByPriority
-        
-        if userPreferences.showUncompletedOnly {
-            return uncompletedReminders
-        }
-        
-        let completedReminders = reminders.filter { $0.isCompleted }.sortedRemindersByPriority
-        return uncompletedReminders + completedReminders
     }
 }
 
