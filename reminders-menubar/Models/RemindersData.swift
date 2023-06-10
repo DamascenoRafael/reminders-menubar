@@ -25,7 +25,8 @@ class RemindersData: ObservableObject {
         
         cancellationTokens.append(
             userPreferences.$menuBarCounterType.dropFirst().sink { [weak self] menuBarCounterType in
-                self?.updateMenuBarCount(menuBarCounterType)
+                let count = self?.getMenuBarCount(menuBarCounterType) ?? -1
+                self?.updateMenuBarCount(with: count)
             }
         )
         
@@ -82,30 +83,41 @@ class RemindersData: ObservableObject {
     }
     
     @objc func update() {
+        let calendars = RemindersService.shared.getCalendars()
+        
+        let calendarsSet = Set(calendars.map({ $0.calendarIdentifier }))
+        let calendarIdentifiersFilter = self.calendarIdentifiersFilter.filter({
+            // NOTE: Checking if calendar in filter still exist
+            calendarsSet.contains($0)
+        })
+        
+        let upcomingRemindersInterval = self.userPreferences.upcomingRemindersInterval
+        let upcomingReminders = RemindersService.shared.getUpcomingReminders(upcomingRemindersInterval)
+        
+        let menuBarCount = getMenuBarCount(self.userPreferences.menuBarCounterType)
+        
         // TODO: Prefer receive(on:options:) over explicit use of dispatch queues when performing work in subscribers.
         // https://developer.apple.com/documentation/combine/fail/receive(on:options:)
         DispatchQueue.main.async {
-            let calendars = RemindersService.shared.getCalendars()
             self.calendars = calendars
-            
-            self.calendarIdentifiersFilter = self.calendarIdentifiersFilter.filter({
-                RemindersService.shared.isValid(calendarIdentifier: $0)
-            })
-            
-            let upcomingRemindersInterval = self.userPreferences.upcomingRemindersInterval
-            self.upcomingReminders = RemindersService.shared.getUpcomingReminders(upcomingRemindersInterval)
-            
-            self.updateMenuBarCount(self.userPreferences.menuBarCounterType)
+            self.calendarIdentifiersFilter = calendarIdentifiersFilter
+            self.upcomingReminders = upcomingReminders
+            self.updateMenuBarCount(with: menuBarCount)
         }
     }
     
-    private func updateMenuBarCount(_ menuBarCounterType: RmbMenuBarCounterType) {
-        var count = -1
-        if menuBarCounterType == .today {
-            count = RemindersService.shared.getUpcomingReminders(.today).count
-        } else if menuBarCounterType == .allReminders {
-            count = RemindersService.shared.getAllRemindersCount()
+    private func getMenuBarCount(_ menuBarCounterType: RmbMenuBarCounterType) -> Int {
+        switch menuBarCounterType {
+        case .today:
+            return RemindersService.shared.getUpcomingReminders(.today).count
+        case .allReminders:
+            return RemindersService.shared.getAllRemindersCount()
+        case .disabled:
+            return -1
         }
+    }
+    
+    private func updateMenuBarCount(with count: Int) {
         AppDelegate.shared.updateMenuBarTodayCount(to: count)
     }
 }

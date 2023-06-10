@@ -23,10 +23,6 @@ class RemindersService {
         }
     }
     
-    func isValid(calendarIdentifier: String) -> Bool {
-        return eventStore.calendar(withIdentifier: calendarIdentifier) != nil
-    }
-    
     func getCalendar(withIdentifier calendarIdentifier: String) -> EKCalendar? {
         return eventStore.calendar(withIdentifier: calendarIdentifier)
     }
