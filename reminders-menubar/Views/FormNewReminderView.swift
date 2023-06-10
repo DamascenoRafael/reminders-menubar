@@ -72,8 +72,8 @@ struct FormNewReminderView: View {
                 isShowingDueDateOptions = !newValue.isEmpty
             }
 
-            // NOTE: When the first character is typed we re-instantiate RmbReminder to ensure the date is as expected.
-            if oldValue.isEmpty && newValue.count == 1 {
+            // NOTE: When user starts to enter a title we re-instantiate RmbReminder to ensure the date is as expected.
+            if oldValue.isEmpty {
                 rmbReminder = newRmbReminder(withTitle: newValue)
             }
         }
