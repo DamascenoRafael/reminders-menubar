@@ -6,8 +6,12 @@ class DateParser {
     private let detector: NSDataDetector?
     
     struct TextDateResult {
-        let range: NSRange
+        private let range: NSRange
         let string: String
+        
+        var highlightedText: RmbHighlightedTextField.HighlightedText {
+            RmbHighlightedTextField.HighlightedText(range: range, color: .systemBlue)
+        }
         
         init() {
             self.range = NSRange()

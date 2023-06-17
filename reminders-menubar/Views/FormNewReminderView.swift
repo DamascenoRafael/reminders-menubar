@@ -10,9 +10,11 @@ struct FormNewReminderView: View {
     @State var isShowingDueDateOptions = false
     
     var body: some View {
+        let calendarForSaving = rmbReminder.textCalendarResult.calendar ?? remindersData.calendarForSaving
+        
         Form {
             HStack(alignment: .top) {
-                newReminderTextFieldView()
+                newReminderTextFieldView(onSubmit: { createNewReminder(in: calendarForSaving) })
                 .padding(.vertical, 8)
                 .padding(.horizontal, 8)
                 .padding(.leading, 22)
@@ -29,9 +31,15 @@ struct FormNewReminderView: View {
                 
                 Menu {
                     ForEach(remindersData.calendars, id: \.calendarIdentifier) { calendar in
-                        Button(action: { remindersData.calendarForSaving = calendar }) {
-                            let isSelected =
-                                remindersData.calendarForSaving?.calendarIdentifier == calendar.calendarIdentifier
+                        Button(action: {
+                            remindersData.calendarForSaving = calendar
+                            let rmbCalendarIdentifier = rmbReminder.textCalendarResult.calendar?.calendarIdentifier
+                            if calendar.calendarIdentifier != rmbCalendarIdentifier {
+                                // NOTE: Clear textCalendarResult because user overwrote the calendar for saving.
+                                rmbReminder.textCalendarResult = CalendarParser.TextCalendarResult()
+                            }
+                        }) {
+                            let isSelected = calendarForSaving?.calendarIdentifier == calendar.calendarIdentifier
                             SelectableView(title: calendar.title, isSelected: isSelected, color: Color(calendar.color))
                         }
                     }
@@ -60,7 +68,7 @@ struct FormNewReminderView: View {
                 .frame(width: 14, height: 16)
                 .padding(8)
                 .padding(.trailing, 2)
-                .background(Color(remindersData.calendarForSaving?.color ?? .white))
+                .background(Color(calendarForSaving?.color ?? .white))
                 .cornerRadius(8)
                 .modifier(ContrastBorderOverlay())
                 .help(rmbLocalized(.newReminderCalendarSelectionToSaveHelp))
@@ -83,12 +91,12 @@ struct FormNewReminderView: View {
     }
     
     @ViewBuilder
-    func newReminderTextFieldView() -> some View {
+    func newReminderTextFieldView(onSubmit: @escaping () -> Void) -> some View {
         VStack(alignment: .leading) {
             RmbHighlightedTextField(placeholder: rmbLocalized(.newReminderTextFielPlaceholder),
                                     text: $rmbReminder.title,
-                                    highlightedTextRange: rmbReminder.textDateResult.range,
-                                    onSubmit: createNewReminder)
+                                    highlightedTexts: rmbReminder.highlightedTexts,
+                                    onSubmit: onSubmit)
             .modifier(FocusOnReceive(userPreferences.$remindersMenuBarOpeningEvent))
 
             if isShowingDueDateOptions {
@@ -99,25 +107,34 @@ struct FormNewReminderView: View {
         }
     }
     
-    func newRmbReminder(withTitle title: String = "") -> RmbReminder {
+    private func newRmbReminder(withTitle title: String = "") -> RmbReminder {
         var rmbReminder = RmbReminder(hasDueDate: userPreferences.autoSuggestToday)
         rmbReminder.title = title
+        rmbReminder.calendarParser = CalendarParser(calendars: remindersData.calendars)
         return rmbReminder
     }
     
-    func createNewReminder() {
-        guard !rmbReminder.title.trimmingCharacters(in: .whitespaces).isEmpty,
-              let calendarForSaving = remindersData.calendarForSaving else {
+    private func createNewReminder(in calendarForSaving: EKCalendar?) {
+        let newReminderTitle = finalNewReminderTitle()
+        guard !newReminderTitle.isEmpty,
+              let calendarForSaving else {
             return
         }
         
         rmbReminder.prepareToSave()
-        if userPreferences.removeParsedDateFromTitle {
-            rmbReminder.title = rmbReminder.title.replacingOccurrences(of: rmbReminder.textDateResult.string, with: "")
-        }
+        rmbReminder.title = newReminderTitle
         
         RemindersService.shared.createNew(with: rmbReminder, in: calendarForSaving)
         rmbReminder = newRmbReminder()
+    }
+    
+    private func finalNewReminderTitle() -> String {
+        var title = rmbReminder.title
+        if userPreferences.removeParsedDateFromTitle {
+            title = title.replacingOccurrences(of: rmbReminder.textDateResult.string, with: "")
+        }
+        title = title.replacingOccurrences(of: rmbReminder.textCalendarResult.string, with: "")
+        return title.trimmingCharacters(in: .whitespaces)
     }
 }
 

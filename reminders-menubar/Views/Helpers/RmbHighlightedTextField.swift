@@ -1,9 +1,14 @@
 import SwiftUI
 
 struct RmbHighlightedTextField: NSViewRepresentable {
+    struct HighlightedText {
+        let range: NSRange
+        let color: NSColor
+    }
+    
     let placeholder: String
     var text: Binding<String>
-    var highlightedTextRange: NSRange
+    var highlightedTexts: [HighlightedText]
     var onSubmit: () -> Void
     
     func makeNSView(context: Context) -> NSTextField {
@@ -33,9 +38,11 @@ struct RmbHighlightedTextField: NSViewRepresentable {
         attributedString.addAttribute(.foregroundColor,
                                       value: NSColor.labelColor,
                                       range: fullRange)
-        attributedString.addAttribute(.foregroundColor,
-                                      value: NSColor.systemBlue,
-                                      range: highlightedTextRange)
+        for highlightedText in highlightedTexts {
+            attributedString.addAttribute(.foregroundColor,
+                                          value: highlightedText.color,
+                                          range: highlightedText.range)
+        }
         attributedString.endEditing()
         
         return attributedString
