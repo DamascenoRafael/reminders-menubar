@@ -11,6 +11,8 @@ struct FormNewReminderView: View {
     
     var body: some View {
         let calendarForSaving = rmbReminder.textCalendarResult.calendar ?? remindersData.calendarForSaving
+        // swiftlint:disable:next redundant_discardable_let
+        let _ = CalendarParser.updateShared(with: remindersData.calendars)
         
         Form {
             HStack(alignment: .top) {
@@ -96,6 +98,8 @@ struct FormNewReminderView: View {
             RmbHighlightedTextField(placeholder: rmbLocalized(.newReminderTextFielPlaceholder),
                                     text: $rmbReminder.title,
                                     highlightedTexts: rmbReminder.highlightedTexts,
+                                    isInitialCharValidToAutoComplete: CalendarParser.isInitialCharValid(_:),
+                                    autoCompleteSuggestions: CalendarParser.autoCompleteSuggestions(_:),
                                     onSubmit: onSubmit)
             .modifier(FocusOnReceive(userPreferences.$remindersMenuBarOpeningEvent))
 
@@ -110,7 +114,6 @@ struct FormNewReminderView: View {
     private func newRmbReminder(withTitle title: String = "") -> RmbReminder {
         var rmbReminder = RmbReminder(hasDueDate: userPreferences.autoSuggestToday)
         rmbReminder.title = title
-        rmbReminder.calendarParser = CalendarParser(calendars: remindersData.calendars)
         return rmbReminder
     }
     

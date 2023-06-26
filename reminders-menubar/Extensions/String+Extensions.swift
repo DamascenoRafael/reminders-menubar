@@ -1,6 +1,10 @@
 import Foundation
 
 extension String {
+    subscript(safe offset: Int) -> String? {
+        offset >= 0 && offset < count ? String(self[index(startIndex, offsetBy: offset)]) : nil
+    }
+    
     func substring(in range: NSRange) -> String {
         let start = self.index(self.startIndex, offsetBy: range.lowerBound)
         let end = self.index(self.startIndex, offsetBy: range.upperBound)

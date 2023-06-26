@@ -9,6 +9,8 @@ struct RmbHighlightedTextField: NSViewRepresentable {
     let placeholder: String
     var text: Binding<String>
     var highlightedTexts: [HighlightedText]
+    var isInitialCharValidToAutoComplete: (_ initialChar: String?) -> Bool
+    var autoCompleteSuggestions: (_ typingWord: String) -> [String]
     var onSubmit: () -> Void
     
     func makeNSView(context: Context) -> NSTextField {
@@ -61,14 +63,23 @@ struct RmbHighlightedTextField: NSViewRepresentable {
         return Coordinator(self)
     }
     
-    class Coordinator: NSObject, NSTextFieldDelegate {
+    class Coordinator: NSObject, NSTextFieldDelegate, NSControlTextEditingDelegate {
         var parent: RmbHighlightedTextField
+        
+        var isAutoCompleting = false
+        var isDeletePressed = false
         
         init(_ parent: RmbHighlightedTextField) {
             self.parent = parent
         }
         
         func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
+            if commandSelector == #selector(NSResponder.deleteBackward(_:))
+                || commandSelector == #selector(NSResponder.deleteForward(_:)) {
+                isDeletePressed = true
+                return false
+            }
+            
             guard commandSelector == #selector(NSResponder.insertNewline(_:)),
                   !textView.string.isEmpty else {
                     return false
@@ -80,8 +91,47 @@ struct RmbHighlightedTextField: NSViewRepresentable {
         
         func controlTextDidChange(_ obj: Notification) {
             if let textField = obj.object as? NSTextField {
+                if parent.text.wrappedValue == textField.stringValue {
+                    // NOTE: When auto-completing the text may not have differences.
+                    // We change the parent text to trigger the updateNSView.
+                    parent.text.wrappedValue += " "
+                }
+                
                 parent.text.wrappedValue = textField.stringValue
+                
+                if isDeletePressed {
+                    isDeletePressed = false
+                    return
+                }
+                
+                if !isAutoCompleting {
+                    isAutoCompleting = true
+                    textField.currentEditor()?.complete(nil)
+                    isAutoCompleting = false
+                }
             }
+        }
+        
+        func control(_ control: NSControl,
+                     textView: NSTextView,
+                     completions words: [String],
+                     forPartialWordRange charRange: NSRange,
+                     indexOfSelectedItem index: UnsafeMutablePointer<Int>) -> [String] {
+            let typingWord = textView.string.substring(in: charRange)
+            guard !typingWord.isEmpty,
+                  isValidToAutocomplete(textView.string, charRange: charRange) else {
+                return []
+            }
+            
+            return self.parent.autoCompleteSuggestions(typingWord)
+        }
+        
+        private func isValidToAutocomplete(_ string: String, charRange: NSRange) -> Bool {
+            let initialChar = string[safe: charRange.lowerBound - 1]
+            let beforeInitialChar = string[safe: charRange.lowerBound - 2]
+            
+            return parent.isInitialCharValidToAutoComplete(initialChar)
+                && (beforeInitialChar == " " || beforeInitialChar == nil)
         }
     }
 }

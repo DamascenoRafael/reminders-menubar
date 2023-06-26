@@ -4,8 +4,6 @@ struct RmbReminder {
     private var originalReminder: EKReminder?
     private var isPreparingToSave = false
     
-    var calendarParser: CalendarParser?
-    
     var hasDateChanges: Bool {
         guard let originalReminder else {
             return true
@@ -108,11 +106,7 @@ struct RmbReminder {
     }
     
     private mutating func updateTextCalendarResult(with newTitle: String) {
-        guard let calendarParser else {
-            return
-        }
-        
-        guard let calendarResult = calendarParser.getCalendar(from: newTitle) else {
+        guard let calendarResult = CalendarParser.getCalendar(from: newTitle) else {
             textCalendarResult = CalendarParser.TextCalendarResult()
             return
         }
