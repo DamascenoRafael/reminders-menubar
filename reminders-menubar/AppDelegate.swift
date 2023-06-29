@@ -92,20 +92,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusBarItem.button?.title = buttonTitle
     }
     
-    func changeBehaviorToDismissIfNeeded() {
+    private func changeBehaviorToDismissIfNeeded() {
         popover.behavior = .transient
-    }
-    
-    private func changeBehaviorToKeepVisible() {
-        popover.behavior = .applicationDefined
-    }
-    
-    func changeBehaviorBasedOnModal(isShowing: Bool) {
-        if isShowing {
-            changeBehaviorToKeepVisible()
-        } else {
-            changeBehaviorToDismissIfNeeded()
-        }
     }
 
     private func requestAuthorization() {
@@ -143,8 +131,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
         
-        guard popover.behavior != .applicationDefined,
-              let button = statusBarItem.button else {
+        guard let button = statusBarItem.button else {
             return
         }
         

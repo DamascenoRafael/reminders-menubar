@@ -87,9 +87,6 @@ struct ReminderItemView: View {
                 .alert(isPresented: $showingRemoveAlert) {
                     removeReminderAlert()
                 }
-                .onChange(of: showingRemoveAlert) { isShowing in
-                    AppDelegate.shared.changeBehaviorBasedOnModal(isShowing: isShowing)
-                }
                 
                 if let dateDescription = reminder.relativeDateDescription {
                     HStack {
@@ -125,9 +122,6 @@ struct ReminderItemView: View {
         .onHover { isHovered in
             reminderItemIsHovered = isHovered
         }
-        .onDisappear(perform: {
-            AppDelegate.shared.changeBehaviorToDismissIfNeeded()
-        })
     }
     
     func shouldShowEllipsisButton() -> Bool {
