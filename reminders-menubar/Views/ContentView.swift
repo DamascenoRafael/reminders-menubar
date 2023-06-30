@@ -41,6 +41,7 @@ struct ContentView: View {
                     }
                 }
                 .listStyle(.plain)
+                .animation(.default, value: remindersData.filteredReminderLists)
             } else {
                 VStack(spacing: 4) {
                     Text(rmbLocalized(.emptyListNoRemindersFilterTitle))
