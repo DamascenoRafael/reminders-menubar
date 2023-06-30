@@ -26,6 +26,8 @@ class CalendarParser {
     private var calendarsByTitle: [String: EKCalendar] = [:]
     private var simplifiedCalendarTitles: [String] = []
     
+    static private let validInitialChars: Set<String?> = ["/", "@"]
+    
     static private(set) var shared = CalendarParser()
     
     private init() {
@@ -44,8 +46,7 @@ class CalendarParser {
     }
     
     static func isInitialCharValid(_ char: String?) -> Bool {
-        let validChars: [String?] = ["/", "@"]
-        return validChars.contains(char)
+        return validInitialChars.contains(char)
     }
     
     static func getCalendar(from textString: String) -> TextCalendarResult? {
