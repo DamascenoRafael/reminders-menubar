@@ -10,13 +10,13 @@ struct FormNewReminderView: View {
     @State var isShowingDueDateOptions = false
     
     var body: some View {
-        let calendarForSaving = rmbReminder.textCalendarResult.calendar ?? remindersData.calendarForSaving
+        let calendarForSaving = getCalendarForSaving()
         // swiftlint:disable:next redundant_discardable_let
         let _ = CalendarParser.updateShared(with: remindersData.calendars)
         
         Form {
             HStack(alignment: .top) {
-                newReminderTextFieldView(onSubmit: { createNewReminder(in: calendarForSaving) })
+                newReminderTextFieldView()
                 .padding(.vertical, 8)
                 .padding(.horizontal, 8)
                 .padding(.leading, 22)
@@ -93,14 +93,14 @@ struct FormNewReminderView: View {
     }
     
     @ViewBuilder
-    func newReminderTextFieldView(onSubmit: @escaping () -> Void) -> some View {
+    func newReminderTextFieldView() -> some View {
         VStack(alignment: .leading) {
             RmbHighlightedTextField(placeholder: rmbLocalized(.newReminderTextFielPlaceholder),
                                     text: $rmbReminder.title,
                                     highlightedTexts: rmbReminder.highlightedTexts,
                                     isInitialCharValidToAutoComplete: CalendarParser.isInitialCharValid(_:),
                                     autoCompleteSuggestions: CalendarParser.autoCompleteSuggestions(_:),
-                                    onSubmit: onSubmit)
+                                    onSubmit: createNewReminder)
             .modifier(FocusOnReceive(userPreferences.$remindersMenuBarOpeningEvent))
 
             if isShowingDueDateOptions {
@@ -117,10 +117,14 @@ struct FormNewReminderView: View {
         return rmbReminder
     }
     
-    private func createNewReminder(in calendarForSaving: EKCalendar?) {
+    private func getCalendarForSaving() -> EKCalendar? {
+        return rmbReminder.textCalendarResult.calendar ?? remindersData.calendarForSaving
+    }
+    
+    private func createNewReminder() {
         let newReminderTitle = finalNewReminderTitle()
         guard !newReminderTitle.isEmpty,
-              let calendarForSaving else {
+              let calendarForSaving = getCalendarForSaving() else {
             return
         }
         
