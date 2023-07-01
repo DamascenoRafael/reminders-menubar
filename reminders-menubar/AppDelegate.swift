@@ -18,11 +18,12 @@ struct RemindersMenuBar: App {
 }
 
 class AppDelegate: NSObject, NSApplicationDelegate {
-    
     static private(set) var shared: AppDelegate!
     
     private var didCloseCancellationToken: AnyCancellable?
     private var didCloseEventDate = Date.distantPast
+    
+    private var sharedAuthorizationErrorMessage: String?
 
     let popover = NSPopover()
     lazy var statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -59,6 +60,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSApplication.shared.appearance = colorScheme.nsAppearance
     }
     
+    func updateMenuBarTodayCount(to todayCount: Int) {
+        let buttonTitle = todayCount > 0 ? String(todayCount) : ""
+        statusBarItem.button?.title = buttonTitle
+    }
+    
     func loadMenuBarIcon() {
         let menuBarIcon = UserPreferences.shared.reminderMenuBarIcon
         statusBarItem.button?.image = menuBarIcon.image
@@ -87,42 +93,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
     }
     
-    func updateMenuBarTodayCount(to todayCount: Int) {
-        let buttonTitle = todayCount > 0 ? String(todayCount) : ""
-        statusBarItem.button?.title = buttonTitle
-    }
-    
     private func changeBehaviorToDismissIfNeeded() {
         popover.behavior = .transient
-    }
-
-    private func requestAuthorization() {
-        let authorization = RemindersService.shared.authorizationStatus()
-        if authorization == .restricted || authorization == .denied {
-            presentNoAuthorizationAlert()
-        } else {
-            RemindersService.shared.requestAccess()
-        }
-    }
-    
-    private func presentNoAuthorizationAlert() {
-        let alert = NSAlert()
-        alert.messageText = rmbLocalized(.appNoRemindersAccessAlertMessage, arguments: AppConstants.appName)
-        alert.informativeText = rmbLocalized(.appNoRemindersAccessAlertDescription,
-                                             arguments: AppConstants.appName,
-                                             AppConstants.appName)
-        alert.addButton(withTitle: rmbLocalized(.okButton))
-        alert.addButton(withTitle: rmbLocalized(.openSystemPreferencesButton))
-        alert.addButton(withTitle: rmbLocalized(.appQuitButton)).hasDestructiveAction = true
-        
-        NSApp.activate(ignoringOtherApps: true)
-        let modalResponse = alert.runModal()
-        if modalResponse == .alertSecondButtonReturn,
-           let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Reminders") {
-            NSWorkspace.shared.open(url)
-        } else if modalResponse == .alertThirdButtonReturn {
-            NSApp.terminate(self)
-        }
     }
 
     @objc private func togglePopover() {
@@ -146,5 +118,63 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
             UserPreferences.shared.remindersMenuBarOpeningEvent.toggle()
         }
+    }
+}
+
+// - MARK: Authorization functions
+
+extension AppDelegate: NSAlertDelegate {
+    private func requestAuthorization() {
+        RemindersService.shared.requestAccess { [weak self] granted, errorMessage in
+            if granted {
+                return
+            }
+                
+            print("Access to reminders not granted:", errorMessage ?? "no error description")
+            DispatchQueue.main.async {
+                self?.sharedAuthorizationErrorMessage = errorMessage
+                self?.presentNoAuthorizationAlert()
+            }
+        }
+    }
+    
+    private func presentNoAuthorizationAlert() {
+        let alert = NSAlert()
+        alert.messageText = rmbLocalized(.appNoRemindersAccessAlertMessage, arguments: AppConstants.appName)
+        alert.informativeText = rmbLocalized(.appNoRemindersAccessAlertDescription,
+                                             arguments: AppConstants.appName,
+                                             AppConstants.appName)
+        if sharedAuthorizationErrorMessage != nil {
+            alert.delegate = self
+            alert.showsHelp = true
+        }
+        
+        alert.addButton(withTitle: rmbLocalized(.okButton))
+        alert.addButton(withTitle: rmbLocalized(.openSystemPreferencesButton))
+        alert.addButton(withTitle: rmbLocalized(.appQuitButton)).hasDestructiveAction = true
+        
+        NSApp.activate(ignoringOtherApps: true)
+        let modalResponse = alert.runModal()
+        switch modalResponse {
+        case .alertSecondButtonReturn:
+            if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Reminders") {
+                NSWorkspace.shared.open(url)
+            }
+        case .alertThirdButtonReturn:
+            NSApp.terminate(self)
+        default:
+            sharedAuthorizationErrorMessage = nil
+        }
+    }
+    
+    internal func alertShowHelp(_ alert: NSAlert) -> Bool {
+        let helpAlert = NSAlert()
+        let errorDescription = sharedAuthorizationErrorMessage ?? "no error description"
+        helpAlert.icon = NSImage(systemSymbolName: "calendar.badge.exclamationmark", accessibilityDescription: nil)
+        helpAlert.messageText = rmbLocalized(.appNoRemindersAccessAlertMessage, arguments: AppConstants.appName)
+        helpAlert.informativeText = "Authorization error: \(errorDescription)"
+        helpAlert.runModal()
+        
+        return true
     }
 }

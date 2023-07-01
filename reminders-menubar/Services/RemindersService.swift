@@ -13,13 +13,9 @@ class RemindersService {
         return EKEventStore.authorizationStatus(for: .reminder)
     }
     
-    func requestAccess() {
+    func requestAccess(completion: @escaping (Bool, String?) -> Void) {
         eventStore.requestAccess(to: .reminder) { granted, error in
-            guard granted else {
-                let errorDescription = error?.localizedDescription ?? "no error description"
-                print("Access to store not granted:", errorDescription)
-                return
-            }
+            completion(granted, error?.localizedDescription)
         }
     }
     
