@@ -112,7 +112,7 @@ struct FormNewReminderView: View {
     }
     
     private func newRmbReminder(withTitle title: String = "") -> RmbReminder {
-        var rmbReminder = RmbReminder(hasDueDate: userPreferences.autoSuggestToday)
+        var rmbReminder = RmbReminder(hasDueDate: userPreferences.autoSuggestToday, isParsingEnabled: true)
         rmbReminder.title = title
         return rmbReminder
     }

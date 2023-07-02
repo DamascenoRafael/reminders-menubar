@@ -3,6 +3,7 @@ import EventKit
 struct RmbReminder {
     private var originalReminder: EKReminder?
     private var isPreparingToSave = false
+    private var isParsingEnabled = false
     
     var hasDateChanges: Bool {
         guard let originalReminder else {
@@ -18,7 +19,7 @@ struct RmbReminder {
     
     var title: String {
         willSet {
-            if isPreparingToSave {
+            guard !isPreparingToSave && isParsingEnabled else {
                 return
             }
             updateTextDateResult(with: newValue)
@@ -66,9 +67,10 @@ struct RmbReminder {
         priority = .none
     }
     
-    init(hasDueDate: Bool) {
+    init(hasDueDate: Bool, isParsingEnabled: Bool) {
         self.init()
         self.hasDueDate = hasDueDate
+        self.isParsingEnabled = isParsingEnabled
     }
     
     init(reminder: EKReminder) {
