@@ -9,8 +9,8 @@
 "editReminderTitleTextFieldPlaceholder" = "Titolo";
 "editReminderNotesTextFieldPlaceholder" = "Note";
 "editReminderRemindMeSection" = "ricordamelo";
-"editReminderRemindDateOption" = "Un giorno";
-"editReminderRemindTimeOption" = "A un orario";
+"editReminderRemindDateOption" = "il giorno";
+"editReminderRemindTimeOption" = "all'ora";
 "editReminderPrioritySection" = "priorità";
 "changeReminderPriorityMenuOption" = "Priorità";
 "editReminderPriorityLowOption" = "Bassa";
