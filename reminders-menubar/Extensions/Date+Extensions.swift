@@ -6,17 +6,11 @@ extension Date {
     }
     
     var isToday: Bool {
-        let todayDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
-        let inputDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: self)
-        return inputDateComponents.day == todayDateComponents.day
-            && inputDateComponents.month == todayDateComponents.month
-            && inputDateComponents.year == todayDateComponents.year
+        return Calendar.current.isDateInToday(self)
     }
                                                                    
     var isThisYear: Bool {
-        let todayDateComponents = Calendar.current.dateComponents([.year], from: Date())
-        let inputDateComponents = Calendar.current.dateComponents([.year], from: self)
-        return inputDateComponents.year! == todayDateComponents.year!
+        return Calendar.current.isDate(self, equalTo: Date(), toGranularity: .year)
     }
     
     var elapsedTimeInterval: TimeInterval {
@@ -30,7 +24,7 @@ extension Date {
         
         var hourComponent = Calendar.current.dateComponents([.hour], from: today)
         if allowDayChange || !isNextHourChangingDay {
-        hourComponent.hour! += 1
+            hourComponent.hour! += 1
         }
         
         let dateWithoutTime = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: date)!
@@ -38,17 +32,11 @@ extension Date {
     }
     
     static func nextYear(of date: Date = Date()) -> Date {
-        var dateComponents = DateComponents()
-        dateComponents.year = 1
-        let newDate = Calendar.current.date(byAdding: dateComponents, to: date)!
-        return newDate
+        return Calendar.current.date(byAdding: .year, value: 1, to: date) ?? date
     }
     
     static func nextDay(of date: Date = Date()) -> Date {
-        var dateComponents = DateComponents()
-        dateComponents.day = 1
-        let newDate = Calendar.current.date(byAdding: dateComponents, to: date)!
-        return newDate
+        return Calendar.current.date(byAdding: .day, value: 1, to: date) ?? date
     }
     
     func relativeDateDescription(withTime showTimeDescription: Bool) -> String {
