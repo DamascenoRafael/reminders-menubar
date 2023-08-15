@@ -23,12 +23,17 @@ extension Date {
         return Date().timeIntervalSince(self)
     }
     
-    static func nextHour(of date: Date = Date()) -> Date {
-        let now = Date()
-        let dateComponentsWithoutTime = Calendar.current.dateComponents([.year, .month, .day], from: date)
-        let dateWithoutTime = Calendar.current.date(from: dateComponentsWithoutTime)!
-        var hourComponent = Calendar.current.dateComponents([.hour], from: now)
+    static func nextExactHour(of date: Date = Date(), allowDayChange: Bool = false) -> Date {
+        let today = Date()
+        let todayNextHour = Calendar.current.date(byAdding: .hour, value: 1, to: today)!
+        let isNextHourChangingDay = !todayNextHour.isToday
+        
+        var hourComponent = Calendar.current.dateComponents([.hour], from: today)
+        if allowDayChange || !isNextHourChangingDay {
         hourComponent.hour! += 1
+        }
+        
+        let dateWithoutTime = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: date)!
         return Calendar.current.date(byAdding: hourComponent, to: dateWithoutTime)!
     }
     
