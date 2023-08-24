@@ -47,7 +47,7 @@ struct RmbReminder {
     var hasTime: Bool {
         didSet {
             // NOTE: When enabling the option to add a time the suggestion will be the next hour of the current moment
-            date = .nextHour(of: date)
+            date = .nextExactHour(of: date)
         }
     }
     var priority: EKReminderPriority
@@ -61,23 +61,23 @@ struct RmbReminder {
 
     init() {
         title = ""
-        date = .nextHour()
+        date = .nextExactHour()
         hasDueDate = false
         hasTime = false
         priority = .none
     }
     
-    init(hasDueDate: Bool, isParsingEnabled: Bool) {
+    init(isAutoSuggestingTodayForCreation: Bool) {
         self.init()
-        self.hasDueDate = hasDueDate
-        self.isParsingEnabled = isParsingEnabled
+        self.hasDueDate = isAutoSuggestingTodayForCreation
+        self.isParsingEnabled = true
     }
     
     init(reminder: EKReminder) {
         originalReminder = reminder
         title = reminder.title
         notes = reminder.notes
-        date = reminder.dueDateComponents?.date ?? .nextHour()
+        date = reminder.dueDateComponents?.date ?? .nextExactHour()
         hasDueDate = reminder.hasDueDate
         hasTime = reminder.hasTime
         priority = reminder.ekPriority
@@ -96,7 +96,7 @@ struct RmbReminder {
         guard let dateResult = DateParser.shared.getDate(from: newTitle) else {
             hasDueDate = false
             hasTime = false
-            date = .nextHour()
+            date = .nextExactHour()
             textDateResult = DateParser.TextDateResult()
             return
         }
