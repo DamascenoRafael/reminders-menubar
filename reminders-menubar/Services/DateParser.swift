@@ -37,19 +37,12 @@ class DateParser {
     }
     
     private func adjustDateAccordingToNow(_ dateResult: DateParserResult) -> DateParserResult? {
-        // NOTE: Date will be adjusted only if it is in the past.
-        let dateIsPastAndHasTime = dateResult.hasTime && dateResult.date.isPast
-        let dateIsPastAndHasNoTime = !dateResult.hasTime && dateResult.date.isPast && !dateResult.date.isToday
-        guard dateIsPastAndHasTime || dateIsPastAndHasNoTime else {
+        // NOTE: Date will be adjusted only if it is in the past further than the day before yesterday.
+        guard dateResult.date.isPast
+                && !dateResult.date.isToday
+                && !dateResult.date.isYesterday
+                && !dateResult.date.isDayBeforeYesterday else {
             return dateResult
-        }
-        
-        // NOTE: If the time is set for today, but it's past time today, then we assume it's next day.
-        // "Do something at 9am" - when it's already 2pm.
-        if dateResult.hasTime && dateResult.date.isToday {
-            return DateParserResult(date: .nextDay(of: dateResult.date),
-                                    hasTime: dateResult.hasTime,
-                                    textDateResult: dateResult.textDateResult)
         }
         
         // NOTE: If the date is set to a day in the current year, but it's past that day, then we assume it's next year.
@@ -60,8 +53,8 @@ class DateParser {
                                     textDateResult: dateResult.textDateResult)
         }
         
-        // NOTE: If the date is not adjusted we prefer not to suggest a date that is in the past.
-        return nil
+        // NOTE: If the date is not adjusted we will return it unchanged.
+        return dateResult
     }
     
     func getDate(from textString: String) -> DateParserResult? {
