@@ -24,7 +24,7 @@ struct SelectableView: View {
         if isSelected {
             Image(systemName: "checkmark")
         } else if withPadding {
-            Image(nsImage: NSImage(named: "empty")!)
+            Image(.empty)
         }
         
         let coloredDot = color != nil ? Text("●  ").foregroundColor(color) : Text("")
