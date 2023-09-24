@@ -8,6 +8,15 @@ extension Date {
     var isToday: Bool {
         return Calendar.current.isDateInToday(self)
     }
+    
+    var isYesterday: Bool {
+        return Calendar.current.isDateInYesterday(self)
+    }
+    
+    var isDayBeforeYesterday: Bool {
+        let dayBeforeYesterday = Calendar.current.date(byAdding: .day, value: -2, to: self) ?? self
+        return self.isSameDay(as: dayBeforeYesterday)
+    }
                                                                    
     var isThisYear: Bool {
         return Calendar.current.isDate(self, equalTo: Date(), toGranularity: .year)
@@ -35,8 +44,8 @@ extension Date {
         return Calendar.current.date(byAdding: .year, value: 1, to: date) ?? date
     }
     
-    static func nextDay(of date: Date = Date()) -> Date {
-        return Calendar.current.date(byAdding: .day, value: 1, to: date) ?? date
+    func isSameDay(as otherDate: Date) -> Bool {
+        return Calendar.current.isDate(self, inSameDayAs: otherDate)
     }
     
     func relativeDateDescription(withTime showTimeDescription: Bool) -> String {

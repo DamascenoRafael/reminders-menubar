@@ -4,6 +4,7 @@ struct RmbReminder {
     private var originalReminder: EKReminder?
     private var isPreparingToSave = false
     private var isParsingEnabled = false
+    private var isAutoSuggestingTodayForCreation = false
     
     var hasDateChanges: Bool {
         guard let originalReminder else {
@@ -33,6 +34,7 @@ struct RmbReminder {
             // NOTE: When the date is changed, we assume that it was done by the user.
             // If it was changed by DateParser it is necessary to add textDateResult after changing the date.
             textDateResult = DateParser.TextDateResult()
+            isAutoSuggestingTodayForCreation = false
         }
     }
     var hasDueDate: Bool {
@@ -70,6 +72,7 @@ struct RmbReminder {
     init(isAutoSuggestingTodayForCreation: Bool) {
         self.init()
         self.hasDueDate = isAutoSuggestingTodayForCreation
+        self.isAutoSuggestingTodayForCreation = isAutoSuggestingTodayForCreation
         self.isParsingEnabled = true
     }
     
@@ -88,6 +91,11 @@ struct RmbReminder {
     }
     
     private mutating func updateTextDateResult(with newTitle: String) {
+        if isAutoSuggestingTodayForCreation {
+            updateTextDateResultTimeOnly(with: newTitle, isAutoSuggestingToday: true)
+            return
+        }
+        
         // NOTE: If a date was defined by the user then the DateParser should not be applied.
         if hasDueDate && textDateResult.string.isEmpty {
             return
@@ -105,6 +113,25 @@ struct RmbReminder {
         hasTime = dateResult.hasTime
         date = dateResult.date
         textDateResult = dateResult.textDateResult
+    }
+    
+    private mutating func updateTextDateResultTimeOnly(with newTitle: String, isAutoSuggestingToday: Bool) {
+        // NOTE: If a time was defined by the user then the DateParser should not be applied.
+        if hasTime && textDateResult.string.isEmpty {
+            return
+        }
+        
+        guard let dateResult = DateParser.shared.getTimeOnly(from: newTitle, on: date) else {
+            hasTime = false
+            textDateResult = DateParser.TextDateResult()
+            isAutoSuggestingTodayForCreation = isAutoSuggestingToday
+            return
+        }
+        
+        hasTime = true
+        date = dateResult.date
+        textDateResult = dateResult.textDateResult
+        isAutoSuggestingTodayForCreation = isAutoSuggestingToday
     }
     
     private mutating func updateTextCalendarResult(with newTitle: String) {
