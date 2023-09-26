@@ -33,7 +33,7 @@
 		714E6F6125CCF66000BA0099 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714E6F6025CCF66000BA0099 /* Constants.swift */; };
 		714E6F6225CCF66000BA0099 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714E6F6025CCF66000BA0099 /* Constants.swift */; };
 		7151CC98265E0388002D7F1D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7151CC9A265E0388002D7F1D /* Localizable.strings */; };
-		7156443A26030591005E81FD /* ArrayEKReminder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156443926030591005E81FD /* ArrayEKReminder+Extension.swift */; };
+		7156443A26030591005E81FD /* ArrayReminderItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156443926030591005E81FD /* ArrayReminderItem+Extension.swift */; };
 		7156444226031CA9005E81FD /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7156444126031CA9005E81FD /* Array+Extension.swift */; };
 		71564448260324FA005E81FD /* PrioritizedReminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71564447260324FA005E81FD /* PrioritizedReminders.swift */; };
 		715B4DD228D41071008C6683 /* SettingsBarGearMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B4DD128D41071008C6683 /* SettingsBarGearMenu.swift */; };
@@ -41,6 +41,8 @@
 		715B4DD728D59BF2008C6683 /* SettingsBarFilterMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B4DD628D59BF2008C6683 /* SettingsBarFilterMenu.swift */; };
 		715B4DD928D59D8D008C6683 /* SettingsBarToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B4DD828D59D8D008C6683 /* SettingsBarToggleButton.swift */; };
 		716BCF0E28C97C7100537081 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 716BCF0D28C97C7100537081 /* KeyboardShortcuts */; };
+		716CAFEE2AC28E3F00EEB1DB /* LabeledReminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716CAFED2AC28E3F00EEB1DB /* LabeledReminders.swift */; };
+		716CAFF02AC28E5500EEB1DB /* ReminderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716CAFEF2AC28E5500EEB1DB /* ReminderItem.swift */; };
 		7172A74824C776E6001F96F1 /* RemindersData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7172A74724C776E6001F96F1 /* RemindersData.swift */; };
 		717748F829622FCB00654CAA /* RmbIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717748F729622FCB00654CAA /* RmbIcon.swift */; };
 		718C813628D01CCE00BAC2D0 /* KeyboardShortcutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718C813528D01CCE00BAC2D0 /* KeyboardShortcutView.swift */; };
@@ -133,13 +135,15 @@
 		714D03B126042416003063F7 /* Calendar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extensions.swift"; sourceTree = "<group>"; };
 		714E6F6025CCF66000BA0099 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7151CC99265E0388002D7F1D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		7156443926030591005E81FD /* ArrayEKReminder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArrayEKReminder+Extension.swift"; sourceTree = "<group>"; };
+		7156443926030591005E81FD /* ArrayReminderItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArrayReminderItem+Extension.swift"; sourceTree = "<group>"; };
 		7156444126031CA9005E81FD /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		71564447260324FA005E81FD /* PrioritizedReminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrioritizedReminders.swift; sourceTree = "<group>"; };
 		715B4DD128D41071008C6683 /* SettingsBarGearMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBarGearMenu.swift; sourceTree = "<group>"; };
 		715B4DD428D56FE5008C6683 /* KeyboardShortcutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcutService.swift; sourceTree = "<group>"; };
 		715B4DD628D59BF2008C6683 /* SettingsBarFilterMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBarFilterMenu.swift; sourceTree = "<group>"; };
 		715B4DD828D59D8D008C6683 /* SettingsBarToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBarToggleButton.swift; sourceTree = "<group>"; };
+		716CAFED2AC28E3F00EEB1DB /* LabeledReminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledReminders.swift; sourceTree = "<group>"; };
+		716CAFEF2AC28E5500EEB1DB /* ReminderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderItem.swift; sourceTree = "<group>"; };
 		7172A74724C776E6001F96F1 /* RemindersData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersData.swift; sourceTree = "<group>"; };
 		717748F729622FCB00654CAA /* RmbIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbIcon.swift; sourceTree = "<group>"; };
 		718C813528D01CCE00BAC2D0 /* KeyboardShortcutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcutView.swift; sourceTree = "<group>"; };
@@ -313,6 +317,8 @@
 		713F234324C130AE00FF0BEC /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				716CAFED2AC28E3F00EEB1DB /* LabeledReminders.swift */,
+				716CAFEF2AC28E5500EEB1DB /* ReminderItem.swift */,
 				713F234424C130D400FF0BEC /* ReminderList.swift */,
 				7172A74724C776E6001F96F1 /* RemindersData.swift */,
 				7141456225CF9693006695B2 /* Release.swift */,
@@ -376,7 +382,7 @@
 				714D03B126042416003063F7 /* Calendar+Extensions.swift */,
 				71A3834525BDD2AC00975B4C /* EKReminder+Extensions.swift */,
 				7156444126031CA9005E81FD /* Array+Extension.swift */,
-				7156443926030591005E81FD /* ArrayEKReminder+Extension.swift */,
+				7156443926030591005E81FD /* ArrayReminderItem+Extension.swift */,
 				71F84A4529541D6700C5A24D /* URL+Extensions.swift */,
 				71E712692908C6D100DA97BD /* NilCoalescingBindingOverload.swift */,
 				96A54A6C29A3B1A90060403F /* String+Extensions.swift */,
@@ -563,9 +569,11 @@
 				71A6583A2908B0DD006F3A50 /* ReminderEditPopover.swift in Sources */,
 				71B4AD4F25B7D06400214219 /* CalendarTitle.swift in Sources */,
 				7115461324C0ADCB007781E2 /* ReminderItemView.swift in Sources */,
+				716CAFEE2AC28E3F00EEB1DB /* LabeledReminders.swift in Sources */,
 				71ED5D6B290B6B3C00626185 /* RmbReminder.swift in Sources */,
 				7156444226031CA9005E81FD /* Array+Extension.swift in Sources */,
 				71F301FA259FB5CF00CDD81E /* UserPreferences.swift in Sources */,
+				716CAFF02AC28E5500EEB1DB /* ReminderItem.swift in Sources */,
 				71F36AA029C3E79E0099D337 /* Color+Extensions.swift in Sources */,
 				71A3834625BDD2AC00975B4C /* EKReminder+Extensions.swift in Sources */,
 				71B4AD6625B9118000214219 /* NoReminderItemsView.swift in Sources */,
@@ -573,7 +581,7 @@
 				717748F829622FCB00654CAA /* RmbIcon.swift in Sources */,
 				71F9726A25981EDF00D0A118 /* NSTableView+Extensions.swift in Sources */,
 				71564448260324FA005E81FD /* PrioritizedReminders.swift in Sources */,
-				7156443A26030591005E81FD /* ArrayEKReminder+Extension.swift in Sources */,
+				7156443A26030591005E81FD /* ArrayReminderItem+Extension.swift in Sources */,
 				71F36A9A29C2BA0C0099D337 /* RmbColorScheme.swift in Sources */,
 				718C813628D01CCE00BAC2D0 /* KeyboardShortcutView.swift in Sources */,
 				71A3834325BCA69C00975B4C /* Date+Extensions.swift in Sources */,

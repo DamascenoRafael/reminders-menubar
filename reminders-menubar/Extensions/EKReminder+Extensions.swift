@@ -119,6 +119,21 @@ extension EKReminder {
         return URL(string: userActivityStorageString)
     }
     
+    // NOTE: This is a workaround to access the parent reminder id of a reminder.
+    // This property is not accessible through the conventional API.
+    var parentId: String? {
+        let parentReminderSelector = NSSelectorFromString("parentReminderID")
+        let uuidSelector = NSSelectorFromString("uuid")
+        
+        guard let unmanagedParentReminder = reminderBackingObject?.perform(parentReminderSelector),
+              let unmanagedParentReminderId = unmanagedParentReminder.takeUnretainedValue().perform(uuidSelector),
+              let parentReminderId = unmanagedParentReminderId.takeUnretainedValue() as? UUID else {
+            return nil
+        }
+        
+        return parentReminderId.uuidString
+    }
+    
     func update(with rmbReminder: RmbReminder) {
         let trimmedTitle = rmbReminder.title.trimmingCharacters(in: .whitespaces)
         if !trimmedTitle.isEmpty {

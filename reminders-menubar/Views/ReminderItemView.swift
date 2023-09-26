@@ -4,7 +4,8 @@ import EventKit
 struct ReminderItemView: View {
     @EnvironmentObject var remindersData: RemindersData
     
-    var reminder: EKReminder
+    var item: ReminderItem
+    var isShowingCompleted: Bool
     var showCalendarTitleOnDueDate = false
     @State var reminderItemIsHovered = false
     
@@ -16,22 +17,28 @@ struct ReminderItemView: View {
     var body: some View {
         HStack(alignment: .top) {
             Button(action: {
-                reminder.isCompleted.toggle()
-                RemindersService.shared.save(reminder: reminder)
+                item.reminder.isCompleted.toggle()
+                RemindersService.shared.save(reminder: item.reminder)
+                if item.reminder.isCompleted {
+                    item.childReminders.uncompleted.forEach { uncompletedChild in
+                        uncompletedChild.reminder.isCompleted = true
+                        RemindersService.shared.save(reminder: uncompletedChild.reminder)
+                    }
+                }
             }) {
-                Image(systemName: reminder.isCompleted ? "largecircle.fill.circle" : "circle")
+                Image(systemName: item.reminder.isCompleted ? "largecircle.fill.circle" : "circle")
                     .resizable()
                     .frame(width: 18, height: 18)
                     .padding(.top, 1)
-                    .foregroundColor(Color(reminder.calendar.color))
+                    .foregroundColor(Color(item.reminder.calendar.color))
             }.buttonStyle(PlainButtonStyle())
             VStack(spacing: 8) {
                 HStack(spacing: 4) {
-                    if let prioritySystemImage = reminder.prioritySystemImage {
+                    if let prioritySystemImage = item.reminder.prioritySystemImage {
                         Image(systemName: prioritySystemImage)
-                            .foregroundColor(Color(reminder.calendar.color))
+                            .foregroundColor(Color(item.reminder.calendar.color))
                     }
-                    Text(reminder.title)
+                    Text(item.reminder.title)
                         .fixedSize(horizontal: false, vertical: true)
                         .onTapGesture {
                             isEditingTitle = true
@@ -50,13 +57,14 @@ struct ReminderItemView: View {
                             }
                         }
                         
-                        ChangePriorityOptionMenu(reminder: reminder)
+                        // TODO: remove the `.id` modifier while keeping updated the selected priority
+                        ChangePriorityOptionMenu(reminder: item.reminder).id(UUID())
                         
                         let otherCalendars = remindersData.calendars.filter {
-                            $0.calendarIdentifier != reminder.calendar.calendarIdentifier
+                            $0.calendarIdentifier != item.reminder.calendar.calendarIdentifier
                         }
-                        if !otherCalendars.isEmpty {
-                            MoveToOptionMenu(reminder: reminder, availableCalendars: otherCalendars)
+                        if !otherCalendars.isEmpty && !item.hasChildren {
+                            MoveToOptionMenu(reminder: item.reminder, availableCalendars: otherCalendars)
                         }
                         
                         VStack {
@@ -81,30 +89,30 @@ struct ReminderItemView: View {
                     .popover(isPresented: $showingEditPopover, arrowEdge: .trailing) {
                         ReminderEditPopover(isPresented: $showingEditPopover,
                                             focusOnTitle: $isEditingTitle,
-                                            reminder: reminder)
+                                            reminder: item.reminder)
                     }
                 }
                 .alert(isPresented: $showingRemoveAlert) {
                     removeReminderAlert()
                 }
                 
-                if let dateDescription = reminder.relativeDateDescription {
+                if let dateDescription = item.reminder.relativeDateDescription {
                     HStack {
                         HStack {
                             Image(systemName: "calendar")
                             Text(dateDescription)
-                                .foregroundColor(reminder.isExpired ? .red : nil)
+                                .foregroundColor(item.reminder.isExpired ? .red : nil)
                         }
                         .padding(.trailing, 5)
                         
-                        if reminder.hasRecurrenceRules {
+                        if item.reminder.hasRecurrenceRules {
                             Image(systemName: "repeat")
                         }
                         
                         if showCalendarTitleOnDueDate {
                             Spacer()
                             
-                            Text(reminder.calendar.title)
+                            Text(item.reminder.calendar.title)
                         }
                     }
                     .font(.footnote)
@@ -112,8 +120,8 @@ struct ReminderItemView: View {
                     .padding(.trailing, 12)
                 }
                 
-                if reminder.attachedUrl != nil || reminder.mailUrl != nil {
-                    ExternalLinksView(attachedUrl: reminder.attachedUrl, mailUrl: reminder.mailUrl)
+                if item.reminder.attachedUrl != nil || item.reminder.mailUrl != nil {
+                    ExternalLinksView(attachedUrl: item.reminder.attachedUrl, mailUrl: item.reminder.mailUrl)
                 }
                 
                 Divider()
@@ -121,6 +129,17 @@ struct ReminderItemView: View {
         }
         .onHover { isHovered in
             reminderItemIsHovered = isHovered
+        }
+        .padding(.leading, item.isChild ? 26 : 0)
+        
+        ForEach(item.childReminders.uncompleted) { reminderItem in
+            ReminderItemView(item: reminderItem, isShowingCompleted: isShowingCompleted)
+        }
+        
+        if isShowingCompleted {
+            ForEach(item.childReminders.completed) { reminderItem in
+                ReminderItemView(item: reminderItem, isShowingCompleted: isShowingCompleted)
+            }
         }
     }
     
@@ -130,9 +149,9 @@ struct ReminderItemView: View {
     
     func removeReminderAlert() -> Alert {
         Alert(title: Text(rmbLocalized(.removeReminderAlertTitle)),
-              message: Text(rmbLocalized(.removeReminderAlertMessage, arguments: reminder.title)),
+              message: Text(rmbLocalized(.removeReminderAlertMessage, arguments: item.reminder.title)),
               primaryButton: .destructive(Text(rmbLocalized(.removeReminderAlertConfirmButton)), action: {
-                RemindersService.shared.remove(reminder: reminder)
+                RemindersService.shared.remove(reminder: item.reminder)
               }),
               secondaryButton: .cancel(Text(rmbLocalized(.removeReminderAlertCancelButton)))
         )
@@ -247,10 +266,12 @@ struct ReminderItemView_Previews: PreviewProvider {
         return reminder
     }
     
+    static var reminderItem = ReminderItem(for: reminder)
+    
     static var previews: some View {
         Group {
             ForEach(ColorScheme.allCases, id: \.self) { color in
-                ReminderItemView(reminder: reminder)
+                ReminderItemView(item: reminderItem, isShowingCompleted: false)
                     .environmentObject(RemindersData())
                     .colorScheme(color)
                     .previewDisplayName("\(color) mode")

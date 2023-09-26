@@ -1,13 +1,13 @@
 import EventKit
 
 struct PrioritizedReminders {
-    let high: [EKReminder]
-    let medium: [EKReminder]
-    let low: [EKReminder]
-    let none: [EKReminder]
+    let high: [ReminderItem]
+    let medium: [ReminderItem]
+    let low: [ReminderItem]
+    let none: [ReminderItem]
     
-    init(_ reminders: [EKReminder]) {
-        let remindersByPriority = Dictionary(grouping: reminders, by: { $0.ekPriority })
+    init(_ reminderItems: [ReminderItem]) {
+        let remindersByPriority = Dictionary(grouping: reminderItems, by: { $0.reminder.ekPriority })
         high = remindersByPriority[.high] ?? []
         medium = remindersByPriority[.medium] ?? []
         low = remindersByPriority[.low] ?? []

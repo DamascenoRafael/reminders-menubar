@@ -20,20 +20,20 @@ struct ContentView: View {
                     }
                     ForEach(remindersData.filteredReminderLists) { reminderList in
                         Section(header: CalendarTitle(calendar: reminderList.calendar)) {
-                            let uncompletedIsEmpty = reminderList.uncompletedReminders.isEmpty
-                            let completedIsEmpty = reminderList.completedReminders.isEmpty
+                            let uncompletedIsEmpty = reminderList.reminders.uncompleted.isEmpty
+                            let completedIsEmpty = reminderList.reminders.completed.isEmpty
                             let calendarIsEmpty = uncompletedIsEmpty && completedIsEmpty
                             let isShowingCompleted = !userPreferences.showUncompletedOnly
                             let viewIsEmpty = isShowingCompleted ? calendarIsEmpty : uncompletedIsEmpty
                             if viewIsEmpty {
                                 NoReminderItemsView(emptyList: calendarIsEmpty ? .noReminders : .allItemsCompleted)
                             }
-                            ForEach(reminderList.uncompletedReminders, id: \.calendarItemIdentifier) { reminder in
-                                ReminderItemView(reminder: reminder)
+                            ForEach(reminderList.reminders.uncompleted) { reminderItem in
+                                ReminderItemView(item: reminderItem, isShowingCompleted: isShowingCompleted)
                             }
                             if isShowingCompleted {
-                                ForEach(reminderList.completedReminders, id: \.calendarItemIdentifier) { reminder in
-                                    ReminderItemView(reminder: reminder)
+                                ForEach(reminderList.reminders.completed) { reminderItem in
+                                    ReminderItemView(item: reminderItem, isShowingCompleted: isShowingCompleted)
                                 }
                             }
                         }

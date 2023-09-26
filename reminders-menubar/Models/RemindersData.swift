@@ -45,7 +45,7 @@ class RemindersData: ObservableObject {
     
     @Published var calendars: [EKCalendar] = []
     
-    @Published var upcomingReminders: [EKReminder] = []
+    @Published var upcomingReminders: [ReminderItem] = []
     
     @Published var filteredReminderLists: [ReminderList] = []
     
