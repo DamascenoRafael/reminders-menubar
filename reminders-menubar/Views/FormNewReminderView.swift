@@ -68,8 +68,7 @@ struct FormNewReminderView: View {
                 }
                 .menuStyle(BorderlessButtonMenuStyle())
                 .frame(width: 14, height: 16)
-                .padding(8)
-                .padding(.trailing, 2)
+                .modifier(CenteredMenuPadding())
                 .background(Color(calendarForSaving?.color ?? .white))
                 .cornerRadius(8)
                 .modifier(ContrastBorderOverlay())
@@ -192,6 +191,21 @@ func reminderRemindDateTimeOptionView(date: Binding<Date>,
                 .font(.system(size: 12))
         }
         .buttonStyle(.borderless)
+    }
+}
+
+struct CenteredMenuPadding: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(macOS 14.0, *) {
+            content
+                .padding(.vertical, 8)
+                .padding(.leading, 11)
+                .padding(.trailing, 6)
+        } else {
+            content
+                .padding(8)
+                .padding(.trailing, 2)
+        }
     }
 }
 
