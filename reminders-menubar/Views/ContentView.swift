@@ -17,6 +17,7 @@ struct ContentView: View {
                             UpcomingRemindersContent()
                         }
                         .modifier(ListSectionSpacing())
+                        .modifier(ListRowSeparatorHidden())
                     }
                     ForEach(remindersData.filteredReminderLists) { reminderList in
                         Section(header: CalendarTitle(calendar: reminderList.calendar)) {
@@ -38,6 +39,7 @@ struct ContentView: View {
                             }
                         }
                         .modifier(ListSectionSpacing())
+                        .modifier(ListRowSeparatorHidden())
                     }
                 }
                 .listStyle(.plain)
@@ -64,6 +66,17 @@ struct ListSectionSpacing: ViewModifier {
         return content
             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
             .padding(.horizontal, 8)
+    }
+}
+
+struct ListRowSeparatorHidden: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(macOS 14.0, *) {
+            content
+                .listRowSeparator(.hidden)
+        } else {
+            content
+        }
     }
 }
 
