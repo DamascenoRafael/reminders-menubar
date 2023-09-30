@@ -14,8 +14,14 @@ class RemindersService {
     }
     
     func requestAccess(completion: @escaping (Bool, String?) -> Void) {
-        eventStore.requestAccess(to: .reminder) { granted, error in
-            completion(granted, error?.localizedDescription)
+        if #available(macOS 14.0, *) {
+            eventStore.requestFullAccessToReminders { granted, error in
+                completion(granted, error?.localizedDescription)
+            }
+        } else {
+            eventStore.requestAccess(to: .reminder) { granted, error in
+                completion(granted, error?.localizedDescription)
+            }
         }
     }
     
