@@ -55,6 +55,7 @@ struct ContentView: View {
             SettingsBarView()
         }
         .background(Color.rmbColor(for: .backgroundTheme, and: colorSchemeContrast).padding(-80))
+        .preferredColorScheme(userPreferences.rmbColorScheme.colorScheme)
     }
 }
 
