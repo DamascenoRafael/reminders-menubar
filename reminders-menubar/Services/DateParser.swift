@@ -100,7 +100,7 @@ class DateParser {
     
     func getTimeOnly(from textString: String, on date: Date) -> DateParserResult? {
         guard let dateResult = getDate(from: textString),
-              (dateResult.date.isSameDay(as: date) || dateResult.isTimeOnly),
+              dateResult.date.isSameDay(as: date) || dateResult.isTimeOnly,
               dateResult.hasTime else {
             return nil
         }
