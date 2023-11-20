@@ -8,8 +8,8 @@ struct UpcomingRemindersContent: View {
             if remindersData.upcomingReminders.isEmpty {
                 NoReminderItemsView(emptyList: .noUpcomingReminders)
             }
-            ForEach(remindersData.upcomingReminders, id: \.calendarItemIdentifier) { reminder in
-                ReminderItemView(reminder: reminder, showCalendarTitleOnDueDate: true)
+            ForEach(remindersData.upcomingReminders) { reminderItem in
+                ReminderItemView(item: reminderItem, isShowingCompleted: false, showCalendarTitleOnDueDate: true)
             }
         }
     }

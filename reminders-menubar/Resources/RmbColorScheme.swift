@@ -5,14 +5,14 @@ enum RmbColorScheme: String {
     case light
     case dark
     
-    var nsAppearance: NSAppearance? {
+    var colorScheme: ColorScheme? {
         switch self {
         case .system:
             return nil
         case .light:
-            return NSAppearance(named: .aqua)
+            return .light
         case .dark:
-            return NSAppearance(named: .darkAqua)
+            return .dark
         }
     }
 }

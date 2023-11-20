@@ -33,6 +33,7 @@ struct RmbDatePicker: NSViewRepresentable {
         picker.datePickerElements = displayedComponents
         picker.action = #selector(Coordinator.onValueChange(_:))
         picker.target = context.coordinator
+        picker.locale = rmbCurrentLocale()
         return picker
     }
 

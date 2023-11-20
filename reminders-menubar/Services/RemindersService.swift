@@ -14,8 +14,14 @@ class RemindersService {
     }
     
     func requestAccess(completion: @escaping (Bool, String?) -> Void) {
-        eventStore.requestAccess(to: .reminder) { granted, error in
-            completion(granted, error?.localizedDescription)
+        if #available(macOS 14.0, *) {
+            eventStore.requestFullAccessToReminders { granted, error in
+                completion(granted, error?.localizedDescription)
+            }
+        } else {
+            eventStore.requestAccess(to: .reminder) { granted, error in
+                completion(granted, error?.localizedDescription)
+            }
         }
     }
     
@@ -51,31 +57,44 @@ class RemindersService {
         
         return reminders
     }
+    
+    private func createReminderItems(for calendarReminders: [EKReminder]) -> [ReminderItem] {
+        var reminderListItems: [ReminderItem] = []
+        
+        let noParentKey = "noParentKey"
+        let remindersByParentId = Dictionary(grouping: calendarReminders, by: { $0.parentId ?? noParentKey })
+        let parentReminders = remindersByParentId[noParentKey, default: []]
+        
+        parentReminders.forEach { parentReminder in
+            let parentId = parentReminder.calendarItemIdentifier
+            let children = remindersByParentId[parentId, default: []].map({ ReminderItem(for: $0, isChild: true) })
+            reminderListItems.append(ReminderItem(for: parentReminder, withChildren: children))
+        }
+        return reminderListItems
+    }
 
     func getReminders(of calendarIdentifiers: [String]) -> [ReminderList] {
         let calendars = getCalendars().filter({ calendarIdentifiers.contains($0.calendarIdentifier) })
         let predicate = eventStore.predicateForReminders(in: calendars)
+        let remindersByCalendar = Dictionary(grouping: fetchRemindersSynchronously(matching: predicate),
+                                             by: { $0.calendar.calendarIdentifier })
         
-        let allReminders = fetchRemindersSynchronously(matching: predicate)
-        var remindersStore: [ReminderList] = []
-        remindersStore.reserveCapacity(calendars.count)
-        
+        var reminderLists: [ReminderList] = []
         for calendar in calendars {
-            let reminders = allReminders.filter({
-                $0.calendar.calendarIdentifier == calendar.calendarIdentifier
-            })
-            remindersStore.append(ReminderList(for: calendar, with: reminders))
+            let calendarReminders = remindersByCalendar[calendar.calendarIdentifier, default: []]
+            let reminderListItems = createReminderItems(for: calendarReminders)
+            reminderLists.append(ReminderList(for: calendar, with: reminderListItems))
         }
         
-        return remindersStore
+        return reminderLists
     }
     
-    func getUpcomingReminders(_ interval: ReminderInterval) -> [EKReminder] {
+    func getUpcomingReminders(_ interval: ReminderInterval) -> [ReminderItem] {
         let calendars = getCalendars()
         let predicate = eventStore.predicateForIncompleteReminders(withDueDateStarting: nil,
                                                                    ending: interval.endingDate,
                                                                    calendars: calendars)
-        let reminders = fetchRemindersSynchronously(matching: predicate)
+        let reminders = fetchRemindersSynchronously(matching: predicate).map({ ReminderItem(for: $0) })
         return reminders.sortedReminders
     }
     

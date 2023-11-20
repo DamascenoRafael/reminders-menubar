@@ -14,7 +14,7 @@ struct RmbHighlightedTextField: NSViewRepresentable {
     var onSubmit: () -> Void
     
     func makeNSView(context: Context) -> NSTextField {
-        let textField = NSTextField(frame: .infinite)
+        let textField = NSTextField(frame: .zero)
         textField.delegate = context.coordinator
         textField.placeholderAttributedString = getPlaceholderAttributedString(from: placeholder)
         textField.isBordered = false
