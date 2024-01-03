@@ -39,7 +39,7 @@
 "appAppearanceColorSystemModeOptionButton" = "Apparence système";
 "appAppearanceColorLightModeOptionButton" = "Mode clair";
 "appAppearanceColorDarkModeOptionButton" = "Mode sombre";
-"menuBarIconSettingsMenu" = "Réglages de la barre de menu"; // TODO: Adjust to match "Menu bar icon"
+"menuBarIconSettingsMenu" = "Icon de la barre de menu";
 "menuBarCounterSettingsMenu" = "Compteur de la barre de menu";
 "showMenuBarTodayCountOptionButton" = "Afficher les rappels de la journée";
 "showMenuBarAllRemindersCountOptionButton" = "Afficher tous les rappels";
