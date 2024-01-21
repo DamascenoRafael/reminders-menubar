@@ -168,6 +168,8 @@
 		71E5C75429B7D45600568292 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		71E712692908C6D100DA97BD /* NilCoalescingBindingOverload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NilCoalescingBindingOverload.swift; sourceTree = "<group>"; };
 		71E7126C2908EBD100DA97BD /* RemoveFocusFromFirstResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveFocusFromFirstResponder.swift; sourceTree = "<group>"; };
+		71EB85912B5D878D00F81222 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		71EB85922B5D878D00F81222 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		71ED5D6A290B6B3C00626185 /* RmbReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbReminder.swift; sourceTree = "<group>"; };
 		71F301F9259FB5CF00CDD81E /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		71F36A9729C16B7A0099D337 /* RmbColorKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbColorKey.swift; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 				ko,
 				tr,
 				vi,
+				sk,
 			);
 			mainGroup = 712C32A724BF939100AC75E2;
 			packageReferences = (
@@ -626,6 +629,7 @@
 				4905903729EDCA40003A8252 /* ko */,
 				C3A1E3B02A14C843000EFABA /* tr */,
 				1021C8982A14D20600E5F6C2 /* vi */,
+				71EB85912B5D878D00F81222 /* sk */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -647,6 +651,7 @@
 				4905903829EDCA40003A8252 /* ko */,
 				C3A1E3B12A14C843000EFABA /* tr */,
 				1021C8992A14D20600E5F6C2 /* vi */,
+				71EB85922B5D878D00F81222 /* sk */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
