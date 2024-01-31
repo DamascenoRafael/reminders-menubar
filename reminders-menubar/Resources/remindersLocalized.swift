@@ -105,10 +105,6 @@ func rmbCurrentLocale() -> Locale {
     if let preferredLanguage = UserPreferences.shared.preferredLanguage {
         currentLocale = Locale(identifier: preferredLanguage)
     }
-    if Bundle.main.path(forResource: currentLocale.identifier, ofType: "lproj") == nil {
-        // Return the default locale if translation to system language does not exist
-        return Locale(identifier: "en_US")
-    }
     
     return currentLocale
 }
