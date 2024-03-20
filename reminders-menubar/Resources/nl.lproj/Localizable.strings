@@ -39,11 +39,11 @@
 "appAppearanceColorSystemModeOptionButton" = "Systeem weergave"; 
 "appAppearanceColorLightModeOptionButton" = "Lichte weergave"; 
 "appAppearanceColorDarkModeOptionButton" = "Donkere weergave";
-"menuBarIconSettingsMenu" = "Menubalk"; // TODO: Adjust to match "Menu bar icon"
-"menuBarCounterSettingsMenu" = "Menu bar counter"; // TODO: Translate
+"menuBarIconSettingsMenu" = "Menubalkpictogram";
+"menuBarCounterSettingsMenu" = "Menubalk teller";
 "showMenuBarTodayCountOptionButton" = "Toon het aantal items van vandaag";
-"showMenuBarAllRemindersCountOptionButton" = "Show all reminders count"; // TODO: Translate
-"showMenuBarNoCountOptionButton" = "Don't show count"; // TODO: Translate
+"showMenuBarAllRemindersCountOptionButton" = "Laat alle herinnering aantallen zien";
+"showMenuBarNoCountOptionButton" = "Laat het aantal niet zien";
 "keyboardShortcutOptionButton" = "Sneltoets";
 "reloadRemindersDataButton" = "Data herladen";
 "appAboutButton" = "Over";
