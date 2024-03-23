@@ -1,6 +1,7 @@
 import SwiftUI
 import EventKit
 
+@MainActor
 struct ReminderItemView: View {
     @EnvironmentObject var remindersData: RemindersData
     
@@ -158,6 +159,7 @@ struct ReminderItemView: View {
     }
 }
 
+@MainActor
 struct ChangePriorityOptionMenu: View {
     var reminder: EKReminder
     
