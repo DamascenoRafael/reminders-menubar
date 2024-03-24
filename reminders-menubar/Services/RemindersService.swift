@@ -1,5 +1,6 @@
 import EventKit
 
+@MainActor
 class RemindersService {
     static let shared = RemindersService()
     
@@ -37,27 +38,18 @@ class RemindersService {
         return eventStore.defaultCalendarForNewReminders() ?? eventStore.calendars(for: .reminder).first!
     }
     
-    private func fetchRemindersSynchronously(matching predicate: NSPredicate) -> [EKReminder] {
-        var reminders: [EKReminder] = []
-        // TODO: Remove use of DispatchGroup
-        let group = DispatchGroup()
-        group.enter()
-        eventStore.fetchReminders(matching: predicate) { allReminders in
-            guard let allReminders else {
-                print("Reminders was nil during 'fetchReminders'")
-                group.leave()
-                return
+    private func fetchReminders(matching predicate: NSPredicate) async -> [EKReminder] {
+        await withCheckedContinuation { continuation in
+            eventStore.fetchReminders(matching: predicate) { allReminders in
+                guard let allReminders else {
+                    continuation.resume(returning: [])
+                    return
+                }
+                continuation.resume(returning: allReminders)
             }
-            
-            reminders = allReminders
-            group.leave()
         }
-        
-        _ = group.wait(timeout: .distantFuture)
-        
-        return reminders
     }
-    
+
     private func createReminderItems(for calendarReminders: [EKReminder]) -> [ReminderItem] {
         var reminderListItems: [ReminderItem] = []
         
@@ -73,10 +65,10 @@ class RemindersService {
         return reminderListItems
     }
 
-    func getReminders(of calendarIdentifiers: [String]) -> [ReminderList] {
+    func getReminders(of calendarIdentifiers: [String]) async -> [ReminderList] {
         let calendars = getCalendars().filter({ calendarIdentifiers.contains($0.calendarIdentifier) })
         let predicate = eventStore.predicateForReminders(in: calendars)
-        let remindersByCalendar = Dictionary(grouping: fetchRemindersSynchronously(matching: predicate),
+        let remindersByCalendar = Dictionary(grouping: await fetchReminders(matching: predicate),
                                              by: { $0.calendar.calendarIdentifier })
         
         var reminderLists: [ReminderList] = []
@@ -89,20 +81,20 @@ class RemindersService {
         return reminderLists
     }
     
-    func getUpcomingReminders(_ interval: ReminderInterval) -> [ReminderItem] {
+    func getUpcomingReminders(_ interval: ReminderInterval) async -> [ReminderItem] {
         let calendars = getCalendars()
         let predicate = eventStore.predicateForIncompleteReminders(withDueDateStarting: nil,
                                                                    ending: interval.endingDate,
                                                                    calendars: calendars)
-        let reminders = fetchRemindersSynchronously(matching: predicate).map({ ReminderItem(for: $0) })
+        let reminders = await fetchReminders(matching: predicate).map({ ReminderItem(for: $0) })
         return reminders.sortedReminders
     }
     
-    func getAllRemindersCount() -> Int {
+    func getAllRemindersCount() async -> Int {
         let predicate = eventStore.predicateForIncompleteReminders(withDueDateStarting: nil,
                                                                    ending: nil,
                                                                    calendars: nil)
-        let reminders = fetchRemindersSynchronously(matching: predicate)
+        let reminders = await fetchReminders(matching: predicate)
         return reminders.count
     }
     

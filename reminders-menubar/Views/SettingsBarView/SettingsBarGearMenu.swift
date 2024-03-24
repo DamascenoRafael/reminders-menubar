@@ -48,7 +48,9 @@ struct SettingsBarGearMenu: View {
                 Divider()
                 
                 Button(action: {
-                    remindersData.update()
+                    Task {
+                        await remindersData.update()
+                    }
                 }) {
                     Text(rmbLocalized(.reloadRemindersDataButton))
                 }
