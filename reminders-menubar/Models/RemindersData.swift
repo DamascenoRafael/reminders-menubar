@@ -18,40 +18,48 @@ class RemindersData: ObservableObject {
     private func addObservers() {
         NotificationCenter.default.publisher(for: .EKEventStoreChanged)
             .sink { [weak self] _ in
-                self?.update()
+                Task {
+                    await self?.update()
+                }
             }
             .store(in: &cancellationTokens)
 
         NotificationCenter.default.publisher(for: .NSCalendarDayChanged)
             .sink { [weak self] _ in
-                self?.update()
+                Task {
+                    await self?.update()
+                }
             }
             .store(in: &cancellationTokens)
 
-        userPreferences.$menuBarCounterType.dropFirst().sink { [weak self] menuBarCounterType in
-            guard let self else { return }
-            Task {
-                let count = await self.getMenuBarCount(menuBarCounterType)
-                self.updateMenuBarCount(with: count)
+        userPreferences.$menuBarCounterType
+            .dropFirst()
+            .sink { [weak self] menuBarCounterType in
+                Task {
+                    guard let self else { return }
+                    let count = await self.getMenuBarCount(menuBarCounterType)
+                    self.updateMenuBarCount(with: count)
+                }
             }
-        }
-        .store(in: &cancellationTokens)
+            .store(in: &cancellationTokens)
 
-        userPreferences.$upcomingRemindersInterval.dropFirst().sink { [weak self] upcomingRemindersInterval in
-            guard let self else { return }
-            Task {
-                self.upcomingReminders = await RemindersService.shared.getUpcomingReminders(upcomingRemindersInterval)
+        userPreferences.$upcomingRemindersInterval
+            .dropFirst()
+            .sink { [weak self] upcomingRemindersInterval in
+                Task {
+                    self?.upcomingReminders = await RemindersService.shared.getUpcomingReminders(upcomingRemindersInterval)
+                }
+            }.store(in: &cancellationTokens)
+
+        $calendarIdentifiersFilter
+            .dropFirst()
+            .sink { [weak self] calendarIdentifiersFilter in
+                Task {
+                    self?.filteredReminderLists = await RemindersService.shared.getReminders(of: calendarIdentifiersFilter)
+                }
+
             }
-        }.store(in: &cancellationTokens)
-
-        $calendarIdentifiersFilter.dropFirst().sink { [weak self] calendarIdentifiersFilter in
-            guard let self else { return }
-            Task {
-                self.filteredReminderLists = await RemindersService.shared.getReminders(of: calendarIdentifiersFilter)
-            }
-
-        }
-        .store(in: &cancellationTokens)
+            .store(in: &cancellationTokens)
     }
 
     @Published var calendars: [EKCalendar] = []
@@ -90,12 +98,6 @@ class RemindersData: ObservableObject {
         didSet {
             let identifier = calendarForSaving?.calendarIdentifier
             UserPreferences.shared.preferredCalendarIdentifierForSaving = identifier
-        }
-    }
-
-    func update() {
-        Task { [weak self] in
-            await self?.update()
         }
     }
 

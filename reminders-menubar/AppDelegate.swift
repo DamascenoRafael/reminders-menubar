@@ -28,7 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     let popover = NSPopover()
     lazy var statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-    @MainActor
+    
     var contentViewController: NSViewController {
         let contentView = ContentView()
         let remindersData = RemindersData()
