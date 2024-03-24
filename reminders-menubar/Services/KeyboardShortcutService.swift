@@ -9,6 +9,7 @@ private struct ShortcutsKeys {
     static let isOpenRemindersMenuBarEnabled = "isOpenRemindersMenuBarEnabled"
 }
 
+@MainActor
 class KeyboardShortcutService: ObservableObject {
     static let shared = KeyboardShortcutService()
     
