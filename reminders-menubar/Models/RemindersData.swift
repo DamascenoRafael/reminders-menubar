@@ -49,7 +49,8 @@ class RemindersData: ObservableObject {
                 Task {
                     self?.upcomingReminders = await RemindersService.shared.getUpcomingReminders(upcomingRemindersInterval)
                 }
-            }.store(in: &cancellationTokens)
+            }
+            .store(in: &cancellationTokens)
 
         $calendarIdentifiersFilter
             .dropFirst()
@@ -57,7 +58,6 @@ class RemindersData: ObservableObject {
                 Task {
                     self?.filteredReminderLists = await RemindersService.shared.getReminders(of: calendarIdentifiersFilter)
                 }
-
             }
             .store(in: &cancellationTokens)
     }
