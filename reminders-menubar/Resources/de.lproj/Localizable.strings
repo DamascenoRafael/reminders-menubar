@@ -41,9 +41,10 @@
 "appAppearanceColorDarkModeOptionButton" = "Dark mode"; // TODO: Translate
 "menuBarIconSettingsMenu" = "Menüleiste"; // TODO: Adjust to match "Menu bar icon"
 "menuBarCounterSettingsMenu" = "Menu bar counter"; // TODO: Translate
+"showMenuBarDueCountOptionButton" = "Fällige Anzahl anzeigen";
 "showMenuBarTodayCountOptionButton" = "Heutige Anzahl anzeigen";
-"showMenuBarAllRemindersCountOptionButton" = "Show all reminders count"; // TODO: Translate
-"showMenuBarNoCountOptionButton" = "Don't show count"; // TODO: Translate
+"showMenuBarAllRemindersCountOptionButton" = "Anzahl aller Erinnerungen anzeigen";
+"showMenuBarNoCountOptionButton" = "Anzahl nicht anzeigen";
 "keyboardShortcutOptionButton" = "Tastaturkürzel";
 "reloadRemindersDataButton" = "Erinnerungen aktualisieren";
 "appAboutButton" = "Über";
@@ -58,6 +59,7 @@
 "keyboardShortcutEnableOpenShortcutOption" = "Tastaturkürzel zum Öffnen der %@ aktivieren";
 "keyboardShortcutRestoreDefaultButton" = "Standard wiederherstellen";
 "upcomingRemindersIntervalSelectionHelp" = "Auswählen welcher Zeitraum für Erinnerungen angezeigt werden soll";
+"upcomingRemindersDueTitle" = "Fällig";
 "upcomingRemindersTodayTitle" = "Heute";
 "upcomingRemindersInAWeekTitle" = "In einer Woche";
 "upcomingRemindersInAMonthTitle" = "In einem Monat";

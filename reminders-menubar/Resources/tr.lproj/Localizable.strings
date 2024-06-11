@@ -41,6 +41,7 @@
 "appAppearanceColorDarkModeOptionButton" = "Koyu mod";
 "menuBarIconSettingsMenu" = "Menü çubuğu simgesi";
 "menuBarCounterSettingsMenu" = "Menü çubuğu sayacı";
+"showMenuBarDueCountOptionButton" = "Show due count"; // TODO: translate
 "showMenuBarTodayCountOptionButton" = "Bugünün sayısını göster";
 "showMenuBarAllRemindersCountOptionButton" = "Tüm hatırlatıcıların sayısını göster";
 "showMenuBarNoCountOptionButton" = "Sayacı gösterme";
@@ -58,6 +59,7 @@
 "keyboardShortcutEnableOpenShortcutOption" = "%@'ı açmak için klavye kısayolunu etkinleştir";
 "keyboardShortcutRestoreDefaultButton" = "Varsayılanı geri yükle";
 "upcomingRemindersIntervalSelectionHelp" = "Gösterilecek yaklaşan hatırlatıcı aralığını seçin";
+"upcomingRemindersDueTitle" = "Due"; // TODO: translate
 "upcomingRemindersTodayTitle" = "Bugün";
 "upcomingRemindersInAWeekTitle" = "Bir Hafta İçinde";
 "upcomingRemindersInAMonthTitle" = "Bir Ay İçinde";

@@ -41,6 +41,7 @@
 "appAppearanceColorDarkModeOptionButton" = "Chế độ tối";
 "menuBarIconSettingsMenu" = "Biểu tượng ở thanh menu";
 "menuBarCounterSettingsMenu" = "Bộ đếm ở thanh menu";
+"showMenuBarDueCountOptionButton" = "Show due count"; // TODO: translate
 "showMenuBarTodayCountOptionButton" = "Hiển thị số lượng ngày hôm nay";
 "showMenuBarAllRemindersCountOptionButton" = "Hiển thị tất cả số lượng lời nhắc";
 "showMenuBarNoCountOptionButton" = "Không hiển thị số lượng";
@@ -58,6 +59,7 @@
 "keyboardShortcutEnableOpenShortcutOption" = "Cho phép kích hoạt phím tắt để mở %@";
 "keyboardShortcutRestoreDefaultButton" = "Khôi phục lại mặc định";
 "upcomingRemindersIntervalSelectionHelp" = "Chọn phạm vi lời nhắc để được hiển thị";
+"upcomingRemindersDueTitle" = "Due"; // TODO: translate
 "upcomingRemindersTodayTitle" = "Hôm nay";
 "upcomingRemindersInAWeekTitle" = "Trong một tuần";
 "upcomingRemindersInAMonthTitle" = "Trong một tháng";

@@ -40,10 +40,11 @@
 "appAppearanceColorLightModeOptionButton" = "Jasny";
 "appAppearanceColorDarkModeOptionButton" = "Ciemny";
 "menuBarIconSettingsMenu" = "Ikona na Pasku Menu";
-"menuBarCounterSettingsMenu" = "Licznik na Pasku Menu";
-"showMenuBarTodayCountOptionButton" = "Pokaż dzisiejszy licznik";
-"showMenuBarAllRemindersCountOptionButton" = "Pokaż liczbę wszystkich przypomnień";
-"showMenuBarNoCountOptionButton" = "Nie pokazuj licznika";
+"menuBarCounterSettingsMenu" = "Pokaż liczbę na pasku";
+"showMenuBarDueCountOptionButton" = "Pokaż liczbę nadchodzących przypomnień";
+"showMenuBarTodayCountOptionButton" = "Pokaż liczbę dzisiejszych przypomnień";
+"showMenuBarAllRemindersCountOptionButton" = "Pokaż liczbę wszystkich przypomnień"; 
+"showMenuBarNoCountOptionButton" = "Nie pokazuj liczby";
 "keyboardShortcutOptionButton" = "Skrót klawiaturowy";
 "reloadRemindersDataButton" = "Odśwież dane";
 "appAboutButton" = "O Aplikacji";
@@ -58,6 +59,7 @@
 "keyboardShortcutEnableOpenShortcutOption" = "Włącz skrót klawiaturowy, aby otworzyć %@";
 "keyboardShortcutRestoreDefaultButton" = "Przywróć wartości domyślne";
 "upcomingRemindersIntervalSelectionHelp" = "Wybierz zakres nadchodzących przypomnień do wyświetlenia";
+"upcomingRemindersDueTitle" = "Nadchodzące"; // TODO: translate
 "upcomingRemindersTodayTitle" = "Dzisiaj";
 "upcomingRemindersInAWeekTitle" = "W ciągu Tygodnia";
 "upcomingRemindersInAMonthTitle" = "W ciągu Miesiąca";

@@ -41,6 +41,7 @@
 "appAppearanceColorDarkModeOptionButton" = "Dark mode"; // TODO: Translate
 "menuBarIconSettingsMenu" = "メニューバー"; // TODO: Adjust to match "Menu bar icon"
 "menuBarCounterSettingsMenu" = "Menu bar counter"; // TODO: Translate
+"showMenuBarDueCountOptionButton" = "Show due count"; // TODO: translate
 "showMenuBarTodayCountOptionButton" = "今日の件数を表示";
 "showMenuBarAllRemindersCountOptionButton" = "Show all reminders count"; // TODO: Translate
 "showMenuBarNoCountOptionButton" = "Don't show count"; // TODO: Translate
@@ -58,6 +59,7 @@
 "keyboardShortcutEnableOpenShortcutOption" = "キーボード ショートカットを有効にして%@を開く";
 "keyboardShortcutRestoreDefaultButton" = "デフォルトに戻す";
 "upcomingRemindersIntervalSelectionHelp" = "今後のリマインダーの表示範囲を設定";
+"upcomingRemindersDueTitle" = "Due"; // TODO: translate
 "upcomingRemindersTodayTitle" = "今日";
 "upcomingRemindersInAWeekTitle" = "1週間以内";
 "upcomingRemindersInAMonthTitle" = "1か月以内";

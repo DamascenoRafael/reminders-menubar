@@ -41,6 +41,7 @@
 "appAppearanceColorDarkModeOptionButton" = "Dark mode";
 "menuBarIconSettingsMenu" = "Menu bar icon";
 "menuBarCounterSettingsMenu" = "Menu bar counter";
+"showMenuBarDueCountOptionButton" = "Show due count";
 "showMenuBarTodayCountOptionButton" = "Show today's count";
 "showMenuBarAllRemindersCountOptionButton" = "Show all reminders count";
 "showMenuBarNoCountOptionButton" = "Don't show count";
@@ -58,6 +59,7 @@
 "keyboardShortcutEnableOpenShortcutOption" = "Enable keyboard shortcut to open %@";
 "keyboardShortcutRestoreDefaultButton" = "Restore default";
 "upcomingRemindersIntervalSelectionHelp" = "Select range of upcoming reminders to be shown";
+"upcomingRemindersDueTitle" = "Due";
 "upcomingRemindersTodayTitle" = "Today";
 "upcomingRemindersInAWeekTitle" = "In a Week";
 "upcomingRemindersInAMonthTitle" = "In a Month";

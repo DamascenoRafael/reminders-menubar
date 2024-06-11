@@ -170,6 +170,13 @@ struct SettingsBarGearMenu: View {
     func menuBarCounterMenu() -> some View {
         Menu {
             Button(action: {
+                userPreferences.menuBarCounterType = .due
+            }) {
+                let isSelected = userPreferences.menuBarCounterType == .due
+                SelectableView(title: rmbLocalized(.showMenuBarDueCountOptionButton), isSelected: isSelected)
+            }
+
+            Button(action: {
                 userPreferences.menuBarCounterType = .today
             }) {
                 let isSelected = userPreferences.menuBarCounterType == .today

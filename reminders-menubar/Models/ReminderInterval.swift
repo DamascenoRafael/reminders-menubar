@@ -1,6 +1,7 @@
 import Foundation
 
 enum ReminderInterval: String, Codable, CaseIterable {
+    case due
     case today
     case week
     case month
@@ -8,6 +9,8 @@ enum ReminderInterval: String, Codable, CaseIterable {
     
     var title: String {
         switch self {
+        case .due:
+            return rmbLocalized(.upcomingRemindersDueTitle)
         case .today:
             return rmbLocalized(.upcomingRemindersTodayTitle)
         case .week:
@@ -21,6 +24,8 @@ enum ReminderInterval: String, Codable, CaseIterable {
     
     var endingDate: Date? {
         switch self {
+        case .due:
+            return Date()
         case .today:
             return Calendar.current.endOfDay(for: Date())
         case .week:
