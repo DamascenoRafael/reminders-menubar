@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42E6050B2C1B8A34007AADDE /* PriorityParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E6050A2C1B8A34007AADDE /* PriorityParser.swift */; };
 		42E605112C1BADFB007AADDE /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = 42E605102C1BADFB007AADDE /* WrappingHStack */; };
 		7102423025F55D5600451D15 /* ReminderInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102422F25F55D5600451D15 /* ReminderInterval.swift */; };
 		71032A8F24C21F0F00A8006C /* FormNewReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71032A8E24C21F0F00A8006C /* FormNewReminderView.swift */; };
@@ -98,6 +99,7 @@
 		197D6DE42726AC650011E1AB /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2BCB5C5128D4EFDA00CD1AC9 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2BCB5C5228D4EFFF00CD1AC9 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		42E6050A2C1B8A34007AADDE /* PriorityParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityParser.swift; sourceTree = "<group>"; };
 		4672933A29E052CC00120D57 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4672933B29E052CC00120D57 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4905903729EDCA40003A8252 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				7115461824C0C280007781E2 /* RemindersService.swift */,
 				96A54A6A29A3ADB70060403F /* DateParser.swift */,
 				71CAF8422A3444EA003160FF /* CalendarParser.swift */,
+				42E6050A2C1B8A34007AADDE /* PriorityParser.swift */,
 				71A4163625CED8FE00CA4F81 /* GithubService.swift */,
 				71F301F9259FB5CF00CDD81E /* UserPreferences.swift */,
 				715B4DD428D56FE5008C6683 /* KeyboardShortcutService.swift */,
@@ -567,6 +570,7 @@
 				7115461924C0C280007781E2 /* RemindersService.swift in Sources */,
 				71E7126D2908EBD100DA97BD /* RemoveFocusFromFirstResponder.swift in Sources */,
 				715B4DD728D59BF2008C6683 /* SettingsBarFilterMenu.swift in Sources */,
+				42E6050B2C1B8A34007AADDE /* PriorityParser.swift in Sources */,
 				71B6D1FB24C6511000E66EDB /* SettingsBarView.swift in Sources */,
 				712C836229E6635200BF6C24 /* RmbMenuBarCounterType.swift in Sources */,
 				710980D22600419F001F69B2 /* UpcomingRemindersContent.swift in Sources */,
