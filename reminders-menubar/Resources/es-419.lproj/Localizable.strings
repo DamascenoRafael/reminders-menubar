@@ -1,5 +1,6 @@
 "newReminderTextFielPlaceholder" = "Escribe un recordatorio y presiona enter";
 "newReminderCalendarSelectionToSaveHelp" = "Selecciona donde quieres que tu recordatorio se guarde";
+"createNewRemindersHereHelp" = "Selecciona donde quieres que tu recordatorio se guarde"; // TODO: Translate better
 "newReminderAddDateButton" = "Añadir fecha";
 "newReminderAddTimeButton" = "Añadir hora";
 "newReminderAutoSuggestTodayOption" = "Auto sugerir hoy como la fecha";

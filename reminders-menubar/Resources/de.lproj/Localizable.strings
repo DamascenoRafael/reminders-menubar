@@ -1,5 +1,6 @@
 "newReminderTextFielPlaceholder" = "Erinnerung eingeben und Enter drücken";
 "newReminderCalendarSelectionToSaveHelp" = "Auswählen wo die Erinnerung gespeichert wird";
+"createNewRemindersHereHelp" = "Auswählen wo die Erinnerung gespeichert wird"; // TODO: Translate better
 "newReminderAddDateButton" = "Datum";
 "newReminderAddTimeButton" = "Uhrzeit";
 "newReminderAutoSuggestTodayOption" = "Automatisch heute als Datum vorschlagen";

@@ -1,5 +1,6 @@
 "newReminderTextFielPlaceholder" = "Digite um lembrete e aperte enter";
 "newReminderCalendarSelectionToSaveHelp" = "Selecione onde o novo lembrete será salvo";
+"createNewRemindersHereHelp" = "Selecione onde o novo lembrete será salvo"; // TODO: Translate better
 "newReminderAddDateButton" = "Adicionar Data";
 "newReminderAddTimeButton" = "Horário";
 "newReminderAutoSuggestTodayOption" = "Auto sugerir hoje como data";

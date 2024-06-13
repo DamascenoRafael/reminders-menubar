@@ -1,5 +1,6 @@
 "newReminderTextFielPlaceholder" = "Zadajte pripomienku a stlačte Enter";
 "newReminderCalendarSelectionToSaveHelp" = "Vyberte, kam sa uložia nové pripomienky";
+"createNewRemindersHereHelp" = "Vyberte, kam sa uložia nové pripomienky"; // TODO: Translate better
 "newReminderAddDateButton" = "Pridať dátum";
 "newReminderAddTimeButton" = "Pridať čas";
 "newReminderAutoSuggestTodayOption" = "Automaticky navrhnúť dnešný dátum";
