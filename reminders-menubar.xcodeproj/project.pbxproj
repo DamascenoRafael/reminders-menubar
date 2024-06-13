@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42E605112C1BADFB007AADDE /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = 42E605102C1BADFB007AADDE /* WrappingHStack */; };
 		7102423025F55D5600451D15 /* ReminderInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102422F25F55D5600451D15 /* ReminderInterval.swift */; };
 		71032A8F24C21F0F00A8006C /* FormNewReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71032A8E24C21F0F00A8006C /* FormNewReminderView.swift */; };
 		71059DAB25CA5244001F3063 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71059DAA25CA5244001F3063 /* AppDelegate.swift */; };
@@ -201,6 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				716BCF0E28C97C7100537081 /* KeyboardShortcuts in Frameworks */,
+				42E605112C1BADFB007AADDE /* WrappingHStack in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +433,7 @@
 			name = "Reminders MenuBar";
 			packageProductDependencies = (
 				716BCF0D28C97C7100537081 /* KeyboardShortcuts */,
+				42E605102C1BADFB007AADDE /* WrappingHStack */,
 			);
 			productName = "reminders-menubar";
 			productReference = 712C32B024BF939100AC75E2 /* Reminders MenuBar.app */;
@@ -480,6 +483,7 @@
 			mainGroup = 712C32A724BF939100AC75E2;
 			packageReferences = (
 				716BCF0C28C97C7100537081 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+				42E6050F2C1BADFB007AADDE /* XCRemoteSwiftPackageReference "WrappingHStack" */,
 			);
 			productRefGroup = 712C32B124BF939100AC75E2 /* Products */;
 			projectDirPath = "";
@@ -923,6 +927,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		42E6050F2C1BADFB007AADDE /* XCRemoteSwiftPackageReference "WrappingHStack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dkk/WrappingHStack";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.11;
+			};
+		};
 		716BCF0C28C97C7100537081 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
@@ -934,6 +946,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		42E605102C1BADFB007AADDE /* WrappingHStack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 42E6050F2C1BADFB007AADDE /* XCRemoteSwiftPackageReference "WrappingHStack" */;
+			productName = WrappingHStack;
+		};
 		716BCF0D28C97C7100537081 /* KeyboardShortcuts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 716BCF0C28C97C7100537081 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;

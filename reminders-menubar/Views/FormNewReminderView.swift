@@ -1,5 +1,6 @@
 import SwiftUI
 import EventKit
+import WrappingHStack
 
 struct FormNewReminderView: View {
     @EnvironmentObject var remindersData: RemindersData
@@ -7,7 +8,7 @@ struct FormNewReminderView: View {
     @Environment(\.colorSchemeContrast) private var colorSchemeContrast
     
     @State var rmbReminder = RmbReminder()
-    @State var isShowingDueDateOptions = false
+    @State var isShowingInfoOptions = false
     
     var body: some View {
         let calendarForSaving = getCalendarForSaving()
@@ -78,7 +79,7 @@ struct FormNewReminderView: View {
         .padding(10)
         .onChange(of: rmbReminder.title) { [oldValue = rmbReminder.title] newValue in
             withAnimation(.easeOut(duration: 0.3)) {
-                isShowingDueDateOptions = !newValue.isEmpty
+                isShowingInfoOptions = !newValue.isEmpty
             }
 
             // NOTE: When user starts to enter a title we re-instantiate RmbReminder to ensure the date is as expected.
@@ -102,10 +103,11 @@ struct FormNewReminderView: View {
                                     onSubmit: createNewReminder)
             .modifier(FocusOnReceive(userPreferences.$remindersMenuBarOpeningEvent))
 
-            if isShowingDueDateOptions {
-                reminderDueDateOptionsView(date: $rmbReminder.date,
-                                           hasDueDate: $rmbReminder.hasDueDate,
-                                           hasTime: $rmbReminder.hasTime)
+            if isShowingInfoOptions {
+                reminderInfoOptionsView(date: $rmbReminder.date,
+                                        priority: $rmbReminder.priority,
+                                        hasDueDate: $rmbReminder.hasDueDate,
+                                        hasTime: $rmbReminder.hasTime)
             }
         }
     }
@@ -140,19 +142,31 @@ struct FormNewReminderView: View {
             title = title.replacingOccurrences(of: rmbReminder.textDateResult.string, with: "")
         }
         title = title.replacingOccurrences(of: rmbReminder.textCalendarResult.string, with: "")
+        
+        let priorityString = rmbReminder.textPriorityResult.string
+        if let range = title.range(of: priorityString) {
+            title = title.replacingOccurrences(of: priorityString, with: "", range: range)
+        }
         return title.trimmingCharacters(in: .whitespaces)
     }
 }
 
 @ViewBuilder
-func reminderDueDateOptionsView(date: Binding<Date>, hasDueDate: Binding<Bool>, hasTime: Binding<Bool>) -> some View {
-    HStack {
+func reminderInfoOptionsView(
+    date: Binding<Date>,
+    priority: Binding<EKReminderPriority>,
+    hasDueDate: Binding<Bool>,
+    hasTime: Binding<Bool>
+) -> some View {
+    WrappingHStack(lineSpacing: 10) {
         reminderRemindDateTimeOptionView(date: date, components: .date, hasComponent: hasDueDate)
-            .modifier(RemindDateTimeCapsuleStyle())
+            .modifier(ReminderInfoCapsule())
         if hasDueDate.wrappedValue {
             reminderRemindDateTimeOptionView(date: date, components: .time, hasComponent: hasTime)
-                .modifier(RemindDateTimeCapsuleStyle())
+                .modifier(ReminderInfoCapsule())
         }
+        reminderPriorityOptionView(priority: priority)
+            .modifier(ReminderInfoCapsule())
     }
 }
 
@@ -194,6 +208,56 @@ func reminderRemindDateTimeOptionView(date: Binding<Date>,
     }
 }
 
+private func priorityPickerIcon(_ priority: EKReminderPriority) -> String {
+    switch priority {
+    case .low:
+        return "exclamationmark"
+    case .medium:
+        return "exclamationmark.2"
+    case .high:
+        return "exclamationmark.3"
+    default:
+        return "exclamationmark.circle"
+    }
+}
+private func nextPriority(_ priority: EKReminderPriority) -> EKReminderPriority {
+    switch priority {
+    case .low:
+        return .medium
+    case .medium:
+        return .high
+    case .high:
+        return .none
+    default:
+        return .low
+    }
+}
+private func priorityLabel(_ priority: EKReminderPriority) -> RemindersMenuBarLocalizedKeys {
+    switch priority {
+    case .low:
+        return .editReminderPriorityLowOption
+    case .medium:
+        return .editReminderPriorityMediumOption
+    case .high:
+        return .editReminderPriorityHighOption
+    default:
+        return .changeReminderPriorityMenuOption
+    }
+}
+
+@ViewBuilder
+func reminderPriorityOptionView(priority: Binding<EKReminderPriority>) -> some View {
+    let pickerIcon = priorityPickerIcon(priority.wrappedValue)
+    
+    Button {
+        priority.wrappedValue = nextPriority(priority.wrappedValue)
+    } label: {
+        Label(rmbLocalized(priorityLabel(priority.wrappedValue)), systemImage: pickerIcon)
+            .font(.system(size: 12))
+    }
+    .buttonStyle(.borderless)
+}
+
 struct CenteredMenuPadding: ViewModifier {
     func body(content: Content) -> some View {
         if #available(macOS 14.0, *) {
@@ -225,7 +289,7 @@ struct ContrastBorderOverlay: ViewModifier {
     }
 }
 
-struct RemindDateTimeCapsuleStyle: ViewModifier {
+struct ReminderInfoCapsule: ViewModifier {
     func body(content: Content) -> some View {
         return content
             .frame(height: 20)
@@ -254,7 +318,7 @@ struct FormNewReminderView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             ForEach(ColorScheme.allCases, id: \.self) { color in
-                FormNewReminderView(rmbReminder: RmbReminder(reminder: reminder), isShowingDueDateOptions: true)
+                FormNewReminderView(rmbReminder: RmbReminder(reminder: reminder), isShowingInfoOptions: true)
                     .environmentObject(RemindersData())
                     .colorScheme(color)
                     .previewDisplayName("\(color) mode")
