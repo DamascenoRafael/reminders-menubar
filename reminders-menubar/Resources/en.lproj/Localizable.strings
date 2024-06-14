@@ -71,3 +71,11 @@ Grant permission in System Settings to use %@.
 "okButton" = "Ok";
 "preferredLanguageMenu" = "Preferred language";
 "preferredLanguageSystemOptionButton" = "Use system language";
+"recurrenceDailySingle" = "daily";
+"recurrenceWeeklySingle" = "weekly";
+"recurrenceMonthlySingle" = "monthly";
+"recurrenceYearlySingle" = "yearly";
+"recurrenceDailyPlural" = "every %@ days";
+"recurrenceWeeklyPlural" = "every %@ weeks";
+"recurrenceMonthlyPlural" = "every %@ months";
+"recurrenceYearlyPlural" = "every %@ years";
