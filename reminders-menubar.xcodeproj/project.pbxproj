@@ -637,7 +637,7 @@
 				1021C8982A14D20600E5F6C2 /* vi */,
 				71EB85912B5D878D00F81222 /* sk */,
 				ECF5660E2BB6BFA2004E98DB /* ru */,
-        2F1E4A472BBEE0D60080857A /* zh-Hant */,
+				2F1E4A472BBEE0D60080857A /* zh-Hant */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
