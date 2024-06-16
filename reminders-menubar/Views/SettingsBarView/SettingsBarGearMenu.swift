@@ -169,10 +169,10 @@ struct SettingsBarGearMenu: View {
     
     func menuBarCounterMenu() -> some View {
         Menu {
-            ForEach(RmbMenuBarCounterType.allCases, id: \.rawValue) {countType in
-                Button(action: { userPreferences.menuBarCounterType = countType }) {
-                    let isSelected = countType ==  userPreferences.menuBarCounterType
-                    SelectableView(title: countType.title, isSelected: isSelected)
+            ForEach(RmbMenuBarCounterType.allCases, id: \.rawValue) { counterType in
+                Button(action: { userPreferences.menuBarCounterType = counterType }) {
+                    let isSelected = counterType == userPreferences.menuBarCounterType
+                    SelectableView(title: counterType.title, isSelected: isSelected)
                 }
             }
         } label: {
