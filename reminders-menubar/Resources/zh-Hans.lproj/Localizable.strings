@@ -41,6 +41,7 @@
 "appAppearanceColorDarkModeOptionButton" = "深色模式";
 "menuBarIconSettingsMenu" = "菜单栏图标";
 "menuBarCounterSettingsMenu" = "菜单栏计数";
+"showMenuBarDueCountOptionButton" = "Show due count"; // TODO: translate
 "showMenuBarTodayCountOptionButton" = "显示今日计数";
 "showMenuBarAllRemindersCountOptionButton" = "显示所有计数";
 "showMenuBarNoCountOptionButton" = "不显示计数";
@@ -58,6 +59,7 @@
 "keyboardShortcutEnableOpenShortcutOption" = "启用键盘快捷键打开 %@";
 "keyboardShortcutRestoreDefaultButton" = "恢复默认";
 "upcomingRemindersIntervalSelectionHelp" = "选择需要显示的提醒事项";
+"upcomingRemindersDueTitle" = "Due"; // TODO: translate
 "upcomingRemindersTodayTitle" = "今天";
 "upcomingRemindersInAWeekTitle" = "本周";
 "upcomingRemindersInAMonthTitle" = "本月";

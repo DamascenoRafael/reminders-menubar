@@ -41,6 +41,7 @@
 "appAppearanceColorDarkModeOptionButton" = "Mode sombre";
 "menuBarIconSettingsMenu" = "Icon de la barre de menu";
 "menuBarCounterSettingsMenu" = "Compteur de la barre de menu";
+"showMenuBarDueCountOptionButton" = "Show due count"; // TODO: translate
 "showMenuBarTodayCountOptionButton" = "Afficher les rappels de la journée";
 "showMenuBarAllRemindersCountOptionButton" = "Afficher tous les rappels";
 "showMenuBarNoCountOptionButton" = "Ne pas afficher le compteur";
@@ -58,6 +59,7 @@
 "keyboardShortcutEnableOpenShortcutOption" = "Activer le raccourci clavier suivant pour afficher %@";
 "keyboardShortcutRestoreDefaultButton" = "Réinitialiser les réglages par défaut";
 "upcomingRemindersIntervalSelectionHelp" = "Sélectionnez l'intervalle des prochains rappels à afficher";
+"upcomingRemindersDueTitle" = "Due"; // TODO: translate
 "upcomingRemindersTodayTitle" = "Aujourd'hui";
 "upcomingRemindersInAWeekTitle" = "Dans une semaine";
 "upcomingRemindersInAMonthTitle" = "Dans un mois";

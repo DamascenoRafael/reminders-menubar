@@ -41,6 +41,7 @@
 "appAppearanceColorDarkModeOptionButton" = "Темний режим";
 "menuBarIconSettingsMenu" = "Смуга меню"; // TODO: Adjust to match "Menu bar icon"
 "menuBarCounterSettingsMenu" = "Menu bar counter"; // TODO: Translate
+"showMenuBarDueCountOptionButton" = "Show due count"; // TODO: translate
 "showMenuBarTodayCountOptionButton" = "Показати кількість на сьогодні";
 "showMenuBarAllRemindersCountOptionButton" = "Show all reminders count"; // TODO: Translate
 "showMenuBarNoCountOptionButton" = "Don't show count"; // TODO: Translate
@@ -58,6 +59,7 @@
 "keyboardShortcutEnableOpenShortcutOption" = "Увімкнути комбінацію клавіш, щоб відкрити %@";
 "keyboardShortcutRestoreDefaultButton" = "Відновити значення за замовчуванням";
 "upcomingRemindersIntervalSelectionHelp" = "Виберіть діапазон майбутніх нагадувань для показу";
+"upcomingRemindersDueTitle" = "Due"; // TODO: translate
 "upcomingRemindersTodayTitle" = "Сьогодні";
 "upcomingRemindersInAWeekTitle" = "За тиждень";
 "upcomingRemindersInAMonthTitle" = "За місяць";

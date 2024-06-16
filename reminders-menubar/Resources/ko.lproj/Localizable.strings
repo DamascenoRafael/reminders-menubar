@@ -41,6 +41,7 @@
 "appAppearanceColorDarkModeOptionButton" = "다크 모드";
 "menuBarIconSettingsMenu" = "메뉴 막대 아이콘";
 "menuBarCounterSettingsMenu" = "메뉴 막대 카운트";
+"showMenuBarDueCountOptionButton" = "Show due count"; // TODO: translate
 "showMenuBarTodayCountOptionButton" = "오늘 마감 항목 갯수 보기";
 "showMenuBarAllRemindersCountOptionButton" = "모든 미리 알림 항목 갯수 보기";
 "showMenuBarNoCountOptionButton" = "카운트 보지 않기";
@@ -58,6 +59,7 @@
 "keyboardShortcutEnableOpenShortcutOption" = "%@ 을(를) 열기 위한 키보드 단축키 사용";
 "keyboardShortcutRestoreDefaultButton" = "기본값으로 되돌리기";
 "upcomingRemindersIntervalSelectionHelp" = "예정된 미리 알림 범위 선택";
+"upcomingRemindersDueTitle" = "Due"; // TODO: translate
 "upcomingRemindersTodayTitle" = "오늘";
 "upcomingRemindersInAWeekTitle" = "이번 주";
 "upcomingRemindersInAMonthTitle" = "이번 달";

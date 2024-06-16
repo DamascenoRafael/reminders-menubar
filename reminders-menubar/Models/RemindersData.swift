@@ -123,6 +123,8 @@ class RemindersData: ObservableObject {
 
     private func getMenuBarCount(_ menuBarCounterType: RmbMenuBarCounterType) async -> Int {
         switch menuBarCounterType {
+        case .due:
+            return await RemindersService.shared.getUpcomingReminders(.due).count
         case .today:
             return await RemindersService.shared.getUpcomingReminders(.today).count
         case .allReminders:

@@ -41,6 +41,7 @@
 "appAppearanceColorDarkModeOptionButton" = "Tmavý vzhľad";
 "menuBarIconSettingsMenu" = "Ikona v lište";
 "menuBarCounterSettingsMenu" = "Počítadlo v lište";
+"showMenuBarDueCountOptionButton" = "Show due count"; // TODO: translate
 "showMenuBarTodayCountOptionButton" = "Zobraziť počet dnešných";
 "showMenuBarAllRemindersCountOptionButton" = "Zobraziť počet všetkých pripomienok";
 "showMenuBarNoCountOptionButton" = "Nezobrazovať počet";
@@ -58,6 +59,7 @@
 "keyboardShortcutEnableOpenShortcutOption" = "Povolenie klávesovej skratky na otvorenie %@";
 "keyboardShortcutRestoreDefaultButton" = "Obnoviť predvolené nastavenia";
 "upcomingRemindersIntervalSelectionHelp" = "Vyberte rozsah pre zobrazenie nadchádzajúcich pripomienok";
+"upcomingRemindersDueTitle" = "Due"; // TODO: translate
 "upcomingRemindersTodayTitle" = "Dnes";
 "upcomingRemindersInAWeekTitle" = "Za týždeň";
 "upcomingRemindersInAMonthTitle" = "Za mesiac";

@@ -169,25 +169,11 @@ struct SettingsBarGearMenu: View {
     
     func menuBarCounterMenu() -> some View {
         Menu {
-            Button(action: {
-                userPreferences.menuBarCounterType = .today
-            }) {
-                let isSelected = userPreferences.menuBarCounterType == .today
-                SelectableView(title: rmbLocalized(.showMenuBarTodayCountOptionButton), isSelected: isSelected)
-            }
-            
-            Button(action: {
-                userPreferences.menuBarCounterType = .allReminders
-            }) {
-                let isSelected = userPreferences.menuBarCounterType == .allReminders
-                SelectableView(title: rmbLocalized(.showMenuBarAllRemindersCountOptionButton), isSelected: isSelected)
-            }
-            
-            Button(action: {
-                userPreferences.menuBarCounterType = .disabled
-            }) {
-                let isSelected = userPreferences.menuBarCounterType == .disabled
-                SelectableView(title: rmbLocalized(.showMenuBarNoCountOptionButton), isSelected: isSelected)
+            ForEach(RmbMenuBarCounterType.allCases, id: \.rawValue) {countType in
+                Button(action: { userPreferences.menuBarCounterType = countType }) {
+                    let isSelected = countType ==  userPreferences.menuBarCounterType
+                    SelectableView(title: countType.title, isSelected: isSelected)
+                }
             }
         } label: {
             Text(rmbLocalized(.menuBarCounterSettingsMenu))

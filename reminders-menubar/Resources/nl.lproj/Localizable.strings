@@ -41,6 +41,7 @@
 "appAppearanceColorDarkModeOptionButton" = "Donkere weergave";
 "menuBarIconSettingsMenu" = "Menubalkpictogram";
 "menuBarCounterSettingsMenu" = "Menubalk teller";
+"showMenuBarDueCountOptionButton" = "Show due count"; // TODO: translate
 "showMenuBarTodayCountOptionButton" = "Toon het aantal items van vandaag";
 "showMenuBarAllRemindersCountOptionButton" = "Laat alle herinnering aantallen zien";
 "showMenuBarNoCountOptionButton" = "Laat het aantal niet zien";
@@ -58,6 +59,7 @@
 "keyboardShortcutEnableOpenShortcutOption" = "Sneltoets inschakelen om %@ te openen";
 "keyboardShortcutRestoreDefaultButton" = "Standaardwaardes herstellen";
 "upcomingRemindersIntervalSelectionHelp" = "Selecteer een reeks aankomende herinneringen die moeten worden weergegeven";
+"upcomingRemindersDueTitle" = "Due"; // TODO: translate
 "upcomingRemindersTodayTitle" = "Vandaag";
 "upcomingRemindersInAWeekTitle" = "In een Week";
 "upcomingRemindersInAMonthTitle" = "In een Maand";
