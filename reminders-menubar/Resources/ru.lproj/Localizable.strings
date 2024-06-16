@@ -41,6 +41,7 @@
 "appAppearanceColorDarkModeOptionButton" = "Темная тема";
 "menuBarIconSettingsMenu" = "Значок строки меню";
 "menuBarCounterSettingsMenu" = "Счетчик строки меню";
+"showMenuBarDueCountOptionButton" = "Show due count"; // TODO: translate
 "showMenuBarTodayCountOptionButton" = "Показать сегодняшние";
 "showMenuBarAllRemindersCountOptionButton" = "Показать все";
 "showMenuBarNoCountOptionButton" = "Не показывать счетчик";
@@ -58,6 +59,7 @@
 "keyboardShortcutEnableOpenShortcutOption" = "Включить комбинацию клавиш для открытия %@";
 "keyboardShortcutRestoreDefaultButton" = "Вернуть настройки по умолчанию";
 "upcomingRemindersIntervalSelectionHelp" = "Выберите диапазон предстоящих напоминаний";
+"upcomingRemindersDueTitle" = "Due"; // TODO: translate
 "upcomingRemindersTodayTitle" = "Сегодня";
 "upcomingRemindersInAWeekTitle" = "Неделя";
 "upcomingRemindersInAMonthTitle" = "Месяц";

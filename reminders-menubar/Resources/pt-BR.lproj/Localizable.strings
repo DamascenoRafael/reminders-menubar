@@ -41,7 +41,7 @@
 "appAppearanceColorDarkModeOptionButton" = "Modo escuro";
 "menuBarIconSettingsMenu" = "Ícone da barra de menu";
 "menuBarCounterSettingsMenu" = "Contagem da barra de menu";
-"showMenuBarDueCountOptionButton" = "Show due count"; // TODO: translate
+"showMenuBarDueCountOptionButton" = "Mostrar contagem de vencidos";
 "showMenuBarTodayCountOptionButton" = "Mostrar contagem para hoje";
 "showMenuBarAllRemindersCountOptionButton" = "Mostrar contagem de todos os lembretes";
 "showMenuBarNoCountOptionButton" = "Não mostrar contagem";
@@ -59,7 +59,7 @@
 "keyboardShortcutEnableOpenShortcutOption" = "Habilitar atalho de teclado para abrir %@";
 "keyboardShortcutRestoreDefaultButton" = "Restaurar padrão";
 "upcomingRemindersIntervalSelectionHelp" = "Selecione o intervalo para os próximos lembretes a serem mostrados";
-"upcomingRemindersDueTitle" = "Due"; // TODO: translate
+"upcomingRemindersDueTitle" = "Vencidos";
 "upcomingRemindersTodayTitle" = "Hoje";
 "upcomingRemindersInAWeekTitle" = "Em uma Semana";
 "upcomingRemindersInAMonthTitle" = "Em um Mês";

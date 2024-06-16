@@ -42,6 +42,7 @@
 "menuBarIconSettingsMenu" = "選單列圖示";
 "menuBarCounterSettingsMenu" = "選單列計數";
 "showMenuBarTodayCountOptionButton" = "顯示今日的計數";
+"showMenuBarDueCountOptionButton" = "Show due count"; // TODO: translate
 "showMenuBarAllRemindersCountOptionButton" = "顯示所有提醒事項計數";
 "showMenuBarNoCountOptionButton" = "不顯示計數";
 "keyboardShortcutOptionButton" = "快捷鍵";
@@ -58,6 +59,7 @@
 "keyboardShortcutEnableOpenShortcutOption" = "啟用快捷鍵開啟 %@";
 "keyboardShortcutRestoreDefaultButton" = "回復至預設值";
 "upcomingRemindersIntervalSelectionHelp" = "選擇要顯示的即將到來提醒事項範圍";
+"upcomingRemindersDueTitle" = "Due"; // TODO: translate
 "upcomingRemindersTodayTitle" = "今日";
 "upcomingRemindersInAWeekTitle" = "未來一週";
 "upcomingRemindersInAMonthTitle" = "未來一個月";
