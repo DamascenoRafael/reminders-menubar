@@ -1,5 +1,6 @@
 "newReminderTextFielPlaceholder" = "미리 알림 내용을 입력 후 엔터를 누르세요";
 "newReminderCalendarSelectionToSaveHelp" = "새로운 미리 알림이 저장될 곳을 선택";
+"selectListForSavingReminderButtonHelp" = "새로운 미리 알림이 저장될 곳을 선택"; // TODO: Translate better
 "newReminderAddDateButton" = "날짜 추가";
 "newReminderAddTimeButton" = "시간 추가";
 "newReminderAutoSuggestTodayOption" = "오늘 날짜를 자동 제안";

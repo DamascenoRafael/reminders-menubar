@@ -1,5 +1,6 @@
 "newReminderTextFielPlaceholder" = "Введіть нагадування і натисність Enter";
 "newReminderCalendarSelectionToSaveHelp" = "Виберіть куди зберігатимуться нові нагадування";
+"selectListForSavingReminderButtonHelp" = "Виберіть куди зберігатимуться нові нагадування"; // TODO: Translate better
 "newReminderAddDateButton" = "Додати дату";
 "newReminderAddTimeButton" = "Додати час";
 "newReminderAutoSuggestTodayOption" = "Автоматично пропонувати сьогодні як дату";

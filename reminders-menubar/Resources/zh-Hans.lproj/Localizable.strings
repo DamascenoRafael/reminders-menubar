@@ -1,5 +1,6 @@
 "newReminderTextFielPlaceholder" = "输入提醒事项";
 "newReminderCalendarSelectionToSaveHelp" = "选择新提醒事项的储存位置";
+"selectListForSavingReminderButtonHelp" = "选择新提醒事项的储存位置"; // TODO: Translate better
 "newReminderAddDateButton" = "添加日期";
 "newReminderAddTimeButton" = "添加时间";
 "newReminderAutoSuggestTodayOption" = "自动建议将今天作为日期";

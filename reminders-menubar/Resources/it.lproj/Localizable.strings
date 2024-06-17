@@ -1,5 +1,6 @@
 "newReminderTextFielPlaceholder" = "Scrivi un promemoria e premi invio";
 "newReminderCalendarSelectionToSaveHelp" = "Scegli dove salvare i nuovi promemoria";
+"selectListForSavingReminderButtonHelp" = "Scegli dove salvare i nuovi promemoria"; // TODO: Translate better
 "newReminderAddDateButton" = "Aggiungi data";
 "newReminderAddTimeButton" = "Aggiungi ora";
 "newReminderAutoSuggestTodayOption" = "Suggerisci oggi come data";

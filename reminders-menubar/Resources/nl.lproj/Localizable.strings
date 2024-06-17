@@ -1,5 +1,6 @@
 "newReminderTextFielPlaceholder" = "Typ een herinnering en druk op enter";
 "newReminderCalendarSelectionToSaveHelp" = "Selecteer waar nieuwe herinneringen worden opgeslagen";
+"selectListForSavingReminderButtonHelp" = "Selecteer waar nieuwe herinneringen worden opgeslagen"; // TODO: Translate better
 "newReminderAddDateButton" = "Datum";
 "newReminderAddTimeButton" = "Tijd";
 "newReminderAutoSuggestTodayOption" = "Stel vandaag automatisch voor als datum";

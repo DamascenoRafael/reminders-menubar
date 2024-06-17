@@ -1,5 +1,6 @@
 "newReminderTextFielPlaceholder" = "Hatırlatıcı yazın ve enter tuşuna basın";
 "newReminderCalendarSelectionToSaveHelp" = "Yeni hatırlatıcıların kaydedileceği yeri seçin";
+"selectListForSavingReminderButtonHelp" = "Yeni hatırlatıcıların kaydedileceği yeri seçin"; // TODO: Translate better
 "newReminderAddDateButton" = "Tarih Ekle";
 "newReminderAddTimeButton" = "Saat Ekle";
 "newReminderAutoSuggestTodayOption" = "Tarihi otomatik olarak bugün olarak öner";
