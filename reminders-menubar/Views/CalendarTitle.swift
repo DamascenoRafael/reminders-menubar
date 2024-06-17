@@ -34,7 +34,7 @@ struct CalendarTitle: View {
                 calendarFolderIsHovered = isHovered
             }
             .padding(.horizontal, 7.5)
-            .help(rmbLocalized(.createNewRemindersHereHelp))
+            .help(rmbLocalized(.selectListForSavingReminderButtonHelp))
         }
     }
 }

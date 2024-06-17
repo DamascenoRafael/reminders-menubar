@@ -1,6 +1,6 @@
 "newReminderTextFielPlaceholder" = "Type a reminder and hit enter";
 "newReminderCalendarSelectionToSaveHelp" = "Select where new reminders will be saved";
-"createNewRemindersHereHelp" = "New reminders will be created here";
+"selectListForSavingReminderButtonHelp" = "Select list for saving new reminders";
 "newReminderAddDateButton" = "Add Date";
 "newReminderAddTimeButton" = "Add Time";
 "newReminderAutoSuggestTodayOption" = "Auto suggest today as date";

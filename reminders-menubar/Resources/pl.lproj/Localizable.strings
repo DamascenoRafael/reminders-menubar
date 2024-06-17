@@ -1,6 +1,6 @@
 "newReminderTextFielPlaceholder" = "Wpisz przypomnienie i naciśnij Enter";
 "newReminderCalendarSelectionToSaveHelp" = "Wybierz, gdzie nowe przypomnienia będą zapisywane";
-"createNewRemindersHereHelp" = "Wybierz, gdzie nowe przypomnienia będą zapisywane"; // TODO: Translate better
+"selectListForSavingReminderButtonHelp" = "Wybierz, gdzie nowe przypomnienia będą zapisywane"; // TODO: Translate better
 "newReminderAddDateButton" = "Dodaj Datę";
 "newReminderAddTimeButton" = "Dodaj Czas";
 "newReminderAutoSuggestTodayOption" = "Automatycznie sugeruj dzisiaj jako datę";

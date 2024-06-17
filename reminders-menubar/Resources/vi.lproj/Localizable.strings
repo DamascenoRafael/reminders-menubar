@@ -1,6 +1,6 @@
 "newReminderTextFielPlaceholder" = "Nhập lời nhắc và bấm phím enter";
 "newReminderCalendarSelectionToSaveHelp" = "Chọn vị trí để lưu lời nhắc";
-"createNewRemindersHereHelp" = "Chọn vị trí để lưu lời nhắc"; // TODO: Translate better
+"selectListForSavingReminderButtonHelp" = "Chọn vị trí để lưu lời nhắc"; // TODO: Translate better
 "newReminderAddDateButton" = "Thêm ngày";
 "newReminderAddTimeButton" = "Thêm giờ";
 "newReminderAutoSuggestTodayOption" = "Tự động gợi ý hôm nay";

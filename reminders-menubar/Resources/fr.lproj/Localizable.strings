@@ -1,6 +1,6 @@
 "newReminderTextFielPlaceholder" = "Tapez un rappel et appuyez sur Entrée";
 "newReminderCalendarSelectionToSaveHelp" = "Sélectionnez le calendrier où les nouveaux rappels seront sauvegardés";
-"createNewRemindersHereHelp" = "Sélectionnez le calendrier où les nouveaux rappels seront sauvegardés"; // TODO: Translate better
+"selectListForSavingReminderButtonHelp" = "Sélectionnez le calendrier où les nouveaux rappels seront sauvegardés"; // TODO: Translate better
 "newReminderAddDateButton" = "Ajouter une date";
 "newReminderAddTimeButton" = "Ajouter une heure";
 "newReminderAutoSuggestTodayOption" = "Suggérer Aujourd'hui par défaut";

@@ -1,6 +1,6 @@
 "newReminderTextFielPlaceholder" = "リマインダーを入力";
 "newReminderCalendarSelectionToSaveHelp" = "リマインダーの保存場所を選択";
-"createNewRemindersHereHelp" = "リマインダーの保存場所を選択"; // TODO: Translate better
+"selectListForSavingReminderButtonHelp" = "リマインダーの保存場所を選択"; // TODO: Translate better
 "newReminderAddDateButton" = "日付を追加";
 "newReminderAddTimeButton" = "時刻を追加";
 "newReminderAutoSuggestTodayOption" = "今日の日付を自動で提案";
