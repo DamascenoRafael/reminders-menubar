@@ -41,7 +41,7 @@ struct SettingsBarGearMenu: View {
                     KeyboardShortcutView.showWindow()
                 } label: {
                     let activeShortcut = keyboardShortcutService.activeShortcut(for: .openRemindersMenuBar)
-                    let activeShortcutText = Text("     \(activeShortcut)").foregroundColor(.gray)
+                    let activeShortcutText = Text(verbatim: "     \(activeShortcut)").foregroundColor(.gray)
                     Text(rmbLocalized(.keyboardShortcutOptionButton)) + activeShortcutText
                 }
                 

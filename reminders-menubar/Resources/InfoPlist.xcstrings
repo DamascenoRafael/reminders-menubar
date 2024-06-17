@@ -1,0 +1,138 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "CFBundleName" : {
+      "comment" : "Bundle name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Reminders MenuBar"
+          }
+        }
+      }
+    },
+    "NSHumanReadableCopyright" : {
+      "comment" : "Copyright (human-readable)",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Copyright © Rafael Damasceno, GNU General Public License v3."
+          }
+        }
+      }
+    },
+    "NSRemindersUsageDescription" : {
+      "comment" : "Privacy - Reminders Usage Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die App verwendet Apple Erinnerungen als Quelle für Listen und Aufgaben. Zum Anzeigen und Bearbeiten von Erinnerungen ist ein Zugang erforderlich."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "The App uses Apple Reminders as a source for lists and tasks. Access is required to view and edit reminders."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La aplicación utiliza Recordatorios de Apple como fuente de listas y tareas. Se requiere acceso para ver y editar recordatorios."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette application utilise les Rappels Apple comme source de listes et de tâches. L'accès aux Rappels est nécessaire pour les afficher et les modifier."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'app utilizza Promemoria Apple come fonte per elenchi e attività. L'accesso è necessario per visualizzare e modificare i promemoria."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このアプリはリマインダーをリストやタスクのソースとして使うので、リマインダーの表示や編集にはアクセスを許可する必要があります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 프로그램은 미리 알림의 항목을 사용합니다. 미리 알림을 보거나 편집하려면 접근 권한이 필요합니다."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De app gebruikt Apple Reminders als bron voor lijsten en taken. Toegang is vereist om herinneringen te bekijken en te bewerken."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aplikacja wykorzystuje Przypomnienia Apple jako źródło list i zadań. Dostęp jest wymagany do przeglądania i edytowania przypomnień."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O App usa o Lembretes da Apple como fonte para as listas e tarefas. O acesso é necessário para visualizar e editar lembretes."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Приложение использует Напоминания в качестве источника списков напоминаний. Доступ необходим для просмотра и редактирования напоминаний."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aplikácia používa Apple Pripomienky ako zdroj zoznamov a úloh. Na zobrazenie a úpravu pripomienok je potrebný prístup."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uygulama, listeler ve görevler için Apple Hatırlatıcılarını kullanır. Hatırlatıcıları görüntülemek ve düzenlemek için erişim gereklidir."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Програма використовує Apple Reminders як джерело списків і нагадувань. Для перегляду та редагування нагадувань потрібен доступ."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ứng dụng này sử dụng Apple lời nhắc cho các danh sách và các công việc. Cần có quyền truy cập để xem và chỉnh sửa lời nhắc."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本程序使用苹果提醒事项作为列表和任务的来源。 需要授权以查看及更改提醒事项。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此應用程式使用 Apple 提醒事項作為列表和任務的資料來源。需要存取權限以查看與編輯提醒事項。"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
