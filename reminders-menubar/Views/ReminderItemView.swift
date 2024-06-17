@@ -15,6 +15,31 @@ struct ReminderItemView: View {
     
     @State private var showingRemoveAlert = false
     
+    static private func recurrenceLabel(_ rule: EKRecurrenceRule?) -> String {
+        let interv = String(rule?.interval ?? 1)
+        
+        switch (rule?.frequency, rule?.interval ?? 1 > 1) {
+        case (.daily, false):
+            return rmbLocalized(.recurrenceDailySingle)
+        case (.daily, true):
+            return rmbLocalized(.recurrenceDailyPlural, arguments: interv)
+        case (.weekly, false):
+            return rmbLocalized(.recurrenceWeeklySingle)
+        case (.weekly, true):
+            return rmbLocalized(.recurrenceWeeklyPlural, arguments: interv)
+        case (.monthly, false):
+            return rmbLocalized(.recurrenceMonthlySingle)
+        case (.monthly, true):
+            return rmbLocalized(.recurrenceMonthlyPlural, arguments: interv)
+        case (.yearly, false):
+            return rmbLocalized(.recurrenceYearlySingle)
+        case (.yearly, true):
+            return rmbLocalized(.recurrenceYearlyPlural, arguments: interv)
+        default:
+            return ""
+        }
+    }
+    
     var body: some View {
         HStack(alignment: .top) {
             Button(action: {
@@ -108,6 +133,8 @@ struct ReminderItemView: View {
                         
                         if item.reminder.hasRecurrenceRules {
                             Image(systemName: "repeat")
+                            let rule = item.reminder.recurrenceRules?.first
+                            Text(ReminderItemView.recurrenceLabel(rule))
                         }
                         
                         if showCalendarTitleOnDueDate {
