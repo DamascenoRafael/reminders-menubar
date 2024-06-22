@@ -37,26 +37,32 @@ class DateParser {
         detector = try? NSDataDetector(types: types.rawValue)
     }
     
-    private func adjustDateAccordingToNow(_ dateResult: DateParserResult) -> DateParserResult? {
-        // NOTE: Date will be adjusted only if it is in the past further than the day before yesterday.
-        guard dateResult.date.isPast
-                && !dateResult.date.isToday
-                && !dateResult.date.isYesterday
-                && !dateResult.date.isDayBeforeYesterday else {
-            return dateResult
+    private func adjustedDate(_ date: Date, _ isTimeOnly: Bool, _ matchString: String) -> Date? {
+        // NOTE: Date will be adjusted only if it is in the past.
+        guard date.isPast else {
+            return date
         }
+        
+        let cal = Calendar.current
+        
+        // Fetch the year that the match specifies
+        let matchedYear = String(date.dateComponents(withTime: false).year!)
         
         // NOTE: If the date is set to a day in the current year, but it's past that day, then we assume it's next year.
-        // "Do something on February 2nd" - when it's already March.
-        if dateResult.date.isThisYear {
-            return DateParserResult(date: .nextYear(of: dateResult.date),
-                                    hasTime: dateResult.hasTime,
-                                    isTimeOnly: dateResult.isTimeOnly,
-                                    textDateResult: dateResult.textDateResult)
+        // For example "on February 2nd" - when it's already March.
+        if date.isThisYear && !matchString.contains(matchedYear)
+            && !date.isToday
+            && !date.isYesterday
+            && !date.isDayBeforeYesterday {
+            return Date.nextYear(of: date)
         }
         
-        // NOTE: If the date is not adjusted we will return it unchanged.
-        return dateResult
+        // NOTE: If the time appears in the past, we assume it's the next day.
+        // For example "on 8am" – but it's already noon.
+        if isTimeOnly {
+            return cal.date(byAdding: .day, value: 1, to: date)
+        }
+        return date
     }
     
     private func isTimeSignificant(in match: NSTextCheckingResult) -> Bool {
@@ -90,12 +96,14 @@ class DateParser {
         let textDateResult = TextDateResult(range: match.range,
                                             string: textString.substring(in: match.range))
         
-        let dateResult = DateParserResult(date: date,
-                                          hasTime: hasTime,
-                                          isTimeOnly: isTimeOnly,
-                                          textDateResult: textDateResult)
+        debugPrint(date, isTimeOnly, textDateResult)
         
-        return adjustDateAccordingToNow(dateResult)
+        let adjustedDate = adjustedDate(date, isTimeOnly, textString)!
+        
+        return DateParserResult(date: adjustedDate,
+                                hasTime: hasTime,
+                                isTimeOnly: isTimeOnly,
+                                textDateResult: textDateResult)
     }
     
     func getTimeOnly(from textString: String, on date: Date) -> DateParserResult? {
