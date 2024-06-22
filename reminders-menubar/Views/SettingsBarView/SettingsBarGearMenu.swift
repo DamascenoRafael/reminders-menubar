@@ -158,8 +158,9 @@ struct SettingsBarGearMenu: View {
                     userPreferences.reminderMenuBarIcon = icon
                     AppDelegate.shared.loadMenuBarIcon()
                 }) {
+                    let isSelected = userPreferences.reminderMenuBarIcon == icon
                     Image(nsImage: icon.image)
-                    Text(icon.name)
+                    Text((isSelected ? "✓\t" : "\t") + icon.name)
                 }
             }
         } label: {
