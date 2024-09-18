@@ -74,6 +74,10 @@ enum RemindersMenuBarLocalizedKeys: String {
     case okButton
     case preferredLanguageMenu
     case preferredLanguageSystemOptionButton
+    case reminderRecurrenceDailyLabel
+    case reminderRecurrenceWeeklyLabel
+    case reminderRecurrenceMonthlyLabel
+    case reminderRecurrenceYearlyLabel
 }
 
 struct ReminderMenuBarLocale {
