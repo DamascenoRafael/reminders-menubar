@@ -3,6 +3,7 @@ import Foundation
 enum RemindersMenuBarLocalizedKeys: String {
     case newReminderTextFielPlaceholder
     case newReminderCalendarSelectionToSaveHelp
+    case selectListForSavingReminderButtonHelp
     case newReminderAddDateButton
     case newReminderAddTimeButton
     case newReminderAutoSuggestTodayOption
@@ -44,6 +45,7 @@ enum RemindersMenuBarLocalizedKeys: String {
     case appAppearanceColorDarkModeOptionButton
     case menuBarIconSettingsMenu
     case menuBarCounterSettingsMenu
+    case showMenuBarDueCountOptionButton
     case showMenuBarTodayCountOptionButton
     case showMenuBarAllRemindersCountOptionButton
     case showMenuBarNoCountOptionButton
@@ -61,6 +63,7 @@ enum RemindersMenuBarLocalizedKeys: String {
     case keyboardShortcutEnableOpenShortcutOption
     case keyboardShortcutRestoreDefaultButton
     case upcomingRemindersIntervalSelectionHelp
+    case upcomingRemindersDueTitle
     case upcomingRemindersTodayTitle
     case upcomingRemindersInAWeekTitle
     case upcomingRemindersInAMonthTitle
