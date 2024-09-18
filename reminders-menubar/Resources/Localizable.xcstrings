@@ -3187,7 +3187,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Scorciatoia da tastiera"
+            "value" : "Abbreviazione da tastiera"
           }
         },
         "ja" : {
@@ -6158,8 +6158,8 @@
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Scegli dove salvare i nuovi promemoria"
+            "state" : "translated",
+            "value" : "Scegli lista di default per i nuovi promemoria"
           }
         },
         "ja" : {
@@ -6554,6 +6554,12 @@
             "value" : "Show due count"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra conteggio in scadenza"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6890,6 +6896,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Due"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scade"
           }
         },
         "pl" : {
