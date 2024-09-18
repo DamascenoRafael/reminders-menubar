@@ -6230,8 +6230,8 @@
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "選擇新建立的提醒事項儲存位置"
+            "state" : "translated",
+            "value" : "選擇清單以儲存新提醒"
           }
         }
       }
@@ -6565,6 +6565,12 @@
             "state" : "translated",
             "value" : "Mostrar contagem de vencidos"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "顯示到期計數選項按鈕"
+          }
         }
       }
     },
@@ -6896,6 +6902,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vencidos"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "即將到來的提醒事項"
           }
         }
       }
