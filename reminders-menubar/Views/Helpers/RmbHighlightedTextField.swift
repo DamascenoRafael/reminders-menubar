@@ -118,12 +118,12 @@ struct RmbHighlightedTextField: NSViewRepresentable {
                      forPartialWordRange charRange: NSRange,
                      indexOfSelectedItem index: UnsafeMutablePointer<Int>) -> [String] {
             let typingWord = textView.string.substring(in: charRange)
-            guard !typingWord.isEmpty,
+            guard typingWord?.isEmpty == nil,
                   isValidToAutocomplete(textView.string, charRange: charRange) else {
                 return []
             }
             
-            return self.parent.autoCompleteSuggestions(typingWord)
+            return self.parent.autoCompleteSuggestions(typingWord ?? "")
         }
         
         private func isValidToAutocomplete(_ string: String, charRange: NSRange) -> Bool {
