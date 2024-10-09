@@ -1,5 +1,10 @@
 import Foundation
 
+struct TextDateResult {
+    var range: NSRange
+    var string: String
+}
+
 class DateParser {
     static let shared = DateParser()
     
@@ -87,8 +92,13 @@ class DateParser {
         
         let hasTime = isTimeSignificant(in: match)
         let isTimeOnly = isTimeOnlyResult(in: match)
-        let textDateResult = TextDateResult(range: match.range,
-                                            string: textString.substring(in: match.range))
+        
+        let textDateResult: TextDateResult
+        if let substring = textString.substring(in: match.range) {
+            textDateResult = TextDateResult(range: match.range, string: substring)
+        } else {
+            textDateResult = TextDateResult(range: NSRange(location: 0, length: 0), string: "")
+        }
         
         let dateResult = DateParserResult(date: date,
                                           hasTime: hasTime,
