@@ -39,12 +39,13 @@ struct ReminderItemView: View {
                         Image(systemName: prioritySystemImage)
                             .foregroundColor(Color(item.reminder.calendar.color))
                     }
-                    Text(item.reminder.title)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .onTapGesture {
+                    LinkText(
+                        text: item.reminder.title,
+                        onTitleTap: {
                             isEditingTitle = true
                             showingEditPopover = true
                         }
+                    )
                     Spacer()
                     MenuButton(label:
                         Image(systemName: "ellipsis")
@@ -143,6 +144,52 @@ struct ReminderItemView: View {
             ForEach(item.childReminders.completed) { reminderItem in
                 ReminderItemView(item: reminderItem, isShowingCompleted: isShowingCompleted)
             }
+        }
+    }
+    
+    private struct LinkText: View {
+        let text: String
+        let onTitleTap: () -> Void
+        
+        var body: some View {
+            let attributedString = attributedStringFromTitle(text)
+            
+            Text(LocalizedStringKey(attributedString.string))
+                .fixedSize(horizontal: false, vertical: true)
+                .gesture(
+                    TapGesture()
+                        .onEnded { _ in
+                            if let event = NSApp.currentEvent, !event.modifierFlags.contains(.command) {
+                                onTitleTap()
+                            }
+                        }
+                )
+        }
+        
+        private func attributedStringFromTitle(_ title: String) -> NSAttributedString {
+            let attributedString = NSMutableAttributedString(string: title)
+            
+            // Detect URLs in the text
+            let detector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+            let range = NSRange(location: 0, length: title.utf16.count)
+            
+            if let detector = detector {
+                let matches = detector.matches(in: title, options: [], range: range)
+                
+                for match in matches {
+                    if let url = match.url {
+                        attributedString.addAttribute(.link, value: url, range: match.range)
+                        attributedString.addAttribute(.foregroundColor, value: NSColor.linkColor, range: match.range)
+                        attributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: match.range)
+                        
+                        // Add a gesture recognizer for this URL range
+                        let tapGesture = NSClickGestureRecognizer(target: NSWorkspace.shared, action: #selector(NSWorkspace.open(_:)))
+                        tapGesture.target = url as NSURL
+                    }
+                }
+            }
+            
+            return attributedString
         }
     }
     
