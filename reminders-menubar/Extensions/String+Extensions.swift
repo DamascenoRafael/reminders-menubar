@@ -2,17 +2,23 @@ import Foundation
 
 extension String {
     subscript(safe offset: Int) -> String? {
-        offset >= 0 && offset < count ? String(self[index(startIndex, offsetBy: offset)]) : nil
+        guard offset >= 0, offset < endIndex.utf16Offset(in: self) else {
+            return nil
+        }
+        
+        let offsetIndex = Index(utf16Offset: offset, in: self)
+        return String(self[offsetIndex])
     }
     
-    func substring(in range: NSRange) -> String {
-        let start = self.index(self.startIndex, offsetBy: range.lowerBound)
-        let end = self.index(self.startIndex, offsetBy: range.upperBound)
-        let subString = self[start..<end]
-        return String(subString)
+    func substring(in nsRange: NSRange) -> String {
+        guard let range = Range(nsRange, in: self) else {
+            return ""
+        }
+        
+        return String(self[range])
     }
     
     var fullRange: NSRange {
-        return NSRange(location: 0, length: self.count)
+        return NSRange(location: 0, length: endIndex.utf16Offset(in: self))
     }
 }
