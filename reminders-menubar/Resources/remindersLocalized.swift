@@ -90,7 +90,8 @@ func rmbLocalized(_ key: RemindersMenuBarLocalizedKeys, arguments: CVarArg...) -
     let localePath = Bundle.main.path(forResource: preferredLanguage, ofType: "lproj") ?? ""
     let localeBundle = Bundle(path: localePath) ?? Bundle.main
     
-    let localizedString = NSLocalizedString(key.rawValue, bundle: localeBundle, comment: "")
+    let fallbackString = Bundle.main.localizedString(forKey: key.rawValue, value: nil, table: nil)
+    let localizedString = localeBundle.localizedString(forKey: key.rawValue, value: fallbackString, table: nil)
     return String(format: localizedString, arguments: arguments)
 }
 
