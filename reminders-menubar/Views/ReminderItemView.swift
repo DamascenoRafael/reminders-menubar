@@ -39,13 +39,12 @@ struct ReminderItemView: View {
                         Image(systemName: prioritySystemImage)
                             .foregroundColor(Color(item.reminder.calendar.color))
                     }
-                    LinkText(
-                        text: item.reminder.title,
-                        onTitleTap: {
+                    Text(LocalizedStringKey(item.reminder.title.toDetectedLinkAttributedString()))
+                        .fixedSize(horizontal: false, vertical: true)
+                        .onTapGesture {
                             isEditingTitle = true
                             showingEditPopover = true
                         }
-                    )
                     Spacer()
                     MenuButton(label:
                         Image(systemName: "ellipsis")
@@ -144,40 +143,6 @@ struct ReminderItemView: View {
             ForEach(item.childReminders.completed) { reminderItem in
                 ReminderItemView(item: reminderItem, isShowingCompleted: isShowingCompleted)
             }
-        }
-    }
-    
-    private struct LinkText: View {
-        let text: String
-        let onTitleTap: () -> Void
-        
-        var body: some View {
-            let attributedString = attributedStringFromTitle(text)
-            
-            Text(LocalizedStringKey(attributedString.string))
-                .fixedSize(horizontal: false, vertical: true)
-                .onTapGesture {
-                    onTitleTap()
-                }
-        }
-        
-        private func attributedStringFromTitle(_ title: String) -> NSAttributedString {
-            let attributedString = NSMutableAttributedString(string: title)
-            
-            // Detect URLs in the text
-            guard let detector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue) else {
-                return attributedString
-            }
-            
-            let range = NSRange(title.startIndex..., in: title)
-            let matches = detector.matches(in: title, options: [], range: range)
-            for match in matches {
-                if let url = match.url {
-                    attributedString.addAttribute(.link, value: url, range: match.range)
-                }
-            }
-            
-            return attributedString
         }
     }
     
