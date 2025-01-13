@@ -21,4 +21,21 @@ extension String {
     var fullRange: NSRange {
         return NSRange(location: 0, length: endIndex.utf16Offset(in: self))
     }
+    
+    func toDetectedLinkAttributedString() -> String {
+        let range = NSRange(self.startIndex..., in: self)
+        let detector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+        guard let matches = detector?.matches(in: self, options: [], range: range), !matches.isEmpty else {
+            return self
+        }
+        
+        let attributedString = NSMutableAttributedString(string: self)
+        for match in matches {
+            if let url = match.url {
+                attributedString.addAttribute(.link, value: url, range: match.range)
+            }
+        }
+        
+        return attributedString.string
+    }
 }
