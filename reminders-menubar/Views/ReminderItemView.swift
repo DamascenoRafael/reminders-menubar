@@ -156,36 +156,24 @@ struct ReminderItemView: View {
             
             Text(LocalizedStringKey(attributedString.string))
                 .fixedSize(horizontal: false, vertical: true)
-                .gesture(
-                    TapGesture()
-                        .onEnded { _ in
-                            if let event = NSApp.currentEvent, !event.modifierFlags.contains(.command) {
-                                onTitleTap()
-                            }
-                        }
-                )
+                .onTapGesture {
+                    onTitleTap()
+                }
         }
         
         private func attributedStringFromTitle(_ title: String) -> NSAttributedString {
             let attributedString = NSMutableAttributedString(string: title)
             
             // Detect URLs in the text
-            let detector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
-            let range = NSRange(location: 0, length: title.utf16.count)
+            guard let detector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue) else {
+                return attributedString
+            }
             
-            if let detector = detector {
-                let matches = detector.matches(in: title, options: [], range: range)
-                
-                for match in matches {
-                    if let url = match.url {
-                        attributedString.addAttribute(.link, value: url, range: match.range)
-                        attributedString.addAttribute(.foregroundColor, value: NSColor.linkColor, range: match.range)
-                        attributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: match.range)
-                        
-                        // Add a gesture recognizer for this URL range
-                        let tapGesture = NSClickGestureRecognizer(target: NSWorkspace.shared, action: #selector(NSWorkspace.open(_:)))
-                        tapGesture.target = url as NSURL
-                    }
+            let range = NSRange(title.startIndex..., in: title)
+            let matches = detector.matches(in: title, options: [], range: range)
+            for match in matches {
+                if let url = match.url {
+                    attributedString.addAttribute(.link, value: url, range: match.range)
                 }
             }
             
