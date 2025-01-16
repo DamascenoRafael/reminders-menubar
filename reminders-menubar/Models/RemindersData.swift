@@ -47,7 +47,9 @@ class RemindersData: ObservableObject {
             .dropFirst()
             .sink { [weak self] upcomingRemindersInterval in
                 Task {
-                    self?.upcomingReminders = await RemindersService.shared.getUpcomingReminders(upcomingRemindersInterval)
+                    self?.upcomingReminders = await RemindersService.shared.getUpcomingReminders(
+                        upcomingRemindersInterval
+                    )
                 }
             }
             .store(in: &cancellationTokens)
@@ -56,7 +58,9 @@ class RemindersData: ObservableObject {
             .dropFirst()
             .sink { [weak self] calendarIdentifiersFilter in
                 Task {
-                    self?.filteredReminderLists = await RemindersService.shared.getReminders(of: calendarIdentifiersFilter)
+                    self?.filteredReminderLists = await RemindersService.shared.getReminders(
+                        of: calendarIdentifiersFilter
+                    )
                 }
             }
             .store(in: &cancellationTokens)
