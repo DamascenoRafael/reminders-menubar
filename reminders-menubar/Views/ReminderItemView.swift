@@ -39,7 +39,7 @@ struct ReminderItemView: View {
                         Image(systemName: prioritySystemImage)
                             .foregroundColor(Color(item.reminder.calendar.color))
                     }
-                    Text(item.reminder.title)
+                    Text(LocalizedStringKey(item.reminder.title.toDetectedLinkAttributedString()))
                         .fixedSize(horizontal: false, vertical: true)
                         .onTapGesture {
                             isEditingTitle = true

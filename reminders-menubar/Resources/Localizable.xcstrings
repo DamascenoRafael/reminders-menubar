@@ -224,6 +224,12 @@
             "value" : "Dark mode"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dunkler Modus"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -313,6 +319,12 @@
             "value" : "Light mode"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heller Modus"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -400,6 +412,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "System appearance"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Systemeinstellung"
           }
         },
         "fr" : {
@@ -3594,6 +3612,12 @@
             "value" : "Menu bar counter"
           }
         },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anzahl in Menüleiste"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5080,6 +5104,24 @@
             }
           }
         },
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Täglich"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Alle %i Tage"
+                }
+              }
+            }
+          }
+        },
         "pt-BR" : {
           "variations" : {
             "plural" : {
@@ -5116,6 +5158,24 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Every %i months"
+                }
+              }
+            }
+          }
+        },
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Monatlich"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Alle %i Monate"
                 }
               }
             }
@@ -5162,6 +5222,24 @@
             }
           }
         },
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Wöchentlich"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Alle %i Wochen"
+                }
+              }
+            }
+          }
+        },
         "pt-BR" : {
           "variations" : {
             "plural" : {
@@ -5198,6 +5276,24 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Every %i years"
+                }
+              }
+            }
+          }
+        },
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Jährlich"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Alle %i Jahre"
                 }
               }
             }

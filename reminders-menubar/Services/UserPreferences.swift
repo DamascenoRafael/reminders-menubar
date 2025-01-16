@@ -105,7 +105,7 @@ class UserPreferences: ObservableObject {
         return
             showUpcomingReminders ||
             preferredCalendarIdentifiersFilter == nil ||
-            !preferredCalendarIdentifiersFilter!.isEmpty
+            !(preferredCalendarIdentifiersFilter ?? []).isEmpty
     }
     
     var launchAtLoginIsEnabled: Bool {
