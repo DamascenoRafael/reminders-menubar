@@ -1,6 +1,5 @@
 import SwiftUI
 import EventKit
-import WrappingHStack
 
 struct FormNewReminderView: View {
     @EnvironmentObject var remindersData: RemindersData
@@ -158,15 +157,30 @@ func reminderInfoOptionsView(
     hasDueDate: Binding<Bool>,
     hasTime: Binding<Bool>
 ) -> some View {
-    WrappingHStack(lineSpacing: 10) {
-        reminderRemindDateTimeOptionView(date: date, components: .date, hasComponent: hasDueDate)
-            .modifier(ReminderInfoCapsule())
-        if hasDueDate.wrappedValue {
-            reminderRemindDateTimeOptionView(date: date, components: .time, hasComponent: hasTime)
-                .modifier(ReminderInfoCapsule())
+    let infoOptions: [AnyView] = [
+        AnyView(reminderRemindDateTimeOptionView(date: date, components: .date, hasComponent: hasDueDate)),
+        hasDueDate.wrappedValue
+            ? AnyView(reminderRemindDateTimeOptionView(date: date, components: .time, hasComponent: hasTime))
+            : nil,
+        AnyView(reminderPriorityOptionView(priority: priority))
+    ].compactMap { $0 }
+    
+    let numberOfColumns = 2
+    let infoOptionsHStacked: [[AnyView]] = stride(from: 0, to: infoOptions.count, by: numberOfColumns).map {
+        Array(infoOptions[$0..<min($0 + numberOfColumns, infoOptions.count)])
+    }
+    
+    VStack(alignment: .leading) {
+        ForEach(infoOptionsHStacked.indices, id: \.self) { infoOptionsHStackedIndex in
+            HStack {
+                let rowOptions = infoOptionsHStacked[infoOptionsHStackedIndex]
+                ForEach(rowOptions.indices, id: \.self) { rowOptionsIndex in
+                    let option = rowOptions[rowOptionsIndex]
+                    option
+                        .modifier(ReminderInfoCapsule())
+                }
+            }
         }
-        reminderPriorityOptionView(priority: priority)
-            .modifier(ReminderInfoCapsule())
     }
 }
 
@@ -296,6 +310,7 @@ struct ReminderInfoCapsule: ViewModifier {
             .padding(.horizontal, 8)
             .background(Color.secondary.opacity(0.2))
             .clipShape(Capsule())
+            .fixedSize()
     }
 }
 

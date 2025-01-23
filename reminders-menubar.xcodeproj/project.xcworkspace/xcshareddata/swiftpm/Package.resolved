@@ -1,5 +1,5 @@
 {
-  "originHash" : "dd74319bb3d9cf455200463695ec954789882bde4bf3b6f75adcb809549e2c1d",
+  "originHash" : "69c39523ac0471922b625cc56b8722155cfd2afd660bdd4f5ff67335b5b87714",
   "pins" : [
     {
       "identity" : "keyboardshortcuts",
@@ -8,15 +8,6 @@
       "state" : {
         "revision" : "09e4a10ed6b65b3a40fe07b6bf0c84809313efc4",
         "version" : "2.0.0"
-      }
-    },
-    {
-      "identity" : "wrappinghstack",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/dkk/WrappingHStack",
-      "state" : {
-        "revision" : "425d9488ba55f58f0b34498c64c054c77fc2a44b",
-        "version" : "2.2.11"
       }
     }
   ],
