@@ -103,10 +103,10 @@ struct FormNewReminderView: View {
             .modifier(FocusOnReceive(userPreferences.$remindersMenuBarOpeningEvent))
 
             if isShowingInfoOptions {
-                reminderInfoOptionsView(date: $rmbReminder.date,
-                                        priority: $rmbReminder.priority,
-                                        hasDueDate: $rmbReminder.hasDueDate,
-                                        hasTime: $rmbReminder.hasTime)
+                NewReminderInfoOptionsView(date: $rmbReminder.date,
+                                           priority: $rmbReminder.priority,
+                                           hasDueDate: $rmbReminder.hasDueDate,
+                                           hasTime: $rmbReminder.hasTime)
             }
         }
     }
@@ -150,104 +150,6 @@ struct FormNewReminderView: View {
     }
 }
 
-@ViewBuilder
-func reminderInfoOptionsView(
-    date: Binding<Date>,
-    priority: Binding<EKReminderPriority>,
-    hasDueDate: Binding<Bool>,
-    hasTime: Binding<Bool>
-) -> some View {
-    let infoOptions: [AnyView] = [
-        AnyView(reminderRemindDateTimeOptionView(date: date, components: .date, hasComponent: hasDueDate)),
-        hasDueDate.wrappedValue
-            ? AnyView(reminderRemindDateTimeOptionView(date: date, components: .time, hasComponent: hasTime))
-            : nil,
-        AnyView(reminderPriorityOptionView(priority: priority))
-    ].compactMap { $0 }
-    
-    let numberOfColumns = 2
-    let infoOptionsHStacked: [[AnyView]] = stride(from: 0, to: infoOptions.count, by: numberOfColumns).map {
-        Array(infoOptions[$0..<min($0 + numberOfColumns, infoOptions.count)])
-    }
-    
-    VStack(alignment: .leading) {
-        ForEach(infoOptionsHStacked.indices, id: \.self) { infoOptionsHStackedIndex in
-            HStack {
-                let rowOptions = infoOptionsHStacked[infoOptionsHStackedIndex]
-                ForEach(rowOptions.indices, id: \.self) { rowOptionsIndex in
-                    let option = rowOptions[rowOptionsIndex]
-                    option
-                        .modifier(ReminderInfoCapsule())
-                }
-            }
-        }
-    }
-}
-
-@ViewBuilder
-func reminderRemindDateTimeOptionView(date: Binding<Date>,
-                                      components: RmbDatePicker.DatePickerComponents,
-                                      hasComponent: Binding<Bool>) -> some View {
-    let pickerIcon = components == .time ? "clock" : "calendar"
-    
-    let addTimeButtonText = rmbLocalized(.newReminderAddTimeButton)
-    let addDateButtonText = rmbLocalized(.newReminderAddDateButton)
-    let pickerAddComponentText = components == .time ? addTimeButtonText : addDateButtonText
-    
-    if hasComponent.wrappedValue {
-        HStack {
-            Image(systemName: pickerIcon)
-                .font(.system(size: 12))
-            RmbDatePicker(selection: date, components: components)
-                .font(.systemFont(ofSize: 12, weight: .light))
-                .fixedSize(horizontal: true, vertical: true)
-                .padding(.top, 2)
-            Button {
-                hasComponent.wrappedValue = false
-            } label: {
-                Image(systemName: "xmark")
-                    .font(.system(size: 12))
-            }
-            .buttonStyle(.borderless)
-            .frame(width: 5, height: 5, alignment: .center)
-        }
-    } else {
-        Button {
-            hasComponent.wrappedValue = true
-        } label: {
-            Label(pickerAddComponentText, systemImage: pickerIcon)
-                .font(.system(size: 12))
-        }
-        .buttonStyle(.borderless)
-    }
-}
-
-private func priorityLabel(_ priority: EKReminderPriority) -> RemindersMenuBarLocalizedKeys {
-    switch priority {
-    case .low:
-        return .editReminderPriorityLowOption
-    case .medium:
-        return .editReminderPriorityMediumOption
-    case .high:
-        return .editReminderPriorityHighOption
-    default:
-        return .changeReminderPriorityMenuOption
-    }
-}
-
-@ViewBuilder
-func reminderPriorityOptionView(priority: Binding<EKReminderPriority>) -> some View {
-    let pickerIcon = priority.wrappedValue.systemImage ?? "exclamationmark.circle"
-    
-    Button {
-        priority.wrappedValue = priority.wrappedValue.nextPriority
-    } label: {
-        Label(rmbLocalized(priorityLabel(priority.wrappedValue)), systemImage: pickerIcon)
-            .font(.system(size: 12))
-    }
-    .buttonStyle(.borderless)
-}
-
 struct CenteredMenuPadding: ViewModifier {
     func body(content: Content) -> some View {
         if #available(macOS 14.0, *) {
@@ -276,17 +178,6 @@ struct ContrastBorderOverlay: ViewModifier {
                     .foregroundColor(Color.rmbColor(for: .borderContrast, and: colorSchemeContrast))
                 : nil
             )
-    }
-}
-
-struct ReminderInfoCapsule: ViewModifier {
-    func body(content: Content) -> some View {
-        return content
-            .frame(height: 20)
-            .padding(.horizontal, 8)
-            .background(Color.secondary.opacity(0.2))
-            .clipShape(Capsule())
-            .fixedSize()
     }
 }
 
