@@ -35,7 +35,7 @@ struct ReminderItemView: View {
             }.buttonStyle(PlainButtonStyle())
             VStack(spacing: 8) {
                 HStack(spacing: 4) {
-                    if let prioritySystemImage = item.reminder.prioritySystemImage {
+                    if let prioritySystemImage = item.reminder.ekPriority.systemImage {
                         Image(systemName: prioritySystemImage)
                             .foregroundColor(Color(item.reminder.calendar.color))
                     }

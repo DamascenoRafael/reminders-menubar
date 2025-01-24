@@ -32,19 +32,6 @@ extension EKReminder {
         }
     }
     
-    var prioritySystemImage: String? {
-        switch self.ekPriority {
-        case .high:
-            return "exclamationmark.3"
-        case .medium:
-            return "exclamationmark.2"
-        case .low:
-            return "exclamationmark"
-        default:
-            return nil
-        }
-    }
-    
     var isExpired: Bool {
         maxDueDate?.isPast ?? false
     }
