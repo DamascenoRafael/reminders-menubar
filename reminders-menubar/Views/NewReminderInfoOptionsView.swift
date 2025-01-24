@@ -3,9 +3,9 @@ import EventKit
 
 struct NewReminderInfoOptionsView: View {
     @Binding var date: Date
-    @Binding var priority: EKReminderPriority
     @Binding var hasDueDate: Bool
     @Binding var hasTime: Bool
+    @Binding var priority: EKReminderPriority
     
     enum InfoOptionType {
         case date
@@ -128,8 +128,8 @@ struct ReminderInfoCapsule: ViewModifier {
 #Preview {
     NewReminderInfoOptionsView(
         date: .constant(Date()),
-        priority: .constant(.medium),
         hasDueDate: .constant(true),
-        hasTime: .constant(true)
+        hasTime: .constant(true),
+        priority: .constant(.medium)
     )
 }

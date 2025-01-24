@@ -104,9 +104,9 @@ struct FormNewReminderView: View {
 
             if isShowingInfoOptions {
                 NewReminderInfoOptionsView(date: $rmbReminder.date,
-                                           priority: $rmbReminder.priority,
                                            hasDueDate: $rmbReminder.hasDueDate,
-                                           hasTime: $rmbReminder.hasTime)
+                                           hasTime: $rmbReminder.hasTime,
+                                           priority: $rmbReminder.priority)
             }
         }
     }
