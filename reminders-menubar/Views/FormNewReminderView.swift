@@ -137,15 +137,16 @@ struct FormNewReminderView: View {
     
     private func finalNewReminderTitle() -> String {
         var title = rmbReminder.title
+        if let parsedPriorityRange = Range(rmbReminder.textPriorityResult.highlightedText.range, in: title) {
+            // Removing priorityText first using the detected Range
+            // since there may be different exclamation marks in the title.
+            title.replaceSubrange(parsedPriorityRange, with: "")
+        }
         if userPreferences.removeParsedDateFromTitle {
             title = title.replacingOccurrences(of: rmbReminder.textDateResult.string, with: "")
         }
         title = title.replacingOccurrences(of: rmbReminder.textCalendarResult.string, with: "")
         
-        let priorityString = rmbReminder.textPriorityResult.string
-        if let range = title.range(of: priorityString) {
-            title = title.replacingOccurrences(of: priorityString, with: "", range: range)
-        }
         return title.trimmingCharacters(in: .whitespaces)
     }
 }
