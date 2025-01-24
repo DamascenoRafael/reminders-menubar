@@ -3,6 +3,7 @@ import Foundation
 enum RemindersMenuBarLocalizedKeys: String {
     case newReminderTextFielPlaceholder
     case newReminderCalendarSelectionToSaveHelp
+    case selectListForSavingReminderButtonHelp
     case newReminderAddDateButton
     case newReminderAddTimeButton
     case newReminderAutoSuggestTodayOption
@@ -44,6 +45,7 @@ enum RemindersMenuBarLocalizedKeys: String {
     case appAppearanceColorDarkModeOptionButton
     case menuBarIconSettingsMenu
     case menuBarCounterSettingsMenu
+    case showMenuBarDueCountOptionButton
     case showMenuBarTodayCountOptionButton
     case showMenuBarAllRemindersCountOptionButton
     case showMenuBarNoCountOptionButton
@@ -61,6 +63,7 @@ enum RemindersMenuBarLocalizedKeys: String {
     case keyboardShortcutEnableOpenShortcutOption
     case keyboardShortcutRestoreDefaultButton
     case upcomingRemindersIntervalSelectionHelp
+    case upcomingRemindersDueTitle
     case upcomingRemindersTodayTitle
     case upcomingRemindersInAWeekTitle
     case upcomingRemindersInAMonthTitle
@@ -71,6 +74,10 @@ enum RemindersMenuBarLocalizedKeys: String {
     case okButton
     case preferredLanguageMenu
     case preferredLanguageSystemOptionButton
+    case reminderRecurrenceDailyLabel
+    case reminderRecurrenceWeeklyLabel
+    case reminderRecurrenceMonthlyLabel
+    case reminderRecurrenceYearlyLabel
 }
 
 struct ReminderMenuBarLocale {
@@ -83,7 +90,8 @@ func rmbLocalized(_ key: RemindersMenuBarLocalizedKeys, arguments: CVarArg...) -
     let localePath = Bundle.main.path(forResource: preferredLanguage, ofType: "lproj") ?? ""
     let localeBundle = Bundle(path: localePath) ?? Bundle.main
     
-    let localizedString = NSLocalizedString(key.rawValue, bundle: localeBundle, comment: "")
+    let fallbackString = Bundle.main.localizedString(forKey: key.rawValue, value: nil, table: nil)
+    let localizedString = localeBundle.localizedString(forKey: key.rawValue, value: fallbackString, table: nil)
     return String(format: localizedString, arguments: arguments)
 }
 

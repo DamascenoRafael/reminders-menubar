@@ -41,7 +41,7 @@ struct SettingsBarGearMenu: View {
                     KeyboardShortcutView.showWindow()
                 } label: {
                     let activeShortcut = keyboardShortcutService.activeShortcut(for: .openRemindersMenuBar)
-                    let activeShortcutText = Text("     \(activeShortcut)").foregroundColor(.gray)
+                    let activeShortcutText = Text(verbatim: "     \(activeShortcut)").foregroundColor(.gray)
                     Text(rmbLocalized(.keyboardShortcutOptionButton)) + activeShortcutText
                 }
                 
@@ -169,25 +169,11 @@ struct SettingsBarGearMenu: View {
     
     func menuBarCounterMenu() -> some View {
         Menu {
-            Button(action: {
-                userPreferences.menuBarCounterType = .today
-            }) {
-                let isSelected = userPreferences.menuBarCounterType == .today
-                SelectableView(title: rmbLocalized(.showMenuBarTodayCountOptionButton), isSelected: isSelected)
-            }
-            
-            Button(action: {
-                userPreferences.menuBarCounterType = .allReminders
-            }) {
-                let isSelected = userPreferences.menuBarCounterType == .allReminders
-                SelectableView(title: rmbLocalized(.showMenuBarAllRemindersCountOptionButton), isSelected: isSelected)
-            }
-            
-            Button(action: {
-                userPreferences.menuBarCounterType = .disabled
-            }) {
-                let isSelected = userPreferences.menuBarCounterType == .disabled
-                SelectableView(title: rmbLocalized(.showMenuBarNoCountOptionButton), isSelected: isSelected)
+            ForEach(RmbMenuBarCounterType.allCases, id: \.rawValue) { counterType in
+                Button(action: { userPreferences.menuBarCounterType = counterType }) {
+                    let isSelected = counterType == userPreferences.menuBarCounterType
+                    SelectableView(title: counterType.title, isSelected: isSelected)
+                }
             }
         } label: {
             Text(rmbLocalized(.menuBarCounterSettingsMenu))

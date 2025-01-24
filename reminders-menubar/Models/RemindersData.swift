@@ -47,7 +47,9 @@ class RemindersData: ObservableObject {
             .dropFirst()
             .sink { [weak self] upcomingRemindersInterval in
                 Task {
-                    self?.upcomingReminders = await RemindersService.shared.getUpcomingReminders(upcomingRemindersInterval)
+                    self?.upcomingReminders = await RemindersService.shared.getUpcomingReminders(
+                        upcomingRemindersInterval
+                    )
                 }
             }
             .store(in: &cancellationTokens)
@@ -56,7 +58,9 @@ class RemindersData: ObservableObject {
             .dropFirst()
             .sink { [weak self] calendarIdentifiersFilter in
                 Task {
-                    self?.filteredReminderLists = await RemindersService.shared.getReminders(of: calendarIdentifiersFilter)
+                    self?.filteredReminderLists = await RemindersService.shared.getReminders(
+                        of: calendarIdentifiersFilter
+                    )
                 }
             }
             .store(in: &cancellationTokens)
@@ -123,6 +127,8 @@ class RemindersData: ObservableObject {
 
     private func getMenuBarCount(_ menuBarCounterType: RmbMenuBarCounterType) async -> Int {
         switch menuBarCounterType {
+        case .due:
+            return await RemindersService.shared.getUpcomingReminders(.due).count
         case .today:
             return await RemindersService.shared.getUpcomingReminders(.today).count
         case .allReminders:

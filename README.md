@@ -115,7 +115,7 @@ Feel free to share, open issues and contribute to this project! :heart:
 
 ## Languages
 
-🇺🇸 English • 🇧🇷 Brazilian Portuguese • 🇨🇳 Chinese (Simplified) • 🇳🇱 Dutch • 🇫🇷 French • 🇩🇪 German • 🇮🇹 Italian • 🇯🇵 Japanese • 🇰🇷 Korean • 🇵🇱 Polish • 🇸🇰 Slovak • 🇲🇽 Spanish (Latin America) • 🇹🇷 Turkish • 🇺🇦 Ukrainian • 🇻🇳 Vietnamese
+🇺🇸 English • 🇧🇷 Brazilian Portuguese • 🇨🇳 Chinese (Simplified and Traditional) • 🇳🇱 Dutch • 🇫🇷 French • 🇩🇪 German • 🇮🇹 Italian • 🇯🇵 Japanese • 🇰🇷 Korean • 🇵🇱 Polish • 🇷🇺 Russian • 🇸🇰 Slovak • 🇲🇽 Spanish (Latin America) • 🇹🇷 Turkish • 🇺🇦 Ukrainian • 🇻🇳 Vietnamese
 
 <details>
   <summary>
@@ -125,8 +125,7 @@ Feel free to share, open issues and contribute to this project! :heart:
 1. In Project navigator select the project reminders-menubar (first item)
 2. In the list of projects and targets select the project reminders-menubar (not the target)
 3. In the "Info" tab under "Localizations" select the "+" button and choose the new location
-4. In the list of resources, make sure all files are checked and click on "Finish"
-5. Edit the new location version of the **Localizable.strings** and **InfoPlist.strings** files with the translations
+4. Edit the new location in the **Localizable.xcstrings** and **InfoPlist.xcstrings** files with the translations
 
 </details>
 

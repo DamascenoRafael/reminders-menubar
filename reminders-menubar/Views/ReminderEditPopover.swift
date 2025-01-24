@@ -48,12 +48,14 @@ struct ReminderEditPopover: View {
             Divider()
             
             ReminderSection(rmbLocalized(.editReminderPrioritySection)) {
-                Picker("", selection: $rmbReminder.priority) {
+                Picker(selection: $rmbReminder.priority) {
                     Text(rmbLocalized(.editReminderPriorityLowOption)).tag(EKReminderPriority.low)
                     Text(rmbLocalized(.editReminderPriorityMediumOption)).tag(EKReminderPriority.medium)
                     Text(rmbLocalized(.editReminderPriorityHighOption)).tag(EKReminderPriority.high)
                     Divider()
                     Text(rmbLocalized(.editReminderPriorityNoneOption)).tag(EKReminderPriority.none)
+                } label: {
+                    Text(verbatim: "")
                 }
                 .labelsHidden()
                 .fixedSize(horizontal: true, vertical: false)

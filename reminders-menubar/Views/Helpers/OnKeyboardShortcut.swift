@@ -7,12 +7,14 @@ struct OnKeyboardShortcut: ViewModifier {
     func body(content: Content) -> some View {
         content
             .overlay(
-                Button("", action: action)
-                    .labelsHidden()
-                    .opacity(0)
-                    .frame(width: 0, height: 0)
-                    .keyboardShortcut(shortcut)
-                    .accessibilityHidden(true)
+                Button(action: action) {
+                    Text(verbatim: "")
+                }
+                .labelsHidden()
+                .opacity(0)
+                .frame(width: 0, height: 0)
+                .keyboardShortcut(shortcut)
+                .accessibilityHidden(true)
             )
     }
 }

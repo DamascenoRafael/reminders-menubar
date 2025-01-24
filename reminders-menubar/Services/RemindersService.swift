@@ -34,8 +34,8 @@ class RemindersService {
         return eventStore.calendars(for: .reminder)
     }
     
-    func getDefaultCalendar() -> EKCalendar {
-        return eventStore.defaultCalendarForNewReminders() ?? eventStore.calendars(for: .reminder).first!
+    func getDefaultCalendar() -> EKCalendar? {
+        return eventStore.defaultCalendarForNewReminders() ?? eventStore.calendars(for: .reminder).first
     }
     
     private func fetchReminders(matching predicate: NSPredicate) async -> [EKReminder] {

@@ -39,7 +39,7 @@ struct ReminderItemView: View {
                         Image(systemName: prioritySystemImage)
                             .foregroundColor(Color(item.reminder.calendar.color))
                     }
-                    Text(item.reminder.title)
+                    Text(LocalizedStringKey(item.reminder.title.toDetectedLinkAttributedString()))
                         .fixedSize(horizontal: false, vertical: true)
                         .onTapGesture {
                             isEditingTitle = true
@@ -108,6 +108,8 @@ struct ReminderItemView: View {
                         
                         if item.reminder.hasRecurrenceRules {
                             Image(systemName: "repeat")
+                            let rule = item.reminder.recurrenceRules?.first
+                            Text(recurrenceLabel(rule))
                         }
                         
                         if showCalendarTitleOnDueDate {
@@ -156,6 +158,23 @@ struct ReminderItemView: View {
               }),
               secondaryButton: .cancel(Text(rmbLocalized(.removeReminderAlertCancelButton)))
         )
+    }
+    
+    func recurrenceLabel(_ rule: EKRecurrenceRule?) -> String {
+        let interval = rule?.interval ?? 1
+        
+        switch rule?.frequency {
+        case .daily:
+            return rmbLocalized(.reminderRecurrenceDailyLabel, arguments: interval)
+        case .weekly:
+            return rmbLocalized(.reminderRecurrenceWeeklyLabel, arguments: interval)
+        case .monthly:
+            return rmbLocalized(.reminderRecurrenceMonthlyLabel, arguments: interval)
+        case .yearly:
+            return rmbLocalized(.reminderRecurrenceYearlyLabel, arguments: interval)
+        default:
+            return ""
+        }
     }
 }
 

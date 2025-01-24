@@ -27,7 +27,9 @@ struct SelectableView: View {
             Image(.empty)
         }
         
-        let coloredDot = color != nil ? Text("●  ").foregroundColor(color) : Text("")
+        let coloredDot = color != nil
+            ? Text(verbatim: "●  ").foregroundColor(color)
+            : Text(verbatim: "")
         
         Group {
             coloredDot +

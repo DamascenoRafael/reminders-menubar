@@ -19,8 +19,6 @@ struct KeyboardShortcutView: View {
                             
                             Button(action: {
                                 KeyboardShortcutService.shared.reset(.openRemindersMenuBar)
-                                // Remove focus from ShortcutRecorder
-                                removeFocusFromFirstResponder()
                             }) {
                                 Text(rmbLocalized(.keyboardShortcutRestoreDefaultButton))
                                     .padding(.horizontal, 4)
@@ -39,10 +37,6 @@ struct KeyboardShortcutView: View {
         .padding(.bottom, 24)
         .padding(.horizontal, 32)
         .frame(width: 520, height: 180)
-        .onAppear {
-            // Remove focus from ShortcutRecorder
-            removeFocusFromFirstResponder()
-        }
     }
     
     static func showWindow() {
