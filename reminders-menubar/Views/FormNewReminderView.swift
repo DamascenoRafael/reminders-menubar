@@ -222,30 +222,6 @@ func reminderRemindDateTimeOptionView(date: Binding<Date>,
     }
 }
 
-private func priorityPickerIcon(_ priority: EKReminderPriority) -> String {
-    switch priority {
-    case .low:
-        return "exclamationmark"
-    case .medium:
-        return "exclamationmark.2"
-    case .high:
-        return "exclamationmark.3"
-    default:
-        return "exclamationmark.circle"
-    }
-}
-private func nextPriority(_ priority: EKReminderPriority) -> EKReminderPriority {
-    switch priority {
-    case .low:
-        return .medium
-    case .medium:
-        return .high
-    case .high:
-        return .none
-    default:
-        return .low
-    }
-}
 private func priorityLabel(_ priority: EKReminderPriority) -> RemindersMenuBarLocalizedKeys {
     switch priority {
     case .low:
@@ -261,10 +237,10 @@ private func priorityLabel(_ priority: EKReminderPriority) -> RemindersMenuBarLo
 
 @ViewBuilder
 func reminderPriorityOptionView(priority: Binding<EKReminderPriority>) -> some View {
-    let pickerIcon = priorityPickerIcon(priority.wrappedValue)
+    let pickerIcon = priority.wrappedValue.systemImage ?? "exclamationmark.circle"
     
     Button {
-        priority.wrappedValue = nextPriority(priority.wrappedValue)
+        priority.wrappedValue = priority.wrappedValue.nextPriority
     } label: {
         Label(rmbLocalized(priorityLabel(priority.wrappedValue)), systemImage: pickerIcon)
             .font(.system(size: 12))
