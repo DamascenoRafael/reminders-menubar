@@ -146,12 +146,18 @@ struct RmbReminder {
     }
     
     private mutating func updateTextPriorityResult(with newTitle: String) {
-        guard let priorityResult = PriorityParser.getPriorityMatch(from: newTitle) else {
+        // NOTE: If a priority was defined by the user then the PriorityParser should not be applied.
+        if priority != .none && textPriorityResult.string.isEmpty {
+            return
+        }
+        
+        guard let priorityResult = PriorityParser.getPriority(from: newTitle) else {
             textPriorityResult = PriorityParser.PriorityParserResult()
             priority = .none
             return
         }
-        priority = priorityResult.priority!
+        
+        priority = priorityResult.priority
         textPriorityResult = priorityResult
     }
 }

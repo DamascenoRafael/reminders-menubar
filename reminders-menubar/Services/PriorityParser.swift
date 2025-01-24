@@ -4,7 +4,7 @@ class PriorityParser {
     struct PriorityParserResult {
         private let range: NSRange
         let string: String
-        let priority: EKReminderPriority?
+        let priority: EKReminderPriority
         
         var highlightedText: RmbHighlightedTextField.HighlightedText {
             RmbHighlightedTextField.HighlightedText(range: range, color: .systemRed)
@@ -13,10 +13,10 @@ class PriorityParser {
         init() {
             self.range = NSRange()
             self.string = ""
-            self.priority = nil
+            self.priority = .none
         }
         
-        init(range: NSRange, string: String, priority: EKReminderPriority?) {
+        init(range: NSRange, string: String, priority: EKReminderPriority) {
             self.range = range
             self.string = string
             self.priority = priority
@@ -27,19 +27,11 @@ class PriorityParser {
         // This prevents others from using the default '()' initializer for this class.
     }
     
-    static private func countExclamations(_ string: Substring) -> Int {
-        var count = 0
-        for char in string {
-            if char == "!" {
-                count += 1
-            } else {
-                break
-            }
-        }
-        return count
+    static private func exclamationCount(_ string: Substring) -> Int {
+        return string.count(where: { $0 == "!" })
     }
     
-    static private func getPriority(_ count: Int) -> EKReminderPriority {
+    static private func priority(forExclamationCount count: Int) -> EKReminderPriority {
         switch count {
         case 3:
             return .high
@@ -52,22 +44,17 @@ class PriorityParser {
         }
     }
     
-    static func getPriorityMatch(from textString: String) -> PriorityParserResult? {
-        let candidates = textString
+    static func getPriority(from textString: String) -> PriorityParserResult? {
+        guard let substringMatch = textString
             .split(separator: " ")
-            .filter({ 1...3 ~= countExclamations($0) })
-        
-        guard let substringMatch = candidates.first else {
-            return nil
-        }
-        let exclCount = countExclamations(substringMatch)
-        let endPrefix = substringMatch.index(substringMatch.startIndex, offsetBy: exclCount)
-        
-        let range = NSRange(substringMatch.startIndex..<endPrefix, in: textString)
+            .first(where: { $0.first == "!" && $0.count <= 3 && $0.count == exclamationCount($0) }) else {
+                return nil
+            }
         
         return PriorityParserResult(
-            range: range,
-            string: String(repeating: "!", count: exclCount),
-            priority: getPriority(exclCount))
+            range: NSRange(substringMatch.startIndex..<substringMatch.endIndex, in: textString),
+            string: String(substringMatch),
+            priority: priority(forExclamationCount: substringMatch.count)
+        )
     }
 }
