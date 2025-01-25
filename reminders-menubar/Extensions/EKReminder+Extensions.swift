@@ -98,8 +98,8 @@ extension EKReminder {
         
         // NOTE: UserActivity type is UniversalLink, so in theory it could be targeting apps other than Mail.
         // If it starts with "message:" then it is related to Mail.
-        let userActivityStorageString = String(decoding: userActivityStorageData, as: UTF8.self)
-        guard userActivityStorageString.starts(with: "message:") else {
+        guard let userActivityStorageString = String(bytes: userActivityStorageData, encoding: .utf8),
+              userActivityStorageString.starts(with: "message:") else {
             return nil
         }
         
