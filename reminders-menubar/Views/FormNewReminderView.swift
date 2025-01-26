@@ -7,7 +7,7 @@ struct FormNewReminderView: View {
     @Environment(\.colorSchemeContrast) private var colorSchemeContrast
     
     @State var rmbReminder = RmbReminder()
-    @State var isShowingDueDateOptions = false
+    @State var isShowingInfoOptions = false
     
     var body: some View {
         let calendarForSaving = getCalendarForSaving()
@@ -78,7 +78,7 @@ struct FormNewReminderView: View {
         .padding(10)
         .onChange(of: rmbReminder.title) { [oldValue = rmbReminder.title] newValue in
             withAnimation(.easeOut(duration: 0.3)) {
-                isShowingDueDateOptions = !newValue.isEmpty
+                isShowingInfoOptions = !newValue.isEmpty
             }
 
             // NOTE: When user starts to enter a title we re-instantiate RmbReminder to ensure the date is as expected.
@@ -102,10 +102,11 @@ struct FormNewReminderView: View {
                                     onSubmit: createNewReminder)
             .modifier(FocusOnReceive(userPreferences.$remindersMenuBarOpeningEvent))
 
-            if isShowingDueDateOptions {
-                reminderDueDateOptionsView(date: $rmbReminder.date,
+            if isShowingInfoOptions {
+                NewReminderInfoOptionsView(date: $rmbReminder.date,
                                            hasDueDate: $rmbReminder.hasDueDate,
-                                           hasTime: $rmbReminder.hasTime)
+                                           hasTime: $rmbReminder.hasTime,
+                                           priority: $rmbReminder.priority)
             }
         }
     }
@@ -136,61 +137,17 @@ struct FormNewReminderView: View {
     
     private func finalNewReminderTitle() -> String {
         var title = rmbReminder.title
+        if let parsedPriorityRange = Range(rmbReminder.textPriorityResult.highlightedText.range, in: title) {
+            // Removing priorityText first using the detected Range
+            // since there may be different exclamation marks in the title.
+            title.replaceSubrange(parsedPriorityRange, with: "")
+        }
         if userPreferences.removeParsedDateFromTitle {
             title = title.replacingOccurrences(of: rmbReminder.textDateResult.string, with: "")
         }
         title = title.replacingOccurrences(of: rmbReminder.textCalendarResult.string, with: "")
+        
         return title.trimmingCharacters(in: .whitespaces)
-    }
-}
-
-@ViewBuilder
-func reminderDueDateOptionsView(date: Binding<Date>, hasDueDate: Binding<Bool>, hasTime: Binding<Bool>) -> some View {
-    HStack {
-        reminderRemindDateTimeOptionView(date: date, components: .date, hasComponent: hasDueDate)
-            .modifier(RemindDateTimeCapsuleStyle())
-        if hasDueDate.wrappedValue {
-            reminderRemindDateTimeOptionView(date: date, components: .time, hasComponent: hasTime)
-                .modifier(RemindDateTimeCapsuleStyle())
-        }
-    }
-}
-
-@ViewBuilder
-func reminderRemindDateTimeOptionView(date: Binding<Date>,
-                                      components: RmbDatePicker.DatePickerComponents,
-                                      hasComponent: Binding<Bool>) -> some View {
-    let pickerIcon = components == .time ? "clock" : "calendar"
-    
-    let addTimeButtonText = rmbLocalized(.newReminderAddTimeButton)
-    let addDateButtonText = rmbLocalized(.newReminderAddDateButton)
-    let pickerAddComponentText = components == .time ? addTimeButtonText : addDateButtonText
-    
-    if hasComponent.wrappedValue {
-        HStack {
-            Image(systemName: pickerIcon)
-                .font(.system(size: 12))
-            RmbDatePicker(selection: date, components: components)
-                .font(.systemFont(ofSize: 12, weight: .light))
-                .fixedSize(horizontal: true, vertical: true)
-                .padding(.top, 2)
-            Button {
-                hasComponent.wrappedValue = false
-            } label: {
-                Image(systemName: "xmark")
-                    .font(.system(size: 12))
-            }
-            .buttonStyle(.borderless)
-            .frame(width: 5, height: 5, alignment: .center)
-        }
-    } else {
-        Button {
-            hasComponent.wrappedValue = true
-        } label: {
-            Label(pickerAddComponentText, systemImage: pickerIcon)
-                .font(.system(size: 12))
-        }
-        .buttonStyle(.borderless)
     }
 }
 
@@ -225,16 +182,6 @@ struct ContrastBorderOverlay: ViewModifier {
     }
 }
 
-struct RemindDateTimeCapsuleStyle: ViewModifier {
-    func body(content: Content) -> some View {
-        return content
-            .frame(height: 20)
-            .padding(.horizontal, 8)
-            .background(Color.secondary.opacity(0.2))
-            .clipShape(Capsule())
-    }
-}
-
 struct FormNewReminderView_Previews: PreviewProvider {
     static var reminder: EKReminder {
         let calendar = EKCalendar(for: .reminder, eventStore: .init())
@@ -254,7 +201,7 @@ struct FormNewReminderView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             ForEach(ColorScheme.allCases, id: \.self) { color in
-                FormNewReminderView(rmbReminder: RmbReminder(reminder: reminder), isShowingDueDateOptions: true)
+                FormNewReminderView(rmbReminder: RmbReminder(reminder: reminder), isShowingInfoOptions: true)
                     .environmentObject(RemindersData())
                     .colorScheme(color)
                     .previewDisplayName("\(color) mode")

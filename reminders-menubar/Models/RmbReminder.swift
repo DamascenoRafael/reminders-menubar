@@ -25,6 +25,7 @@ struct RmbReminder {
             }
             updateTextDateResult(with: newValue)
             updateTextCalendarResult(with: newValue)
+            updateTextPriorityResult(with: newValue)
         }
     }
     
@@ -56,9 +57,10 @@ struct RmbReminder {
     
     var textDateResult = DateParser.TextDateResult()
     var textCalendarResult = CalendarParser.TextCalendarResult()
+    var textPriorityResult = PriorityParser.PriorityParserResult()
     
     var highlightedTexts: [RmbHighlightedTextField.HighlightedText] {
-        [textDateResult.highlightedText, textCalendarResult.highlightedText]
+        [textDateResult.highlightedText, textCalendarResult.highlightedText, textPriorityResult.highlightedText]
     }
 
     init() {
@@ -141,5 +143,21 @@ struct RmbReminder {
         }
         
         textCalendarResult = calendarResult
+    }
+    
+    private mutating func updateTextPriorityResult(with newTitle: String) {
+        // NOTE: If a priority was defined by the user then the PriorityParser should not be applied.
+        if priority != .none && textPriorityResult.string.isEmpty {
+            return
+        }
+        
+        guard let priorityResult = PriorityParser.getPriority(from: newTitle) else {
+            textPriorityResult = PriorityParser.PriorityParserResult()
+            priority = .none
+            return
+        }
+        
+        priority = priorityResult.priority
+        textPriorityResult = priorityResult
     }
 }
