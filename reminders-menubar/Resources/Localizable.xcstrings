@@ -6814,6 +6814,12 @@
             "value" : "Show due count"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher les rappels en retard"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
