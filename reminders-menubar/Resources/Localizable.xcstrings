@@ -5122,6 +5122,24 @@
             }
           }
         },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Tous les jours"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Tous les %i jours"
+                }
+              }
+            }
+          }
+        },
         "pt-BR" : {
           "variations" : {
             "plural" : {
@@ -5176,6 +5194,24 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Alle %i Monate"
+                }
+              }
+            }
+          }
+        },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Tous les mois"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Tous les %i mois"
                 }
               }
             }
@@ -5240,6 +5276,24 @@
             }
           }
         },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Toutes les semaines"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Toutes les %i semaines"
+                }
+              }
+            }
+          }
+        },
         "pt-BR" : {
           "variations" : {
             "plural" : {
@@ -5294,6 +5348,24 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Alle %i Jahre"
+                }
+              }
+            }
+          }
+        },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Tous les ans"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Tous les %i ans"
                 }
               }
             }
@@ -6412,8 +6484,8 @@
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Sélectionnez le calendrier où les nouveaux rappels seront sauvegardés"
+            "state" : "translated",
+            "value" : "Sélectionnez la liste où les nouveaux rappels seront sauvegardés"
           }
         },
         "it" : {
@@ -6814,6 +6886,12 @@
             "value" : "Show due count"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher les rappels en retard"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7156,6 +7234,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Due"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En retard"
           }
         },
         "it" : {
