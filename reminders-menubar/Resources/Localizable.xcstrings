@@ -6918,6 +6918,23 @@
         }
       }
     },
+    "showMenuBarFilteredRemindersCountOptionButton" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show filtered reminders count"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher les rappels filtrés"
+          }
+        }
+      }
+    },
     "showMenuBarNoCountOptionButton" : {
       "extractionState" : "manual",
       "localizations" : {

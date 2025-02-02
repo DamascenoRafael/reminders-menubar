@@ -1,6 +1,7 @@
 enum RmbMenuBarCounterType: String, Codable, CaseIterable {
     case due
     case today
+    case filteredReminders
     case allReminders
     case disabled
     
@@ -10,6 +11,8 @@ enum RmbMenuBarCounterType: String, Codable, CaseIterable {
             return rmbLocalized(.showMenuBarDueCountOptionButton)
         case .today:
             return rmbLocalized(.showMenuBarTodayCountOptionButton)
+        case .filteredReminders:
+            return rmbLocalized(.showMenuBarFilteredRemindersCountOptionButton)
         case .allReminders:
             return rmbLocalized(.showMenuBarAllRemindersCountOptionButton)
         case .disabled:
