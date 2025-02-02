@@ -98,6 +98,15 @@ class RemindersService {
         return reminders.count
     }
     
+    func getFilteredRemindersCount(of calendarIdentifiers: [String]) async -> Int {
+        let calendars = getCalendars().filter({ calendarIdentifiers.contains($0.calendarIdentifier) })
+        let predicate = eventStore.predicateForIncompleteReminders(withDueDateStarting: nil,
+                                                                   ending: nil,
+                                                                   calendars: calendars)
+        let reminders = await fetchReminders(matching: predicate)
+        return reminders.count
+    }
+    
     func save(reminder: EKReminder) {
         do {
             try eventStore.save(reminder, commit: true)
