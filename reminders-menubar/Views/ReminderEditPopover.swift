@@ -17,13 +17,17 @@ struct ReminderEditPopover: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            TextField(rmbLocalized(.editReminderTitleTextFieldPlaceholder), text: $rmbReminder.title)
-                .textFieldStyle(PlainTextFieldStyle())
-                .font(.title3)
-                .modifier(FocusOnAppear(isEnabled: focusOnTitle))
+            ScrollableTextField(
+                rmbLocalized(.editReminderTitleTextFieldPlaceholder),
+                text: $rmbReminder.title
+            )
+            .font(.title3)
+            .modifier(FocusOnAppear(isEnabled: focusOnTitle))
             
-            TextField(rmbLocalized(.editReminderNotesTextFieldPlaceholder), text: $rmbReminder.notes ?? "")
-                .textFieldStyle(PlainTextFieldStyle())
+            ScrollableTextField(
+                rmbLocalized(.editReminderNotesTextFieldPlaceholder),
+                text: $rmbReminder.notes ?? ""
+            )
             
             Divider()
             

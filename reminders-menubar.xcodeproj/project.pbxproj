@@ -58,6 +58,7 @@
 		71B4AD5325B7F37D00214219 /* NSTextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B4AD5225B7F37D00214219 /* NSTextField+Extensions.swift */; };
 		71B4AD6625B9118000214219 /* NoReminderItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B4AD6525B9118000214219 /* NoReminderItemsView.swift */; };
 		71B6D1FB24C6511000E66EDB /* SettingsBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B6D1FA24C6511000E66EDB /* SettingsBarView.swift */; };
+		71C910012D449FC4002D6B18 /* ScrollableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C910002D449FC4002D6B18 /* ScrollableTextField.swift */; };
 		71CAF8432A3444EA003160FF /* CalendarParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CAF8422A3444EA003160FF /* CalendarParser.swift */; };
 		71CCF97E2D42EF2500D334F8 /* NewReminderInfoOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCF97D2D42EF2500D334F8 /* NewReminderInfoOptionsView.swift */; };
 		71CCF9842D43148100D334F8 /* EKReminderPriority+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CCF9832D43148000D334F8 /* EKReminderPriority+Extensions.swift */; };
@@ -146,6 +147,7 @@
 		71B4AD5225B7F37D00214219 /* NSTextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextField+Extensions.swift"; sourceTree = "<group>"; };
 		71B4AD6525B9118000214219 /* NoReminderItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoReminderItemsView.swift; sourceTree = "<group>"; };
 		71B6D1FA24C6511000E66EDB /* SettingsBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBarView.swift; sourceTree = "<group>"; };
+		71C910002D449FC4002D6B18 /* ScrollableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableTextField.swift; sourceTree = "<group>"; };
 		71CAF8422A3444EA003160FF /* CalendarParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarParser.swift; sourceTree = "<group>"; };
 		71CCF97D2D42EF2500D334F8 /* NewReminderInfoOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReminderInfoOptionsView.swift; sourceTree = "<group>"; };
 		71CCF9832D43148000D334F8 /* EKReminderPriority+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EKReminderPriority+Extensions.swift"; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				714C28A12A07573A00734DAF /* FocusOnAppear.swift */,
 				714C28AB2A0AE37600734DAF /* FocusOnReceive.swift */,
 				714C28A32A082E0000734DAF /* OnKeyboardShortcut.swift */,
+				71C910002D449FC4002D6B18 /* ScrollableTextField.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 				71F36A9829C16B7A0099D337 /* RmbColorKey.swift in Sources */,
 				71CCF9842D43148100D334F8 /* EKReminderPriority+Extensions.swift in Sources */,
 				71E7126A2908C6D100DA97BD /* NilCoalescingBindingOverload.swift in Sources */,
+				71C910012D449FC4002D6B18 /* ScrollableTextField.swift in Sources */,
 				714C28AC2A0AE37600734DAF /* FocusOnReceive.swift in Sources */,
 				714C28A42A082E0000734DAF /* OnKeyboardShortcut.swift in Sources */,
 				714C28A82A0A056600734DAF /* RmbHighlightedTextField.swift in Sources */,
