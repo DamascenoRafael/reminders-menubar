@@ -81,8 +81,12 @@ class RemindersService {
         return reminderLists
     }
     
-    func getUpcomingReminders(_ interval: ReminderInterval) async -> [ReminderItem] {
-        let calendars = getCalendars()
+    func getUpcomingReminders(_ interval: ReminderInterval,
+                              for calendarIdentifiers: [String]? = nil) async -> [ReminderItem] {
+        var calendars: [EKCalendar]?
+        if let calendarIdentifiers, !calendarIdentifiers.isEmpty {
+            calendars = getCalendars().filter({ calendarIdentifiers.contains($0.calendarIdentifier) })
+        }
         let predicate = eventStore.predicateForIncompleteReminders(withDueDateStarting: nil,
                                                                    ending: interval.endingDate,
                                                                    calendars: calendars)
@@ -93,15 +97,6 @@ class RemindersService {
             reminders = reminders.filter { $0.reminder.isExpired }
         }
         return reminders.sortedReminders
-    }
-    
-    func getFilteredRemindersCount(of calendarIdentifiers: [String]) async -> Int {
-        let calendars = getCalendars().filter({ calendarIdentifiers.contains($0.calendarIdentifier) })
-        let predicate = eventStore.predicateForIncompleteReminders(withDueDateStarting: nil,
-                                                                   ending: nil,
-                                                                   calendars: calendars)
-        let reminders = await fetchReminders(matching: predicate)
-        return reminders.count
     }
     
     func save(reminder: EKReminder) {
