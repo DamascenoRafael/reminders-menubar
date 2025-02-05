@@ -33,7 +33,7 @@ enum ReminderInterval: String, Codable, CaseIterable {
         case .month:
             return Calendar.current.date(byAdding: .month, value: 1, to: Date())
         case .all:
-            return Date.distantFuture
+            return nil
         }
     }
 }

@@ -132,7 +132,7 @@ class RemindersData: ObservableObject {
         case .today:
             return await RemindersService.shared.getUpcomingReminders(.today).count
         case .allReminders:
-            return await RemindersService.shared.getAllRemindersCount()
+            return await RemindersService.shared.getUpcomingReminders(.all).count
         case .disabled:
             return -1
         }
