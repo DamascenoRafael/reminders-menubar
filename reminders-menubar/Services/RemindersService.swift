@@ -86,16 +86,13 @@ class RemindersService {
         let predicate = eventStore.predicateForIncompleteReminders(withDueDateStarting: nil,
                                                                    ending: interval.endingDate,
                                                                    calendars: calendars)
-        let reminders = await fetchReminders(matching: predicate).map({ ReminderItem(for: $0) })
+        var reminders = await fetchReminders(matching: predicate).map({ ReminderItem(for: $0) })
+        if interval == .due {
+            // For the 'due' interval, we should filter reminders for today with no time.
+            // These will only be considered due/expired on the following day.
+            reminders = reminders.filter { $0.reminder.isExpired }
+        }
         return reminders.sortedReminders
-    }
-    
-    func getAllRemindersCount() async -> Int {
-        let predicate = eventStore.predicateForIncompleteReminders(withDueDateStarting: nil,
-                                                                   ending: nil,
-                                                                   calendars: nil)
-        let reminders = await fetchReminders(matching: predicate)
-        return reminders.count
     }
     
     func getFilteredRemindersCount(of calendarIdentifiers: [String]) async -> Int {
