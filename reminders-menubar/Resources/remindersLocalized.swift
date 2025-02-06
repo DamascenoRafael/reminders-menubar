@@ -45,6 +45,7 @@ enum RemindersMenuBarLocalizedKeys: String {
     case appAppearanceColorDarkModeOptionButton
     case menuBarIconSettingsMenu
     case menuBarCounterSettingsMenu
+    case filterMenuBarCountByCalendarOptionButton
     case showMenuBarDueCountOptionButton
     case showMenuBarTodayCountOptionButton
     case showMenuBarFilteredRemindersCountOptionButton

@@ -42,6 +42,18 @@ class RemindersData: ObservableObject {
                 }
             }
             .store(in: &cancellationTokens)
+        
+        userPreferences.$filterRemindersCountByCalendar
+            .dropFirst()
+            .sink { [weak self] _ in
+                Task {
+                    guard let self else { return }
+                    let count = await self.getMenuBarCount(self.userPreferences.menuBarCounterType)
+                    self.updateMenuBarCount(with: count)
+                }
+            }
+            .store(in: &cancellationTokens)
+
 
         userPreferences.$upcomingRemindersInterval
             .dropFirst()
@@ -126,15 +138,16 @@ class RemindersData: ObservableObject {
     }
 
     private func getMenuBarCount(_ menuBarCounterType: RmbMenuBarCounterType) async -> Int {
+        let shouldFilter = UserPreferences.shared.filterRemindersCountByCalendar
+        let filters = shouldFilter ? self.calendarIdentifiersFilter : nil
+        
         switch menuBarCounterType {
         case .due:
-            return await RemindersService.shared.getUpcomingReminders(.due).count
+            return await RemindersService.shared.getUpcomingReminders(.due, for: filters).count
         case .today:
-            return await RemindersService.shared.getUpcomingReminders(.today).count
-        case .filteredReminders:
-            return await RemindersService.shared.getUpcomingReminders(.all, for: self.calendarIdentifiersFilter).count
+            return await RemindersService.shared.getUpcomingReminders(.today, for: filters).count
         case .allReminders:
-            return await RemindersService.shared.getUpcomingReminders(.all).count
+            return await RemindersService.shared.getUpcomingReminders(.all, for: filters).count
         case .disabled:
             return -1
         }

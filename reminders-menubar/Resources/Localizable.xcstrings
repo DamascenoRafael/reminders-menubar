@@ -3068,6 +3068,23 @@
         }
       }
     },
+    "filterMenuBarCountByCalendarOptionButton" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Apply filter"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appliquer le filtrage"
+          }
+        }
+      }
+    },
     "keyboardShortcutEnableOpenShortcutOption" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -6914,23 +6931,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "顯示到期計數選項按鈕"
-          }
-        }
-      }
-    },
-    "showMenuBarFilteredRemindersCountOptionButton" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Show filtered reminders count"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Afficher les rappels filtrés"
           }
         }
       }

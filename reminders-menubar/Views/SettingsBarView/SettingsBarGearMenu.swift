@@ -169,6 +169,15 @@ struct SettingsBarGearMenu: View {
     
     func menuBarCounterMenu() -> some View {
         Menu {
+            Button(action: {
+                userPreferences.filterRemindersCountByCalendar.toggle()
+            }) {
+                SelectableView(title: rmbLocalized(.filterMenuBarCountByCalendarOptionButton),
+                               isSelected: userPreferences.filterRemindersCountByCalendar)
+            }
+            
+            Divider()
+            
             ForEach(RmbMenuBarCounterType.allCases, id: \.rawValue) { counterType in
                 Button(action: { userPreferences.menuBarCounterType = counterType }) {
                     let isSelected = counterType == userPreferences.menuBarCounterType

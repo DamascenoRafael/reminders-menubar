@@ -13,6 +13,7 @@ private struct PreferencesKeys {
     static let showUpcomingReminders = "showUpcomingReminders"
     static let upcomingRemindersInterval = "upcomingRemindersInterval"
     static let menuBarCounterType = "menuBarCounterType"
+    static let filterRemindersCountByCalendar = "filterRemindersCountByCalendar"
     static let preferredLanguage = "preferredLanguage"
 }
 
@@ -149,6 +150,14 @@ class UserPreferences: ObservableObject {
         didSet {
             let counterTypeData = try? JSONEncoder().encode(menuBarCounterType)
             UserPreferences.defaults.set(counterTypeData, forKey: PreferencesKeys.menuBarCounterType)
+        }
+    }
+    
+    @Published var filterRemindersCountByCalendar: Bool = {
+        return defaults.bool(forKey: PreferencesKeys.filterRemindersCountByCalendar)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(filterRemindersCountByCalendar, forKey: PreferencesKeys.filterRemindersCountByCalendar)
         }
     }
     
