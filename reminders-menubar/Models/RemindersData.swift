@@ -57,11 +57,22 @@ class RemindersData: ObservableObject {
 
         userPreferences.$upcomingRemindersInterval
             .dropFirst()
-            .sink { [weak self] upcomingRemindersInterval in
+            .sink { [weak self] _ in
                 Task {
-                    self?.upcomingReminders = await RemindersService.shared.getUpcomingReminders(
-                        upcomingRemindersInterval
-                    )
+                    guard let self = self else { return }
+                    self.upcomingReminders = await self.getFilteredUpcomingReminders()
+                }
+            }
+            .store(in: &cancellationTokens)
+
+        
+        userPreferences.$filterUpcomingRemindersByCalendar
+            .dropFirst()
+            .sink { [weak self] _ in
+                Task {
+                    guard let self else { return }
+                    
+                    self.upcomingReminders = await self.getFilteredUpcomingReminders()
                 }
             }
             .store(in: &cancellationTokens)
@@ -70,12 +81,16 @@ class RemindersData: ObservableObject {
             .dropFirst()
             .sink { [weak self] calendarIdentifiersFilter in
                 Task {
-                    self?.filteredReminderLists = await RemindersService.shared.getReminders(
+                    guard let self = self else { return }
+                    self.filteredReminderLists = await RemindersService.shared.getReminders(
                         of: calendarIdentifiersFilter
                     )
+
+                    self.upcomingReminders = await self.getFilteredUpcomingReminders()
                 }
             }
             .store(in: &cancellationTokens)
+
     }
 
     @Published var calendars: [EKCalendar] = []
@@ -125,9 +140,8 @@ class RemindersData: ObservableObject {
             // NOTE: Checking if calendar in filter still exist
             calendarsSet.contains($0)
         })
-
-        let upcomingRemindersInterval = self.userPreferences.upcomingRemindersInterval
-        let upcomingReminders = await RemindersService.shared.getUpcomingReminders(upcomingRemindersInterval)
+        
+        let upcomingReminders = await getFilteredUpcomingReminders()
 
         let menuBarCount = await getMenuBarCount(self.userPreferences.menuBarCounterType)
 
@@ -135,6 +149,19 @@ class RemindersData: ObservableObject {
         self.calendarIdentifiersFilter = calendarIdentifiersFilter
         self.upcomingReminders = upcomingReminders
         self.updateMenuBarCount(with: menuBarCount)
+    }
+    
+    private func getFilteredUpcomingReminders() async -> [ReminderItem] {
+        let shouldFilter = UserPreferences.shared.filterUpcomingRemindersByCalendar
+        let filters = shouldFilter ? self.calendarIdentifiersFilter : nil
+
+        let upcomingRemindersInterval = self.userPreferences.upcomingRemindersInterval
+        let upcomingReminders = await RemindersService.shared.getUpcomingReminders(
+            upcomingRemindersInterval,
+            for: filters
+        )
+        
+        return upcomingReminders
     }
 
     private func getMenuBarCount(_ menuBarCounterType: RmbMenuBarCounterType) async -> Int {

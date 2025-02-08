@@ -3085,6 +3085,23 @@
         }
       }
     },
+    "filterUpcomingRemindersOptionButton" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Filter by selected list"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtrer à partir des listes séléctionneés"
+          }
+        }
+      }
+    },
     "keyboardShortcutEnableOpenShortcutOption" : {
       "extractionState" : "manual",
       "localizations" : {

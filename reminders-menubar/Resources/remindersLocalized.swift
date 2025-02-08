@@ -69,6 +69,7 @@ enum RemindersMenuBarLocalizedKeys: String {
     case upcomingRemindersInAWeekTitle
     case upcomingRemindersInAMonthTitle
     case upcomingRemindersAllTitle
+    case filterUpcomingRemindersOptionButton
     case appNoRemindersAccessAlertMessage
     case appNoRemindersAccessAlertDescription
     case openSystemPreferencesButton

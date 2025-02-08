@@ -12,6 +12,7 @@ private struct PreferencesKeys {
     static let backgroundIsTransparent = "backgroundIsTransparent"
     static let showUpcomingReminders = "showUpcomingReminders"
     static let upcomingRemindersInterval = "upcomingRemindersInterval"
+    static let filterUpcomingRemindersByCalendar = "filterUpcomingRemindersByCalendar"
     static let menuBarCounterType = "menuBarCounterType"
     static let filterRemindersCountByCalendar = "filterRemindersCountByCalendar"
     static let preferredLanguage = "preferredLanguage"
@@ -91,6 +92,14 @@ class UserPreferences: ObservableObject {
         didSet {
             let intervalData = try? JSONEncoder().encode(upcomingRemindersInterval)
             UserPreferences.defaults.set(intervalData, forKey: PreferencesKeys.upcomingRemindersInterval)
+        }
+    }
+    
+    @Published var filterUpcomingRemindersByCalendar: Bool = {
+        return defaults.bool(forKey: PreferencesKeys.filterUpcomingRemindersByCalendar)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(filterUpcomingRemindersByCalendar, forKey: PreferencesKeys.filterUpcomingRemindersByCalendar)
         }
     }
     

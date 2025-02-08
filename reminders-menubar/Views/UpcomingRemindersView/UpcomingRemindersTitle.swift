@@ -3,9 +3,9 @@ import SwiftUI
 struct UpcomingRemindersTitle: View {
     @ObservedObject var userPreferences = UserPreferences.shared
     @Environment(\.colorSchemeContrast) private var colorSchemeContrast
-    
+
     @State var intervalButtonIsHovered = false
-    
+
     var body: some View {
         HStack(alignment: .center) {
             // TODO: Remove the 'scaledToFit' and 'minimumScaleFactor' properties from the title
@@ -17,9 +17,9 @@ struct UpcomingRemindersTitle: View {
                 .padding(.bottom, 5)
                 .scaledToFit()
                 .minimumScaleFactor(0.8)
-            
+
             Spacer()
-            
+
             Menu {
                 ForEach(ReminderInterval.allCases, id: \.rawValue) { interval in
                     Button(action: { userPreferences.upcomingRemindersInterval = interval }) {
@@ -27,6 +27,16 @@ struct UpcomingRemindersTitle: View {
                         SelectableView(title: interval.title, isSelected: isSelected)
                     }
                 }
+
+                Divider()
+
+                Button(action: {
+                    userPreferences.filterUpcomingRemindersByCalendar.toggle()
+                }) {
+                    SelectableView(title: rmbLocalized(.filterUpcomingRemindersOptionButton),
+                                   isSelected: userPreferences.filterUpcomingRemindersByCalendar)
+                }
+
             } label: {
                 Label(userPreferences.upcomingRemindersInterval.title, systemImage: "calendar")
             }
