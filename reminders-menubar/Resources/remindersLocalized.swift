@@ -48,7 +48,6 @@ enum RemindersMenuBarLocalizedKeys: String {
     case filterMenuBarCountByCalendarOptionButton
     case showMenuBarDueCountOptionButton
     case showMenuBarTodayCountOptionButton
-    case showMenuBarFilteredRemindersCountOptionButton
     case showMenuBarAllRemindersCountOptionButton
     case showMenuBarNoCountOptionButton
     case keyboardShortcutOptionButton

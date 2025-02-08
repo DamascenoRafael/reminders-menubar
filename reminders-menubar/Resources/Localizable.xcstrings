@@ -3074,13 +3074,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Apply filter"
+            "value" : "Filter by selected lists"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Appliquer le filtrage"
+            "value" : "Filtrer à partir des listes séléctionneés"
           }
         }
       }
