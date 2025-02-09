@@ -83,6 +83,8 @@ class RemindersData: ObservableObject {
                     )
 
                     self.upcomingReminders = await self.getFilteredUpcomingReminders()
+                    let count = await self.getMenuBarCount(UserPreferences.shared.menuBarCounterType)
+                    self.updateMenuBarCount(with: count)
                 }
             }
             .store(in: &cancellationTokens)
