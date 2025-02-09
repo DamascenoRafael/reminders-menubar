@@ -54,18 +54,16 @@ class RemindersData: ObservableObject {
             }
             .store(in: &cancellationTokens)
 
-
         userPreferences.$upcomingRemindersInterval
             .dropFirst()
             .sink { [weak self] _ in
                 Task {
-                    guard let self = self else { return }
+                    guard let self else { return }
                     self.upcomingReminders = await self.getFilteredUpcomingReminders()
                 }
             }
             .store(in: &cancellationTokens)
 
-        
         userPreferences.$filterUpcomingRemindersByCalendar
             .dropFirst()
             .sink { [weak self] _ in
@@ -81,7 +79,7 @@ class RemindersData: ObservableObject {
             .dropFirst()
             .sink { [weak self] calendarIdentifiersFilter in
                 Task {
-                    guard let self = self else { return }
+                    guard let self else { return }
                     self.filteredReminderLists = await RemindersService.shared.getReminders(
                         of: calendarIdentifiersFilter
                     )
@@ -90,7 +88,6 @@ class RemindersData: ObservableObject {
                 }
             }
             .store(in: &cancellationTokens)
-
     }
 
     @Published var calendars: [EKCalendar] = []

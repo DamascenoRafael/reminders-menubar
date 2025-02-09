@@ -36,7 +36,6 @@ struct UpcomingRemindersTitle: View {
                     SelectableView(title: rmbLocalized(.filterUpcomingRemindersOptionButton),
                                    isSelected: userPreferences.filterUpcomingRemindersByCalendar)
                 }
-
             } label: {
                 Label(userPreferences.upcomingRemindersInterval.title, systemImage: "calendar")
             }
