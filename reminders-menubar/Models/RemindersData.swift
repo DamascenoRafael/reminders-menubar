@@ -4,8 +4,6 @@ import EventKit
 
 @MainActor
 class RemindersData: ObservableObject {
-    private let userPreferences = UserPreferences.shared
-
     private var cancellationTokens: [AnyCancellable] = []
 
     init() {
@@ -32,7 +30,7 @@ class RemindersData: ObservableObject {
             }
             .store(in: &cancellationTokens)
 
-        userPreferences.$menuBarCounterType
+        UserPreferences.shared.$menuBarCounterType
             .dropFirst()
             .sink { [weak self] menuBarCounterType in
                 Task {
@@ -43,18 +41,18 @@ class RemindersData: ObservableObject {
             }
             .store(in: &cancellationTokens)
         
-        userPreferences.$filterRemindersCountByCalendar
+        UserPreferences.shared.$filterRemindersCountByCalendar
             .dropFirst()
             .sink { [weak self] _ in
                 Task {
                     guard let self else { return }
-                    let count = await self.getMenuBarCount(self.userPreferences.menuBarCounterType)
+                    let count = await self.getMenuBarCount(UserPreferences.shared.menuBarCounterType)
                     self.updateMenuBarCount(with: count)
                 }
             }
             .store(in: &cancellationTokens)
 
-        userPreferences.$upcomingRemindersInterval
+        UserPreferences.shared.$upcomingRemindersInterval
             .dropFirst()
             .sink { [weak self] _ in
                 Task {
@@ -64,7 +62,7 @@ class RemindersData: ObservableObject {
             }
             .store(in: &cancellationTokens)
 
-        userPreferences.$filterUpcomingRemindersByCalendar
+        UserPreferences.shared.$filterUpcomingRemindersByCalendar
             .dropFirst()
             .sink { [weak self] _ in
                 Task {
@@ -140,7 +138,7 @@ class RemindersData: ObservableObject {
         
         let upcomingReminders = await getFilteredUpcomingReminders()
 
-        let menuBarCount = await getMenuBarCount(self.userPreferences.menuBarCounterType)
+        let menuBarCount = await getMenuBarCount(UserPreferences.shared.menuBarCounterType)
 
         self.calendars = calendars
         self.calendarIdentifiersFilter = calendarIdentifiersFilter
