@@ -149,29 +149,28 @@ class RemindersData: ObservableObject {
     }
     
     private func getFilteredUpcomingReminders() async -> [ReminderItem] {
-        let shouldFilter = UserPreferences.shared.filterUpcomingRemindersByCalendar
-        let filters = shouldFilter ? self.calendarIdentifiersFilter : nil
+        let calendarFilter = UserPreferences.shared.filterUpcomingRemindersByCalendar
+            ? self.calendarIdentifiersFilter
+            : nil
 
-        let upcomingRemindersInterval = self.userPreferences.upcomingRemindersInterval
-        let upcomingReminders = await RemindersService.shared.getUpcomingReminders(
-            upcomingRemindersInterval,
-            for: filters
+        return await RemindersService.shared.getUpcomingReminders(
+            UserPreferences.shared.upcomingRemindersInterval,
+            for: calendarFilter
         )
-        
-        return upcomingReminders
     }
 
     private func getMenuBarCount(_ menuBarCounterType: RmbMenuBarCounterType) async -> Int {
-        let shouldFilter = UserPreferences.shared.filterRemindersCountByCalendar
-        let filters = shouldFilter ? self.calendarIdentifiersFilter : nil
+        let calendarFilter = UserPreferences.shared.filterRemindersCountByCalendar
+            ? self.calendarIdentifiersFilter
+            : nil
         
         switch menuBarCounterType {
         case .due:
-            return await RemindersService.shared.getUpcomingReminders(.due, for: filters).count
+            return await RemindersService.shared.getUpcomingReminders(.due, for: calendarFilter).count
         case .today:
-            return await RemindersService.shared.getUpcomingReminders(.today, for: filters).count
+            return await RemindersService.shared.getUpcomingReminders(.today, for: calendarFilter).count
         case .allReminders:
-            return await RemindersService.shared.getUpcomingReminders(.all, for: filters).count
+            return await RemindersService.shared.getUpcomingReminders(.all, for: calendarFilter).count
         case .disabled:
             return -1
         }
