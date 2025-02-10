@@ -41,7 +41,7 @@ class RemindersData: ObservableObject {
             }
             .store(in: &cancellationTokens)
         
-        UserPreferences.shared.$filterRemindersCountByCalendar
+        UserPreferences.shared.$filterMenuBarCountByCalendar
             .dropFirst()
             .sink { [weak self] _ in
                 Task {
@@ -67,7 +67,6 @@ class RemindersData: ObservableObject {
             .sink { [weak self] _ in
                 Task {
                     guard let self else { return }
-                    
                     self.upcomingReminders = await self.getFilteredUpcomingReminders()
                 }
             }
@@ -160,7 +159,7 @@ class RemindersData: ObservableObject {
     }
 
     private func getMenuBarCount(_ menuBarCounterType: RmbMenuBarCounterType) async -> Int {
-        let calendarFilter = UserPreferences.shared.filterRemindersCountByCalendar
+        let calendarFilter = UserPreferences.shared.filterMenuBarCountByCalendar
             ? self.calendarIdentifiersFilter
             : nil
         

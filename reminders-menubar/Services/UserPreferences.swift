@@ -14,7 +14,7 @@ private struct PreferencesKeys {
     static let upcomingRemindersInterval = "upcomingRemindersInterval"
     static let filterUpcomingRemindersByCalendar = "filterUpcomingRemindersByCalendar"
     static let menuBarCounterType = "menuBarCounterType"
-    static let filterRemindersCountByCalendar = "filterRemindersCountByCalendar"
+    static let filterMenuBarCountByCalendar = "filterMenuBarCountByCalendar"
     static let preferredLanguage = "preferredLanguage"
 }
 
@@ -99,7 +99,8 @@ class UserPreferences: ObservableObject {
         return defaults.bool(forKey: PreferencesKeys.filterUpcomingRemindersByCalendar)
     }() {
         didSet {
-            UserPreferences.defaults.set(filterUpcomingRemindersByCalendar, forKey: PreferencesKeys.filterUpcomingRemindersByCalendar)
+            UserPreferences.defaults.set(filterUpcomingRemindersByCalendar,
+                                         forKey: PreferencesKeys.filterUpcomingRemindersByCalendar)
         }
     }
     
@@ -162,11 +163,12 @@ class UserPreferences: ObservableObject {
         }
     }
     
-    @Published var filterRemindersCountByCalendar: Bool = {
-        return defaults.bool(forKey: PreferencesKeys.filterRemindersCountByCalendar)
+    @Published var filterMenuBarCountByCalendar: Bool = {
+        return defaults.bool(forKey: PreferencesKeys.filterMenuBarCountByCalendar)
     }() {
         didSet {
-            UserPreferences.defaults.set(filterRemindersCountByCalendar, forKey: PreferencesKeys.filterRemindersCountByCalendar)
+            UserPreferences.defaults.set(filterMenuBarCountByCalendar,
+                                         forKey: PreferencesKeys.filterMenuBarCountByCalendar)
         }
     }
     

@@ -179,10 +179,10 @@ struct SettingsBarGearMenu: View {
             Divider()
             
             Button(action: {
-                userPreferences.filterRemindersCountByCalendar.toggle()
+                userPreferences.filterMenuBarCountByCalendar.toggle()
             }) {
                 SelectableView(title: rmbLocalized(.filterMenuBarCountByCalendarOptionButton),
-                               isSelected: userPreferences.filterRemindersCountByCalendar)
+                               isSelected: userPreferences.filterMenuBarCountByCalendar)
             }
         } label: {
             Text(rmbLocalized(.menuBarCounterSettingsMenu))
