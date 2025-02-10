@@ -3091,7 +3091,7 @@
         }
       }
     },
-    "filterUpcomingRemindersOptionButton" : {
+    "filterUpcomingRemindersByCalendarOptionButton" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {

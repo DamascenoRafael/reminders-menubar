@@ -33,7 +33,7 @@ struct UpcomingRemindersTitle: View {
                 Button(action: {
                     userPreferences.filterUpcomingRemindersByCalendar.toggle()
                 }) {
-                    SelectableView(title: rmbLocalized(.filterUpcomingRemindersOptionButton),
+                    SelectableView(title: rmbLocalized(.filterUpcomingRemindersByCalendarOptionButton),
                                    isSelected: userPreferences.filterUpcomingRemindersByCalendar)
                 }
             } label: {
