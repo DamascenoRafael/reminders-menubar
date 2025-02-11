@@ -175,6 +175,15 @@ struct SettingsBarGearMenu: View {
                     SelectableView(title: counterType.title, isSelected: isSelected)
                 }
             }
+            
+            Divider()
+            
+            Button(action: {
+                userPreferences.filterMenuBarCountByCalendar.toggle()
+            }) {
+                SelectableView(title: rmbLocalized(.filterMenuBarCountByCalendarOptionButton),
+                               isSelected: userPreferences.filterMenuBarCountByCalendar)
+            }
         } label: {
             Text(rmbLocalized(.menuBarCounterSettingsMenu))
         }
