@@ -32,11 +32,10 @@ class RemindersData: ObservableObject {
 
         UserPreferences.shared.$menuBarCounterType
             .dropFirst()
-            .sink { [weak self] menuBarCounterType in
+            .sink { [weak self] _ in
                 Task {
                     guard let self else { return }
-                    let count = await self.getMenuBarCount(menuBarCounterType)
-                    self.updateMenuBarCount(with: count)
+                    self.updateMenuBarCount(with: await self.getMenuBarCount())
                 }
             }
             .store(in: &cancellationTokens)
@@ -46,8 +45,7 @@ class RemindersData: ObservableObject {
             .sink { [weak self] _ in
                 Task {
                     guard let self else { return }
-                    let count = await self.getMenuBarCount(UserPreferences.shared.menuBarCounterType)
-                    self.updateMenuBarCount(with: count)
+                    self.updateMenuBarCount(with: await self.getMenuBarCount())
                 }
             }
             .store(in: &cancellationTokens)
@@ -57,7 +55,7 @@ class RemindersData: ObservableObject {
             .sink { [weak self] _ in
                 Task {
                     guard let self else { return }
-                    self.upcomingReminders = await self.getFilteredUpcomingReminders()
+                    self.upcomingReminders = await self.getUpcomingReminders()
                 }
             }
             .store(in: &cancellationTokens)
@@ -67,7 +65,7 @@ class RemindersData: ObservableObject {
             .sink { [weak self] _ in
                 Task {
                     guard let self else { return }
-                    self.upcomingReminders = await self.getFilteredUpcomingReminders()
+                    self.upcomingReminders = await self.getUpcomingReminders()
                 }
             }
             .store(in: &cancellationTokens)
@@ -81,9 +79,8 @@ class RemindersData: ObservableObject {
                         of: calendarIdentifiersFilter
                     )
 
-                    self.upcomingReminders = await self.getFilteredUpcomingReminders()
-                    let count = await self.getMenuBarCount(UserPreferences.shared.menuBarCounterType)
-                    self.updateMenuBarCount(with: count)
+                    self.upcomingReminders = await self.getUpcomingReminders()
+                    self.updateMenuBarCount(with: await self.getMenuBarCount())
                 }
             }
             .store(in: &cancellationTokens)
@@ -136,18 +133,14 @@ class RemindersData: ObservableObject {
             // NOTE: Checking if calendar in filter still exist
             calendarsSet.contains($0)
         })
-        
-        let upcomingReminders = await getFilteredUpcomingReminders()
-
-        let menuBarCount = await getMenuBarCount(UserPreferences.shared.menuBarCounterType)
 
         self.calendars = calendars
         self.calendarIdentifiersFilter = calendarIdentifiersFilter
-        self.upcomingReminders = upcomingReminders
-        self.updateMenuBarCount(with: menuBarCount)
+        self.upcomingReminders = await getUpcomingReminders()
+        self.updateMenuBarCount(with: await getMenuBarCount())
     }
     
-    private func getFilteredUpcomingReminders() async -> [ReminderItem] {
+    private func getUpcomingReminders() async -> [ReminderItem] {
         let calendarFilter = UserPreferences.shared.filterUpcomingRemindersByCalendar
             ? self.calendarIdentifiersFilter
             : nil
@@ -158,12 +151,12 @@ class RemindersData: ObservableObject {
         )
     }
 
-    private func getMenuBarCount(_ menuBarCounterType: RmbMenuBarCounterType) async -> Int {
+    private func getMenuBarCount() async -> Int {
         let calendarFilter = UserPreferences.shared.filterMenuBarCountByCalendar
             ? self.calendarIdentifiersFilter
             : nil
         
-        switch menuBarCounterType {
+        switch UserPreferences.shared.menuBarCounterType {
         case .due:
             return await RemindersService.shared.getUpcomingReminders(.due, for: calendarFilter).count
         case .today:
