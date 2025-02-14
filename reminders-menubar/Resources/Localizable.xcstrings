@@ -218,16 +218,16 @@
     "appAppearanceColorDarkModeOptionButton" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dark mode"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dunkler Modus"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark mode"
           }
         },
         "fr" : {
@@ -313,16 +313,16 @@
     "appAppearanceColorLightModeOptionButton" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Light mode"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Heller Modus"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light mode"
           }
         },
         "fr" : {
@@ -408,16 +408,16 @@
     "appAppearanceColorSystemModeOptionButton" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "System appearance"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Systemeinstellung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System appearance"
           }
         },
         "fr" : {
@@ -3068,6 +3068,52 @@
         }
       }
     },
+    "filterMenuBarCountByCalendarOptionButton" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter by selected lists"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtrer à partir des listes séléctionneés"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtrar por listas selecionadas"
+          }
+        }
+      }
+    },
+    "filterUpcomingRemindersByCalendarOptionButton" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter by selected lists"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtrer à partir des listes séléctionneés"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtrar por listas selecionadas"
+          }
+        }
+      }
+    },
     "keyboardShortcutEnableOpenShortcutOption" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3606,16 +3652,16 @@
     "menuBarCounterSettingsMenu" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Menu bar counter"
-          }
-        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Anzahl in Menüleiste"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menu bar counter"
           }
         },
         "fr" : {
@@ -5086,6 +5132,24 @@
     "reminderRecurrenceDailyLabel" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Täglich"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Alle %i Tage"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -5104,19 +5168,19 @@
             }
           }
         },
-        "de" : {
+        "fr" : {
           "variations" : {
             "plural" : {
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "Täglich"
+                  "value" : "Tous les jours"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "Alle %i Tage"
+                  "value" : "Tous les %i jours"
                 }
               }
             }
@@ -5145,6 +5209,24 @@
     "reminderRecurrenceMonthlyLabel" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Monatlich"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Alle %i Monate"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -5163,19 +5245,19 @@
             }
           }
         },
-        "de" : {
+        "fr" : {
           "variations" : {
             "plural" : {
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "Monatlich"
+                  "value" : "Tous les mois"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "Alle %i Monate"
+                  "value" : "Tous les %i mois"
                 }
               }
             }
@@ -5204,6 +5286,24 @@
     "reminderRecurrenceWeeklyLabel" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Wöchentlich"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Alle %i Wochen"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -5222,19 +5322,19 @@
             }
           }
         },
-        "de" : {
+        "fr" : {
           "variations" : {
             "plural" : {
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "Wöchentlich"
+                  "value" : "Toutes les semaines"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "Alle %i Wochen"
+                  "value" : "Toutes les %i semaines"
                 }
               }
             }
@@ -5263,6 +5363,24 @@
     "reminderRecurrenceYearlyLabel" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Jährlich"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Alle %i Jahre"
+                }
+              }
+            }
+          }
+        },
         "en" : {
           "variations" : {
             "plural" : {
@@ -5281,19 +5399,19 @@
             }
           }
         },
-        "de" : {
+        "fr" : {
           "variations" : {
             "plural" : {
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "Jährlich"
+                  "value" : "Tous les ans"
                 }
               },
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "Alle %i Jahre"
+                  "value" : "Tous les %i ans"
                 }
               }
             }
@@ -6412,8 +6530,8 @@
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Sélectionnez le calendrier où les nouveaux rappels seront sauvegardés"
+            "state" : "translated",
+            "value" : "Sélectionnez la liste où les nouveaux rappels seront sauvegardés"
           }
         },
         "it" : {
@@ -6814,6 +6932,12 @@
             "value" : "Show due count"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher les rappels en retard"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7156,6 +7280,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Due"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En retard"
           }
         },
         "it" : {

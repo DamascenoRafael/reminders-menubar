@@ -12,7 +12,9 @@ private struct PreferencesKeys {
     static let backgroundIsTransparent = "backgroundIsTransparent"
     static let showUpcomingReminders = "showUpcomingReminders"
     static let upcomingRemindersInterval = "upcomingRemindersInterval"
+    static let filterUpcomingRemindersByCalendar = "filterUpcomingRemindersByCalendar"
     static let menuBarCounterType = "menuBarCounterType"
+    static let filterMenuBarCountByCalendar = "filterMenuBarCountByCalendar"
     static let preferredLanguage = "preferredLanguage"
 }
 
@@ -93,6 +95,15 @@ class UserPreferences: ObservableObject {
         }
     }
     
+    @Published var filterUpcomingRemindersByCalendar: Bool = {
+        return defaults.bool(forKey: PreferencesKeys.filterUpcomingRemindersByCalendar)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(filterUpcomingRemindersByCalendar,
+                                         forKey: PreferencesKeys.filterUpcomingRemindersByCalendar)
+        }
+    }
+    
     @Published var showUpcomingReminders: Bool = {
         return defaults.boolWithDefaultValueTrue(forKey: PreferencesKeys.showUpcomingReminders)
     }() {
@@ -149,6 +160,15 @@ class UserPreferences: ObservableObject {
         didSet {
             let counterTypeData = try? JSONEncoder().encode(menuBarCounterType)
             UserPreferences.defaults.set(counterTypeData, forKey: PreferencesKeys.menuBarCounterType)
+        }
+    }
+    
+    @Published var filterMenuBarCountByCalendar: Bool = {
+        return defaults.bool(forKey: PreferencesKeys.filterMenuBarCountByCalendar)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(filterMenuBarCountByCalendar,
+                                         forKey: PreferencesKeys.filterMenuBarCountByCalendar)
         }
     }
     
