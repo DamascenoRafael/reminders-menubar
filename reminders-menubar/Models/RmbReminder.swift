@@ -54,6 +54,7 @@ struct RmbReminder {
         }
     }
     var priority: EKReminderPriority
+    var calendar: EKCalendar?
     
     var textDateResult = DateParser.TextDateResult()
     var textCalendarResult = CalendarParser.TextCalendarResult()
@@ -86,6 +87,7 @@ struct RmbReminder {
         hasDueDate = reminder.hasDueDate
         hasTime = reminder.hasTime
         priority = reminder.ekPriority
+        calendar = reminder.calendar
     }
     
     mutating func prepareToSave() {

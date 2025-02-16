@@ -90,7 +90,8 @@ struct ReminderItemView: View {
                     .popover(isPresented: $showingEditPopover, arrowEdge: .trailing) {
                         ReminderEditPopover(isPresented: $showingEditPopover,
                                             focusOnTitle: $isEditingTitle,
-                                            reminder: item.reminder)
+                                            reminder: item.reminder,
+                                            reminderHasChildren: item.hasChildren)
                     }
                 }
                 .alert(isPresented: $showingRemoveAlert) {

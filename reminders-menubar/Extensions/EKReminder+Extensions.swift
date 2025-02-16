@@ -136,6 +136,7 @@ extension EKReminder {
         }
         
         ekPriority = rmbReminder.priority
+        calendar = rmbReminder.calendar
     }
     
     private func removeDueDateAndAlarms() {

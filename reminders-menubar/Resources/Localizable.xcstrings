@@ -1356,6 +1356,24 @@
         }
       }
     },
+    "editReminderListSection" : {
+      "comment" : "This option mimics the option in Apple Reminders that appears as lowercase.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "list"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "lista"
+          }
+        }
+      }
+    },
     "editReminderNotesTextFieldPlaceholder" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1999,6 +2017,7 @@
       }
     },
     "editReminderPrioritySection" : {
+      "comment" : "This option mimics the option in Apple Reminders that appears as lowercase.",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -2213,6 +2232,7 @@
       }
     },
     "editReminderRemindMeSection" : {
+      "comment" : "This option mimics the option in Apple Reminders that appears as lowercase.",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
