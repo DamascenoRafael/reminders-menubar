@@ -100,28 +100,11 @@ struct SettingsBarGearMenu: View {
     
     func appAppearanceMenu() -> some View {
         Menu {
-            Button(action: {
-                userPreferences.rmbColorScheme = .system
-            }) {
-                let isSelected = userPreferences.rmbColorScheme == .system
-                SelectableView(title: rmbLocalized(.appAppearanceColorSystemModeOptionButton),
-                               isSelected: isSelected)
-            }
-            
-            Button(action: {
-                userPreferences.rmbColorScheme = .light
-            }) {
-                let isSelected = userPreferences.rmbColorScheme == .light
-                SelectableView(title: rmbLocalized(.appAppearanceColorLightModeOptionButton),
-                               isSelected: isSelected)
-            }
-            
-            Button(action: {
-                userPreferences.rmbColorScheme = .dark
-            }) {
-                let isSelected = userPreferences.rmbColorScheme == .dark
-                SelectableView(title: rmbLocalized(.appAppearanceColorDarkModeOptionButton),
-                               isSelected: isSelected)
+            ForEach(RmbColorScheme.allCases, id: \.rawValue) { colorScheme in
+                Button(action: { userPreferences.rmbColorScheme = colorScheme }) {
+                    let isSelected = colorScheme == userPreferences.rmbColorScheme
+                    SelectableView(title: colorScheme.title, isSelected: isSelected)
+                }
             }
             
             Divider()
