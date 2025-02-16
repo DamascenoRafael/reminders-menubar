@@ -45,10 +45,10 @@ struct ReminderItemView: View {
                             isEditingTitle = true
                             showingEditPopover = true
                         }
+
                     Spacer()
-                    MenuButton(label:
-                        Image(systemName: "ellipsis")
-                    ) {
+
+                    Menu {
                         Button(action: {
                             showingEditPopover = true
                         }) {
@@ -80,8 +80,10 @@ struct ReminderItemView: View {
                                 Text(rmbLocalized(.removeReminderOptionButton))
                             }
                         }
+                    } label: {
+                        Image(systemName: "ellipsis")
                     }
-                    .menuButtonStyle(BorderlessButtonMenuButtonStyle())
+                    .menuStyle(BorderlessButtonMenuStyle(showsMenuIndicator: false))
                     .frame(width: 16, height: 16)
                     .padding(.top, 1)
                     .padding(.trailing, 10)
@@ -195,17 +197,17 @@ struct ChangePriorityOptionMenu: View {
     }
     
     var body: some View {
-        MenuButton(label:
-            HStack {
-                Image(systemName: "exclamationmark.circle")
-                Text(rmbLocalized(.changeReminderPriorityMenuOption))
-            }
-        ) {
+        Menu {
             changePriorityButton(.low, text: rmbLocalized(.editReminderPriorityLowOption))
             changePriorityButton(.medium, text: rmbLocalized(.editReminderPriorityMediumOption))
             changePriorityButton(.high, text: rmbLocalized(.editReminderPriorityHighOption))
             Divider()
             changePriorityButton(.none, text: rmbLocalized(.editReminderPriorityNoneOption))
+        } label: {
+            HStack {
+                Image(systemName: "exclamationmark.circle")
+                Text(rmbLocalized(.changeReminderPriorityMenuOption))
+            }
         }
     }
 }
@@ -215,12 +217,7 @@ struct MoveToOptionMenu: View {
     var availableCalendars: [EKCalendar]
     
     var body: some View {
-        MenuButton(label:
-            HStack {
-                Image(systemName: "folder")
-                Text(rmbLocalized(.reminderMoveToMenuOption))
-            }
-        ) {
+        Menu {
             ForEach(availableCalendars, id: \.calendarIdentifier) { calendar in
                 // TODO: Fix the warning from Xcode when editing the reminder calendar:
                 // [utility] You are about to trigger decoding the resolution token map from JSON data.
@@ -233,6 +230,11 @@ struct MoveToOptionMenu: View {
                 }) {
                     SelectableView(title: calendar.title, color: Color(calendar.color))
                 }
+            }
+        } label: {
+            HStack {
+                Image(systemName: "folder")
+                Text(rmbLocalized(.reminderMoveToMenuOption))
             }
         }
     }
