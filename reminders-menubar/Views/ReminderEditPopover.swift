@@ -30,7 +30,7 @@ struct ReminderEditPopover: View {
             
             ScrollableTextField(
                 rmbLocalized(.editReminderNotesTextFieldPlaceholder),
-                text: $rmbReminder.notes ?? ""
+                text: Binding($rmbReminder.notes, replacingNilWith: "")
             )
             
             Divider()
