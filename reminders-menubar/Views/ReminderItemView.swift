@@ -57,21 +57,21 @@ struct ReminderItemView: View {
                                 Text(rmbLocalized(.editReminderOptionButton))
                             }
                         }
-                        
+
                         // TODO: remove the `.id` modifier while keeping updated the selected priority
                         ChangePriorityOptionMenu(reminder: item.reminder).id(UUID())
-                        
+
                         let otherCalendars = remindersData.calendars.filter {
                             $0.calendarIdentifier != item.reminder.calendar.calendarIdentifier
                         }
                         if !otherCalendars.isEmpty && !item.hasChildren {
                             MoveToOptionMenu(reminder: item.reminder, availableCalendars: otherCalendars)
                         }
-                        
+
                         VStack {
                             Divider()
                         }
-                        
+
                         Button(action: {
                             showingRemoveAlert = true
                         }) {
@@ -90,10 +90,12 @@ struct ReminderItemView: View {
                     .help(rmbLocalized(.remindersOptionsButtonHelp))
                     .opacity(shouldShowEllipsisButton() ? 1 : 0)
                     .popover(isPresented: $showingEditPopover, arrowEdge: .trailing) {
-                        ReminderEditPopover(isPresented: $showingEditPopover,
-                                            focusOnTitle: $isEditingTitle,
-                                            reminder: item.reminder,
-                                            reminderHasChildren: item.hasChildren)
+                        ReminderEditPopover(
+                            isPresented: $showingEditPopover,
+                            focusOnTitle: $isEditingTitle,
+                            reminder: item.reminder,
+                            reminderHasChildren: item.hasChildren
+                        )
                     }
                 }
                 .alert(isPresented: $showingRemoveAlert) {
@@ -154,12 +156,13 @@ struct ReminderItemView: View {
     }
     
     func removeReminderAlert() -> Alert {
-        Alert(title: Text(rmbLocalized(.removeReminderAlertTitle)),
-              message: Text(rmbLocalized(.removeReminderAlertMessage, arguments: item.reminder.title)),
-              primaryButton: .destructive(Text(rmbLocalized(.removeReminderAlertConfirmButton)), action: {
+        Alert(
+            title: Text(rmbLocalized(.removeReminderAlertTitle)),
+            message: Text(rmbLocalized(.removeReminderAlertMessage, arguments: item.reminder.title)),
+            primaryButton: .destructive(Text(rmbLocalized(.removeReminderAlertConfirmButton)), action: {
                 RemindersService.shared.remove(reminder: item.reminder)
               }),
-              secondaryButton: .cancel(Text(rmbLocalized(.removeReminderAlertCancelButton)))
+            secondaryButton: .cancel(Text(rmbLocalized(.removeReminderAlertCancelButton)))
         )
     }
     
@@ -215,7 +218,7 @@ struct ChangePriorityOptionMenu: View {
 struct MoveToOptionMenu: View {
     var reminder: EKReminder
     var availableCalendars: [EKCalendar]
-    
+
     var body: some View {
         Menu {
             ForEach(availableCalendars, id: \.calendarIdentifier) { calendar in

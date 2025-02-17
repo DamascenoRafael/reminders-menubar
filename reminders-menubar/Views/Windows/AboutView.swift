@@ -1,7 +1,6 @@
 import SwiftUI
 
-struct AboutView: View {
-    
+struct AboutView: View { 
     var body: some View {
         HStack(alignment: .center) {
             Image(nsImage: NSApp.applicationIconImage)
@@ -22,9 +21,11 @@ struct AboutView: View {
                 .padding(.bottom, 4)
 
                 VStack(alignment: .leading, spacing: 14) {
-                    Text(rmbLocalized(.remindersMenuBarAppAboutDescription,
-                                      arguments: AppConstants.appName,
-                                      "GNU General Public License v3.0"))
+                    Text(rmbLocalized(
+                        .remindersMenuBarAppAboutDescription,
+                        arguments: AppConstants.appName,
+                        "GNU General Public License v3.0"
+                    ))
                     Text(rmbLocalized(.remindersMenuBarGitHubAboutDescription))
                 }
                 .font(.system(size: 11))

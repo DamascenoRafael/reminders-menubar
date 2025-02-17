@@ -34,16 +34,22 @@ struct RmbHighlightedTextField: NSViewRepresentable {
         
         let attributedString = NSMutableAttributedString(string: text)
         attributedString.beginEditing()
-        attributedString.addAttribute(.font,
-                                      value: NSFont.systemFont(ofSize: NSFont.systemFontSize),
-                                      range: fullRange)
-        attributedString.addAttribute(.foregroundColor,
-                                      value: NSColor.labelColor,
-                                      range: fullRange)
+        attributedString.addAttribute(
+            .font,
+            value: NSFont.systemFont(ofSize: NSFont.systemFontSize),
+            range: fullRange
+        )
+        attributedString.addAttribute(
+            .foregroundColor,
+            value: NSColor.labelColor,
+            range: fullRange
+        )
         for highlightedText in highlightedTexts {
-            attributedString.addAttribute(.foregroundColor,
-                                          value: highlightedText.color,
-                                          range: highlightedText.range)
+            attributedString.addAttribute(
+                .foregroundColor,
+                value: highlightedText.color,
+                range: highlightedText.range
+            )
         }
         attributedString.endEditing()
         
@@ -112,11 +118,13 @@ struct RmbHighlightedTextField: NSViewRepresentable {
             }
         }
         
-        func control(_ control: NSControl,
-                     textView: NSTextView,
-                     completions words: [String],
-                     forPartialWordRange charRange: NSRange,
-                     indexOfSelectedItem index: UnsafeMutablePointer<Int>) -> [String] {
+        func control(
+            _ control: NSControl,
+            textView: NSTextView,
+            completions words: [String],
+            forPartialWordRange charRange: NSRange,
+            indexOfSelectedItem index: UnsafeMutablePointer<Int>
+        ) -> [String] {
             let typingWord = textView.string.substring(in: charRange)
             guard !typingWord.isEmpty,
                   isValidToAutocomplete(textView.string, charRange: charRange) else {

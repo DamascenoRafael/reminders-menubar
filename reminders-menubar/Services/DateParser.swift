@@ -49,10 +49,12 @@ class DateParser {
         // NOTE: If the date is set to a day in the current year, but it's past that day, then we assume it's next year.
         // "Do something on February 2nd" - when it's already March.
         if dateResult.date.isThisYear {
-            return DateParserResult(date: .nextYear(of: dateResult.date),
-                                    hasTime: dateResult.hasTime,
-                                    isTimeOnly: dateResult.isTimeOnly,
-                                    textDateResult: dateResult.textDateResult)
+            return DateParserResult(
+                date: .nextYear(of: dateResult.date),
+                hasTime: dateResult.hasTime,
+                isTimeOnly: dateResult.isTimeOnly,
+                textDateResult: dateResult.textDateResult
+            )
         }
         
         // NOTE: If the date is not adjusted we will return it unchanged.
@@ -87,14 +89,18 @@ class DateParser {
         
         let hasTime = isTimeSignificant(in: match)
         let isTimeOnly = isTimeOnlyResult(in: match)
-        let textDateResult = TextDateResult(range: match.range,
-                                            string: textString.substring(in: match.range))
-        
-        let dateResult = DateParserResult(date: date,
-                                          hasTime: hasTime,
-                                          isTimeOnly: isTimeOnly,
-                                          textDateResult: textDateResult)
-        
+        let textDateResult = TextDateResult(
+            range: match.range,
+            string: textString.substring(in: match.range)
+        )
+
+        let dateResult = DateParserResult(
+            date: date,
+            hasTime: hasTime,
+            isTimeOnly: isTimeOnly,
+            textDateResult: textDateResult
+        )
+
         return adjustDateAccordingToNow(dateResult)
     }
     

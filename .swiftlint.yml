@@ -1,8 +1,22 @@
 opt_in_rules:
+- array_init
+- async_without_await
 - attributes
 - closure_end_indentation
 - closure_spacing
+- collection_alignment
+- conditional_returns_on_newline
+- contains_over_filter_count
+- contains_over_filter_is_empty
 - contains_over_first_not_nil
+- contains_over_range_nil_comparison
+- convenience_type
+- direct_return
+- discarded_notification_center_observer
+- discouraged_none_name
+- discouraged_object_literal
+- discouraged_optional_boolean
+- empty_collection_literal
 - empty_count
 - empty_string
 - explicit_init
@@ -11,21 +25,40 @@ opt_in_rules:
 - file_name_no_space
 - first_where
 - force_unwrapping
+- function_default_parameter_at_end
+- identical_operands
 - implicitly_unwrapped_optional
 - joined_default_parameter
+- last_where
+- let_var_whitespace
+- literal_expression_end_indentation
 - multiline_arguments
+- multiline_arguments_brackets
 - multiline_function_chains
+- multiline_literal_brackets
 - multiline_parameters
+- multiline_parameters_brackets
+- no_extension_access_modifier
+- number_separator
 - operator_usage_whitespace
 - overridden_super_call
+- prefer_zero_over_explicit_init
+- reduce_into
 - redundant_nil_coalescing
+- redundant_self_in_closure
 - redundant_type_annotation
+- return_value_from_void_function
 - shorthand_optional_binding
 - sorted_first_last
+- static_operator
+- superfluous_else
 - switch_case_on_newline
 - toggle_bool
 - unneeded_parentheses_in_closure_argument
+- vertical_parameter_alignment_on_call
 - vertical_whitespace_closing_braces
+- vertical_whitespace_opening_braces
+- weak_delegate
 - yoda_condition
 
 disabled_rules:
@@ -38,11 +71,15 @@ attributes:
   - '@NSApplicationDelegateAdaptor'
   - '@Environment'
 
+conditional_returns_on_newline:
+  if_only: true
+
 identifier_name:
   excluded:
   - id
 
 multiline_arguments:
+  first_argument_location: next_line
   only_enforce_after_first_closure_on_first_line: true
 
 excluded: 

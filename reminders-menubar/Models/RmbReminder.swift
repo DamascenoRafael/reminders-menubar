@@ -11,11 +11,10 @@ struct RmbReminder {
             return true
         }
         
-        let hasChanges =
+        return
             hasDueDate != originalReminder.hasDueDate ||
             hasTime != originalReminder.hasTime ||
             date != originalReminder.dueDateComponents?.date
-        return hasChanges
     }
     
     var title: String {

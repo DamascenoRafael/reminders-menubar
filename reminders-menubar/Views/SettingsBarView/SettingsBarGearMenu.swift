@@ -30,9 +30,11 @@ struct SettingsBarGearMenu: View {
                     userPreferences.launchAtLoginIsEnabled.toggle()
                 }) {
                     let isSelected = userPreferences.launchAtLoginIsEnabled
-                    SelectableView(title: rmbLocalized(.launchAtLoginOptionButton),
-                                   isSelected: isSelected,
-                                   withPadding: false)
+                    SelectableView(
+                        title: rmbLocalized(.launchAtLoginOptionButton),
+                        isSelected: isSelected,
+                        withPadding: false
+                    )
                 }
                 
                 visualCustomizationOptions()
@@ -116,8 +118,10 @@ struct SettingsBarGearMenu: View {
                 userPreferences.backgroundIsTransparent = false
             }) {
                 let isSelected = !isTransparencyEnabled
-                SelectableView(title: rmbLocalized(.appAppearanceMoreOpaqueOptionButton),
-                               isSelected: isSelected)
+                SelectableView(
+                    title: rmbLocalized(.appAppearanceMoreOpaqueOptionButton),
+                    isSelected: isSelected
+                )
             }
             .disabled(isIncreasedContrastEnabled)
             
@@ -125,8 +129,10 @@ struct SettingsBarGearMenu: View {
                 userPreferences.backgroundIsTransparent = true
             }) {
                 let isSelected = isTransparencyEnabled
-                SelectableView(title: rmbLocalized(.appAppearanceMoreTransparentOptionButton),
-                               isSelected: isSelected)
+                SelectableView(
+                    title: rmbLocalized(.appAppearanceMoreTransparentOptionButton),
+                    isSelected: isSelected
+                )
             }
             .disabled(isIncreasedContrastEnabled)
         } label: {
@@ -164,8 +170,10 @@ struct SettingsBarGearMenu: View {
             Button(action: {
                 userPreferences.filterMenuBarCountByCalendar.toggle()
             }) {
-                SelectableView(title: rmbLocalized(.filterMenuBarCountByCalendarOptionButton),
-                               isSelected: userPreferences.filterMenuBarCountByCalendar)
+                SelectableView(
+                    title: rmbLocalized(.filterMenuBarCountByCalendarOptionButton),
+                    isSelected: userPreferences.filterMenuBarCountByCalendar
+                )
             }
         } label: {
             Text(rmbLocalized(.menuBarCounterSettingsMenu))
@@ -178,8 +186,10 @@ struct SettingsBarGearMenu: View {
                 userPreferences.preferredLanguage = nil
             }) {
                 let isSelected = userPreferences.preferredLanguage == nil
-                SelectableView(title: rmbLocalized(.preferredLanguageSystemOptionButton),
-                               isSelected: isSelected)
+                SelectableView(
+                    title: rmbLocalized(.preferredLanguageSystemOptionButton),
+                    isSelected: isSelected
+                )
             }
             
             Divider()

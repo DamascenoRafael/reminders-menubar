@@ -4,7 +4,6 @@ import Combine
 
 @main
 struct RemindersMenuBar: App {
-    // swiftlint:disable:next weak_delegate
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {
@@ -137,9 +136,11 @@ extension AppDelegate: NSAlertDelegate {
     private func presentNoAuthorizationAlert() {
         let alert = NSAlert()
         alert.messageText = rmbLocalized(.appNoRemindersAccessAlertMessage, arguments: AppConstants.appName)
-        alert.informativeText = rmbLocalized(.appNoRemindersAccessAlertDescription,
-                                             arguments: AppConstants.appName,
-                                             AppConstants.appName)
+        alert.informativeText = rmbLocalized(
+            .appNoRemindersAccessAlertDescription,
+            arguments: AppConstants.appName,
+            AppConstants.appName
+        )
         if sharedAuthorizationErrorMessage != nil {
             alert.delegate = self
             alert.showsHelp = true

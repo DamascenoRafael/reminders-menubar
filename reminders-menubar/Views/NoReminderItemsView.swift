@@ -2,7 +2,6 @@ import SwiftUI
 import EventKit
 
 struct NoReminderItemsView: View {
-    
     enum EmptyListType {
         case noReminders
         case allItemsCompleted

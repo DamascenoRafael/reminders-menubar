@@ -1,7 +1,7 @@
 import SwiftUI
 import ServiceManagement
 
-private struct PreferencesKeys {
+private enum PreferencesKeys {
     static let reminderMenuBarIcon = "reminderMenuBarIcon"
     static let calendarIdentifiersFilter = "calendarIdentifiersFilter"
     static let calendarIdentifierForSaving = "calendarIdentifierForSaving"
@@ -99,8 +99,10 @@ class UserPreferences: ObservableObject {
         return defaults.bool(forKey: PreferencesKeys.filterUpcomingRemindersByCalendar)
     }() {
         didSet {
-            UserPreferences.defaults.set(filterUpcomingRemindersByCalendar,
-                                         forKey: PreferencesKeys.filterUpcomingRemindersByCalendar)
+            UserPreferences.defaults.set(
+                filterUpcomingRemindersByCalendar,
+                forKey: PreferencesKeys.filterUpcomingRemindersByCalendar
+            )
         }
     }
     
@@ -167,8 +169,10 @@ class UserPreferences: ObservableObject {
         return defaults.bool(forKey: PreferencesKeys.filterMenuBarCountByCalendar)
     }() {
         didSet {
-            UserPreferences.defaults.set(filterMenuBarCountByCalendar,
-                                         forKey: PreferencesKeys.filterMenuBarCountByCalendar)
+            UserPreferences.defaults.set(
+                filterMenuBarCountByCalendar,
+                forKey: PreferencesKeys.filterMenuBarCountByCalendar
+            )
         }
     }
     

@@ -10,9 +10,11 @@ struct KeyboardShortcutView: View {
                 Spacer()
                 
                 VStack(alignment: .leading, spacing: 16) {
-                    Toggle(rmbLocalized(.keyboardShortcutEnableOpenShortcutOption, arguments: AppConstants.appName),
-                           isOn: $keyboardShortcutService.isOpenRemindersMenuBarEnabled)
-                    
+                    Toggle(
+                        rmbLocalized(.keyboardShortcutEnableOpenShortcutOption, arguments: AppConstants.appName),
+                        isOn: $keyboardShortcutService.isOpenRemindersMenuBarEnabled
+                    )
+
                     Group {
                         HStack {
                             KeyboardShortcuts.Recorder(for: .openRemindersMenuBar)

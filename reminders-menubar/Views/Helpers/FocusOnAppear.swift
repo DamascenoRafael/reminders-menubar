@@ -27,7 +27,7 @@ private struct FocusOnAppearWhenAvailable: ViewModifier {
             .focused($textFieldInFocus)
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                    self.textFieldInFocus = true
+                    textFieldInFocus = true
                 }
             }
     }

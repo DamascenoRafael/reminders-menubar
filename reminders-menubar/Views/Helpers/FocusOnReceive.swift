@@ -28,7 +28,7 @@ private struct FocusOnReceiveWhenAvailable: ViewModifier {
             .focused($textFieldInFocus)
             .onReceive(publisher) { _ in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                    self.textFieldInFocus = true
+                    textFieldInFocus = true
                 }
             }
     }
