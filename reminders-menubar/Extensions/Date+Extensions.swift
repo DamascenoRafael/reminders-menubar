@@ -14,7 +14,7 @@ extension Date {
     }
     
     var isDayBeforeYesterday: Bool {
-        let dayBeforeYesterday = Calendar.current.date(byAdding: .day, value: -2, to: self) ?? self
+        let dayBeforeYesterday = Calendar.current.date(byAdding: .day, value: -2, to: Date()) ?? self
         return self.isSameDay(as: dayBeforeYesterday)
     }
                                                                    
