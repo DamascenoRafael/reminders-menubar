@@ -14,7 +14,7 @@ struct ReminderEllipsisMenuView: View {
 
             ReminderChangePriorityOptionMenu(reminder: reminder)
 
-            ReminderMoveToOptionMenu(reminder: reminder, reminderHasChildren: reminderHasChildren)
+            ReminderChangeListOptionMenu(reminder: reminder, reminderHasChildren: reminderHasChildren)
 
             Divider()
 

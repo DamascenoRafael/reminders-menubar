@@ -1,19 +1,16 @@
 import SwiftUI
 import EventKit
 
-struct ReminderMoveToOptionMenu: View {
+struct ReminderChangeListOptionMenu: View {
     @EnvironmentObject var remindersData: RemindersData
     
     var reminder: EKReminder
     var reminderHasChildren: Bool
 
     var body: some View {
-        let otherCalendars = remindersData.calendars.filter {
-            $0.calendarIdentifier != reminder.calendar.calendarIdentifier
-        }
-        if !otherCalendars.isEmpty, !reminderHasChildren {
+        if !reminderHasChildren {
             Menu {
-                ForEach(otherCalendars, id: \.calendarIdentifier) { calendar in
+                ForEach(remindersData.calendars, id: \.calendarIdentifier) { calendar in
                     // TODO: Fix the warning from Xcode when editing the reminder calendar:
                     // [utility] You are about to trigger decoding the resolution token map from JSON data.
                     // This is probably not what you want for performance to trigger it from -isEqual:,
@@ -23,13 +20,18 @@ struct ReminderMoveToOptionMenu: View {
                         reminder.calendar = calendar
                         RemindersService.shared.save(reminder: reminder)
                     }) {
-                        SelectableView(title: calendar.title, color: Color(calendar.color))
+                        let isSelected = calendar.calendarIdentifier == reminder.calendar.calendarIdentifier
+                        SelectableView(
+                            title: calendar.title,
+                            isSelected: isSelected,
+                            color: Color(calendar.color)
+                        )
                     }
                 }
             } label: {
                 HStack {
                     Image(systemName: "folder")
-                    Text(rmbLocalized(.reminderMoveToMenuOption))
+                    Text(rmbLocalized(.changeReminderListMenuOption))
                 }
             }
         }
@@ -51,6 +53,6 @@ struct ReminderMoveToOptionMenu: View {
         return reminder
     }
 
-    ReminderMoveToOptionMenu(reminder: reminder, reminderHasChildren: false)
+    ReminderChangeListOptionMenu(reminder: reminder, reminderHasChildren: false)
         .environmentObject(RemindersData())
 }
