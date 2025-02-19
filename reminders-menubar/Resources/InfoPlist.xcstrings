@@ -10,14 +10,9 @@
             "state" : "new",
             "value" : "Reminders MenuBar"
           }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reminders MenuBar"
-          }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "NSHumanReadableCopyright" : {
       "comment" : "Copyright (human-readable)",
@@ -28,14 +23,9 @@
             "state" : "new",
             "value" : "Copyright © Rafael Damasceno, GNU General Public License v3."
           }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "版權所有 © Rafael Damasceno，GNU 通用公眾授權條款第 3 版。"
-          }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "NSRemindersUsageDescription" : {
       "comment" : "Privacy - Reminders Usage Description",
