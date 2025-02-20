@@ -5,7 +5,7 @@ If you are using *OpenCore Legacy Patcher* it is possible that you are not being
 <div>
   <img
     width="250"
-    src="images/permission-not-enabled.png"
+    src="images/reminders-permission-not-enabled.png"
     alt="macOS window about access to Reminders not enabled for Reminders MenuBar"
   >
 </div>
