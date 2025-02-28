@@ -34,15 +34,13 @@ class CalendarParser {
         // This prevents others from using the default '()' initializer for this class.
     }
     
-    static func updateShared(with calendars: [EKCalendar]) -> Bool? {
+    static func updateShared(with calendars: [EKCalendar]) {
         CalendarParser.shared.calendarsByTitle = calendars
             .reduce(into: [String: EKCalendar](), { partialResult, calendar in
                 let simplifiedTitle = calendar.title.lowercased().replacingOccurrences(of: " ", with: "-")
                 partialResult[simplifiedTitle] = calendar
             })
         CalendarParser.shared.simplifiedCalendarTitles = Array(CalendarParser.shared.calendarsByTitle.keys)
-        
-        return nil
     }
     
     static func isInitialCharValid(_ char: String?) -> Bool {

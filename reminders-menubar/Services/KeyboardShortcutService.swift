@@ -5,7 +5,7 @@ extension KeyboardShortcuts.Name {
     static let openRemindersMenuBar = Self("OpenRemindersMenuBar", default: .init(.r, modifiers: [.command, .option]))
 }
 
-private struct ShortcutsKeys {
+private enum ShortcutsKeys {
     static let isOpenRemindersMenuBarEnabled = "isOpenRemindersMenuBarEnabled"
 }
 
@@ -23,8 +23,10 @@ class KeyboardShortcutService: ObservableObject {
         return defaults.bool(forKey: ShortcutsKeys.isOpenRemindersMenuBarEnabled)
     }() {
         didSet {
-            KeyboardShortcutService.defaults.set(isOpenRemindersMenuBarEnabled,
-                                                 forKey: ShortcutsKeys.isOpenRemindersMenuBarEnabled)
+            KeyboardShortcutService.defaults.set(
+                isOpenRemindersMenuBarEnabled,
+                forKey: ShortcutsKeys.isOpenRemindersMenuBarEnabled
+            )
             setEnabled(isOpenRemindersMenuBarEnabled, for: .openRemindersMenuBar)
         }
     }

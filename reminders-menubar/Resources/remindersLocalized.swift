@@ -16,6 +16,8 @@ enum RemindersMenuBarLocalizedKeys: String {
     case editReminderRemindDateOption
     case editReminderRemindTimeOption
     case editReminderPrioritySection
+    case editReminderListSection
+    case changeReminderListMenuOption
     case changeReminderPriorityMenuOption
     case editReminderPriorityLowOption
     case editReminderPriorityMediumOption
@@ -26,7 +28,6 @@ enum RemindersMenuBarLocalizedKeys: String {
     case removeReminderAlertMessage
     case removeReminderAlertConfirmButton
     case removeReminderAlertCancelButton
-    case reminderMoveToMenuOption
     case emptyListNoRemindersMessage
     case emptyListNoRemindersFilterTitle
     case emptyListNoRemindersFilterMessage

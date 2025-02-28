@@ -51,9 +51,11 @@ struct NewReminderInfoOptionsView: View {
 }
 
 @ViewBuilder
-func reminderRemindDateTimeOptionView(date: Binding<Date>,
-                                      components: RmbDatePicker.DatePickerComponents,
-                                      hasComponent: Binding<Bool>) -> some View {
+func reminderRemindDateTimeOptionView(
+    date: Binding<Date>,
+    components: RmbDatePicker.DatePickerComponents,
+    hasComponent: Binding<Bool>
+) -> some View {
     let pickerIcon = components == .time ? "clock" : "calendar"
     
     let addTimeButtonText = rmbLocalized(.newReminderAddTimeButton)

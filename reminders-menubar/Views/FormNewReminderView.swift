@@ -55,14 +55,18 @@ struct FormNewReminderView: View {
                         }
                     }) {
                         let isSelected = userPreferences.autoSuggestToday
-                        SelectableView(title: rmbLocalized(.newReminderAutoSuggestTodayOption),
-                                       isSelected: isSelected)
+                        SelectableView(
+                            title: rmbLocalized(.newReminderAutoSuggestTodayOption),
+                            isSelected: isSelected
+                        )
                     }
                     
                     Button(action: { userPreferences.removeParsedDateFromTitle.toggle() }) {
                         let isSelected = userPreferences.removeParsedDateFromTitle
-                        SelectableView(title: rmbLocalized(.newReminderRemoveParsedDateOption),
-                                       isSelected: isSelected)
+                        SelectableView(
+                            title: rmbLocalized(.newReminderRemoveParsedDateOption),
+                            isSelected: isSelected
+                        )
                     }
                 } label: {
                 }
@@ -94,19 +98,23 @@ struct FormNewReminderView: View {
     @ViewBuilder
     func newReminderTextFieldView() -> some View {
         VStack(alignment: .leading) {
-            RmbHighlightedTextField(placeholder: rmbLocalized(.newReminderTextFielPlaceholder),
-                                    text: $rmbReminder.title,
-                                    highlightedTexts: rmbReminder.highlightedTexts,
-                                    isInitialCharValidToAutoComplete: CalendarParser.isInitialCharValid(_:),
-                                    autoCompleteSuggestions: CalendarParser.autoCompleteSuggestions(_:),
-                                    onSubmit: createNewReminder)
+            RmbHighlightedTextField(
+                placeholder: rmbLocalized(.newReminderTextFielPlaceholder),
+                text: $rmbReminder.title,
+                highlightedTexts: rmbReminder.highlightedTexts,
+                isInitialCharValidToAutoComplete: CalendarParser.isInitialCharValid(_:),
+                autoCompleteSuggestions: CalendarParser.autoCompleteSuggestions(_:),
+                onSubmit: createNewReminder
+            )
             .modifier(FocusOnReceive(userPreferences.$remindersMenuBarOpeningEvent))
 
             if isShowingInfoOptions {
-                NewReminderInfoOptionsView(date: $rmbReminder.date,
-                                           hasDueDate: $rmbReminder.hasDueDate,
-                                           hasTime: $rmbReminder.hasTime,
-                                           priority: $rmbReminder.priority)
+                NewReminderInfoOptionsView(
+                    date: $rmbReminder.date,
+                    hasDueDate: $rmbReminder.hasDueDate,
+                    hasTime: $rmbReminder.hasTime,
+                    priority: $rmbReminder.priority
+                )
             }
         }
     }

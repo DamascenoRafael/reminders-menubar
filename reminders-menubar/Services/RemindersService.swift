@@ -68,9 +68,11 @@ class RemindersService {
     func getReminders(of calendarIdentifiers: [String]) async -> [ReminderList] {
         let calendars = getCalendars().filter({ calendarIdentifiers.contains($0.calendarIdentifier) })
         let predicate = eventStore.predicateForReminders(in: calendars)
-        let remindersByCalendar = Dictionary(grouping: await fetchReminders(matching: predicate),
-                                             by: { $0.calendar.calendarIdentifier })
-        
+        let remindersByCalendar = Dictionary(
+            grouping: await fetchReminders(matching: predicate),
+            by: { $0.calendar.calendarIdentifier }
+        )
+
         var reminderLists: [ReminderList] = []
         for calendar in calendars {
             let calendarReminders = remindersByCalendar[calendar.calendarIdentifier, default: []]
@@ -81,8 +83,10 @@ class RemindersService {
         return reminderLists
     }
     
-    func getUpcomingReminders(_ interval: ReminderInterval,
-                              for calendarIdentifiers: [String]? = nil) async -> [ReminderItem] {
+    func getUpcomingReminders(
+        _ interval: ReminderInterval,
+        for calendarIdentifiers: [String]? = nil
+    ) async -> [ReminderItem] {
         var calendars: [EKCalendar]?
         if let calendarIdentifiers {
             if calendarIdentifiers.isEmpty {
@@ -91,9 +95,11 @@ class RemindersService {
             }
             calendars = getCalendars().filter({ calendarIdentifiers.contains($0.calendarIdentifier) })
         }
-        let predicate = eventStore.predicateForIncompleteReminders(withDueDateStarting: nil,
-                                                                   ending: interval.endingDate,
-                                                                   calendars: calendars)
+        let predicate = eventStore.predicateForIncompleteReminders(
+            withDueDateStarting: nil,
+            ending: interval.endingDate,
+            calendars: calendars
+        )
         var reminders = await fetchReminders(matching: predicate).map({ ReminderItem(for: $0) })
         if interval == .due {
             // For the 'due' interval, we should filter reminders for today with no time.

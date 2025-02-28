@@ -3,8 +3,6 @@ import EventKit
 
 @MainActor
 struct ReminderItemView: View {
-    @EnvironmentObject var remindersData: RemindersData
-    
     var item: ReminderItem
     var isShowingCompleted: Bool
     var showCalendarTitleOnDueDate = false
@@ -45,52 +43,25 @@ struct ReminderItemView: View {
                             isEditingTitle = true
                             showingEditPopover = true
                         }
+
                     Spacer()
-                    MenuButton(label:
-                        Image(systemName: "ellipsis")
-                    ) {
-                        Button(action: {
-                            showingEditPopover = true
-                        }) {
-                            HStack {
-                                Image(systemName: "pencil")
-                                Text(rmbLocalized(.editReminderOptionButton))
-                            }
-                        }
-                        
-                        // TODO: remove the `.id` modifier while keeping updated the selected priority
-                        ChangePriorityOptionMenu(reminder: item.reminder).id(UUID())
-                        
-                        let otherCalendars = remindersData.calendars.filter {
-                            $0.calendarIdentifier != item.reminder.calendar.calendarIdentifier
-                        }
-                        if !otherCalendars.isEmpty && !item.hasChildren {
-                            MoveToOptionMenu(reminder: item.reminder, availableCalendars: otherCalendars)
-                        }
-                        
-                        VStack {
-                            Divider()
-                        }
-                        
-                        Button(action: {
-                            showingRemoveAlert = true
-                        }) {
-                            HStack {
-                                Image(systemName: "minus.circle")
-                                Text(rmbLocalized(.removeReminderOptionButton))
-                            }
-                        }
-                    }
-                    .menuButtonStyle(BorderlessButtonMenuButtonStyle())
-                    .frame(width: 16, height: 16)
-                    .padding(.top, 1)
-                    .padding(.trailing, 10)
-                    .help(rmbLocalized(.remindersOptionsButtonHelp))
+
+                    // TODO: remove the `.id` modifier while keeping properties updated (such as selected priority)
+                    ReminderEllipsisMenuView(
+                        showingEditPopover: $showingEditPopover,
+                        showingRemoveAlert: $showingRemoveAlert,
+                        reminder: item.reminder,
+                        reminderHasChildren: item.hasChildren
+                    )
+                    .id(UUID())
                     .opacity(shouldShowEllipsisButton() ? 1 : 0)
                     .popover(isPresented: $showingEditPopover, arrowEdge: .trailing) {
-                        ReminderEditPopover(isPresented: $showingEditPopover,
-                                            focusOnTitle: $isEditingTitle,
-                                            reminder: item.reminder)
+                        ReminderEditPopover(
+                            isPresented: $showingEditPopover,
+                            focusOnTitle: $isEditingTitle,
+                            reminder: item.reminder,
+                            reminderHasChildren: item.hasChildren
+                        )
                     }
                 }
                 .alert(isPresented: $showingRemoveAlert) {
@@ -151,12 +122,13 @@ struct ReminderItemView: View {
     }
     
     func removeReminderAlert() -> Alert {
-        Alert(title: Text(rmbLocalized(.removeReminderAlertTitle)),
-              message: Text(rmbLocalized(.removeReminderAlertMessage, arguments: item.reminder.title)),
-              primaryButton: .destructive(Text(rmbLocalized(.removeReminderAlertConfirmButton)), action: {
+        Alert(
+            title: Text(rmbLocalized(.removeReminderAlertTitle)),
+            message: Text(rmbLocalized(.removeReminderAlertMessage, arguments: item.reminder.title)),
+            primaryButton: .destructive(Text(rmbLocalized(.removeReminderAlertConfirmButton)), action: {
                 RemindersService.shared.remove(reminder: item.reminder)
               }),
-              secondaryButton: .cancel(Text(rmbLocalized(.removeReminderAlertCancelButton)))
+            secondaryButton: .cancel(Text(rmbLocalized(.removeReminderAlertCancelButton)))
         )
     }
     
@@ -174,65 +146,6 @@ struct ReminderItemView: View {
             return rmbLocalized(.reminderRecurrenceYearlyLabel, arguments: interval)
         default:
             return ""
-        }
-    }
-}
-
-@MainActor
-struct ChangePriorityOptionMenu: View {
-    var reminder: EKReminder
-    
-    @ViewBuilder
-    func changePriorityButton(_ priority: EKReminderPriority, text: String) -> some View {
-        let isSelected = priority == reminder.ekPriority
-        Button(action: {
-            reminder.ekPriority = priority
-            RemindersService.shared.save(reminder: reminder)
-        }) {
-            SelectableView(title: text, isSelected: isSelected)
-        }
-    }
-    
-    var body: some View {
-        MenuButton(label:
-            HStack {
-                Image(systemName: "exclamationmark.circle")
-                Text(rmbLocalized(.changeReminderPriorityMenuOption))
-            }
-        ) {
-            changePriorityButton(.low, text: rmbLocalized(.editReminderPriorityLowOption))
-            changePriorityButton(.medium, text: rmbLocalized(.editReminderPriorityMediumOption))
-            changePriorityButton(.high, text: rmbLocalized(.editReminderPriorityHighOption))
-            Divider()
-            changePriorityButton(.none, text: rmbLocalized(.editReminderPriorityNoneOption))
-        }
-    }
-}
-
-struct MoveToOptionMenu: View {
-    var reminder: EKReminder
-    var availableCalendars: [EKCalendar]
-    
-    var body: some View {
-        MenuButton(label:
-            HStack {
-                Image(systemName: "folder")
-                Text(rmbLocalized(.reminderMoveToMenuOption))
-            }
-        ) {
-            ForEach(availableCalendars, id: \.calendarIdentifier) { calendar in
-                // TODO: Fix the warning from Xcode when editing the reminder calendar:
-                // [utility] You are about to trigger decoding the resolution token map from JSON data.
-                // This is probably not what you want for performance to trigger it from -isEqual:,
-                // unless you are running Tests then it's fine
-                // {class: REMAccountStorage, self-map: (null), other-map: (null)}
-                Button(action: {
-                    reminder.calendar = calendar
-                    RemindersService.shared.save(reminder: reminder)
-                }) {
-                    SelectableView(title: calendar.title, color: Color(calendar.color))
-                }
-            }
         }
     }
 }
@@ -293,7 +206,6 @@ struct ReminderItemView_Previews: PreviewProvider {
         Group {
             ForEach(ColorScheme.allCases, id: \.self) { color in
                 ReminderItemView(item: reminderItem, isShowingCompleted: false)
-                    .environmentObject(RemindersData())
                     .colorScheme(color)
                     .previewDisplayName("\(color) mode")
             }

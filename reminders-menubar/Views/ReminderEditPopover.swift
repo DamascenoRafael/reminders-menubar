@@ -2,16 +2,20 @@ import SwiftUI
 import EventKit
 
 struct ReminderEditPopover: View {
+    @EnvironmentObject var remindersData: RemindersData
+    
     @Binding var isPresented: Bool
     @Binding var focusOnTitle: Bool
     
     @State var rmbReminder: RmbReminder
     var ekReminder: EKReminder
+    var reminderHasChildren: Bool
     
-    init(isPresented: Binding<Bool>, focusOnTitle: Binding<Bool>, reminder: EKReminder) {
+    init(isPresented: Binding<Bool>, focusOnTitle: Binding<Bool>, reminder: EKReminder, reminderHasChildren: Bool) {
         _isPresented = isPresented
         _focusOnTitle = focusOnTitle
         self.ekReminder = reminder
+        self.reminderHasChildren = reminderHasChildren
         _rmbReminder = State(initialValue: RmbReminder(reminder: reminder))
     }
     
@@ -26,7 +30,7 @@ struct ReminderEditPopover: View {
             
             ScrollableTextField(
                 rmbLocalized(.editReminderNotesTextFieldPlaceholder),
-                text: $rmbReminder.notes ?? ""
+                text: Binding($rmbReminder.notes, replacingNilWith: "")
             )
             
             Divider()
@@ -63,6 +67,20 @@ struct ReminderEditPopover: View {
                 }
                 .labelsHidden()
                 .fixedSize(horizontal: true, vertical: false)
+            }
+            
+            if !reminderHasChildren {
+                ReminderSection(rmbLocalized(.editReminderListSection)) {
+                    Picker(selection: $rmbReminder.calendar) {
+                        ForEach(remindersData.calendars, id: \.calendarIdentifier) { calendar in
+                            SelectableView(title: calendar.title, color: Color(calendar.color)).tag(calendar)
+                        }
+                    } label: {
+                        Text(verbatim: "")
+                    }
+                    .labelsHidden()
+                    .fixedSize(horizontal: true, vertical: false)
+                }
             }
         }
         .frame(width: 300, alignment: .center)
@@ -121,6 +139,11 @@ struct ReminderEditPopover_Previews: PreviewProvider {
     }
     
     static var previews: some View {
-        ReminderEditPopover(isPresented: .constant(true), focusOnTitle: .constant(false), reminder: reminder)
+        ReminderEditPopover(
+            isPresented: .constant(true),
+            focusOnTitle: .constant(false),
+            reminder: reminder,
+            reminderHasChildren: false
+        )
     }
 }

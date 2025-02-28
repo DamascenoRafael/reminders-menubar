@@ -1,5 +1,6 @@
 import Foundation
 
+// swiftlint:disable:next convenience_type
 class GithubService {
     static let urlSession = URLSession(configuration: .ephemeral)
     

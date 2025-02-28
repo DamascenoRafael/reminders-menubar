@@ -47,6 +47,7 @@ struct RmbDatePicker: NSViewRepresentable {
 
     class Coordinator: NSObject {
         private let owner: RmbDatePicker
+        
         init(owner: RmbDatePicker) {
             self.owner = owner
         }
