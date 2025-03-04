@@ -863,7 +863,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\n%@은(는) 제대로 작동하려면 권한이 필요합니다.\n시스템 설정에서 %@에 대한 미리 알림 접근 권한을 허용하세요.\n"
+            "value" : "\n%@ 을(를) 실행하기 위해 권한이 필요합니다.\n시스템 설정에서 %@ 에 대한 미리 알림 접근 권한을 허용하세요.\n"
           }
         },
         "nl" : {
@@ -970,7 +970,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@에 미리 알림 접근이 허용되지 않았습니다."
+            "value" : "%@ 에 미리 알림 접근이 허용되지 않았습니다."
           }
         },
         "nl" : {
@@ -1258,6 +1258,12 @@
             "value" : "Due date"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "마감일"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1307,8 +1313,8 @@
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "다음으로 이동"
+            "state" : "translated",
+            "value" : "목록"
           }
         },
         "nl" : {
@@ -1489,6 +1495,12 @@
             "value" : "Next week"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다음 주"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1504,6 +1516,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "None"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "없음"
           }
         },
         "pt-BR" : {
@@ -1523,6 +1541,12 @@
             "value" : "This weekend"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이번 주말"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1538,6 +1562,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Today"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "오늘"
           }
         },
         "pt-BR" : {
@@ -1557,6 +1587,12 @@
             "value" : "Tomorrow"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "내일"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1573,6 +1609,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "list"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "목록"
           }
         },
         "pt-BR" : {
@@ -2483,7 +2525,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "나에게 미리 알림"
+            "value" : "알림"
           }
         },
         "nl" : {
@@ -3312,6 +3354,12 @@
             "value" : "Filtrer à partir des listes séléctionneés"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "선택된 목록으로 필터링"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3333,6 +3381,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Filtrer à partir des listes séléctionneés"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "선택된 목록으로 필터링"
           }
         },
         "pt-BR" : {
@@ -4437,7 +4491,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "새로운 미리 알림이 저장될 곳을 선택"
+            "value" : "새로운 미리 알림이 저장될 목록을 선택"
           }
         },
         "nl" : {
@@ -4651,7 +4705,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "미리 알림 내용을 입력 후 엔터를 누르세요"
+            "value" : "내용을 입력 후 엔터를 누르세요"
           }
         },
         "nl" : {
@@ -5308,6 +5362,18 @@
             }
           }
         },
+        "ko" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%i일마다"
+                }
+              }
+            }
+          }
+        },
         "pt-BR" : {
           "variations" : {
             "plural" : {
@@ -5380,6 +5446,18 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Tous les %i mois"
+                }
+              }
+            }
+          }
+        },
+        "ko" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%i달마다"
                 }
               }
             }
@@ -5462,6 +5540,18 @@
             }
           }
         },
+        "ko" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%i주마다"
+                }
+              }
+            }
+          }
+        },
         "pt-BR" : {
           "variations" : {
             "plural" : {
@@ -5534,6 +5624,18 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Tous les %i ans"
+                }
+              }
+            }
+          }
+        },
+        "ko" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%i년마다"
                 }
               }
             }
@@ -5708,7 +5810,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@는 %@에 따라 라이선스가 부과된 오픈소스 소프트웨어입니다."
+            "value" : "%@는 %@에 따라 라이선스가 부여된 오픈소스 소프트웨어입니다."
           }
         },
         "nl" : {
@@ -6670,8 +6772,8 @@
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "새로운 미리 알림이 저장될 곳을 선택"
+            "state" : "translated",
+            "value" : "목록 선택"
           }
         },
         "nl" : {
@@ -6885,7 +6987,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "완료된 미리 알림을 표시/숨기기 전환"
+            "value" : "완료된 미리 알림을 표시/숨기기"
           }
         },
         "nl" : {
@@ -6980,7 +7082,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "모든 미리 알림 항목 갯수 보기"
+            "value" : "모든 미리 알림 항목 갯수"
           }
         },
         "nl" : {
@@ -7066,6 +7168,12 @@
             "value" : "Mostra conteggio in scadenza"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "예정된 미리 알림 갯수"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7116,7 +7224,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "카운트 보지 않기"
+            "value" : "표시 안함"
           }
         },
         "nl" : {
@@ -7217,7 +7325,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "오늘 마감 항목 갯수 보기"
+            "value" : "오늘 마감 항목 갯수"
           }
         },
         "nl" : {
@@ -7414,6 +7522,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Scade"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "예정"
           }
         },
         "pl" : {
