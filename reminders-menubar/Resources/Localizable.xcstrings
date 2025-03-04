@@ -1258,6 +1258,12 @@
             "value" : "Due date"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Termin zakończenia"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1325,7 +1331,7 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Przenieś do ..."
           }
         },
@@ -1495,6 +1501,12 @@
             "value" : "Next week"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "W następnym tygodniu"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1516,6 +1528,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "None"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak"
           }
         },
         "ko" : {
@@ -1541,6 +1559,12 @@
             "value" : "This weekend"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "W ten weekend"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1562,6 +1586,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Today"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dziś"
           }
         },
         "ko" : {
@@ -1587,6 +1617,12 @@
             "value" : "Tomorrow"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jutro"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1609,6 +1645,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "list"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "lista"
           }
         },
         "ko" : {
@@ -3354,6 +3396,12 @@
             "value" : "Filtrer à partir des listes séléctionneés"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtruj po zaznaczonych listach"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3381,6 +3429,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Filtrer à partir des listes séléctionneés"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtruj po zaznaczonych listach"
           }
         },
         "ko" : {
@@ -5362,6 +5416,36 @@
             }
           }
         },
+        "pl" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co %i dni"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co %i dni"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Codziennie"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co %i dni"
+                }
+              }
+            }
+          }
+        },
         "ko" : {
           "variations" : {
             "plural" : {
@@ -5446,6 +5530,36 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Tous les %i mois"
+                }
+              }
+            }
+          }
+        },
+        "pl" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co %i miesiące"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co %i miesięcy"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co miesiąc"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co %i miesięcy"
                 }
               }
             }
@@ -5540,6 +5654,36 @@
             }
           }
         },
+        "pl" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co %i tygodnie"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co %i tygodni"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co tydzień"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co %i tygodni"
+                }
+              }
+            }
+          }
+        },
         "ko" : {
           "variations" : {
             "plural" : {
@@ -5624,6 +5768,36 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Tous les %i ans"
+                }
+              }
+            }
+          }
+        },
+        "pl" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co %i lata"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co %i lat"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co roku"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co %i lat"
                 }
               }
             }
@@ -6784,7 +6958,7 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Wybierz, gdzie nowe przypomnienia będą zapisywane"
           }
         },
@@ -7532,7 +7706,7 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Nadchodzące"
           }
         },
