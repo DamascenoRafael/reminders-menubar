@@ -16,6 +16,8 @@ struct ReminderEllipsisMenuView: View {
 
             ReminderChangeListOptionMenu(reminder: reminder, reminderHasChildren: reminderHasChildren)
 
+            ReminderChangeDueDateOptionMenu(reminder: reminder)
+
             Divider()
 
             showRemoveAlertOptionButton()
