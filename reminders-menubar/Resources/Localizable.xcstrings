@@ -1258,6 +1258,12 @@
             "value" : "Due date"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data di scadenza"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1307,8 +1313,8 @@
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Sposta in ..."
+            "state" : "translated",
+            "value" : "Elenco"
           }
         },
         "ja" : {
@@ -1501,6 +1507,12 @@
             "value" : "Next week"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prossima settimana"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1528,6 +1540,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "None"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessuna"
           }
         },
         "ko" : {
@@ -1559,6 +1577,12 @@
             "value" : "This weekend"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questo fine settimana"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1586,6 +1610,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Today"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oggi"
           }
         },
         "ko" : {
@@ -1617,6 +1647,12 @@
             "value" : "Tomorrow"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domani"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1645,6 +1681,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "list"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "elenco"
           }
         },
         "ko" : {
