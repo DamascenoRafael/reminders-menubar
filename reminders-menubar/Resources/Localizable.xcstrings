@@ -863,7 +863,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\n%@은(는) 제대로 작동하려면 권한이 필요합니다.\n시스템 설정에서 %@에 대한 미리 알림 접근 권한을 허용하세요.\n"
+            "value" : "\n%@ 을(를) 실행하기 위해 권한이 필요합니다.\n시스템 설정에서 %@ 에 대한 미리 알림 접근 권한을 허용하세요.\n"
           }
         },
         "nl" : {
@@ -970,7 +970,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@에 미리 알림 접근이 허용되지 않았습니다."
+            "value" : "%@ 에 미리 알림 접근이 허용되지 않았습니다."
           }
         },
         "nl" : {
@@ -1249,6 +1249,35 @@
         }
       }
     },
+    "changeReminderDueDateMenuOption" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Due date"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "마감일"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Termin zakończenia"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data"
+          }
+        }
+      }
+    },
     "changeReminderListMenuOption" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1290,8 +1319,8 @@
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "다음으로 이동"
+            "state" : "translated",
+            "value" : "목록"
           }
         },
         "nl" : {
@@ -1302,7 +1331,7 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Przenieś do ..."
           }
         },
@@ -1463,6 +1492,151 @@
         }
       }
     },
+    "editReminderDueDateNextWeekOption" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next week"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다음 주"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "W następnym tygodniu"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Próxima semana"
+          }
+        }
+      }
+    },
+    "editReminderDueDateNoneOption" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "None"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "없음"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nenhuma"
+          }
+        }
+      }
+    },
+    "editReminderDueDateThisWeekendOption" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This weekend"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이번 주말"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "W ten weekend"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este fim de semana"
+          }
+        }
+      }
+    },
+    "editReminderDueDateTodayOption" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "오늘"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dziś"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoje"
+          }
+        }
+      }
+    },
+    "editReminderDueDateTomorrowOption" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tomorrow"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "내일"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jutro"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amanhã"
+          }
+        }
+      }
+    },
     "editReminderListSection" : {
       "comment" : "This option mimics the option in Apple Reminders that appears as lowercase.",
       "extractionState" : "manual",
@@ -1471,6 +1645,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "list"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "목록"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "lista"
           }
         },
         "pt-BR" : {
@@ -2381,7 +2567,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "나에게 미리 알림"
+            "value" : "알림"
           }
         },
         "nl" : {
@@ -3216,6 +3402,18 @@
             "value" : "Filtra per liste selezionate"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "선택된 목록으로 필터링"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtruj po zaznaczonych listach"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3243,6 +3441,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Filtra per liste selezionate"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "선택된 목록으로 필터링"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtruj po zaznaczonych listach"
           }
         },
         "pt-BR" : {
@@ -4347,7 +4557,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "새로운 미리 알림이 저장될 곳을 선택"
+            "value" : "새로운 미리 알림이 저장될 목록을 선택"
           }
         },
         "nl" : {
@@ -4561,7 +4771,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "미리 알림 내용을 입력 후 엔터를 누르세요"
+            "value" : "내용을 입력 후 엔터를 누르세요"
           }
         },
         "nl" : {
@@ -5236,6 +5446,48 @@
             }
           }
         },
+        "ko" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%i일마다"
+                }
+              }
+            }
+          }
+        },
+        "pl" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co %i dni"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co %i dni"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Codziennie"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co %i dni"
+                }
+              }
+            }
+          }
+        },
         "pt-BR" : {
           "variations" : {
             "plural" : {
@@ -5326,6 +5578,48 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Ogni %i mesi"
+                }
+              }
+            }
+          }
+        },
+        "ko" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%i달마다"
+                }
+              }
+            }
+          }
+        },
+        "pl" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co %i miesiące"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co %i miesięcy"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co miesiąc"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co %i miesięcy"
                 }
               }
             }
@@ -5426,6 +5720,48 @@
             }
           }
         },
+        "ko" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%i주마다"
+                }
+              }
+            }
+          }
+        },
+        "pl" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co %i tygodnie"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co %i tygodni"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co tydzień"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co %i tygodni"
+                }
+              }
+            }
+          }
+        },
         "pt-BR" : {
           "variations" : {
             "plural" : {
@@ -5516,6 +5852,48 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Ogni %i anni"
+                }
+              }
+            }
+          }
+        },
+        "ko" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%i년마다"
+                }
+              }
+            }
+          }
+        },
+        "pl" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co %i lata"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co %i lat"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co roku"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Co %i lat"
                 }
               }
             }
@@ -5690,7 +6068,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@는 %@에 따라 라이선스가 부과된 오픈소스 소프트웨어입니다."
+            "value" : "%@는 %@에 따라 라이선스가 부여된 오픈소스 소프트웨어입니다."
           }
         },
         "nl" : {
@@ -6652,8 +7030,8 @@
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "새로운 미리 알림이 저장될 곳을 선택"
+            "state" : "translated",
+            "value" : "목록 선택"
           }
         },
         "nl" : {
@@ -6664,7 +7042,7 @@
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Wybierz, gdzie nowe przypomnienia będą zapisywane"
           }
         },
@@ -6867,7 +7245,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "완료된 미리 알림을 표시/숨기기 전환"
+            "value" : "완료된 미리 알림을 표시/숨기기"
           }
         },
         "nl" : {
@@ -6962,7 +7340,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "모든 미리 알림 항목 갯수 보기"
+            "value" : "모든 미리 알림 항목 갯수"
           }
         },
         "nl" : {
@@ -7048,6 +7426,12 @@
             "value" : "Mostra conteggio in scadenza"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "예정된 미리 알림 갯수"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7098,7 +7482,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "카운트 보지 않기"
+            "value" : "표시 안함"
           }
         },
         "nl" : {
@@ -7199,7 +7583,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "오늘 마감 항목 갯수 보기"
+            "value" : "오늘 마감 항목 갯수"
           }
         },
         "nl" : {
@@ -7398,9 +7782,15 @@
             "value" : "Scade"
           }
         },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "예정"
+          }
+        },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Nadchodzące"
           }
         },
