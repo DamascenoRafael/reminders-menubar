@@ -1270,6 +1270,12 @@
             "value" : "마감일"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vervaldatum"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1331,8 +1337,8 @@
         },
         "nl" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Verplaats naar ..."
+            "state" : "translated",
+            "value" : "Lijst"
           }
         },
         "pl" : {
@@ -1519,6 +1525,12 @@
             "value" : "다음 주"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volgende week"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1552,6 +1564,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "없음"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geen"
           }
         },
         "pl" : {
@@ -1589,6 +1607,12 @@
             "value" : "이번 주말"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dit weekend"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1622,6 +1646,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "오늘"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vandaag"
           }
         },
         "pl" : {
@@ -1659,6 +1689,12 @@
             "value" : "내일"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Morgen"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1693,6 +1729,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "목록"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "lijst"
           }
         },
         "pl" : {
@@ -3450,6 +3492,12 @@
             "value" : "선택된 목록으로 필터링"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter op geselecteerde lijsten"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3489,6 +3537,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "선택된 목록으로 필터링"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter op geselecteerde lijsten"
           }
         },
         "pl" : {
@@ -5500,6 +5554,24 @@
             }
           }
         },
+        "nl" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Dagelijks"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Elke %i dagen"
+                }
+              }
+            }
+          }
+        },
         "pl" : {
           "variations" : {
             "plural" : {
@@ -5632,6 +5704,24 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "%i달마다"
+                }
+              }
+            }
+          }
+        },
+        "nl" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Maandelijks"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Elke %i maanden"
                 }
               }
             }
@@ -5774,6 +5864,24 @@
             }
           }
         },
+        "nl" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Wekelijks"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Elke %i weken"
+                }
+              }
+            }
+          }
+        },
         "pl" : {
           "variations" : {
             "plural" : {
@@ -5906,6 +6014,24 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "%i년마다"
+                }
+              }
+            }
+          }
+        },
+        "nl" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Jaarlijks"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Elke %i jaar"
                 }
               }
             }
@@ -7078,7 +7204,7 @@
         },
         "nl" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Selecteer waar nieuwe herinneringen worden opgeslagen"
           }
         },
@@ -7474,6 +7600,12 @@
             "value" : "예정된 미리 알림 갯수"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laat verlopen zien"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7828,6 +7960,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "예정"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vervaldatum"
           }
         },
         "pl" : {
