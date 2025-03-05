@@ -1258,16 +1258,22 @@
             "value" : "Due date"
           }
         },
-        "pl" : {
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Termin zakończenia"
+            "value" : "Data di scadenza"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "마감일"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Termin zakończenia"
           }
         },
         "pt-BR" : {
@@ -1307,8 +1313,8 @@
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Sposta in ..."
+            "state" : "translated",
+            "value" : "Elenco"
           }
         },
         "ja" : {
@@ -1501,16 +1507,22 @@
             "value" : "Next week"
           }
         },
-        "pl" : {
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "W następnym tygodniu"
+            "value" : "Prossima settimana"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "다음 주"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "W następnym tygodniu"
           }
         },
         "pt-BR" : {
@@ -1530,16 +1542,22 @@
             "value" : "None"
           }
         },
-        "pl" : {
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Brak"
+            "value" : "Nessuna"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "없음"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak"
           }
         },
         "pt-BR" : {
@@ -1559,16 +1577,22 @@
             "value" : "This weekend"
           }
         },
-        "pl" : {
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "W ten weekend"
+            "value" : "Questo fine settimana"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "이번 주말"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "W ten weekend"
           }
         },
         "pt-BR" : {
@@ -1588,16 +1612,22 @@
             "value" : "Today"
           }
         },
-        "pl" : {
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dziś"
+            "value" : "Oggi"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "오늘"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dziś"
           }
         },
         "pt-BR" : {
@@ -1617,16 +1647,22 @@
             "value" : "Tomorrow"
           }
         },
-        "pl" : {
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Jutro"
+            "value" : "Domani"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "내일"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jutro"
           }
         },
         "pt-BR" : {
@@ -1647,16 +1683,22 @@
             "value" : "list"
           }
         },
-        "pl" : {
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "lista"
+            "value" : "elenco"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "목록"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "lista"
           }
         },
         "pt-BR" : {
@@ -3396,16 +3438,22 @@
             "value" : "Filtrer à partir des listes séléctionneés"
           }
         },
-        "pl" : {
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Filtruj po zaznaczonych listach"
+            "value" : "Filtra per liste selezionate"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "선택된 목록으로 필터링"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtruj po zaznaczonych listach"
           }
         },
         "pt-BR" : {
@@ -3431,16 +3479,22 @@
             "value" : "Filtrer à partir des listes séléctionneés"
           }
         },
-        "pl" : {
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Filtruj po zaznaczonych listach"
+            "value" : "Filtra per liste selezionate"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "선택된 목록으로 필터링"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtruj po zaznaczonych listach"
           }
         },
         "pt-BR" : {
@@ -5416,6 +5470,36 @@
             }
           }
         },
+        "it" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Giornaliero"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Ogni %i giorni"
+                }
+              }
+            }
+          }
+        },
+        "ko" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%i일마다"
+                }
+              }
+            }
+          }
+        },
         "pl" : {
           "variations" : {
             "plural" : {
@@ -5441,18 +5525,6 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Co %i dni"
-                }
-              }
-            }
-          }
-        },
-        "ko" : {
-          "variations" : {
-            "plural" : {
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%i일마다"
                 }
               }
             }
@@ -5535,6 +5607,36 @@
             }
           }
         },
+        "it" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Mensile"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Ogni %i mesi"
+                }
+              }
+            }
+          }
+        },
+        "ko" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%i달마다"
+                }
+              }
+            }
+          }
+        },
         "pl" : {
           "variations" : {
             "plural" : {
@@ -5560,18 +5662,6 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Co %i miesięcy"
-                }
-              }
-            }
-          }
-        },
-        "ko" : {
-          "variations" : {
-            "plural" : {
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%i달마다"
                 }
               }
             }
@@ -5654,6 +5744,36 @@
             }
           }
         },
+        "it" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Settimanale"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Ogni %i settimane"
+                }
+              }
+            }
+          }
+        },
+        "ko" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%i주마다"
+                }
+              }
+            }
+          }
+        },
         "pl" : {
           "variations" : {
             "plural" : {
@@ -5679,18 +5799,6 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Co %i tygodni"
-                }
-              }
-            }
-          }
-        },
-        "ko" : {
-          "variations" : {
-            "plural" : {
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%i주마다"
                 }
               }
             }
@@ -5773,6 +5881,36 @@
             }
           }
         },
+        "it" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Annuale"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Ogni %i anni"
+                }
+              }
+            }
+          }
+        },
+        "ko" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%i년마다"
+                }
+              }
+            }
+          }
+        },
         "pl" : {
           "variations" : {
             "plural" : {
@@ -5798,18 +5936,6 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Co %i lat"
-                }
-              }
-            }
-          }
-        },
-        "ko" : {
-          "variations" : {
-            "plural" : {
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%i년마다"
                 }
               }
             }
