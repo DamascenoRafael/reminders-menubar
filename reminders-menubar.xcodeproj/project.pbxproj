@@ -899,7 +899,7 @@
 			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
 			requirement = {
 				kind = exactVersion;
-				version = 2.0.1;
+				version = 2.2.4;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
