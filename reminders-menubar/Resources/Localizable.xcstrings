@@ -1287,6 +1287,12 @@
             "state" : "translated",
             "value" : "Data"
           }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Termín ukončenia"
+          }
         }
       }
     },
@@ -1361,8 +1367,8 @@
         },
         "sk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Presunúť do ..."
+            "state" : "translated",
+            "value" : "Zoznam"
           }
         },
         "tr" : {
@@ -1542,6 +1548,12 @@
             "state" : "translated",
             "value" : "Próxima semana"
           }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nasledujúci týždeň"
+          }
         }
       }
     },
@@ -1582,6 +1594,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nenhuma"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Žiadny"
           }
         }
       }
@@ -1624,6 +1642,12 @@
             "state" : "translated",
             "value" : "Este fim de semana"
           }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cez víkend"
+          }
         }
       }
     },
@@ -1664,6 +1688,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hoje"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dnes"
           }
         }
       }
@@ -1706,6 +1736,12 @@
             "state" : "translated",
             "value" : "Amanhã"
           }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zajtra"
+          }
         }
       }
     },
@@ -1747,6 +1783,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "lista"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "zoznam"
           }
         }
       }
@@ -3509,6 +3551,12 @@
             "state" : "translated",
             "value" : "Filtrar por listas selecionadas"
           }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtrovať podľa vybraných zoznamov"
+          }
         }
       }
     },
@@ -3555,6 +3603,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Filtrar por listas selecionadas"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtrovať podľa vybraných zoznamov"
           }
         }
       }
@@ -7228,8 +7282,8 @@
         },
         "sk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vyberte, kam sa uložia nové pripomienky"
+            "state" : "translated",
+            "value" : "Vyberte zoznam pre uloženie nových pripomienok"
           }
         },
         "tr" : {
@@ -7618,6 +7672,12 @@
             "value" : "Mostrar contagem de vencidos"
           }
         },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobraziť počet po termíne"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7978,6 +8038,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vencidos"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Termín"
           }
         },
         "zh-Hant" : {
