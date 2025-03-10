@@ -1258,6 +1258,12 @@
             "value" : "Due date"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Échéance"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1319,8 +1325,8 @@
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Déplacer vers..."
+            "state" : "translated",
+            "value" : "Lister"
           }
         },
         "it" : {
@@ -1519,6 +1525,12 @@
             "value" : "Next week"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Semaine prochaine"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1564,6 +1576,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "None"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucune"
           }
         },
         "it" : {
@@ -1613,6 +1631,12 @@
             "value" : "This weekend"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce weekend"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1658,6 +1682,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Today"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aujourd’hui"
           }
         },
         "it" : {
@@ -1707,6 +1737,12 @@
             "value" : "Tomorrow"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Demain"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1753,6 +1789,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "list"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "liste"
           }
         },
         "it" : {
