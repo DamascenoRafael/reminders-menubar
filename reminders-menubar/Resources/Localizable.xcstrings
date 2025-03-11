@@ -230,6 +230,12 @@
             "value" : "Dark mode"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modo oscuro"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -325,6 +331,12 @@
             "value" : "Light mode"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modo claro"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -418,6 +430,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "System appearance"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apariencia del sistema"
           }
         },
         "fr" : {
@@ -1258,6 +1276,12 @@
             "value" : "Due date"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha de vencimiento"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1319,8 +1343,8 @@
         },
         "es-419" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Mover a ..."
+            "state" : "translated",
+            "value" : "Lista"
           }
         },
         "fr" : {
@@ -1525,6 +1549,12 @@
             "value" : "Next week"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siguiente semana"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1576,6 +1606,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "None"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ninguno"
           }
         },
         "fr" : {
@@ -1631,6 +1667,12 @@
             "value" : "This weekend"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta fin de semana"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1682,6 +1724,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Today"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoy"
           }
         },
         "fr" : {
@@ -1737,6 +1785,12 @@
             "value" : "Tomorrow"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mañana"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1789,6 +1843,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "list"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "lista"
           }
         },
         "fr" : {
@@ -3558,6 +3618,12 @@
             "value" : "Filter by selected lists"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtrar por listas seleccionadas"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3609,6 +3675,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Filter by selected lists"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtrar por listas seleccionadas"
           }
         },
         "fr" : {
@@ -4205,6 +4277,12 @@
             "value" : "Menu bar counter"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indicador en la barra de menú"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4298,6 +4376,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Menu bar icon"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ícono de la barra de menú"
           }
         },
         "fr" : {
@@ -5602,6 +5686,24 @@
             }
           }
         },
+        "es-419" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Cotidiano"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Cada %i días"
+                }
+              }
+            }
+          }
+        },
         "fr" : {
           "variations" : {
             "plural" : {
@@ -5782,6 +5884,24 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Every %i months"
+                }
+              }
+            }
+          }
+        },
+        "es-419" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Mensual"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Cada %i meses"
                 }
               }
             }
@@ -5972,6 +6092,24 @@
             }
           }
         },
+        "es-419" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Semanal"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Cada %i semanas"
+                }
+              }
+            }
+          }
+        },
         "fr" : {
           "variations" : {
             "plural" : {
@@ -6152,6 +6290,24 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Every %i years"
+                }
+              }
+            }
+          }
+        },
+        "es-419" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Anualmente"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Cada %i años"
                 }
               }
             }
@@ -7390,7 +7546,7 @@
         },
         "es-419" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Selecciona donde quieres que tu recordatorio se guarde"
           }
         },
@@ -7709,6 +7865,12 @@
             "value" : "Show all reminders count"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar el número total de recordatorios"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7798,6 +7960,12 @@
             "value" : "Show due count"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar el número de elementos vencidos"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7861,6 +8029,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Don't show count"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ocultar el conteo"
           }
         },
         "fr" : {
@@ -8164,6 +8338,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Due"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pendiente"
           }
         },
         "fr" : {
