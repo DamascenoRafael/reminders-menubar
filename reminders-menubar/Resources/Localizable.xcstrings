@@ -1344,7 +1344,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Listado"
+            "value" : "Lista"
           }
         },
         "fr" : {
@@ -1670,7 +1670,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Esta semana"
+            "value" : "Esta fin de semana"
           }
         },
         "fr" : {
