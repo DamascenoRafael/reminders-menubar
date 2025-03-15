@@ -10,7 +10,7 @@
 		7102423025F55D5600451D15 /* ReminderInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102422F25F55D5600451D15 /* ReminderInterval.swift */; };
 		71032A8F24C21F0F00A8006C /* FormNewReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71032A8E24C21F0F00A8006C /* FormNewReminderView.swift */; };
 		71059DAB25CA5244001F3063 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71059DAA25CA5244001F3063 /* AppDelegate.swift */; };
-		71059DE125CA5C86001F3063 /* RemindersLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71059DA825CA5244001F3063 /* RemindersLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		71059DE125CA5C86001F3063 /* Reminders MenuBar Launcher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71059DA825CA5244001F3063 /* Reminders MenuBar Launcher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		710980D22600419F001F69B2 /* UpcomingRemindersContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710980D12600419F001F69B2 /* UpcomingRemindersContent.swift */; };
 		7115461324C0ADCB007781E2 /* ReminderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115461224C0ADCB007781E2 /* ReminderItemView.swift */; };
 		7115461924C0C280007781E2 /* RemindersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115461824C0C280007781E2 /* RemindersService.swift */; };
@@ -90,7 +90,7 @@
 			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
-				71059DE125CA5C86001F3063 /* RemindersLauncher.app in CopyFiles */,
+				71059DE125CA5C86001F3063 /* Reminders MenuBar Launcher.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,10 +99,10 @@
 /* Begin PBXFileReference section */
 		7102422F25F55D5600451D15 /* ReminderInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderInterval.swift; sourceTree = "<group>"; };
 		71032A8E24C21F0F00A8006C /* FormNewReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormNewReminderView.swift; sourceTree = "<group>"; };
-		71059DA825CA5244001F3063 /* RemindersLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemindersLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		71059DA825CA5244001F3063 /* Reminders MenuBar Launcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reminders MenuBar Launcher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71059DAA25CA5244001F3063 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71059DB625CA5245001F3063 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		71059DB725CA5245001F3063 /* RemindersLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RemindersLauncher.entitlements; sourceTree = "<group>"; };
+		71059DB725CA5245001F3063 /* reminders_menubar_launcher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = reminders_menubar_launcher.entitlements; sourceTree = "<group>"; };
 		710980D12600419F001F69B2 /* UpcomingRemindersContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingRemindersContent.swift; sourceTree = "<group>"; };
 		7115461224C0ADCB007781E2 /* ReminderItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderItemView.swift; sourceTree = "<group>"; };
 		7115461824C0C280007781E2 /* RemindersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersService.swift; sourceTree = "<group>"; };
@@ -195,15 +195,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		71059DA925CA5244001F3063 /* RemindersLauncher */ = {
+		71059DA925CA5244001F3063 /* reminders-menubar-launcher */ = {
 			isa = PBXGroup;
 			children = (
 				71059DAA25CA5244001F3063 /* AppDelegate.swift */,
 				71A73E8925CCC6960064D528 /* main.swift */,
 				71059DB625CA5245001F3063 /* Info.plist */,
-				71059DB725CA5245001F3063 /* RemindersLauncher.entitlements */,
+				71059DB725CA5245001F3063 /* reminders_menubar_launcher.entitlements */,
 			);
-			path = RemindersLauncher;
+			path = "reminders-menubar-launcher";
 			sourceTree = "<group>";
 		};
 		7115461124C0AC74007781E2 /* Views */ = {
@@ -257,7 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				712C32B224BF939100AC75E2 /* reminders-menubar */,
-				71059DA925CA5244001F3063 /* RemindersLauncher */,
+				71059DA925CA5244001F3063 /* reminders-menubar-launcher */,
 				712C32B124BF939100AC75E2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -266,7 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				712C32B024BF939100AC75E2 /* Reminders MenuBar.app */,
-				71059DA825CA5244001F3063 /* RemindersLauncher.app */,
+				71059DA825CA5244001F3063 /* Reminders MenuBar Launcher.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -401,9 +401,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		71059DA725CA5244001F3063 /* RemindersLauncher */ = {
+		71059DA725CA5244001F3063 /* Reminders MenuBar Launcher */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 71059DBA25CA5245001F3063 /* Build configuration list for PBXNativeTarget "RemindersLauncher" */;
+			buildConfigurationList = 71059DBA25CA5245001F3063 /* Build configuration list for PBXNativeTarget "Reminders MenuBar Launcher" */;
 			buildPhases = (
 				71059DA425CA5244001F3063 /* Sources */,
 				71059DA525CA5244001F3063 /* Frameworks */,
@@ -413,9 +413,9 @@
 			);
 			dependencies = (
 			);
-			name = RemindersLauncher;
+			name = "Reminders MenuBar Launcher";
 			productName = RemindersLauncher;
-			productReference = 71059DA825CA5244001F3063 /* RemindersLauncher.app */;
+			productReference = 71059DA825CA5244001F3063 /* Reminders MenuBar Launcher.app */;
 			productType = "com.apple.product-type.application";
 		};
 		712C32AF24BF939100AC75E2 /* Reminders MenuBar */ = {
@@ -492,7 +492,7 @@
 			projectRoot = "";
 			targets = (
 				712C32AF24BF939100AC75E2 /* Reminders MenuBar */,
-				71059DA725CA5244001F3063 /* RemindersLauncher */,
+				71059DA725CA5244001F3063 /* Reminders MenuBar Launcher */,
 			);
 		};
 /* End PBXProject section */
@@ -630,7 +630,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = RemindersLauncher/RemindersLauncher.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "reminders-menubar-launcher/reminders_menubar_launcher.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -639,13 +639,13 @@
 				DEVELOPMENT_TEAM = 3398VKLH28;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = RemindersLauncher/Info.plist;
+				INFOPLIST_FILE = "reminders-menubar-launcher/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.damascenorafael.RemindersLauncher;
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.damascenorafael.reminders-menubar-launcher";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -656,7 +656,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = RemindersLauncher/RemindersLauncher.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "reminders-menubar-launcher/reminders_menubar_launcher.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -665,13 +665,13 @@
 				DEVELOPMENT_TEAM = 3398VKLH28;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = RemindersLauncher/Info.plist;
+				INFOPLIST_FILE = "reminders-menubar-launcher/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.damascenorafael.RemindersLauncher;
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.damascenorafael.reminders-menubar-launcher";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -864,7 +864,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		71059DBA25CA5245001F3063 /* Build configuration list for PBXNativeTarget "RemindersLauncher" */ = {
+		71059DBA25CA5245001F3063 /* Build configuration list for PBXNativeTarget "Reminders MenuBar Launcher" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				71059DB825CA5245001F3063 /* Debug */,
