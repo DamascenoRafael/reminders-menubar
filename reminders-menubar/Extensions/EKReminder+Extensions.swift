@@ -134,6 +134,9 @@ extension EKReminder {
             removeDueDateAndAlarms()
             if rmbReminder.hasDueDate {
                 addDueDateAndAlarm(for: rmbReminder.date, withTime: rmbReminder.hasTime)
+            } else {
+                // NOTE: A reminder that has no due date cannot be a repeating reminder
+                removeAllRecurrenceRules()
             }
         }
         
@@ -147,7 +150,13 @@ extension EKReminder {
             removeAlarm(alarm)
         }
     }
-    
+
+    func removeAllRecurrenceRules() {
+        recurrenceRules?.forEach { rule in
+            removeRecurrenceRule(rule)
+        }
+    }
+
     func addDueDateAndAlarm(for date: Date, withTime hasTime: Bool) {
         let dateComponents = date.dateComponents(withTime: hasTime)
         dueDateComponents = dateComponents

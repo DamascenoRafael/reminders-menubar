@@ -85,6 +85,7 @@ struct ReminderChangeDueDateOptionMenu: View {
 
             Button(action: {
                 reminder.removeDueDateAndAlarms()
+                reminder.removeAllRecurrenceRules()
                 RemindersService.shared.save(reminder: reminder)
             }) {
                 SelectableView(
