@@ -1338,7 +1338,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Verschieben nach ..."
+            "value" : "Liste"
           }
         },
         "en" : {
@@ -1617,7 +1617,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Keins"
+            "value" : "Ohne"
           }
         },
         "en" : {
