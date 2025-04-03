@@ -11,7 +11,7 @@ enum AppConstants {
     
     static let appName = "Reminders MenuBar"
     static let mainBundleId = "br.com.damascenorafael.reminders-menubar"
-    static let launcherBundleId = "br.com.damascenorafael.RemindersLauncher"
+    static let launcherBundleId = "br.com.damascenorafael.reminders-menubar-launcher"
 }
 
 enum GithubConstants {
