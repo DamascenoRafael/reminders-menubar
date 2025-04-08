@@ -1335,6 +1335,12 @@
             "state" : "translated",
             "value" : "截止日期"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "到期日"
+          }
         }
       }
     },
@@ -1439,8 +1445,8 @@
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "移至 ..."
+            "state" : "translated",
+            "value" : "清單"
           }
         }
       }
@@ -1620,6 +1626,12 @@
             "state" : "translated",
             "value" : "下周"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下週末"
+          }
         }
       }
     },
@@ -1690,6 +1702,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無"
           }
         }
       }
@@ -1762,6 +1780,12 @@
             "state" : "translated",
             "value" : "本周末"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "這週末"
+          }
         }
       }
     },
@@ -1829,6 +1853,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今天"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "今天"
@@ -1904,6 +1934,12 @@
             "state" : "translated",
             "value" : "明天"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "明天"
+          }
         }
       }
     },
@@ -1975,6 +2011,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "列表"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "清單"
           }
         }
       }
@@ -3761,6 +3803,12 @@
             "state" : "translated",
             "value" : "按选定列表筛选"
           }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "依選取清單篩選"
+          }
         }
       }
     },
@@ -3831,6 +3879,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "按选定列表筛选"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "依選取清單篩選"
           }
         }
       }
@@ -5967,6 +6021,18 @@
               }
             }
           }
+        },
+        "zh-Hant" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "每 %i 天"
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -6178,6 +6244,18 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "每 %i 月"
+                }
+              }
+            }
+          }
+        },
+        "zh-Hant" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "個月"
                 }
               }
             }
@@ -6397,6 +6475,18 @@
               }
             }
           }
+        },
+        "zh-Hant" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "每 %i 週"
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -6602,6 +6692,18 @@
           }
         },
         "zh-Hans" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "每 %i 年"
+                }
+              }
+            }
+          }
+        },
+        "zh-Hant" : {
           "variations" : {
             "plural" : {
               "other" : {
@@ -9094,7 +9196,7 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "今日"
+            "value" : "今天"
           }
         }
       }
