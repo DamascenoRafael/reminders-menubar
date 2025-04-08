@@ -1330,6 +1330,12 @@
             "value" : "Termín ukončenia"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "截止日期"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1433,8 +1439,8 @@
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "移动到 ..."
+            "state" : "translated",
+            "value" : "列表"
           }
         },
         "zh-Hant" : {
@@ -1615,6 +1621,12 @@
             "value" : "Nasledujúci týždeň"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下周"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1684,6 +1696,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Žiadny"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无"
           }
         },
         "zh-Hant" : {
@@ -1757,6 +1775,12 @@
             "value" : "Cez víkend"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本周末"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1826,6 +1850,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dnes"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今天"
           }
         },
         "zh-Hant" : {
@@ -1899,6 +1929,12 @@
             "value" : "Zajtra"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "明天"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1969,6 +2005,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "zoznam"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "列表"
           }
         },
         "zh-Hant" : {
@@ -3756,6 +3798,12 @@
             "value" : "Filtrovať podľa vybraných zoznamov"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按选定列表筛选"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3825,6 +3873,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Filtrovať podľa vybraných zoznamov"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按选定列表筛选"
           }
         },
         "zh-Hant" : {
@@ -5956,6 +6010,18 @@
             }
           }
         },
+        "zh-Hans" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "每 %i 天"
+                }
+              }
+            }
+          }
+        },
         "zh-Hant" : {
           "variations" : {
             "plural" : {
@@ -6166,6 +6232,18 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Každých %i mesiacov"
+                }
+              }
+            }
+          }
+        },
+        "zh-Hans" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "每 %i 月"
                 }
               }
             }
@@ -6386,6 +6464,18 @@
             }
           }
         },
+        "zh-Hans" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "每 %i 周"
+                }
+              }
+            }
+          }
+        },
         "zh-Hant" : {
           "variations" : {
             "plural" : {
@@ -6596,6 +6686,18 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Každých %i rokov"
+                }
+              }
+            }
+          }
+        },
+        "zh-Hans" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "每 %i 年"
                 }
               }
             }
@@ -7780,8 +7882,8 @@
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "选择新提醒事项的储存位置"
+            "state" : "translated",
+            "value" : "选择新提醒事项的列表"
           }
         },
         "zh-Hant" : {
@@ -8164,6 +8266,12 @@
             "value" : "Zobraziť počet po termíne"
           }
         },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "显示截止计数"
+          }
+        },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8542,6 +8650,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Termín"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "截止"
           }
         },
         "zh-Hant" : {
