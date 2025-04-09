@@ -6177,7 +6177,7 @@
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "個月"
+                  "value" : "每 %i 個月"
                 }
               }
             }
