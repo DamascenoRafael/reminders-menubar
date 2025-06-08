@@ -4,6 +4,12 @@
     "aboutRemindersMenuBarWindowTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O %@"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -117,6 +123,12 @@
     "appAboutButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O aplikaci"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -230,6 +242,12 @@
     "appAppearanceColorDarkModeOptionButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tmavý režim"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -337,6 +355,12 @@
     "appAppearanceColorLightModeOptionButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Světlý režim"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -444,6 +468,12 @@
     "appAppearanceColorSystemModeOptionButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podle systému"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -551,6 +581,12 @@
     "appAppearanceMenu" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vzhled"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -664,6 +700,12 @@
     "appAppearanceMoreOpaqueOptionButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Méně průhlednosti"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -777,6 +819,12 @@
     "appAppearanceMoreTransparentOptionButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Více průhlednosti"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -890,6 +938,12 @@
     "appNoRemindersAccessAlertDescription" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ požaduje přistup k připomínkám pro správnou funkčnost. Pro používání %@ je třeba povolit oprávnění v Systémovém nastavení."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1003,6 +1057,12 @@
     "appNoRemindersAccessAlertMessage" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Přístup k Připomínkám není povolen pro %@"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1116,6 +1176,12 @@
     "appQuitButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ukončit aplikaci"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1229,6 +1295,12 @@
     "appVersionDescription" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verze %@"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1342,6 +1414,12 @@
     "changeReminderDueDateMenuOption" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Termín"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1425,6 +1503,12 @@
     "changeReminderListMenuOption" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seznam"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1538,6 +1622,12 @@
     "changeReminderPriorityMenuOption" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Priorita"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1651,6 +1741,12 @@
     "editReminderDueDateNextWeekOption" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Příští týden"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1734,6 +1830,12 @@
     "editReminderDueDateNoneOption" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Žádný"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1817,6 +1919,12 @@
     "editReminderDueDateThisWeekendOption" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Příští víkend"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1900,6 +2008,12 @@
     "editReminderDueDateTodayOption" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dnes"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1983,6 +2097,12 @@
     "editReminderDueDateTomorrowOption" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zítra"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2067,6 +2187,12 @@
       "comment" : "This option mimics the option in Apple Reminders that appears as lowercase.",
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "seznam"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2150,6 +2276,12 @@
     "editReminderNotesTextFieldPlaceholder" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poznámky"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2263,6 +2395,12 @@
     "editReminderOptionButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upravit"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2376,6 +2514,12 @@
     "editReminderPriorityHighOption" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vysoká"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2489,6 +2633,12 @@
     "editReminderPriorityLowOption" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nízká"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2602,6 +2752,12 @@
     "editReminderPriorityMediumOption" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Střední"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2715,6 +2871,12 @@
     "editReminderPriorityNoneOption" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Žádná"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2829,6 +2991,12 @@
       "comment" : "This option mimics the option in Apple Reminders that appears as lowercase.",
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "priorita"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2942,6 +3110,12 @@
     "editReminderRemindDateOption" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "V den události"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3056,6 +3230,12 @@
       "comment" : "This option mimics the option in Apple Reminders that appears as lowercase.",
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "připomenout"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3169,6 +3349,12 @@
     "editReminderRemindTimeOption" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "V čase"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3282,6 +3468,12 @@
     "editReminderTitleTextFieldPlaceholder" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Název"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3395,6 +3587,12 @@
     "emptyListAllItemsCompletedMessage" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Všechny položky vyřízené"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3508,6 +3706,12 @@
     "emptyListNoRemindersFilterMessage" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Změnit nastavení filtru připomínek"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3621,6 +3825,12 @@
     "emptyListNoRemindersFilterTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Žádné připomínky k zobrazení"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3734,6 +3944,12 @@
     "emptyListNoRemindersMessage" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Žádné připomínky"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3847,6 +4063,12 @@
     "emptyListNoUpcomingRemindersMessage" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Žádné naplánované připomínky"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3960,6 +4182,12 @@
     "filterMenuBarCountByCalendarOptionButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtrovat dle vybraného seznamu"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4043,6 +4271,12 @@
     "filterUpcomingRemindersByCalendarOptionButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtrovat dle vybraného seznamu"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4126,6 +4360,12 @@
     "keyboardShortcutEnableOpenShortcutOption" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Povolit klávesovou zkratku k otevření %@"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4239,6 +4479,12 @@
     "keyboardShortcutOptionButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klávesová zkratka"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4352,6 +4598,12 @@
     "keyboardShortcutRestoreDefaultButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obnovit výchozí"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4465,6 +4717,12 @@
     "keyboardShortcutWindowTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nastavení klávesové zkratky"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4578,6 +4836,12 @@
     "launchAtLoginOptionButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spouštět po startu"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4691,6 +4955,12 @@
     "menuBarCounterSettingsMenu" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Počítadlo"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4798,6 +5068,12 @@
     "menuBarIconSettingsMenu" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ikona"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4911,6 +5187,12 @@
     "newReminderAddDateButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Přidat datum"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5024,6 +5306,12 @@
     "newReminderAddTimeButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Přidat čas"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5137,6 +5425,12 @@
     "newReminderAutoSuggestTodayOption" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automaticky nabízet dnes jako datum"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5250,6 +5544,12 @@
     "newReminderCalendarSelectionToSaveHelp" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vybrat, kde se budou nové připomínky ukládat"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5363,6 +5663,12 @@
     "newReminderRemoveParsedDateOption" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odstranit nalezené datum z názvu"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5476,6 +5782,12 @@
     "newReminderTextFielPlaceholder" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vytvořit novou připomínku"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5589,6 +5901,12 @@
     "okButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ok"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5702,6 +6020,12 @@
     "openSystemPreferencesButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otevřít nastavení systému"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5815,6 +6139,12 @@
     "preferredLanguageMenu" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preferovaný jazyk"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5928,6 +6258,12 @@
     "preferredLanguageSystemOptionButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Použít jazyk systému"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6041,6 +6377,12 @@
     "reloadRemindersDataButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Načíst znovu data"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6154,6 +6496,36 @@
     "reminderRecurrenceDailyLabel" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Každé %i dny"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Každých %i dní"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Denně"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Každých %i dní"
+                }
+              }
+            }
+          }
+        },
         "de" : {
           "variations" : {
             "plural" : {
@@ -6393,6 +6765,36 @@
     "reminderRecurrenceMonthlyLabel" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Každé %i měsíce"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Každých %i měsíců"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Měsíčně"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Každých %i měsíců"
+                }
+              }
+            }
+          }
+        },
         "de" : {
           "variations" : {
             "plural" : {
@@ -6632,6 +7034,36 @@
     "reminderRecurrenceWeeklyLabel" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Každé %i týdny"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Každých %i týdnů"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Týdně"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Každých %i týdnů"
+                }
+              }
+            }
+          }
+        },
         "de" : {
           "variations" : {
             "plural" : {
@@ -6871,6 +7303,36 @@
     "reminderRecurrenceYearlyLabel" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Každé %i roky"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Každých %i let"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Ročně"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Každých %i let"
+                }
+              }
+            }
+          }
+        },
         "de" : {
           "variations" : {
             "plural" : {
@@ -7110,6 +7572,12 @@
     "remindersFilterSelectionHelp" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtrovat připomínky k zobrazení"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7223,6 +7691,12 @@
     "remindersMenuBarAppAboutDescription" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ je open source software  licencovaný pod podmínkami %@."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7336,6 +7810,12 @@
     "remindersMenuBarGitHubAboutDescription" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vlastnosti a aktualizace k dispozici na GitHubu"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7449,6 +7929,12 @@
     "remindersOptionsButtonHelp" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Možnosti pro editaci připomínky"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7562,6 +8048,12 @@
     "removeReminderAlertCancelButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zrušit"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7675,6 +8167,12 @@
     "removeReminderAlertConfirmButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Smazat"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7788,6 +8286,12 @@
     "removeReminderAlertMessage" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tato akce smaže '%@' a nelze ji odvolat"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7901,6 +8405,12 @@
     "removeReminderAlertTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Smazat připomínku?"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8014,6 +8524,12 @@
     "removeReminderOptionButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Smazat"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8127,6 +8643,12 @@
     "seeMoreOnGitHubButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zjistit více na GitHubu"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8240,6 +8762,12 @@
     "selectListForSavingReminderButtonHelp" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vybrat seznam pro vytváření nových připomínek"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8353,6 +8881,12 @@
     "settingsButtonHelp" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nastavení"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8466,6 +9000,12 @@
     "showCompletedRemindersToggleButtonHelp" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Přepínač mezi zobrazením dokončených připomínek"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8579,6 +9119,12 @@
     "showMenuBarAllRemindersCountOptionButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobrazit počet všech připomínek"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8680,6 +9226,12 @@
     "showMenuBarDueCountOptionButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobrazit jen po termínu"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8763,6 +9315,12 @@
     "showMenuBarNoCountOptionButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nezobrazovat počet"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8864,6 +9422,12 @@
     "showMenuBarTodayCountOptionButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobrazit jen dnešní"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8977,6 +9541,12 @@
     "upcomingRemindersAllTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vše"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9090,6 +9660,12 @@
     "upcomingRemindersDueTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Po termínu"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9173,6 +9749,12 @@
     "upcomingRemindersInAMonthTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Během měsíce"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9286,6 +9868,12 @@
     "upcomingRemindersInAWeekTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Během týdne"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9399,6 +9987,12 @@
     "upcomingRemindersIntervalSelectionHelp" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vybrat rozsah nadcházejících připomínek k zobrazení"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9512,6 +10106,12 @@
     "upcomingRemindersTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Naplánováno"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9625,6 +10225,12 @@
     "upcomingRemindersTodayTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dnes"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9738,6 +10344,12 @@
     "updateAvailableNoticeButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktualizace k dispozici"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
