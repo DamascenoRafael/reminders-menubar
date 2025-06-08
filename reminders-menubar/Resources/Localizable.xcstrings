@@ -34,6 +34,12 @@
             "value" : "À propos de %@"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tentang %@"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -145,6 +151,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "À propos"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tentang"
           }
         },
         "it" : {
@@ -260,6 +272,12 @@
             "value" : "Mode sombre"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mode gelap"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -365,6 +383,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mode clair"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mode terang"
           }
         },
         "it" : {
@@ -474,6 +498,12 @@
             "value" : "Apparence système"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tampilan sistem"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -579,6 +609,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Thème"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tampilan"
           }
         },
         "it" : {
@@ -694,6 +730,12 @@
             "value" : "Davantage opaque"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lebih buram"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -805,6 +847,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Davantage transparent"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lebih transparan"
           }
         },
         "it" : {
@@ -920,6 +968,12 @@
             "value" : "%@ doit avoir accès à Rappels pour fonctionner correctement. Accordez la permission d'utiliser %@ dans les Règlages du système"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ memerlukan akses ke Pengingat Anda agar dapat berfungsi. Berikan izin di Pengaturan Sistem untuk menggunakan %@"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1031,6 +1085,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "L'accès à Rappels n'est pas activé pour %@"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Akses ke Pengingat belum diaktifkan untuk %@ "
           }
         },
         "it" : {
@@ -1146,6 +1206,12 @@
             "value" : "Quitter"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keluar"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1257,6 +1323,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Version %@"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versi %@"
           }
         },
         "it" : {
@@ -1372,6 +1444,12 @@
             "value" : "Échéance"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jatuh tempo"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1453,6 +1531,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lister"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daftar"
           }
         },
         "it" : {
@@ -1568,6 +1652,12 @@
             "value" : "Priorité"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prioritas"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1681,6 +1771,12 @@
             "value" : "Semaine prochaine"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minggu depan"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1762,6 +1858,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aucune"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tidak ada"
           }
         },
         "it" : {
@@ -1847,6 +1949,12 @@
             "value" : "Ce weekend"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Akhir pekan ini"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1930,6 +2038,12 @@
             "value" : "Aujourd’hui"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hari ini"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2011,6 +2125,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Demain"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Besok"
           }
         },
         "it" : {
@@ -2097,6 +2217,12 @@
             "value" : "liste"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "daftar"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2178,6 +2304,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Note"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Catatan"
           }
         },
         "it" : {
@@ -2293,6 +2425,12 @@
             "value" : "Modifier"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2404,6 +2542,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Élevée"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tinggi"
           }
         },
         "it" : {
@@ -2519,6 +2663,12 @@
             "value" : "Faible"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rendah"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2632,6 +2782,12 @@
             "value" : "Moyenne"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sedang"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2743,6 +2899,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aucune"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tidak ada"
           }
         },
         "it" : {
@@ -2859,6 +3021,12 @@
             "value" : "priorité"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "prioritas"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2970,6 +3138,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Un jour"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pada Hari"
           }
         },
         "it" : {
@@ -3086,6 +3260,12 @@
             "value" : "M'avertir"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ingatkan saya"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3197,6 +3377,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "À une heure"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pada Waktu"
           }
         },
         "it" : {
@@ -3312,6 +3498,12 @@
             "value" : "Intitulé"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Judul"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3423,6 +3615,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tous les rappels sont terminés"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Semua item selesai"
           }
         },
         "it" : {
@@ -3538,6 +3736,12 @@
             "value" : "Modifier les options de filtrage des rappels"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ubah opsi filter pengingat"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3649,6 +3853,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aucun rappel à afficher"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tidak ada pengingat untuk ditampilkan"
           }
         },
         "it" : {
@@ -3764,6 +3974,12 @@
             "value" : "Aucun rappel"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tidak ada pengingat"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3875,6 +4091,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aucun rappel à venir"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tidak ada pengingat yang akan datang"
           }
         },
         "it" : {
@@ -3990,6 +4212,12 @@
             "value" : "Filtrer à partir des listes séléctionneés"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter berdasarkan daftar yang dipilih"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4073,6 +4301,12 @@
             "value" : "Filtrer à partir des listes séléctionneés"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter berdasarkan daftar yang dipilih"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4154,6 +4388,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Activer le raccourci clavier suivant pour afficher %@"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktifkan pintasan keyboard untuk membuka %@"
           }
         },
         "it" : {
@@ -4269,6 +4509,12 @@
             "value" : "Raccourci clavier"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pintasan keyboard"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4380,6 +4626,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Réinitialiser les réglages par défaut"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulihkan default"
           }
         },
         "it" : {
@@ -4495,6 +4747,12 @@
             "value" : "Raccourci clavier"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pengaturan pintasan keyboard"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4606,6 +4864,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lancer au démarrage"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Luncurkan saat login"
           }
         },
         "it" : {
@@ -4721,6 +4985,12 @@
             "value" : "Compteur de la barre de menu"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Penghitung menu bar"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4826,6 +5096,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Icon de la barre de menu"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ikon menu bar"
           }
         },
         "it" : {
@@ -4941,6 +5217,12 @@
             "value" : "Ajouter une date"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tambah Tanggal"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5052,6 +5334,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajouter une heure"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tambah Waktu"
           }
         },
         "it" : {
@@ -5167,6 +5455,12 @@
             "value" : "Suggérer Aujourd'hui par défaut"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otomatis sarankan tanggal hari ini"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5278,6 +5572,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sélectionnez le calendrier où les nouveaux rappels seront sauvegardés"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pilih dimana pengingat baru akan disimpan"
           }
         },
         "it" : {
@@ -5393,6 +5693,12 @@
             "value" : "Ne pas conserver de date détectée dans l'intitulé"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hapus tanggal hasil penguraian dari judul"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5504,6 +5810,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tapez un rappel et appuyez sur Entrée"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ketik sebuah pengingat dan tekan enter"
           }
         },
         "it" : {
@@ -5619,6 +5931,12 @@
             "value" : "Ok"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oke"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5730,6 +6048,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ouvrir les Réglages du système"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bukan Pengaturan Sistem"
           }
         },
         "it" : {
@@ -5845,6 +6169,12 @@
             "value" : "Langue"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bahasa pilihan"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5958,6 +6288,12 @@
             "value" : "Utiliser la langue du système"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gunakan bahasa sistem"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6069,6 +6405,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rafraîchir les rappels"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muat ulang data"
           }
         },
         "it" : {
@@ -6251,6 +6593,18 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Tous les %i jours"
+                }
+              }
+            }
+          }
+        },
+        "id" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Setiap %i hari"
                 }
               }
             }
@@ -6513,6 +6867,18 @@
             }
           }
         },
+        "id" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Setiap %i bulan"
+                }
+              }
+            }
+          }
+        },
         "it" : {
           "variations" : {
             "plural" : {
@@ -6765,6 +7131,18 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Toutes les %i semaines"
+                }
+              }
+            }
+          }
+        },
+        "id" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Setiap %i minggu"
                 }
               }
             }
@@ -7027,6 +7405,18 @@
             }
           }
         },
+        "id" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Setiap %i tahun"
+                }
+              }
+            }
+          }
+        },
         "it" : {
           "variations" : {
             "plural" : {
@@ -7212,6 +7602,12 @@
             "value" : "Filtrer les rappels à afficher"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter pengingat yang ditampilkan"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7323,6 +7719,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ est un logiciel open source sous licence %@."
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ adalah perangkat lunak sumber terbuka yang dilisensikan di bawah ketentuan %@"
           }
         },
         "it" : {
@@ -7438,6 +7840,12 @@
             "value" : "Aide et mises à jour disponibles sur GitHub"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fitur dan pembaruan tersedia di Github"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7549,6 +7957,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Options des rappels"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opsi untuk mengedit pengingat"
           }
         },
         "it" : {
@@ -7664,6 +8078,12 @@
             "value" : "Annuler"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batal"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7775,6 +8195,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Supprimer"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hapus"
           }
         },
         "it" : {
@@ -7890,6 +8316,12 @@
             "value" : "Cette action supprimera '%@' et ne pourra pas être annulée"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aksi ini akan menghapus ‘%@’ dan tidak bisa dibatalkan"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8001,6 +8433,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Supprimer le rappel ?"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hapus pengingat?"
           }
         },
         "it" : {
@@ -8116,6 +8554,12 @@
             "value" : "Supprimer"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hapus"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8227,6 +8671,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Voir davantage sur GitHub"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lihat lebih banyak di Github"
           }
         },
         "it" : {
@@ -8342,6 +8792,12 @@
             "value" : "Sélectionnez la liste où les nouveaux rappels seront sauvegardés"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pilih daftar untuk menyimpan pengingat baru"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8453,6 +8909,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Paramètres"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pengaturan"
           }
         },
         "it" : {
@@ -8568,6 +9030,12 @@
             "value" : "Afficher les rappels terminés"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beralih antara menampilkan pengingat yang selesai atau tidak"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8681,6 +9149,12 @@
             "value" : "Afficher tous les rappels"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tampilkan semua jumlah pengingat"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8782,6 +9256,12 @@
             "value" : "Afficher les rappels en retard"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tampilkan jumlah tenggat"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8863,6 +9343,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ne pas afficher le compteur"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jangan tampilkan jumlah"
           }
         },
         "it" : {
@@ -8964,6 +9450,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Afficher les rappels de la journée"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tampilkan jumlah hari ini"
           }
         },
         "it" : {
@@ -9079,6 +9571,12 @@
             "value" : "Tous"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Semua"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9192,6 +9690,12 @@
             "value" : "En retard"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jatuh Tempo"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9273,6 +9777,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dans un mois"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dalam Sebulan"
           }
         },
         "it" : {
@@ -9388,6 +9898,12 @@
             "value" : "Dans une semaine"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dalam Seminggu"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9499,6 +10015,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sélectionnez l'intervalle des prochains rappels à afficher"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pilih rentang pengingat mendatang yang akan ditampilkan"
           }
         },
         "it" : {
@@ -9614,6 +10136,12 @@
             "value" : "Prochains rappels"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pengingat yang akan datang"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9727,6 +10255,12 @@
             "value" : "Aujourd'hui"
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hari Ini"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9838,6 +10372,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mise à jour disponible"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pembaruan tersedia"
           }
         },
         "it" : {

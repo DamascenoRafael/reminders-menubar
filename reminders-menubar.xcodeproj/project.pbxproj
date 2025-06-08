@@ -482,6 +482,7 @@
 				sk,
 				ru,
 				"zh-Hant",
+				id,
 				cs,
 			);
 			mainGroup = 712C32A724BF939100AC75E2;
