@@ -55,6 +55,12 @@
             "value" : "Cette application utilise les Rappels Apple comme source de listes et de tâches. L'accès aux Rappels est nécessaire pour les afficher et les modifier."
           }
         },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aplikasi ini menggunakan Pengingat Apple sebagai sumber untuk daftar dan tugas. Akses diperlukan untuk melihat dan mengedit pengingat."
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
