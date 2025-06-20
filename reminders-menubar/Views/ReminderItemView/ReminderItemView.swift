@@ -14,6 +14,17 @@ struct ReminderItemView: View {
     @State private var showingRemoveAlert = false
 
     var body: some View {
+        if reminderItem.reminder.calendar == nil {
+            // On macOS 12 the calendar may be nil during delete operation.
+            // Returning Empty to avoid issues since calendar is a force unwrap.
+            EmptyView()
+        } else {
+            mainReminderItemView()
+        }
+    }
+
+    @ViewBuilder
+    func mainReminderItemView() -> some View {
         HStack(alignment: .top) {
             ReminderCompleteButton(reminderItem: reminderItem)
 
