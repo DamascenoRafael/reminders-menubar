@@ -11,6 +11,10 @@ struct ReminderEditPopover: View {
     var ekReminder: EKReminder
     var reminderHasChildren: Bool
 
+    @State var titleTextFieldFocusTrigger = UUID()
+    @State var titleTextFieldDynamicHeight: CGFloat = 0
+    @State var notesTextFieldDynamicHeight: CGFloat = 0
+
     init(isPresented: Binding<Bool>, focusOnTitle: Binding<Bool>, reminder: EKReminder, reminderHasChildren: Bool) {
         _isPresented = isPresented
         _focusOnTitle = focusOnTitle
@@ -21,17 +25,25 @@ struct ReminderEditPopover: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            ScrollableTextField(
-                rmbLocalized(.editReminderTitleTextFieldPlaceholder),
-                text: $rmbReminder.title
+            RmbHighlightedTextField(
+                placeholder: rmbLocalized(.editReminderTitleTextFieldPlaceholder),
+                text: $rmbReminder.title,
+                textContainerDynamicHeight: $titleTextFieldDynamicHeight,
+                focusTrigger: focusOnTitle ? $titleTextFieldFocusTrigger : nil
             )
-            .font(.title3)
-            .modifier(FocusOnAppear(isEnabled: focusOnTitle))
+            .onSubmit {
+                isPresented = false
+            }
+            .fontStyle(.title3)
+            .frame(height: titleTextFieldDynamicHeight)
 
-            ScrollableTextField(
-                rmbLocalized(.editReminderNotesTextFieldPlaceholder),
-                text: Binding($rmbReminder.notes, replacingNilWith: "")
+            RmbHighlightedTextField(
+                placeholder: rmbLocalized(.editReminderNotesTextFieldPlaceholder),
+                text: Binding($rmbReminder.notes, replacingNilWith: ""),
+                textContainerDynamicHeight: $notesTextFieldDynamicHeight,
+                allowNewLineAndTab: true
             )
+            .frame(height: notesTextFieldDynamicHeight)
 
             Divider()
 
@@ -88,9 +100,9 @@ struct ReminderEditPopover: View {
         .modifier(OnKeyboardShortcut(shortcut: .defaultAction, action: {
             isPresented = false
         }))
-        .onAppear {
-            removeFocusFromFirstResponder()
-        }
+        .modifier(OnKeyboardShortcut(shortcut: .cancelAction, action: {
+            isPresented = false
+        }))
         .onDisappear {
             focusOnTitle = false
             ekReminder.update(with: rmbReminder)
