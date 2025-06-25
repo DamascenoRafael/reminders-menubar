@@ -27,7 +27,6 @@
 		714C28A22A07573A00734DAF /* FocusOnAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714C28A12A07573A00734DAF /* FocusOnAppear.swift */; };
 		714C28A42A082E0000734DAF /* OnKeyboardShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714C28A32A082E0000734DAF /* OnKeyboardShortcut.swift */; };
 		714C28A82A0A056600734DAF /* RmbHighlightedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714C28A72A0A056600734DAF /* RmbHighlightedTextField.swift */; };
-		714C28AC2A0AE37600734DAF /* FocusOnReceive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714C28AB2A0AE37600734DAF /* FocusOnReceive.swift */; };
 		714C4980267FA56F00721516 /* remindersLocalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714C497F267FA56F00721516 /* remindersLocalized.swift */; };
 		714D03B226042416003063F7 /* Calendar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714D03B126042416003063F7 /* Calendar+Extensions.swift */; };
 		714E6F6125CCF66000BA0099 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714E6F6025CCF66000BA0099 /* Constants.swift */; };
@@ -125,7 +124,6 @@
 		714C28A12A07573A00734DAF /* FocusOnAppear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusOnAppear.swift; sourceTree = "<group>"; };
 		714C28A32A082E0000734DAF /* OnKeyboardShortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnKeyboardShortcut.swift; sourceTree = "<group>"; };
 		714C28A72A0A056600734DAF /* RmbHighlightedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbHighlightedTextField.swift; sourceTree = "<group>"; };
-		714C28AB2A0AE37600734DAF /* FocusOnReceive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusOnReceive.swift; sourceTree = "<group>"; };
 		714C497F267FA56F00721516 /* remindersLocalized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = remindersLocalized.swift; sourceTree = "<group>"; };
 		714D03B126042416003063F7 /* Calendar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extensions.swift"; sourceTree = "<group>"; };
 		714E6F6025CCF66000BA0099 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -249,7 +247,6 @@
 				714C28A72A0A056600734DAF /* RmbHighlightedTextField.swift */,
 				714598D229295330008CAA43 /* RmbDatePicker.swift */,
 				714C28A12A07573A00734DAF /* FocusOnAppear.swift */,
-				714C28AB2A0AE37600734DAF /* FocusOnReceive.swift */,
 				714C28A32A082E0000734DAF /* OnKeyboardShortcut.swift */,
 				71C910002D449FC4002D6B18 /* ScrollableTextField.swift */,
 			);
@@ -590,7 +587,6 @@
 				71CCF9842D43148100D334F8 /* EKReminderPriority+Extensions.swift in Sources */,
 				71E7126A2908C6D100DA97BD /* Binding+Extensions.swift in Sources */,
 				71C910012D449FC4002D6B18 /* ScrollableTextField.swift in Sources */,
-				714C28AC2A0AE37600734DAF /* FocusOnReceive.swift in Sources */,
 				714C28A42A082E0000734DAF /* OnKeyboardShortcut.swift in Sources */,
 				714C28A82A0A056600734DAF /* RmbHighlightedTextField.swift in Sources */,
 				71E51D5825BFB8CF009A4B56 /* AboutView.swift in Sources */,
