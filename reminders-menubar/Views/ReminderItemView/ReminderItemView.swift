@@ -70,6 +70,7 @@ struct ReminderItemView: View {
                         dateDescription: dateDescription,
                         isExpired: reminderItem.reminder.isExpired,
                         hasRecurrenceRules: reminderItem.reminder.hasRecurrenceRules,
+                        recurrenceRules: reminderItem.reminder.recurrenceRules,
                         calendarTitle: reminderItem.reminder.calendar.title,
                         showCalendarTitleOnDueDate: showCalendarTitleOnDueDate
                     )
