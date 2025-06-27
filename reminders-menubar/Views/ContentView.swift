@@ -30,11 +30,11 @@ struct ContentView: View {
                                 NoReminderItemsView(emptyList: calendarIsEmpty ? .noReminders : .allItemsCompleted)
                             }
                             ForEach(reminderList.reminders.uncompleted) { reminderItem in
-                                ReminderItemView(item: reminderItem, isShowingCompleted: isShowingCompleted)
+                                ReminderItemView(reminderItem: reminderItem, isShowingCompleted: isShowingCompleted)
                             }
                             if isShowingCompleted {
                                 ForEach(reminderList.reminders.completed) { reminderItem in
-                                    ReminderItemView(item: reminderItem, isShowingCompleted: isShowingCompleted)
+                                    ReminderItemView(reminderItem: reminderItem, isShowingCompleted: isShowingCompleted)
                                 }
                             }
                         }

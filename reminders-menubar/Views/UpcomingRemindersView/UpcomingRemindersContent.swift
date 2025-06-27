@@ -9,7 +9,11 @@ struct UpcomingRemindersContent: View {
                 NoReminderItemsView(emptyList: .noUpcomingReminders)
             }
             ForEach(remindersData.upcomingReminders) { reminderItem in
-                ReminderItemView(item: reminderItem, isShowingCompleted: false, showCalendarTitleOnDueDate: true)
+                ReminderItemView(
+                    reminderItem: reminderItem,
+                    isShowingCompleted: false,
+                    showCalendarTitleOnDueDate: true
+                )
             }
         }
     }
