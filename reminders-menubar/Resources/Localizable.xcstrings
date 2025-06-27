@@ -3626,7 +3626,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tutti i promemoria sono stati completati"
+            "value" : "Tutti i promemoria completati"
           }
         },
         "ja" : {
@@ -4637,7 +4637,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ripristina predefinita"
+            "value" : "Ripristina default"
           }
         },
         "ja" : {
@@ -4875,7 +4875,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Avvia all'accesso"
+            "value" : "Avvia al login"
           }
         },
         "ja" : {
@@ -6616,7 +6616,7 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "Giornaliero"
+                  "value" : "Ogni giorno"
                 }
               },
               "other" : {
@@ -6885,7 +6885,7 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "Mensile"
+                  "value" : "Ogni mese"
                 }
               },
               "other" : {
@@ -7154,7 +7154,7 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "Settimanale"
+                  "value" : "Ogni settimana"
                 }
               },
               "other" : {
@@ -7423,7 +7423,7 @@
               "one" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "Annuale"
+                  "value" : "Ogni anno"
                 }
               },
               "other" : {
@@ -8444,7 +8444,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rimuovi promemoria?"
+            "value" : "Rimuovere promemoria?"
           }
         },
         "ja" : {
@@ -8682,7 +8682,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vedi di più su GitHub"
+            "value" : "Scopri di più su GitHub"
           }
         },
         "ja" : {
@@ -10026,7 +10026,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Modifica l'intervallo dei prossimi promemoria da mostrare"
+            "value" : "Seleziona l'intervallo dei prossimi promemoria da mostrare"
           }
         },
         "ja" : {
