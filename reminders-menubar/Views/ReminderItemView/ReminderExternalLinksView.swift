@@ -28,8 +28,9 @@ struct ReminderExternalLinksView: View {
     struct ReminderExternalLinkStyle: ViewModifier {
         func body(content: Content) -> some View {
             return content
+                .font(.callout)
                 .foregroundColor(.primary)
-                .frame(height: 25)
+                .frame(height: 24)
                 .padding(.horizontal, 8)
                 .background(Color.secondary.opacity(0.2))
                 .clipShape(RoundedRectangle(cornerRadius: 8))

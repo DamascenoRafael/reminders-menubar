@@ -14,9 +14,7 @@ struct SettingsBarView: View {
             SettingsBarGearMenu()
         }
         .frame(maxWidth: .infinity)
-        .padding(.top, 12)
-        .padding(.bottom, 10)
-        .padding(.horizontal, 10)
+        .padding(10)
     }
 }
 

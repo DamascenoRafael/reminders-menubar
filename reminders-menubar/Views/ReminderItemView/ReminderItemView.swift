@@ -28,7 +28,7 @@ struct ReminderItemView: View {
         HStack(alignment: .top) {
             ReminderCompleteButton(reminderItem: reminderItem)
 
-            VStack(spacing: 8) {
+            VStack(spacing: 6) {
                 HStack(spacing: 4) {
                     if let prioritySystemImage = reminderItem.reminder.ekPriority.systemImage {
                         Image(systemName: prioritySystemImage)
@@ -89,7 +89,7 @@ struct ReminderItemView: View {
         .onHover { isHovered in
             reminderItemIsHovered = isHovered
         }
-        .padding(.leading, reminderItem.isChild ? 26 : 0)
+        .padding(.leading, reminderItem.isChild ? 24 : 0)
 
         ForEach(reminderItem.childReminders.uncompleted) { reminderItem in
             ReminderItemView(reminderItem: reminderItem, isShowingCompleted: isShowingCompleted)
