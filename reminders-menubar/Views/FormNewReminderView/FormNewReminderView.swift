@@ -88,9 +88,9 @@ struct FormNewReminderView: View {
                 isShowingInfoOptions = !newValue.isEmpty
             }
 
-            // NOTE: When user starts to enter a title we re-instantiate RmbReminder to ensure the date is as expected.
+            // NOTE: When user starts to enter a title we update the suggested date to ensure it is as expected.
             if oldValue.isEmpty {
-                rmbReminder = newRmbReminder(withTitle: newValue)
+                rmbReminder.updateSuggestedDate()
             }
         }
         .onAppear {
@@ -131,9 +131,11 @@ struct FormNewReminderView: View {
         }
     }
     
-    private func newRmbReminder(withTitle title: String = "") -> RmbReminder {
-        var rmbReminder = RmbReminder(isAutoSuggestingTodayForCreation: userPreferences.autoSuggestToday)
-        rmbReminder.title = title
+    private func newRmbReminder() -> RmbReminder {
+        var rmbReminder = RmbReminder()
+        if userPreferences.autoSuggestToday {
+            rmbReminder.setIsAutoSuggestingTodayForCreation()
+        }
         return rmbReminder
     }
     

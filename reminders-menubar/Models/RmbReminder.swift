@@ -69,13 +69,7 @@ struct RmbReminder {
         hasDueDate = false
         hasTime = false
         priority = .none
-    }
-    
-    init(isAutoSuggestingTodayForCreation: Bool) {
-        self.init()
-        self.hasDueDate = isAutoSuggestingTodayForCreation
-        self.isAutoSuggestingTodayForCreation = isAutoSuggestingTodayForCreation
-        self.isParsingEnabled = true
+        isParsingEnabled = true
     }
     
     init(reminder: EKReminder) {
@@ -88,7 +82,19 @@ struct RmbReminder {
         priority = reminder.ekPriority
         calendar = reminder.calendar
     }
-    
+
+    mutating func setIsAutoSuggestingTodayForCreation() {
+        guard !hasDueDate else {
+            return
+        }
+        self.hasDueDate = true
+        self.isAutoSuggestingTodayForCreation = true
+    }
+
+    mutating func updateSuggestedDate() {
+        date = .nextExactHour()
+    }
+
     mutating func prepareToSave() {
         isPreparingToSave = true
     }
