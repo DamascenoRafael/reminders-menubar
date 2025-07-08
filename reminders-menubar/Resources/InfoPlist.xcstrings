@@ -49,6 +49,12 @@
             "value" : "La aplicación utiliza Recordatorios de Apple como fuente de listas y tareas. Se requiere acceso para ver y editar recordatorios."
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gumagamit ang App ng Apple Reminders bilang pinagmulan ng mga listahan at gawain. Kailangan ang access para makita at i-edit ang mga paalala."
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
