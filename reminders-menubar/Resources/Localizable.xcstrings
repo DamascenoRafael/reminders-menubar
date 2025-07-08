@@ -28,6 +28,12 @@
             "value" : "Acerca de %@"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tungkol sa %@"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -145,6 +151,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Acerca de"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tungkol"
           }
         },
         "fr" : {
@@ -266,6 +278,12 @@
             "value" : "Modo oscuro"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Madilim na hitsura"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -377,6 +395,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Modo claro"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maliwanag na hitsura"
           }
         },
         "fr" : {
@@ -492,6 +516,12 @@
             "value" : "Apariencia del sistema"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayon sa sistema"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -603,6 +633,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Apariencia"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hitsura"
           }
         },
         "fr" : {
@@ -724,6 +760,12 @@
             "value" : "Más opaco"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mas malabo"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -841,6 +883,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Más transparente"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mas transparent"
           }
         },
         "fr" : {
@@ -962,6 +1010,12 @@
             "value" : "\n%@ necesita acceso a sus recordatorios para funcionar correctamente.\nOtorga permiso en Preferencias del Sistema para usar %@.\n"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kailangan ng %@ ng access sa iyong mga paalala upang gumana nang maayos. \nMagbigay ng pahintulot sa System Settings upang magamit ang %@."
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1079,6 +1133,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "El acceso a Recordatorios no está habilitado para %@"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hindi pinagana ang access sa Mga Paalala para sa %@"
           }
         },
         "fr" : {
@@ -1200,6 +1260,12 @@
             "value" : "Salir"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Umalis"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1317,6 +1383,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Versión %@"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bersyon %@"
           }
         },
         "fr" : {
@@ -1438,6 +1510,12 @@
             "value" : "Fecha de vencimiento"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Takdang petsa"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1525,6 +1603,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lista"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listahan"
           }
         },
         "fr" : {
@@ -1646,6 +1730,12 @@
             "value" : "Prioridad"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Priyoridad"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1765,6 +1855,12 @@
             "value" : "Siguiente semana"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sa Susunod na Linggo"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1852,6 +1948,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ninguno"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wala"
           }
         },
         "fr" : {
@@ -1943,6 +2045,12 @@
             "value" : "Esta fin de semana"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ngayong linggo"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2032,6 +2140,12 @@
             "value" : "Hoy"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ngayon"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2119,6 +2233,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mañana"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bukas"
           }
         },
         "fr" : {
@@ -2211,6 +2331,12 @@
             "value" : "lista"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listahan"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2298,6 +2424,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Notas"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mga Tala"
           }
         },
         "fr" : {
@@ -2419,6 +2551,12 @@
             "value" : "Editar"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baguhin"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2536,6 +2674,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Alta"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mataas"
           }
         },
         "fr" : {
@@ -2657,6 +2801,12 @@
             "value" : "Baja"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mababa"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2776,6 +2926,12 @@
             "value" : "Media"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Katamtaman"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2893,6 +3049,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ninguna"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wala"
           }
         },
         "fr" : {
@@ -3015,6 +3177,12 @@
             "value" : "prioridad"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Priyoridad"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3132,6 +3300,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "En un día"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sa Isang Araw"
           }
         },
         "fr" : {
@@ -3254,6 +3428,12 @@
             "value" : "recuérdame"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "paalalahan ako"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3371,6 +3551,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "En un momento"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sa Isang Oras"
           }
         },
         "fr" : {
@@ -3492,6 +3678,12 @@
             "value" : "Título"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pamagat"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3609,6 +3801,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Todos los elementos completados"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kumpleto na ang Lahat"
           }
         },
         "fr" : {
@@ -3730,6 +3928,12 @@
             "value" : "Cambiar las opciones de filtro de recordatorios"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baguhin ang mga opsyon sa pagsala ng paalala\n"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3847,6 +4051,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No hay recordatorios para mostrar"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Walang maipapakitang mga paalala"
           }
         },
         "fr" : {
@@ -3968,6 +4178,12 @@
             "value" : "Sin recordatorios"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Walang mga Paalala"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4085,6 +4301,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No hay recordatorios próximos"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Walang Paparating na mga Paalala"
           }
         },
         "fr" : {
@@ -4206,6 +4428,12 @@
             "value" : "Filtrar por listas seleccionadas"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salain ayon sa napiling mga listahan\n"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4295,6 +4523,12 @@
             "value" : "Filtrar por listas seleccionadas"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salain ayon sa napiling mga listahan\n"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4382,6 +4616,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Habilitar atajos del teclado para abrir %@"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paganahin ang keyboard shortcut para buksan ang %@"
           }
         },
         "fr" : {
@@ -4503,6 +4743,12 @@
             "value" : "Atajos del teclado"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keyboard shortcut"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4620,6 +4866,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Restaurar los ajustes predeterminados"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ibalik sa default"
           }
         },
         "fr" : {
@@ -4741,6 +4993,12 @@
             "value" : "Preferencias de los atajos"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mga setting ng keyboard shortcut"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4858,6 +5116,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Iniciar automáticamente"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buksan kapag nag-log in"
           }
         },
         "fr" : {
@@ -4979,6 +5243,12 @@
             "value" : "Indicador en la barra de menú"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Counter sa menu bar"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5090,6 +5360,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ícono de la barra de menú"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Icon sa menu bar"
           }
         },
         "fr" : {
@@ -5211,6 +5487,12 @@
             "value" : "Añadir fecha"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Magdagdag ng Petsa"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5328,6 +5610,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Añadir hora"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Magdagdag ng Oras"
           }
         },
         "fr" : {
@@ -5449,6 +5737,12 @@
             "value" : "Auto sugerir hoy como la fecha"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Awtomatikong imungkahi ang kasalukuyang petsa"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5566,6 +5860,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Selecciona donde quieres que tu recordatorio se guarde"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Piliin kung saan ise-save ang mga bagong paalala"
           }
         },
         "fr" : {
@@ -5687,6 +5987,12 @@
             "value" : "Eliminar fecha analizada del título"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alisin ang kinuhang petsa mula sa pamagat"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5806,6 +6112,12 @@
             "value" : "Escribe un recordatorio y presiona enter"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mag-type ng paalala at pindutin ang enter"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5920,6 +6232,12 @@
           }
         },
         "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ok"
+          }
+        },
+        "fil-PH" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ok"
@@ -6044,6 +6362,12 @@
             "value" : "Abrir preferencias del sistema"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buksan ang Settings ng sistema"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6161,6 +6485,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Idioma preferido"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gustong Wika"
           }
         },
         "fr" : {
@@ -6282,6 +6612,12 @@
             "value" : "Usar el lenguaje del sistema"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gamitin ang wikang ng sistema"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6399,6 +6735,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Actualizar datos"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I-reload ang data"
           }
         },
         "fr" : {
@@ -6575,6 +6917,24 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Cada %i días"
+                }
+              }
+            }
+          }
+        },
+        "fil-PH" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Araw-araw"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Bawat %i draw"
                 }
               }
             }
@@ -6849,6 +7209,24 @@
             }
           }
         },
+        "fil-PH" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Buwan-buwan"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Bawat %i buwan"
+                }
+              }
+            }
+          }
+        },
         "fr" : {
           "variations" : {
             "plural" : {
@@ -7113,6 +7491,24 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Cada %i semanas"
+                }
+              }
+            }
+          }
+        },
+        "fil-PH" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Linggu-linggo"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Bawat %i linggo"
                 }
               }
             }
@@ -7387,6 +7783,24 @@
             }
           }
         },
+        "fil-PH" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Taon-taon"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Bawat %i taon"
+                }
+              }
+            }
+          }
+        },
         "fr" : {
           "variations" : {
             "plural" : {
@@ -7596,6 +8010,12 @@
             "value" : "Filtrar qué recordatorios mostrar"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salain kung aling mga paalala ang ipapakita"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7713,6 +8133,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ es un software de código abierto licenciado bajo los términos del %@."
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang % ay isang open source software na lisensyado sa ilalim ng mga tuntunin ng %."
           }
         },
         "fr" : {
@@ -7834,6 +8260,12 @@
             "value" : "Funciones y actualizaciones disponibles en GitHub"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mga tampok at update ay available sa GitHub"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7951,6 +8383,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Opciones para editar un recordatorio"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mga opsyon sa pag-edit ng paalala"
           }
         },
         "fr" : {
@@ -8072,6 +8510,12 @@
             "value" : "Cancelar"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kanselahin"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8189,6 +8633,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Eliminar"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alisin"
           }
         },
         "fr" : {
@@ -8310,6 +8760,12 @@
             "value" : "Esta acción eliminará '%@' y no se puede deshaser"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ang aksyon na ito ay magtatanggal sa ' %@ ' at hindi na mababawi"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8427,6 +8883,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Eliminar recordatorio?"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alisin ang paalala?"
           }
         },
         "fr" : {
@@ -8548,6 +9010,12 @@
             "value" : "Eliminar"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alisin"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8665,6 +9133,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ver en GitHub"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tingnan ang iba pa sa GitHub"
           }
         },
         "fr" : {
@@ -8786,6 +9260,12 @@
             "value" : "Selecciona donde quieres que tu recordatorio se guarde"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pumili ng listahan para sa pagse-save ng mga bagong paalala"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8903,6 +9383,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajustes"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mga Setting"
           }
         },
         "fr" : {
@@ -9024,6 +9510,12 @@
             "value" : "Alternar entre mostrar los recordatorios completados o no"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ipakita o itago ang mga natapos na paalala"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9143,6 +9635,12 @@
             "value" : "Mostrar el número total de recordatorios"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ipakita ang bilang ng lahat ng paalala"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9250,6 +9748,12 @@
             "value" : "Mostrar el número de elementos vencidos"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ipakita ang bilang ng mga dapat gawin"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9337,6 +9841,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ocultar el conteo"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Huwag ipakita ang bilang"
           }
         },
         "fr" : {
@@ -9444,6 +9954,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mostrar el conteo de hoy en la barra de menú"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ipakita ang bilang ng paalala para sa ngayon"
           }
         },
         "fr" : {
@@ -9565,6 +10081,12 @@
             "value" : "Todo"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lahat"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9684,6 +10206,12 @@
             "value" : "Pendiente"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dapat Gawin"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9771,6 +10299,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "En un mes"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sa isang Buwan"
           }
         },
         "fr" : {
@@ -9892,6 +10426,12 @@
             "value" : "En una semana"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sa isang Linggo"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10009,6 +10549,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Seleccione el rango de los próximos recordatorios que se mostrarán"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pumili ng saklaw ng mga paparating na paalala na ipapakita"
           }
         },
         "fr" : {
@@ -10130,6 +10676,12 @@
             "value" : "Próximos recordatorios"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mga paparating na paalala"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10249,6 +10801,12 @@
             "value" : "Hoy"
           }
         },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ngayon"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10366,6 +10924,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Actualización disponible"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "May available na update"
           }
         },
         "fr" : {
