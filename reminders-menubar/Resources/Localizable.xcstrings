@@ -8138,7 +8138,7 @@
         "fil-PH" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ang % ay isang open source software na lisensyado sa ilalim ng mga tuntunin ng %."
+            "value" : "Ang %@ ay isang open source software na lisensyado sa ilalim ng mga tuntunin ng %@."
           }
         },
         "fr" : {
@@ -8763,7 +8763,7 @@
         "fil-PH" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ang aksyon na ito ay magtatanggal sa ' %@ ' at hindi na mababawi"
+            "value" : "Ang aksyon na ito ay magtatanggal sa '%@' at hindi na mababawi"
           }
         },
         "fr" : {
