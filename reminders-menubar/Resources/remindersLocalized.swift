@@ -78,7 +78,8 @@ enum RemindersMenuBarLocalizedKeys: String {
     case upcomingRemindersAllTitle
     case filterUpcomingRemindersByCalendarOptionButton // swiftlint:disable:this identifier_name
     case appNoRemindersAccessAlertMessage
-    case appNoRemindersAccessAlertDescription
+    case appNoRemindersAccessAlertReasonDescription // swiftlint:disable:this identifier_name
+    case appNoRemindersAccessAlertActionDescription // swiftlint:disable:this identifier_name
     case openSystemPreferencesButton
     case okButton
     case preferredLanguageMenu

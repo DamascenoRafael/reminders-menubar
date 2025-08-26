@@ -983,127 +983,127 @@
         }
       }
     },
-    "appNoRemindersAccessAlertDescription" : {
+    "appNoRemindersAccessAlertActionDescription" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ požaduje přistup k připomínkám pro správnou funkčnost. Pro používání %@ je třeba povolit oprávnění v Systémovém nastavení."
+            "value" : "Pro používání %@ je třeba povolit oprávnění v Systémovém nastavení."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\n%@ muss auf Ihre Erinnerungen zugreifen können, um richtig zu funktionieren.\nErteilen Sie in den Systemeinstellungen die Erlaubnis zur Verwendung von %@.\n"
+            "value" : "Erteilen Sie in den Systemeinstellungen die Erlaubnis zur Verwendung von %@."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\n%@ needs access to your reminders to work properly.\nGrant permission in System Settings to use %@.\n"
+            "value" : "Grant permission in System Settings to use %@."
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\n%@ necesita acceso a sus recordatorios para funcionar correctamente.\nOtorga permiso en Preferencias del Sistema para usar %@.\n"
+            "value" : "Otorga permiso en Preferencias del Sistema para usar %@."
           }
         },
         "fil-PH" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kailangan ng %@ ng access sa iyong mga paalala upang gumana nang maayos. \nMagbigay ng pahintulot sa System Settings upang magamit ang %@."
+            "value" : "Magbigay ng pahintulot sa System Settings upang magamit ang %@."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ doit avoir accès à Rappels pour fonctionner correctement. Accordez la permission d'utiliser %@ dans les Règlages du système"
+            "value" : "Accordez la permission d'utiliser %@ dans les Règlages du système."
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ memerlukan akses ke Pengingat Anda agar dapat berfungsi. Berikan izin di Pengaturan Sistem untuk menggunakan %@"
+            "value" : "Berikan izin di Pengaturan Sistem untuk menggunakan %@."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\n%@ ha bisogno dell'autorizzazione ad accedere ai tuoi promemoria per funzionare correttamente.\nConcedi l'autorizzazione in Impostazioni di Sistema per utilizzare %@.\n"
+            "value" : "Concedi l'autorizzazione in Impostazioni di Sistema per utilizzare %@."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\n%@はリマインダーへのアクセスが必要です。\nシステム環境設定から、%@にリマインダーへのアクセスを許可してください。\n"
+            "value" : "システム環境設定から、%@にリマインダーへのアクセスを許可してください。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\n%@ 을(를) 실행하기 위해 권한이 필요합니다.\n시스템 설정에서 %@ 에 대한 미리 알림 접근 권한을 허용하세요.\n"
+            "value" : "시스템 설정에서 %@ 에 대한 미리 알림 접근 권한을 허용하세요."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\n%@ heeft toegang tot je herinneringen nodig om goed te kunnen werken.\nVerleen toestemming in Systeemvoorkeuren om %@ te gebruiken.\n"
+            "value" : "Verleen toestemming in Systeemvoorkeuren om %@ te gebruiken."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\n%@ potrzebuje dostępu do Twoich przypomnień, aby działać poprawnie.\nZezwól w Preferencjach systemowych na używanie %@.\n"
+            "value" : "Zezwól w Preferencjach systemowych na używanie %@."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\n%@ precisa de acesso aos seus lembretes para funcionar corretamente.\nConceda permissão nas Ajustes do Sistema para usar %@.\n"
+            "value" : "Conceda permissão nos Ajustes do Sistema para usar %@."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\n%@ необходим доступ к вашим напоминаниям для корректной работы.\nПредоставьте разрешение в системных настройках для того что бы использовать %@.\n"
+            "value" : "Предоставьте разрешение в системных настройках для того что бы использовать %@."
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\n%@ potrebuje na správne fungovanie prístup k vašim Pripomienkam.\nUdeľte povolenie na používanie v Systémových nastaveniach %@.\n"
+            "value" : "Udeľte povolenie na používanie v Systémových nastaveniach %@."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\n%@, düzgün çalışabilmesi için hatırlatıcılarınıza erişime ihtiyaç duyar.\nSistem Ayarlarında izin vererek %@ kullanmasına izin verin.\n"
+            "value" : "Sistem Ayarlarında izin vererek %@ kullanmasına izin verin."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\n%@ для належної роботи потрібен доступ до ваших нагадувань.\nНадайте дозвіл на використання в Системних Параметрах %@.\n"
+            "value" : "Надайте дозвіл на використання в Системних Параметрах %@."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\n%@ cần quyền truy cập vào lời nhắc của bạn để hoạt động bình thường.\nCấp quyền trong Cài đặt Hệ thống để sử dụng %@.\n"
+            "value" : "Cấp quyền trong Cài đặt Hệ thống để sử dụng %@."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\n%@ 需要访问您的提醒事项以正常工作。\n在系统偏好设置中授权以使用 %@。\n"
+            "value" : "在系统偏好设置中授权以使用 %@。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "\n%@ 需要存取提醒事項的權限才可以正常運作。\n在系統設定中賦予 %@ 使用權限。\n"
+            "value" : "在系統設定中賦予 %@ 使用權限。"
           }
         }
       }
@@ -1229,6 +1229,131 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ 存取提醒事項的權限未啟用"
+          }
+        }
+      }
+    },
+    "appNoRemindersAccessAlertReasonDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ požaduje přistup k připomínkám pro správnou funkčnost."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ muss auf Ihre Erinnerungen zugreifen können, um richtig zu funktionieren."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ needs access to your reminders to work properly."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ necesita acceso a sus recordatorios para funcionar correctamente."
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kailangan ng %@ ng access sa iyong mga paalala upang gumana nang maayos. "
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ doit avoir accès à Rappels pour fonctionner correctement."
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ memerlukan akses ke Pengingat Anda agar dapat berfungsi."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ha bisogno dell'autorizzazione ad accedere ai tuoi promemoria per funzionare correttamente."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@はリマインダーへのアクセスが必要です。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 을(를) 실행하기 위해 권한이 필요합니다."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ heeft toegang tot je herinneringen nodig om goed te kunnen werken."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ potrzebuje dostępu do Twoich przypomnień, aby działać poprawnie."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ precisa de acesso aos seus lembretes para funcionar corretamente."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ необходим доступ к вашим напоминаниям для корректной работы."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ potrebuje na správne fungovanie prístup k vašim Pripomienkam."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@, düzgün çalışabilmesi için hatırlatıcılarınıza erişime ihtiyaç duyar."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ для належної роботи потрібен доступ до ваших нагадувань."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ cần quyền truy cập vào lời nhắc của bạn để hoạt động bình thường."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 需要访问您的提醒事项以正常工作。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 需要存取提醒事項的權限才可以正常運作。"
           }
         }
       }
@@ -3931,7 +4056,7 @@
         "fil-PH" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Baguhin ang mga opsyon sa pagsala ng paalala\n"
+            "value" : "Baguhin ang mga opsyon sa pagsala ng paalala"
           }
         },
         "fr" : {
@@ -4431,7 +4556,7 @@
         "fil-PH" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Salain ayon sa napiling mga listahan\n"
+            "value" : "Salain ayon sa napiling mga listahan"
           }
         },
         "fr" : {
@@ -4526,7 +4651,7 @@
         "fil-PH" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Salain ayon sa napiling mga listahan\n"
+            "value" : "Salain ayon sa napiling mga listahan"
           }
         },
         "fr" : {

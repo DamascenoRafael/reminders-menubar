@@ -136,11 +136,15 @@ extension AppDelegate: NSAlertDelegate {
     private func presentNoAuthorizationAlert() {
         let alert = NSAlert()
         alert.messageText = rmbLocalized(.appNoRemindersAccessAlertMessage, arguments: AppConstants.appName)
-        alert.informativeText = rmbLocalized(
-            .appNoRemindersAccessAlertDescription,
-            arguments: AppConstants.appName,
-            AppConstants.appName
+        let reasonDescription = rmbLocalized(
+            .appNoRemindersAccessAlertReasonDescription,
+            arguments: AppConstants.appName
         )
+        let actionDescription = rmbLocalized(
+            .appNoRemindersAccessAlertActionDescription,
+            arguments: AppConstants.appName
+        )
+        alert.informativeText = "\(reasonDescription)\n\(actionDescription)"
         if sharedAuthorizationErrorMessage != nil {
             alert.delegate = self
             alert.showsHelp = true
