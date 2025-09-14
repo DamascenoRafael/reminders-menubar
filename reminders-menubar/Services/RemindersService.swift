@@ -8,7 +8,7 @@ class RemindersService {
         // This prevents others from using the default '()' initializer for this class.
     }
     
-    private let eventStore = EKEventStore()
+    let eventStore = EKEventStore()
     
     func authorizationStatus() -> EKAuthorizationStatus {
         return EKEventStore.authorizationStatus(for: .reminder)

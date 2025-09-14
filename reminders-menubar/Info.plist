@@ -36,5 +36,16 @@
 	<true/>
 	<key>NSSupportsSuddenTermination</key>
 	<true/>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.944624475821-6rn0knvq5ucm8j054fkufh3nu8ttqeof</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

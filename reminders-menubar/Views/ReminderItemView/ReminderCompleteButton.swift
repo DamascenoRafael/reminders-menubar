@@ -8,10 +8,24 @@ struct ReminderCompleteButton: View {
         Button(action: {
             reminderItem.reminder.isCompleted.toggle()
             RemindersService.shared.save(reminder: reminderItem.reminder)
+            Task {
+                if FirebaseManager.isAvailable && FirebaseManager.shared.isSignedIn {
+                    await BobFirestoreSyncService.shared.reportCompletion(for: reminderItem.reminder)
+                } else {
+                    await BobSyncService.shared.reportCompletion(for: reminderItem.reminder)
+                }
+            }
             if reminderItem.reminder.isCompleted {
                 reminderItem.childReminders.uncompleted.forEach { uncompletedChild in
                     uncompletedChild.reminder.isCompleted = true
                     RemindersService.shared.save(reminder: uncompletedChild.reminder)
+                    Task {
+                        if FirebaseManager.isAvailable && FirebaseManager.shared.isSignedIn {
+                            await BobFirestoreSyncService.shared.reportCompletion(for: uncompletedChild.reminder)
+                        } else {
+                            await BobSyncService.shared.reportCompletion(for: uncompletedChild.reminder)
+                        }
+                    }
                 }
             }
         }) {

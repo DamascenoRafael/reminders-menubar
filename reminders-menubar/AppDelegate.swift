@@ -37,6 +37,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         AppDelegate.shared = self
         
+        // Configure Firebase if GoogleService-Info.plist is present
+        FirebaseManager.shared.configureIfNeeded()
+
         AppUpdateCheckHelper.shared.startBackgroundActivity()
         
         changeBehaviorToDismissIfNeeded()
@@ -44,6 +47,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         configureMenuBarButton()
         configureKeyboardShortcut()
         configureDidCloseNotification()
+    }
+
+    func application(_ application: NSApplication, open urls: [URL]) {
+        for url in urls {
+            _ = GoogleSignInService.shared.handle(url)
+        }
     }
     
     private func configurePopover() {

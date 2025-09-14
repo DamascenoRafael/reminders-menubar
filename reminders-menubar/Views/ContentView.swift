@@ -4,6 +4,7 @@ import EventKit
 struct ContentView: View {
     @EnvironmentObject var remindersData: RemindersData
     @ObservedObject var userPreferences = UserPreferences.shared
+    @ObservedObject var firebase = FirebaseManager.shared
     @Environment(\.colorSchemeContrast) private var colorSchemeContrast
     
     var body: some View {
@@ -53,11 +54,35 @@ struct ContentView: View {
                 }
                 .frame(maxHeight: .infinity)
             }
-            
+            // Signed-in status (Firebase)
+            if FirebaseManager.isAvailable {
+                HStack {
+                    let name = firebase.displayName ?? firebase.email ?? firebase.uid
+                    let shown = name ?? "Unknown"
+                    Text(firebase.isSignedIn ? ("Signed in as: " + shown) : "Not signed in")
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                    Spacer()
+                }
+                .padding(.horizontal, 10)
+                .padding(.vertical, 4)
+            }
+
             SettingsBarView()
         }
         .background(Color.rmbColor(for: .backgroundTheme, and: colorSchemeContrast).padding(-80))
         .preferredColorScheme(userPreferences.rmbColorScheme.colorScheme)
+        // Auto-sync from BOB when user signs in natively
+        .onChange(of: firebase.isSignedIn) { signedIn in
+            if signedIn {
+                Task { await BobFirestoreSyncService.shared.syncFromBob() }
+            }
+        }
+        .onAppear {
+            if FirebaseManager.isAvailable && firebase.isSignedIn {
+                Task { await BobFirestoreSyncService.shared.syncFromBob() }
+            }
+        }
     }
 }
 

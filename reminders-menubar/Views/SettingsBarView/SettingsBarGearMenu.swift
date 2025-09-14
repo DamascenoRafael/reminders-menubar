@@ -3,6 +3,7 @@ import SwiftUI
 struct SettingsBarGearMenu: View {
     @EnvironmentObject var remindersData: RemindersData
     @ObservedObject var userPreferences = UserPreferences.shared
+    @ObservedObject var firebase = FirebaseManager.shared
     @Environment(\.colorSchemeContrast) private var colorSchemeContrast
     
     @State var gearIsHovered = false
@@ -63,6 +64,52 @@ struct SettingsBarGearMenu: View {
                     AboutView.showWindow()
                 }) {
                     Text(rmbLocalized(.appAboutButton))
+                }
+
+                Divider()
+
+                Menu {
+                    // Signed-in status line
+                    if FirebaseManager.isAvailable {
+                        if firebase.isSignedIn {
+                            let name = firebase.displayName ?? firebase.email ?? firebase.uid ?? "Unknown"
+                            Text("Signed in as: \(name)")
+                        } else {
+                            Text("Not signed in")
+                        }
+                        Divider()
+                    }
+                    Button(action: {
+                        WebSignInView.showWindow()
+                    }) {
+                        Text("Sign in to BOB (Google)…")
+                    }
+                    if FirebaseManager.isAvailable && firebase.isSignedIn {
+                        Button(action: {
+                            GoogleSignInService.shared.signOut()
+                            FirebaseManager.shared.refreshUser()
+                        }) {
+                            Text("Sign out")
+                        }
+                    }
+                    Button(action: {
+                        Task {
+                            if FirebaseManager.isAvailable && FirebaseManager.shared.isSignedIn {
+                                await BobFirestoreSyncService.shared.syncFromBob()
+                            } else {
+                                await BobSyncService.shared.syncFromBob()
+                            }
+                        }
+                    }) {
+                        Text("Run Sync from BOB → Reminders")
+                    }
+                    Button(action: {
+                        BobSyncSettingsView.showWindow()
+                    }) {
+                        Text("BOB Sync Settings…")
+                    }
+                } label: {
+                    Text("BOB Sync")
                 }
                 
                 Button(action: {

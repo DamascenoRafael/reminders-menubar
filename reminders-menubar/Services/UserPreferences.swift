@@ -16,6 +16,10 @@ private enum PreferencesKeys {
     static let menuBarCounterType = "menuBarCounterType"
     static let filterMenuBarCountByCalendar = "filterMenuBarCountByCalendar"
     static let preferredLanguage = "preferredLanguage"
+    // BOB sync
+    static let bobBaseUrl = "bobBaseUrl"
+    static let bobUserUid = "bobUserUid"
+    static let bobRemindersSecret = "bobRemindersSecret"
 }
 
 class UserPreferences: ObservableObject {
@@ -181,6 +185,33 @@ class UserPreferences: ObservableObject {
     }() {
         didSet {
             UserPreferences.defaults.set(preferredLanguage, forKey: PreferencesKeys.preferredLanguage)
+        }
+    }
+
+    // MARK: - BOB Sync Preferences
+
+    @Published var bobBaseUrl: String = {
+        // Default to production hosting base used by the web app
+        return defaults.string(forKey: PreferencesKeys.bobBaseUrl) ?? "https://bob20250810.web.app"
+    }() {
+        didSet {
+            UserPreferences.defaults.set(bobBaseUrl, forKey: PreferencesKeys.bobBaseUrl)
+        }
+    }
+
+    @Published var bobUserUid: String = {
+        return defaults.string(forKey: PreferencesKeys.bobUserUid) ?? ""
+    }() {
+        didSet {
+            UserPreferences.defaults.set(bobUserUid, forKey: PreferencesKeys.bobUserUid)
+        }
+    }
+
+    @Published var bobRemindersSecret: String = {
+        return defaults.string(forKey: PreferencesKeys.bobRemindersSecret) ?? ""
+    }() {
+        didSet {
+            UserPreferences.defaults.set(bobRemindersSecret, forKey: PreferencesKeys.bobRemindersSecret)
         }
     }
 }
