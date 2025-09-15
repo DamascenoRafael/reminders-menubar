@@ -14,14 +14,29 @@ class GoogleSignInService: ObservableObject {
     func signIn() async throws {
         FirebaseManager.shared.configureIfNeeded()
 
-        guard let presentingWindow = NSApp.keyWindow ?? NSApp.windows.first else {
-            throw NSError(domain: "GoogleSignIn", code: 1, userInfo: [NSLocalizedDescriptionKey: "No window to present sign-in"])
+        var tempWindow: NSWindow? = nil
+        var presentingWindow = NSApp.keyWindow ?? NSApp.windows.first
+        if presentingWindow == nil {
+            // Menubar apps can have no key window; create a tiny, nearly invisible window to satisfy API
+            let w = NSWindow(
+                contentRect: NSRect(x: 0, y: 0, width: 10, height: 10),
+                styleMask: [.titled, .closable],
+                backing: .buffered,
+                defer: false
+            )
+            w.isOpaque = false
+            w.alphaValue = 0.01
+            w.level = .floating
+            w.orderFrontRegardless()
+            NSApp.activate(ignoringOtherApps: true)
+            presentingWindow = w
+            tempWindow = w
         }
 
         if let clientID = FirebaseApp.app()?.options.clientID {
             GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: clientID)
         }
-        let result = try await GIDSignIn.sharedInstance.signIn(withPresenting: presentingWindow)
+        let result = try await GIDSignIn.sharedInstance.signIn(withPresenting: presentingWindow!)
 
         guard let idToken = result.user.idToken?.tokenString else {
             throw NSError(domain: "GoogleSignIn", code: 2, userInfo: [NSLocalizedDescriptionKey: "Missing Google ID token"])
@@ -29,12 +44,15 @@ class GoogleSignInService: ObservableObject {
         let accessToken = result.user.accessToken.tokenString
 
         let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
+        defer { tempWindow?.close() }
         _ = try await Auth.auth().signIn(with: credential)
+        LogService.shared.log(.info, .auth, "Google sign-in success for uid=\(Auth.auth().currentUser?.uid ?? "unknown")")
     }
 
     func signOut() {
         try? Auth.auth().signOut()
         GIDSignIn.sharedInstance.signOut()
+        LogService.shared.log(.info, .auth, "Signed out")
     }
 
     func handle(_ url: URL) -> Bool {

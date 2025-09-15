@@ -19,6 +19,7 @@ struct ReminderChangeListOptionMenu: View {
                     Button(action: {
                         reminder.calendar = calendar
                         RemindersService.shared.save(reminder: reminder)
+                        LogService.shared.log(.info, .crud, "Moved reminder to list: \(calendar.title) title=\(reminder.title as String? ?? "(no title)")")
                     }) {
                         let isSelected = calendar.calendarIdentifier == reminder.calendar.calendarIdentifier
                         SelectableView(

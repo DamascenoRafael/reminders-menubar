@@ -1,5 +1,6 @@
 import SwiftUI
 import EventKit
+import Foundation
 
 @MainActor
 struct ReminderItemView: View {
@@ -40,6 +41,16 @@ struct ReminderItemView: View {
                             isEditingTitle = true
                             showingEditPopover = true
                         }
+
+                    if let themeText = extractThemeText(from: reminderItem.reminder.notes) {
+                        Text(themeText)
+                            .font(.caption2)
+                            .foregroundColor(.secondary)
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 2)
+                            .background(Color.gray.opacity(0.12))
+                            .cornerRadius(6)
+                    }
 
                     Spacer()
 
@@ -115,6 +126,17 @@ struct ReminderItemView: View {
             }),
             secondaryButton: .cancel(Text(rmbLocalized(.removeReminderAlertCancelButton)))
         )
+    }
+}
+
+// MARK: - Theme extraction from notes meta
+extension ReminderItemView {
+    func extractThemeText(from notes: String?) -> String? {
+        let parsed = NotesCodec.parse(notes)
+        if let theme = parsed.meta.theme, !theme.isEmpty {
+            return "Theme: \(theme)"
+        }
+        return nil
     }
 }
 

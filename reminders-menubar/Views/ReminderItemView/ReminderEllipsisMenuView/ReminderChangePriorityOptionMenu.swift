@@ -10,6 +10,7 @@ struct ReminderChangePriorityOptionMenu: View {
         Button(action: {
             reminder.ekPriority = priority
             RemindersService.shared.save(reminder: reminder)
+            LogService.shared.log(.info, .crud, "Changed priority to \(priority.rawValue) for: \(reminder.title as String? ?? "(no title)")")
         }) {
             SelectableView(title: text, isSelected: isSelected)
         }

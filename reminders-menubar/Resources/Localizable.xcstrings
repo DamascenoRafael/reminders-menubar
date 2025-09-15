@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "[%@]" : {
+
+    },
     "aboutRemindersMenuBarWindowTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -125,6 +128,9 @@
           }
         }
       }
+    },
+    "All" : {
+
     },
     "appAboutButton" : {
       "extractionState" : "manual",
@@ -1608,6 +1614,21 @@
         }
       }
     },
+    "Base URL" : {
+
+    },
+    "BOB Sync" : {
+
+    },
+    "BOB Sync Settings" : {
+
+    },
+    "BOB Sync Settings…" : {
+
+    },
+    "Category" : {
+
+    },
     "changeReminderDueDateMenuOption" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1952,6 +1973,15 @@
           }
         }
       }
+    },
+    "Clear" : {
+
+    },
+    "Close" : {
+
+    },
+    "Copy All" : {
+
     },
     "editReminderDueDateNextWeekOption" : {
       "extractionState" : "manual",
@@ -4526,6 +4556,12 @@
         }
       }
     },
+    "Enter the Reminders secret" : {
+
+    },
+    "Enter your BOB user UID" : {
+
+    },
     "filterMenuBarCountByCalendarOptionButton" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4715,6 +4751,9 @@
           }
         }
       }
+    },
+    "https://bob20250810.web.app" : {
+
     },
     "keyboardShortcutEnableOpenShortcutOption" : {
       "extractionState" : "manual",
@@ -5340,6 +5379,9 @@
           }
         }
       }
+    },
+    "Logs" : {
+
     },
     "menuBarCounterSettingsMenu" : {
       "extractionState" : "manual",
@@ -6335,6 +6377,9 @@
         }
       }
     },
+    "Not signed in" : {
+
+    },
     "okButton" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -6459,6 +6504,9 @@
           }
         }
       }
+    },
+    "Open Logs…" : {
+
     },
     "openSystemPreferencesButton" : {
       "extractionState" : "manual",
@@ -8108,6 +8156,9 @@
         }
       }
     },
+    "Reminders Secret" : {
+
+    },
     "remindersFilterSelectionHelp" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -9233,6 +9284,9 @@
         }
       }
     },
+    "Run Sync from BOB → Reminders" : {
+
+    },
     "seeMoreOnGitHubButton" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -10178,6 +10232,9 @@
           }
         }
       }
+    },
+    "Sign In" : {
+
     },
     "upcomingRemindersAllTitle" : {
       "extractionState" : "manual",
@@ -11148,6 +11205,9 @@
           }
         }
       }
+    },
+    "User UID" : {
+
     }
   },
   "version" : "1.0"

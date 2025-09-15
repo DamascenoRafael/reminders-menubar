@@ -8,6 +8,7 @@ struct ReminderCompleteButton: View {
         Button(action: {
             reminderItem.reminder.isCompleted.toggle()
             RemindersService.shared.save(reminder: reminderItem.reminder)
+            LogService.shared.log(.info, .crud, "Set completed=\(reminderItem.reminder.isCompleted) for: \(reminderItem.reminder.title as String? ?? "(no title)")")
             Task {
                 if FirebaseManager.isAvailable && FirebaseManager.shared.isSignedIn {
                     await BobFirestoreSyncService.shared.reportCompletion(for: reminderItem.reminder)
@@ -19,6 +20,7 @@ struct ReminderCompleteButton: View {
                 reminderItem.childReminders.uncompleted.forEach { uncompletedChild in
                     uncompletedChild.reminder.isCompleted = true
                     RemindersService.shared.save(reminder: uncompletedChild.reminder)
+                    LogService.shared.log(.info, .crud, "Auto-completed child: \(uncompletedChild.reminder.title as String? ?? "(no title)")")
                     Task {
                         if FirebaseManager.isAvailable && FirebaseManager.shared.isSignedIn {
                             await BobFirestoreSyncService.shared.reportCompletion(for: uncompletedChild.reminder)

@@ -24,7 +24,8 @@ struct ReminderEllipsisMenuView: View {
         } label: {
             Image(systemName: "ellipsis")
         }
-        .menuStyle(BorderlessButtonMenuStyle(showsMenuIndicator: false))
+        .menuStyle(.borderlessButton)
+        .menuIndicator(.hidden)
         .frame(width: 16, height: 16)
         .padding(.top, 1)
         .padding(.trailing, 10)

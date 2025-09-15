@@ -72,6 +72,8 @@ struct ReminderChangeDueDateOptionMenu: View {
                     reminder.removeDueDateAndAlarms()
                     reminder.addDueDateAndAlarm(for: date, withTime: hasTime)
                     RemindersService.shared.save(reminder: reminder)
+                    let f = DateFormatter(); f.dateFormat = hasTime ? "yyyy-MM-dd HH:mm" : "yyyy-MM-dd"
+                    LogService.shared.log(.info, .crud, "Changed due date (\(option.title)) to \(f.string(from: date)) for: \(reminder.title as String? ?? "(no title)")")
                 }) {
                     SelectableView(
                         title: option.title,
@@ -87,6 +89,7 @@ struct ReminderChangeDueDateOptionMenu: View {
                 reminder.removeDueDateAndAlarms()
                 reminder.removeAllRecurrenceRules()
                 RemindersService.shared.save(reminder: reminder)
+                LogService.shared.log(.info, .crud, "Cleared due date for: \(reminder.title as String? ?? "(no title)")")
             }) {
                 SelectableView(
                     title: rmbLocalized(.editReminderDueDateNoneOption),

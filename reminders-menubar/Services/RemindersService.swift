@@ -14,6 +14,15 @@ class RemindersService {
         return EKEventStore.authorizationStatus(for: .reminder)
     }
     
+    func hasReminderWriteAccess() -> Bool {
+        if #available(macOS 14.0, *) {
+            let status = EKEventStore.authorizationStatus(for: .reminder)
+            return status == .fullAccess || status == .writeOnly
+        } else {
+            return EKEventStore.authorizationStatus(for: .reminder) == .authorized
+        }
+    }
+    
     func requestAccess(completion: @escaping (Bool, String?) -> Void) {
         if #available(macOS 14.0, *) {
             eventStore.requestFullAccessToReminders { granted, error in
@@ -112,8 +121,18 @@ class RemindersService {
     func save(reminder: EKReminder) {
         do {
             try eventStore.save(reminder, commit: true)
+            LogService.shared.log(
+                .info,
+                .crud,
+                "Saved reminder: \(reminder.title as String? ?? "(no title)") [id=\(reminder.calendarItemIdentifier as String? ?? "(no-id)")]"
+            )
         } catch {
             print("Error saving reminder:", error.localizedDescription)
+            LogService.shared.log(
+                .error,
+                .crud,
+                "Failed to save reminder: \(reminder.title as String? ?? "(no title)") error=\(error.localizedDescription)"
+            )
         }
     }
     
@@ -122,13 +141,24 @@ class RemindersService {
         newReminder.update(with: rmbReminder)
         newReminder.calendar = calendar
         save(reminder: newReminder)
+        LogService.shared.log(.info, .crud, "Created reminder: \(rmbReminder.title) in calendar=\(calendar.title)")
     }
     
     func remove(reminder: EKReminder) {
         do {
             try eventStore.remove(reminder, commit: true)
+            LogService.shared.log(
+                .info,
+                .crud,
+                "Removed reminder: \(reminder.title as String? ?? "(no title)") [id=\(reminder.calendarItemIdentifier as String? ?? "(no-id)")]"
+            )
         } catch {
             print("Error removing reminder:", error.localizedDescription)
+            LogService.shared.log(
+                .error,
+                .crud,
+                "Failed to remove reminder: \(reminder.title as String? ?? "(no title)") error=\(error.localizedDescription)"
+            )
         }
     }
 }

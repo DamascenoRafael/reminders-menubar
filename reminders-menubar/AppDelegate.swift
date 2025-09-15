@@ -4,6 +4,10 @@ import Combine
 
 @main
 struct RemindersMenuBar: App {
+    init() {
+        // Configure Firebase as early as possible
+        FirebaseManager.shared.configureIfNeeded()
+    }
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {
@@ -40,6 +44,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Configure Firebase if GoogleService-Info.plist is present
         FirebaseManager.shared.configureIfNeeded()
 
+        LogService.shared.log(.info, .app, "App launched \(AppConstants.currentVersion)")
+
         AppUpdateCheckHelper.shared.startBackgroundActivity()
         
         changeBehaviorToDismissIfNeeded()
@@ -51,6 +57,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func application(_ application: NSApplication, open urls: [URL]) {
         for url in urls {
+            // Handle Google Sign-In callback
             _ = GoogleSignInService.shared.handle(url)
         }
     }
@@ -59,7 +66,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         popover.contentSize = NSSize(width: 340, height: 460)
         popover.animates = false
         
-        if RemindersService.shared.authorizationStatus() == .authorized {
+        if RemindersService.shared.hasReminderWriteAccess() {
             popover.contentViewController = contentViewController
         }
     }
@@ -102,7 +109,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc private func togglePopover() {
-        guard RemindersService.shared.authorizationStatus() == .authorized else {
+        guard RemindersService.shared.hasReminderWriteAccess() else {
             requestAuthorization()
             return
         }

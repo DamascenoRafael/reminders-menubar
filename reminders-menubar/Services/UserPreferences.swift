@@ -127,13 +127,17 @@ class UserPreferences: ObservableObject {
     
     var launchAtLoginIsEnabled: Bool {
         get {
-            let allJobs = SMCopyAllJobDictionaries(kSMDomainUserLaunchd).takeRetainedValue() as? [[String: AnyObject]]
-            let launcherJob = allJobs?.first { $0["Label"] as? String == AppConstants.launcherBundleId }
-            return launcherJob?["OnDemand"] as? Bool ?? false
+            let service = SMAppService.loginItem(identifier: AppConstants.launcherBundleId)
+            return service.status == .enabled
         }
         
         set {
-            SMLoginItemSetEnabled(AppConstants.launcherBundleId as CFString, newValue)
+            let service = SMAppService.loginItem(identifier: AppConstants.launcherBundleId)
+            if newValue {
+                do { try service.register() } catch { print("Failed to enable login item:", error.localizedDescription) }
+            } else {
+                do { try service.unregister() } catch { print("Failed to disable login item:", error.localizedDescription) }
+            }
         }
     }
     

@@ -87,10 +87,12 @@
 		71FFF0032E76E3CB00ABCDEF /* GoogleSignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FFF0022E76E3CB00ABCDEF /* GoogleSignInService.swift */; };
 		71FFF0052E76E3E900ABCDEF /* BobFirestoreSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FFF0042E76E3E900ABCDEF /* BobFirestoreSyncService.swift */; };
 		71FFF0072E76E40400ABCDEF /* BobSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FFF0062E76E40400ABCDEF /* BobSyncService.swift */; };
-		71FFF0092E76E41C00ABCDEF /* WebSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FFF0082E76E41C00ABCDEF /* WebSignInView.swift */; };
 		71FFF00B2E76E43800ABCDEF /* BobSyncSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FFF00A2E76E43800ABCDEF /* BobSyncSettingsView.swift */; };
+		71FFF00F2E76E4AA00ABCDEF /* NotesCodec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FFF00E2E76E4AA00ABCDEF /* NotesCodec.swift */; };
 		96A54A6B29A3ADB70060403F /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A54A6A29A3ADB70060403F /* DateParser.swift */; };
 		96A54A6D29A3B1A90060403F /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A54A6C29A3B1A90060403F /* String+Extensions.swift */; };
+		71FFF0152E76E9C200ABCDEF /* LogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FFF0142E76E9C200ABCDEF /* LogService.swift */; };
+		71FFF0172E76EA2A00ABCDEF /* LogsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FFF0162E76EA2A00ABCDEF /* LogsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -124,6 +126,8 @@
 		712C32B724BF939200AC75E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		712C32BA24BF939200AC75E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		712C32BF24BF939200AC75E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		71FFF0142E76E9C200ABCDEF /* LogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogService.swift; sourceTree = "<group>"; };
+		71FFF0162E76EA2A00ABCDEF /* LogsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsView.swift; sourceTree = "<group>"; };
 		712C32C024BF939200AC75E2 /* reminders_menubar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = reminders_menubar.entitlements; sourceTree = "<group>"; };
 		712C836129E6635200BF6C24 /* RmbMenuBarCounterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbMenuBarCounterType.swift; sourceTree = "<group>"; };
 		71359E9724C6C0B5001D4C40 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -186,8 +190,8 @@
 		71FFF0022E76E3CB00ABCDEF /* GoogleSignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInService.swift; sourceTree = "<group>"; };
 		71FFF0042E76E3E900ABCDEF /* BobFirestoreSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BobFirestoreSyncService.swift; sourceTree = "<group>"; };
 		71FFF0062E76E40400ABCDEF /* BobSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BobSyncService.swift; sourceTree = "<group>"; };
-		71FFF0082E76E41C00ABCDEF /* WebSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSignInView.swift; sourceTree = "<group>"; };
 		71FFF00A2E76E43800ABCDEF /* BobSyncSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BobSyncSettingsView.swift; sourceTree = "<group>"; };
+		71FFF00E2E76E4AA00ABCDEF /* NotesCodec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCodec.swift; sourceTree = "<group>"; };
 		96A54A6A29A3ADB70060403F /* DateParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateParser.swift; sourceTree = "<group>"; };
 		96A54A6C29A3B1A90060403F /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -208,7 +212,6 @@
 				3819654C2E76DEBE00706817 /* FirebaseAuth in Frameworks */,
 				3819654E2E76DEBE00706817 /* FirebaseCore in Frameworks */,
 				381965522E76DEBE00706817 /* FirebaseFirestore in Frameworks */,
-				71FFF00D2E76E6B300ABCDEF /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +259,8 @@
 				71FFF0022E76E3CB00ABCDEF /* GoogleSignInService.swift */,
 				71FFF0042E76E3E900ABCDEF /* BobFirestoreSyncService.swift */,
 				71FFF0062E76E40400ABCDEF /* BobSyncService.swift */,
+				71FFF00E2E76E4AA00ABCDEF /* NotesCodec.swift */,
+				71FFF0142E76E9C200ABCDEF /* LogService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -322,8 +327,8 @@
 			children = (
 				71E51D5725BFB8CF009A4B56 /* AboutView.swift */,
 				718C813528D01CCE00BAC2D0 /* KeyboardShortcutView.swift */,
-				71FFF0082E76E41C00ABCDEF /* WebSignInView.swift */,
 				71FFF00A2E76E43800ABCDEF /* BobSyncSettingsView.swift */,
+				71FFF0162E76EA2A00ABCDEF /* LogsView.swift */,
 			);
 			path = Windows;
 			sourceTree = "<group>";
@@ -667,8 +672,10 @@
 				71FFF0032E76E3CB00ABCDEF /* GoogleSignInService.swift in Sources */,
 				71FFF0052E76E3E900ABCDEF /* BobFirestoreSyncService.swift in Sources */,
 				71FFF0072E76E40400ABCDEF /* BobSyncService.swift in Sources */,
-				71FFF0092E76E41C00ABCDEF /* WebSignInView.swift in Sources */,
+				71FFF00F2E76E4AA00ABCDEF /* NotesCodec.swift in Sources */,
 				71FFF00B2E76E43800ABCDEF /* BobSyncSettingsView.swift in Sources */,
+				71FFF0152E76E9C200ABCDEF /* LogService.swift in Sources */,
+				71FFF0172E76EA2A00ABCDEF /* LogsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -877,7 +884,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.25.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jc1.tech.bob;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -907,7 +914,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.25.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jc1.tech.bob;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -990,11 +997,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 381965482E76DEBE00706817 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
-		};
-		381965592E76E12000706817 /* GoogleSignIn */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3819655B2E76E12000706817 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
-			productName = GoogleSignIn;
 		};
 		716BCF0D28C97C7100537081 /* KeyboardShortcuts */ = {
 			isa = XCSwiftPackageProductDependency;

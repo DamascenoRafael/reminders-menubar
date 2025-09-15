@@ -54,18 +54,40 @@ struct ContentView: View {
                 }
                 .frame(maxHeight: .infinity)
             }
-            // Signed-in status (Firebase)
+            // BOB sign-in status and clear call-to-action
             if FirebaseManager.isAvailable {
-                HStack {
-                    let name = firebase.displayName ?? firebase.email ?? firebase.uid
-                    let shown = name ?? "Unknown"
-                    Text(firebase.isSignedIn ? ("Signed in as: " + shown) : "Not signed in")
-                        .font(.footnote)
-                        .foregroundColor(.secondary)
-                    Spacer()
+                if firebase.isSignedIn {
+                    HStack {
+                        let name = firebase.displayName ?? firebase.email ?? firebase.uid
+                        let shown = name ?? "Unknown"
+                        Text("Signed in as: " + shown)
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
+                        Spacer()
+                    }
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 4)
+                } else {
+                    HStack(spacing: 12) {
+                        Text("Not signed in")
+                            .foregroundColor(.secondary)
+                        Button("Sign In") {
+                            Task {
+                                do {
+                                    try await GoogleSignInService.shared.signIn()
+                                    FirebaseManager.shared.refreshUser()
+                                    LogService.shared.log(.info, .auth, "Signed in with Google (native)")
+                                } catch {
+                                    LogService.shared.log(.error, .auth, "Native sign-in failed: \(error.localizedDescription)")
+                                }
+                            }
+                        }
+                        .buttonStyle(.borderedProminent)
+                        Spacer()
+                    }
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 6)
                 }
-                .padding(.horizontal, 10)
-                .padding(.vertical, 4)
             }
 
             SettingsBarView()
@@ -73,8 +95,8 @@ struct ContentView: View {
         .background(Color.rmbColor(for: .backgroundTheme, and: colorSchemeContrast).padding(-80))
         .preferredColorScheme(userPreferences.rmbColorScheme.colorScheme)
         // Auto-sync from BOB when user signs in natively
-        .onChange(of: firebase.isSignedIn) { signedIn in
-            if signedIn {
+        .onChange(of: firebase.isSignedIn) { _, newValue in
+            if newValue {
                 Task { await BobFirestoreSyncService.shared.syncFromBob() }
             }
         }

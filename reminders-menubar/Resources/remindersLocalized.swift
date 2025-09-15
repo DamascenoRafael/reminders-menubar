@@ -97,9 +97,14 @@ struct ReminderMenuBarLocale {
 
 func rmbLocalized(_ key: RemindersMenuBarLocalizedKeys, arguments: CVarArg...) -> String {
     let preferredLanguage = rmbCurrentLocale().identifier
-    let localePath = Bundle.main.path(forResource: preferredLanguage, ofType: "lproj") ?? ""
-    let localeBundle = Bundle(path: localePath) ?? Bundle.main
-    
+    let localeBundle: Bundle = {
+        if let url = Bundle.main.url(forResource: preferredLanguage, withExtension: "lproj"),
+           let bundle = Bundle(url: url) {
+            return bundle
+        }
+        return .main
+    }()
+
     let fallbackString = Bundle.main.localizedString(forKey: key.rawValue, value: nil, table: nil)
     let localizedString = localeBundle.localizedString(forKey: key.rawValue, value: fallbackString, table: nil)
     return String(format: localizedString, arguments: arguments)

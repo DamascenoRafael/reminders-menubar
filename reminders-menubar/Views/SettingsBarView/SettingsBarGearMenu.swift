@@ -68,30 +68,30 @@ struct SettingsBarGearMenu: View {
 
                 Divider()
 
+                Button(action: {
+                    LogsView.showWindow()
+                }) {
+                    Text("Open Logs…")
+                }
+
                 Menu {
-                    // Signed-in status line
-                    if FirebaseManager.isAvailable {
-                        if firebase.isSignedIn {
-                            let name = firebase.displayName ?? firebase.email ?? firebase.uid ?? "Unknown"
-                            Text("Signed in as: \(name)")
-                        } else {
-                            Text("Not signed in")
-                        }
-                        Divider()
-                    }
+                    // Native Firebase sign-in
                     Button(action: {
-                        WebSignInView.showWindow()
-                    }) {
-                        Text("Sign in to BOB (Google)…")
-                    }
-                    if FirebaseManager.isAvailable && firebase.isSignedIn {
-                        Button(action: {
-                            GoogleSignInService.shared.signOut()
-                            FirebaseManager.shared.refreshUser()
-                        }) {
-                            Text("Sign out")
+                        Task {
+                            do {
+                                try await GoogleSignInService.shared.signIn()
+                                FirebaseManager.shared.refreshUser()
+                                LogService.shared.log(.info, .auth, "Signed in with Google (native)")
+                            } catch {
+                                LogService.shared.log(.error, .auth, "Native sign-in failed: \(error.localizedDescription)")
+                            }
                         }
+                    }) {
+                        Text("Sign In")
                     }
+
+                    Divider()
+
                     Button(action: {
                         Task {
                             if FirebaseManager.isAvailable && FirebaseManager.shared.isSignedIn {
@@ -103,14 +103,10 @@ struct SettingsBarGearMenu: View {
                     }) {
                         Text("Run Sync from BOB → Reminders")
                     }
-                    Button(action: {
-                        BobSyncSettingsView.showWindow()
-                    }) {
+                    Button(action: { BobSyncSettingsView.showWindow() }) {
                         Text("BOB Sync Settings…")
                     }
-                } label: {
-                    Text("BOB Sync")
-                }
+                } label: { Text("BOB Sync") }
                 
                 Button(action: {
                     NSApplication.shared.terminate(self)

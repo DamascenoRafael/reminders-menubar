@@ -47,6 +47,7 @@ class BobSyncService: ObservableObject {
 
     func syncFromBob() async {
         guard isConfigured else { return }
+        LogService.shared.log(.info, .sync, "Sync (CF endpoint) started")
         let up = UserPreferences.shared
 
         // Build request
@@ -61,12 +62,16 @@ class BobSyncService: ObservableObject {
             let (data, resp) = try await session.data(for: req)
             guard let http = resp as? HTTPURLResponse, (200..<300).contains(http.statusCode) else { return }
             let pr = try JSONDecoder().decode(PushResponse.self, from: data)
-            if pr.tasks.isEmpty { return }
+            if pr.tasks.isEmpty {
+                LogService.shared.log(.info, .sync, "Sync: no tasks to import")
+                return
+            }
 
             var mappingUpdates: [PullRequest.Update] = []
             let calendars = RemindersService.shared.getCalendars()
             let defaultCalendar = RemindersService.shared.getDefaultCalendar() ?? calendars.first
 
+            var createdCount = 0
             for t in pr.tasks {
                 // Create EKReminder
                 let ek = EKReminder(eventStore: RemindersService.shared.eventStore)
@@ -77,50 +82,42 @@ class BobSyncService: ObservableObject {
                 }
                 if let cal = defaultCalendar { ek.calendar = cal }
 
-                // Add a friendly marker in notes for the user (optional)
+                // Add structured marker in notes and preserve any user notes (after separator)
                 if let ref = t.ref {
-                    let createdLine: String = {
-                        if let created = t.createdAt { 
-                            let d = Date(timeIntervalSince1970: created / 1000.0)
-                            let f = DateFormatter(); f.dateFormat = "yyyy-MM-dd HH:mm"
-                            return "[Created: \(f.string(from: d))]"
-                        }
-                        return ""
-                    }()
-                    let dueLine: String = {
-                        if let due = t.dueDate { 
-                            let d = Date(timeIntervalSince1970: due / 1000.0)
-                            let f = DateFormatter(); f.dateFormat = "yyyy-MM-dd"
-                            return "(due: \(f.string(from: d)))"
-                        }
-                        return ""
-                    }()
-                    let meta = [
-                        "BOB: \(ref)",
-                        t.storyId != nil ? "| Story: \(t.storyId!)" : nil,
-                        t.goalId != nil ? "| Goal: \(t.goalId!)" : nil
-                    ].compactMap { $0 }.joined(separator: " ")
-                    var lines = [meta, "[\(Self.timestampNow())] Created via Push"]
-                    if !dueLine.isEmpty { lines[1] += " " + dueLine }
-                    if !createdLine.isEmpty { lines.append(createdLine) }
-                    ek.notes = lines.joined(separator: "\n")
+                    let createdDate = t.createdAt.map { Date(timeIntervalSince1970: $0 / 1000.0) }
+                    let dueDate = t.dueDate.map { Date(timeIntervalSince1970: $0 / 1000.0) }
+                    let meta = NotesMeta(
+                        ref: ref,
+                        storyId: t.storyId,
+                        goalId: t.goalId,
+                        theme: nil,
+                        createdAt: createdDate,
+                        updatedAt: nil,
+                        dueDate: dueDate,
+                        lastComment: nil
+                    )
+                    ek.notes = NotesCodec.format(meta: meta, existing: nil)
                 }
 
                 RemindersService.shared.save(reminder: ek)
                 // Track mapping to set reminderId on BOB task
                 mappingUpdates.append(.init(id: t.id, reminderId: ek.calendarItemIdentifier, completed: nil))
+                createdCount += 1
             }
 
             // POST mapping back via pull endpoint
             await postPullUpdates(updates: mappingUpdates)
+            LogService.shared.log(.info, .sync, "Sync (CF endpoint) finished. Created=\(createdCount) mapped=\(mappingUpdates.count)")
         } catch {
             // Silent fail to avoid UI disruption
+            LogService.shared.log(.error, .sync, "Sync (CF endpoint) error: \(error.localizedDescription)")
         }
     }
 
     func reportCompletion(for reminder: EKReminder) async {
         guard isConfigured else { return }
         let update = PullRequest.Update(id: nil, reminderId: reminder.calendarItemIdentifier, completed: reminder.isCompleted)
+        LogService.shared.log(.info, .sync, "Report completion to BOB: id=\(reminder.calendarItemIdentifier) completed=\(reminder.isCompleted)")
         await postPullUpdates(updates: [update])
     }
 
@@ -136,8 +133,10 @@ class BobSyncService: ObservableObject {
         do {
             req.httpBody = try JSONEncoder().encode(body)
             _ = try await session.data(for: req)
+            LogService.shared.log(.debug, .network, "POST pull updates count=\(updates.count)")
         } catch {
             // Silent fail
+            LogService.shared.log(.error, .network, "Failed POST pull updates: \(error.localizedDescription)")
         }
     }
 
@@ -146,4 +145,3 @@ class BobSyncService: ObservableObject {
         return f.string(from: Date())
     }
 }
-

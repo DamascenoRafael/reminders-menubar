@@ -49,5 +49,14 @@ struct AppCommands: Commands {
                 .keyboardShortcut(KeyEquivalent("z"), modifiers: [.command, .shift])
             }
         }
+
+        CommandMenu(Text(verbatim: "View")) {
+            Button {
+                LogsView.showWindow()
+            } label: {
+                Text(verbatim: "Open Logs…")
+            }
+            .keyboardShortcut(KeyEquivalent("l"), modifiers: .command)
+        }
     }
 }
