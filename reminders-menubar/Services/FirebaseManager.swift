@@ -46,14 +46,14 @@ class FirebaseManager: ObservableObject {
 
     #if canImport(GoogleSignIn)
     @MainActor
-    func signInWithGoogle(presenting presenter: NSViewController) async throws {
+    func signInWithGoogle(presenting window: NSWindow) async throws {
         configureIfNeeded()
         // Prefer new API; fallback to configuration if required
         if let clientID = FirebaseApp.app()?.options.clientID {
             GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: clientID)
         }
 
-        let result = try await GIDSignIn.sharedInstance.signIn(withPresenting: presenter)
+        let result = try await GIDSignIn.sharedInstance.signIn(withPresenting: window)
         guard let idToken = result.user.idToken?.tokenString else {
             throw NSError(domain: "GoogleAuth", code: -2, userInfo: [NSLocalizedDescriptionKey: "Missing ID token"])
         }
@@ -67,7 +67,7 @@ class FirebaseManager: ObservableObject {
         GIDSignIn.sharedInstance.signOut()
     }
     #else
-    func signInWithGoogle(presenting presenter: NSViewController) async throws {
+    func signInWithGoogle(presenting window: NSWindow) async throws {
         throw NSError(domain: "GoogleSignInMissing", code: -1, userInfo: [NSLocalizedDescriptionKey: "GoogleSignIn SDK not available"])
     }
     func googleSignOut() { }

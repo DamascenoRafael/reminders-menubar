@@ -15,6 +15,7 @@
 		3AFB10042E7F56A3000DE3AE /* FirebaseAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFB00042E7F56A3000DE3AE /* FirebaseAuthView.swift */; };
 		FB1000012E7F7001000F201 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FB0000012E7F7001000F101 /* FirebaseAuth */; };
 		FB1000022E7F7001000F202 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = FB0000022E7F7001000F102 /* FirebaseFirestore */; };
+		GS1000012E7F9001000F301 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = GS0000012E7F9001000F201 /* GoogleSignIn */; };
 		7102423025F55D5600451D15 /* ReminderInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102422F25F55D5600451D15 /* ReminderInterval.swift */; };
 		71032A8F24C21F0F00A8006C /* FormNewReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71032A8E24C21F0F00A8006C /* FormNewReminderView.swift */; };
 		71059DAB25CA5244001F3063 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71059DAA25CA5244001F3063 /* AppDelegate.swift */; };
@@ -202,6 +203,7 @@
 				716BCF0E28C97C7100537081 /* KeyboardShortcuts in Frameworks */,
 				FB1000012E7F7001000F201 /* FirebaseAuth in Frameworks */,
 				FB1000022E7F7001000F202 /* FirebaseFirestore in Frameworks */,
+				GS1000012E7F9001000F301 /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +464,7 @@
 				716BCF0D28C97C7100537081 /* KeyboardShortcuts */,
 				FB0000012E7F7001000F101 /* FirebaseAuth */,
 				FB0000022E7F7001000F102 /* FirebaseFirestore */,
+				GS0000012E7F9001000F201 /* GoogleSignIn */,
 			);
 			productName = "reminders-menubar";
 			productReference = 712C32B024BF939100AC75E2 /* Reminders MenuBar.app */;
@@ -517,6 +520,7 @@
 			packageReferences = (
 				716BCF0C28C97C7100537081 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
 				FB0000002E7F7001000F100 /* XCRemoteSwiftPackageReference "Firebase" */,
+				GS0000002E7F9001000F101 /* XCRemoteSwiftPackageReference "GoogleSignIn" */,
 			);
 			productRefGroup = 712C32B124BF939100AC75E2 /* Products */;
 			projectDirPath = "";
@@ -952,6 +956,14 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		GS0000002E7F9001000F101 /* XCRemoteSwiftPackageReference "GoogleSignIn" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -969,6 +981,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FB0000002E7F7001000F100 /* XCRemoteSwiftPackageReference "Firebase" */;
 			productName = FirebaseFirestore;
+		};
+		GS0000012E7F9001000F201 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = GS0000002E7F9001000F101 /* XCRemoteSwiftPackageReference "GoogleSignIn" */;
+			productName = GoogleSignIn;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

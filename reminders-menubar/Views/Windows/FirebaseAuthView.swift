@@ -71,11 +71,11 @@ struct FirebaseAuthView: View {
 
     private func signInGoogle() async {
         busy = true; defer { busy = false }
-        guard let presenter = NSApp.keyWindow?.contentViewController else {
+        guard let window = NSApp.keyWindow else {
             message = "No active window to present Google Sign-In"; return
         }
         do {
-            try await fb.signInWithGoogle(presenting: presenter)
+            try await fb.signInWithGoogle(presenting: window)
             message = "Signed in with Google"
         } catch { message = error.localizedDescription }
     }
