@@ -97,3 +97,8 @@ iOSInjectionProject/
 GoogleService-Info.plist
 **/firebase_app_id_file.json
 firebase_app_id_file.json
+# Editor workspace files
+*.code-workspace
+
+# Git bundles (do not commit)
+*.bundle
