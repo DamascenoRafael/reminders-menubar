@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38B2A5EC2E7F56A3000DE3AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 38B2A5EB2E7F56A3000DE3AE /* GoogleService-Info.plist */; };
+		38B2A5ED2E7F56A3000DE3AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 38B2A5EB2E7F56A3000DE3AE /* GoogleService-Info.plist */; };
+		3AFB10012E7F56A3000DE3AE /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFB00012E7F56A3000DE3AE /* FirebaseManager.swift */; };
+		3AFB10022E7F56A3000DE3AE /* FirebaseSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFB00022E7F56A3000DE3AE /* FirebaseSyncService.swift */; };
+		3AFB10032E7F56A3000DE3AE /* SyncLogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFB00032E7F56A3000DE3AE /* SyncLogService.swift */; };
+		3AFB10042E7F56A3000DE3AE /* FirebaseAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFB00042E7F56A3000DE3AE /* FirebaseAuthView.swift */; };
+		FB1000012E7F7001000F201 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FB0000012E7F7001000F101 /* FirebaseAuth */; };
+		FB1000022E7F7001000F202 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = FB0000022E7F7001000F102 /* FirebaseFirestore */; };
 		7102423025F55D5600451D15 /* ReminderInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102422F25F55D5600451D15 /* ReminderInterval.swift */; };
 		71032A8F24C21F0F00A8006C /* FormNewReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71032A8E24C21F0F00A8006C /* FormNewReminderView.swift */; };
 		71059DAB25CA5244001F3063 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71059DAA25CA5244001F3063 /* AppDelegate.swift */; };
@@ -96,6 +104,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		38B2A5EB2E7F56A3000DE3AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7102422F25F55D5600451D15 /* ReminderInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderInterval.swift; sourceTree = "<group>"; };
 		71032A8E24C21F0F00A8006C /* FormNewReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormNewReminderView.swift; sourceTree = "<group>"; };
 		71059DA825CA5244001F3063 /* Reminders MenuBar Launcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reminders MenuBar Launcher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,6 +181,10 @@
 		71F9726925981EDF00D0A118 /* NSTableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableView+Extensions.swift"; sourceTree = "<group>"; };
 		96A54A6A29A3ADB70060403F /* DateParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateParser.swift; sourceTree = "<group>"; };
 		96A54A6C29A3B1A90060403F /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		3AFB00012E7F56A3000DE3AE /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		3AFB00022E7F56A3000DE3AE /* FirebaseSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSyncService.swift; sourceTree = "<group>"; };
+		3AFB00032E7F56A3000DE3AE /* SyncLogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncLogService.swift; sourceTree = "<group>"; };
+		3AFB00042E7F56A3000DE3AE /* FirebaseAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +200,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				716BCF0E28C97C7100537081 /* KeyboardShortcuts in Frameworks */,
+				FB1000012E7F7001000F201 /* FirebaseAuth in Frameworks */,
+				FB1000022E7F7001000F202 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +245,9 @@
 				71A4163625CED8FE00CA4F81 /* GithubService.swift */,
 				71F301F9259FB5CF00CDD81E /* UserPreferences.swift */,
 				715B4DD428D56FE5008C6683 /* KeyboardShortcutService.swift */,
+				3AFB00012E7F56A3000DE3AE /* FirebaseManager.swift */,
+				3AFB00022E7F56A3000DE3AE /* FirebaseSyncService.swift */,
+				3AFB00032E7F56A3000DE3AE /* SyncLogService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -248,6 +266,7 @@
 		712C32A724BF939100AC75E2 = {
 			isa = PBXGroup;
 			children = (
+				38B2A5EB2E7F56A3000DE3AE /* GoogleService-Info.plist */,
 				712C32B224BF939100AC75E2 /* reminders-menubar */,
 				71059DA925CA5244001F3063 /* reminders-menubar-launcher */,
 				712C32B124BF939100AC75E2 /* Products */,
@@ -295,6 +314,7 @@
 			children = (
 				71E51D5725BFB8CF009A4B56 /* AboutView.swift */,
 				718C813528D01CCE00BAC2D0 /* KeyboardShortcutView.swift */,
+				3AFB00042E7F56A3000DE3AE /* FirebaseAuthView.swift */,
 			);
 			path = Windows;
 			sourceTree = "<group>";
@@ -440,6 +460,8 @@
 			name = "Reminders MenuBar";
 			packageProductDependencies = (
 				716BCF0D28C97C7100537081 /* KeyboardShortcuts */,
+				FB0000012E7F7001000F101 /* FirebaseAuth */,
+				FB0000022E7F7001000F102 /* FirebaseFirestore */,
 			);
 			productName = "reminders-menubar";
 			productReference = 712C32B024BF939100AC75E2 /* Reminders MenuBar.app */;
@@ -494,6 +516,7 @@
 			mainGroup = 712C32A724BF939100AC75E2;
 			packageReferences = (
 				716BCF0C28C97C7100537081 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+				FB0000002E7F7001000F100 /* XCRemoteSwiftPackageReference "Firebase" */,
 			);
 			productRefGroup = 712C32B124BF939100AC75E2 /* Products */;
 			projectDirPath = "";
@@ -510,6 +533,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38B2A5EC2E7F56A3000DE3AE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,6 +546,7 @@
 				71359E9824C6C0B5001D4C40 /* Colors.xcassets in Resources */,
 				712C32BB24BF939200AC75E2 /* Preview Assets.xcassets in Resources */,
 				712C32B824BF939200AC75E2 /* Assets.xcassets in Resources */,
+				38B2A5ED2E7F56A3000DE3AE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,6 +589,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AFB10012E7F56A3000DE3AE /* FirebaseManager.swift in Sources */,
+				3AFB10022E7F56A3000DE3AE /* FirebaseSyncService.swift in Sources */,
+				3AFB10032E7F56A3000DE3AE /* SyncLogService.swift in Sources */,
 				71A4163725CED8FE00CA4F81 /* GithubService.swift in Sources */,
 				71D6B98028E25B9F0004EEBB /* AppCommands.swift in Sources */,
 				7141456325CF9693006695B2 /* Release.swift in Sources */,
@@ -604,6 +632,7 @@
 				71564448260324FA005E81FD /* PrioritizedReminders.swift in Sources */,
 				7156443A26030591005E81FD /* ArrayReminderItem+Extension.swift in Sources */,
 				71F36A9A29C2BA0C0099D337 /* RmbColorScheme.swift in Sources */,
+				3AFB10042E7F56A3000DE3AE /* FirebaseAuthView.swift in Sources */,
 				718C813628D01CCE00BAC2D0 /* KeyboardShortcutView.swift in Sources */,
 				71F93A612E03B54100D5C5BC /* ReminderCompleteButton.swift in Sources */,
 				71A3834325BCA69C00975B4C /* Date+Extensions.swift in Sources */,
@@ -639,11 +668,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "reminders-menubar-launcher/reminders_menubar_launcher.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
-				ENABLE_HARDENED_RUNTIME = YES;
+				DEVELOPMENT_TEAM = J877BRYKD6;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "reminders-menubar-launcher/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -651,7 +682,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.damascenorafael.reminders-menubar-launcher";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jc1.tech.bob;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -664,11 +695,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "reminders-menubar-launcher/reminders_menubar_launcher.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
-				ENABLE_HARDENED_RUNTIME = YES;
+				DEVELOPMENT_TEAM = J877BRYKD6;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "reminders-menubar-launcher/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -676,7 +709,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.damascenorafael.reminders-menubar-launcher";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jc1.tech.bob;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -816,11 +849,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "reminders-menubar/reminders_menubar.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"reminders-menubar/Preview Content\"";
-				ENABLE_HARDENED_RUNTIME = YES;
+				DEVELOPMENT_TEAM = J877BRYKD6;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "reminders-menubar/Info.plist";
@@ -831,7 +866,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.25.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.damascenorafael.reminders-menubar";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jc1.tech.bob;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -844,11 +879,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "reminders-menubar/reminders_menubar.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"reminders-menubar/Preview Content\"";
-				ENABLE_HARDENED_RUNTIME = YES;
+				DEVELOPMENT_TEAM = J877BRYKD6;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "reminders-menubar/Info.plist";
@@ -859,7 +896,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.25.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.damascenorafael.reminders-menubar";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jc1.tech.bob;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -907,6 +944,14 @@
 				version = 2.3.0;
 			};
 		};
+		FB0000002E7F7001000F100 /* XCRemoteSwiftPackageReference "Firebase" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -914,6 +959,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 716BCF0C28C97C7100537081 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
 			productName = KeyboardShortcuts;
+		};
+		FB0000012E7F7001000F101 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FB0000002E7F7001000F100 /* XCRemoteSwiftPackageReference "Firebase" */;
+			productName = FirebaseAuth;
+		};
+		FB0000022E7F7001000F102 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FB0000002E7F7001000F100 /* XCRemoteSwiftPackageReference "Firebase" */;
+			productName = FirebaseFirestore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

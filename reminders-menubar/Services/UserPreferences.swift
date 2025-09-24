@@ -16,6 +16,8 @@ private enum PreferencesKeys {
     static let menuBarCounterType = "menuBarCounterType"
     static let filterMenuBarCountByCalendar = "filterMenuBarCountByCalendar"
     static let preferredLanguage = "preferredLanguage"
+    // Sync status
+    static let lastSyncSummary = "lastSyncSummary"
 }
 
 class UserPreferences: ObservableObject {
@@ -181,6 +183,15 @@ class UserPreferences: ObservableObject {
     }() {
         didSet {
             UserPreferences.defaults.set(preferredLanguage, forKey: PreferencesKeys.preferredLanguage)
+        }
+    }
+
+    // MARK: - Sync Summary
+    @Published var lastSyncSummary: String? = {
+        return defaults.string(forKey: PreferencesKeys.lastSyncSummary)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(lastSyncSummary, forKey: PreferencesKeys.lastSyncSummary)
         }
     }
 }

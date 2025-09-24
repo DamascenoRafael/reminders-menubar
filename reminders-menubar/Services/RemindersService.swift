@@ -37,6 +37,30 @@ class RemindersService {
     func getDefaultCalendar() -> EKCalendar? {
         return eventStore.defaultCalendarForNewReminders() ?? eventStore.calendars(for: .reminder).first
     }
+
+    func ensureCalendar(named title: String) -> EKCalendar? {
+        // Try existing
+        if let existing = getCalendars().first(where: { $0.title.caseInsensitiveCompare(title) == .orderedSame }) {
+            return existing
+        }
+        // Create a new calendar under the default source
+        guard let base = getDefaultCalendar() else { return nil }
+        let cal = EKCalendar(for: .reminder, eventStore: eventStore)
+        cal.title = title
+        cal.source = base.source
+        do {
+            try eventStore.saveCalendar(cal, commit: true)
+            return cal
+        } catch {
+            print("Error creating calendar:", error.localizedDescription)
+            return nil
+        }
+    }
+
+    func move(reminder: EKReminder, to calendar: EKCalendar) {
+        reminder.calendar = calendar
+        save(reminder: reminder)
+    }
     
     private func fetchReminders(matching predicate: NSPredicate) async -> [EKReminder] {
         await withCheckedContinuation { continuation in

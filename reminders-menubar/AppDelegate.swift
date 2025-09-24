@@ -1,6 +1,9 @@
 import Cocoa
 import SwiftUI
 import Combine
+#if canImport(GoogleSignIn)
+import GoogleSignIn
+#endif
 
 @main
 struct RemindersMenuBar: App {
@@ -45,6 +48,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         configureKeyboardShortcut()
         configureDidCloseNotification()
     }
+
+#if canImport(GoogleSignIn)
+    func application(_ application: NSApplication, open urls: [URL]) {
+        for url in urls {
+            if GIDSignIn.sharedInstance.handle(url) {
+                break
+            }
+        }
+    }
+#endif
     
     private func configurePopover() {
         popover.contentSize = NSSize(width: 340, height: 460)

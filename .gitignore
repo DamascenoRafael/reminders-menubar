@@ -91,3 +91,9 @@ iOSInjectionProject/
 
 # macOS folder metadata
 .DS_Store
+
+# Firebase configuration (do not commit)
+**/GoogleService-Info.plist
+GoogleService-Info.plist
+**/firebase_app_id_file.json
+firebase_app_id_file.json

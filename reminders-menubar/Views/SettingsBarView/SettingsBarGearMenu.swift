@@ -38,7 +38,26 @@ struct SettingsBarGearMenu: View {
                 }
                 
                 visualCustomizationOptions()
-                
+
+                // Firebase Auth & Sync
+                Menu {
+                    Button("Open Auth…") { FirebaseAuthView.showWindow() }
+                    Button("Sync with BOB (Firebase)") {
+                        Task {
+                            let result = await FirebaseSyncService.shared.syncNow(targetCalendar: remindersData.calendarForSaving)
+                            if !result.errors.isEmpty { print("Firebase sync errors:", result.errors) }
+                            await remindersData.update()
+                        }
+                    }
+                    if let summary = UserPreferences.shared.lastSyncSummary, !summary.isEmpty {
+                        Divider()
+                        Text("Last Sync: \(summary)")
+                            .font(.footnote)
+                    }
+                } label: {
+                    Text("Firebase")
+                }
+
                 Button {
                     KeyboardShortcutView.showWindow()
                 } label: {
@@ -48,7 +67,8 @@ struct SettingsBarGearMenu: View {
                 }
                 
                 Divider()
-                
+
+
                 Button(action: {
                     Task {
                         await remindersData.update()
