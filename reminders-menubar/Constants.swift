@@ -5,13 +5,17 @@ enum AppConstants {
         guard let bundleVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else {
             return "-"
         }
-        
+
         return "v\(bundleVersion)"
     }()
     
     static let appName = "Reminders MenuBar"
-    static let mainBundleId = "br.com.damascenorafael.reminders-menubar"
-    static let launcherBundleId = "br.com.damascenorafael.reminders-menubar-launcher"
+    static let mainBundleId = "com.jc1.tech.bob"
+    static let launcherBundleId = "com.jc1.tech.bob.launcher"
+
+    // Toggle native macOS Reminders integration. When false the app avoids
+    // hitting CalendarAgent (EventKit) and operates in Firebase-only mode.
+    static let useNativeReminders = true
 }
 
 enum GithubConstants {

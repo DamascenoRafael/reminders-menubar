@@ -8,37 +8,85 @@ class RemindersService {
         // This prevents others from using the default '()' initializer for this class.
     }
     
-    private let eventStore = EKEventStore()
-    
+    private lazy var eventStore: EKEventStore? = {
+        guard AppConstants.useNativeReminders else { return nil }
+        return EKEventStore()
+    }()
+
     func authorizationStatus() -> EKAuthorizationStatus {
+        guard AppConstants.useNativeReminders else {
+            if #available(macOS 14.0, *) {
+                return .fullAccess
+            } else {
+                return .authorized
+            }
+        }
         return EKEventStore.authorizationStatus(for: .reminder)
+    }
+
+    // macOS 14 introduced distinct fullAccess/writeOnly statuses for Reminders.
+    // This helper reflects whether the app has the read/write access it needs.
+    func hasFullRemindersAccess() -> Bool {
+        guard AppConstants.useNativeReminders else {
+            return true
+        }
+        let status = EKEventStore.authorizationStatus(for: .reminder)
+        if #available(macOS 14.0, *) {
+            switch status {
+            case .fullAccess:
+                return true
+            case .authorized:
+                // Some macOS 14 builds still surface the legacy .authorized state.
+                return true
+            default:
+                return false
+            }
+        } else {
+            return status == .authorized
+        }
     }
     
     func requestAccess(completion: @escaping (Bool, String?) -> Void) {
+        guard AppConstants.useNativeReminders else {
+            completion(true, nil)
+            return
+        }
         if #available(macOS 14.0, *) {
-            eventStore.requestFullAccessToReminders { granted, error in
+            eventStore?.requestFullAccessToReminders { granted, error in
                 completion(granted, error?.localizedDescription)
             }
         } else {
-            eventStore.requestAccess(to: .reminder) { granted, error in
+            eventStore?.requestAccess(to: .reminder) { granted, error in
                 completion(granted, error?.localizedDescription)
             }
         }
     }
     
     func getCalendar(withIdentifier calendarIdentifier: String) -> EKCalendar? {
+        guard let eventStore else {
+            return nil
+        }
         return eventStore.calendar(withIdentifier: calendarIdentifier)
     }
     
     func getCalendars() -> [EKCalendar] {
+        guard let eventStore else {
+            return []
+        }
         return eventStore.calendars(for: .reminder)
     }
     
     func getDefaultCalendar() -> EKCalendar? {
+        guard let eventStore else {
+            return nil
+        }
         return eventStore.defaultCalendarForNewReminders() ?? eventStore.calendars(for: .reminder).first
     }
 
     func ensureCalendar(named title: String) -> EKCalendar? {
+        guard let eventStore else {
+            return nil
+        }
         // Try existing
         if let existing = getCalendars().first(where: { $0.title.caseInsensitiveCompare(title) == .orderedSame }) {
             return existing
@@ -61,9 +109,12 @@ class RemindersService {
         reminder.calendar = calendar
         save(reminder: reminder)
     }
-    
+
     private func fetchReminders(matching predicate: NSPredicate) async -> [EKReminder] {
-        await withCheckedContinuation { continuation in
+        guard let eventStore else {
+            return []
+        }
+        return await withCheckedContinuation { continuation in
             eventStore.fetchReminders(matching: predicate) { allReminders in
                 guard let allReminders else {
                     continuation.resume(returning: [])
@@ -90,6 +141,9 @@ class RemindersService {
     }
 
     func getReminders(of calendarIdentifiers: [String]) async -> [ReminderList] {
+        guard let eventStore else {
+            return []
+        }
         let calendars = getCalendars().filter({ calendarIdentifiers.contains($0.calendarIdentifier) })
         let predicate = eventStore.predicateForReminders(in: calendars)
         let remindersByCalendar = Dictionary(
@@ -111,6 +165,9 @@ class RemindersService {
         _ interval: ReminderInterval,
         for calendarIdentifiers: [String]? = nil
     ) async -> [ReminderItem] {
+        guard let eventStore else {
+            return []
+        }
         var calendars: [EKCalendar]?
         if let calendarIdentifiers {
             if calendarIdentifiers.isEmpty {
@@ -134,6 +191,9 @@ class RemindersService {
     }
     
     func save(reminder: EKReminder) {
+        guard let eventStore else {
+            return
+        }
         do {
             try eventStore.save(reminder, commit: true)
         } catch {
@@ -141,14 +201,27 @@ class RemindersService {
         }
     }
     
-    func createNew(with rmbReminder: RmbReminder, in calendar: EKCalendar) {
+    @discardableResult
+    func createNew(with rmbReminder: RmbReminder, in calendar: EKCalendar) -> EKReminder? {
+        guard let eventStore else {
+            return nil
+        }
         let newReminder = EKReminder(eventStore: eventStore)
         newReminder.update(with: rmbReminder)
         newReminder.calendar = calendar
-        save(reminder: newReminder)
+        do {
+            try eventStore.save(newReminder, commit: true)
+            return newReminder
+        } catch {
+            print("Error saving reminder:", error.localizedDescription)
+            return nil
+        }
     }
     
     func remove(reminder: EKReminder) {
+        guard let eventStore else {
+            return
+        }
         do {
             try eventStore.remove(reminder, commit: true)
         } catch {

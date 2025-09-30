@@ -11,16 +11,16 @@ struct KeyboardShortcutView: View {
                 
                 VStack(alignment: .leading, spacing: 16) {
                     Toggle(
-                        rmbLocalized(.keyboardShortcutEnableOpenShortcutOption, arguments: AppConstants.appName),
-                        isOn: $keyboardShortcutService.isOpenRemindersMenuBarEnabled
+                        rmbLocalized(.keyboardShortcutEnableSyncShortcutOption),
+                        isOn: $keyboardShortcutService.isRunBobSyncEnabled
                     )
 
                     Group {
                         HStack {
-                            KeyboardShortcuts.Recorder(for: .openRemindersMenuBar)
-                            
+                            KeyboardShortcuts.Recorder(for: .runBobSync)
+
                             Button(action: {
-                                KeyboardShortcutService.shared.reset(.openRemindersMenuBar)
+                                KeyboardShortcutService.shared.reset(.runBobSync)
                             }) {
                                 Text(rmbLocalized(.keyboardShortcutRestoreDefaultButton))
                                     .padding(.horizontal, 4)
@@ -29,7 +29,7 @@ struct KeyboardShortcutView: View {
                         }
                     }
                     .padding(.leading, 20)
-                    .disabled(!keyboardShortcutService.isOpenRemindersMenuBarEnabled)
+                    .disabled(!keyboardShortcutService.isRunBobSyncEnabled)
                 }
                 
                 Spacer()

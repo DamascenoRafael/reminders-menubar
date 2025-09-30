@@ -3,10 +3,12 @@ import KeyboardShortcuts
 
 extension KeyboardShortcuts.Name {
     static let openRemindersMenuBar = Self("OpenRemindersMenuBar", default: .init(.r, modifiers: [.command, .option]))
+    static let runBobSync = Self("RunBobSync", default: .init(.s, modifiers: [.command, .shift]))
 }
 
 private enum ShortcutsKeys {
     static let isOpenRemindersMenuBarEnabled = "isOpenRemindersMenuBarEnabled"
+    static let isRunBobSyncEnabled = "isRunBobSyncEnabled"
 }
 
 @MainActor
@@ -28,6 +30,21 @@ class KeyboardShortcutService: ObservableObject {
                 forKey: ShortcutsKeys.isOpenRemindersMenuBarEnabled
             )
             setEnabled(isOpenRemindersMenuBarEnabled, for: .openRemindersMenuBar)
+        }
+    }
+
+    @Published var isRunBobSyncEnabled: Bool = {
+        if let stored = defaults.object(forKey: ShortcutsKeys.isRunBobSyncEnabled) as? Bool {
+            return stored
+        }
+        return true
+    }() {
+        didSet {
+            KeyboardShortcutService.defaults.set(
+                isRunBobSyncEnabled,
+                forKey: ShortcutsKeys.isRunBobSyncEnabled
+            )
+            setEnabled(isRunBobSyncEnabled, for: .runBobSync)
         }
     }
     
@@ -55,6 +72,8 @@ class KeyboardShortcutService: ObservableObject {
         switch shortcutName {
         case .openRemindersMenuBar:
             return isOpenRemindersMenuBarEnabled
+        case .runBobSync:
+            return isRunBobSyncEnabled
         default:
             return false
         }

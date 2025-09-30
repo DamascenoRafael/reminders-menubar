@@ -85,6 +85,8 @@ multiline_arguments:
 excluded: 
  - Carthage
  - Pods
+ - build
+ - SourcePackages
 
 custom_rules:
   comments_space:

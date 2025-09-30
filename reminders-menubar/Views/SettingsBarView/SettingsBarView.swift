@@ -11,6 +11,7 @@ struct SettingsBarView: View {
             
             Spacer()
             
+            SettingsBarSyncIndicator()
             SettingsBarGearMenu()
         }
         .frame(maxWidth: .infinity)

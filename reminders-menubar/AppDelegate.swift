@@ -31,9 +31,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let popover = NSPopover()
     lazy var statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
+    let remindersData = RemindersData()
+
     var contentViewController: NSViewController {
         let contentView = ContentView()
-        let remindersData = RemindersData()
         return NSHostingController(rootView: contentView.environmentObject(remindersData))
     }
 
@@ -41,12 +42,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AppDelegate.shared = self
         
         AppUpdateCheckHelper.shared.startBackgroundActivity()
+        BackgroundSyncService.shared.applyPreference()
         
         changeBehaviorToDismissIfNeeded()
         configurePopover()
         configureMenuBarButton()
         configureKeyboardShortcut()
         configureDidCloseNotification()
+        ensureRemindersAccessOnLaunch()
     }
 
 #if canImport(GoogleSignIn)
@@ -63,7 +66,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         popover.contentSize = NSSize(width: 340, height: 460)
         popover.animates = false
         
-        if RemindersService.shared.authorizationStatus() == .authorized {
+        if RemindersService.shared.hasFullRemindersAccess() {
             popover.contentViewController = contentViewController
         }
     }
@@ -88,6 +91,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         KeyboardShortcutService.shared.action(for: .openRemindersMenuBar) { [weak self] in
             self?.togglePopover()
         }
+        KeyboardShortcutService.shared.action(for: .runBobSync) {
+            ManualSyncService.shared.trigger(reason: "Keyboard Shortcut")
+        }
     }
     
     private func configureDidCloseNotification() {
@@ -100,13 +106,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 self?.didCloseEventDate = Date()
             }
     }
+
+    private func ensureRemindersAccessOnLaunch() {
+        guard !RemindersService.shared.hasFullRemindersAccess() else {
+            return
+        }
+
+        requestAuthorization()
+    }
     
     private func changeBehaviorToDismissIfNeeded() {
         popover.behavior = .transient
     }
 
     @objc private func togglePopover() {
-        guard RemindersService.shared.authorizationStatus() == .authorized else {
+        guard RemindersService.shared.hasFullRemindersAccess() else {
             requestAuthorization()
             return
         }
@@ -134,14 +148,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 extension AppDelegate: NSAlertDelegate {
     private func requestAuthorization() {
         RemindersService.shared.requestAccess { [weak self] granted, errorMessage in
-            if granted {
-                return
-            }
-                
-            print("Access to reminders not granted:", errorMessage ?? "no error description")
             DispatchQueue.main.async {
-                self?.sharedAuthorizationErrorMessage = errorMessage
-                self?.presentNoAuthorizationAlert()
+                guard let self else { return }
+
+                if granted {
+                    if self.popover.contentViewController == nil {
+                        self.popover.contentViewController = self.contentViewController
+                    }
+                    self.sharedAuthorizationErrorMessage = nil
+                    return
+                }
+
+                let status = RemindersService.shared.authorizationStatus()
+                var helpfulMessage = errorMessage
+                if #available(macOS 14.0, *), status == .writeOnly {
+                    helpfulMessage = "macOS granted write-only access. Open System Settings → Privacy & Security → Reminders and change Reminders MenuBar to Allow Full Access."
+                }
+                print("Access to reminders not granted:", helpfulMessage ?? "no error description", "(status: \(String(describing: status)))")
+                self.sharedAuthorizationErrorMessage = helpfulMessage
+                self.presentNoAuthorizationAlert()
             }
         }
     }

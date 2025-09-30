@@ -126,6 +126,12 @@
         }
       }
     },
+    "Add/Update" : {
+
+    },
+    "Anonymous Sign In" : {
+
+    },
     "appAboutButton" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1608,6 +1614,24 @@
         }
       }
     },
+    "Background Sync Interval" : {
+
+    },
+    "Bob" : {
+
+    },
+    "Bob Authentication" : {
+
+    },
+    "Bob sync has not run yet" : {
+
+    },
+    "Bob Themes" : {
+
+    },
+    "Bob Token (optional)" : {
+
+    },
     "changeReminderDueDateMenuOption" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1952,6 +1976,12 @@
           }
         }
       }
+    },
+    "Close" : {
+
+    },
+    "custom token" : {
+
     },
     "editReminderDueDateNextWeekOption" : {
       "extractionState" : "manual",
@@ -4716,6 +4746,9 @@
         }
       }
     },
+    "Google Sign-In" : {
+
+    },
     "keyboardShortcutEnableOpenShortcutOption" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4837,6 +4870,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "啟用快捷鍵開啟 %@"
+          }
+        }
+      }
+    },
+    "keyboardShortcutEnableSyncShortcutOption" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable Bob sync keyboard shortcut"
           }
         }
       }
@@ -5216,6 +5260,12 @@
         }
       }
     },
+    "Last sync with Bob" : {
+
+    },
+    "Last Sync: %@" : {
+
+    },
     "launchAtLoginOptionButton" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5340,6 +5390,15 @@
           }
         }
       }
+    },
+    "List" : {
+
+    },
+    "Loading Bob themes…" : {
+
+    },
+    "Loading…" : {
+
     },
     "menuBarCounterSettingsMenu" : {
       "extractionState" : "manual",
@@ -6335,6 +6394,12 @@
         }
       }
     },
+    "No Bob sync" : {
+
+    },
+    "Not signed in" : {
+
+    },
     "okButton" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -6460,6 +6525,15 @@
         }
       }
     },
+    "Open Bob Auth…" : {
+
+    },
+    "Open Log Folder" : {
+
+    },
+    "Open Sync Log" : {
+
+    },
     "openSystemPreferencesButton" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -6584,6 +6658,9 @@
           }
         }
       }
+    },
+    "Paste a Bob custom token (issued by your workspace)" : {
+
     },
     "preferredLanguageMenu" : {
       "extractionState" : "manual",
@@ -6834,6 +6911,9 @@
           }
         }
       }
+    },
+    "Refresh" : {
+
     },
     "reloadRemindersDataButton" : {
       "extractionState" : "manual",
@@ -8608,6 +8688,9 @@
         }
       }
     },
+    "Remove" : {
+
+    },
     "removeReminderAlertCancelButton" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -9233,6 +9316,9 @@
         }
       }
     },
+    "Reveal Sync Log" : {
+
+    },
     "seeMoreOnGitHubButton" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -9357,6 +9443,12 @@
           }
         }
       }
+    },
+    "Select a Bob theme or type one to map it to a list." : {
+
+    },
+    "Select…" : {
+
     },
     "selectListForSavingReminderButtonHelp" : {
       "extractionState" : "manual",
@@ -10178,6 +10270,46 @@
           }
         }
       }
+    },
+    "Sign in with Google" : {
+
+    },
+    "Sign In with Token" : {
+
+    },
+    "Sign in with your Google account to enable Bob sync and Firestore access." : {
+
+    },
+    "Sign Out" : {
+
+    },
+    "Signed in as %@ (uid: %@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Signed in as %1$@ (uid: %2$@)"
+          }
+        }
+      }
+    },
+    "Sync with Bob" : {
+
+    },
+    "Sync with Bob now" : {
+
+    },
+    "Syncing with Bob…" : {
+
+    },
+    "Theme → List Mapping" : {
+
+    },
+    "Theme → List Mapping…" : {
+
+    },
+    "Theme name" : {
+
     },
     "upcomingRemindersAllTitle" : {
       "extractionState" : "manual",

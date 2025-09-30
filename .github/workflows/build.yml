@@ -1,0 +1,29 @@
+name: macOS Build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode.app
+      - name: Build Reminders MenuBar
+        run: |
+          set -e
+          xcodebuild -project reminders-menubar.xcodeproj \
+                     -scheme "Reminders MenuBar" \
+                     -configuration Debug \
+                     CODE_SIGNING_ALLOWED=NO \
+                     build | xcpretty || true
+      - name: Build Launcher
+        run: |
+          xcodebuild -project reminders-menubar.xcodeproj \
+                     -scheme "Reminders MenuBar Launcher" \
+                     -configuration Debug \
+                     CODE_SIGNING_ALLOWED=NO \
+                     build | xcpretty || true
+

@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(FirebaseAuth)
+import FirebaseAuth
+#endif
 
 struct FirebaseAuthView: View {
     @ObservedObject var fb = FirebaseManager.shared
@@ -8,15 +11,18 @@ struct FirebaseAuthView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Firebase Authentication").font(.title2).fontWeight(.semibold)
+            Text("Bob Authentication").font(.title2).fontWeight(.semibold)
 
-            if fb.currentUser != nil {
-                Text("Signed in").font(.footnote).foregroundColor(.secondary)
+            if let user = fb.currentUser {
+                let email = user.email ?? "anonymous"
+                Text("Signed in as \(email) (uid: \(user.uid))").font(.footnote).foregroundColor(.secondary)
+            } else {
+                Text("Not signed in").font(.footnote).foregroundColor(.secondary)
             }
 
             GroupBox {
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Sign in with your Google account to enable direct Firestore access.")
+                    Text("Sign in with your Google account to enable Bob sync and Firestore access.")
                         .font(.footnote)
                     HStack(spacing: 8) {
                         Button("Sign in with Google") { Task { await signInGoogle() } }
@@ -29,7 +35,7 @@ struct FirebaseAuthView: View {
 
             GroupBox {
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Paste a Firebase Custom Token (issued by BOB)").font(.footnote)
+                    Text("Paste a Bob custom token (issued by your workspace)").font(.footnote)
                     SecureField("custom token", text: $customToken).textFieldStyle(.roundedBorder)
                     HStack {
                         Button("Sign In with Token") { Task { await signInWithToken() } }
@@ -40,9 +46,9 @@ struct FirebaseAuthView: View {
                     }
                 }
             } label: {
-                Text("Custom Token (optional)")
+                Text("Bob Token (optional)")
             }
-
+            
             if busy { ProgressView().controlSize(.small) }
             if !message.isEmpty { Text(message).font(.footnote).foregroundColor(.secondary) }
         }
@@ -56,17 +62,27 @@ struct FirebaseAuthView: View {
             fb.googleSignOut()
             try fb.signOut()
             message = "Signed out"
-        } catch { message = "Sign out error: \(error.localizedDescription)" }
+        } catch { message = describe(error, context: "Sign out") }
     }
 
     private func signInAnon() async {
         busy = true; defer { busy = false }
-        do { try await fb.signInAnonymously(); message = "Signed in anonymously" } catch { message = error.localizedDescription }
+        do { try await fb.signInAnonymously(); message = "Signed in anonymously" }
+        catch { message = describe(error, context: "Anonymous sign-in") }
     }
 
     private func signInWithToken() async {
         busy = true; defer { busy = false }
-        do { try await fb.signIn(withCustomToken: customToken); message = "Signed in" } catch { message = error.localizedDescription }
+        let token = customToken.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !token.isEmpty else {
+            message = "Custom token is empty."; return
+        }
+        do {
+            try await fb.signIn(withCustomToken: token)
+            await MainActor.run { customToken = "" }
+            message = "Signed in"
+        }
+        catch { message = describe(error, context: "Custom token sign-in") }
     }
 
     private func signInGoogle() async {
@@ -77,22 +93,43 @@ struct FirebaseAuthView: View {
         do {
             try await fb.signInWithGoogle(presenting: window)
             message = "Signed in with Google"
-        } catch { message = error.localizedDescription }
+        } catch { message = describe(error, context: "Google sign-in") }
     }
 
     private func closeWindow() { NSApp.keyWindow?.close() }
 
-    static func showWindow() {
-        let vc = NSHostingController(rootView: FirebaseAuthView())
-        let wc = NSWindowController(window: NSWindow(contentViewController: vc))
-        if let w = wc.window {
-            w.title = "Firebase Auth"
-            w.titleVisibility = .hidden
-            w.titlebarAppearsTransparent = true
-            w.animationBehavior = .alertPanel
-            w.styleMask = [.titled, .closable]
+    private func describe(_ error: Error, context: String) -> String {
+        let nsError = error as NSError
+        var parts: [String] = []
+        parts.append("\(context) failed: \(nsError.localizedDescription)")
+        if let reason = nsError.userInfo[NSLocalizedFailureReasonErrorKey] as? String, !reason.isEmpty {
+            parts.append(reason)
         }
-        wc.showWindow(nil)
+#if canImport(FirebaseAuth)
+        if nsError.domain == AuthErrorDomain,
+           AuthErrorCode.Code(rawValue: nsError.code) == .keychainError {
+            parts.append("macOS blocked keychain access. Ensure the app has the keychain entitlement or run a signed build.")
+        }
+#endif
+        if let underlying = nsError.userInfo[NSUnderlyingErrorKey] as? NSError {
+            parts.append(underlying.localizedDescription)
+        }
+        let payload = parts.joined(separator: " — ")
+        SyncLogService.shared.logEvent(tag: "auth", level: "ERROR", message: "\(context): \(payload)")
+        return payload
+    }
+
+    static func showWindow() {
+        let viewController = NSHostingController(rootView: FirebaseAuthView())
+        let windowController = NSWindowController(window: NSWindow(contentViewController: viewController))
+        if let window = windowController.window {
+            window.title = "Bob Auth"
+            window.titleVisibility = .hidden
+            window.titlebarAppearsTransparent = true
+            window.animationBehavior = .alertPanel
+            window.styleMask = [.titled, .closable]
+        }
+        windowController.showWindow(nil)
         NSApp.activate(ignoringOtherApps: true)
     }
 }

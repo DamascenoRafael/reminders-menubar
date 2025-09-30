@@ -1,52 +1,48 @@
-# Enhancement Proposals
+# Enhancements
 
-GitHub Issues are currently disabled on this fork, so this document tracks proposed enhancements. If you enable Issues in the repository settings, you can create issues from these items (see also `scripts/create_issues.sh`).
+This fork implements the items below. Future work can iterate further, but core flow is working.
 
-1) Sync: Use Firestore WriteBatch for updates
-   - Rationale: Reduce network roundtrips and partial-failure surface.
-   - Scope: Batch reminderId/status updates; add retry/backoff; keep summary/logging.
+Implemented
 
-2) Sync: Harden idempotency by pre-writing reminderId mapping
-   - Rationale: Avoid duplicates when later writes fail.
-   - Scope: Immediately write `reminderId` after creation (batched); keep BOB header parsing as fallback.
+1) Sync batching with Firestore WriteBatch
+   - Batched updates for reminderId/status/title/due and orphan clears.
 
-3) Concurrency: Refactor FirebaseSyncService to an actor
-   - Rationale: Eliminate concurrency warnings and ensure safe access.
-   - Scope: Actor-ize service or isolate mutable state; keep Reminders calls on MainActor; add small unit tests.
+2) Idempotency: pre-write `reminderId` mapping
+   - After creating a Reminder, immediately writes the mapping in the same batch.
 
-4) UI: Show sync results with errors + Open Log
-   - Rationale: Better visibility of outcomes and troubleshooting.
-   - Scope: Transient sheet/toast with created/updated/error count; button to open `~/Library/Logs/RemindersMenuBar`.
+3) Concurrency safety
+   - `FirebaseSyncService` is now an `actor`. Reminders calls run on `MainActor`.
 
-5) Settings: Theme→Calendar mapping controls
-   - Rationale: Predictable organization for synced reminders.
-   - Scope: Map themes to calendars; allow per-theme overrides and opt-out.
+4) Sync feedback UI + open logs
+   - Bottom toast with +created/↺updated/⚠︎errors.
+   - Menu entries to open sync log and the logs folder.
 
-6) Background sync via NSBackgroundActivityScheduler
-   - Rationale: Hands‑free periodic sync.
-   - Scope: Toggle + interval; respect auth states; log summary/errors.
+5) Theme→Calendar mapping controls
+   - Window to manage mappings; used during sync to route creations.
 
-7) Auth UX: Conditional UI + status indicator
-   - Rationale: Clearer authentication flow.
-   - Scope: Hide Google controls if package absent; show status (anonymous/Google/signed out); quick sign out/re-auth.
+6) Background sync
+   - Toggle + interval selection, via `NSBackgroundActivityScheduler`.
 
-8) Localization: Add strings for new UI
-   - Rationale: Keep localization coverage consistent.
-   - Scope: String catalogs for auth/sync UI; provide base English; hook into existing locales.
+7) Auth UX signal
+   - Auth view shows status and supports Google/custom/anonymous paths.
+
+8) Localization hygiene
+   - Avoids empty-path bundle warnings; new strings currently English-only.
 
 9) Sync preflight: Reminders authorization
-   - Rationale: Avoid silent failures when unauthorized.
-   - Scope: Pre-check Reminders access; friendly alert with System Settings deep link; explicit log reason.
+   - Pre-check with helpful message; handles macOS 14 `fullAccess`.
 
-10) Dry-run mode for sync
-   - Rationale: Safer operation and confidence.
-   - Scope: Checkbox in menu; preview planned creates/updates.
+10) Dry-run mode
+   - Toggle to simulate sync without writing to Reminders/Firestore.
 
-11) Logging ergonomics: rotate sync.log, per-line timestamps
-   - Rationale: Log hygiene and easier support.
-   - Scope: Simple rotation (size/date); ISO8601 timestamps each line.
+11) Log rotation
+   - Simple size-based rotation with ISO8601 timestamps.
 
-12) CI: Minimal Xcode build workflow
-   - Rationale: Keep PRs buildable.
-   - Scope: GitHub Actions; resolve packages; Debug build; cache SPM.
+12) CI build
+   - GitHub Actions workflow for macOS builds (code signing disabled).
 
+Potential next steps
+
+- Conflict policy settings (Firestore vs Reminders as source of truth).
+- Batched retries with backoff; partial failure surfacing in UI.
+- Deeper localization coverage for new UI.

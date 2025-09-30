@@ -9,6 +9,7 @@ struct SettingsBarGearMenu: View {
     
     @ObservedObject var appUpdateCheckHelper = AppUpdateCheckHelper.shared
     @ObservedObject var keyboardShortcutService = KeyboardShortcutService.shared
+    @ObservedObject var manualSyncService = ManualSyncService.shared
     
     var body: some View {
         Menu {
@@ -39,23 +40,48 @@ struct SettingsBarGearMenu: View {
                 
                 visualCustomizationOptions()
 
-                // Firebase Auth & Sync
+                // Bob Auth & Sync
                 Menu {
-                    Button("Open Auth…") { FirebaseAuthView.showWindow() }
-                    Button("Sync with BOB (Firebase)") {
-                        Task {
-                            let result = await FirebaseSyncService.shared.syncNow(targetCalendar: remindersData.calendarForSaving)
-                            if !result.errors.isEmpty { print("Firebase sync errors:", result.errors) }
-                            await remindersData.update()
+                    Button("Open Bob Auth…") { FirebaseAuthView.showWindow() }
+                    Button("Sync with Bob") { ManualSyncService.shared.trigger(reason: "Settings Menu") }
+                    .disabled(manualSyncService.isSyncing)
+                    Button("Open Sync Log") {
+                        SyncLogService.shared.revealLogInFinder()
+                    }
+                    Button("Open Log Folder") {
+                        SyncLogService.shared.openLogsFolder()
+                    }
+                    Divider()
+                    // Background sync controls
+                    Button(action: {
+                        userPreferences.enableBackgroundSync.toggle()
+                        BackgroundSyncService.shared.applyPreference()
+                    }) {
+                        SelectableView(title: "Enable Background Sync", isSelected: userPreferences.enableBackgroundSync)
+                    }
+                    Menu("Background Sync Interval") {
+                        ForEach([15, 30, 60, 120, 240], id: \.self) { minutes in
+                            Button(action: {
+                                userPreferences.backgroundSyncIntervalMinutes = minutes
+                                if userPreferences.enableBackgroundSync { BackgroundSyncService.shared.applyPreference() }
+                            }) {
+                                SelectableView(title: "Every \(minutes) min", isSelected: userPreferences.backgroundSyncIntervalMinutes == minutes)
+                            }
                         }
                     }
+                    Divider()
+                    Button(action: { userPreferences.syncDryRun.toggle() }) {
+                        SelectableView(title: "Dry-Run Mode (no writes)", isSelected: userPreferences.syncDryRun)
+                    }
+                    Divider()
+                    Button("Theme → List Mapping…") { ThemeCalendarMappingView.showWindow() }
                     if let summary = UserPreferences.shared.lastSyncSummary, !summary.isEmpty {
                         Divider()
                         Text("Last Sync: \(summary)")
                             .font(.footnote)
                     }
                 } label: {
-                    Text("Firebase")
+                    Text("Bob")
                 }
 
                 Button {

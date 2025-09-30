@@ -167,4 +167,39 @@ extension EKReminder {
             addAlarm(ekAlarm)
         }
     }
+
+    @MainActor
+    @discardableResult
+    func rmbUpdateTag(newTag: String?, removing previousTag: String?) -> Bool {
+        guard #available(macOS 12.0, *) else { return false }
+
+        func normalize(_ value: String?) -> String? {
+            guard let trimmed = value?.trimmingCharacters(in: .whitespacesAndNewlines), !trimmed.isEmpty else { return nil }
+            return trimmed
+        }
+
+        let normalizedPrevious = normalize(previousTag)
+        let normalizedNew = normalize(newTag)
+
+        var currentTags = (value(forKey: "tags") as? [String]) ?? []
+        let original = currentTags
+
+        if let previous = normalizedPrevious {
+            currentTags.removeAll { $0.compare(previous, options: .caseInsensitive) == .orderedSame }
+        }
+
+        if let desired = normalizedNew,
+           !currentTags.contains(where: { $0.compare(desired, options: .caseInsensitive) == .orderedSame }) {
+            currentTags.append(desired)
+        }
+
+        // Drop empty entries in case trimming removed everything
+        currentTags.removeAll { normalize($0) == nil }
+
+        if original != currentTags {
+            setValue(currentTags, forKey: "tags")
+            return true
+        }
+        return false
+    }
 }

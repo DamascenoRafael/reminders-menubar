@@ -1,7 +1,24 @@
 import SwiftUI
 
 struct AppCommands: Commands {
+    @ObservedObject private var manualSyncService = ManualSyncService.shared
+
     @CommandsBuilder var body: some Commands {
+        CommandMenu(Text(verbatim: "Bob")) {
+            Button("Sync with Bob") { ManualSyncService.shared.trigger(reason: "Command Menu") }
+                .keyboardShortcut(KeyEquivalent("s"), modifiers: [.command, .shift])
+                .disabled(manualSyncService.isSyncing)
+
+            Button("Open Bob Auth…") { FirebaseAuthView.showWindow() }
+                .keyboardShortcut(KeyEquivalent("b"), modifiers: [.command, .option])
+
+            Button("Theme → List Mapping…") { ThemeCalendarMappingView.showWindow() }
+
+            Divider()
+
+            Button("Reveal Sync Log") { SyncLogService.shared.revealLogInFinder() }
+        }
+
         CommandMenu(Text(verbatim: "Edit")) {
             // NOTE: macOS 13.0 already has the below shortcuts for TextField.
             // Shortcuts only need to be registered for versions earlier than macOS 13.0.

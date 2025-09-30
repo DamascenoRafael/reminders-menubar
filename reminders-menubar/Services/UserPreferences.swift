@@ -18,6 +18,14 @@ private enum PreferencesKeys {
     static let preferredLanguage = "preferredLanguage"
     // Sync status
     static let lastSyncSummary = "lastSyncSummary"
+    static let lastSyncDate = "lastSyncDate"
+    // Background sync
+    static let enableBackgroundSync = "enableBackgroundSync"
+    static let backgroundSyncIntervalMinutes = "backgroundSyncIntervalMinutes"
+    // Sync behavior
+    static let syncDryRun = "syncDryRun"
+    // Theme→Calendar mapping (theme name -> calendar identifier)
+    static let themeCalendarMap = "themeCalendarMap"
 }
 
 class UserPreferences: ObservableObject {
@@ -193,5 +201,48 @@ class UserPreferences: ObservableObject {
         didSet {
             UserPreferences.defaults.set(lastSyncSummary, forKey: PreferencesKeys.lastSyncSummary)
         }
+    }
+
+    @Published var lastSyncDate: Date? = {
+        guard defaults.object(forKey: PreferencesKeys.lastSyncDate) != nil else { return nil }
+        let timestamp = defaults.double(forKey: PreferencesKeys.lastSyncDate)
+        guard timestamp > 0 else { return nil }
+        return Date(timeIntervalSince1970: timestamp)
+    }() {
+        didSet {
+            if let date = lastSyncDate {
+                UserPreferences.defaults.set(date.timeIntervalSince1970, forKey: PreferencesKeys.lastSyncDate)
+            } else {
+                UserPreferences.defaults.removeObject(forKey: PreferencesKeys.lastSyncDate)
+            }
+        }
+    }
+
+    // MARK: - Background Sync
+    @Published var enableBackgroundSync: Bool = {
+        return defaults.bool(forKey: PreferencesKeys.enableBackgroundSync)
+    }() {
+        didSet { UserPreferences.defaults.set(enableBackgroundSync, forKey: PreferencesKeys.enableBackgroundSync) }
+    }
+
+    @Published var backgroundSyncIntervalMinutes: Int = {
+        let interval = defaults.integer(forKey: PreferencesKeys.backgroundSyncIntervalMinutes)
+        return interval > 0 ? interval : 60
+    }() {
+        didSet { UserPreferences.defaults.set(backgroundSyncIntervalMinutes, forKey: PreferencesKeys.backgroundSyncIntervalMinutes) }
+    }
+
+    // MARK: - Sync Behavior
+    @Published var syncDryRun: Bool = {
+        return defaults.bool(forKey: PreferencesKeys.syncDryRun)
+    }() {
+        didSet { UserPreferences.defaults.set(syncDryRun, forKey: PreferencesKeys.syncDryRun) }
+    }
+
+    // MARK: - Theme→Calendar mapping
+    @Published var themeCalendarMap: [String: String] = {
+        return defaults.dictionary(forKey: PreferencesKeys.themeCalendarMap) as? [String: String] ?? [:]
+    }() {
+        didSet { UserPreferences.defaults.set(themeCalendarMap, forKey: PreferencesKeys.themeCalendarMap) }
     }
 }

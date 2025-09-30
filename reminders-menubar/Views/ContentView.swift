@@ -4,15 +4,17 @@ import EventKit
 struct ContentView: View {
     @EnvironmentObject var remindersData: RemindersData
     @ObservedObject var userPreferences = UserPreferences.shared
+    @ObservedObject var syncFeedback = SyncFeedbackService.shared
     @Environment(\.colorSchemeContrast) private var colorSchemeContrast
     
     var body: some View {
-        VStack(spacing: 0) {
-            FormNewReminderView()
-            
-            if userPreferences.atLeastOneFilterIsSelected {
-                List {
-                    if userPreferences.showUpcomingReminders {
+        ZStack(alignment: .bottom) {
+            VStack(spacing: 0) {
+                FormNewReminderView()
+                
+                if userPreferences.atLeastOneFilterIsSelected {
+                    List {
+                        if userPreferences.showUpcomingReminders {
                         Section(header: UpcomingRemindersTitle()) {
                             UpcomingRemindersContent()
                         }
@@ -55,6 +57,19 @@ struct ContentView: View {
             }
             
             SettingsBarView()
+            }
+
+            if let msg = syncFeedback.toastMessage {
+                Text(msg)
+                    .font(.footnote)
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+                    .background(Color.black.opacity(0.8))
+                    .cornerRadius(8)
+                    .padding(.bottom, 10)
+                    .transition(.opacity)
+            }
         }
         .background(Color.rmbColor(for: .backgroundTheme, and: colorSchemeContrast).padding(-80))
         .preferredColorScheme(userPreferences.rmbColorScheme.colorScheme)

@@ -21,5 +21,5 @@ After downloading and extracting [TCCPlus](https://github.com/jslegendre/tccplus
 ```shell
 cd ~/Downloads/
 chmod +x tccplus
-./tccplus add Reminders br.com.damascenorafael.reminders-menubar
+./tccplus add Reminders com.jc1.tech.bob
 ```
