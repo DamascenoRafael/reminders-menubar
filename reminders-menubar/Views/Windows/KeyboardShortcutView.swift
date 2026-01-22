@@ -18,7 +18,7 @@ struct KeyboardShortcutView: View {
                     Group {
                         HStack {
                             KeyboardShortcuts.Recorder(for: .openRemindersMenuBar)
-                            
+
                             Button(action: {
                                 KeyboardShortcutService.shared.reset(.openRemindersMenuBar)
                             }) {
@@ -31,14 +31,39 @@ struct KeyboardShortcutView: View {
                     .padding(.leading, 20)
                     .disabled(!keyboardShortcutService.isOpenRemindersMenuBarEnabled)
                 }
-                
+
+                Divider()
+
+                VStack(alignment: .leading, spacing: 16) {
+                    Toggle(
+                        "Add new reminder",
+                        isOn: $keyboardShortcutService.isAddNewReminderEnabled
+                    )
+
+                    Group {
+                        HStack {
+                            KeyboardShortcuts.Recorder(for: .addNewReminder)
+
+                            Button(action: {
+                                KeyboardShortcutService.shared.reset(.addNewReminder)
+                            }) {
+                                Text(rmbLocalized(.keyboardShortcutRestoreDefaultButton))
+                                    .padding(.horizontal, 4)
+                                    .frame(minWidth: 113)
+                            }
+                        }
+                    }
+                    .padding(.leading, 20)
+                    .disabled(!keyboardShortcutService.isAddNewReminderEnabled)
+                }
+
                 Spacer()
             }
         }
         .padding(.top, 16)
         .padding(.bottom, 24)
         .padding(.horizontal, 32)
-        .frame(width: 520, height: 180)
+        .frame(width: 520, height: 280)
     }
     
     static func showWindow() {
