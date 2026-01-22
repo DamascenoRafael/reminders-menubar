@@ -99,13 +99,25 @@ struct ResponsiveTypeSize: ViewModifier {
 
 struct ThinScrollBar: ViewModifier {
     func body(content: Content) -> some View {
-        if #available(macOS 13.0, *) {
-            content
-                .scrollIndicators(.hidden)
-        } else {
-            content
-        }
+        content
+            .background(ScrollViewConfigurator())
     }
+}
+
+struct ScrollViewConfigurator: NSViewRepresentable {
+    func makeNSView(context: Context) -> NSView {
+        let view = NSView()
+        DispatchQueue.main.async {
+            if let scrollView = view.enclosingScrollView {
+                scrollView.scrollerStyle = .overlay
+                scrollView.hasVerticalScroller = true
+                scrollView.hasHorizontalScroller = false
+            }
+        }
+        return view
+    }
+
+    func updateNSView(_ nsView: NSView, context: Context) {}
 }
 
  struct ContentView_Previews: PreviewProvider {
