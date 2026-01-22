@@ -55,9 +55,9 @@ struct ContentView: View {
                     .frame(maxHeight: .infinity)
                 }
 
-                SettingsBarView()
+            SettingsBarView()
             }
-            .dynamicTypeSize(geometry.size.width < 300 ? .small : .medium)
+            .modifier(ResponsiveTypeSize(isCompact: geometry.size.width < 300))
         }
         .background(Color.rmbColor(for: .backgroundTheme, and: colorSchemeContrast).padding(-80))
         .preferredColorScheme(userPreferences.rmbColorScheme.colorScheme)
@@ -77,6 +77,19 @@ struct ListRowSeparatorHidden: ViewModifier {
         if #available(macOS 14.0, *) {
             content
                 .listRowSeparator(.hidden)
+        } else {
+            content
+        }
+    }
+}
+
+struct ResponsiveTypeSize: ViewModifier {
+    let isCompact: Bool
+
+    func body(content: Content) -> some View {
+        if #available(macOS 12.0, *) {
+            content
+                .dynamicTypeSize(isCompact ? .small : .medium)
         } else {
             content
         }
