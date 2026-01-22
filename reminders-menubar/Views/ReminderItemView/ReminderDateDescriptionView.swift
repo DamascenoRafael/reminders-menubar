@@ -8,31 +8,37 @@ struct ReminderDateDescriptionView: View {
     var recurrenceRules: [EKRecurrenceRule]?
     var calendarTitle: String
     var showCalendarTitleOnDueDate: Bool
+    
+    @State private var isHovered = false
 
     var body: some View {
         HStack(spacing: 4) {
-            HStack(spacing: 2) {
+            if isHovered {
                 Image(systemName: "calendar")
-                Text(dateDescription)
-                    .lineLimit(1)
-                    .foregroundColor(isExpired ? .red : nil)
             }
+            Text(dateDescription)
+                .lineLimit(1)
+                .foregroundColor(isExpired ? .red : nil)
 
-            if hasRecurrenceRules {
-                HStack(spacing: 2) {
+            if isHovered {
+                if hasRecurrenceRules {
                     Image(systemName: "repeat")
                     Text(recurrenceLabel(recurrenceRules?.first))
                         .lineLimit(1)
                 }
-            }
 
-            if showCalendarTitleOnDueDate {
-                Text(calendarTitle)
-                    .lineLimit(1)
+                if showCalendarTitleOnDueDate {
+                    Text("@ \(calendarTitle)")
+                        .lineLimit(1)
+                        .truncationMode(.tail)
+                }
             }
         }
-        .font(.footnote)
+        .font(.caption2)
         .frame(maxWidth: .infinity, alignment: .leading)
+        .onHover { hovering in
+            isHovered = hovering
+        }
     }
 
     func recurrenceLabel(_ rule: EKRecurrenceRule?) -> String {

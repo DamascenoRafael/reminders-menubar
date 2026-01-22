@@ -35,7 +35,8 @@ struct ReminderItemView: View {
                             .foregroundColor(Color(reminderItem.reminder.calendar.color))
                     }
                     Text(LocalizedStringKey(reminderItem.reminder.title.toDetectedLinkAttributedString()))
-                        .fixedSize(horizontal: false, vertical: true)
+                        .lineLimit(1)
+                        .truncationMode(.tail)
                         .onTapGesture {
                             isEditingTitle = true
                             showingEditPopover = true

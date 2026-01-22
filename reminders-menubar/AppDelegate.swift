@@ -121,10 +121,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     private func configureKeyboardShortcut() {
         KeyboardShortcutService.shared.action(for: .openRemindersMenuBar) { [weak self] in
-            self?.togglePanel()
-        }
-
-        KeyboardShortcutService.shared.action(for: .addNewReminder) { [weak self] in
             self?.showPanelAndFocusNewReminder()
         }
     }
@@ -141,11 +137,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             panel.contentViewController = contentViewController
         }
 
-        if !panel.isVisible {
-            panel.makeKeyAndOrderFront(nil)
+        // Always make key and order front to ensure focus works
+        panel.makeKeyAndOrderFront(nil)
+        
+        // Small delay to ensure panel is ready before triggering focus
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+            UserPreferences.shared.remindersMenuBarOpeningEvent.toggle()
         }
-
-        UserPreferences.shared.remindersMenuBarOpeningEvent.toggle()
     }
 
     @objc private func togglePanel() {

@@ -50,10 +50,18 @@ extension Date {
     
     func relativeDateDescription(withTime showTimeDescription: Bool) -> String {
         let relativeDateFormatter = DateFormatter()
-        relativeDateFormatter.timeStyle = showTimeDescription ? .short : .none
-        relativeDateFormatter.dateStyle = .medium
         relativeDateFormatter.locale = rmbCurrentLocale()
         relativeDateFormatter.doesRelativeDateFormatting = true
+        
+        if isThisYear {
+            // Short format without year: "Dec 16" or "Dec 16, 3:00 PM"
+            relativeDateFormatter.dateFormat = showTimeDescription
+                ? DateFormatter.dateFormat(fromTemplate: "MMMd jmm", options: 0, locale: rmbCurrentLocale())
+                : DateFormatter.dateFormat(fromTemplate: "MMMd", options: 0, locale: rmbCurrentLocale())
+        } else {
+            relativeDateFormatter.dateStyle = .medium
+            relativeDateFormatter.timeStyle = showTimeDescription ? .short : .none
+        }
         
         return relativeDateFormatter.string(from: self)
     }

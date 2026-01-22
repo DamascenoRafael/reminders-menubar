@@ -123,7 +123,6 @@ struct ReminderInfoCapsule: ViewModifier {
             .padding(.horizontal, 8)
             .background(Color.secondary.opacity(0.2))
             .clipShape(Capsule())
-            .fixedSize()
     }
 }
 

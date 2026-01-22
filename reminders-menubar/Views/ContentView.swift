@@ -112,12 +112,31 @@ struct ScrollViewConfigurator: NSViewRepresentable {
                 scrollView.scrollerStyle = .overlay
                 scrollView.hasVerticalScroller = true
                 scrollView.hasHorizontalScroller = false
+                scrollView.autohidesScrollers = true
+                
+                // Replace with thin custom scroller
+                let thinScroller = ThinScroller()
+                thinScroller.scrollerStyle = .overlay
+                scrollView.verticalScroller = thinScroller
             }
         }
         return view
     }
 
     func updateNSView(_ nsView: NSView, context: Context) {}
+}
+
+class ThinScroller: NSScroller {
+    override class func scrollerWidth(for controlSize: ControlSize, scrollerStyle: Style) -> CGFloat {
+        return 6.0
+    }
+    
+    override func drawKnob() {
+        let knobRect = rect(for: .knob).insetBy(dx: 2, dy: 0)
+        let path = NSBezierPath(roundedRect: knobRect, xRadius: 3, yRadius: 3)
+        NSColor.gray.withAlphaComponent(0.5).setFill()
+        path.fill()
+    }
 }
 
  struct ContentView_Previews: PreviewProvider {
