@@ -7,54 +7,57 @@ struct ContentView: View {
     @Environment(\.colorSchemeContrast) private var colorSchemeContrast
     
     var body: some View {
-        VStack(spacing: 0) {
-            FormNewReminderView()
-            
-            if userPreferences.atLeastOneFilterIsSelected {
-                List {
-                    if userPreferences.showUpcomingReminders {
-                        Section(header: UpcomingRemindersTitle()) {
-                            UpcomingRemindersContent()
+        GeometryReader { geometry in
+            VStack(spacing: 0) {
+                FormNewReminderView()
+
+                if userPreferences.atLeastOneFilterIsSelected {
+                    List {
+                        if userPreferences.showUpcomingReminders {
+                            Section(header: UpcomingRemindersTitle()) {
+                                UpcomingRemindersContent()
+                            }
+                            .modifier(ListSectionSpacing())
+                            .modifier(ListRowSeparatorHidden())
                         }
-                        .modifier(ListSectionSpacing())
-                        .modifier(ListRowSeparatorHidden())
-                    }
-                    ForEach(remindersData.filteredReminderLists) { reminderList in
-                        Section(header: CalendarTitle(calendar: reminderList.calendar)) {
-                            let uncompletedIsEmpty = reminderList.reminders.uncompleted.isEmpty
-                            let completedIsEmpty = reminderList.reminders.completed.isEmpty
-                            let calendarIsEmpty = uncompletedIsEmpty && completedIsEmpty
-                            let isShowingCompleted = !userPreferences.showUncompletedOnly
-                            let viewIsEmpty = isShowingCompleted ? calendarIsEmpty : uncompletedIsEmpty
-                            if viewIsEmpty {
-                                NoReminderItemsView(emptyList: calendarIsEmpty ? .noReminders : .allItemsCompleted)
-                            }
-                            ForEach(reminderList.reminders.uncompleted) { reminderItem in
-                                ReminderItemView(reminderItem: reminderItem, isShowingCompleted: isShowingCompleted)
-                            }
-                            if isShowingCompleted {
-                                ForEach(reminderList.reminders.completed) { reminderItem in
+                        ForEach(remindersData.filteredReminderLists) { reminderList in
+                            Section(header: CalendarTitle(calendar: reminderList.calendar)) {
+                                let uncompletedIsEmpty = reminderList.reminders.uncompleted.isEmpty
+                                let completedIsEmpty = reminderList.reminders.completed.isEmpty
+                                let calendarIsEmpty = uncompletedIsEmpty && completedIsEmpty
+                                let isShowingCompleted = !userPreferences.showUncompletedOnly
+                                let viewIsEmpty = isShowingCompleted ? calendarIsEmpty : uncompletedIsEmpty
+                                if viewIsEmpty {
+                                    NoReminderItemsView(emptyList: calendarIsEmpty ? .noReminders : .allItemsCompleted)
+                                }
+                                ForEach(reminderList.reminders.uncompleted) { reminderItem in
                                     ReminderItemView(reminderItem: reminderItem, isShowingCompleted: isShowingCompleted)
                                 }
+                                if isShowingCompleted {
+                                    ForEach(reminderList.reminders.completed) { reminderItem in
+                                        ReminderItemView(reminderItem: reminderItem, isShowingCompleted: isShowingCompleted)
+                                    }
+                                }
                             }
+                            .modifier(ListSectionSpacing())
+                            .modifier(ListRowSeparatorHidden())
                         }
-                        .modifier(ListSectionSpacing())
-                        .modifier(ListRowSeparatorHidden())
                     }
+                    .listStyle(.plain)
+                    .animation(.default, value: remindersData.filteredReminderLists)
+                } else {
+                    VStack(spacing: 4) {
+                        Text(rmbLocalized(.emptyListNoRemindersFilterTitle))
+                            .multilineTextAlignment(.center)
+                        Text(rmbLocalized(.emptyListNoRemindersFilterMessage))
+                            .multilineTextAlignment(.center)
+                    }
+                    .frame(maxHeight: .infinity)
                 }
-                .listStyle(.plain)
-                .animation(.default, value: remindersData.filteredReminderLists)
-            } else {
-                VStack(spacing: 4) {
-                    Text(rmbLocalized(.emptyListNoRemindersFilterTitle))
-                        .multilineTextAlignment(.center)
-                    Text(rmbLocalized(.emptyListNoRemindersFilterMessage))
-                        .multilineTextAlignment(.center)
-                }
-                .frame(maxHeight: .infinity)
+
+                SettingsBarView()
             }
-            
-            SettingsBarView()
+            .dynamicTypeSize(geometry.size.width < 300 ? .small : .medium)
         }
         .background(Color.rmbColor(for: .backgroundTheme, and: colorSchemeContrast).padding(-80))
         .preferredColorScheme(userPreferences.rmbColorScheme.colorScheme)
