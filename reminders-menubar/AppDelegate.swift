@@ -87,11 +87,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         contentView.addTrackingArea(trackingArea)
     }
 
-    override func mouseEntered(with event: NSEvent) {
+    func mouseEntered(with event: NSEvent) {
         panel?.animator().alphaValue = 1.0
     }
 
-    override func mouseExited(with event: NSEvent) {
+    func mouseExited(with event: NSEvent) {
         panel?.animator().alphaValue = 0.9
     }
     
