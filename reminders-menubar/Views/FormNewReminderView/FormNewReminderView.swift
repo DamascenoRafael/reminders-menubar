@@ -82,7 +82,7 @@ struct FormNewReminderView: View {
                 .help(rmbLocalized(.newReminderCalendarSelectionToSaveHelp))
             }
         }
-        .padding(10)
+        .padding(6)
         .onChange(of: rmbReminder.title) { [oldValue = rmbReminder.title] newValue in
             withAnimation(.easeOut(duration: 0.3)) {
                 isShowingInfoOptions = !newValue.isEmpty
