@@ -108,33 +108,6 @@ struct SettingsBarGearMenu: View {
                     SelectableView(title: colorScheme.title, isSelected: isSelected)
                 }
             }
-            
-            Divider()
-            
-            let isIncreasedContrastEnabled = colorSchemeContrast == .increased
-            let isTransparencyEnabled = userPreferences.backgroundIsTransparent && !isIncreasedContrastEnabled
-            
-            Button(action: {
-                userPreferences.backgroundIsTransparent = false
-            }) {
-                let isSelected = !isTransparencyEnabled
-                SelectableView(
-                    title: rmbLocalized(.appAppearanceMoreOpaqueOptionButton),
-                    isSelected: isSelected
-                )
-            }
-            .disabled(isIncreasedContrastEnabled)
-            
-            Button(action: {
-                userPreferences.backgroundIsTransparent = true
-            }) {
-                let isSelected = isTransparencyEnabled
-                SelectableView(
-                    title: rmbLocalized(.appAppearanceMoreTransparentOptionButton),
-                    isSelected: isSelected
-                )
-            }
-            .disabled(isIncreasedContrastEnabled)
         } label: {
             Text(rmbLocalized(.appAppearanceMenu))
         }

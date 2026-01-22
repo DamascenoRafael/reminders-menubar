@@ -44,6 +44,7 @@ struct ContentView: View {
                         }
                     }
                     .listStyle(.plain)
+                    .modifier(ThinScrollBar())
                     .animation(.default, value: remindersData.filteredReminderLists)
                 } else {
                     VStack(spacing: 4) {
@@ -90,6 +91,17 @@ struct ResponsiveTypeSize: ViewModifier {
         if #available(macOS 12.0, *) {
             content
                 .dynamicTypeSize(isCompact ? .small : .medium)
+        } else {
+            content
+        }
+    }
+}
+
+struct ThinScrollBar: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(macOS 13.0, *) {
+            content
+                .scrollIndicators(.hidden)
         } else {
             content
         }

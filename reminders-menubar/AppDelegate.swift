@@ -1,6 +1,10 @@
 import Cocoa
 import SwiftUI
 
+class RmbPanel: NSPanel {
+    override var canBecomeKey: Bool { true }
+}
+
 @main
 struct RemindersMenuBar: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
@@ -46,20 +50,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         let contentRect = UserPreferences.shared.windowFrame ?? NSRect(origin: .zero, size: defaultSize)
 
-        let panel = NSPanel(
+        let panel = RmbPanel(
             contentRect: contentRect,
-            styleMask: [.borderless, .resizable, .nonactivatingPanel],
+            styleMask: [.titled, .resizable, .fullSizeContentView, .nonactivatingPanel],
             backing: .buffered,
             defer: false
         )
 
+        panel.titlebarAppearsTransparent = true
+        panel.titleVisibility = .hidden
+        panel.standardWindowButton(.closeButton)?.isHidden = true
+        panel.standardWindowButton(.miniaturizeButton)?.isHidden = true
+        panel.standardWindowButton(.zoomButton)?.isHidden = true
         panel.isMovableByWindowBackground = true
         panel.level = .floating
         panel.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]
         panel.isReleasedWhenClosed = false
         panel.minSize = minSize
         panel.hasShadow = true
-        panel.backgroundColor = .clear
         panel.alphaValue = 0.9
 
         if RemindersService.shared.authorizationStatus() == .authorized {
