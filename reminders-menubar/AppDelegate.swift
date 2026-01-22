@@ -48,19 +48,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         let panel = NSPanel(
             contentRect: contentRect,
-            styleMask: [.titled, .closable, .resizable, .nonactivatingPanel],
+            styleMask: [.borderless, .resizable, .nonactivatingPanel],
             backing: .buffered,
             defer: false
         )
 
-        panel.title = AppConstants.appName
-        panel.titlebarAppearsTransparent = true
-        panel.titleVisibility = .hidden
         panel.isMovableByWindowBackground = true
         panel.level = .floating
         panel.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]
         panel.isReleasedWhenClosed = false
         panel.minSize = minSize
+        panel.hasShadow = true
+        panel.backgroundColor = .clear
+        panel.alphaValue = 0.9
 
         if RemindersService.shared.authorizationStatus() == .authorized {
             panel.contentViewController = contentViewController
@@ -70,7 +70,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             panel.center()
         }
 
+        configureMouseTracking(for: panel)
+
         self.panel = panel
+    }
+
+    private func configureMouseTracking(for panel: NSPanel) {
+        guard let contentView = panel.contentView else { return }
+
+        let trackingArea = NSTrackingArea(
+            rect: contentView.bounds,
+            options: [.mouseEnteredAndExited, .activeAlways, .inVisibleRect],
+            owner: self,
+            userInfo: nil
+        )
+        contentView.addTrackingArea(trackingArea)
+    }
+
+    override func mouseEntered(with event: NSEvent) {
+        panel?.animator().alphaValue = 1.0
+    }
+
+    override func mouseExited(with event: NSEvent) {
+        panel?.animator().alphaValue = 0.9
     }
     
     func updateMenuBarTodayCount(to todayCount: Int) {

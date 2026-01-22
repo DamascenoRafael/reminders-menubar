@@ -41,8 +41,18 @@ reminders-menubar-launcher/  # Helper app for launch-at-login
 - **SwiftUI** - Declarative UI (macOS 11+)
 - **Combine** - Reactive data binding
 - **EventKit** - Apple Reminders access via EKEventStore
-- **AppKit** - Menu bar integration (NSStatusBar, NSPopover)
+- **AppKit** - Menu bar integration (NSStatusBar, NSPanel)
 - **KeyboardShortcuts** - Third-party library for keyboard shortcuts
+
+## Window Behavior
+
+The app uses a borderless floating NSPanel instead of NSPopover:
+- **Draggable** - Click and drag anywhere on the window background
+- **Resizable** - Default 340x460, minimum 280x300
+- **Floating** - Always stays on top of other windows when visible
+- **Transparent** - 10% transparency when mouse is not hovering
+- **Responsive** - Content scales down for narrow widths (< 300px)
+- **Position persists** - Window frame saved in UserPreferences
 
 ## Architecture Patterns
 
