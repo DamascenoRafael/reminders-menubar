@@ -90,7 +90,7 @@ struct ResponsiveTypeSize: ViewModifier {
     func body(content: Content) -> some View {
         if #available(macOS 12.0, *) {
             content
-                .dynamicTypeSize(isCompact ? .small : .medium)
+                .dynamicTypeSize(isCompact ? .xSmall : .small)
         } else {
             content
         }

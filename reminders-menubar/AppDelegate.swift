@@ -39,9 +39,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         AppUpdateCheckHelper.shared.startBackgroundActivity()
 
+        configureScrollerStyle()
         configurePanel()
         configureMenuBarButton()
         configureKeyboardShortcut()
+    }
+
+    private func configureScrollerStyle() {
+        NSScrollView.appearance().scrollerStyle = .overlay
     }
 
     private func configurePanel() {
