@@ -16,6 +16,7 @@ private enum PreferencesKeys {
     static let menuBarCounterType = "menuBarCounterType"
     static let filterMenuBarCountByCalendar = "filterMenuBarCountByCalendar"
     static let preferredLanguage = "preferredLanguage"
+    static let windowFrame = "windowFrame"
 }
 
 class UserPreferences: ObservableObject {
@@ -181,6 +182,32 @@ class UserPreferences: ObservableObject {
     }() {
         didSet {
             UserPreferences.defaults.set(preferredLanguage, forKey: PreferencesKeys.preferredLanguage)
+        }
+    }
+
+    var windowFrame: NSRect? {
+        get {
+            guard let dict = UserPreferences.defaults.dictionary(forKey: PreferencesKeys.windowFrame),
+                  let x = dict["x"] as? CGFloat,
+                  let y = dict["y"] as? CGFloat,
+                  let width = dict["width"] as? CGFloat,
+                  let height = dict["height"] as? CGFloat else {
+                return nil
+            }
+            return NSRect(x: x, y: y, width: width, height: height)
+        }
+        set {
+            guard let frame = newValue else {
+                UserPreferences.defaults.removeObject(forKey: PreferencesKeys.windowFrame)
+                return
+            }
+            let dict: [String: CGFloat] = [
+                "x": frame.origin.x,
+                "y": frame.origin.y,
+                "width": frame.size.width,
+                "height": frame.size.height
+            ]
+            UserPreferences.defaults.set(dict, forKey: PreferencesKeys.windowFrame)
         }
     }
 }

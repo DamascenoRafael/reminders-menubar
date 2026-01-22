@@ -1,6 +1,5 @@
 import Cocoa
 import SwiftUI
-import Combine
 
 @main
 struct RemindersMenuBar: App {
@@ -19,13 +18,10 @@ struct RemindersMenuBar: App {
 @MainActor
 class AppDelegate: NSObject, NSApplicationDelegate {
     static private(set) var shared: AppDelegate!
-    
-    private var didCloseCancellationToken: AnyCancellable?
-    private var didCloseEventDate = Date.distantPast
-    
+
     private var sharedAuthorizationErrorMessage: String?
 
-    let popover = NSPopover()
+    private var panel: NSPanel?
     lazy var statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
     var contentViewController: NSViewController {
@@ -36,23 +32,45 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         AppDelegate.shared = self
-        
+
         AppUpdateCheckHelper.shared.startBackgroundActivity()
-        
-        changeBehaviorToDismissIfNeeded()
-        configurePopover()
+
+        configurePanel()
         configureMenuBarButton()
         configureKeyboardShortcut()
-        configureDidCloseNotification()
     }
-    
-    private func configurePopover() {
-        popover.contentSize = NSSize(width: 340, height: 460)
-        popover.animates = false
-        
+
+    private func configurePanel() {
+        let defaultSize = NSSize(width: 340, height: 460)
+        let minSize = NSSize(width: 280, height: 300)
+
+        let contentRect = UserPreferences.shared.windowFrame ?? NSRect(origin: .zero, size: defaultSize)
+
+        let panel = NSPanel(
+            contentRect: contentRect,
+            styleMask: [.titled, .closable, .resizable, .nonactivatingPanel],
+            backing: .buffered,
+            defer: false
+        )
+
+        panel.title = AppConstants.appName
+        panel.titlebarAppearsTransparent = true
+        panel.titleVisibility = .hidden
+        panel.isMovableByWindowBackground = true
+        panel.level = .floating
+        panel.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]
+        panel.isReleasedWhenClosed = false
+        panel.minSize = minSize
+
         if RemindersService.shared.authorizationStatus() == .authorized {
-            popover.contentViewController = contentViewController
+            panel.contentViewController = contentViewController
         }
+
+        if UserPreferences.shared.windowFrame == nil {
+            panel.center()
+        }
+
+        self.panel = panel
     }
     
     func updateMenuBarTodayCount(to todayCount: Int) {
@@ -68,49 +86,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func configureMenuBarButton() {
         loadMenuBarIcon()
         statusBarItem.button?.imagePosition = .imageLeading
-        statusBarItem.button?.action = #selector(togglePopover)
+        statusBarItem.button?.action = #selector(togglePanel)
     }
     
     private func configureKeyboardShortcut() {
         KeyboardShortcutService.shared.action(for: .openRemindersMenuBar) { [weak self] in
-            self?.togglePopover()
+            self?.togglePanel()
         }
     }
-    
-    private func configureDidCloseNotification() {
-        // NOTE: There is an issue where if the menu bar button is clicked on its top part to close the popover
-        // there will be a didClose event and then togglePopover will be called (reopening the popover).
-        // didCloseEventDate is saved to figure out if the event is recent and the popover should not be reopened.
-        didCloseCancellationToken = NotificationCenter.default
-            .publisher(for: NSPopover.didCloseNotification, object: popover)
-            .sink { [weak self] _ in
-                self?.didCloseEventDate = Date()
-            }
-    }
-    
-    private func changeBehaviorToDismissIfNeeded() {
-        popover.behavior = .transient
-    }
 
-    @objc private func togglePopover() {
+    @objc private func togglePanel() {
         guard RemindersService.shared.authorizationStatus() == .authorized else {
             requestAuthorization()
             return
         }
-        
-        guard let button = statusBarItem.button else {
+
+        guard let panel = panel else {
             return
         }
-        
-        if popover.contentViewController == nil {
-            popover.contentViewController = contentViewController
+
+        if panel.contentViewController == nil {
+            panel.contentViewController = contentViewController
         }
-        
-        if popover.isShown || didCloseEventDate.elapsedTimeInterval < 0.01 {
-            didCloseEventDate = .distantPast
-            popover.performClose(button)
+
+        if panel.isVisible {
+            UserPreferences.shared.windowFrame = panel.frame
+            panel.orderOut(nil)
         } else {
-            popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
+            panel.makeKeyAndOrderFront(nil)
             UserPreferences.shared.remindersMenuBarOpeningEvent.toggle()
         }
     }
