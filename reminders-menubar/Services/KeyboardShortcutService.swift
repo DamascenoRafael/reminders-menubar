@@ -3,10 +3,12 @@ import KeyboardShortcuts
 
 extension KeyboardShortcuts.Name {
     static let openRemindersMenuBar = Self("OpenRemindersMenuBar", default: .init(.r, modifiers: [.command, .option]))
+    static let addNewReminder = Self("AddNewReminder")
 }
 
 private enum ShortcutsKeys {
     static let isOpenRemindersMenuBarEnabled = "isOpenRemindersMenuBarEnabled"
+    static let isAddNewReminderEnabled = "isAddNewReminderEnabled"
 }
 
 @MainActor
@@ -28,6 +30,18 @@ class KeyboardShortcutService: ObservableObject {
                 forKey: ShortcutsKeys.isOpenRemindersMenuBarEnabled
             )
             setEnabled(isOpenRemindersMenuBarEnabled, for: .openRemindersMenuBar)
+        }
+    }
+
+    @Published var isAddNewReminderEnabled: Bool = {
+        return defaults.bool(forKey: ShortcutsKeys.isAddNewReminderEnabled)
+    }() {
+        didSet {
+            KeyboardShortcutService.defaults.set(
+                isAddNewReminderEnabled,
+                forKey: ShortcutsKeys.isAddNewReminderEnabled
+            )
+            setEnabled(isAddNewReminderEnabled, for: .addNewReminder)
         }
     }
     
@@ -55,6 +69,8 @@ class KeyboardShortcutService: ObservableObject {
         switch shortcutName {
         case .openRemindersMenuBar:
             return isOpenRemindersMenuBarEnabled
+        case .addNewReminder:
+            return isAddNewReminderEnabled
         default:
             return false
         }

@@ -123,6 +123,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         KeyboardShortcutService.shared.action(for: .openRemindersMenuBar) { [weak self] in
             self?.togglePanel()
         }
+
+        KeyboardShortcutService.shared.action(for: .addNewReminder) { [weak self] in
+            self?.showPanelAndFocusNewReminder()
+        }
+    }
+
+    private func showPanelAndFocusNewReminder() {
+        guard RemindersService.shared.authorizationStatus() == .authorized else {
+            requestAuthorization()
+            return
+        }
+
+        guard let panel = panel else { return }
+
+        if panel.contentViewController == nil {
+            panel.contentViewController = contentViewController
+        }
+
+        if !panel.isVisible {
+            panel.makeKeyAndOrderFront(nil)
+        }
+
+        UserPreferences.shared.remindersMenuBarOpeningEvent.toggle()
     }
 
     @objc private func togglePanel() {

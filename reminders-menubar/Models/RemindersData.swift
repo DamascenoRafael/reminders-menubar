@@ -94,9 +94,8 @@ class RemindersData: ObservableObject {
 
     @Published var calendarIdentifiersFilter: [String] = {
         guard let identifiers = UserPreferences.shared.preferredCalendarIdentifiersFilter else {
-            // NOTE: On first use it will load all reminder lists.
-            let allCalendars = RemindersService.shared.getCalendars()
-            return allCalendars.map({ $0.calendarIdentifier })
+            // NOTE: On first use show only upcoming reminders (empty filter).
+            return []
         }
 
         return identifiers

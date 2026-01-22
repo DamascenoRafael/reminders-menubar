@@ -10,28 +10,29 @@ struct ReminderDateDescriptionView: View {
     var showCalendarTitleOnDueDate: Bool
 
     var body: some View {
-        HStack {
-            HStack {
+        HStack(spacing: 4) {
+            HStack(spacing: 2) {
                 Image(systemName: "calendar")
                 Text(dateDescription)
+                    .lineLimit(1)
                     .foregroundColor(isExpired ? .red : nil)
             }
-            .padding(.trailing, 5)
 
             if hasRecurrenceRules {
-                Image(systemName: "repeat")
-                Text(recurrenceLabel(recurrenceRules?.first))
+                HStack(spacing: 2) {
+                    Image(systemName: "repeat")
+                    Text(recurrenceLabel(recurrenceRules?.first))
+                        .lineLimit(1)
+                }
             }
 
             if showCalendarTitleOnDueDate {
-                Spacer()
-
                 Text(calendarTitle)
+                    .lineLimit(1)
             }
         }
         .font(.footnote)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.trailing, 12)
     }
 
     func recurrenceLabel(_ rule: EKRecurrenceRule?) -> String {
