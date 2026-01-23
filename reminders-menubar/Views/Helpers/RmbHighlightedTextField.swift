@@ -79,11 +79,13 @@ struct RmbHighlightedTextField: NSViewRepresentable {
     }
 
     private func adjustDynamicHeight(for textView: NSTextView, context: Context) {
-        var newHeight: CGFloat = 48.0
+        var newHeight: CGFloat = textFont.pointSize + 4
         if let layoutManager = textView.layoutManager,
            let textContainer = textView.textContainer {
-            let maxHeight = layoutManager.defaultLineHeight(for: textFont) * CGFloat(maximumNumberOfLines)
-            newHeight = min(layoutManager.usedRect(for: textContainer).height, maxHeight)
+            let singleLineHeight = layoutManager.defaultLineHeight(for: textFont)
+            let maxHeight = singleLineHeight * CGFloat(maximumNumberOfLines)
+            let usedHeight = layoutManager.usedRect(for: textContainer).height
+            newHeight = max(singleLineHeight, min(usedHeight, maxHeight))
         }
 
         DispatchQueue.main.async {

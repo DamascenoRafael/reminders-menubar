@@ -118,9 +118,9 @@ struct FormNewReminderView: View {
                     createNewReminder()
                 }) {
                     Image(systemName: "return")
-                        .font(.system(size: 11, weight: .medium))
-                        .foregroundColor(rmbReminder.title.isEmpty ? .gray.opacity(0.5) : .secondary)
-                        .frame(width: 24, height: 24)
+                        .font(.system(size: 9, weight: .medium))
+                        .foregroundColor(.secondary)
+                        .frame(width: 20, height: 20)
                         .background(
                             Circle()
                                 .fill(Color.gray.opacity(0.15))
@@ -128,8 +128,8 @@ struct FormNewReminderView: View {
                 }
                 .buttonStyle(.plain)
                 .disabled(rmbReminder.title.isEmpty)
-                .padding(.trailing, 6)
-                .padding(.top, 6)
+                .padding(.trailing, 4)
+                .padding(.top, 4)
                 .help("Submit reminder")
             }
 
@@ -137,8 +137,7 @@ struct FormNewReminderView: View {
                 NewReminderInfoOptionsView(
                     date: $rmbReminder.date,
                     hasDueDate: $rmbReminder.hasDueDate,
-                    hasTime: $rmbReminder.hasTime,
-                    priority: $rmbReminder.priority
+                    hasTime: $rmbReminder.hasTime
                 )
             }
         }

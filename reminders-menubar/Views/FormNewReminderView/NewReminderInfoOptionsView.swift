@@ -5,19 +5,16 @@ struct NewReminderInfoOptionsView: View {
     @Binding var date: Date
     @Binding var hasDueDate: Bool
     @Binding var hasTime: Bool
-    @Binding var priority: EKReminderPriority
-    
+
     enum InfoOptionType {
         case date
         case time
-        case priority
     }
-    
+
     var body: some View {
         let infoOptions: [InfoOptionType] = [
             .date,
-            hasDueDate ? .time : nil,
-            .priority
+            hasDueDate ? .time : nil
         ].compactMap { $0 }
         
         let columns = 2
@@ -44,8 +41,6 @@ struct NewReminderInfoOptionsView: View {
             reminderRemindDateTimeOptionView(date: $date, components: .date, hasComponent: $hasDueDate)
         case .time:
             reminderRemindDateTimeOptionView(date: $date, components: .time, hasComponent: $hasTime)
-        case .priority:
-            reminderPriorityOptionView(priority: $priority)
         }
     }
 }
@@ -130,7 +125,6 @@ struct ReminderInfoCapsule: ViewModifier {
     NewReminderInfoOptionsView(
         date: .constant(Date()),
         hasDueDate: .constant(true),
-        hasTime: .constant(true),
-        priority: .constant(.medium)
+        hasTime: .constant(true)
     )
 }
