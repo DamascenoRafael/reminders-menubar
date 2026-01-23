@@ -26,23 +26,6 @@ struct FormNewReminderView: View {
                 .cornerRadius(8)
                 .textFieldStyle(PlainTextFieldStyle())
                 .modifier(ContrastBorderOverlay())
-                .overlay(
-                    Group {
-                        if !rmbReminder.title.isEmpty {
-                            Button(action: {
-                                createNewReminder()
-                            }) {
-                                Image(systemName: "return")
-                                    .font(.system(size: 12, weight: .medium))
-                                    .foregroundColor(.secondary)
-                            }
-                            .buttonStyle(.plain)
-                            .padding(.trailing, 8)
-                            .padding(.top, 8)
-                        }
-                    },
-                    alignment: .topTrailing
-                )
                 
                 Menu {
                     ForEach(remindersData.calendars, id: \.calendarIdentifier) { calendar in
@@ -111,24 +94,40 @@ struct FormNewReminderView: View {
     @ViewBuilder
     func newReminderTextFieldView() -> some View {
         VStack(alignment: .leading) {
-            RmbHighlightedTextField(
-                placeholder: rmbLocalized(.newReminderTextFielPlaceholder),
-                text: $rmbReminder.title,
-                highlightedTexts: rmbReminder.highlightedTexts,
-                textContainerDynamicHeight: $textFieldDynamicHeight,
-                focusTrigger: $textFieldFocusTrigger,
-            )
-            .onSubmit {
-                createNewReminder()
+            ZStack(alignment: .topTrailing) {
+                RmbHighlightedTextField(
+                    placeholder: rmbLocalized(.newReminderTextFielPlaceholder),
+                    text: $rmbReminder.title,
+                    highlightedTexts: rmbReminder.highlightedTexts,
+                    textContainerDynamicHeight: $textFieldDynamicHeight,
+                    focusTrigger: $textFieldFocusTrigger,
+                )
+                .onSubmit {
+                    createNewReminder()
+                }
+                .autoComplete(
+                    isInitialCharValid: CalendarParser.isInitialCharValid(_:),
+                    suggestions: CalendarParser.autoCompleteSuggestions(_:)
+                )
+                .onChange(of: userPreferences.remindersMenuBarOpeningEvent) { _ in
+                    textFieldFocusTrigger = UUID()
+                }
+                .frame(height: textFieldDynamicHeight)
+
+                if !rmbReminder.title.isEmpty {
+                    Button(action: {
+                        createNewReminder()
+                    }) {
+                        Image(systemName: "return")
+                            .font(.system(size: 14, weight: .medium))
+                            .foregroundColor(.secondary)
+                    }
+                    .buttonStyle(.plain)
+                    .padding(.trailing, 6)
+                    .padding(.top, 6)
+                    .help("Submit reminder")
+                }
             }
-            .autoComplete(
-                isInitialCharValid: CalendarParser.isInitialCharValid(_:),
-                suggestions: CalendarParser.autoCompleteSuggestions(_:)
-            )
-            .onChange(of: userPreferences.remindersMenuBarOpeningEvent) { _ in
-                textFieldFocusTrigger = UUID()
-            }
-            .frame(height: textFieldDynamicHeight)
 
             if isShowingInfoOptions {
                 NewReminderInfoOptionsView(
