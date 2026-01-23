@@ -1,14 +1,11 @@
 import SwiftUI
 
 enum RmbColorScheme: String, CaseIterable {
-    case system
     case light
     case dark
     
     var colorScheme: ColorScheme? {
         switch self {
-        case .system:
-            return nil
         case .light:
             return .light
         case .dark:
@@ -18,8 +15,6 @@ enum RmbColorScheme: String, CaseIterable {
 
     var title: String {
         switch self {
-        case .system:
-            return rmbLocalized(.appAppearanceColorSystemModeOptionButton)
         case .light:
             return rmbLocalized(.appAppearanceColorLightModeOptionButton)
         case .dark:

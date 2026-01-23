@@ -4,6 +4,7 @@ import ServiceManagement
 private enum PreferencesKeys {
     static let reminderMenuBarIcon = "reminderMenuBarIcon"
     static let calendarIdentifiersFilter = "calendarIdentifiersFilter"
+    static let eventCalendarIdentifiersFilter = "eventCalendarIdentifiersFilter"
     static let calendarIdentifierForSaving = "calendarIdentifierForSaving"
     static let autoSuggestTodayForNewReminders = "autoSuggestTodayForNewReminders"
     static let removeParsedDateFromTitle = "removeParsedDateFromTitle"
@@ -56,6 +57,14 @@ class UserPreferences: ObservableObject {
         }
         set {
             UserPreferences.defaults.set(newValue, forKey: PreferencesKeys.calendarIdentifierForSaving)
+        }
+    }
+    
+    @Published var eventCalendarIdentifiersFilter: [String] = {
+        return defaults.stringArray(forKey: PreferencesKeys.eventCalendarIdentifiersFilter) ?? []
+    }() {
+        didSet {
+            UserPreferences.defaults.set(eventCalendarIdentifiersFilter, forKey: PreferencesKeys.eventCalendarIdentifiersFilter)
         }
     }
     
@@ -136,9 +145,9 @@ class UserPreferences: ObservableObject {
     
     @Published var rmbColorScheme: RmbColorScheme = {
         guard let rmbColorSchemeString = defaults.string(forKey: PreferencesKeys.rmbColorScheme) else {
-            return .system
+            return .light
         }
-        return RmbColorScheme(rawValue: rmbColorSchemeString) ?? .system
+        return RmbColorScheme(rawValue: rmbColorSchemeString) ?? .light
     }() {
         didSet {
             UserPreferences.defaults.set(rmbColorScheme.rawValue, forKey: PreferencesKeys.rmbColorScheme)

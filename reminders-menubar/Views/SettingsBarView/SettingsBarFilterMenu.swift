@@ -1,4 +1,5 @@
 import SwiftUI
+import EventKit
 
 struct SettingsBarFilterMenu: View {
     @EnvironmentObject var remindersData: RemindersData
@@ -6,6 +7,7 @@ struct SettingsBarFilterMenu: View {
     @Environment(\.colorSchemeContrast) private var colorSchemeContrast
     
     @State var filterIsHovered = false
+    @State private var eventCalendars: [EKCalendar] = []
     
     var body: some View {
         Menu {
@@ -33,6 +35,24 @@ struct SettingsBarFilterMenu: View {
                         SelectableView(title: calendar.title, isSelected: isSelected, color: Color(calendar.color))
                     }
                 }
+                
+                if !eventCalendars.isEmpty {
+                    Divider()
+                    
+                    Text(rmbLocalized(.calendarEventsHeader))
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    
+                    ForEach(eventCalendars, id: \.calendarIdentifier) { calendar in
+                        let calendarIdentifier = calendar.calendarIdentifier
+                        Button(action: {
+                            toggleEventCalendar(calendarIdentifier)
+                        }) {
+                            let isSelected = userPreferences.eventCalendarIdentifiersFilter.contains(calendarIdentifier)
+                            SelectableView(title: calendar.title, isSelected: isSelected, color: Color(calendar.color))
+                        }
+                    }
+                }
             }
         } label: {
             Image(systemName: "line.horizontal.3.decrease.circle")
@@ -46,6 +66,44 @@ struct SettingsBarFilterMenu: View {
             filterIsHovered = isHovered
         }
         .help(rmbLocalized(.remindersFilterSelectionHelp))
+        .onAppear {
+            Task {
+                await loadEventCalendars()
+            }
+        }
+    }
+    
+    private func loadEventCalendars() async {
+        let status = CalendarEventsService.shared.authorizationStatus()
+        
+        // Request access if not determined
+        if status == .notDetermined {
+            let granted = await CalendarEventsService.shared.requestAccess()
+            if granted {
+                eventCalendars = CalendarEventsService.shared.getEventCalendars()
+            }
+            return
+        }
+        
+        // Check if authorized
+        let isAuthorized: Bool
+        if #available(macOS 14.0, *) {
+            isAuthorized = status == .fullAccess
+        } else {
+            isAuthorized = status == .authorized
+        }
+        if isAuthorized {
+            eventCalendars = CalendarEventsService.shared.getEventCalendars()
+        }
+    }
+    
+    private func toggleEventCalendar(_ calendarIdentifier: String) {
+        // Toggle the calendar
+        if let index = userPreferences.eventCalendarIdentifiersFilter.firstIndex(of: calendarIdentifier) {
+            userPreferences.eventCalendarIdentifiersFilter.remove(at: index)
+        } else {
+            userPreferences.eventCalendarIdentifiersFilter.append(calendarIdentifier)
+        }
     }
 }
 

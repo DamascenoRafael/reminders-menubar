@@ -13,6 +13,12 @@ struct ContentView: View {
 
                 if userPreferences.atLeastOneFilterIsSelected {
                     List {
+                        Section {
+                            CalendarEventsBlockView()
+                        }
+                        .listRowInsets(EdgeInsets())
+                        .modifier(ListRowSeparatorHidden())
+                        
                         if userPreferences.showUpcomingReminders {
                             Section(header: UpcomingRemindersTitle()) {
                                 UpcomingRemindersContent()

@@ -26,6 +26,23 @@ struct FormNewReminderView: View {
                 .cornerRadius(8)
                 .textFieldStyle(PlainTextFieldStyle())
                 .modifier(ContrastBorderOverlay())
+                .overlay(
+                    Group {
+                        if !rmbReminder.title.isEmpty {
+                            Button(action: {
+                                createNewReminder()
+                            }) {
+                                Image(systemName: "return")
+                                    .font(.system(size: 12, weight: .medium))
+                                    .foregroundColor(.secondary)
+                            }
+                            .buttonStyle(.plain)
+                            .padding(.trailing, 8)
+                            .padding(.top, 8)
+                        }
+                    },
+                    alignment: .topTrailing
+                )
                 
                 Menu {
                     ForEach(remindersData.calendars, id: \.calendarIdentifier) { calendar in
@@ -65,15 +82,13 @@ struct FormNewReminderView: View {
                         )
                     }
                 } label: {
-                    Color.clear
+                    Circle()
+                        .fill(Color(calendarForSaving?.color ?? .white))
+                        .frame(width: 24, height: 24)
                 }
-                .menuStyle(BorderlessButtonMenuStyle())
-                .modifier(HiddenMenuIndicator())
-                .frame(width: 14, height: 16)
-                .modifier(CenteredMenuPadding())
-                .background(Color(calendarForSaving?.color ?? .white))
-                .cornerRadius(8)
-                .modifier(ContrastBorderOverlay())
+                .buttonStyle(.plain)
+                .frame(width: 24, height: 24)
+                .padding(8)
                 .help(rmbLocalized(.newReminderCalendarSelectionToSaveHelp))
             }
         }

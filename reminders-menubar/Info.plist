@@ -32,6 +32,8 @@
 	<string>NSApplication</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>The App uses Apple Reminders as a source for lists and tasks. Access is required to view and edit reminders.</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>The App can show your calendar events alongside reminders. Access is required to display today's events.</string>
 	<key>NSSupportsAutomaticTermination</key>
 	<true/>
 	<key>NSSupportsSuddenTermination</key>
