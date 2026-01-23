@@ -8,6 +8,10 @@ struct UpcomingRemindersTitle: View {
 
     var body: some View {
         HStack(alignment: .center) {
+            Text(rmbLocalized(.upcomingRemindersTitle))
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+
             Spacer()
 
             Menu {
