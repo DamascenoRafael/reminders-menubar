@@ -6219,121 +6219,121 @@
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vytvořit novou připomínku"
+            "value" : "Přidat připomínku"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Erinnerung eingeben und Enter drücken"
+            "value" : "Neue Erinnerung"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Type a reminder and hit enter"
+            "value" : "Add new reminder"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Escribe un recordatorio y presiona enter"
+            "value" : "Agregar recordatorio"
           }
         },
         "fil-PH" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mag-type ng paalala at pindutin ang enter"
+            "value" : "Magdagdag ng paalala"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tapez un rappel et appuyez sur Entrée"
+            "value" : "Ajouter un rappel"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ketik sebuah pengingat dan tekan enter"
+            "value" : "Tambah pengingat"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Scrivi un promemoria e premi invio"
+            "value" : "Aggiungi promemoria"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "リマインダーを入力"
+            "value" : "リマインダーを追加"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "내용을 입력 후 엔터를 누르세요"
+            "value" : "미리 알림 추가"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Typ een herinnering en druk op enter"
+            "value" : "Nieuwe herinnering"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wpisz przypomnienie i naciśnij Enter"
+            "value" : "Dodaj przypomnienie"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Digite um lembrete e aperte enter"
+            "value" : "Adicionar lembrete"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Введите напоминание и нажмите Enter"
+            "value" : "Добавить напоминание"
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zadajte pripomienku a stlačte Enter"
+            "value" : "Pridať pripomienku"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hatırlatıcı yazın ve enter tuşuna basın"
+            "value" : "Hatırlatıcı ekle"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Введіть нагадування і натисність Enter"
+            "value" : "Додати нагадування"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nhập lời nhắc và bấm phím enter"
+            "value" : "Thêm lời nhắc"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "输入提醒事项"
+            "value" : "添加提醒事项"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "輸入提醒事項，然後按下 Enter ↩︎"
+            "value" : "新增提醒事項"
           }
         }
       }

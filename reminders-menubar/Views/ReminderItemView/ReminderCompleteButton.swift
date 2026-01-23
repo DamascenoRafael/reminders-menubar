@@ -3,23 +3,32 @@ import EventKit
 
 struct ReminderCompleteButton: View {
     var reminderItem: ReminderItem
+    @State private var isAnimating = false
 
     var body: some View {
         Button(action: {
-            reminderItem.reminder.isCompleted.toggle()
-            RemindersService.shared.save(reminder: reminderItem.reminder)
-            if reminderItem.reminder.isCompleted {
-                reminderItem.childReminders.uncompleted.forEach { uncompletedChild in
-                    uncompletedChild.reminder.isCompleted = true
-                    RemindersService.shared.save(reminder: uncompletedChild.reminder)
+            withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
+                isAnimating = true
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                reminderItem.reminder.isCompleted.toggle()
+                RemindersService.shared.save(reminder: reminderItem.reminder)
+                if reminderItem.reminder.isCompleted {
+                    reminderItem.childReminders.uncompleted.forEach { uncompletedChild in
+                        uncompletedChild.reminder.isCompleted = true
+                        RemindersService.shared.save(reminder: uncompletedChild.reminder)
+                    }
                 }
+                isAnimating = false
             }
         }) {
-            Image(systemName: reminderItem.reminder.isCompleted ? "largecircle.fill.circle" : "circle")
+            Image(systemName: isAnimating ? "checkmark.circle.fill" : (reminderItem.reminder.isCompleted ? "largecircle.fill.circle" : "circle"))
                 .resizable()
                 .frame(width: 16, height: 16)
                 .padding(.top, 1)
                 .foregroundColor(Color(reminderItem.reminder.calendar.color))
+                .scaleEffect(isAnimating ? 1.2 : 1.0)
         }
         .buttonStyle(PlainButtonStyle())
     }

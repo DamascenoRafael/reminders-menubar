@@ -28,7 +28,7 @@ struct ReminderItemView: View {
         HStack(alignment: .top) {
             ReminderCompleteButton(reminderItem: reminderItem)
 
-            VStack(spacing: 6) {
+            VStack(spacing: 4) {
                 HStack(spacing: 4) {
                     if let prioritySystemImage = reminderItem.reminder.ekPriority.systemImage {
                         Image(systemName: prioritySystemImage)
@@ -37,21 +37,19 @@ struct ReminderItemView: View {
                     Text(LocalizedStringKey(reminderItem.reminder.title.toDetectedLinkAttributedString()))
                         .lineLimit(1)
                         .truncationMode(.tail)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         .onTapGesture {
                             isEditingTitle = true
                             showingEditPopover = true
                         }
 
-                    Spacer()
-
-                    // TODO: remove the `.id` modifier while keeping properties updated (such as selected priority)
                     ReminderEllipsisMenuView(
                         showingEditPopover: $showingEditPopover,
                         showingRemoveAlert: $showingRemoveAlert,
                         reminder: reminderItem.reminder,
                         reminderHasChildren: reminderItem.hasChildren
                     )
-                    .id(UUID())
+                    .frame(width: shouldShowEllipsisButton() ? nil : 0)
                     .opacity(shouldShowEllipsisButton() ? 1 : 0)
                     .popover(isPresented: $showingEditPopover, arrowEdge: .trailing) {
                         ReminderEditPopover(

@@ -257,7 +257,7 @@ private class PlaceholderNSTextView: NSTextView {
     override func draw(_ rect: CGRect) {
         if string.isEmpty && !placeholder.isEmpty {
             let attributes: [NSAttributedString.Key: Any] = [
-                .font: font ?? .systemFont(ofSize: NSFont.systemFontSize),
+                .font: NSFont.systemFont(ofSize: NSFont.smallSystemFontSize),
                 .foregroundColor: NSColor.secondaryLabelColor
             ]
 

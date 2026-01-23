@@ -69,7 +69,7 @@ struct ListSectionSpacing: ViewModifier {
     func body(content: Content) -> some View {
         return content
             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 4, trailing: 0))
-            .padding(.horizontal, 8)
+            .padding(.horizontal, 4)
     }
 }
 

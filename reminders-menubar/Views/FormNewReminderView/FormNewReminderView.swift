@@ -22,17 +22,10 @@ struct FormNewReminderView: View {
                 newReminderTextFieldView()
                 .padding(.vertical, 8)
                 .padding(.horizontal, 8)
-                .padding(.leading, 22)
                 .background(Color.rmbColor(for: .textFieldBackground, and: colorSchemeContrast))
                 .cornerRadius(8)
                 .textFieldStyle(PlainTextFieldStyle())
                 .modifier(ContrastBorderOverlay())
-                .overlay(
-                    Image(systemName: "plus.circle.fill")
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                        .foregroundColor(.gray)
-                        .padding([.top, .leading], 8)
-                )
                 
                 Menu {
                     ForEach(remindersData.calendars, id: \.calendarIdentifier) { calendar in
@@ -72,8 +65,10 @@ struct FormNewReminderView: View {
                         )
                     }
                 } label: {
+                    Color.clear
                 }
                 .menuStyle(BorderlessButtonMenuStyle())
+                .modifier(HiddenMenuIndicator())
                 .frame(width: 14, height: 16)
                 .modifier(CenteredMenuPadding())
                 .background(Color(calendarForSaving?.color ?? .white))
@@ -184,6 +179,16 @@ struct CenteredMenuPadding: ViewModifier {
             content
                 .padding(8)
                 .padding(.trailing, 2)
+        }
+    }
+}
+
+struct HiddenMenuIndicator: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(macOS 12.0, *) {
+            content.menuIndicator(.hidden)
+        } else {
+            content
         }
     }
 }

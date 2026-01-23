@@ -11,8 +11,8 @@ struct CalendarTitle: View {
     var body: some View {
         HStack(alignment: .center) {
             Text(calendar.title)
-                .font(.headline)
-                .foregroundColor(Color(calendar.color))
+                .font(.subheadline.weight(.semibold))
+                .foregroundColor(Color(calendar.color).opacity(0.8))
                 .padding(.bottom, 2)
             
             Spacer()
@@ -22,18 +22,18 @@ struct CalendarTitle: View {
             }) {
                 let isSelected = remindersData.calendarForSaving?.calendarIdentifier == calendar.calendarIdentifier
                 Image(systemName: isSelected ? "folder.fill" : "folder")
-                    .font(Font.headline.weight(.medium))
+                    .font(Font.caption.weight(.medium))
                     .foregroundColor(calendarFolderIsHovered ? Color(calendar.color) : nil)
-                    .frame(width: 15, height: 15, alignment: .center)
-                    .padding(5)
+                    .frame(width: 12, height: 12, alignment: .center)
+                    .padding(4)
             }
             .buttonStyle(BorderlessButtonStyle())
             .background(calendarFolderIsHovered ? Color.rmbColor(for: .buttonHover, and: colorSchemeContrast) : nil)
-            .cornerRadius(6)
+            .cornerRadius(4)
             .onHover { isHovered in
                 calendarFolderIsHovered = isHovered
             }
-            .padding(.horizontal, 7.5)
+            .padding(.horizontal, 4)
             .help(rmbLocalized(.selectListForSavingReminderButtonHelp))
         }
     }

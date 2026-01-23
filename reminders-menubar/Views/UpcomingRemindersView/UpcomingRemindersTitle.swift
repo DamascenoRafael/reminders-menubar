@@ -8,16 +8,6 @@ struct UpcomingRemindersTitle: View {
 
     var body: some View {
         HStack(alignment: .center) {
-            // TODO: Remove the 'scaledToFit' and 'minimumScaleFactor' properties from the title
-            // and apply it to the Menu. It is expected that the Menu will occupy as little horizontal space as possible
-            // and be resized if necessary, but the Menu behavior without the 'fixedSize' property is different.
-            Text(rmbLocalized(.upcomingRemindersTitle))
-                .font(.headline)
-                .foregroundColor(.red)
-                .padding(.bottom, 5)
-                .scaledToFit()
-                .minimumScaleFactor(0.8)
-
             Spacer()
 
             Menu {
@@ -40,16 +30,16 @@ struct UpcomingRemindersTitle: View {
                 }
             } label: {
                 Label(userPreferences.upcomingRemindersInterval.title, systemImage: "calendar")
+                    .font(.caption2)
             }
             .menuStyle(BorderlessButtonMenuStyle())
-            .padding(.vertical, 5)
-            .padding(.horizontal, 10)
+            .padding(.vertical, 2)
+            .padding(.horizontal, 4)
             .background(intervalButtonIsHovered ? Color.rmbColor(for: .buttonHover, and: colorSchemeContrast) : nil)
-            .cornerRadius(6)
+            .cornerRadius(3)
             .onHover { isHovered in
                 intervalButtonIsHovered = isHovered
             }
-            .padding(.trailing, 1)
             .fixedSize(horizontal: true, vertical: true)
             .help(rmbLocalized(.upcomingRemindersIntervalSelectionHelp))
         }

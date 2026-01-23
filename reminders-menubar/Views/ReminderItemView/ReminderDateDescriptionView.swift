@@ -13,28 +13,17 @@ struct ReminderDateDescriptionView: View {
 
     var body: some View {
         HStack(spacing: 4) {
-            if isHovered {
-                Image(systemName: "calendar")
-            }
             Text(dateDescription)
                 .lineLimit(1)
-                .foregroundColor(isExpired ? .red : nil)
+                .foregroundColor(isExpired ? .red.opacity(0.7) : nil)
 
-            if isHovered {
-                if hasRecurrenceRules {
-                    Image(systemName: "repeat")
-                    Text(recurrenceLabel(recurrenceRules?.first))
-                        .lineLimit(1)
-                }
-
-                if showCalendarTitleOnDueDate {
-                    Text("@ \(calendarTitle)")
-                        .lineLimit(1)
-                        .truncationMode(.tail)
-                }
+            if isHovered && showCalendarTitleOnDueDate {
+                Text("@ \(calendarTitle)")
+                    .lineLimit(1)
+                    .truncationMode(.tail)
             }
         }
-        .font(.caption2)
+        .font(.system(size: 8))
         .frame(maxWidth: .infinity, alignment: .leading)
         .onHover { hovering in
             isHovered = hovering
