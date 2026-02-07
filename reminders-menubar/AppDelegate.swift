@@ -21,7 +21,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     static private(set) var shared: AppDelegate!
     
     private var didCloseCancellationToken: AnyCancellable?
+    private var didShowCancellationToken: AnyCancellable?
     private var didCloseEventDate = Date.distantPast
+
+    private var globalOutsideClickMonitor: Any?
+    private var localOutsideClickMonitor: Any?
     
     private var sharedAuthorizationErrorMessage: String?
 
@@ -44,6 +48,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         configureMenuBarButton()
         configureKeyboardShortcut()
         configureDidCloseNotification()
+        configureDidShowNotification()
     }
     
     private func configurePopover() {
@@ -85,6 +90,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             .publisher(for: NSPopover.didCloseNotification, object: popover)
             .sink { [weak self] _ in
                 self?.didCloseEventDate = Date()
+                self?.stopOutsideClickMonitors()
+            }
+    }
+
+    private func configureDidShowNotification() {
+        // SwiftUI `Menu` inside an NSPopover can occasionally break the system's transient dismissal behavior.
+        // Install a fallback outside-click monitor while the popover is visible.
+        didShowCancellationToken = NotificationCenter.default
+            .publisher(for: NSPopover.didShowNotification, object: popover)
+            .sink { [weak self] _ in
+                self?.startOutsideClickMonitors()
             }
     }
     
@@ -113,6 +129,75 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
             UserPreferences.shared.remindersMenuBarOpeningEvent.toggle()
         }
+    }
+
+    func applicationWillTerminate(_ notification: Notification) {
+        stopOutsideClickMonitors()
+    }
+
+    private func startOutsideClickMonitors() {
+        stopOutsideClickMonitors()
+
+        globalOutsideClickMonitor = NSEvent.addGlobalMonitorForEvents(
+            matching: [.leftMouseDown, .rightMouseDown, .otherMouseDown]
+        ) { [weak self] event in
+            Task { @MainActor in
+                self?.handlePossibleOutsideClick(event: event)
+            }
+        }
+
+        localOutsideClickMonitor = NSEvent.addLocalMonitorForEvents(
+            matching: [.leftMouseDown, .rightMouseDown, .otherMouseDown]
+        ) { [weak self] event in
+            Task { @MainActor in
+                self?.handlePossibleOutsideClick(event: event)
+            }
+            return event
+        }
+    }
+
+    private func stopOutsideClickMonitors() {
+        if let monitor = globalOutsideClickMonitor {
+            NSEvent.removeMonitor(monitor)
+            globalOutsideClickMonitor = nil
+        }
+        if let monitor = localOutsideClickMonitor {
+            NSEvent.removeMonitor(monitor)
+            localOutsideClickMonitor = nil
+        }
+    }
+
+    private func handlePossibleOutsideClick(event: NSEvent) {
+        guard popover.isShown else { return }
+
+        // Use current mouse location so global monitors (which often lack window info) still work reliably.
+        let mouseLocation = NSEvent.mouseLocation
+
+        if isMouseLocationInsideStatusItemButton(mouseLocation) {
+            // Let the normal status item button action handle toggling.
+            return
+        }
+
+        if let popoverWindow = popover.contentViewController?.view.window,
+           popoverWindow.frame.contains(mouseLocation) {
+            return
+        }
+
+        // If the click is inside any of our app's windows (menus, child popovers, etc.), do nothing.
+        if let window = NSApp.window(withWindowNumber: event.windowNumber),
+           window.frame.contains(mouseLocation) {
+            return
+        }
+
+        popover.performClose(nil)
+    }
+
+    private func isMouseLocationInsideStatusItemButton(_ mouseLocation: NSPoint) -> Bool {
+        guard let button = statusBarItem.button, let window = button.window else { return false }
+
+        let rectInWindow = button.convert(button.bounds, to: nil)
+        let rectOnScreen = window.convertToScreen(rectInWindow)
+        return rectOnScreen.contains(mouseLocation)
     }
 }
 
