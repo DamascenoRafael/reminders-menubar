@@ -9,7 +9,7 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 0) {
             FormNewReminderView()
-            
+
             if userPreferences.atLeastOneFilterIsSelected {
                 List {
                     if userPreferences.showUpcomingReminders {
@@ -53,9 +53,10 @@ struct ContentView: View {
                 }
                 .frame(maxHeight: .infinity)
             }
-            
+
             SettingsBarView()
         }
+        .overlay(PopoverResizeHandleView().padding(4), alignment: .bottomTrailing)
         .background(Color.rmbColor(for: .backgroundTheme, and: colorSchemeContrast).padding(-80))
         .preferredColorScheme(userPreferences.rmbColorScheme.colorScheme)
     }

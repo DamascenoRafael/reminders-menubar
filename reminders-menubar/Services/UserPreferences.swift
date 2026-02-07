@@ -18,6 +18,8 @@ private enum PreferencesKeys {
     static let preferredLanguage = "preferredLanguage"
     static let copyTemplate = "copyTemplate"
     static let copyTrimEnabled = "copyTrimEnabled"
+    static let mainPopoverHeight = "mainPopoverHeight"
+    static let mainPopoverWidth = "mainPopoverWidth"
 }
 
 class UserPreferences: ObservableObject {
@@ -199,6 +201,28 @@ class UserPreferences: ObservableObject {
     }() {
         didSet {
             UserPreferences.defaults.set(preferredLanguage, forKey: PreferencesKeys.preferredLanguage)
+        }
+    }
+
+    // Stored as a CGFloat-backed Double for window sizing. This is intentionally not @Published;
+    // it is used for persistence and for driving the NSPopover size directly.
+    var mainPopoverHeight: CGFloat {
+        get {
+            let raw = UserPreferences.defaults.double(forKey: PreferencesKeys.mainPopoverHeight)
+            return raw > 0 ? CGFloat(raw) : 460
+        }
+        set {
+            UserPreferences.defaults.set(Double(newValue), forKey: PreferencesKeys.mainPopoverHeight)
+        }
+    }
+
+    var mainPopoverWidth: CGFloat {
+        get {
+            let raw = UserPreferences.defaults.double(forKey: PreferencesKeys.mainPopoverWidth)
+            return raw > 0 ? CGFloat(raw) : 340
+        }
+        set {
+            UserPreferences.defaults.set(Double(newValue), forKey: PreferencesKeys.mainPopoverWidth)
         }
     }
 }

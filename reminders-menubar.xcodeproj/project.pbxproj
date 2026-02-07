@@ -82,6 +82,7 @@
 		96A54A6D29A3B1A90060403F /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A54A6C29A3B1A90060403F /* String+Extensions.swift */; };
 		B55D54F82F37DF4E002DE761 /* ReminderCopyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55D54F72F37DF4E002DE761 /* ReminderCopyService.swift */; };
 		B55D54FA2F37DF94002DE761 /* CopyFormatSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55D54F92F37DF94002DE761 /* CopyFormatSettingsView.swift */; };
+		B55D54FE2F37E4E5002DE761 /* PopoverResizeHandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55D54FD2F37E4E5002DE761 /* PopoverResizeHandleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -176,6 +177,7 @@
 		96A54A6C29A3B1A90060403F /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		B55D54F72F37DF4E002DE761 /* ReminderCopyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCopyService.swift; sourceTree = "<group>"; };
 		B55D54F92F37DF94002DE761 /* CopyFormatSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyFormatSettingsView.swift; sourceTree = "<group>"; };
+		B55D54FD2F37E4E5002DE761 /* PopoverResizeHandleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverResizeHandleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +222,7 @@
 				712C32B524BF939100AC75E2 /* ContentView.swift */,
 				71B4AD4E25B7D06400214219 /* CalendarTitle.swift */,
 				71B4AD6525B9118000214219 /* NoReminderItemsView.swift */,
+				B55D54FD2F37E4E5002DE761 /* PopoverResizeHandleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -618,6 +621,7 @@
 				71E5C75529B7D45600568292 /* UserDefaults+Extensions.swift in Sources */,
 				715B4DD528D56FE5008C6683 /* KeyboardShortcutService.swift in Sources */,
 				714C4980267FA56F00721516 /* remindersLocalized.swift in Sources */,
+				B55D54FE2F37E4E5002DE761 /* PopoverResizeHandleView.swift in Sources */,
 				71D12FF625EA196F00A1A0E6 /* UpcomingRemindersTitle.swift in Sources */,
 				714D03B226042416003063F7 /* Calendar+Extensions.swift in Sources */,
 				712C32B424BF939100AC75E2 /* AppDelegate.swift in Sources */,
