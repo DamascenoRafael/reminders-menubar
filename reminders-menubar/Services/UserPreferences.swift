@@ -16,6 +16,8 @@ private enum PreferencesKeys {
     static let menuBarCounterType = "menuBarCounterType"
     static let filterMenuBarCountByCalendar = "filterMenuBarCountByCalendar"
     static let preferredLanguage = "preferredLanguage"
+    static let copyTemplate = "copyTemplate"
+    static let copyTrimEnabled = "copyTrimEnabled"
 }
 
 class UserPreferences: ObservableObject {
@@ -176,6 +178,22 @@ class UserPreferences: ObservableObject {
         }
     }
     
+    @Published var copyTemplate: String = {
+        return defaults.string(forKey: PreferencesKeys.copyTemplate) ?? "{title}"
+    }() {
+        didSet {
+            UserPreferences.defaults.set(copyTemplate, forKey: PreferencesKeys.copyTemplate)
+        }
+    }
+
+    @Published var copyTrimEnabled: Bool = {
+        return defaults.boolWithDefaultValueTrue(forKey: PreferencesKeys.copyTrimEnabled)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(copyTrimEnabled, forKey: PreferencesKeys.copyTrimEnabled)
+        }
+    }
+
     @Published var preferredLanguage: String? = {
         return defaults.string(forKey: PreferencesKeys.preferredLanguage)
     }() {
