@@ -33,6 +33,23 @@ struct FormNewReminderView: View {
                         .foregroundColor(.gray)
                         .padding([.top, .leading], 8)
                 )
+                .overlay(
+                    Group {
+                        if !rmbReminder.title.isEmpty {
+                            Button(action: {
+                                rmbReminder = newRmbReminder()
+                                textFieldFocusTrigger = UUID()
+                            }) {
+                                Image(systemName: "xmark.circle.fill")
+                                    .foregroundColor(.gray)
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                            .transition(.opacity)
+                        }
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                    .padding([.top, .trailing], 8)
+                )
                 
                 Menu {
                     ForEach(remindersData.calendars, id: \.calendarIdentifier) { calendar in
