@@ -6,6 +6,8 @@ struct FormNewReminderView: View {
     @ObservedObject var userPreferences = UserPreferences.shared
     @Environment(\.colorSchemeContrast) private var colorSchemeContrast
     
+    @Binding var searchFilterText: String
+
     @State var rmbReminder = RmbReminder()
     @State var isShowingInfoOptions = false
 
@@ -109,6 +111,8 @@ struct FormNewReminderView: View {
             if oldValue.isEmpty {
                 rmbReminder.updateSuggestedDate()
             }
+
+            searchFilterText = finalNewReminderTitle()
         }
         .onAppear {
             rmbReminder = newRmbReminder()
@@ -222,6 +226,6 @@ struct ContrastBorderOverlay: ViewModifier {
 }
 
 #Preview {
-    FormNewReminderView()
+    FormNewReminderView(searchFilterText: .constant(""))
         .environmentObject(RemindersData())
 }
