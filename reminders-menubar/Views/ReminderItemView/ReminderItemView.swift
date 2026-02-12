@@ -12,7 +12,6 @@ struct ReminderItemView: View {
     @State private var isEditingTitle = false
 
     @Environment(\.searchFilterWords) private var searchFilterWords
-    @Environment(\.searchFilterHasAnyMatch) private var searchFilterHasAnyMatch
 
     @State private var showingRemoveAlert = false
 
@@ -26,10 +25,33 @@ struct ReminderItemView: View {
         }
     }
 
+    private var searchMatchOpacity: Double {
+        guard !searchFilterWords.isEmpty else {
+            return 1.0
+        }
+        if titleMatchesSearch(reminderItem.reminder.title) {
+            return 1.0
+        }
+        if anyChildMatches(reminderItem) {
+            return 0.4
+        }
+        return 0.3
+    }
+
     private var matchesSearch: Bool {
-        guard !searchFilterWords.isEmpty, searchFilterHasAnyMatch else { return true }
-        let title = reminderItem.reminder.title.lowercased()
-        return searchFilterWords.allSatisfy { title.contains($0) }
+        searchMatchOpacity > 0.5
+    }
+
+    private func titleMatchesSearch(_ title: String) -> Bool {
+        let titleLower = title.lowercased()
+        return searchFilterWords.allSatisfy { titleLower.contains($0) }
+    }
+
+    private func anyChildMatches(_ item: ReminderItem) -> Bool {
+        let children = item.childReminders.uncompleted + item.childReminders.completed
+        return children.contains { child in
+            titleMatchesSearch(child.reminder.title) || anyChildMatches(child)
+        }
     }
 
     @ViewBuilder
@@ -99,8 +121,8 @@ struct ReminderItemView: View {
             reminderItemIsHovered = isHovered
         }
         .padding(.leading, reminderItem.isChild ? 24 : 0)
-        .opacity(matchesSearch ? 1.0 : 0.3)
-        .animation(.easeOut(duration: 0.2), value: matchesSearch)
+        .opacity(searchMatchOpacity)
+        .animation(.easeOut(duration: 0.2), value: searchMatchOpacity)
 
         ForEach(reminderItem.childReminders.uncompleted) { reminderItem in
             ReminderItemView(reminderItem: reminderItem, isShowingCompleted: isShowingCompleted)
@@ -144,22 +166,27 @@ struct ReminderItemView: View {
 
         boldRanges.sort { $0.lowerBound < $1.lowerBound }
 
+        let calendarColor = Color(reminderItem.reminder.calendar.color)
         var result = Text("")
         var currentIndex = title.startIndex
 
         for range in boldRanges {
             if currentIndex < range.lowerBound {
                 result = result + Text(title[currentIndex..<range.lowerBound])
+                    .foregroundColor(.primary.opacity(0.6))
             }
             let boldStart = max(currentIndex, range.lowerBound)
             if boldStart < range.upperBound {
-                result = result + Text(title[boldStart..<range.upperBound]).bold()
+                result = result + Text(title[boldStart..<range.upperBound])
+                    .bold()
+                    .underline(color: calendarColor)
             }
             currentIndex = range.upperBound
         }
 
         if currentIndex < title.endIndex {
             result = result + Text(title[currentIndex..<title.endIndex])
+                .foregroundColor(.primary.opacity(0.6))
         }
 
         return result
