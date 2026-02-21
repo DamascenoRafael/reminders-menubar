@@ -8,17 +8,19 @@ struct PopoverResizeHandleView: View {
     @State private var isHovering = false
 
     var body: some View {
-        // NSPopover windows don't reliably support native edge resizing.
-        // Provide a bottom-right corner handle that updates popover.contentSize.
-        let stroke = Color.rmbColor(for: .borderContrast, and: colorSchemeContrast)
-        let opacity = isHovering ? 0.85 : 0.35
-
         ZStack {
-            RoundedRectangle(cornerRadius: 7, style: .continuous)
-                .fill(stroke.opacity(isHovering ? 0.10 : 0.0))
-
             CornerArcGrabber()
-                .stroke(stroke.opacity(opacity), style: StrokeStyle(lineWidth: 1.3, lineCap: .round))
+                .stroke(
+                    Color.rmbColor(for: .borderContrast, and: colorSchemeContrast).opacity(isHovering ? 0.85 : 0.35),
+                    style: StrokeStyle(lineWidth: 1.3, lineCap: .round)
+                )
+                .background(
+                    CornerArcGrabber()
+                        .stroke(
+                            isHovering ? Color.rmbColor(for: .buttonHover, and: colorSchemeContrast) : .clear,
+                            style: StrokeStyle(lineWidth: 9.0, lineCap: .round)
+                        )
+                )
                 .padding(4)
         }
         .frame(width: 22, height: 22)
