@@ -40,13 +40,10 @@ struct PopoverResizeHandleView: View {
         }
         .animation(.easeOut(duration: 0.12), value: isHovering)
         .gesture(
-            DragGesture(minimumDistance: 0)
+            DragGesture(minimumDistance: 0, coordinateSpace: .global)
                 .onChanged { value in
                     if dragStartSize == nil {
-                        dragStartSize = CGSize(
-                            width: AppDelegate.shared.popover.contentSize.width,
-                            height: AppDelegate.shared.popover.contentSize.height
-                        )
+                        dragStartSize = AppDelegate.shared.popover.contentSize
                     }
 
                     guard let startSize = dragStartSize else { return }
@@ -55,10 +52,7 @@ struct PopoverResizeHandleView: View {
                     AppDelegate.shared.setMainPopoverSize(width: newWidth, height: newHeight, persist: false)
                 }
                 .onEnded { value in
-                    let startSize = dragStartSize ?? CGSize(
-                        width: AppDelegate.shared.popover.contentSize.width,
-                        height: AppDelegate.shared.popover.contentSize.height
-                    )
+                    let startSize = dragStartSize ?? AppDelegate.shared.popover.contentSize
                     let newWidth = startSize.width + value.translation.width
                     let newHeight = startSize.height + value.translation.height
                     AppDelegate.shared.setMainPopoverSize(width: newWidth, height: newHeight, persist: true)
