@@ -92,7 +92,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let screen = statusBarItem.button?.window?.screen {
             return screen.visibleFrame
         }
-        return NSScreen.main?.visibleFrame ?? CGRect(x: 0, y: 0, width: 1440, height: 900)
+        return NSScreen.main?.visibleFrame ?? CGRect(x: 0, y: 0, width: 1_440, height: 900)
     }
 
     private func clampedMainPopoverWidth(_ width: CGFloat) -> CGFloat {
