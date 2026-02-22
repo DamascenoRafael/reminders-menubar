@@ -4,12 +4,15 @@ import EventKit
 struct ReminderEllipsisMenuView: View {
     @Binding var showingEditPopover: Bool
     @Binding var showingRemoveAlert: Bool
+    var onCopyReminder: () -> Void
 
     var reminder: EKReminder
     var reminderHasChildren: Bool
 
     var body: some View {
         Menu {
+            copyReminderButton()
+
             showEditPopoverOptionButton()
 
             ReminderChangePriorityOptionMenu(reminder: reminder)
@@ -29,6 +32,17 @@ struct ReminderEllipsisMenuView: View {
         .padding(.top, 1)
         .padding(.trailing, 10)
         .help(rmbLocalized(.remindersOptionsButtonHelp))
+    }
+
+    func copyReminderButton() -> some View {
+        Button(action: {
+            onCopyReminder()
+        }) {
+            HStack {
+                Image(systemName: "doc.on.doc")
+                Text(rmbLocalized(.copyReminderOptionButton))
+            }
+        }
     }
 
     func showEditPopoverOptionButton() -> some View {
@@ -72,6 +86,7 @@ struct ReminderEllipsisMenuView: View {
     ReminderEllipsisMenuView(
         showingEditPopover: .constant(false),
         showingRemoveAlert: .constant(false),
+        onCopyReminder: {},
         reminder: reminder,
         reminderHasChildren: false
     )

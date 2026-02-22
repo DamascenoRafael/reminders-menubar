@@ -16,6 +16,10 @@ private enum PreferencesKeys {
     static let menuBarCounterType = "menuBarCounterType"
     static let filterMenuBarCountByCalendar = "filterMenuBarCountByCalendar"
     static let preferredLanguage = "preferredLanguage"
+    static let copyTemplate = "copyTemplate"
+    static let copyTrimEnabled = "copyTrimEnabled"
+    static let mainPopoverHeight = "mainPopoverHeight"
+    static let mainPopoverWidth = "mainPopoverWidth"
 }
 
 class UserPreferences: ObservableObject {
@@ -176,11 +180,49 @@ class UserPreferences: ObservableObject {
         }
     }
     
+    @Published var copyTemplate: String = {
+        return defaults.string(forKey: PreferencesKeys.copyTemplate) ?? "{title}"
+    }() {
+        didSet {
+            UserPreferences.defaults.set(copyTemplate, forKey: PreferencesKeys.copyTemplate)
+        }
+    }
+
+    @Published var copyTrimEnabled: Bool = {
+        return defaults.boolWithDefaultValueTrue(forKey: PreferencesKeys.copyTrimEnabled)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(copyTrimEnabled, forKey: PreferencesKeys.copyTrimEnabled)
+        }
+    }
+
     @Published var preferredLanguage: String? = {
         return defaults.string(forKey: PreferencesKeys.preferredLanguage)
     }() {
         didSet {
             UserPreferences.defaults.set(preferredLanguage, forKey: PreferencesKeys.preferredLanguage)
+        }
+    }
+
+    // Stored as a CGFloat-backed Double for window sizing. This is intentionally not @Published;
+    // it is used for persistence and for driving the NSPopover size directly.
+    var mainPopoverHeight: CGFloat {
+        get {
+            let raw = UserPreferences.defaults.double(forKey: PreferencesKeys.mainPopoverHeight)
+            return raw > 0 ? CGFloat(raw) : 460
+        }
+        set {
+            UserPreferences.defaults.set(Double(newValue), forKey: PreferencesKeys.mainPopoverHeight)
+        }
+    }
+
+    var mainPopoverWidth: CGFloat {
+        get {
+            let raw = UserPreferences.defaults.double(forKey: PreferencesKeys.mainPopoverWidth)
+            return raw > 0 ? CGFloat(raw) : 340
+        }
+        set {
+            UserPreferences.defaults.set(Double(newValue), forKey: PreferencesKeys.mainPopoverWidth)
         }
     }
 }

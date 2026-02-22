@@ -88,6 +88,16 @@ enum RemindersMenuBarLocalizedKeys: String {
     case reminderRecurrenceWeeklyLabel
     case reminderRecurrenceMonthlyLabel
     case reminderRecurrenceYearlyLabel
+    case copyReminderOptionButton
+    case copiedToastMessage
+    case copyFormatSettingsMenu
+    case copyFormatSettingsWindowTitle
+    case copyFormatTemplateLabel
+    case copyFormatTemplatePlaceholder
+    case copyFormatTemplateHint
+    case copyFormatAvailableVariables
+    case copyFormatTrimOption
+    case copyFormatPreviewLabel
 }
 
 struct ReminderMenuBarLocale {

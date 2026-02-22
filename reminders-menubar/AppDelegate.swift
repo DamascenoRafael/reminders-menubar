@@ -19,9 +19,24 @@ struct RemindersMenuBar: App {
 @MainActor
 class AppDelegate: NSObject, NSApplicationDelegate {
     static private(set) var shared: AppDelegate!
+
+    private enum MainPopoverSizing {
+        static let defaultWidth: CGFloat = 340
+        static let defaultHeight: CGFloat = 460
+        static let minWidth: CGFloat = 300
+        static let minHeight: CGFloat = 320
+        static let absoluteMaxWidth: CGFloat = 900
+        static let absoluteMaxHeight: CGFloat = 1_000
+        static let maxWidthPadding: CGFloat = 80
+        static let maxHeightPadding: CGFloat = 120
+    }
     
     private var didCloseCancellationToken: AnyCancellable?
+    private var didShowCancellationToken: AnyCancellable?
     private var didCloseEventDate = Date.distantPast
+
+    private var globalOutsideClickMonitor: Any?
+    private var localOutsideClickMonitor: Any?
     
     private var sharedAuthorizationErrorMessage: String?
 
@@ -44,15 +59,58 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         configureMenuBarButton()
         configureKeyboardShortcut()
         configureDidCloseNotification()
+        configureDidShowNotification()
     }
     
     private func configurePopover() {
-        popover.contentSize = NSSize(width: 340, height: 460)
+        let width = clampedMainPopoverWidth(UserPreferences.shared.mainPopoverWidth)
+        let height = clampedMainPopoverHeight(UserPreferences.shared.mainPopoverHeight)
+        popover.contentSize = NSSize(width: width, height: height)
         popover.animates = false
         
         if RemindersService.shared.authorizationStatus() == .authorized {
             popover.contentViewController = contentViewController
         }
+    }
+
+    func setMainPopoverSize(width: CGFloat, height: CGFloat, persist: Bool) {
+        let clampedWidth = clampedMainPopoverWidth(width)
+        let clampedHeight = clampedMainPopoverHeight(height)
+        popover.contentSize = NSSize(width: clampedWidth, height: clampedHeight)
+
+        if persist {
+            UserPreferences.shared.mainPopoverWidth = clampedWidth
+            UserPreferences.shared.mainPopoverHeight = clampedHeight
+        }
+    }
+
+    func setMainPopoverHeight(_ height: CGFloat, persist: Bool) {
+        setMainPopoverSize(width: popover.contentSize.width, height: height, persist: persist)
+    }
+
+    private func mainScreenVisibleFrame() -> CGRect {
+        if let screen = statusBarItem.button?.window?.screen {
+            return screen.visibleFrame
+        }
+        return NSScreen.main?.visibleFrame ?? CGRect(x: 0, y: 0, width: 1_440, height: 900)
+    }
+
+    private func clampedMainPopoverWidth(_ width: CGFloat) -> CGFloat {
+        let screenWidth = mainScreenVisibleFrame().width
+        let maxWidth = min(
+            MainPopoverSizing.absoluteMaxWidth,
+            max(MainPopoverSizing.minWidth, screenWidth - MainPopoverSizing.maxWidthPadding)
+        )
+        return min(max(width, MainPopoverSizing.minWidth), maxWidth)
+    }
+
+    private func clampedMainPopoverHeight(_ height: CGFloat) -> CGFloat {
+        let screenHeight = mainScreenVisibleFrame().height
+        let maxHeight = min(
+            MainPopoverSizing.absoluteMaxHeight,
+            max(MainPopoverSizing.minHeight, screenHeight - MainPopoverSizing.maxHeightPadding)
+        )
+        return min(max(height, MainPopoverSizing.minHeight), maxHeight)
     }
     
     func updateMenuBarTodayCount(to todayCount: Int) {
@@ -85,6 +143,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             .publisher(for: NSPopover.didCloseNotification, object: popover)
             .sink { [weak self] _ in
                 self?.didCloseEventDate = Date()
+                self?.stopOutsideClickMonitors()
+            }
+    }
+
+    private func configureDidShowNotification() {
+        // SwiftUI `Menu` inside an NSPopover can occasionally break the system's transient dismissal behavior.
+        // Install a fallback outside-click monitor while the popover is visible.
+        didShowCancellationToken = NotificationCenter.default
+            .publisher(for: NSPopover.didShowNotification, object: popover)
+            .sink { [weak self] _ in
+                self?.startOutsideClickMonitors()
             }
     }
     
@@ -113,6 +182,75 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
             UserPreferences.shared.remindersMenuBarOpeningEvent.toggle()
         }
+    }
+
+    func applicationWillTerminate(_ notification: Notification) {
+        stopOutsideClickMonitors()
+    }
+
+    private func startOutsideClickMonitors() {
+        stopOutsideClickMonitors()
+
+        globalOutsideClickMonitor = NSEvent.addGlobalMonitorForEvents(
+            matching: [.leftMouseDown, .rightMouseDown, .otherMouseDown]
+        ) { [weak self] event in
+            Task { @MainActor in
+                self?.handlePossibleOutsideClick(event: event)
+            }
+        }
+
+        localOutsideClickMonitor = NSEvent.addLocalMonitorForEvents(
+            matching: [.leftMouseDown, .rightMouseDown, .otherMouseDown]
+        ) { [weak self] event in
+            Task { @MainActor in
+                self?.handlePossibleOutsideClick(event: event)
+            }
+            return event
+        }
+    }
+
+    private func stopOutsideClickMonitors() {
+        if let monitor = globalOutsideClickMonitor {
+            NSEvent.removeMonitor(monitor)
+            globalOutsideClickMonitor = nil
+        }
+        if let monitor = localOutsideClickMonitor {
+            NSEvent.removeMonitor(monitor)
+            localOutsideClickMonitor = nil
+        }
+    }
+
+    private func handlePossibleOutsideClick(event: NSEvent) {
+        guard popover.isShown else { return }
+
+        // Use current mouse location so global monitors (which often lack window info) still work reliably.
+        let mouseLocation = NSEvent.mouseLocation
+
+        if isMouseLocationInsideStatusItemButton(mouseLocation) {
+            // Let the normal status item button action handle toggling.
+            return
+        }
+
+        if let popoverWindow = popover.contentViewController?.view.window,
+           popoverWindow.frame.contains(mouseLocation) {
+            return
+        }
+
+        // If the click is inside any of our app's windows (menus, child popovers, etc.), do nothing.
+        if let window = NSApp.window(withWindowNumber: event.windowNumber),
+           window.frame.contains(mouseLocation) {
+            return
+        }
+
+        popover.performClose(nil)
+    }
+
+    private func isMouseLocationInsideStatusItemButton(_ mouseLocation: NSPoint) -> Bool {
+        guard let button = statusBarItem.button, let window = button.window else { return false }
+
+        let rectInWindow = button.convert(button.bounds, to: nil)
+        let rectOnScreen = window.convertToScreen(rectInWindow)
+        return rectOnScreen.contains(mouseLocation)
     }
 }
 
