@@ -445,6 +445,7 @@
 			);
 			name = "Reminders MenuBar";
 			packageProductDependencies = (
+				4AC5AEB32F4D6529003D1E97 /* Swifter */,
 				716BCF0D28C97C7100537081 /* KeyboardShortcuts */,
 			);
 			productName = "reminders-menubar";
@@ -931,6 +932,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4AC5AEB32F4D6529003D1E97 /* Swifter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4AC5AEB22F4D6529003D1E97 /* XCRemoteSwiftPackageReference "swifter" */;
+			productName = Swifter;
+		};
 		716BCF0D28C97C7100537081 /* KeyboardShortcuts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 716BCF0C28C97C7100537081 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;

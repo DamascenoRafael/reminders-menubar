@@ -116,6 +116,30 @@ class RemindersService {
             print("Error saving reminder:", error.localizedDescription)
         }
     }
+
+    func fetchReminder(withIdentifier identifier: String) -> EKReminder? {
+        return eventStore.calendarItem(withIdentifier: identifier) as? EKReminder
+    }
+
+    func fetchReminders(in calendars: [EKCalendar]) -> [EKReminder] {
+        let predicate = eventStore.predicateForReminders(in: calendars)
+        var reminders: [EKReminder] = []
+        let semaphore = DispatchSemaphore(value: 0)
+
+        eventStore.fetchReminders(matching: predicate) { fetched in
+            reminders = fetched ?? []
+            semaphore.signal()
+        }
+
+        _ = semaphore.wait(timeout: .now() + 5)
+        return reminders
+    }
+
+    func createReminder(in calendar: EKCalendar) -> EKReminder {
+        let reminder = EKReminder(eventStore: eventStore)
+        reminder.calendar = calendar
+        return reminder
+    }
     
     func createNew(with rmbReminder: RmbReminder, in calendar: EKCalendar) {
         let newReminder = EKReminder(eventStore: eventStore)

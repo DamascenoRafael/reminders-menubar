@@ -50,7 +50,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Start API Server if enabled
         apiServer = APIServer.shared
-        apiServer?.startIfEnabled()
+        apiServer?.initialize()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

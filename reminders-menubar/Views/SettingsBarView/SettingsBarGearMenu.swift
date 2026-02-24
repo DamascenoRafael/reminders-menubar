@@ -219,7 +219,7 @@ struct SettingsBarGearMenu: View {
         }) {
             let isSelected = userPreferences.apiServerEnabled
             SelectableView(
-                title: "API Server",
+                title: rmbLocalized(.apiServerOptionButton),
                 isSelected: isSelected,
                 withPadding: false
             )
@@ -239,7 +239,7 @@ struct SettingsBarGearMenu: View {
                 }) {
                     let isSelected = userPreferences.apiServerPort == port
                     SelectableView(
-                        title: "Port \(port)",
+                        title: rmbLocalized(.apiPortOption, arguments: String(port)),
                         isSelected: isSelected
                     )
                 }
@@ -250,34 +250,34 @@ struct SettingsBarGearMenu: View {
             Button(action: {
                 showCustomPortDialog()
             }) {
-                Text("Custom Port...")
+                Text(rmbLocalized(.apiCustomPortButton))
+            }
+
+            Divider()
+
+            Button(action: {
+                if let url = URL(string: "http://localhost:\(userPreferences.apiServerPort)") {
+                    NSWorkspace.shared.open(url)
+                }
+            }) {
+                Text(rmbLocalized(.apiOpenInBrowserButton))
             }
         } label: {
-            Text("API Port: \(userPreferences.apiServerPort)")
-        }
-
-        Divider()
-
-        Button(action: {
-            if let url = URL(string: "http://localhost:\(userPreferences.apiServerPort)") {
-                NSWorkspace.shared.open(url)
-            }
-        }) {
-            Text("Open API in Browser")
+            Text(rmbLocalized(.apiPortMenuTitle, arguments: String(userPreferences.apiServerPort)))
         }
     }
 
     private func showCustomPortDialog() {
         let alert = NSAlert()
-        alert.messageText = "Custom API Port"
-        alert.informativeText = "Enter a port number between 1024 and 65535:"
+        alert.messageText = rmbLocalized(.apiCustomPortAlertTitle)
+        alert.informativeText = rmbLocalized(.apiCustomPortAlertMessage)
 
         let textField = NSTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 24))
         textField.stringValue = String(userPreferences.apiServerPort)
         alert.accessoryView = textField
 
-        alert.addButton(withTitle: "OK")
-        alert.addButton(withTitle: "Cancel")
+        alert.addButton(withTitle: rmbLocalized(.okButton))
+        alert.addButton(withTitle: rmbLocalized(.cancelButton))
 
         let response = alert.runModal()
         if response == .alertFirstButtonReturn {
