@@ -19,14 +19,17 @@ struct RemindersMenuBar: App {
 @MainActor
 class AppDelegate: NSObject, NSApplicationDelegate {
     static private(set) var shared: AppDelegate!
-    
+
     private var didCloseCancellationToken: AnyCancellable?
     private var didCloseEventDate = Date.distantPast
-    
+
     private var sharedAuthorizationErrorMessage: String?
 
     let popover = NSPopover()
     lazy var statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+
+    // API Server
+    private var apiServer: APIServer?
     
     var contentViewController: NSViewController {
         let contentView = ContentView()
@@ -36,14 +39,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         AppDelegate.shared = self
-        
+
         AppUpdateCheckHelper.shared.startBackgroundActivity()
-        
+
         changeBehaviorToDismissIfNeeded()
         configurePopover()
         configureMenuBarButton()
         configureKeyboardShortcut()
         configureDidCloseNotification()
+
+        // Start API Server if enabled
+        apiServer = APIServer.shared
+        apiServer?.startIfEnabled()
+    }
+
+    func applicationWillTerminate(_ aNotification: Notification) {
+        apiServer?.stop()
     }
     
     private func configurePopover() {
