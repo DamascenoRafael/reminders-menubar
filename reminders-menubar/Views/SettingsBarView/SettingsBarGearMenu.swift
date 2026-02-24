@@ -48,7 +48,11 @@ struct SettingsBarGearMenu: View {
                 }
                 
                 Divider()
-                
+
+                apiServerOptions()
+
+                Divider()
+
                 Button(action: {
                     Task {
                         await remindersData.update()
@@ -205,6 +209,81 @@ struct SettingsBarGearMenu: View {
             }
         } label: {
             Text(rmbLocalized(.preferredLanguageMenu))
+        }
+    }
+
+    @ViewBuilder
+    func apiServerOptions() -> some View {
+        Button(action: {
+            userPreferences.apiServerEnabled.toggle()
+        }) {
+            let isSelected = userPreferences.apiServerEnabled
+            SelectableView(
+                title: rmbLocalized(.apiServerOptionButton),
+                isSelected: isSelected,
+                withPadding: false
+            )
+        }
+
+        if userPreferences.apiServerEnabled {
+            apiServerPortOptions()
+        }
+    }
+
+    @ViewBuilder
+    func apiServerPortOptions() -> some View {
+        Menu {
+            ForEach([7777, 3000, 8000, 8080, 9000], id: \.self) { port in
+                Button(action: {
+                    userPreferences.apiServerPort = port
+                }) {
+                    let isSelected = userPreferences.apiServerPort == port
+                    SelectableView(
+                        title: rmbLocalized(.apiPortOption, arguments: String(port)),
+                        isSelected: isSelected
+                    )
+                }
+            }
+
+            Divider()
+
+            Button(action: {
+                showCustomPortDialog()
+            }) {
+                Text(rmbLocalized(.apiCustomPortButton))
+            }
+
+            Divider()
+
+            Button(action: {
+                if let url = URL(string: "http://localhost:\(userPreferences.apiServerPort)") {
+                    NSWorkspace.shared.open(url)
+                }
+            }) {
+                Text(rmbLocalized(.apiOpenInBrowserButton))
+            }
+        } label: {
+            Text(rmbLocalized(.apiPortMenuTitle, arguments: String(userPreferences.apiServerPort)))
+        }
+    }
+
+    private func showCustomPortDialog() {
+        let alert = NSAlert()
+        alert.messageText = rmbLocalized(.apiCustomPortAlertTitle)
+        alert.informativeText = rmbLocalized(.apiCustomPortAlertMessage)
+
+        let textField = NSTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 24))
+        textField.stringValue = String(userPreferences.apiServerPort)
+        alert.accessoryView = textField
+
+        alert.addButton(withTitle: rmbLocalized(.okButton))
+        alert.addButton(withTitle: rmbLocalized(.cancelButton))
+
+        let response = alert.runModal()
+        if response == .alertFirstButtonReturn {
+            if let port = Int(textField.stringValue), port >= 1024 && port <= 65535 {
+                userPreferences.apiServerPort = port
+            }
         }
     }
 }

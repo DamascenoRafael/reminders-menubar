@@ -82,8 +82,16 @@ enum RemindersMenuBarLocalizedKeys: String {
     case appNoRemindersAccessAlertActionDescription // swiftlint:disable:this identifier_name
     case openSystemPreferencesButton
     case okButton
+    case cancelButton = "Cancel"
     case preferredLanguageMenu
     case preferredLanguageSystemOptionButton
+    case apiServerOptionButton = "API Server"
+    case apiPortMenuTitle = "API Port: %@"
+    case apiPortOption = "Port %@"
+    case apiCustomPortButton = "Custom Port..."
+    case apiOpenInBrowserButton = "Open API in Browser"
+    case apiCustomPortAlertTitle = "Custom API Port"
+    case apiCustomPortAlertMessage = "Enter a port number between 1024 and 65535:"
     case reminderRecurrenceDailyLabel
     case reminderRecurrenceWeeklyLabel
     case reminderRecurrenceMonthlyLabel

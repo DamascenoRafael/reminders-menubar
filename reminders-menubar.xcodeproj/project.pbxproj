@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4AC5AEC32F4D67C7003D1E97 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC5AEC12F4D67C7003D1E97 /* APIResponse.swift */; };
+		4AC5AEC42F4D67C7003D1E97 /* APIServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC5AEC22F4D67C7003D1E97 /* APIServer.swift */; };
 		7102423025F55D5600451D15 /* ReminderInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102422F25F55D5600451D15 /* ReminderInterval.swift */; };
 		71032A8F24C21F0F00A8006C /* FormNewReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71032A8E24C21F0F00A8006C /* FormNewReminderView.swift */; };
 		71059DAB25CA5244001F3063 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71059DAA25CA5244001F3063 /* AppDelegate.swift */; };
@@ -96,6 +98,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4AC5AEC12F4D67C7003D1E97 /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
+		4AC5AEC22F4D67C7003D1E97 /* APIServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServer.swift; sourceTree = "<group>"; };
 		7102422F25F55D5600451D15 /* ReminderInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderInterval.swift; sourceTree = "<group>"; };
 		71032A8E24C21F0F00A8006C /* FormNewReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormNewReminderView.swift; sourceTree = "<group>"; };
 		71059DA825CA5244001F3063 /* Reminders MenuBar Launcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reminders MenuBar Launcher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,6 +227,8 @@
 		7115461724C0C273007781E2 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				4AC5AEC12F4D67C7003D1E97 /* APIResponse.swift */,
+				4AC5AEC22F4D67C7003D1E97 /* APIServer.swift */,
 				7115461824C0C280007781E2 /* RemindersService.swift */,
 				96A54A6A29A3ADB70060403F /* DateParser.swift */,
 				71CAF8422A3444EA003160FF /* CalendarParser.swift */,
@@ -439,6 +445,7 @@
 			);
 			name = "Reminders MenuBar";
 			packageProductDependencies = (
+				4AC5AEB32F4D6529003D1E97 /* Swifter */,
 				716BCF0D28C97C7100537081 /* KeyboardShortcuts */,
 			);
 			productName = "reminders-menubar";
@@ -494,6 +501,7 @@
 			mainGroup = 712C32A724BF939100AC75E2;
 			packageReferences = (
 				716BCF0C28C97C7100537081 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+				4AC5AEB22F4D6529003D1E97 /* XCRemoteSwiftPackageReference "swifter" */,
 			);
 			productRefGroup = 712C32B124BF939100AC75E2 /* Products */;
 			projectDirPath = "";
@@ -612,6 +620,8 @@
 				714C4980267FA56F00721516 /* remindersLocalized.swift in Sources */,
 				71D12FF625EA196F00A1A0E6 /* UpcomingRemindersTitle.swift in Sources */,
 				714D03B226042416003063F7 /* Calendar+Extensions.swift in Sources */,
+				4AC5AEC32F4D67C7003D1E97 /* APIResponse.swift in Sources */,
+				4AC5AEC42F4D67C7003D1E97 /* APIServer.swift in Sources */,
 				712C32B424BF939100AC75E2 /* AppDelegate.swift in Sources */,
 				715B4DD228D41071008C6683 /* SettingsBarGearMenu.swift in Sources */,
 				71032A8F24C21F0F00A8006C /* FormNewReminderView.swift in Sources */,
@@ -643,6 +653,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = UNZ234UP68;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "reminders-menubar-launcher/Info.plist";
@@ -668,6 +679,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = UNZ234UP68;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "reminders-menubar-launcher/Info.plist";
@@ -820,6 +832,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"reminders-menubar/Preview Content\"";
+				DEVELOPMENT_TEAM = UNZ234UP68;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -848,6 +861,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"reminders-menubar/Preview Content\"";
+				DEVELOPMENT_TEAM = UNZ234UP68;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -899,6 +913,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4AC5AEB22F4D6529003D1E97 /* XCRemoteSwiftPackageReference "swifter" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/httpswift/swifter.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
 		716BCF0C28C97C7100537081 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
@@ -910,6 +932,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4AC5AEB32F4D6529003D1E97 /* Swifter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4AC5AEB22F4D6529003D1E97 /* XCRemoteSwiftPackageReference "swifter" */;
+			productName = Swifter;
+		};
 		716BCF0D28C97C7100537081 /* KeyboardShortcuts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 716BCF0C28C97C7100537081 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;

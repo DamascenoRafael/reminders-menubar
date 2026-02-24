@@ -16,6 +16,8 @@ private enum PreferencesKeys {
     static let menuBarCounterType = "menuBarCounterType"
     static let filterMenuBarCountByCalendar = "filterMenuBarCountByCalendar"
     static let preferredLanguage = "preferredLanguage"
+    static let apiServerEnabled = "apiServerEnabled"
+    static let apiServerPort = "apiServerPort"
 }
 
 class UserPreferences: ObservableObject {
@@ -181,6 +183,23 @@ class UserPreferences: ObservableObject {
     }() {
         didSet {
             UserPreferences.defaults.set(preferredLanguage, forKey: PreferencesKeys.preferredLanguage)
+        }
+    }
+
+    @Published var apiServerEnabled: Bool = {
+        return defaults.bool(forKey: PreferencesKeys.apiServerEnabled)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(apiServerEnabled, forKey: PreferencesKeys.apiServerEnabled)
+        }
+    }
+
+    @Published var apiServerPort: Int = {
+        let savedPort = defaults.integer(forKey: PreferencesKeys.apiServerPort)
+        return savedPort > 0 ? savedPort : 7777
+    }() {
+        didSet {
+            UserPreferences.defaults.set(apiServerPort, forKey: PreferencesKeys.apiServerPort)
         }
     }
 }
