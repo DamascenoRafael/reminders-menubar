@@ -1,109 +1,98 @@
 # API Integration Guide
 
-这个指南说明如何在 reminders-menubar 项目中添加 REST API 功能。
+This guide explains how REST API support is integrated into the `reminders-menubar` project.
 
-## 已添加的文件
+## Added Files
 
-以下文件已添加到项目中：
+The following API files are included in the project:
 
-```
+```text
 reminders-menubar/
-└── reminders-menubar/Services/API/
-    ├── APIResponse.swift              # API 响应模型
-    ├── APIServer.swift                # 简单的 HTTP 服务器
-    ├── APIServer+Swifter.swift        # 完整的 Swifter 版本（推荐）
-    └── APIServer+AppDelegate.swift     # AppDelegate 集成代码
+└── Services/
+    ├── APIResponse.swift    # API response helpers
+    └── APIServer.swift      # Swifter-based HTTP server
 ```
 
-## 集成步骤
+## Integration Steps
 
-### 1. 添加 Swifter 依赖（推荐）
+### 1. Add the Swifter Dependency
 
-在 Xcode 中：
+In Xcode:
 
-1. 打开项目：`reminders-menubar.xcodeproj`
-2. 选择项目导航器中的项目
-3. 选择 "reminders-menubar" 目标
-4. 点击 "Package Dependencies" 标签
-5. 点击 "+" 添加包
-6. 输入：`https://github.com/httpswift/swifter.git`
-7. 选择版本，添加到 "reminders-menubar" 目标
+1. Open `reminders-menubar.xcodeproj`.
+2. Select the project in the navigator.
+3. Select the `reminders-menubar` target.
+4. Open the `Package Dependencies` tab.
+5. Click `+` to add a package.
+6. Enter `https://github.com/httpswift/swifter.git`.
+7. Select a version and add it to the `reminders-menubar` target.
 
-### 2. 使用简单版本（无需额外依赖）
+### 2. Integrate with `AppDelegate.swift`
 
-如果你不想添加外部依赖，可以使用 `APIServer.swift` 中的简单实现。
-
-### 3. 修改 AppDelegate.swift
-
-在 `AppDelegate.swift` 中添加以下代码：
+Use the API server singleton and initialize it on launch:
 
 ```swift
-// 在文件顶部添加
 private var apiServer: APIServer?
 
-// 在 applicationDidFinishLaunching 中添加
-// 在 configureDidCloseNotification() 之后添加：
+func applicationDidFinishLaunching(_ aNotification: Notification) {
+    apiServer = APIServer.shared
+    apiServer?.initialize()
+}
 
-// Start API Server
-apiServer = APIServer.shared
-apiServer?.start(port: 3000)
-
-// 在 applicationWillTerminate 中添加（如果没有，创建这个方法）
 func applicationWillTerminate(_ aNotification: Notification) {
     apiServer?.stop()
 }
 ```
 
-### 4. 添加 API 文件到 Xcode 项目
+### 3. Add API Files to the Xcode Target
 
-1. 在 Xcode 项目导航器中，右键点击 `Services` 文件夹
-2. 选择 "Add Files to reminders-menubar..."
-3. 选择 `Services/API` 文件夹下的所有 `.swift` 文件
-4. 确保勾选 "Copy items if needed" 和 "Add to targets: reminders-menubar"
+If files are not already part of the target:
 
-## 使用 Swifter 完整版本（推荐）
+1. In Xcode, right-click the `Services` folder.
+2. Select `Add Files to reminders-menubar...`.
+3. Add API-related `.swift` files.
+4. Ensure they are included in target membership for `reminders-menubar`.
 
-要使用完整的 API 功能，请：
+## API Endpoints
 
-1. 重命名或删除 `APIServer.swift`
-2. 将 `APIServer+Swifter.swift` 重命名为 `APIServer.swift`
-3. 取消注释文件中的所有代码
+After launching the app and enabling API Server in settings, the API is available at:
 
-## API 端点
+- `http://localhost:7777` (default)
+- Or your configured custom port
 
-启动应用后，API 将在 `http://localhost:3000` 可用：
-
-| 方法 | 端点 | 描述 |
+| Method | Endpoint | Description |
 |------|------|------|
-| GET | `/` | API 信息 |
-| GET | `/health` | 健康检查 |
-| GET | `/api/v1/status` | 授权状态 |
-| GET | `/api/v1/lists` | 获取所有列表 |
-| GET | `/api/v1/reminders` | 获取提醒（支持 filter 参数） |
-| POST | `/api/v1/reminders` | 创建提醒 |
-| POST | `/api/v1/reminders/:id/complete` | 完成提醒 |
-| DELETE | `/api/v1/reminders/:id` | 删除提醒 |
+| GET | `/` | API information |
+| GET | `/health` | Health check |
+| GET | `/api/v1/status` | Authorization and server status |
+| GET | `/api/v1/projects` | List all projects (Todoist-style) |
+| GET | `/api/v1/tasks` | List tasks (Todoist-style), supports `project_id`/`project_ids`, `project_name`/`project_names`, `exclude_project_ids`, `exclude_project_names`, and `filter` |
+| POST | `/api/v1/tasks` | Create a task (Todoist-style) |
+| POST | `/api/v1/tasks/:id/close` | Complete a task |
+| POST | `/api/v1/tasks/:id/reopen` | Reopen a task |
+| DELETE | `/api/v1/tasks/:id` | Delete a task |
 
-## 测试
+## Test Commands
 
 ```bash
-# 测试 API
-curl http://localhost:3000/
-curl http://localhost:3000/health
-curl http://localhost:3000/api/v1/status
-curl http://localhost:3000/api/v1/lists
+# Basic checks (default port 7777)
+curl http://localhost:7777/
+curl http://localhost:7777/health
+curl http://localhost:7777/api/v1/status
+curl http://localhost:7777/api/v1/projects
+curl http://localhost:7777/api/v1/tasks
 ```
 
-## 注意事项
+## Notes
 
-1. **权限**：应用需要提醒事项权限才能正常工作
-2. **端口**：默认使用 3000 端口，确保端口未被占用
-3. **沙盒**：如果应用使用 App Sandbox，需要确保网络权限已开启
+1. **Permissions**: The app must have Reminders permission to work with EventKit data.
+2. **Port**: Default port is `7777`; ensure the selected port is not occupied.
+3. **Sandboxing**: If App Sandbox is enabled, make sure network access is configured correctly.
 
-## 故障排除
+## Troubleshooting
 
-如果 API 服务器无法启动：
+If the API server does not start:
 
-1. 检查端口 3000 是否被占用：`lsof -i :3000`
-2. 查看 Xcode 控制台日志
-3. 确保所有 Swift 文件已正确添加到目标
+1. Check whether the port is already in use (example for default port): `lsof -i :7777`
+2. Check Xcode console logs for startup errors.
+3. Verify all API source files are included in the `reminders-menubar` target.
