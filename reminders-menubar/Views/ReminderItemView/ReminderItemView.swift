@@ -178,12 +178,15 @@ struct ReminderItemView: View {
         var boldRanges: [Range<String.Index>] = []
 
         for word in words {
-            if let range = titleLower.range(of: word) {
+            var searchStart = titleLower.startIndex
+            while searchStart < titleLower.endIndex,
+                  let range = titleLower.range(of: word, range: searchStart..<titleLower.endIndex) {
                 let startOffset = titleLower.distance(from: titleLower.startIndex, to: range.lowerBound)
                 let endOffset = titleLower.distance(from: titleLower.startIndex, to: range.upperBound)
                 let originalStart = title.index(title.startIndex, offsetBy: startOffset)
                 let originalEnd = title.index(title.startIndex, offsetBy: endOffset)
                 boldRanges.append(originalStart..<originalEnd)
+                searchStart = range.upperBound
             }
         }
 
