@@ -1,5 +1,3 @@
-// Created by Barrett Jacobsen
-
 import AppKit
 import SwiftUI
 
