@@ -18,8 +18,7 @@ private enum PreferencesKeys {
     static let preferredLanguage = "preferredLanguage"
     static let copyTemplate = "copyTemplate"
     static let copyTrimEnabled = "copyTrimEnabled"
-    static let mainPopoverHeight = "mainPopoverHeight"
-    static let mainPopoverWidth = "mainPopoverWidth"
+    static let mainPopoverSize = "mainPopoverSize"
 }
 
 class UserPreferences: ObservableObject {
@@ -204,25 +203,18 @@ class UserPreferences: ObservableObject {
         }
     }
 
-    // Stored as a CGFloat-backed Double for window sizing. This is intentionally not @Published;
-    // it is used for persistence and for driving the NSPopover size directly.
-    var mainPopoverHeight: CGFloat {
+    // This is intentionally not @Published; it is used for persistence and for driving the NSPopover size directly.
+    var mainPopoverSize: NSSize {
         get {
-            let raw = UserPreferences.defaults.double(forKey: PreferencesKeys.mainPopoverHeight)
-            return raw > 0 ? CGFloat(raw) : 460
+            guard let nsSizeData = UserPreferences.defaults.data(forKey: PreferencesKeys.mainPopoverSize),
+                  let nsSize = try? JSONDecoder().decode(NSSize.self, from: nsSizeData) else {
+                return MainPopoverSizing.defaultSize
+            }
+            return nsSize
         }
         set {
-            UserPreferences.defaults.set(Double(newValue), forKey: PreferencesKeys.mainPopoverHeight)
-        }
-    }
-
-    var mainPopoverWidth: CGFloat {
-        get {
-            let raw = UserPreferences.defaults.double(forKey: PreferencesKeys.mainPopoverWidth)
-            return raw > 0 ? CGFloat(raw) : 340
-        }
-        set {
-            UserPreferences.defaults.set(Double(newValue), forKey: PreferencesKeys.mainPopoverWidth)
+            let nsSizeData = try? JSONEncoder().encode(newValue)
+            UserPreferences.defaults.set(nsSizeData, forKey: PreferencesKeys.mainPopoverSize)
         }
     }
 }

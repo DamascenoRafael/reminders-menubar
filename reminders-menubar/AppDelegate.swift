@@ -20,17 +20,6 @@ struct RemindersMenuBar: App {
 class AppDelegate: NSObject, NSApplicationDelegate {
     static private(set) var shared: AppDelegate!
 
-    private enum MainPopoverSizing {
-        static let defaultWidth: CGFloat = 340
-        static let defaultHeight: CGFloat = 460
-        static let minWidth: CGFloat = 300
-        static let minHeight: CGFloat = 320
-        static let absoluteMaxWidth: CGFloat = 900
-        static let absoluteMaxHeight: CGFloat = 1_000
-        static let maxWidthPadding: CGFloat = 80
-        static let maxHeightPadding: CGFloat = 120
-    }
-    
     private var didCloseCancellationToken: AnyCancellable?
     private var didShowCancellationToken: AnyCancellable?
     private var didCloseEventDate = Date.distantPast
@@ -63,9 +52,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     private func configurePopover() {
-        let width = clampedMainPopoverWidth(UserPreferences.shared.mainPopoverWidth)
-        let height = clampedMainPopoverHeight(UserPreferences.shared.mainPopoverHeight)
-        popover.contentSize = NSSize(width: width, height: height)
+        let size = clampedMainPopoverSize(size: UserPreferences.shared.mainPopoverSize)
+        popover.contentSize = size
         popover.animates = false
         
         if RemindersService.shared.authorizationStatus() == .authorized {
@@ -73,44 +61,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
-    func setMainPopoverSize(width: CGFloat, height: CGFloat, persist: Bool) {
-        let clampedWidth = clampedMainPopoverWidth(width)
-        let clampedHeight = clampedMainPopoverHeight(height)
-        popover.contentSize = NSSize(width: clampedWidth, height: clampedHeight)
+    func setMainPopoverSize(size: NSSize, persist: Bool) {
+        let clampedSize = clampedMainPopoverSize(size: size)
+        popover.contentSize = clampedSize
 
         if persist {
-            UserPreferences.shared.mainPopoverWidth = clampedWidth
-            UserPreferences.shared.mainPopoverHeight = clampedHeight
+            UserPreferences.shared.mainPopoverSize = clampedSize
         }
     }
 
-    func setMainPopoverHeight(_ height: CGFloat, persist: Bool) {
-        setMainPopoverSize(width: popover.contentSize.width, height: height, persist: persist)
-    }
-
-    private func mainScreenVisibleFrame() -> CGRect {
+    private func mainScreenVisibleFrame() -> NSRect {
         if let screen = statusBarItem.button?.window?.screen {
             return screen.visibleFrame
         }
-        return NSScreen.main?.visibleFrame ?? CGRect(x: 0, y: 0, width: 1_440, height: 900)
+        return NSScreen.main?.visibleFrame ?? NSRect(x: 0, y: 0, width: 1_440, height: 900)
     }
 
-    private func clampedMainPopoverWidth(_ width: CGFloat) -> CGFloat {
-        let screenWidth = mainScreenVisibleFrame().width
-        let maxWidth = min(
-            MainPopoverSizing.absoluteMaxWidth,
-            max(MainPopoverSizing.minWidth, screenWidth - MainPopoverSizing.maxWidthPadding)
-        )
-        return min(max(width, MainPopoverSizing.minWidth), maxWidth)
-    }
+    private func clampedMainPopoverSize(size: NSSize) -> NSSize {
+        let screenSize = mainScreenVisibleFrame()
 
-    private func clampedMainPopoverHeight(_ height: CGFloat) -> CGFloat {
-        let screenHeight = mainScreenVisibleFrame().height
-        let maxHeight = min(
-            MainPopoverSizing.absoluteMaxHeight,
-            max(MainPopoverSizing.minHeight, screenHeight - MainPopoverSizing.maxHeightPadding)
-        )
-        return min(max(height, MainPopoverSizing.minHeight), maxHeight)
+        let maxWidth = (screenSize.width - MainPopoverSizing.minWidthPadding)
+            .constrainedTo(min: MainPopoverSizing.minSize.width, max: MainPopoverSizing.maxSize.width)
+        let width = size.width.constrainedTo(min: MainPopoverSizing.minSize.width, max: maxWidth)
+
+        let maxHeight = (screenSize.height - MainPopoverSizing.minHeightPadding)
+            .constrainedTo(min: MainPopoverSizing.minSize.height, max: MainPopoverSizing.maxSize.height)
+        let height = size.height.constrainedTo(min: MainPopoverSizing.minSize.height, max: maxHeight)
+
+        return NSSize(width: width, height: height)
     }
     
     func updateMenuBarTodayCount(to todayCount: Int) {
