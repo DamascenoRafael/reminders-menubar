@@ -3,14 +3,23 @@ import EventKit
 
 // MARK: - Search filter environment
 
-private struct SearchFilterWordsKey: EnvironmentKey {
+private struct SearchFilterTextKey: EnvironmentKey {
     static let defaultValue: [String] = []
+}
+
+private struct SearchFilterHasMatchKey: EnvironmentKey {
+    static let defaultValue = true
 }
 
 extension EnvironmentValues {
     var searchFilterWords: [String] {
-        get { self[SearchFilterWordsKey.self] }
-        set { self[SearchFilterWordsKey.self] = newValue }
+        get { self[SearchFilterTextKey.self] }
+        set { self[SearchFilterTextKey.self] = newValue }
+    }
+
+    var searchFilterHasAnyMatch: Bool {
+        get { self[SearchFilterHasMatchKey.self] }
+        set { self[SearchFilterHasMatchKey.self] = newValue }
     }
 }
 
@@ -21,36 +30,24 @@ struct ContentView: View {
 
     @State private var searchFilterText = ""
 
-    /// Returns the search words to use for filtering, or empty if no visible item matches
-    /// (when nothing matches, filtering is disabled so all items appear normally).
-    private var effectiveSearchWords: [String] {
+    private var searchWords: [String] {
         let trimmed = searchFilterText.trimmingCharacters(in: .whitespaces)
         guard !trimmed.isEmpty else { return [] }
-        let words = trimmed.lowercased().split(separator: " ").map(String.init)
+        return trimmed.lowercased().split(separator: " ").map(String.init)
+    }
 
-        let isShowingCompleted = !userPreferences.showUncompletedOnly
-        var visibleReminders = remindersData.filteredReminderLists.flatMap { list -> [ReminderItem] in
-            var items = list.reminders.uncompleted
-            if isShowingCompleted {
-                items += list.reminders.completed
-            }
-            return items + items.flatMap { collectChildren($0) }
-        }
-        if userPreferences.showUpcomingReminders {
-            visibleReminders += remindersData.upcomingReminders
-        }
+    private var hasAnyMatch: Bool {
+        let words = searchWords
+        guard !words.isEmpty else { return true }
 
-        let anyMatch = visibleReminders.contains { item in
+        let allReminders = remindersData.filteredReminderLists.flatMap {
+            $0.reminders.uncompleted + $0.reminders.completed
+        } + remindersData.upcomingReminders
+
+        return allReminders.contains { item in
             let title = item.reminder.title.lowercased()
             return words.allSatisfy { title.contains($0) }
         }
-
-        return anyMatch ? words : []
-    }
-
-    private func collectChildren(_ item: ReminderItem) -> [ReminderItem] {
-        let children = item.childReminders.uncompleted + item.childReminders.completed
-        return children + children.flatMap { collectChildren($0) }
     }
 
     var body: some View {
@@ -91,7 +88,8 @@ struct ContentView: View {
                 }
                 .listStyle(.plain)
                 .animation(.default, value: remindersData.filteredReminderLists)
-                .environment(\.searchFilterWords, effectiveSearchWords)
+                .environment(\.searchFilterWords, searchWords)
+                .environment(\.searchFilterHasAnyMatch, hasAnyMatch)
             } else {
                 VStack(spacing: 4) {
                     Text(rmbLocalized(.emptyListNoRemindersFilterTitle))
