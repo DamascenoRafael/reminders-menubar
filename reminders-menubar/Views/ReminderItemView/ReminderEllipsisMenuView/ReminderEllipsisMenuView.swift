@@ -11,9 +11,9 @@ struct ReminderEllipsisMenuView: View {
 
     var body: some View {
         Menu {
-            copyReminderButton()
-
             showEditPopoverOptionButton()
+
+            copyReminderButton()
 
             ReminderChangePriorityOptionMenu(reminder: reminder)
 
