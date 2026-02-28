@@ -6,6 +6,8 @@ struct FormNewReminderView: View {
     @ObservedObject var userPreferences = UserPreferences.shared
     @Environment(\.colorSchemeContrast) private var colorSchemeContrast
     
+    @Binding var searchFilterText: String
+
     @State var rmbReminder = RmbReminder()
     @State var isShowingInfoOptions = false
 
@@ -32,6 +34,23 @@ struct FormNewReminderView: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                         .foregroundColor(.gray)
                         .padding([.top, .leading], 8)
+                )
+                .overlay(
+                    Group {
+                        if !rmbReminder.title.isEmpty {
+                            Button(action: {
+                                rmbReminder = newRmbReminder()
+                                textFieldFocusTrigger = UUID()
+                            }) {
+                                Image(systemName: "xmark.circle.fill")
+                                    .foregroundColor(.gray)
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                            .transition(.opacity)
+                        }
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                    .padding([.top, .trailing], 8)
                 )
                 
                 Menu {
@@ -92,6 +111,8 @@ struct FormNewReminderView: View {
             if oldValue.isEmpty {
                 rmbReminder.updateSuggestedDate()
             }
+
+            searchFilterText = finalNewReminderTitle()
         }
         .onAppear {
             rmbReminder = newRmbReminder()
@@ -205,6 +226,6 @@ struct ContrastBorderOverlay: ViewModifier {
 }
 
 #Preview {
-    FormNewReminderView()
+    FormNewReminderView(searchFilterText: .constant(""))
         .environmentObject(RemindersData())
 }

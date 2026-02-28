@@ -1,15 +1,62 @@
 import SwiftUI
 import EventKit
 
+// MARK: - Search filter environment
+
+private struct SearchFilterWordsKey: EnvironmentKey {
+    static let defaultValue: [String] = []
+}
+
+extension EnvironmentValues {
+    var searchFilterWords: [String] {
+        get { self[SearchFilterWordsKey.self] }
+        set { self[SearchFilterWordsKey.self] = newValue }
+    }
+}
+
 struct ContentView: View {
     @EnvironmentObject var remindersData: RemindersData
     @ObservedObject var userPreferences = UserPreferences.shared
     @Environment(\.colorSchemeContrast) private var colorSchemeContrast
-    
+
+    @State private var searchFilterText = ""
+
+    /// Returns the search words to use for filtering, or empty if no visible item matches
+    /// (when nothing matches, filtering is disabled so all items appear normally).
+    private var effectiveSearchWords: [String] {
+        let trimmed = searchFilterText.trimmingCharacters(in: .whitespaces)
+        guard !trimmed.isEmpty else { return [] }
+        let words = trimmed.lowercased().split(separator: " ").map(String.init)
+
+        let isShowingCompleted = !userPreferences.showUncompletedOnly
+        var visibleReminders = remindersData.filteredReminderLists.flatMap { list -> [ReminderItem] in
+            var items = list.reminders.uncompleted
+            if isShowingCompleted {
+                items += list.reminders.completed
+            }
+            return items + items.flatMap { collectChildren($0) }
+        }
+        if userPreferences.showUpcomingReminders {
+            visibleReminders += remindersData.upcomingReminders
+        }
+
+        let anyMatch = visibleReminders.contains { item in
+            let title = item.reminder.title.lowercased()
+            return words.allSatisfy { title.contains($0) }
+        }
+
+        return anyMatch ? words : []
+    }
+
+    private func collectChildren(_ item: ReminderItem) -> [ReminderItem] {
+        let children = item.childReminders.uncompleted + item.childReminders.completed
+        return children + children.flatMap { collectChildren($0) }
+    }
+
     var body: some View {
         VStack(spacing: 0) {
-            FormNewReminderView()
-            
+            FormNewReminderView(searchFilterText: $searchFilterText)
+
             if userPreferences.atLeastOneFilterIsSelected {
                 List {
                     if userPreferences.showUpcomingReminders {
@@ -44,6 +91,7 @@ struct ContentView: View {
                 }
                 .listStyle(.plain)
                 .animation(.default, value: remindersData.filteredReminderLists)
+                .environment(\.searchFilterWords, effectiveSearchWords)
             } else {
                 VStack(spacing: 4) {
                     Text(rmbLocalized(.emptyListNoRemindersFilterTitle))
