@@ -49,6 +49,7 @@
 		717A01B72F4FDE5C00C8A33E /* Comparable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717A01B62F4FDE5800C8A33E /* Comparable+Extensions.swift */; };
 		718C0C632D43220A00BF04B0 /* PriorityParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718C0C622D43220A00BF04B0 /* PriorityParser.swift */; };
 		718C813628D01CCE00BAC2D0 /* KeyboardShortcutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718C813528D01CCE00BAC2D0 /* KeyboardShortcutView.swift */; };
+		719A36E42F52C04100C93474 /* NSCursor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719A36E32F52C03400C93474 /* NSCursor+Extensions.swift */; };
 		719C712A2C1FADB000C622FF /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 719C71292C1FADB000C622FF /* Localizable.xcstrings */; };
 		719C712C2C1FADB000C622FF /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 719C712B2C1FADB000C622FF /* InfoPlist.xcstrings */; };
 		71A0B2DC25CE20AC004E06AE /* AppUpdateCheckHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A0B2DB25CE20AC004E06AE /* AppUpdateCheckHelper.swift */; };
@@ -146,6 +147,7 @@
 		717A01B62F4FDE5800C8A33E /* Comparable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Extensions.swift"; sourceTree = "<group>"; };
 		718C0C622D43220A00BF04B0 /* PriorityParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityParser.swift; sourceTree = "<group>"; };
 		718C813528D01CCE00BAC2D0 /* KeyboardShortcutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcutView.swift; sourceTree = "<group>"; };
+		719A36E32F52C03400C93474 /* NSCursor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSCursor+Extensions.swift"; sourceTree = "<group>"; };
 		719C71292C1FADB000C622FF /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		719C712B2C1FADB000C622FF /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		71A0B2DB25CE20AC004E06AE /* AppUpdateCheckHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUpdateCheckHelper.swift; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 				96A54A6C29A3B1A90060403F /* String+Extensions.swift */,
 				71F36A9F29C3E79E0099D337 /* Color+Extensions.swift */,
 				717A01B62F4FDE5800C8A33E /* Comparable+Extensions.swift */,
+				719A36E32F52C03400C93474 /* NSCursor+Extensions.swift */,
 				71E5C75429B7D45600568292 /* UserDefaults+Extensions.swift */,
 			);
 			path = Extensions;
@@ -607,6 +610,7 @@
 				71F93A652E03B93100D5C5BC /* ReminderExternalLinksView.swift in Sources */,
 				71F06B482F4FF3EC009C91E6 /* MainPopoverSizing.swift in Sources */,
 				716F69F22D641F260080A5F1 /* ReminderChangeListOptionMenu.swift in Sources */,
+				719A36E42F52C04100C93474 /* NSCursor+Extensions.swift in Sources */,
 				716CAFEE2AC28E3F00EEB1DB /* LabeledReminders.swift in Sources */,
 				71ED5D6B290B6B3C00626185 /* RmbReminder.swift in Sources */,
 				7156444226031CA9005E81FD /* Array+Extension.swift in Sources */,

@@ -28,7 +28,7 @@ struct PopoverResizeHandleView: View {
         .onHover { hovering in
             isHovering = hovering
             if hovering {
-                Self.diagonalResizeCursor.push()
+                NSCursor.rmbDiagonalResize.push()
             } else {
                 NSCursor.pop()
             }
@@ -68,26 +68,6 @@ struct PopoverResizeHandleView: View {
         .help("Drag to resize")
         .accessibilityLabel("Resize window")
     }
-
-    private static let diagonalResizeCursor: NSCursor = {
-        // AppKit doesn't provide a public diagonal resize cursor across all supported macOS versions.
-        // Provide our own from an SF Symbol so the cursor matches the corner handle.
-        let fallback = NSCursor.resizeUpDown
-
-        guard let symbol = NSImage(
-            systemSymbolName: "arrow.up.left.and.arrow.down.right",
-            accessibilityDescription: nil
-        ) else {
-            return fallback
-        }
-
-        let size = NSSize(width: 24, height: 24)
-        symbol.size = size
-        symbol.isTemplate = true
-
-        // Center hotspot feels the most natural for this symbol.
-        return NSCursor(image: symbol, hotSpot: NSPoint(x: size.width / 2, y: size.height / 2))
-    }()
 }
 
 private struct CornerArcGrabber: Shape {
