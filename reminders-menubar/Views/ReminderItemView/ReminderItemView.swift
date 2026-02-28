@@ -45,6 +45,25 @@ struct ReminderItemView: View {
                         }
 
                     Spacer()
+
+                    // TODO: remove the `.id` modifier while keeping properties updated (such as selected priority)
+                    ReminderEllipsisMenuView(
+                        showingEditPopover: $showingEditPopover,
+                        showingRemoveAlert: $showingRemoveAlert,
+                        onCopyReminder: { copyReminderToClipboard() },
+                        reminder: reminderItem.reminder,
+                        reminderHasChildren: reminderItem.hasChildren
+                    )
+                    .id(UUID())
+                    .opacity(shouldShowEllipsisButton() ? 1 : 0)
+                    .popover(isPresented: $showingEditPopover, arrowEdge: .trailing) {
+                        ReminderEditPopover(
+                            isPresented: $showingEditPopover,
+                            focusOnTitle: $isEditingTitle,
+                            reminder: reminderItem.reminder,
+                            reminderHasChildren: reminderItem.hasChildren
+                        )
+                    }
                 }
                 .alert(isPresented: $showingRemoveAlert) {
                     removeReminderAlert()
@@ -75,25 +94,6 @@ struct ReminderItemView: View {
             // by the parent row/container.
             .padding(.top, 1)
             .overlay(copiedToastOverlay())
-
-            // TODO: remove the `.id` modifier while keeping properties updated (such as selected priority)
-            ReminderEllipsisMenuView(
-                showingEditPopover: $showingEditPopover,
-                showingRemoveAlert: $showingRemoveAlert,
-                onCopyReminder: { copyReminderToClipboard() },
-                reminder: reminderItem.reminder,
-                reminderHasChildren: reminderItem.hasChildren
-            )
-            .id(UUID())
-            .opacity(shouldShowEllipsisButton() ? 1 : 0)
-            .popover(isPresented: $showingEditPopover, arrowEdge: .trailing) {
-                ReminderEditPopover(
-                    isPresented: $showingEditPopover,
-                    focusOnTitle: $isEditingTitle,
-                    reminder: reminderItem.reminder,
-                    reminderHasChildren: reminderItem.hasChildren
-                )
-            }
         }
         .onHover { isHovered in
             reminderItemIsHovered = isHovered
