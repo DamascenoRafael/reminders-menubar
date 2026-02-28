@@ -11,9 +11,6 @@ struct ReminderItemView: View {
     @State private var showingEditPopover = false
     @State private var isEditingTitle = false
 
-    @Environment(\.searchFilterWords) private var searchFilterWords
-    @Environment(\.searchFilterHasAnyMatch) private var searchFilterHasAnyMatch
-
     @State private var showingRemoveAlert = false
     @State private var showingCopiedToast = false
     @State private var copyEventMonitor: Any?
@@ -29,12 +26,6 @@ struct ReminderItemView: View {
         }
     }
 
-    private var matchesSearch: Bool {
-        guard !searchFilterWords.isEmpty, searchFilterHasAnyMatch else { return true }
-        let title = reminderItem.reminder.title.lowercased()
-        return searchFilterWords.allSatisfy { title.contains($0) }
-    }
-
     @ViewBuilder
     func mainReminderItemView() -> some View {
         HStack(alignment: .top) {
@@ -46,7 +37,7 @@ struct ReminderItemView: View {
                         Image(systemName: prioritySystemImage)
                             .foregroundColor(Color(reminderItem.reminder.calendar.color))
                     }
-                    highlightedTitleText()
+                    Text(LocalizedStringKey(reminderItem.reminder.title.toDetectedLinkAttributedString()))
                         .fixedSize(horizontal: false, vertical: true)
                         .onTapGesture {
                             isEditingTitle = true
@@ -122,8 +113,6 @@ struct ReminderItemView: View {
             removeCopyEventMonitor()
         }
         .padding(.leading, reminderItem.isChild ? 24 : 0)
-        .opacity(matchesSearch ? 1.0 : 0.3)
-        .animation(.easeOut(duration: 0.2), value: matchesSearch)
 
         ForEach(reminderItem.childReminders.uncompleted) { reminderItem in
             ReminderItemView(reminderItem: reminderItem, isShowingCompleted: isShowingCompleted)
@@ -139,55 +128,6 @@ struct ReminderItemView: View {
     func shouldShowEllipsisButton() -> Bool {
         return reminderItemIsHovered || showingEditPopover
     }
-
-    @ViewBuilder
-    func highlightedTitleText() -> some View {
-        let title = reminderItem.reminder.title ?? ""
-        if searchFilterWords.isEmpty || !matchesSearch {
-            Text(LocalizedStringKey(title.toDetectedLinkAttributedString()))
-        } else {
-            buildHighlightedText(title: title, words: searchFilterWords)
-        }
-    }
-
-    // swiftlint:disable shorthand_operator
-    private func buildHighlightedText(title: String, words: [String]) -> Text {
-        let titleLower = title.lowercased()
-        var boldRanges: [Range<String.Index>] = []
-
-        for word in words {
-            if let range = titleLower.range(of: word) {
-                let startOffset = titleLower.distance(from: titleLower.startIndex, to: range.lowerBound)
-                let endOffset = titleLower.distance(from: titleLower.startIndex, to: range.upperBound)
-                let originalStart = title.index(title.startIndex, offsetBy: startOffset)
-                let originalEnd = title.index(title.startIndex, offsetBy: endOffset)
-                boldRanges.append(originalStart..<originalEnd)
-            }
-        }
-
-        boldRanges.sort { $0.lowerBound < $1.lowerBound }
-
-        var result = Text("")
-        var currentIndex = title.startIndex
-
-        for range in boldRanges {
-            if currentIndex < range.lowerBound {
-                result = result + Text(title[currentIndex..<range.lowerBound])
-            }
-            let boldStart = max(currentIndex, range.lowerBound)
-            if boldStart < range.upperBound {
-                result = result + Text(title[boldStart..<range.upperBound]).bold()
-            }
-            currentIndex = range.upperBound
-        }
-
-        if currentIndex < title.endIndex {
-            result = result + Text(title[currentIndex..<title.endIndex])
-        }
-
-        return result
-    }
-    // swiftlint:enable shorthand_operator
 
     func copyReminderToClipboard() {
         ReminderCopyService.copyReminder(reminderItem.reminder)

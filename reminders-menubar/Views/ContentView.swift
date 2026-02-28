@@ -1,58 +1,14 @@
 import SwiftUI
 import EventKit
 
-// MARK: - Search filter environment
-
-private struct SearchFilterTextKey: EnvironmentKey {
-    static let defaultValue: [String] = []
-}
-
-private struct SearchFilterHasMatchKey: EnvironmentKey {
-    static let defaultValue = true
-}
-
-extension EnvironmentValues {
-    var searchFilterWords: [String] {
-        get { self[SearchFilterTextKey.self] }
-        set { self[SearchFilterTextKey.self] = newValue }
-    }
-
-    var searchFilterHasAnyMatch: Bool {
-        get { self[SearchFilterHasMatchKey.self] }
-        set { self[SearchFilterHasMatchKey.self] = newValue }
-    }
-}
-
 struct ContentView: View {
     @EnvironmentObject var remindersData: RemindersData
     @ObservedObject var userPreferences = UserPreferences.shared
     @Environment(\.colorSchemeContrast) private var colorSchemeContrast
-
-    @State private var searchFilterText = ""
-
-    private var searchWords: [String] {
-        let trimmed = searchFilterText.trimmingCharacters(in: .whitespaces)
-        guard !trimmed.isEmpty else { return [] }
-        return trimmed.lowercased().split(separator: " ").map(String.init)
-    }
-
-    private var hasAnyMatch: Bool {
-        let words = searchWords
-        guard !words.isEmpty else { return true }
-
-        let allReminders = remindersData.filteredReminderLists.flatMap {
-            $0.reminders.uncompleted + $0.reminders.completed
-        } + remindersData.upcomingReminders
-
-        return allReminders.contains { item in
-            let title = item.reminder.title.lowercased()
-            return words.allSatisfy { title.contains($0) }
-        }
-    }
-
+    
     var body: some View {
         VStack(spacing: 0) {
-            FormNewReminderView(searchFilterText: $searchFilterText)
+            FormNewReminderView()
 
             if userPreferences.atLeastOneFilterIsSelected {
                 List {
@@ -88,8 +44,6 @@ struct ContentView: View {
                 }
                 .listStyle(.plain)
                 .animation(.default, value: remindersData.filteredReminderLists)
-                .environment(\.searchFilterWords, searchWords)
-                .environment(\.searchFilterHasAnyMatch, hasAnyMatch)
             } else {
                 VStack(spacing: 4) {
                     Text(rmbLocalized(.emptyListNoRemindersFilterTitle))

@@ -139,14 +139,6 @@ struct RmbHighlightedTextField: NSViewRepresentable {
                 return false
             }
 
-            if commandSelector == #selector(NSResponder.cancelOperation(_:)) {
-                if !textView.string.isEmpty {
-                    parent.text.wrappedValue = ""
-                    return true
-                }
-                return false
-            }
-
             guard commandSelector == #selector(NSResponder.insertNewline(_:)),
                   !textView.string.isEmpty else {
                 return false
