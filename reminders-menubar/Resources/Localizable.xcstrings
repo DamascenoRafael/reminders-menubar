@@ -3084,121 +3084,121 @@
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kopírovat připomínku"
+            "value" : "Kopírovat"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Erinnerung kopieren"
+            "value" : "Kopieren"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Copy Reminder"
+            "value" : "Copy"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Copiar recordatorio"
+            "value" : "Copiar"
           }
         },
         "fil-PH" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kopyahin ang Paalala"
+            "value" : "Kopyahin"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Copier le rappel"
+            "value" : "Copier"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Salin Pengingat"
+            "value" : "Salin"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Copia promemoria"
+            "value" : "Copia"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "リマインダーをコピー"
+            "value" : "コピー"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "미리 알림 복사"
+            "value" : "복사"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Herinnering kopiëren"
+            "value" : "Kopiëren"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kopiuj przypomnienie"
+            "value" : "Kopiuj"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Copiar lembrete"
+            "value" : "Copiar"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Копировать напоминание"
+            "value" : "Копировать"
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kopírovať pripomienku"
+            "value" : "Kopírovať"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Anımsatıcıyı kopyala"
+            "value" : "Kopyala"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Копіювати нагадування"
+            "value" : "Копіювати"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sao chép lời nhắc"
+            "value" : "Sao chép"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "复制提醒事项"
+            "value" : "复制"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "複製提醒事項"
+            "value" : "複製"
           }
         }
       }
