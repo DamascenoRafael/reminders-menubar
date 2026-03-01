@@ -4,8 +4,13 @@ import AppKit
 struct PopoverResizeHandleView: View {
     @Environment(\.colorSchemeContrast) private var colorSchemeContrast
 
-    @State private var dragStartSize: CGSize?
     @State private var isHovering = false
+    @State private var isDragging = false
+    @State private var dragStartSize: CGSize?
+
+    private var shouldShowResizeCursor: Bool {
+        isHovering || isDragging
+    }
 
     var body: some View {
         ZStack {
@@ -27,17 +32,17 @@ struct PopoverResizeHandleView: View {
         .contentShape(Rectangle())
         .onHover { hovering in
             isHovering = hovering
-            if hovering {
+        }
+        .onChange(of: shouldShowResizeCursor) { showCursor in
+            if showCursor {
                 NSCursor.rmbDiagonalResize.push()
             } else {
                 NSCursor.pop()
             }
         }
         .onDisappear {
-            // Defensive cursor cleanup if the view disappears while hovered.
-            if isHovering {
+            if shouldShowResizeCursor {
                 NSCursor.pop()
-                isHovering = false
             }
         }
         .animation(.easeOut(duration: 0.12), value: isHovering)
@@ -45,6 +50,7 @@ struct PopoverResizeHandleView: View {
             DragGesture(minimumDistance: 0, coordinateSpace: .global)
                 .onChanged { value in
                     if dragStartSize == nil {
+                        isDragging = true
                         dragStartSize = AppDelegate.shared.popover.contentSize
                     }
 
@@ -63,6 +69,7 @@ struct PopoverResizeHandleView: View {
                     )
                     AppDelegate.shared.setMainPopoverSize(size: newSize, persist: true)
                     dragStartSize = nil
+                    isDragging = false
                 }
         )
         .help("Drag to resize")

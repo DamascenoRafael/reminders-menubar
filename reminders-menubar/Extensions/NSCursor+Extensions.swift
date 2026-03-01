@@ -1,17 +1,17 @@
 import AppKit
 
 extension NSCursor {
-    class var rmbDiagonalResize: NSCursor {
-        guard let symbol = NSImage(
-            systemSymbolName: "arrow.up.left.and.arrow.down.right",
-            accessibilityDescription: nil
-        ) else {
+    static let rmbDiagonalResize: NSCursor = {
+        guard let image = NSImage(named: "ResizeCursor") else {
             return NSCursor.arrow
         }
 
-        symbol.size = NSSize(width: 24, height: 24)
-        symbol.isTemplate = true
+        let baseSize: CGFloat = 22
+        image.size = NSSize(width: baseSize, height: baseSize)
 
-        return NSCursor(image: symbol, hotSpot: NSPoint(x: symbol.size.width / 2, y: symbol.size.height / 2))
-    }
+        return NSCursor(
+            image: image,
+            hotSpot: NSPoint(x: baseSize / 2, y: baseSize / 2)
+        )
+    }()
 }
