@@ -27,7 +27,7 @@ struct CopyFormatSettingsView: View {
                 .font(.headline)
 
             TextField(
-                rmbLocalized(.copyFormatTemplatePlaceholder),
+                rmbLocalized(.copyFormatTemplateLabel),
                 text: $templateText
             )
             .textFieldStyle(.roundedBorder)
@@ -36,7 +36,7 @@ struct CopyFormatSettingsView: View {
                 userPreferences.copyTemplate = newValue
             }
 
-            Text(rmbLocalized(.copyFormatTemplateHint))
+            Text(rmbLocalized(.copyFormatTemplateHint, arguments: "\\n"))
                 .font(.caption)
                 .foregroundColor(.secondary)
         }

@@ -93,11 +93,11 @@ enum RemindersMenuBarLocalizedKeys: String {
     case copyFormatSettingsMenu
     case copyFormatSettingsWindowTitle
     case copyFormatTemplateLabel
-    case copyFormatTemplatePlaceholder
     case copyFormatTemplateHint
     case copyFormatAvailableVariables
     case copyFormatTrimOption
     case copyFormatPreviewLabel
+    case dragToResizeHelp
 }
 
 struct ReminderMenuBarLocale {

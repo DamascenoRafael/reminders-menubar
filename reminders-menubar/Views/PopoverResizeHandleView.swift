@@ -72,8 +72,7 @@ struct PopoverResizeHandleView: View {
                     isDragging = false
                 }
         )
-        .help("Drag to resize")
-        .accessibilityLabel("Resize window")
+        .help(rmbLocalized(.dragToResizeHelp))
     }
 }
 
@@ -81,7 +80,6 @@ private struct CornerArcGrabber: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
 
-        // A single arc that reads as a rounded corner in the bottom-right.
         let radius = min(rect.width, rect.height)
         let start = CGPoint(x: rect.maxX - radius, y: rect.maxY)
         let end = CGPoint(x: rect.maxX, y: rect.maxY - radius)
