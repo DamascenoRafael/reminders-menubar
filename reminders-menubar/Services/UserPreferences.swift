@@ -16,6 +16,9 @@ private enum PreferencesKeys {
     static let menuBarCounterType = "menuBarCounterType"
     static let filterMenuBarCountByCalendar = "filterMenuBarCountByCalendar"
     static let preferredLanguage = "preferredLanguage"
+    static let copyTemplate = "copyTemplate"
+    static let copyTrimEnabled = "copyTrimEnabled"
+    static let mainPopoverSize = "mainPopoverSize"
 }
 
 class UserPreferences: ObservableObject {
@@ -176,11 +179,42 @@ class UserPreferences: ObservableObject {
         }
     }
     
+    @Published var copyTemplate: String = {
+        return defaults.string(forKey: PreferencesKeys.copyTemplate) ?? "{title}"
+    }() {
+        didSet {
+            UserPreferences.defaults.set(copyTemplate, forKey: PreferencesKeys.copyTemplate)
+        }
+    }
+
+    @Published var copyTrimEnabled: Bool = {
+        return defaults.boolWithDefaultValueTrue(forKey: PreferencesKeys.copyTrimEnabled)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(copyTrimEnabled, forKey: PreferencesKeys.copyTrimEnabled)
+        }
+    }
+
     @Published var preferredLanguage: String? = {
         return defaults.string(forKey: PreferencesKeys.preferredLanguage)
     }() {
         didSet {
             UserPreferences.defaults.set(preferredLanguage, forKey: PreferencesKeys.preferredLanguage)
+        }
+    }
+
+    // This is intentionally not @Published; it is used for persistence and for driving the NSPopover size directly.
+    var mainPopoverSize: NSSize {
+        get {
+            guard let nsSizeData = UserPreferences.defaults.data(forKey: PreferencesKeys.mainPopoverSize),
+                  let nsSize = try? JSONDecoder().decode(NSSize.self, from: nsSizeData) else {
+                return MainPopoverSizing.defaultSize
+            }
+            return nsSize
+        }
+        set {
+            let nsSizeData = try? JSONEncoder().encode(newValue)
+            UserPreferences.defaults.set(nsSizeData, forKey: PreferencesKeys.mainPopoverSize)
         }
     }
 }

@@ -12,6 +12,9 @@ struct ReminderItemView: View {
     @State private var isEditingTitle = false
 
     @State private var showingRemoveAlert = false
+    @State private var showingCopiedToast = false
+    @State private var copyEventMonitor: Any?
+    @State private var hideCopiedToastWorkItem: DispatchWorkItem?
 
     var body: some View {
         if reminderItem.reminder.calendar == nil {
@@ -47,6 +50,7 @@ struct ReminderItemView: View {
                     ReminderEllipsisMenuView(
                         showingEditPopover: $showingEditPopover,
                         showingRemoveAlert: $showingRemoveAlert,
+                        onCopyReminder: { copyReminderToClipboard() },
                         reminder: reminderItem.reminder,
                         reminderHasChildren: reminderItem.hasChildren
                     )
@@ -85,9 +89,28 @@ struct ReminderItemView: View {
 
                 Divider()
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            // Give the overlay 1pt of headroom so it can visually extend upward without being clipped
+            // by the parent row/container.
+            .padding(.top, 1)
+            .overlay(copiedToastOverlay())
         }
         .onHover { isHovered in
             reminderItemIsHovered = isHovered
+            updateCopyEventMonitor(isHovered: isHovered)
+        }
+        .onChange(of: showingEditPopover) { isShowing in
+            if isShowing {
+                removeCopyEventMonitor()
+            }
+        }
+        .onChange(of: isEditingTitle) { isEditing in
+            if isEditing {
+                removeCopyEventMonitor()
+            }
+        }
+        .onDisappear {
+            removeCopyEventMonitor()
         }
         .padding(.leading, reminderItem.isChild ? 24 : 0)
 
@@ -104,6 +127,85 @@ struct ReminderItemView: View {
 
     func shouldShowEllipsisButton() -> Bool {
         return reminderItemIsHovered || showingEditPopover
+    }
+
+    func copyReminderToClipboard() {
+        ReminderCopyService.copyReminder(reminderItem.reminder)
+
+        hideCopiedToastWorkItem?.cancel()
+
+        withAnimation(.easeInOut(duration: 0.2)) {
+            showingCopiedToast = true
+        }
+
+        let workItem = DispatchWorkItem {
+            withAnimation(.easeInOut(duration: 0.3)) {
+                showingCopiedToast = false
+            }
+        }
+        hideCopiedToastWorkItem = workItem
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: workItem)
+    }
+
+    @ViewBuilder
+    func copiedToastOverlay() -> some View {
+        if showingCopiedToast {
+            let expandLeading: CGFloat = 3
+            let contractBottom: CGFloat = 2
+            let cornerRadius: CGFloat = 10
+
+            GeometryReader { proxy in
+                ZStack {
+                    RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                        .fill(Color.black.opacity(0.45))
+                        .frame(
+                            width: proxy.size.width + expandLeading,
+                            height: proxy.size.height - contractBottom
+                        )
+                        .offset(x: -expandLeading, y: 0)
+
+                    Text(rmbLocalized(.copiedToastMessage))
+                        .font(.system(.headline, design: .rounded).weight(.semibold))
+                        .foregroundColor(.white)
+                        .shadow(color: .black.opacity(0.25), radius: 6, x: 0, y: 2)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
+                .frame(width: proxy.size.width, height: proxy.size.height)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .transition(.opacity)
+            .allowsHitTesting(false)
+        }
+    }
+
+    func updateCopyEventMonitor(isHovered: Bool) {
+        if isHovered {
+            guard copyEventMonitor == nil else { return }
+
+            copyEventMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { event in
+                guard shouldHandleCopyShortcut(for: event) else { return event }
+
+                copyReminderToClipboard()
+                return nil
+            }
+        } else {
+            removeCopyEventMonitor()
+        }
+    }
+
+    func shouldHandleCopyShortcut(for event: NSEvent) -> Bool {
+        guard reminderItemIsHovered else { return false }
+        guard !showingEditPopover, !isEditingTitle else { return false }
+
+        guard event.modifierFlags.contains(.command) else { return false }
+        return event.charactersIgnoringModifiers?.lowercased() == "c"
+    }
+
+    func removeCopyEventMonitor() {
+        if let monitor = copyEventMonitor {
+            NSEvent.removeMonitor(monitor)
+            copyEventMonitor = nil
+        }
     }
 
     func removeReminderAlert() -> Alert {
