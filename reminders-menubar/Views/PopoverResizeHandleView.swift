@@ -16,13 +16,16 @@ struct PopoverResizeHandleView: View {
         ZStack {
             CornerArcGrabber()
                 .stroke(
-                    Color.rmbColor(for: .borderContrast, and: colorSchemeContrast).opacity(isHovering ? 0.85 : 0.35),
+                    Color.rmbColor(for: .borderContrast, and: colorSchemeContrast)
+                        .opacity(shouldShowResizeCursor ? 0.85 : 0.35),
                     style: StrokeStyle(lineWidth: 1.3, lineCap: .round)
                 )
                 .background(
                     CornerArcGrabber()
                         .stroke(
-                            isHovering ? Color.rmbColor(for: .buttonHover, and: colorSchemeContrast) : .clear,
+                            shouldShowResizeCursor
+                                ? Color.rmbColor(for: .buttonHover, and: colorSchemeContrast)
+                                : .clear,
                             style: StrokeStyle(lineWidth: 9.0, lineCap: .round)
                         )
                 )
