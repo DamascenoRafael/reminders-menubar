@@ -14,6 +14,7 @@ struct UpcomingRemindersTitle: View {
             Text(rmbLocalized(.upcomingRemindersTitle))
                 .font(.headline)
                 .foregroundColor(.red)
+                .padding(.top, 2)
                 .padding(.bottom, 5)
                 .scaledToFit()
                 .minimumScaleFactor(0.8)

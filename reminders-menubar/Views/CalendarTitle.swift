@@ -9,6 +9,7 @@ struct CalendarTitle: View {
             Text(calendar.title)
                 .font(.headline)
                 .foregroundColor(Color(calendar.color))
+                .padding(.top, 2)
                 .padding(.bottom, 5)
             
             Spacer()

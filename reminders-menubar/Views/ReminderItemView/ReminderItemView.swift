@@ -32,7 +32,7 @@ struct ReminderItemView: View {
         HStack(alignment: .top) {
             ReminderCompleteButton(reminderItem: reminderItem)
 
-            VStack(spacing: 6) {
+            VStack(spacing: 4) {
                 HStack(spacing: 4) {
                     if let prioritySystemImage = reminderItem.reminder.ekPriority.systemImage {
                         Image(systemName: prioritySystemImage)
@@ -89,9 +89,9 @@ struct ReminderItemView: View {
                 }
 
                 Divider()
+                    .padding(.top, 2)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.top, 1)
             .overlay(
                 copiedToastOverlay()
                     .opacity(showingCopiedToast ? 1 : 0)
@@ -116,7 +116,8 @@ struct ReminderItemView: View {
         .onDisappear {
             removeCopyEventMonitor()
         }
-        .padding(.leading, reminderItem.isChild ? 24 : 0)
+        .padding(.bottom, 2)
+        .padding(.leading, reminderItem.isChild ? 22 : 0)
 
         ForEach(reminderItem.childReminders.uncompleted) { reminderItem in
             ReminderItemView(reminderItem: reminderItem, isShowingCompleted: isShowingCompleted)
