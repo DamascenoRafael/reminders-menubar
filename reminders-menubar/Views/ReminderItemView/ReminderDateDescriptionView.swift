@@ -14,7 +14,7 @@ struct ReminderDateDescriptionView: View {
             HStack {
                 Image(systemName: "calendar")
                 Text(dateDescription)
-                    .foregroundColor(isExpired ? .red : nil)
+                    .foregroundColor(isExpired ? .red : .secondary)
             }
             .padding(.trailing, 5)
 
@@ -30,6 +30,7 @@ struct ReminderDateDescriptionView: View {
             }
         }
         .font(.footnote)
+        .foregroundColor(.secondary)
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.trailing, 12)
     }
