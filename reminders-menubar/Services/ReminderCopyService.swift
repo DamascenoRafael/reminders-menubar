@@ -5,25 +5,10 @@ enum ReminderCopyService {
     static func copyReminder(_ reminder: EKReminder) {
         let template = UserPreferences.shared.copyTemplate
         let trimEnabled = UserPreferences.shared.copyTrimEnabled
-        let formatted = formatReminder(reminder, template: template, trim: trimEnabled)
+        let formatted = formatReminder(reminder: reminder, template: template, trim: trimEnabled)
 
         NSPasteboard.general.clearContents()
         NSPasteboard.general.setString(formatted, forType: .string)
-    }
-
-    static func formatReminder(_ reminder: EKReminder, template: String, trim: Bool) -> String {
-        let variables = buildVariables(from: reminder)
-        var result = template
-
-        if trim {
-            result = trimmedSubstitution(template: result, variables: variables)
-        } else {
-            for (key, value) in variables {
-                result = result.replacingOccurrences(of: "{\(key)}", with: value)
-            }
-        }
-
-        return result
     }
 
     static func previewText(template: String, trim: Bool) -> String {
@@ -50,6 +35,21 @@ enum ReminderCopyService {
     }
 
     // MARK: - Private
+
+    private static func formatReminder(reminder: EKReminder, template: String, trim: Bool) -> String {
+        let variables = buildVariables(from: reminder)
+        var result = template
+
+        if trim {
+            result = trimmedSubstitution(template: result, variables: variables)
+        } else {
+            for (key, value) in variables {
+                result = result.replacingOccurrences(of: "{\(key)}", with: value)
+            }
+        }
+
+        return result
+    }
 
     private static func buildVariables(from reminder: EKReminder) -> [String: String] {
         var variables: [String: String] = [:]

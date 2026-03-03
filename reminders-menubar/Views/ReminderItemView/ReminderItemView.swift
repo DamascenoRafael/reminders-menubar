@@ -3,6 +3,8 @@ import EventKit
 
 @MainActor
 struct ReminderItemView: View {
+    @Environment(\.colorScheme) private var colorScheme
+
     var reminderItem: ReminderItem
     var isShowingCompleted: Bool
     var showCalendarTitleOnDueDate = false
@@ -14,7 +16,6 @@ struct ReminderItemView: View {
     @State private var showingRemoveAlert = false
     @State private var showingCopiedToast = false
     @State private var copyEventMonitor: Any?
-    @State private var hideCopiedToastWorkItem: DispatchWorkItem?
 
     var body: some View {
         if reminderItem.reminder.calendar == nil {
@@ -90,10 +91,18 @@ struct ReminderItemView: View {
                 Divider()
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            // Give the overlay 1pt of headroom so it can visually extend upward without being clipped
-            // by the parent row/container.
             .padding(.top, 1)
-            .overlay(copiedToastOverlay())
+            .overlay(
+                copiedToastOverlay()
+                    .opacity(showingCopiedToast ? 1 : 0)
+                    .animation(.easeInOut(duration: 0.3), value: showingCopiedToast)
+                    .onChange(of: showingCopiedToast) { isShowing in
+                        guard isShowing else { return }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            showingCopiedToast = false
+                        }
+                    }
+            )
         }
         .onHover { isHovered in
             reminderItemIsHovered = isHovered
@@ -101,11 +110,6 @@ struct ReminderItemView: View {
         }
         .onChange(of: showingEditPopover) { isShowing in
             if isShowing {
-                removeCopyEventMonitor()
-            }
-        }
-        .onChange(of: isEditingTitle) { isEditing in
-            if isEditing {
                 removeCopyEventMonitor()
             }
         }
@@ -131,51 +135,27 @@ struct ReminderItemView: View {
 
     func copyReminderToClipboard() {
         ReminderCopyService.copyReminder(reminderItem.reminder)
-
-        hideCopiedToastWorkItem?.cancel()
-
-        withAnimation(.easeInOut(duration: 0.2)) {
-            showingCopiedToast = true
-        }
-
-        let workItem = DispatchWorkItem {
-            withAnimation(.easeInOut(duration: 0.3)) {
-                showingCopiedToast = false
-            }
-        }
-        hideCopiedToastWorkItem = workItem
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: workItem)
+        showingCopiedToast = true
     }
 
     @ViewBuilder
     func copiedToastOverlay() -> some View {
-        if showingCopiedToast {
-            let expandLeading: CGFloat = 3
-            let contractBottom: CGFloat = 2
-            let cornerRadius: CGFloat = 10
-
-            GeometryReader { proxy in
-                ZStack {
-                    RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                        .fill(Color.black.opacity(0.45))
-                        .frame(
-                            width: proxy.size.width + expandLeading,
-                            height: proxy.size.height - contractBottom
-                        )
-                        .offset(x: -expandLeading, y: 0)
-
-                    Text(rmbLocalized(.copiedToastMessage))
-                        .font(.system(.headline, design: .rounded).weight(.semibold))
-                        .foregroundColor(.white)
-                        .shadow(color: .black.opacity(0.25), radius: 6, x: 0, y: 2)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                }
-                .frame(width: proxy.size.width, height: proxy.size.height)
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .transition(.opacity)
-            .allowsHitTesting(false)
+        GeometryReader { geometry in
+            Text(rmbLocalized(.copiedToastMessage))
+                .font(.system(.headline, design: .rounded).weight(.semibold))
+                .foregroundColor(.primary)
+                .padding(.horizontal, 32)
+                .frame(maxHeight: min(32, geometry.size.height - 4))
+                .background(
+                    Capsule()
+                        .fill(colorScheme == .light ? Color.white : Color.black)
+                        .overlay(Capsule().stroke(Color.gray.opacity(0.2)))
+                        .opacity(0.9)
+                )
+                .frame(width: geometry.size.width, height: geometry.size.height)
         }
+        .transition(.opacity)
+        .allowsHitTesting(false)
     }
 
     func updateCopyEventMonitor(isHovered: Bool) {
@@ -229,6 +209,7 @@ struct ReminderItemView: View {
         reminder.title = "Look for awesome projects on GitHub"
         reminder.isCompleted = false
         reminder.calendar = calendar
+        reminder.addDueDateAndAlarm(for: Date().addingTimeInterval(86_400), withTime: false)
 
         return reminder
     }
