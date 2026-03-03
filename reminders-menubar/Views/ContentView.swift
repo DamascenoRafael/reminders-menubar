@@ -8,7 +8,10 @@ struct ContentView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            FormNewReminderView()
+            HStack {
+                FormNewReminderView()
+                SettingsBarView()
+            }
 
             if userPreferences.atLeastOneFilterIsSelected {
                 List {
@@ -44,6 +47,7 @@ struct ContentView: View {
                 }
                 .listStyle(.plain)
                 .animation(.default, value: remindersData.filteredReminderLists)
+                .padding(.bottom, 10)
             } else {
                 VStack(spacing: 4) {
                     Text(rmbLocalized(.emptyListNoRemindersFilterTitle))
@@ -53,8 +57,6 @@ struct ContentView: View {
                 }
                 .frame(maxHeight: .infinity)
             }
-
-            SettingsBarView()
         }
         .overlay(PopoverResizeHandleView().padding(4), alignment: .bottomTrailing)
         .background(Color.rmbColor(for: .backgroundTheme, and: colorSchemeContrast).padding(-80))

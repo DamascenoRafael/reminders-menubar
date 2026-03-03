@@ -2,19 +2,15 @@ import SwiftUI
 
 struct SettingsBarView: View {
     var body: some View {
-        HStack {
+        HStack(spacing: 4) {
             SettingsBarFilterMenu()
-            
-            Spacer()
             
             SettingsBarToggleButton()
             
-            Spacer()
-            
             SettingsBarGearMenu()
         }
-        .frame(maxWidth: .infinity)
-        .padding(10)
+        .padding(.vertical, 10)
+        .padding(.trailing, 10)
     }
 }
 
