@@ -3,6 +3,8 @@ import EventKit
 
 @MainActor
 struct ReminderItemView: View {
+    @Environment(\.colorScheme) private var colorScheme
+
     var reminderItem: ReminderItem
     var isShowingCompleted: Bool
     var showCalendarTitleOnDueDate = false
@@ -12,6 +14,8 @@ struct ReminderItemView: View {
     @State private var isEditingTitle = false
 
     @State private var showingRemoveAlert = false
+    @State private var showingCopiedToast = false
+    @State private var copyEventMonitor: Any?
 
     var body: some View {
         if reminderItem.reminder.calendar == nil {
@@ -47,6 +51,7 @@ struct ReminderItemView: View {
                     ReminderEllipsisMenuView(
                         showingEditPopover: $showingEditPopover,
                         showingRemoveAlert: $showingRemoveAlert,
+                        onCopyReminder: { copyReminderToClipboard() },
                         reminder: reminderItem.reminder,
                         reminderHasChildren: reminderItem.hasChildren
                     )
@@ -85,9 +90,31 @@ struct ReminderItemView: View {
 
                 Divider()
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.top, 1)
+            .overlay(
+                copiedToastOverlay()
+                    .opacity(showingCopiedToast ? 1 : 0)
+                    .animation(.easeInOut(duration: 0.3), value: showingCopiedToast)
+                    .onChange(of: showingCopiedToast) { isShowing in
+                        guard isShowing else { return }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            showingCopiedToast = false
+                        }
+                    }
+            )
         }
         .onHover { isHovered in
             reminderItemIsHovered = isHovered
+            updateCopyEventMonitor(isHovered: isHovered)
+        }
+        .onChange(of: showingEditPopover) { isShowing in
+            if isShowing {
+                removeCopyEventMonitor()
+            }
+        }
+        .onDisappear {
+            removeCopyEventMonitor()
         }
         .padding(.leading, reminderItem.isChild ? 24 : 0)
 
@@ -104,6 +131,61 @@ struct ReminderItemView: View {
 
     func shouldShowEllipsisButton() -> Bool {
         return reminderItemIsHovered || showingEditPopover
+    }
+
+    func copyReminderToClipboard() {
+        ReminderCopyService.copyReminder(reminderItem.reminder)
+        showingCopiedToast = true
+    }
+
+    @ViewBuilder
+    func copiedToastOverlay() -> some View {
+        GeometryReader { geometry in
+            Text(rmbLocalized(.copiedToastMessage))
+                .font(.system(.headline, design: .rounded).weight(.semibold))
+                .foregroundColor(.primary)
+                .padding(.horizontal, 32)
+                .frame(maxHeight: min(32, geometry.size.height - 4))
+                .background(
+                    Capsule()
+                        .fill(colorScheme == .light ? Color.white : Color.black)
+                        .overlay(Capsule().stroke(Color.gray.opacity(0.2)))
+                        .opacity(0.9)
+                )
+                .frame(width: geometry.size.width, height: geometry.size.height)
+        }
+        .transition(.opacity)
+        .allowsHitTesting(false)
+    }
+
+    func updateCopyEventMonitor(isHovered: Bool) {
+        if isHovered {
+            guard copyEventMonitor == nil else { return }
+
+            copyEventMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { event in
+                guard shouldHandleCopyShortcut(for: event) else { return event }
+
+                copyReminderToClipboard()
+                return nil
+            }
+        } else {
+            removeCopyEventMonitor()
+        }
+    }
+
+    func shouldHandleCopyShortcut(for event: NSEvent) -> Bool {
+        guard reminderItemIsHovered else { return false }
+        guard !showingEditPopover, !isEditingTitle else { return false }
+
+        guard event.modifierFlags.contains(.command) else { return false }
+        return event.charactersIgnoringModifiers?.lowercased() == "c"
+    }
+
+    func removeCopyEventMonitor() {
+        if let monitor = copyEventMonitor {
+            NSEvent.removeMonitor(monitor)
+            copyEventMonitor = nil
+        }
     }
 
     func removeReminderAlert() -> Alert {
@@ -127,6 +209,7 @@ struct ReminderItemView: View {
         reminder.title = "Look for awesome projects on GitHub"
         reminder.isCompleted = false
         reminder.calendar = calendar
+        reminder.addDueDateAndAlarm(for: Date().addingTimeInterval(86_400), withTime: false)
 
         return reminder
     }

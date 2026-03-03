@@ -46,6 +46,12 @@ struct SettingsBarGearMenu: View {
                     let activeShortcutText = Text(verbatim: "     \(activeShortcut)").foregroundColor(.gray)
                     Text(rmbLocalized(.keyboardShortcutOptionButton)) + activeShortcutText
                 }
+
+                Button {
+                    CopyFormatSettingsView.showWindow()
+                } label: {
+                    Text(rmbLocalized(.copyFormatSettingsMenu))
+                }
                 
                 Divider()
                 
