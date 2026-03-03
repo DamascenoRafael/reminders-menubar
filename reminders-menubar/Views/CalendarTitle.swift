@@ -2,11 +2,7 @@ import SwiftUI
 import EventKit
 
 struct CalendarTitle: View {
-    @EnvironmentObject var remindersData: RemindersData
-    @Environment(\.colorSchemeContrast) private var colorSchemeContrast
-    
     var calendar: EKCalendar
-    @State var calendarFolderIsHovered = false
     
     var body: some View {
         HStack(alignment: .center) {
@@ -16,25 +12,6 @@ struct CalendarTitle: View {
                 .padding(.bottom, 5)
             
             Spacer()
-            
-            Button(action: {
-                remindersData.calendarForSaving = calendar
-            }) {
-                let isSelected = remindersData.calendarForSaving?.calendarIdentifier == calendar.calendarIdentifier
-                Image(systemName: isSelected ? "folder.fill" : "folder")
-                    .font(Font.headline.weight(.medium))
-                    .foregroundColor(calendarFolderIsHovered ? Color(calendar.color) : nil)
-                    .frame(width: 15, height: 15, alignment: .center)
-                    .padding(5)
-            }
-            .buttonStyle(BorderlessButtonStyle())
-            .background(calendarFolderIsHovered ? Color.rmbColor(for: .buttonHover, and: colorSchemeContrast) : nil)
-            .cornerRadius(6)
-            .onHover { isHovered in
-                calendarFolderIsHovered = isHovered
-            }
-            .padding(.horizontal, 7.5)
-            .help(rmbLocalized(.selectListForSavingReminderButtonHelp))
         }
     }
 }
