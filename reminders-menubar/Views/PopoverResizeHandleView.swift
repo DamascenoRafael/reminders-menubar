@@ -2,7 +2,7 @@ import SwiftUI
 import AppKit
 
 struct PopoverResizeHandleView: View {
-    @Environment(\.colorSchemeContrast) private var colorSchemeContrast
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
 
     @State private var isHovering = false
     @State private var isDragging = false
@@ -16,7 +16,7 @@ struct PopoverResizeHandleView: View {
         ZStack {
             CornerArcGrabber()
                 .stroke(
-                    Color.rmbColor(for: .borderContrast, and: colorSchemeContrast)
+                    Color.rmbColor(for: .borderContrast, and: reduceTransparency)
                         .opacity(shouldShowResizeCursor ? 0.85 : 0.35),
                     style: StrokeStyle(lineWidth: 1.3, lineCap: .round)
                 )
@@ -24,7 +24,7 @@ struct PopoverResizeHandleView: View {
                     CornerArcGrabber()
                         .stroke(
                             shouldShowResizeCursor
-                                ? Color.rmbColor(for: .buttonHover, and: colorSchemeContrast)
+                                ? Color.rmbColor(for: .buttonHover, and: reduceTransparency)
                                 : .clear,
                             style: StrokeStyle(lineWidth: 9.0, lineCap: .round)
                         )

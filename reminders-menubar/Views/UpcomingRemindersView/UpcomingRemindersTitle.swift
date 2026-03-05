@@ -2,7 +2,7 @@ import SwiftUI
 
 struct UpcomingRemindersTitle: View {
     @ObservedObject var userPreferences = UserPreferences.shared
-    @Environment(\.colorSchemeContrast) private var colorSchemeContrast
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
 
     @State var intervalButtonIsHovered = false
 
@@ -45,7 +45,7 @@ struct UpcomingRemindersTitle: View {
             .menuStyle(BorderlessButtonMenuStyle())
             .padding(.vertical, 5)
             .padding(.horizontal, 10)
-            .background(intervalButtonIsHovered ? Color.rmbColor(for: .buttonHover, and: colorSchemeContrast) : nil)
+            .background(intervalButtonIsHovered ? Color.rmbColor(for: .buttonHover, and: reduceTransparency) : nil)
             .cornerRadius(6)
             .onHover { isHovered in
                 intervalButtonIsHovered = isHovered

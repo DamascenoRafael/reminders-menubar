@@ -3,7 +3,7 @@ import SwiftUI
 struct SettingsBarGearMenu: View {
     @EnvironmentObject var remindersData: RemindersData
     @ObservedObject var userPreferences = UserPreferences.shared
-    @Environment(\.colorSchemeContrast) private var colorSchemeContrast
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     
     @State var gearIsHovered = false
     
@@ -83,7 +83,7 @@ struct SettingsBarGearMenu: View {
         .menuStyle(BorderlessButtonMenuStyle())
         .frame(width: 32, height: 16)
         .padding(3)
-        .background(gearIsHovered ? Color.rmbColor(for: .buttonHover, and: colorSchemeContrast) : nil)
+        .background(gearIsHovered ? Color.rmbColor(for: .buttonHover, and: reduceTransparency) : nil)
         .cornerRadius(4)
         .onHover { isHovered in
             gearIsHovered = isHovered
@@ -116,10 +116,9 @@ struct SettingsBarGearMenu: View {
             }
             
             Divider()
-            
-            let isIncreasedContrastEnabled = colorSchemeContrast == .increased
-            let isTransparencyEnabled = userPreferences.backgroundIsTransparent && !isIncreasedContrastEnabled
-            
+
+            let isTransparencyEnabled = userPreferences.backgroundIsTransparent && !reduceTransparency
+
             Button(action: {
                 userPreferences.backgroundIsTransparent = false
             }) {
@@ -129,7 +128,7 @@ struct SettingsBarGearMenu: View {
                     isSelected: isSelected
                 )
             }
-            .disabled(isIncreasedContrastEnabled)
+            .disabled(reduceTransparency)
             
             Button(action: {
                 userPreferences.backgroundIsTransparent = true
@@ -140,7 +139,7 @@ struct SettingsBarGearMenu: View {
                     isSelected: isSelected
                 )
             }
-            .disabled(isIncreasedContrastEnabled)
+            .disabled(reduceTransparency)
         } label: {
             Text(rmbLocalized(.appAppearanceMenu))
         }

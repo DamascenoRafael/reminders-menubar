@@ -4,8 +4,8 @@ import EventKit
 struct ContentView: View {
     @EnvironmentObject var remindersData: RemindersData
     @ObservedObject var userPreferences = UserPreferences.shared
-    @Environment(\.colorSchemeContrast) private var colorSchemeContrast
-    
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
+
     var body: some View {
         VStack(spacing: 0) {
             HStack {
@@ -59,7 +59,7 @@ struct ContentView: View {
             }
         }
         .overlay(PopoverResizeHandleView().padding(4), alignment: .bottomTrailing)
-        .background(Color.rmbColor(for: .backgroundTheme, and: colorSchemeContrast).padding(-80))
+        .background(Color.rmbColor(for: .backgroundTheme, and: reduceTransparency).padding(-80))
         .preferredColorScheme(userPreferences.rmbColorScheme.colorScheme)
     }
 }

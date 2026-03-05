@@ -4,7 +4,7 @@ import EventKit
 struct FormNewReminderView: View {
     @EnvironmentObject var remindersData: RemindersData
     @ObservedObject var userPreferences = UserPreferences.shared
-    @Environment(\.colorSchemeContrast) private var colorSchemeContrast
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     
     @State var rmbReminder = RmbReminder()
     @State var isShowingInfoOptions = false
@@ -23,7 +23,7 @@ struct FormNewReminderView: View {
                 .padding(.vertical, 8)
                 .padding(.horizontal, 8)
                 .padding(.leading, 22)
-                .background(Color.rmbColor(for: .textFieldBackground, and: colorSchemeContrast))
+                .background(Color.rmbColor(for: .textFieldBackground, and: reduceTransparency))
                 .cornerRadius(8)
                 .textFieldStyle(PlainTextFieldStyle())
                 .modifier(ContrastBorderOverlay())
@@ -191,6 +191,7 @@ struct CenteredMenuPadding: ViewModifier {
 
 struct ContrastBorderOverlay: ViewModifier {
     @Environment(\.colorSchemeContrast) private var colorSchemeContrast
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     private var isEnabled: Bool { colorSchemeContrast == .increased }
     
     func body(content: Content) -> some View {
@@ -199,7 +200,7 @@ struct ContrastBorderOverlay: ViewModifier {
                 isEnabled
                 ? RoundedRectangle(cornerRadius: 8)
                     .strokeBorder(style: StrokeStyle(lineWidth: 1))
-                    .foregroundColor(Color.rmbColor(for: .borderContrast, and: colorSchemeContrast))
+                    .foregroundColor(Color.rmbColor(for: .borderContrast, and: reduceTransparency))
                 : nil
             )
     }
