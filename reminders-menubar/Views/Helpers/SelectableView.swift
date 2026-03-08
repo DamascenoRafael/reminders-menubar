@@ -38,8 +38,6 @@ struct SelectableView: View {
     }
 }
 
-struct SelectableButton_Previews: PreviewProvider {
-    static var previews: some View {
-        SelectableView(title: "Option", isSelected: true)
-    }
+#Preview {
+    SelectableView(title: "Option", isSelected: true)
 }

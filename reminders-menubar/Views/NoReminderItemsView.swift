@@ -32,14 +32,6 @@ struct NoReminderItemsView: View {
     }
 }
 
-struct EmptyCalendarView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            ForEach(ColorScheme.allCases, id: \.self) { color in
-                NoReminderItemsView(emptyList: .noReminders)
-                    .colorScheme(color)
-                    .previewDisplayName("\(color) mode")
-            }
-        }
-    }
+#Preview {
+    NoReminderItemsView(emptyList: .noReminders)
 }

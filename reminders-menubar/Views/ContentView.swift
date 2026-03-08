@@ -83,8 +83,6 @@ struct ListRowSeparatorHidden: ViewModifier {
     }
 }
 
- struct ContentView_Previews: PreviewProvider {
-     static var previews: some View {
-         ContentView().environmentObject(RemindersData())
-     }
- }
+#Preview {
+    ContentView().environmentObject(RemindersData())
+}

@@ -19,8 +19,6 @@ struct UpcomingRemindersContent: View {
     }
 }
 
-struct UpcomingRemindersContent_Previews: PreviewProvider {
-    static var previews: some View {
-        UpcomingRemindersContent().environmentObject(RemindersData())
-    }
+#Preview {
+    UpcomingRemindersContent().environmentObject(RemindersData())
 }

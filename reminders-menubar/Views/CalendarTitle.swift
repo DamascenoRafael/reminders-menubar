@@ -17,22 +17,13 @@ struct CalendarTitle: View {
     }
 }
 
-struct CalendarTitleView_Previews: PreviewProvider {
-    static var calendar: EKCalendar {
+#Preview {
+    var calendar: EKCalendar {
         let calendar = EKCalendar(for: .reminder, eventStore: .init())
         calendar.title = "Reminders"
         calendar.color = .systemTeal
-        
         return calendar
     }
-    
-    static var previews: some View {
-        Group {
-            ForEach(ColorScheme.allCases, id: \.self) { color in
-                CalendarTitle(calendar: calendar)
-                    .colorScheme(color)
-                    .previewDisplayName("\(color) mode")
-            }
-        }
-    }
+
+    CalendarTitle(calendar: calendar)
 }

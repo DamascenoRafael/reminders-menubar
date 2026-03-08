@@ -68,10 +68,6 @@ extension RmbDatePicker {
     }
 }
 
-struct RmbDatePicker_Previews: PreviewProvider {
-    static var date = Date()
-    
-    static var previews: some View {
-        RmbDatePicker(selection: .constant(date), components: .date)
-    }
+#Preview {
+    RmbDatePicker(selection: .constant(Date()), components: .date)
 }

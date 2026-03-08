@@ -57,8 +57,6 @@ struct UpcomingRemindersTitle: View {
     }
 }
 
-struct UpcomingRemindersTitle_Previews: PreviewProvider {
-    static var previews: some View {
-        UpcomingRemindersTitle()
-    }
+#Preview {
+    UpcomingRemindersTitle()
 }
