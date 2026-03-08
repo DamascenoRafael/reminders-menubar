@@ -42,24 +42,75 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AppDelegate.shared = self
         
         AppUpdateCheckHelper.shared.startBackgroundActivity()
-        
-        changeBehaviorToDismissIfNeeded()
+
         configurePopover()
         configureMenuBarButton()
         configureKeyboardShortcut()
         configureDidCloseNotification()
         configureDidShowNotification()
     }
-    
+
+    func applicationWillTerminate(_ notification: Notification) {
+        stopOutsideClickMonitors()
+    }
+
     private func configurePopover() {
-        let size = clampedMainPopoverSize(size: UserPreferences.shared.mainPopoverSize)
-        popover.contentSize = size
+        setMainPopoverSize(size: UserPreferences.shared.mainPopoverSize, persist: true)
         popover.animates = false
-        
+        popover.behavior = .transient
+
         if RemindersService.shared.authorizationStatus() == .authorized {
             popover.contentViewController = contentViewController
         }
     }
+    
+    func updateMenuBarTodayCount(to todayCount: Int) {
+        let buttonTitle = todayCount > 0 ? String(todayCount) : ""
+        statusBarItem.button?.title = buttonTitle
+    }
+    
+    func loadMenuBarIcon() {
+        let menuBarIcon = UserPreferences.shared.reminderMenuBarIcon
+        statusBarItem.button?.image = menuBarIcon.image
+    }
+    
+    private func configureMenuBarButton() {
+        loadMenuBarIcon()
+        statusBarItem.button?.imagePosition = .imageLeading
+        statusBarItem.button?.sendAction(on: [.leftMouseUp, .rightMouseUp])
+        statusBarItem.button?.action = #selector(handleStatusBarButtonAction)
+    }
+    
+    private func configureKeyboardShortcut() {
+        KeyboardShortcutService.shared.action(for: .openRemindersMenuBar) { [weak self] in
+            self?.togglePopover()
+        }
+    }
+
+    @objc private func togglePopover() {
+        guard RemindersService.shared.authorizationStatus() == .authorized else {
+            requestAuthorization()
+            return
+        }
+        
+        guard let button = statusBarItem.button else {
+            return
+        }
+        
+        if popover.contentViewController == nil {
+            popover.contentViewController = contentViewController
+        }
+        
+        if popover.isShown || didCloseEventDate.elapsedTimeInterval < 0.01 {
+            didCloseEventDate = .distantPast
+            popover.performClose(button)
+        } else {
+            popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
+            UserPreferences.shared.remindersMenuBarOpeningEvent.toggle()
+        }
+    }
+
+    // - MARK: Popover sizing
 
     func setMainPopoverSize(size: NSSize, persist: Bool) {
         let clampedSize = clampedMainPopoverSize(size: size)
@@ -90,29 +141,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         return NSSize(width: width, height: height)
     }
-    
-    func updateMenuBarTodayCount(to todayCount: Int) {
-        let buttonTitle = todayCount > 0 ? String(todayCount) : ""
-        statusBarItem.button?.title = buttonTitle
-    }
-    
-    func loadMenuBarIcon() {
-        let menuBarIcon = UserPreferences.shared.reminderMenuBarIcon
-        statusBarItem.button?.image = menuBarIcon.image
-    }
-    
-    private func configureMenuBarButton() {
-        loadMenuBarIcon()
-        statusBarItem.button?.imagePosition = .imageLeading
-        statusBarItem.button?.action = #selector(togglePopover)
-    }
-    
-    private func configureKeyboardShortcut() {
-        KeyboardShortcutService.shared.action(for: .openRemindersMenuBar) { [weak self] in
-            self?.togglePopover()
-        }
-    }
-    
+
+    // - MARK: Fallback for popover open/close behavior
+
     private func configureDidCloseNotification() {
         // NOTE: There is an issue where if the menu bar button is clicked on its top part to close the popover
         // there will be a didClose event and then togglePopover will be called (reopening the popover).
@@ -134,37 +165,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 self?.startOutsideClickMonitors()
             }
     }
-    
-    private func changeBehaviorToDismissIfNeeded() {
-        popover.behavior = .transient
-    }
-
-    @objc private func togglePopover() {
-        guard RemindersService.shared.authorizationStatus() == .authorized else {
-            requestAuthorization()
-            return
-        }
-        
-        guard let button = statusBarItem.button else {
-            return
-        }
-        
-        if popover.contentViewController == nil {
-            popover.contentViewController = contentViewController
-        }
-        
-        if popover.isShown || didCloseEventDate.elapsedTimeInterval < 0.01 {
-            didCloseEventDate = .distantPast
-            popover.performClose(button)
-        } else {
-            popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
-            UserPreferences.shared.remindersMenuBarOpeningEvent.toggle()
-        }
-    }
-
-    func applicationWillTerminate(_ notification: Notification) {
-        stopOutsideClickMonitors()
-    }
 
     private func startOutsideClickMonitors() {
         stopOutsideClickMonitors()
@@ -172,18 +172,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         globalOutsideClickMonitor = NSEvent.addGlobalMonitorForEvents(
             matching: [.leftMouseDown, .rightMouseDown, .otherMouseDown]
         ) { [weak self] event in
-            Task { @MainActor in
-                self?.handlePossibleOutsideClick(event: event)
+            MainActor.assumeIsolated {
+                if self?.isClickOutsidePopover(event: event) ?? false {
+                    self?.popover.performClose(nil)
+                }
             }
         }
 
         localOutsideClickMonitor = NSEvent.addLocalMonitorForEvents(
             matching: [.leftMouseDown, .rightMouseDown, .otherMouseDown]
         ) { [weak self] event in
-            Task { @MainActor in
-                self?.handlePossibleOutsideClick(event: event)
+            // Return nil to swallow the event when dismissing, matching native transient popover behavior.
+            let shouldClose = MainActor.assumeIsolated {
+                self?.isClickOutsidePopover(event: event) ?? false
             }
-            return event
+            if shouldClose {
+                self?.popover.performClose(nil)
+            }
+            return shouldClose ? nil : event
         }
     }
 
@@ -198,33 +204,33 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
-    private func handlePossibleOutsideClick(event: NSEvent) {
-        guard popover.isShown else { return }
+    private func isClickOutsidePopover(event: NSEvent) -> Bool {
+        guard popover.isShown else { return false }
 
-        // Use current mouse location so global monitors (which often lack window info) still work reliably.
         let mouseLocation = NSEvent.mouseLocation
 
-        if isMouseLocationInsideStatusItemButton(mouseLocation) {
-            // Let the normal status item button action handle toggling.
-            return
+        if isMouseInsideStatusBarButton(mouseLocation) {
+            return false
         }
 
         if let popoverWindow = popover.contentViewController?.view.window,
            popoverWindow.frame.contains(mouseLocation) {
-            return
+            return false
         }
 
-        // If the click is inside any of our app's windows (menus, child popovers, etc.), do nothing.
         if let window = NSApp.window(withWindowNumber: event.windowNumber),
            window.frame.contains(mouseLocation) {
-            return
+            return false
         }
 
-        popover.performClose(nil)
+        return true
     }
 
-    private func isMouseLocationInsideStatusItemButton(_ mouseLocation: NSPoint) -> Bool {
-        guard let button = statusBarItem.button, let window = button.window else { return false }
+    private func isMouseInsideStatusBarButton(_ mouseLocation: NSPoint) -> Bool {
+        guard let button = statusBarItem.button,
+              let window = button.window else {
+            return false
+        }
 
         let rectInWindow = button.convert(button.bounds, to: nil)
         let rectOnScreen = window.convertToScreen(rectInWindow)
