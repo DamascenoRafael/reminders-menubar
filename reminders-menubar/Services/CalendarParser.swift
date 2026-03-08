@@ -28,7 +28,7 @@ class CalendarParser {
     
     static private let validInitialChars: Set<String?> = ["/", "@"]
     
-    static private(set) var shared = CalendarParser()
+    static let shared = CalendarParser()
     
     private init() {
         // This prevents others from using the default '()' initializer for this class.

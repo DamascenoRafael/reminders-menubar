@@ -22,7 +22,7 @@ private enum PreferencesKeys {
 }
 
 class UserPreferences: ObservableObject {
-    static private(set) var shared = UserPreferences()
+    static let shared = UserPreferences()
     
     private init() {
         // This prevents others from using the default '()' initializer for this class.
