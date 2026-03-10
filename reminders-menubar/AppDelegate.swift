@@ -64,7 +64,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func configurePopover() {
-        setMainPopoverSize(size: UserPreferences.shared.mainPopoverSize, persist: true)
+        setMainPopoverSize(size: UserPreferences.shared.mainPopoverSize)
         popover.animates = false
         popover.behavior = .transient
 
@@ -137,7 +137,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     // - MARK: Popover sizing
 
-    func setMainPopoverSize(size: NSSize, persist: Bool) {
+    func setMainPopoverSize(size: NSSize, persist: Bool = false) {
         let clampedSize = clampedMainPopoverSize(size: size)
         popover.contentSize = clampedSize
 

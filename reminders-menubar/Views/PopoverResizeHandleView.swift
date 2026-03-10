@@ -62,7 +62,7 @@ struct PopoverResizeHandleView: View {
                         width: startSize.width + value.translation.width,
                         height: startSize.height + value.translation.height
                     )
-                    AppDelegate.shared.setMainPopoverSize(size: newSize, persist: false)
+                    AppDelegate.shared.setMainPopoverSize(size: newSize)
                 }
                 .onEnded { value in
                     let startSize = dragStartSize ?? AppDelegate.shared.popover.contentSize
