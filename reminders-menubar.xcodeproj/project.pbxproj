@@ -716,7 +716,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.damascenorafael.reminders-menubar-launcher";
-				PRODUCT_NAME = "Reminder Flow Launcher";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -741,7 +741,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.damascenorafael.reminders-menubar-launcher";
-				PRODUCT_NAME = "Reminder Flow Launcher";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -896,7 +896,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.25.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.damascenorafael.reminders-menubar";
-				PRODUCT_NAME = "Reminder Flow";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -924,7 +924,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.25.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.damascenorafael.reminders-menubar";
-				PRODUCT_NAME = "Reminder Flow";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
