@@ -76,6 +76,17 @@ struct GeneralSettingsTab: View {
 
             SettingsDivider()
 
+            SettingsSection(rmbLocalized(.popoverSizeSettingsLabel)) {
+                Button(action: {
+                    let defaultSize = MainPopoverSizing.defaultSize
+                    AppDelegate.shared.setMainPopoverSize(size: defaultSize, persist: true)
+                }) {
+                    Text(rmbLocalized(.popoverSizeResetToDefaultButton))
+                }
+            }
+
+            SettingsDivider()
+
             SettingsSection(rmbLocalized(.preferredLanguageMenu)) {
                 Picker(String(""), selection: Binding(
                     get: { userPreferences.preferredLanguage ?? "" },
