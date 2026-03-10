@@ -5,6 +5,7 @@ enum RemindersMenuBarLocalizedKeys: String {
     case newReminderCalendarSelectionToSaveHelp
     case newReminderAddDateButton
     case newReminderAddTimeButton
+    case newReminderSettingsLabel
     case newReminderAutoSuggestTodayOption
     case newReminderRemoveParsedDateOption
     case remindersOptionsButtonHelp
@@ -44,8 +45,8 @@ enum RemindersMenuBarLocalizedKeys: String {
     case updateAvailableNoticeButton
     case launchAtLoginOptionButton
     case appAppearanceMenu
-    case appAppearanceMoreOpaqueOptionButton
-    case appAppearanceMoreTransparentOptionButton
+    case appAppearanceReduceTransparencyOption
+    case appColorSchemeSettingsLabel
     case appAppearanceColorSystemModeOptionButton
     case appAppearanceColorLightModeOptionButton
     case appAppearanceColorDarkModeOptionButton
@@ -82,6 +83,7 @@ enum RemindersMenuBarLocalizedKeys: String {
     case openSystemPreferencesButton
     case okButton
     case preferredLanguageMenu
+    case preferredLanguageSystemSettingsOption
     case preferredLanguageSystemOptionButton
     case reminderRecurrenceDailyLabel
     case reminderRecurrenceWeeklyLabel
@@ -89,14 +91,19 @@ enum RemindersMenuBarLocalizedKeys: String {
     case reminderRecurrenceYearlyLabel
     case copyReminderOptionButton
     case copiedToastMessage
-    case copyFormatSettingsMenu
+    case copySettingsTab
     case copyFormatSettingsWindowTitle
     case copyFormatTemplateLabel
     case copyFormatTemplateHint
     case copyFormatAvailableVariables
     case copyFormatTrimOption
     case copyFormatPreviewLabel
+    case showUpcomingRemindersSettingsOption
     case dragToResizeHelp
+    case generalSettingsTab
+    case remindersSettingsTab
+    case keyboardSettingsTab
+    case aboutSettingsTab
 }
 
 struct ReminderMenuBarLocale {

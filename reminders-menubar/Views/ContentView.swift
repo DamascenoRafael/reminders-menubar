@@ -10,7 +10,7 @@ struct ContentView: View {
         VStack(spacing: 0) {
             HStack {
                 FormNewReminderView()
-                SettingsBarView()
+                ToolbarView()
             }
 
             if userPreferences.atLeastOneFilterIsSelected {

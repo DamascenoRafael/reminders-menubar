@@ -3,9 +3,6 @@ import SwiftUI
 struct SettingsBarFilterMenu: View {
     @EnvironmentObject var remindersData: RemindersData
     @ObservedObject var userPreferences = UserPreferences.shared
-    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
-    
-    @State var filterIsHovered = false
     
     var body: some View {
         Menu {
@@ -37,20 +34,13 @@ struct SettingsBarFilterMenu: View {
         } label: {
             Image(systemName: "line.horizontal.3.decrease.circle")
         }
-        .menuStyle(BorderlessButtonMenuStyle())
-        .frame(width: 32, height: 16)
-        .padding(3)
-        .background(filterIsHovered ? Color.rmbColor(for: .buttonHover, and: reduceTransparency) : nil)
-        .cornerRadius(4)
-        .onHover { isHovered in
-            filterIsHovered = isHovered
-        }
+        .frame(width: 28)
+        .modifier(ToolbarButtonModifier())
         .help(rmbLocalized(.remindersFilterSelectionHelp))
     }
 }
 
-struct SettingsBarFilterMenu_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsBarFilterMenu()
-    }
+#Preview {
+    SettingsBarFilterMenu()
+        .environmentObject(RemindersData())
 }
