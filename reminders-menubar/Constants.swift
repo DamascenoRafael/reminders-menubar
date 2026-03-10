@@ -9,7 +9,7 @@ enum AppConstants {
         return "v\(bundleVersion)"
     }()
     
-    static let appName = "Reminders MenuBar"
+    static let appName = "Reminder Flow"
     static let mainBundleId = "br.com.damascenorafael.reminders-menubar"
     static let launcherBundleId = "br.com.damascenorafael.reminders-menubar-launcher"
 }

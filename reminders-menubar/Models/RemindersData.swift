@@ -70,17 +70,22 @@ class RemindersData: ObservableObject {
             }
             .store(in: &cancellationTokens)
 
+        UserPreferences.shared.$reminderSortOption
+            .dropFirst()
+            .sink { [weak self] _ in
+                Task {
+                    guard let self else { return }
+                    await self.reloadVisibleReminders()
+                }
+            }
+            .store(in: &cancellationTokens)
+
         $calendarIdentifiersFilter
             .dropFirst()
             .sink { [weak self] calendarIdentifiersFilter in
                 Task {
                     guard let self else { return }
-                    self.filteredReminderLists = await RemindersService.shared.getReminders(
-                        of: calendarIdentifiersFilter
-                    )
-
-                    self.upcomingReminders = await self.getUpcomingReminders()
-                    self.updateMenuBarCount(with: await self.getMenuBarCount())
+                    await self.reloadVisibleReminders(for: calendarIdentifiersFilter)
                 }
             }
             .store(in: &cancellationTokens)
@@ -146,8 +151,19 @@ class RemindersData: ObservableObject {
 
         return await RemindersService.shared.getUpcomingReminders(
             UserPreferences.shared.upcomingRemindersInterval,
-            for: calendarFilter
+            for: calendarFilter,
+            sortOption: UserPreferences.shared.reminderSortOption
         )
+    }
+
+    private func reloadVisibleReminders(for calendarIdentifiersFilter: [String]? = nil) async {
+        let calendarIdentifiersFilter = calendarIdentifiersFilter ?? self.calendarIdentifiersFilter
+        self.filteredReminderLists = await RemindersService.shared.getReminders(
+            of: calendarIdentifiersFilter,
+            sortOption: UserPreferences.shared.reminderSortOption
+        )
+        self.upcomingReminders = await self.getUpcomingReminders()
+        self.updateMenuBarCount(with: await self.getMenuBarCount())
     }
 
     private func getMenuBarCount() async -> Int {

@@ -106,6 +106,11 @@ enum RemindersMenuBarLocalizedKeys: String {
     case remindersSettingsTab
     case keyboardSettingsTab
     case aboutSettingsTab
+    case reminderSortButtonHelp
+    case reminderSortDefaultOption
+    case reminderSortCreationNewestOption
+    case reminderSortCreationOldestOption
+    case reminderCreatedAtLabel
 }
 
 struct ReminderMenuBarLocale {

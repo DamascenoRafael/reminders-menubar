@@ -19,6 +19,24 @@ private enum PreferencesKeys {
     static let copyTemplate = "copyTemplate"
     static let copyTrimEnabled = "copyTrimEnabled"
     static let mainPopoverSize = "mainPopoverSize"
+    static let reminderSortOption = "reminderSortOption"
+}
+
+enum ReminderSortOption: String, Codable, CaseIterable {
+    case `default`
+    case creationDateNewestFirst
+    case creationDateOldestFirst
+
+    var title: String {
+        switch self {
+        case .default:
+            return rmbLocalized(.reminderSortDefaultOption)
+        case .creationDateNewestFirst:
+            return rmbLocalized(.reminderSortCreationNewestOption)
+        case .creationDateOldestFirst:
+            return rmbLocalized(.reminderSortCreationOldestOption)
+        }
+    }
 }
 
 class UserPreferences: ObservableObject {
@@ -114,6 +132,19 @@ class UserPreferences: ObservableObject {
     }() {
         didSet {
             UserPreferences.defaults.set(showUpcomingReminders, forKey: PreferencesKeys.showUpcomingReminders)
+        }
+    }
+
+    @Published var reminderSortOption: ReminderSortOption = {
+        guard let reminderSortOptionData = defaults.data(forKey: PreferencesKeys.reminderSortOption),
+              let reminderSortOption = try? JSONDecoder().decode(ReminderSortOption.self, from: reminderSortOptionData) else {
+            return .default
+        }
+        return reminderSortOption
+    }() {
+        didSet {
+            let reminderSortOptionData = try? JSONEncoder().encode(reminderSortOption)
+            UserPreferences.defaults.set(reminderSortOptionData, forKey: PreferencesKeys.reminderSortOption)
         }
     }
     
