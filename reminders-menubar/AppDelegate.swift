@@ -96,6 +96,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
+    @objc private func handleStatusBarButtonAction() {
+        guard let event = NSApp.currentEvent else { return }
+        if event.type == .rightMouseUp {
+            showRightClickMenu()
+        } else {
+            togglePopover()
+        }
+    }
+
+    private func showRightClickMenu() {
+        let menu = RightClickMenuHelper.shared.buildRightClickMenu()
+        statusBarItem.menu = menu
+        statusBarItem.button?.performClick(nil)
+        statusBarItem.menu = nil
+    }
+
     @objc private func togglePopover() {
         guard RemindersService.shared.authorizationStatus() == .authorized else {
             requestAuthorization()
