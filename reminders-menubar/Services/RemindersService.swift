@@ -50,7 +50,7 @@ class RemindersService {
         }
     }
 
-    private func createReminderItems(for calendarReminders: [EKReminder]) -> [ReminderItem] {
+    private func createReminderItems(for calendarReminders: [EKReminder], sortOption: ReminderSortOption) -> [ReminderItem] {
         var reminderListItems: [ReminderItem] = []
         
         let noParentKey = "noParentKey"
@@ -62,10 +62,13 @@ class RemindersService {
             let children = remindersByParentId[parentId, default: []].map({ ReminderItem(for: $0, isChild: true) })
             reminderListItems.append(ReminderItem(for: parentReminder, withChildren: children))
         }
-        return reminderListItems
+        return reminderListItems.sortedReminders(by: sortOption)
     }
 
-    func getReminders(of calendarIdentifiers: [String]) async -> [ReminderList] {
+    func getReminders(
+        of calendarIdentifiers: [String],
+        sortOption: ReminderSortOption = UserPreferences.shared.reminderSortOption
+    ) async -> [ReminderList] {
         let calendars = getCalendars().filter({ calendarIdentifiers.contains($0.calendarIdentifier) })
         let predicate = eventStore.predicateForReminders(in: calendars)
         let remindersByCalendar = Dictionary(
@@ -76,8 +79,8 @@ class RemindersService {
         var reminderLists: [ReminderList] = []
         for calendar in calendars {
             let calendarReminders = remindersByCalendar[calendar.calendarIdentifier, default: []]
-            let reminderListItems = createReminderItems(for: calendarReminders)
-            reminderLists.append(ReminderList(for: calendar, with: reminderListItems))
+            let reminderListItems = createReminderItems(for: calendarReminders, sortOption: sortOption)
+            reminderLists.append(ReminderList(for: calendar, with: reminderListItems, sortOption: sortOption))
         }
         
         return reminderLists
@@ -85,7 +88,8 @@ class RemindersService {
     
     func getUpcomingReminders(
         _ interval: ReminderInterval,
-        for calendarIdentifiers: [String]? = nil
+        for calendarIdentifiers: [String]? = nil,
+        sortOption: ReminderSortOption = UserPreferences.shared.reminderSortOption
     ) async -> [ReminderItem] {
         var calendars: [EKCalendar]?
         if let calendarIdentifiers {
@@ -106,7 +110,7 @@ class RemindersService {
             // These will only be considered due/expired on the following day.
             reminders = reminders.filter { $0.reminder.isExpired }
         }
-        return reminders.sortedReminders
+        return reminders.sortedReminders(by: sortOption)
     }
     
     func save(reminder: EKReminder) {

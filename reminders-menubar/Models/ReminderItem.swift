@@ -10,7 +10,7 @@ struct ReminderItem: Identifiable, Equatable {
     init(for reminder: EKReminder, isChild: Bool = false, withChildren childReminders: [ReminderItem] = []) {
         self.id = reminder.calendarItemIdentifier
         self.reminder = reminder
-        self.childReminders = LabeledReminders(for: childReminders)
+        self.childReminders = LabeledReminders(for: childReminders, sortOption: UserPreferences.shared.reminderSortOption)
         self.isChild = isChild
         self.hasChildren = !childReminders.isEmpty
     }

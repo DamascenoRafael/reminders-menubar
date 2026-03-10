@@ -81,6 +81,22 @@ struct ReminderItemView: View {
                     )
                 }
 
+                if let creationDate = reminderItem.reminder.creationDate {
+                    HStack(spacing: 4) {
+                        Image(systemName: "clock.arrow.circlepath")
+                        Text(
+                            rmbLocalized(
+                                .reminderCreatedAtLabel,
+                                arguments: creationDate.absoluteDateDescription()
+                            )
+                        )
+                    }
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.trailing, 12)
+                }
+
                 if reminderItem.reminder.attachedUrl != nil || reminderItem.reminder.mailUrl != nil {
                     ReminderExternalLinksView(
                         attachedUrl: reminderItem.reminder.attachedUrl,

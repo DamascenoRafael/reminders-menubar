@@ -57,6 +57,15 @@ extension Date {
         
         return relativeDateFormatter.string(from: self)
     }
+
+    func absoluteDateDescription(withTime showTimeDescription: Bool = false) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = showTimeDescription ? .short : .none
+        dateFormatter.dateStyle = .medium
+        dateFormatter.locale = rmbCurrentLocale()
+
+        return dateFormatter.string(from: self)
+    }
     
     func dateComponents(withTime: Bool) -> DateComponents {
         var components: Set<Calendar.Component> = [.calendar, .era, .year, .month, .day]
