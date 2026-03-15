@@ -47,12 +47,18 @@ extension EKReminder {
     private var reminderBackingObject: AnyObject? {
         let backingObjectSelector = NSSelectorFromString("backingObject")
         let reminderSelector = NSSelectorFromString("_reminder")
-        
-        guard let unmanagedBackingObject = self.perform(backingObjectSelector),
-              let unmanagedReminder = unmanagedBackingObject.takeUnretainedValue().perform(reminderSelector) else {
+
+        guard self.responds(to: backingObjectSelector),
+              let unmanagedBackingObject = self.perform(backingObjectSelector) else {
             return nil
         }
-        
+
+        let backingObject = unmanagedBackingObject.takeUnretainedValue()
+        guard backingObject.responds(to: reminderSelector),
+              let unmanagedReminder = backingObject.perform(reminderSelector) else {
+            return nil
+        }
+
         return unmanagedReminder.takeUnretainedValue()
     }
     
@@ -60,8 +66,10 @@ extension EKReminder {
     // This property is not accessible through the conventional API.
     var attachedUrl: URL? {
         let attachmentsSelector = NSSelectorFromString("attachments")
-        
-        guard let unmanagedAttachments = reminderBackingObject?.perform(attachmentsSelector),
+
+        guard let backingObject = reminderBackingObject,
+              (backingObject as AnyObject).responds(to: attachmentsSelector),
+              let unmanagedAttachments = (backingObject as AnyObject).perform(attachmentsSelector),
               let attachments = unmanagedAttachments.takeUnretainedValue() as? [AnyObject] else {
             return nil
         }
@@ -72,8 +80,10 @@ extension EKReminder {
             guard attachmentType == "REMURLAttachment" else {
                 continue
             }
-            
-            guard let unmanagedUrl = item.perform(NSSelectorFromString("url")),
+
+            let urlSelector = NSSelectorFromString("url")
+            guard item.responds(to: urlSelector),
+                  let unmanagedUrl = item.perform(urlSelector),
                   let url = unmanagedUrl.takeUnretainedValue() as? URL else {
                 continue
             }
@@ -89,9 +99,20 @@ extension EKReminder {
     var mailUrl: URL? {
         let userActivitySelector = NSSelectorFromString("userActivity")
         let storageSelector = NSSelectorFromString("storage")
-        
-        guard let unmanagedUserActivity = reminderBackingObject?.perform(userActivitySelector),
-              let unmanagedUserActivityStorage = unmanagedUserActivity.takeUnretainedValue().perform(storageSelector),
+
+        guard let backingObject = reminderBackingObject else {
+            return nil
+        }
+
+        let obj = backingObject as AnyObject
+        guard obj.responds(to: userActivitySelector),
+              let unmanagedUserActivity = obj.perform(userActivitySelector) else {
+            return nil
+        }
+
+        let userActivity = unmanagedUserActivity.takeUnretainedValue()
+        guard userActivity.responds(to: storageSelector),
+              let unmanagedUserActivityStorage = userActivity.perform(storageSelector),
               let userActivityStorageData = unmanagedUserActivityStorage.takeUnretainedValue() as? Data else {
             return nil
         }
@@ -111,9 +132,20 @@ extension EKReminder {
     var parentId: String? {
         let parentReminderSelector = NSSelectorFromString("parentReminderID")
         let uuidSelector = NSSelectorFromString("uuid")
-        
-        guard let unmanagedParentReminder = reminderBackingObject?.perform(parentReminderSelector),
-              let unmanagedParentReminderId = unmanagedParentReminder.takeUnretainedValue().perform(uuidSelector),
+
+        guard let backingObject = reminderBackingObject else {
+            return nil
+        }
+
+        let obj = backingObject as AnyObject
+        guard obj.responds(to: parentReminderSelector),
+              let unmanagedParentReminder = obj.perform(parentReminderSelector) else {
+            return nil
+        }
+
+        let parentReminder = unmanagedParentReminder.takeUnretainedValue()
+        guard parentReminder.responds(to: uuidSelector),
+              let unmanagedParentReminderId = parentReminder.perform(uuidSelector),
               let parentReminderId = unmanagedParentReminderId.takeUnretainedValue() as? UUID else {
             return nil
         }
