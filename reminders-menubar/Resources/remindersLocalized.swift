@@ -102,6 +102,16 @@ enum RemindersMenuBarLocalizedKeys: String {
     case dragToResizeHelp
     case popoverSizeSettingsLabel
     case popoverSizeResetToDefaultButton
+    case reminderSortingSettingsLabel
+    case reminderSortingDueDateOnTopOption
+    case reminderSortingDueDateOnTopNote
+    case reminderSortingByPriorityOption
+    case reminderSortingDefaultOrderOption
+    case reminderSortingDefaultOrderNote
+    case reminderSortingNewestFirstOption
+    case reminderSortingNewestFirstNote
+    case reminderSortingOldestFirstOption
+    case reminderSortingOldestFirstNote
     case generalSettingsTab
     case remindersSettingsTab
     case keyboardSettingsTab

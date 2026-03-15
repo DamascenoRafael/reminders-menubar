@@ -70,6 +70,33 @@ class RemindersData: ObservableObject {
             }
             .store(in: &cancellationTokens)
 
+        UserPreferences.shared.$showRemindersWithDueDateOnTop
+            .dropFirst()
+            .sink { [weak self] _ in
+                Task {
+                    await self?.update()
+                }
+            }
+            .store(in: &cancellationTokens)
+
+        UserPreferences.shared.$sortRemindersByPriority
+            .dropFirst()
+            .sink { [weak self] _ in
+                Task {
+                    await self?.update()
+                }
+            }
+            .store(in: &cancellationTokens)
+
+        UserPreferences.shared.$reminderSortingOrder
+            .dropFirst()
+            .sink { [weak self] _ in
+                Task {
+                    await self?.update()
+                }
+            }
+            .store(in: &cancellationTokens)
+
         $calendarIdentifiersFilter
             .dropFirst()
             .sink { [weak self] calendarIdentifiersFilter in

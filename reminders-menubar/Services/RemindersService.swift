@@ -106,7 +106,7 @@ class RemindersService {
             // These will only be considered due/expired on the following day.
             reminders = reminders.filter { $0.reminder.isExpired }
         }
-        return reminders.sortedReminders
+        return reminders.sortedUpcomingReminders
     }
     
     func save(reminder: EKReminder) {

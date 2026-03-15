@@ -4,7 +4,7 @@ struct LabeledReminders: Equatable {
     
     init(for reminderItems: [ReminderItem]) {
         let (completedReminders, uncompletedReminders) = reminderItems.separated(by: { $0.reminder.isCompleted })
-        self.completed = completedReminders.sortedRemindersByPriority
-        self.uncompleted = uncompletedReminders.sortedRemindersByPriority
+        self.completed = completedReminders.sortedReminders
+        self.uncompleted = uncompletedReminders.sortedReminders
     }
 }

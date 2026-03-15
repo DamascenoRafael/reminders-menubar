@@ -27,6 +27,39 @@ struct ReminderSettingsTab: View {
 
             SettingsDivider()
 
+            SettingsSection(rmbLocalized(.reminderSortingSettingsLabel)) {
+                Picker(String(""), selection: $userPreferences.reminderSortingOrder) {
+                    ForEach(RmbSortingOrder.allCases, id: \.self) { sortingOrder in
+                        Text(sortingOrder.title).tag(sortingOrder)
+                    }
+                }
+                .pickerStyle(.menu)
+                .labelsHidden()
+
+                Text(userPreferences.reminderSortingOrder.note)
+                    .font(.caption)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.bottom, 4)
+
+                Toggle(
+                    rmbLocalized(.reminderSortingDueDateOnTopOption),
+                    isOn: $userPreferences.showRemindersWithDueDateOnTop
+                )
+
+                Text(rmbLocalized(.reminderSortingDueDateOnTopNote))
+                    .font(.caption)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.leading, 20)
+                    .padding(.bottom, 4)
+
+                Toggle(
+                    rmbLocalized(.reminderSortingByPriorityOption),
+                    isOn: $userPreferences.sortRemindersByPriority
+                )
+            }
+
+            SettingsDivider()
+
             SettingsSection {
                 Button(rmbLocalized(.reloadRemindersDataButton)) {
                     UserPreferences.shared.remindersMenuBarOpeningEvent.toggle()
@@ -35,4 +68,8 @@ struct ReminderSettingsTab: View {
         }
         .padding(20)
     }
+}
+
+#Preview {
+    ReminderSettingsTab()
 }

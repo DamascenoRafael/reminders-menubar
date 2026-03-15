@@ -20,6 +20,7 @@
 		712C32B824BF939200AC75E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 712C32B724BF939200AC75E2 /* Assets.xcassets */; };
 		712C32BB24BF939200AC75E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 712C32BA24BF939200AC75E2 /* Preview Assets.xcassets */; };
 		712C836229E6635200BF6C24 /* RmbMenuBarCounterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712C836129E6635200BF6C24 /* RmbMenuBarCounterType.swift */; };
+		71A000012F61000100000001 /* RmbSortingOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A000002F61000100000001 /* RmbSortingOrder.swift */; };
 		71359E9824C6C0B5001D4C40 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71359E9724C6C0B5001D4C40 /* Colors.xcassets */; };
 		713D911E2F5DF821001B921E /* ToolbarButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D911D2F5DF816001B921E /* ToolbarButtonModifier.swift */; };
 		713F234524C130D400FF0BEC /* ReminderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F234424C130D400FF0BEC /* ReminderList.swift */; };
@@ -55,6 +56,7 @@
 		719C712C2C1FADB000C622FF /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 719C712B2C1FADB000C622FF /* InfoPlist.xcstrings */; };
 		71A0B2DC25CE20AC004E06AE /* AppUpdateCheckHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A0B2DB25CE20AC004E06AE /* AppUpdateCheckHelper.swift */; };
 		71A3834325BCA69C00975B4C /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A3834225BCA69C00975B4C /* Date+Extensions.swift */; };
+		71A3834425BDD2AC00975B4C /* EKCalendar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A3834425BDD2AC00975B4B /* EKCalendar+Extensions.swift */; };
 		71A3834625BDD2AC00975B4C /* EKReminder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A3834525BDD2AC00975B4C /* EKReminder+Extensions.swift */; };
 		71A4163725CED8FE00CA4F81 /* GithubService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A4163625CED8FE00CA4F81 /* GithubService.swift */; };
 		71A6583A2908B0DD006F3A50 /* ReminderEditPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A658392908B0DD006F3A50 /* ReminderEditPopover.swift */; };
@@ -130,6 +132,7 @@
 		712C32BF24BF939200AC75E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		712C32C024BF939200AC75E2 /* reminders_menubar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = reminders_menubar.entitlements; sourceTree = "<group>"; };
 		712C836129E6635200BF6C24 /* RmbMenuBarCounterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbMenuBarCounterType.swift; sourceTree = "<group>"; };
+		71A000002F61000100000001 /* RmbSortingOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbSortingOrder.swift; sourceTree = "<group>"; };
 		71359E9724C6C0B5001D4C40 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		713D911D2F5DF816001B921E /* ToolbarButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarButtonModifier.swift; sourceTree = "<group>"; };
 		713F234424C130D400FF0BEC /* ReminderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderList.swift; sourceTree = "<group>"; };
@@ -163,6 +166,7 @@
 		719C712B2C1FADB000C622FF /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		71A0B2DB25CE20AC004E06AE /* AppUpdateCheckHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUpdateCheckHelper.swift; sourceTree = "<group>"; };
 		71A3834225BCA69C00975B4C /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		71A3834425BDD2AC00975B4B /* EKCalendar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EKCalendar+Extensions.swift"; sourceTree = "<group>"; };
 		71A3834525BDD2AC00975B4C /* EKReminder+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EKReminder+Extensions.swift"; sourceTree = "<group>"; };
 		71A4163625CED8FE00CA4F81 /* GithubService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubService.swift; sourceTree = "<group>"; };
 		71A658392908B0DD006F3A50 /* ReminderEditPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderEditPopover.swift; sourceTree = "<group>"; };
@@ -340,6 +344,7 @@
 				71ED5D6A290B6B3C00626185 /* RmbReminder.swift */,
 				717748F729622FCB00654CAA /* RmbIcon.swift */,
 				712C836129E6635200BF6C24 /* RmbMenuBarCounterType.swift */,
+				71A000002F61000100000001 /* RmbSortingOrder.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -436,6 +441,7 @@
 				71A3834225BCA69C00975B4C /* Date+Extensions.swift */,
 				714D03B126042416003063F7 /* Calendar+Extensions.swift */,
 				71A3834525BDD2AC00975B4C /* EKReminder+Extensions.swift */,
+				71A3834425BDD2AC00975B4B /* EKCalendar+Extensions.swift */,
 				71CCF9832D43148000D334F8 /* EKReminderPriority+Extensions.swift */,
 				7156444126031CA9005E81FD /* Array+Extension.swift */,
 				7156443926030591005E81FD /* ArrayReminderItem+Extension.swift */,
@@ -626,6 +632,7 @@
 				715B4DD728D59BF2008C6683 /* SettingsBarFilterMenu.swift in Sources */,
 				71B6D1FB24C6511000E66EDB /* ToolbarView.swift in Sources */,
 				712C836229E6635200BF6C24 /* RmbMenuBarCounterType.swift in Sources */,
+				71A000012F61000100000001 /* RmbSortingOrder.swift in Sources */,
 				710980D22600419F001F69B2 /* UpcomingRemindersContent.swift in Sources */,
 				713F234524C130D400FF0BEC /* ReminderList.swift in Sources */,
 				7119C2F025D85B75002C8013 /* SelectableView.swift in Sources */,
@@ -656,6 +663,7 @@
 				71D2623C2F57935F0073C0FD /* SettingsView.swift in Sources */,
 				71F36AA029C3E79E0099D337 /* Color+Extensions.swift in Sources */,
 				71A3834625BDD2AC00975B4C /* EKReminder+Extensions.swift in Sources */,
+				71A3834425BDD2AC00975B4C /* EKCalendar+Extensions.swift in Sources */,
 				71B4AD6625B9118000214219 /* NoReminderItemsView.swift in Sources */,
 				713D911E2F5DF821001B921E /* ToolbarButtonModifier.swift in Sources */,
 				714E6F6125CCF66000BA0099 /* Constants.swift in Sources */,

@@ -19,6 +19,9 @@ private enum PreferencesKeys {
     static let copyTemplate = "copyTemplate"
     static let copyTrimEnabled = "copyTrimEnabled"
     static let mainPopoverSize = "mainPopoverSize"
+    static let showRemindersWithDueDateOnTop = "showRemindersWithDueDateOnTop"
+    static let sortRemindersByPriority = "sortRemindersByPriority"
+    static let reminderSortingOrder = "reminderSortingOrder"
 }
 
 class UserPreferences: ObservableObject {
@@ -114,6 +117,38 @@ class UserPreferences: ObservableObject {
     }() {
         didSet {
             UserPreferences.defaults.set(showUpcomingReminders, forKey: PreferencesKeys.showUpcomingReminders)
+        }
+    }
+    
+    @Published var showRemindersWithDueDateOnTop: Bool = {
+        return defaults.boolWithDefaultValueTrue(forKey: PreferencesKeys.showRemindersWithDueDateOnTop)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(
+                showRemindersWithDueDateOnTop,
+                forKey: PreferencesKeys.showRemindersWithDueDateOnTop
+            )
+        }
+    }
+    
+    @Published var sortRemindersByPriority: Bool = {
+        return defaults.boolWithDefaultValueTrue(forKey: PreferencesKeys.sortRemindersByPriority)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(sortRemindersByPriority, forKey: PreferencesKeys.sortRemindersByPriority)
+        }
+    }
+    
+    @Published var reminderSortingOrder: RmbSortingOrder = {
+        guard let sortingData = defaults.data(forKey: PreferencesKeys.reminderSortingOrder),
+              let sorting = try? JSONDecoder().decode(RmbSortingOrder.self, from: sortingData) else {
+            return .newestFirst
+        }
+        return sorting
+    }() {
+        didSet {
+            let sortingData = try? JSONEncoder().encode(reminderSortingOrder)
+            UserPreferences.defaults.set(sortingData, forKey: PreferencesKeys.reminderSortingOrder)
         }
     }
     
