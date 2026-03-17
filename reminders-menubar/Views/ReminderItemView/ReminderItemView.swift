@@ -16,6 +16,7 @@ struct ReminderItemView: View {
     @State private var showingRemoveAlert = false
     @State private var showingCopiedToast = false
     @State private var copyEventMonitor: Any?
+    @State private var isPendingCompletion = false
 
     var body: some View {
         if reminderItem.reminder.calendar == nil {
@@ -30,7 +31,7 @@ struct ReminderItemView: View {
     @ViewBuilder
     func mainReminderItemView() -> some View {
         HStack(alignment: .top) {
-            ReminderCompleteButton(reminderItem: reminderItem)
+            ReminderCompleteButton(reminderItem: reminderItem, isPendingCompletion: $isPendingCompletion)
 
             VStack(spacing: 4) {
                 HStack(spacing: 4) {
@@ -41,6 +42,7 @@ struct ReminderItemView: View {
                     Text(LocalizedStringKey(reminderItem.reminder.title.toDetectedLinkAttributedString()))
                         .fixedSize(horizontal: false, vertical: true)
                         .onTapGesture {
+                            guard !isPendingCompletion else { return }
                             isEditingTitle = true
                             showingEditPopover = true
                         }
@@ -57,6 +59,7 @@ struct ReminderItemView: View {
                     )
                     .id(UUID())
                     .opacity(shouldShowEllipsisButton() ? 1 : 0)
+                    .allowsHitTesting(!isPendingCompletion)
                     .popover(isPresented: $showingEditPopover, arrowEdge: .trailing) {
                         ReminderEditPopover(
                             isPresented: $showingEditPopover,
@@ -92,6 +95,8 @@ struct ReminderItemView: View {
                     .padding(.top, 2)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
+            .opacity(isPendingCompletion || reminderItem.reminder.isCompleted ? 0.6 : 1.0)
+            .animation(.easeInOut(duration: 0.3), value: isPendingCompletion)
             .overlay(
                 copiedToastOverlay()
                     .opacity(showingCopiedToast ? 1 : 0)
@@ -131,7 +136,7 @@ struct ReminderItemView: View {
     }
 
     func shouldShowEllipsisButton() -> Bool {
-        return reminderItemIsHovered || showingEditPopover
+        return !isPendingCompletion && (reminderItemIsHovered || showingEditPopover)
     }
 
     func copyReminderToClipboard() {

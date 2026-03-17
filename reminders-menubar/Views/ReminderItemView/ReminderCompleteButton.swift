@@ -3,25 +3,77 @@ import EventKit
 
 struct ReminderCompleteButton: View {
     var reminderItem: ReminderItem
+    @Binding var isPendingCompletion: Bool
+
+    @State private var isFilled = false
+    @State private var completionTask: Task<Void, Never>?
+
+    private let completionDelayInSeconds: Double = 1.5
+
+    private var isShowingFilled: Bool {
+        reminderItem.reminder.isCompleted || isFilled
+    }
 
     var body: some View {
         Button(action: {
-            reminderItem.reminder.isCompleted.toggle()
-            RemindersService.shared.save(reminder: reminderItem.reminder)
-            if reminderItem.reminder.isCompleted {
-                reminderItem.childReminders.uncompleted.forEach { uncompletedChild in
-                    uncompletedChild.reminder.isCompleted = true
-                    RemindersService.shared.save(reminder: uncompletedChild.reminder)
-                }
-            }
+            handleButtonTap()
         }) {
-            Image(systemName: reminderItem.reminder.isCompleted ? "largecircle.fill.circle" : "circle")
+            Image(systemName: isShowingFilled ? "largecircle.fill.circle" : "circle")
                 .resizable()
                 .frame(width: 14, height: 14)
-                .padding(.top, 2)
                 .foregroundColor(Color(reminderItem.reminder.calendar.color))
+                .transition(.scale(scale: 0.1).combined(with: .opacity))
+                .id(isShowingFilled)
+                .padding(.top, 2)
         }
         .buttonStyle(PlainButtonStyle())
+        .onDisappear {
+            cancelPendingCompletion()
+        }
+    }
+
+    private func handleButtonTap() {
+        if isPendingCompletion {
+            cancelPendingCompletion()
+        } else if reminderItem.reminder.isCompleted {
+            reminderItem.reminder.isCompleted = false
+            RemindersService.shared.save(reminder: reminderItem.reminder)
+        } else {
+            startPendingCompletion()
+        }
+    }
+
+    private func startPendingCompletion() {
+        isPendingCompletion = true
+        withAnimation(.easeOut(duration: 0.25)) {
+            isFilled = true
+        }
+
+        completionTask = Task {
+            try? await Task.sleep(nanoseconds: UInt64(completionDelayInSeconds * 1_000_000_000))
+            guard !Task.isCancelled else { return }
+            completeReminder()
+        }
+    }
+
+    private func cancelPendingCompletion() {
+        completionTask?.cancel()
+        completionTask = nil
+        withAnimation(.easeOut(duration: 0.25)) {
+            isFilled = false
+        }
+        isPendingCompletion = false
+    }
+
+    private func completeReminder() {
+        reminderItem.reminder.isCompleted = true
+        RemindersService.shared.save(reminder: reminderItem.reminder)
+        reminderItem.childReminders.uncompleted.forEach { uncompletedChild in
+            uncompletedChild.reminder.isCompleted = true
+            RemindersService.shared.save(reminder: uncompletedChild.reminder)
+        }
+        isFilled = false
+        isPendingCompletion = false
     }
 }
 
@@ -39,5 +91,10 @@ struct ReminderCompleteButton: View {
     }
     let reminderItem = ReminderItem(for: reminder)
 
-    ReminderCompleteButton(reminderItem: reminderItem)
+    VStack {
+        ReminderCompleteButton(reminderItem: reminderItem, isPendingCompletion: .constant(false))
+
+        ReminderCompleteButton(reminderItem: reminderItem, isPendingCompletion: .constant(true))
+    }
+    .frame(width: 100)
 }
