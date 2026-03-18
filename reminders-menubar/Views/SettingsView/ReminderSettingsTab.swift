@@ -5,11 +5,26 @@ struct ReminderSettingsTab: View {
 
     var body: some View {
         Form {
-            SettingsSection {
+            SettingsSection(rmbLocalized(.upcomingRemindersSettingsLabel)) {
+                Picker(String(""), selection: $userPreferences.upcomingRemindersInterval) {
+                    ForEach(ReminderInterval.allCases, id: \.self) { interval in
+                        Text(interval.filterOption).tag(interval)
+                    }
+                }
+                .pickerStyle(.menu)
+                .labelsHidden()
+
                 Toggle(
                     rmbLocalized(.showUpcomingRemindersSettingsOption),
                     isOn: $userPreferences.showUpcomingReminders
                 )
+
+                Toggle(isOn: $userPreferences.filterUpcomingRemindersByCalendar) {
+                    HStack {
+                        Text(rmbLocalized(.filterUpcomingRemindersByCalendarOptionButton))
+                        Image(systemName: "line.horizontal.3.decrease.circle")
+                    }
+                }
             }
 
             SettingsDivider()

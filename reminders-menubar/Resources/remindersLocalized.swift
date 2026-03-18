@@ -39,7 +39,8 @@ enum RemindersMenuBarLocalizedKeys: String {
     case emptyListNoRemindersFilterMessage
     case emptyListAllItemsCompletedMessage
     case emptyListNoUpcomingRemindersMessage
-    case upcomingRemindersTitle
+    case upcomingRemindersButton
+    case upcomingRemindersSettingsLabel
     case remindersFilterSelectionHelp
     case showCompletedRemindersToggleButtonHelp
     case updateAvailableNoticeButton
@@ -71,11 +72,17 @@ enum RemindersMenuBarLocalizedKeys: String {
     case keyboardShortcutEnableOpenShortcutOption
     case keyboardShortcutRestoreDefaultButton
     case upcomingRemindersIntervalSelectionHelp
-    case upcomingRemindersDueTitle
-    case upcomingRemindersTodayTitle
-    case upcomingRemindersInAWeekTitle
-    case upcomingRemindersInAMonthTitle
-    case upcomingRemindersAllTitle
+    case upcomingRemindersDueFilterOption
+    case upcomingRemindersTodayFilterOption
+    case upcomingRemindersInAWeekFilterOption
+    case upcomingRemindersInAMonthFilterOption
+    case upcomingRemindersAllFilterOption
+    case upcomingRemindersDueSectionTitle
+    case upcomingRemindersTodaySectionTitle
+    case upcomingRemindersInAWeekSectionTitle
+    case upcomingRemindersInAMonthSectionTitle
+    case upcomingRemindersScheduledSectionTitle
+    case upcomingRemindersFilterByCalendarEnabledHelp // swiftlint:disable:this identifier_name
     case filterUpcomingRemindersByCalendarOptionButton // swiftlint:disable:this identifier_name
     case appNoRemindersAccessAlertMessage
     case appNoRemindersAccessAlertReasonDescription // swiftlint:disable:this identifier_name

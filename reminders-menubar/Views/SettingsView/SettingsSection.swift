@@ -12,7 +12,7 @@ struct SettingsSection<Content: View>: View {
     var body: some View {
         HStack(alignment: .firstTextBaseline) {
             Text(label)
-                .frame(width: 160, alignment: .trailing)
+                .frame(width: 180, alignment: .trailing)
                 .font(.body)
 
             VStack(alignment: .leading, spacing: 8) {

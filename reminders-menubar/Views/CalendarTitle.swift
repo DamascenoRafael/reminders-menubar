@@ -2,13 +2,24 @@ import SwiftUI
 import EventKit
 
 struct CalendarTitle: View {
-    var calendar: EKCalendar
+    var title: String
+    var color: Color
+
+    init(calendar: EKCalendar) {
+        self.title = calendar.title
+        self.color = Color(calendar.color)
+    }
+
+    init(title: String, color: Color) {
+        self.title = title
+        self.color = color
+    }
     
     var body: some View {
         HStack(alignment: .center) {
-            Text(calendar.title)
+            Text(title)
                 .font(.headline)
-                .foregroundColor(Color(calendar.color))
+                .foregroundColor(color)
                 .padding(.top, 2)
                 .padding(.bottom, 5)
             
