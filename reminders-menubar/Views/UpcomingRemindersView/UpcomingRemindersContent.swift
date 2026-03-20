@@ -2,6 +2,7 @@ import SwiftUI
 
 struct UpcomingRemindersContent: View {
     @EnvironmentObject var remindersData: RemindersData
+    @ObservedObject var userPreferences = UserPreferences.shared
     
     var body: some View {
         Group {
@@ -12,7 +13,7 @@ struct UpcomingRemindersContent: View {
                 ReminderItemView(
                     reminderItem: reminderItem,
                     isShowingCompleted: false,
-                    showCalendarTitleOnDueDate: true
+                    showCalendarTitleOnDueDate: userPreferences.showUpcomingReminderListName
                 )
             }
         }

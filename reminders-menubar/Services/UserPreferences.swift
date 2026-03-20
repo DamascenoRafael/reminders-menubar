@@ -19,6 +19,7 @@ private enum PreferencesKeys {
     static let copyTemplate = "copyTemplate"
     static let copyTrimEnabled = "copyTrimEnabled"
     static let mainPopoverSize = "mainPopoverSize"
+    static let showUpcomingReminderListName = "showUpcomingReminderListName"
     static let showRemindersWithDueDateOnTop = "showRemindersWithDueDateOnTop"
     static let sortRemindersByPriority = "sortRemindersByPriority"
     static let reminderSortingOrder = "reminderSortingOrder"
@@ -118,6 +119,14 @@ class UserPreferences: ObservableObject {
     }() {
         didSet {
             UserPreferences.defaults.set(showUpcomingReminders, forKey: PreferencesKeys.showUpcomingReminders)
+        }
+    }
+    
+    @Published var showUpcomingReminderListName: Bool = {
+        return defaults.bool(forKey: PreferencesKeys.showUpcomingReminderListName)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(showUpcomingReminderListName, forKey: PreferencesKeys.showUpcomingReminderListName)
         }
     }
     

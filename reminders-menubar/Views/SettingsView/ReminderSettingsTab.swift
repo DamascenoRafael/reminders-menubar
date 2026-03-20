@@ -19,6 +19,11 @@ struct ReminderSettingsTab: View {
                     isOn: $userPreferences.showUpcomingReminders
                 )
 
+                Toggle(
+                    rmbLocalized(.showUpcomingReminderListNameOption),
+                    isOn: $userPreferences.showUpcomingReminderListName
+                )
+
                 Toggle(isOn: $userPreferences.filterUpcomingRemindersByCalendar) {
                     HStack {
                         Text(rmbLocalized(.filterUpcomingRemindersByCalendarOptionButton))

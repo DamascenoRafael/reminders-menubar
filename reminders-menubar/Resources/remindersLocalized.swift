@@ -106,6 +106,7 @@ enum RemindersMenuBarLocalizedKeys: String {
     case copyFormatTrimOption
     case copyFormatPreviewLabel
     case showUpcomingRemindersSettingsOption
+    case showUpcomingReminderListNameOption
     case dragToResizeHelp
     case popoverSizeSettingsLabel
     case popoverSizeResetToDefaultButton
