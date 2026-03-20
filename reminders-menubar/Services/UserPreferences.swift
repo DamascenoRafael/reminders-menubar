@@ -22,6 +22,7 @@ private enum PreferencesKeys {
     static let showRemindersWithDueDateOnTop = "showRemindersWithDueDateOnTop"
     static let sortRemindersByPriority = "sortRemindersByPriority"
     static let reminderSortingOrder = "reminderSortingOrder"
+    static let timeFormatIs24Hour = "timeFormatIs24Hour"
 }
 
 class UserPreferences: ObservableObject {
@@ -235,6 +236,18 @@ class UserPreferences: ObservableObject {
     }() {
         didSet {
             UserPreferences.defaults.set(preferredLanguage, forKey: PreferencesKeys.preferredLanguage)
+        }
+    }
+
+    @Published var timeFormatIs24Hour: Bool = {
+        guard defaults.object(forKey: PreferencesKeys.timeFormatIs24Hour) != nil else {
+            // NOTE: "j" resolves to the locale's preferred hour format; containing "a" indicates 12-hour cycle
+            return DateFormatter.dateFormat(fromTemplate: "j", options: 0, locale: Locale.current)?.contains("a") == false
+        }
+        return defaults.bool(forKey: PreferencesKeys.timeFormatIs24Hour)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(timeFormatIs24Hour, forKey: PreferencesKeys.timeFormatIs24Hour)
         }
     }
 

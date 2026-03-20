@@ -105,6 +105,15 @@ struct GeneralSettingsTab: View {
                 .pickerStyle(.menu)
                 .labelsHidden()
             }
+
+            SettingsSection(rmbLocalized(.timeFormatSettingsLabel)) {
+                Picker(String(""), selection: $userPreferences.timeFormatIs24Hour) {
+                    Text(rmbLocalized(.timeFormat12HourOption)).tag(false)
+                    Text(rmbLocalized(.timeFormat24HourOption)).tag(true)
+                }
+                .pickerStyle(.menu)
+                .labelsHidden()
+            }
         }
         .padding(20)
     }

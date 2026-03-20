@@ -49,13 +49,26 @@ extension Date {
     }
     
     func relativeDateDescription(withTime showTimeDescription: Bool) -> String {
-        let relativeDateFormatter = DateFormatter()
-        relativeDateFormatter.timeStyle = showTimeDescription ? .short : .none
-        relativeDateFormatter.dateStyle = .medium
-        relativeDateFormatter.locale = rmbCurrentLocale()
-        relativeDateFormatter.doesRelativeDateFormatting = true
-        
-        return relativeDateFormatter.string(from: self)
+        let locale = rmbTimeFormattedLocale()
+        let dateFormatter = DateFormatter()
+
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = locale
+        dateFormatter.doesRelativeDateFormatting = true
+        let dateString = dateFormatter.string(from: self)
+
+        guard showTimeDescription else {
+            return dateString
+        }
+
+        dateFormatter.doesRelativeDateFormatting = false
+        dateFormatter.dateStyle = .none
+        // NOTE: "jm" adapts hour format (12h/24h) to the locale's hour cycle preference
+        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "jm", options: 0, locale: locale)
+        let timeString = dateFormatter.string(from: self)
+
+        return "\(dateString), \(timeString)"
     }
     
     func dateComponents(withTime: Bool) -> DateComponents {

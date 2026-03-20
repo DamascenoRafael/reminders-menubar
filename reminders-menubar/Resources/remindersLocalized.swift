@@ -119,6 +119,9 @@ enum RemindersMenuBarLocalizedKeys: String {
     case reminderSortingNewestFirstNote
     case reminderSortingOldestFirstOption
     case reminderSortingOldestFirstNote
+    case timeFormatSettingsLabel
+    case timeFormat12HourOption
+    case timeFormat24HourOption
     case generalSettingsTab
     case remindersSettingsTab
     case keyboardSettingsTab
@@ -153,11 +156,17 @@ func rmbAvailableLocales() -> [ReminderMenuBarLocale] {
     return locales.sorted(by: { $0.name < $1.name })
 }
 
-func rmbCurrentLocale() -> Locale {
+func rmbTimeFormattedLocale() -> Locale {
+    let base = rmbCurrentLocale()
+    let hourCycle = UserPreferences.shared.timeFormatIs24Hour ? "h23" : "h12"
+    return Locale(identifier: "\(base.identifier)@hours=\(hourCycle)")
+}
+
+private func rmbCurrentLocale() -> Locale {
     var currentLocale = Locale.current
     if let preferredLanguage = UserPreferences.shared.preferredLanguage {
         currentLocale = Locale(identifier: preferredLanguage)
     }
-    
+
     return currentLocale
 }
