@@ -251,7 +251,9 @@ class UserPreferences: ObservableObject {
     @Published var timeFormatIs24Hour: Bool = {
         guard defaults.object(forKey: PreferencesKeys.timeFormatIs24Hour) != nil else {
             // NOTE: "j" resolves to the locale's preferred hour format; containing "a" indicates 12-hour cycle
-            return DateFormatter.dateFormat(fromTemplate: "j", options: 0, locale: Locale.current)?.contains("a") == false
+            return DateFormatter
+                .dateFormat(fromTemplate: "j", options: 0, locale: Locale.current)?
+                .contains("a") == false
         }
         return defaults.bool(forKey: PreferencesKeys.timeFormatIs24Hour)
     }() {
