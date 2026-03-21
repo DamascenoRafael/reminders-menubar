@@ -93,6 +93,7 @@ struct ReminderItemView: View {
 
                 Divider()
                     .padding(.top, 2)
+                    .opacity(0.8)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .opacity(isPendingCompletion || reminderItem.reminder.isCompleted ? 0.6 : 1.0)

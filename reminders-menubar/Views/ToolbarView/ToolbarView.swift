@@ -11,8 +11,10 @@ struct ToolbarView: View {
 
             OpenSettingButton()
         }
-        .padding(.vertical, 10)
+        .padding(.top, 10)
         .padding(.trailing, 10)
+        .padding(.leading, 14)
+        .padding(.bottom, 6)
     }
 }
 
