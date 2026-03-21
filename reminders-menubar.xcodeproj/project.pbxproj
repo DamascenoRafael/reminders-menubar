@@ -23,6 +23,7 @@
 		71A000012F61000100000001 /* RmbSortingOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A000002F61000100000001 /* RmbSortingOrder.swift */; };
 		71359E9824C6C0B5001D4C40 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71359E9724C6C0B5001D4C40 /* Colors.xcassets */; };
 		713D911E2F5DF821001B921E /* ToolbarButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D911D2F5DF816001B921E /* ToolbarButtonModifier.swift */; };
+		713D91222F5DF840001B921E /* RmbBackgroundModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D91212F5DF840001B921E /* RmbBackgroundModifier.swift */; };
 		713F234524C130D400FF0BEC /* ReminderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F234424C130D400FF0BEC /* ReminderList.swift */; };
 		7141456325CF9693006695B2 /* Release.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7141456225CF9693006695B2 /* Release.swift */; };
 		714598D329295330008CAA43 /* RmbDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714598D229295330008CAA43 /* RmbDatePicker.swift */; };
@@ -135,6 +136,7 @@
 		71A000002F61000100000001 /* RmbSortingOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbSortingOrder.swift; sourceTree = "<group>"; };
 		71359E9724C6C0B5001D4C40 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		713D911D2F5DF816001B921E /* ToolbarButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarButtonModifier.swift; sourceTree = "<group>"; };
+		713D91212F5DF840001B921E /* RmbBackgroundModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbBackgroundModifier.swift; sourceTree = "<group>"; };
 		713F234424C130D400FF0BEC /* ReminderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderList.swift; sourceTree = "<group>"; };
 		7141456225CF9693006695B2 /* Release.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Release.swift; sourceTree = "<group>"; };
 		714598D229295330008CAA43 /* RmbDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbDatePicker.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				714598D229295330008CAA43 /* RmbDatePicker.swift */,
 				714C28A32A082E0000734DAF /* OnKeyboardShortcut.swift */,
 				71D2624E2F5A1B0100C8A33E /* SettingsOpenerView.swift */,
+				713D91212F5DF840001B921E /* RmbBackgroundModifier.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -666,6 +669,7 @@
 				71A3834425BDD2AC00975B4C /* EKCalendar+Extensions.swift in Sources */,
 				71B4AD6625B9118000214219 /* NoReminderItemsView.swift in Sources */,
 				713D911E2F5DF821001B921E /* ToolbarButtonModifier.swift in Sources */,
+				713D91222F5DF840001B921E /* RmbBackgroundModifier.swift in Sources */,
 				714E6F6125CCF66000BA0099 /* Constants.swift in Sources */,
 				71D262452F57D50A0073C0FD /* KeyboardSettingsTab.swift in Sources */,
 				717748F829622FCB00654CAA /* RmbIcon.swift in Sources */,

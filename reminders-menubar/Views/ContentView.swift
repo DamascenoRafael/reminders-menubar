@@ -4,7 +4,6 @@ import EventKit
 struct ContentView: View {
     @EnvironmentObject var remindersData: RemindersData
     @ObservedObject var userPreferences = UserPreferences.shared
-    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
 
     var body: some View {
         VStack(spacing: 0) {
@@ -59,7 +58,7 @@ struct ContentView: View {
             }
         }
         .overlay(PopoverResizeHandleView().padding(4), alignment: .bottomTrailing)
-        .background(Color.rmbColor(for: .backgroundTheme, and: reduceTransparency).padding(-80))
+        .modifier(RmbBackgroundModifier())
         .preferredColorScheme(userPreferences.rmbColorScheme.colorScheme)
     }
 }
