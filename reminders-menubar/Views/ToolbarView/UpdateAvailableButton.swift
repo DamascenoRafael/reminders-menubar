@@ -10,7 +10,9 @@ struct UpdateAvailableButton: View {
                     NSWorkspace.shared.open(url)
                 }
             }) {
-                Image(systemName: "arrow.down.circle")
+                ToolbarButtonLabel {
+                    Image(systemName: "arrow.down.circle")
+                }
             }
             .modifier(ToolbarButtonModifier())
             .help(rmbLocalized(.updateAvailableNoticeButton))

@@ -3,9 +3,11 @@ import SwiftUI
 struct ToolbarView: View {
     var body: some View {
         HStack(spacing: 4) {
-            SettingsBarFilterMenu()
+            Spacer()
             
             SettingsBarToggleButton()
+
+            SettingsBarFilterMenu()
 
             UpdateAvailableButton()
 

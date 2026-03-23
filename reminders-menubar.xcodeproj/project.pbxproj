@@ -23,6 +23,7 @@
 		71A000012F61000100000001 /* RmbSortingOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A000002F61000100000001 /* RmbSortingOrder.swift */; };
 		71359E9824C6C0B5001D4C40 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71359E9724C6C0B5001D4C40 /* Colors.xcassets */; };
 		713D911E2F5DF821001B921E /* ToolbarButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D911D2F5DF816001B921E /* ToolbarButtonModifier.swift */; };
+		713D91202F5DF830001B921E /* ToolbarButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D911F2F5DF830001B921E /* ToolbarButtonLabel.swift */; };
 		713D91222F5DF840001B921E /* RmbBackgroundModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D91212F5DF840001B921E /* RmbBackgroundModifier.swift */; };
 		713F234524C130D400FF0BEC /* ReminderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F234424C130D400FF0BEC /* ReminderList.swift */; };
 		7141456325CF9693006695B2 /* Release.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7141456225CF9693006695B2 /* Release.swift */; };
@@ -136,6 +137,7 @@
 		71A000002F61000100000001 /* RmbSortingOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbSortingOrder.swift; sourceTree = "<group>"; };
 		71359E9724C6C0B5001D4C40 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		713D911D2F5DF816001B921E /* ToolbarButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarButtonModifier.swift; sourceTree = "<group>"; };
+		713D911F2F5DF830001B921E /* ToolbarButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarButtonLabel.swift; sourceTree = "<group>"; };
 		713D91212F5DF840001B921E /* RmbBackgroundModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbBackgroundModifier.swift; sourceTree = "<group>"; };
 		713F234424C130D400FF0BEC /* ReminderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderList.swift; sourceTree = "<group>"; };
 		7141456225CF9693006695B2 /* Release.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Release.swift; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 			children = (
 				71B6D1FA24C6511000E66EDB /* ToolbarView.swift */,
 				713D911D2F5DF816001B921E /* ToolbarButtonModifier.swift */,
+				713D911F2F5DF830001B921E /* ToolbarButtonLabel.swift */,
 				715B4DD628D59BF2008C6683 /* SettingsBarFilterMenu.swift */,
 				715B4DD828D59D8D008C6683 /* SettingsBarToggleButton.swift */,
 				71D262482F57DD860073C0FD /* OpenSettingButton.swift */,
@@ -669,6 +672,7 @@
 				71A3834425BDD2AC00975B4C /* EKCalendar+Extensions.swift in Sources */,
 				71B4AD6625B9118000214219 /* NoReminderItemsView.swift in Sources */,
 				713D911E2F5DF821001B921E /* ToolbarButtonModifier.swift in Sources */,
+				713D91202F5DF830001B921E /* ToolbarButtonLabel.swift in Sources */,
 				713D91222F5DF840001B921E /* RmbBackgroundModifier.swift in Sources */,
 				714E6F6125CCF66000BA0099 /* Constants.swift in Sources */,
 				71D262452F57D50A0073C0FD /* KeyboardSettingsTab.swift in Sources */,

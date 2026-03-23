@@ -7,7 +7,6 @@ struct ToolbarButtonModifier: ViewModifier {
 
     func body(content: Content) -> some View {
         return content
-            .padding(6)
             .buttonStyle(.borderless)
             .background(isHovered ? Color.rmbColor(for: .buttonHover, and: reduceTransparency) : nil)
             .cornerRadius(8)

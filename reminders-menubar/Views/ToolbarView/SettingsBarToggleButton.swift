@@ -7,7 +7,9 @@ struct SettingsBarToggleButton: View {
         Button(action: {
             userPreferences.showUncompletedOnly.toggle()
         }) {
-            Image(systemName: userPreferences.showUncompletedOnly ? "circle" : "largecircle.fill.circle")
+            ToolbarButtonLabel {
+                Image(systemName: "clock.arrow.trianglehead.counterclockwise.rotate.90")
+            }
         }
         .modifier(ToolbarButtonModifier())
         .help(rmbLocalized(.showCompletedRemindersToggleButtonHelp))
