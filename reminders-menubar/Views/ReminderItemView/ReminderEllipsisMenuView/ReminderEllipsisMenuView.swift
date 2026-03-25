@@ -61,7 +61,7 @@ struct ReminderEllipsisMenuView: View {
             showingRemoveAlert = true
         }) {
             HStack {
-                Image(systemName: "minus.circle")
+                Image(systemName: "trash")
                 Text(rmbLocalized(.removeReminderOptionButton))
             }
         }

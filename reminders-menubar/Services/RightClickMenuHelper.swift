@@ -36,7 +36,7 @@ final class RightClickMenuHelper: NSObject {
         menu.addItem(.separator())
 
         let settingsItem = NSMenuItem(
-            title: rmbLocalized(.settingsButtonHelp),
+            title: rmbLocalized(.appSettingsButton),
             action: #selector(openSettingsAction),
             keyEquivalent: ""
         )
