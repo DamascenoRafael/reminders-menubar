@@ -5,26 +5,26 @@ struct ReminderChangePriorityOptionMenu: View {
     var reminder: EKReminder
 
     @ViewBuilder
-    func changePriorityButton(_ priority: EKReminderPriority, text: String) -> some View {
+    func changePriorityButton(_ priority: EKReminderPriority) -> some View {
         let isSelected = priority == reminder.ekPriority
         Button(action: {
             reminder.ekPriority = priority
             RemindersService.shared.save(reminder: reminder)
         }) {
-            SelectableView(title: text, isSelected: isSelected)
+            SelectableView(title: priority.title, isSelected: isSelected)
         }
     }
 
     var body: some View {
         Menu {
-            changePriorityButton(.low, text: rmbLocalized(.editReminderPriorityLowOption))
-            changePriorityButton(.medium, text: rmbLocalized(.editReminderPriorityMediumOption))
-            changePriorityButton(.high, text: rmbLocalized(.editReminderPriorityHighOption))
+            changePriorityButton(.low)
+            changePriorityButton(.medium)
+            changePriorityButton(.high)
             Divider()
-            changePriorityButton(.none, text: rmbLocalized(.editReminderPriorityNoneOption))
+            changePriorityButton(.none)
         } label: {
             HStack {
-                Image(systemName: "exclamationmark.circle")
+                Image(systemName: "exclamationmark.3")
                 Text(rmbLocalized(.changeReminderPriorityMenuOption))
             }
         }

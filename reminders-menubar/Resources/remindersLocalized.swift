@@ -1,10 +1,6 @@
 import Foundation
 
 enum RemindersMenuBarLocalizedKeys: String {
-    case newReminderTextFielPlaceholder
-    case newReminderCalendarSelectionToSaveHelp
-    case newReminderAddDateButton
-    case newReminderAddTimeButton
     case newReminderSettingsLabel
     case newReminderAutoSuggestTodayOption
     case newReminderRemoveParsedDateOption
@@ -12,11 +8,8 @@ enum RemindersMenuBarLocalizedKeys: String {
     case editReminderOptionButton
     case editReminderTitleTextFieldPlaceholder
     case editReminderNotesTextFieldPlaceholder
-    case editReminderRemindMeSection
-    case editReminderRemindDateOption
-    case editReminderRemindTimeOption
-    case editReminderPrioritySection
-    case editReminderListSection
+    case newReminderAddDateButton
+    case newReminderAddTimeButton
     case changeReminderListMenuOption
     case changeReminderDueDateMenuOption
     case editReminderDueDateTodayOption
@@ -45,7 +38,6 @@ enum RemindersMenuBarLocalizedKeys: String {
     case showCompletedRemindersToggleButtonHelp
     case updateAvailableNoticeButton
     case launchAtLoginOptionButton
-    case appAppearanceMenu
     case appAppearanceReduceTransparencyOption
     case appColorSchemeSettingsLabel
     case appAppearanceColorSystemModeOptionButton
@@ -58,20 +50,17 @@ enum RemindersMenuBarLocalizedKeys: String {
     case showMenuBarTodayCountOptionButton
     case showMenuBarAllRemindersCountOptionButton
     case showMenuBarNoCountOptionButton
-    case keyboardShortcutOptionButton
     case reloadRemindersDataButton
     case appAboutButton
     case appQuitButton
+    case appSettingsButton
     case settingsButtonHelp
-    case aboutRemindersMenuBarWindowTitle
     case appVersionDescription
     case remindersMenuBarAppAboutDescription
     case remindersMenuBarGitHubAboutDescription
     case seeMoreOnGitHubButton
-    case keyboardShortcutWindowTitle
     case keyboardShortcutEnableOpenShortcutOption
     case keyboardShortcutRestoreDefaultButton
-    case upcomingRemindersIntervalSelectionHelp
     case upcomingRemindersDueFilterOption
     case upcomingRemindersTodayFilterOption
     case upcomingRemindersInAWeekFilterOption
@@ -91,15 +80,14 @@ enum RemindersMenuBarLocalizedKeys: String {
     case okButton
     case preferredLanguageMenu
     case preferredLanguageSystemSettingsOption
-    case preferredLanguageSystemOptionButton
     case reminderRecurrenceDailyLabel
     case reminderRecurrenceWeeklyLabel
     case reminderRecurrenceMonthlyLabel
     case reminderRecurrenceYearlyLabel
     case copyReminderOptionButton
     case copiedToastMessage
-    case copySettingsTab
-    case copyFormatSettingsWindowTitle
+    case reminderEditPopoverSaveButton
+    case newReminderButtonHelp
     case copyFormatTemplateLabel
     case copyFormatTemplateHint
     case copyFormatAvailableVariables
@@ -125,6 +113,7 @@ enum RemindersMenuBarLocalizedKeys: String {
     case timeFormat24HourOption
     case generalSettingsTab
     case remindersSettingsTab
+    case copySettingsTab
     case keyboardSettingsTab
     case aboutSettingsTab
 }

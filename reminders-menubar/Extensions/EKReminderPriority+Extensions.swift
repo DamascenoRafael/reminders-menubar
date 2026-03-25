@@ -13,17 +13,17 @@ extension EKReminderPriority {
             return nil
         }
     }
-    
-    var nextPriority: EKReminderPriority {
+
+    var title: String {
         switch self {
-        case .low:
-            return .medium
-        case .medium:
-            return .high
         case .high:
-            return .none
+            rmbLocalized(.editReminderPriorityHighOption)
+        case .medium:
+            rmbLocalized(.editReminderPriorityMediumOption)
+        case .low:
+            rmbLocalized(.editReminderPriorityLowOption)
         default:
-            return .low
+            rmbLocalized(.editReminderPriorityNoneOption)
         }
     }
 }

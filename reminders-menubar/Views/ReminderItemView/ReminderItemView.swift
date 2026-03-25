@@ -61,16 +61,15 @@ struct ReminderItemView: View {
                     .opacity(shouldShowEllipsisButton() ? 1 : 0)
                     .allowsHitTesting(!isPendingCompletion)
                     .popover(isPresented: $showingEditPopover, arrowEdge: .trailing) {
-                        ReminderEditPopover(
+                        ReminderEditView(
                             isPresented: $showingEditPopover,
-                            focusOnTitle: $isEditingTitle,
                             reminder: reminderItem.reminder,
                             reminderHasChildren: reminderItem.hasChildren
                         )
                     }
                 }
                 .alert(isPresented: $showingRemoveAlert) {
-                    removeReminderAlert()
+                    removeReminderAlert(for: reminderItem.reminder)
                 }
 
                 if let dateDescription = reminderItem.reminder.relativeDateDescription {
@@ -193,17 +192,6 @@ struct ReminderItemView: View {
             NSEvent.removeMonitor(monitor)
             copyEventMonitor = nil
         }
-    }
-
-    func removeReminderAlert() -> Alert {
-        Alert(
-            title: Text(rmbLocalized(.removeReminderAlertTitle)),
-            message: Text(rmbLocalized(.removeReminderAlertMessage, arguments: reminderItem.reminder.title)),
-            primaryButton: .destructive(Text(rmbLocalized(.removeReminderAlertConfirmButton)), action: {
-                RemindersService.shared.remove(reminder: reminderItem.reminder)
-            }),
-            secondaryButton: .cancel(Text(rmbLocalized(.removeReminderAlertCancelButton)))
-        )
     }
 }
 

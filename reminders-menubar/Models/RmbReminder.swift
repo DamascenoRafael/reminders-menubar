@@ -3,7 +3,6 @@ import EventKit
 struct RmbReminder {
     private var originalReminder: EKReminder?
     private var isPreparingToSave = false
-    private var isParsingEnabled = false
     private var isAutoSuggestingTodayForCreation = false
     
     var hasDateChanges: Bool {
@@ -19,7 +18,7 @@ struct RmbReminder {
     
     var title: String {
         willSet {
-            guard !isPreparingToSave && isParsingEnabled else {
+            guard !isPreparingToSave else {
                 return
             }
             updateTextDateResult(with: newValue)
@@ -31,7 +30,7 @@ struct RmbReminder {
     var notes: String?
     var date: Date {
         didSet {
-            // NOTE: When the date is changed, we assume that it was done by the user.
+            // NOTE: When date is changed, we assume that it was done by the user.
             // If it was changed by DateParser it is necessary to add textDateResult after changing the date.
             textDateResult = DateParser.TextDateResult()
             isAutoSuggestingTodayForCreation = false
@@ -39,8 +38,7 @@ struct RmbReminder {
     }
     var hasDueDate: Bool {
         didSet {
-            // NOTE: When the hasDueDate option is disabled, it must disable hasTime
-            // so that, if enabled again, it does not have "remind me at a time" enabled
+            // NOTE: When hasDueDate option is disabled, it must disable hasTime
             if !hasDueDate {
                 hasTime = false
             }
@@ -48,8 +46,12 @@ struct RmbReminder {
     }
     var hasTime: Bool {
         didSet {
-            // NOTE: When enabling the option to add a time the suggestion will be the next hour of the current moment
-            date = .nextExactHour(of: date)
+            // NOTE: When hasTime option is enabled, adjust the suggestion to the next hour of the current moment.
+            // Enabling time always requires a due date, so ensure it's turned on.
+            if hasTime {
+                date = .nextExactHour(of: date)
+                hasDueDate = true
+            }
         }
     }
     var priority: EKReminderPriority
@@ -69,7 +71,6 @@ struct RmbReminder {
         hasDueDate = false
         hasTime = false
         priority = .none
-        isParsingEnabled = true
     }
     
     init(reminder: EKReminder) {
@@ -91,12 +92,11 @@ struct RmbReminder {
         self.isAutoSuggestingTodayForCreation = true
     }
 
-    mutating func updateSuggestedDate() {
-        date = .nextExactHour()
-    }
-
     mutating func prepareToSave() {
         isPreparingToSave = true
+        textDateResult = DateParser.TextDateResult()
+        textCalendarResult = CalendarParser.TextCalendarResult()
+        textPriorityResult = PriorityParser.PriorityParserResult()
     }
     
     private mutating func updateTextDateResult(with newTitle: String) {
@@ -144,11 +144,11 @@ struct RmbReminder {
     }
     
     private mutating func updateTextCalendarResult(with newTitle: String) {
+        // NOTE: Unlike other properties, reminder calendar will not be overwritten by the parser.
         guard let calendarResult = CalendarParser.getCalendar(from: newTitle) else {
             textCalendarResult = CalendarParser.TextCalendarResult()
             return
         }
-        
         textCalendarResult = calendarResult
     }
     

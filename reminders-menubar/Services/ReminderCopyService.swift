@@ -65,16 +65,10 @@ enum ReminderCopyService {
     }
 
     private static func priorityLabel(for priority: EKReminderPriority) -> String {
-        switch priority {
-        case .high:
-            return rmbLocalized(.editReminderPriorityHighOption)
-        case .medium:
-            return rmbLocalized(.editReminderPriorityMediumOption)
-        case .low:
-            return rmbLocalized(.editReminderPriorityLowOption)
-        default:
+        if priority == .none {
             return ""
         }
+        return priority.title
     }
 
     private static func trimmedSubstitution(template: String, variables: [String: String]) -> String {
