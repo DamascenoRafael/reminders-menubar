@@ -126,7 +126,10 @@ class UserPreferences: ObservableObject {
         return defaults.bool(forKey: PreferencesKeys.showUpcomingReminderListName)
     }() {
         didSet {
-            UserPreferences.defaults.set(showUpcomingReminderListName, forKey: PreferencesKeys.showUpcomingReminderListName)
+            UserPreferences.defaults.set(
+                showUpcomingReminderListName,
+                forKey: PreferencesKeys.showUpcomingReminderListName
+            )
         }
     }
     

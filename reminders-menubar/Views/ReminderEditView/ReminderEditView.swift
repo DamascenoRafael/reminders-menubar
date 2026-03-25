@@ -232,7 +232,6 @@ struct ReminderEditView: View {
         title = title.replacingOccurrences(of: rmbReminder.textCalendarResult.string, with: "")
         return title.trimmingCharacters(in: .whitespaces)
     }
-
 }
 
 #Preview("Create mode") {
