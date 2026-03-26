@@ -30,6 +30,14 @@ class RemindersData: ObservableObject {
             }
             .store(in: &cancellationTokens)
 
+        NotificationCenter.default.publisher(for: .remindersDataShouldUpdate)
+            .sink { [weak self] _ in
+                Task {
+                    await self?.update()
+                }
+            }
+            .store(in: &cancellationTokens)
+
         UserPreferences.shared.$menuBarCounterType
             .dropFirst()
             .sink { [weak self] _ in

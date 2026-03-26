@@ -48,8 +48,6 @@ class UserPreferences: ObservableObject {
     }
     
     private static let defaults = UserDefaults.standard
-
-    @Published var remindersMenuBarOpeningEvent = false
     
     @Published var reminderMenuBarIcon: RmbIcon = {
         guard let menuBarIconString = defaults.string(forKey: PreferencesKeys.reminderMenuBarIcon) else {

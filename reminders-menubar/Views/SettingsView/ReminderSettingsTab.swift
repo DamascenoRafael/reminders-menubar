@@ -82,7 +82,7 @@ struct ReminderSettingsTab: View {
 
             SettingsSection {
                 Button(rmbLocalized(.reloadRemindersDataButton)) {
-                    UserPreferences.shared.remindersMenuBarOpeningEvent.toggle()
+                    NotificationCenter.default.post(name: .remindersDataShouldUpdate, object: nil)
                 }
             }
         }

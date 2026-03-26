@@ -2,6 +2,7 @@ import Cocoa
 
 extension Notification.Name {
     static let openSettingsRequest = Notification.Name("openSettingsRequest")
+    static let remindersDataShouldUpdate = Notification.Name("remindersDataShouldUpdate")
 }
 
 extension NSApplication {

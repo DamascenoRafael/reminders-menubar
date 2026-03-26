@@ -72,7 +72,7 @@ final class RightClickMenuHelper: NSObject {
     }
 
     @objc private func reloadData() {
-        UserPreferences.shared.remindersMenuBarOpeningEvent.toggle()
+        NotificationCenter.default.post(name: .remindersDataShouldUpdate, object: nil)
     }
 
     @objc private func openSettingsAction() {
