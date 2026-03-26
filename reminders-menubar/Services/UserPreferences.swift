@@ -9,7 +9,7 @@ private enum PreferencesKeys {
     static let removeParsedDateFromTitle = "removeParsedDateFromTitle"
     static let showUncompletedOnly = "showUncompletedOnly"
     static let rmbColorScheme = "rmbColorScheme"
-    static let backgroundIsTransparent = "backgroundIsTransparent"
+    static let preferTransparentBackground = "backgroundIsTransparent"
     static let showUpcomingReminders = "showUpcomingReminders"
     static let upcomingRemindersInterval = "upcomingRemindersInterval"
     static let filterUpcomingRemindersByCalendar = "filterUpcomingRemindersByCalendar"
@@ -28,13 +28,27 @@ private enum PreferencesKeys {
 
 class UserPreferences: ObservableObject {
     static let shared = UserPreferences()
-    
+
+    private var accessibilityObserver: NSObjectProtocol?
+
     private init() {
-        // This prevents others from using the default '()' initializer for this class.
+        accessibilityObserver = NSWorkspace.shared.notificationCenter.addObserver(
+            forName: NSWorkspace.accessibilityDisplayOptionsDidChangeNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            self?.reduceTransparency = NSWorkspace.shared.accessibilityDisplayShouldReduceTransparency
+        }
+    }
+
+    deinit {
+        if let observer = accessibilityObserver {
+            NotificationCenter.default.removeObserver(observer)
+        }
     }
     
     private static let defaults = UserDefaults.standard
-    
+
     @Published var remindersMenuBarOpeningEvent = false
     
     @Published var reminderMenuBarIcon: RmbIcon = {
@@ -194,13 +208,22 @@ class UserPreferences: ObservableObject {
             UserPreferences.defaults.set(rmbColorScheme.rawValue, forKey: PreferencesKeys.rmbColorScheme)
         }
     }
-    
-    @Published var backgroundIsTransparent: Bool = {
-        return defaults.boolWithDefaultValueTrue(forKey: PreferencesKeys.backgroundIsTransparent)
+
+    @Published var reduceTransparency = NSWorkspace.shared.accessibilityDisplayShouldReduceTransparency
+
+    @Published var preferTransparentBackground: Bool = {
+        return defaults.boolWithDefaultValueTrue(forKey: PreferencesKeys.preferTransparentBackground)
     }() {
         didSet {
-            UserPreferences.defaults.set(backgroundIsTransparent, forKey: PreferencesKeys.backgroundIsTransparent)
+            UserPreferences.defaults.set(
+                preferTransparentBackground,
+                forKey: PreferencesKeys.preferTransparentBackground
+            )
         }
+    }
+
+    var isTransparencyEnabled: Bool {
+        preferTransparentBackground && !reduceTransparency
     }
     
     @Published var menuBarCounterType: RmbMenuBarCounterType = {

@@ -1,10 +1,16 @@
 import SwiftUI
 
 struct RmbBackgroundModifier: ViewModifier {
-    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
+    @ObservedObject private var userPreferences = UserPreferences.shared
 
     func body(content: Content) -> some View {
         content
-            .background(Color.rmbColor(for: .backgroundTheme, and: reduceTransparency).padding(-80))
+            .background(
+                Color.rmbColor(
+                    for: .backgroundTheme,
+                    isTransparencyEnabled: userPreferences.isTransparencyEnabled
+                )
+                .padding(-80)
+            )
     }
 }

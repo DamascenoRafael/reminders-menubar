@@ -2,7 +2,6 @@ import SwiftUI
 
 struct GeneralSettingsTab: View {
     @ObservedObject var userPreferences = UserPreferences.shared
-    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
 
     var body: some View {
         Form {
@@ -28,11 +27,11 @@ struct GeneralSettingsTab: View {
                 Toggle(
                     rmbLocalized(.appAppearanceReduceTransparencyOption),
                     isOn: Binding(
-                        get: { !userPreferences.backgroundIsTransparent || reduceTransparency },
-                        set: { userPreferences.backgroundIsTransparent = !$0 }
+                        get: { !userPreferences.preferTransparentBackground || userPreferences.reduceTransparency },
+                        set: { userPreferences.preferTransparentBackground = !$0 }
                     )
                 )
-                .disabled(reduceTransparency)
+                .disabled(userPreferences.reduceTransparency)
             }
 
             SettingsDivider()
