@@ -4,24 +4,25 @@ import EventKit
 struct ReminderChangePriorityOptionMenu: View {
     var reminder: EKReminder
 
-    @ViewBuilder
-    func changePriorityButton(_ priority: EKReminderPriority) -> some View {
-        let isSelected = priority == reminder.ekPriority
-        Button(action: {
-            reminder.ekPriority = priority
-            RemindersService.shared.save(reminder: reminder)
-        }) {
-            SelectableView(title: priority.title, isSelected: isSelected)
+    func changePriorityToggle(_ priority: EKReminderPriority) -> some View {
+        Toggle(isOn: Binding(
+            get: { priority == reminder.ekPriority },
+            set: { _ in
+                reminder.ekPriority = priority
+                RemindersService.shared.save(reminder: reminder)
+            }
+        )) {
+            Text(priority.title)
         }
     }
 
     var body: some View {
         Menu {
-            changePriorityButton(.low)
-            changePriorityButton(.medium)
-            changePriorityButton(.high)
+            changePriorityToggle(.low)
+            changePriorityToggle(.medium)
+            changePriorityToggle(.high)
             Divider()
-            changePriorityButton(.none)
+            changePriorityToggle(.none)
         } label: {
             HStack {
                 Image(systemName: "exclamationmark.3")

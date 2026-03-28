@@ -63,36 +63,33 @@ struct ReminderChangeDueDateOptionMenu: View {
     var body: some View {
         let reminderDate = reminder.dueDateComponents?.date
         let scheduleOptionSelected = ScheduleOption.allCases.first(where: { $0.isSelected(for: reminderDate) })
-        let isAnyOptionSelected = !reminder.hasDueDate || (scheduleOptionSelected != nil)
         Menu {
             ForEach(ScheduleOption.allCases, id: \.self) { option in
-                Button(action: {
-                    let date = option.newDate(for: reminderDate ?? Date())
-                    let hasTime = reminder.hasTime
-                    reminder.removeDueDateAndAlarms()
-                    reminder.addDueDateAndAlarm(for: date, withTime: hasTime)
-                    RemindersService.shared.save(reminder: reminder)
-                }) {
-                    SelectableView(
-                        title: option.title,
-                        isSelected: option == scheduleOptionSelected,
-                        withPadding: isAnyOptionSelected
-                    )
+                Toggle(isOn: Binding(
+                    get: { option == scheduleOptionSelected },
+                    set: { _ in
+                        let date = option.newDate(for: reminderDate ?? Date())
+                        let hasTime = reminder.hasTime
+                        reminder.removeDueDateAndAlarms()
+                        reminder.addDueDateAndAlarm(for: date, withTime: hasTime)
+                        RemindersService.shared.save(reminder: reminder)
+                    }
+                )) {
+                    Text(option.title)
                 }
             }
 
             Divider()
 
-            Button(action: {
-                reminder.removeDueDateAndAlarms()
-                reminder.removeAllRecurrenceRules()
-                RemindersService.shared.save(reminder: reminder)
-            }) {
-                SelectableView(
-                    title: rmbLocalized(.editReminderDueDateNoneOption),
-                    isSelected: !reminder.hasDueDate,
-                    withPadding: isAnyOptionSelected
-                )
+            Toggle(isOn: Binding(
+                get: { !reminder.hasDueDate },
+                set: { _ in
+                    reminder.removeDueDateAndAlarms()
+                    reminder.removeAllRecurrenceRules()
+                    RemindersService.shared.save(reminder: reminder)
+                }
+            )) {
+                Text(rmbLocalized(.editReminderDueDateNoneOption))
             }
         } label: {
             HStack {

@@ -9,7 +9,7 @@ struct ToolbarView: View {
             
             SettingsBarToggleButton()
 
-            SettingsBarFilterMenu()
+            FilterReminderListButton()
 
             UpdateAvailableButton()
 

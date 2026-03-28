@@ -14,7 +14,8 @@ struct ReminderListEditView: View {
 
             Picker(selection: $selection) {
                 ForEach(calendars, id: \.calendarIdentifier) { calendar in
-                    SelectableView(title: calendar.title, color: Color(calendar.color)).tag(calendar as EKCalendar?)
+                    ColoredDotTitle.text(calendar.title, color: Color(calendar.color))
+                        .tag(calendar as EKCalendar?)
                 }
             } label: {
                 Text(verbatim: "")

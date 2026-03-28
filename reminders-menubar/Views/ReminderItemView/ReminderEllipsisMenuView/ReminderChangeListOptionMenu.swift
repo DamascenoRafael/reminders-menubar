@@ -16,16 +16,14 @@ struct ReminderChangeListOptionMenu: View {
                     // This is probably not what you want for performance to trigger it from -isEqual:,
                     // unless you are running Tests then it's fine
                     // {class: REMAccountStorage, self-map: (null), other-map: (null)}
-                    Button(action: {
-                        reminder.calendar = calendar
-                        RemindersService.shared.save(reminder: reminder)
-                    }) {
-                        let isSelected = calendar.calendarIdentifier == reminder.calendar.calendarIdentifier
-                        SelectableView(
-                            title: calendar.title,
-                            isSelected: isSelected,
-                            color: Color(calendar.color)
-                        )
+                    Toggle(isOn: Binding(
+                        get: { calendar.calendarIdentifier == reminder.calendar.calendarIdentifier },
+                        set: { _ in
+                            reminder.calendar = calendar
+                            RemindersService.shared.save(reminder: reminder)
+                        }
+                    )) {
+                        ColoredDotTitle.text(calendar.title, color: Color(calendar.color))
                     }
                 }
             } label: {
