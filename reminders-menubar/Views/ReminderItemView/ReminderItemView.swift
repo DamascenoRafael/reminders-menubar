@@ -1,5 +1,6 @@
 import SwiftUI
 import EventKit
+import Combine
 
 @MainActor
 struct ReminderItemView: View {
@@ -17,6 +18,8 @@ struct ReminderItemView: View {
     @State private var showingCopiedToast = false
     @State private var copyEventMonitor: Any?
     @State private var isPendingCompletion = false
+    @State private var dateInvalidation = Date()
+    @State private var dueDateExpirationCancellable: AnyCancellable?
 
     var body: some View {
         if reminderItem.reminder.calendar == nil {
@@ -29,48 +32,12 @@ struct ReminderItemView: View {
     }
 
     @ViewBuilder
-    func mainReminderItemView() -> some View {
+    private func mainReminderItemView() -> some View {
         HStack(alignment: .top) {
             ReminderCompleteButton(reminderItem: reminderItem, isPendingCompletion: $isPendingCompletion)
 
             VStack(spacing: 4) {
-                HStack(spacing: 4) {
-                    if let prioritySystemImage = reminderItem.reminder.ekPriority.systemImage {
-                        Image(systemName: prioritySystemImage)
-                            .foregroundColor(Color(reminderItem.reminder.calendar.color))
-                    }
-                    Text(LocalizedStringKey(reminderItem.reminder.title.toDetectedLinkAttributedString()))
-                        .fixedSize(horizontal: false, vertical: true)
-                        .onTapGesture {
-                            guard !isPendingCompletion else { return }
-                            isEditingTitle = true
-                            showingEditPopover = true
-                        }
-
-                    Spacer()
-
-                    // TODO: remove the `.id` modifier while keeping properties updated (such as selected priority)
-                    ReminderEllipsisMenuView(
-                        showingEditPopover: $showingEditPopover,
-                        showingRemoveAlert: $showingRemoveAlert,
-                        onCopyReminder: { copyReminderToClipboard() },
-                        reminder: reminderItem.reminder,
-                        reminderHasChildren: reminderItem.hasChildren
-                    )
-                    .id(UUID())
-                    .opacity(shouldShowEllipsisButton() ? 1 : 0)
-                    .allowsHitTesting(!isPendingCompletion)
-                    .popover(isPresented: $showingEditPopover, arrowEdge: .trailing) {
-                        ReminderEditView(
-                            isPresented: $showingEditPopover,
-                            reminder: reminderItem.reminder,
-                            reminderHasChildren: reminderItem.hasChildren
-                        )
-                    }
-                }
-                .alert(isPresented: $showingRemoveAlert) {
-                    removeReminderAlert(for: reminderItem.reminder)
-                }
+                reminderTitleRow()
 
                 if let dateDescription = reminderItem.reminder.relativeDateDescription {
                     ReminderDateDescriptionView(
@@ -81,6 +48,7 @@ struct ReminderItemView: View {
                         calendarTitle: reminderItem.reminder.calendar.title,
                         showCalendarTitleOnDueDate: showCalendarTitleOnDueDate
                     )
+                    .id(dateInvalidation)
                 }
 
                 if reminderItem.reminder.attachedUrl != nil || reminderItem.reminder.mailUrl != nil {
@@ -123,7 +91,60 @@ struct ReminderItemView: View {
         }
         .padding(.bottom, 2)
         .padding(.leading, reminderItem.isChild ? 22 : 0)
+        .onReceive(NotificationCenter.default.publisher(for: .NSCalendarDayChanged)) { _ in
+            dateInvalidation = Date()
+        }
+        .onAppear {
+            subscribeToDueDateExpiration()
+        }
+        .onChange(of: reminderItem) { _ in
+            subscribeToDueDateExpiration()
+        }
 
+        childRemindersView()
+    }
+
+    @ViewBuilder
+    private func reminderTitleRow() -> some View {
+        HStack(spacing: 4) {
+            if let prioritySystemImage = reminderItem.reminder.ekPriority.systemImage {
+                Image(systemName: prioritySystemImage)
+                    .foregroundColor(Color(reminderItem.reminder.calendar.color))
+            }
+            Text(LocalizedStringKey(reminderItem.reminder.title.toDetectedLinkAttributedString()))
+                .fixedSize(horizontal: false, vertical: true)
+                .onTapGesture {
+                    guard !isPendingCompletion else { return }
+                    isEditingTitle = true
+                    showingEditPopover = true
+                }
+
+            Spacer()
+
+            ReminderEllipsisMenuView(
+                showingEditPopover: $showingEditPopover,
+                showingRemoveAlert: $showingRemoveAlert,
+                onCopyReminder: { copyReminderToClipboard() },
+                reminder: reminderItem.reminder,
+                reminderHasChildren: reminderItem.hasChildren
+            )
+            .opacity(shouldShowEllipsisButton() ? 1 : 0)
+            .allowsHitTesting(!isPendingCompletion)
+            .popover(isPresented: $showingEditPopover, arrowEdge: .trailing) {
+                ReminderEditView(
+                    isPresented: $showingEditPopover,
+                    reminder: reminderItem.reminder,
+                    reminderHasChildren: reminderItem.hasChildren
+                )
+            }
+        }
+        .alert(isPresented: $showingRemoveAlert) {
+            removeReminderAlert(for: reminderItem.reminder)
+        }
+    }
+
+    @ViewBuilder
+    private func childRemindersView() -> some View {
         ForEach(reminderItem.childReminders.uncompleted) { reminderItem in
             ReminderItemView(reminderItem: reminderItem, isShowingCompleted: isShowingCompleted)
         }
@@ -135,17 +156,32 @@ struct ReminderItemView: View {
         }
     }
 
-    func shouldShowEllipsisButton() -> Bool {
+    private func subscribeToDueDateExpiration() {
+        dueDateExpirationCancellable?.cancel()
+        guard reminderItem.reminder.hasTime,
+              let dueDate = reminderItem.reminder.dueDateComponents?.date,
+              dueDate.timeIntervalSinceNow > 0 else {
+            return
+        }
+
+        dueDateExpirationCancellable = Just(())
+            .delay(for: .seconds(dueDate.timeIntervalSinceNow), scheduler: RunLoop.main)
+            .sink { _ in
+                dateInvalidation = Date()
+            }
+    }
+
+    private func shouldShowEllipsisButton() -> Bool {
         return !isPendingCompletion && (reminderItemIsHovered || showingEditPopover)
     }
 
-    func copyReminderToClipboard() {
+    private func copyReminderToClipboard() {
         ReminderCopyService.copyReminder(reminderItem.reminder)
         showingCopiedToast = true
     }
 
     @ViewBuilder
-    func copiedToastOverlay() -> some View {
+    private func copiedToastOverlay() -> some View {
         GeometryReader { geometry in
             Text(rmbLocalized(.copiedToastMessage))
                 .font(.system(.headline, design: .rounded).weight(.semibold))
@@ -164,7 +200,7 @@ struct ReminderItemView: View {
         .allowsHitTesting(false)
     }
 
-    func updateCopyEventMonitor(isHovered: Bool) {
+    private func updateCopyEventMonitor(isHovered: Bool) {
         if isHovered {
             guard copyEventMonitor == nil else { return }
 
@@ -179,7 +215,7 @@ struct ReminderItemView: View {
         }
     }
 
-    func shouldHandleCopyShortcut(for event: NSEvent) -> Bool {
+    private func shouldHandleCopyShortcut(for event: NSEvent) -> Bool {
         guard reminderItemIsHovered else { return false }
         guard !showingEditPopover, !isEditingTitle else { return false }
 
@@ -187,7 +223,7 @@ struct ReminderItemView: View {
         return event.charactersIgnoringModifiers?.lowercased() == "c"
     }
 
-    func removeCopyEventMonitor() {
+    private func removeCopyEventMonitor() {
         if let monitor = copyEventMonitor {
             NSEvent.removeMonitor(monitor)
             copyEventMonitor = nil
