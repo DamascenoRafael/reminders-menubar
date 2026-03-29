@@ -46,3 +46,13 @@ struct ReminderDateTimeEditView: View {
         .frame(height: 20)
     }
 }
+
+#Preview {
+    let date = Date()
+
+    ReminderDateTimeEditView(date: .constant(date), components: .date, hasComponent: .constant(false))
+    ReminderDateTimeEditView(date: .constant(date), components: .time, hasComponent: .constant(false))
+
+    ReminderDateTimeEditView(date: .constant(date), components: .date, hasComponent: .constant(true))
+    ReminderDateTimeEditView(date: .constant(date), components: .time, hasComponent: .constant(true))
+}

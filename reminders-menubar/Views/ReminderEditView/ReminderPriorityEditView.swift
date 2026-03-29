@@ -32,11 +32,15 @@ struct ReminderPriorityEditView: View {
                 Text(priority.title)
             }
             .font(.system(size: 11))
+            .frame(height: 20)
             .padding(.horizontal, 8)
         }
         .buttonStyle(.borderless)
-        .frame(height: 20)
         .background(isSelected ? Color.accentColor.opacity(0.4) : Color.secondary.opacity(0.1))
         .clipShape(RoundedRectangle(cornerRadius: 6))
     }
+}
+
+#Preview {
+    ReminderPriorityEditView(priority: .constant(.medium))
 }

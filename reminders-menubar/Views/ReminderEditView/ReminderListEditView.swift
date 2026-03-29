@@ -25,3 +25,13 @@ struct ReminderListEditView: View {
         }
     }
 }
+
+#Preview {
+    var calendar: EKCalendar {
+        let calendar = EKCalendar(for: .reminder, eventStore: .init())
+        calendar.color = .systemTeal
+        calendar.title = "Reminders"
+        return calendar
+    }
+    ReminderListEditView(calendars: [calendar], selection: .constant(calendar))
+}
