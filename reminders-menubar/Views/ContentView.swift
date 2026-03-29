@@ -4,6 +4,7 @@ import EventKit
 struct ContentView: View {
     @EnvironmentObject var remindersData: RemindersData
     @ObservedObject var userPreferences = UserPreferences.shared
+    @State private var appHasPopoverOpen = false
 
     var body: some View {
         VStack(spacing: 0) {
@@ -57,6 +58,7 @@ struct ContentView: View {
         .overlay(PopoverResizeHandleView().padding(4), alignment: .bottomTrailing)
         .modifier(RmbBackgroundModifier())
         .preferredColorScheme(userPreferences.rmbColorScheme.colorScheme)
+        .environment(\.appHasPopoverOpen, $appHasPopoverOpen)
     }
 }
 

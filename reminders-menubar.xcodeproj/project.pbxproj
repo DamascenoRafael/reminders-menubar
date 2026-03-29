@@ -85,6 +85,7 @@
 		71D2624F2F5A1B0100C8A33E /* SettingsOpenerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D2624E2F5A1B0100C8A33E /* SettingsOpenerView.swift */; };
 		71D262502F5B8A0000C8A33E /* CopySettingsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D262512F5B8A0000C8A33E /* CopySettingsTab.swift */; };
 		71D6B98028E25B9F0004EEBB /* AppCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D6B97F28E25B9F0004EEBB /* AppCommands.swift */; };
+		71DB50FA2F79B852006DC143 /* EnvironmentValues+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB50F92F79B83E006DC143 /* EnvironmentValues+Extensions.swift */; };
 		71E5C75529B7D45600568292 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E5C75429B7D45600568292 /* UserDefaults+Extensions.swift */; };
 		71E7126A2908C6D100DA97BD /* Binding+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E712692908C6D100DA97BD /* Binding+Extensions.swift */; };
 		71ED5D6B290B6B3C00626185 /* RmbReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ED5D6A290B6B3C00626185 /* RmbReminder.swift */; };
@@ -200,6 +201,7 @@
 		71D2624E2F5A1B0100C8A33E /* SettingsOpenerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOpenerView.swift; sourceTree = "<group>"; };
 		71D262512F5B8A0000C8A33E /* CopySettingsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopySettingsTab.swift; sourceTree = "<group>"; };
 		71D6B97F28E25B9F0004EEBB /* AppCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCommands.swift; sourceTree = "<group>"; };
+		71DB50F92F79B83E006DC143 /* EnvironmentValues+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+Extensions.swift"; sourceTree = "<group>"; };
 		71E5C75429B7D45600568292 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		71E712692908C6D100DA97BD /* Binding+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extensions.swift"; sourceTree = "<group>"; };
 		71ED5D6A290B6B3C00626185 /* RmbReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbReminder.swift; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 				719A36E32F52C03400C93474 /* NSCursor+Extensions.swift */,
 				71F5A0002F5C8A0000D1E2F3 /* NSApplication+Extensions.swift */,
 				71E5C75429B7D45600568292 /* UserDefaults+Extensions.swift */,
+				71DB50F92F79B83E006DC143 /* EnvironmentValues+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -688,6 +691,7 @@
 				713D91202F5DF830001B921E /* ToolbarButtonLabel.swift in Sources */,
 				713D91222F5DF840001B921E /* RmbBackgroundModifier.swift in Sources */,
 				714E6F6125CCF66000BA0099 /* Constants.swift in Sources */,
+				71DB50FA2F79B852006DC143 /* EnvironmentValues+Extensions.swift in Sources */,
 				71D262452F57D50A0073C0FD /* KeyboardSettingsTab.swift in Sources */,
 				717748F829622FCB00654CAA /* RmbIcon.swift in Sources */,
 				71F9726A25981EDF00D0A118 /* NSTableView+Extensions.swift in Sources */,
