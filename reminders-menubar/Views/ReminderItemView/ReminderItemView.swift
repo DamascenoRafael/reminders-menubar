@@ -9,11 +9,8 @@ struct ReminderItemView: View {
     var reminderItem: ReminderItem
     var isShowingCompleted: Bool
     var showCalendarTitleOnDueDate = false
-    @State var reminderItemIsHovered = false
-
+    @State private var reminderItemIsHovered = false
     @State private var showingEditPopover = false
-    @State private var isEditingTitle = false
-
     @State private var showingRemoveAlert = false
     @State private var showingCopiedToast = false
     @State private var copyEventMonitor: Any?
@@ -115,7 +112,6 @@ struct ReminderItemView: View {
                 .fixedSize(horizontal: false, vertical: true)
                 .onTapGesture {
                     guard !isPendingCompletion else { return }
-                    isEditingTitle = true
                     showingEditPopover = true
                 }
 
@@ -216,11 +212,12 @@ struct ReminderItemView: View {
     }
 
     private func shouldHandleCopyShortcut(for event: NSEvent) -> Bool {
-        guard reminderItemIsHovered else { return false }
-        guard !showingEditPopover, !isEditingTitle else { return false }
+        guard reminderItemIsHovered,
+              !showingEditPopover else {
+            return false
+        }
 
-        guard event.modifierFlags.contains(.command) else { return false }
-        return event.charactersIgnoringModifiers?.lowercased() == "c"
+        return event.modifierFlags.contains(.command) && event.charactersIgnoringModifiers?.lowercased() == "c"
     }
 
     private func removeCopyEventMonitor() {
