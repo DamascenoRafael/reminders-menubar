@@ -21,5 +21,7 @@ struct UpcomingRemindersContent: View {
 }
 
 #Preview {
-    UpcomingRemindersContent().environmentObject(RemindersData())
+    UpcomingRemindersContent()
+        .environmentObject(RemindersData())
+        .environmentObject(CopyShortcutCoordinator())
 }

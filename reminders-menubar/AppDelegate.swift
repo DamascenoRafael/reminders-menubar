@@ -44,7 +44,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var contentViewController: NSViewController {
         let contentView = ContentView()
         let remindersData = RemindersData()
-        return NSHostingController(rootView: contentView.environmentObject(remindersData))
+        let copyShortcutCoordinator = CopyShortcutCoordinator()
+        return NSHostingController(
+            rootView: contentView
+                .environmentObject(remindersData)
+                .environmentObject(copyShortcutCoordinator)
+        )
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {

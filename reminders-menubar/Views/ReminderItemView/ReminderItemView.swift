@@ -4,6 +4,7 @@ import Combine
 
 @MainActor
 struct ReminderItemView: View {
+    @EnvironmentObject private var copyCoordinator: CopyShortcutCoordinator
     @Environment(\.colorScheme) private var colorScheme
 
     var reminderItem: ReminderItem
@@ -13,10 +14,10 @@ struct ReminderItemView: View {
     @State private var showingEditPopover = false
     @State private var showingRemoveAlert = false
     @State private var showingCopiedToast = false
-    @State private var copyEventMonitor: Any?
     @State private var isPendingCompletion = false
     @State private var dateInvalidation = Date()
     @State private var dueDateExpirationCancellable: AnyCancellable?
+    @State private var copiedToastDismissWork: DispatchWorkItem?
 
     var body: some View {
         if reminderItem.reminder.calendar == nil {
@@ -66,25 +67,22 @@ struct ReminderItemView: View {
                 copiedToastOverlay()
                     .opacity(showingCopiedToast ? 1 : 0)
                     .animation(.easeInOut(duration: 0.3), value: showingCopiedToast)
-                    .onChange(of: showingCopiedToast) { isShowing in
-                        guard isShowing else { return }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            showingCopiedToast = false
-                        }
-                    }
             )
         }
         .onHover { isHovered in
             reminderItemIsHovered = isHovered
-            updateCopyEventMonitor(isHovered: isHovered)
-        }
-        .onChange(of: showingEditPopover) { isShowing in
-            if isShowing {
-                removeCopyEventMonitor()
+            if isHovered {
+                copyCoordinator.setHovered(reminderId: reminderItem.id) {
+                    copyReminderToClipboard()
+                }
+            } else {
+                copyCoordinator.clearIfCurrent(reminderId: reminderItem.id)
             }
         }
         .onDisappear {
-            removeCopyEventMonitor()
+            copiedToastDismissWork?.cancel()
+            showingCopiedToast = false
+            copyCoordinator.clearIfCurrent(reminderId: reminderItem.id)
         }
         .padding(.bottom, 2)
         .padding(.leading, reminderItem.isChild ? 22 : 0)
@@ -172,8 +170,14 @@ struct ReminderItemView: View {
     }
 
     private func copyReminderToClipboard() {
+        guard !isPendingCompletion, !showingEditPopover else { return }
         ReminderCopyService.copyReminder(reminderItem.reminder)
         showingCopiedToast = true
+
+        copiedToastDismissWork?.cancel()
+        let work = DispatchWorkItem { showingCopiedToast = false }
+        copiedToastDismissWork = work
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: work)
     }
 
     @ViewBuilder
@@ -195,37 +199,6 @@ struct ReminderItemView: View {
         .transition(.opacity)
         .allowsHitTesting(false)
     }
-
-    private func updateCopyEventMonitor(isHovered: Bool) {
-        if isHovered {
-            guard copyEventMonitor == nil else { return }
-
-            copyEventMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { event in
-                guard shouldHandleCopyShortcut(for: event) else { return event }
-
-                copyReminderToClipboard()
-                return nil
-            }
-        } else {
-            removeCopyEventMonitor()
-        }
-    }
-
-    private func shouldHandleCopyShortcut(for event: NSEvent) -> Bool {
-        guard reminderItemIsHovered,
-              !showingEditPopover else {
-            return false
-        }
-
-        return event.modifierFlags.contains(.command) && event.charactersIgnoringModifiers?.lowercased() == "c"
-    }
-
-    private func removeCopyEventMonitor() {
-        if let monitor = copyEventMonitor {
-            NSEvent.removeMonitor(monitor)
-            copyEventMonitor = nil
-        }
-    }
 }
 
 #Preview {
@@ -244,4 +217,5 @@ struct ReminderItemView: View {
     let reminderItem = ReminderItem(for: reminder)
 
     ReminderItemView(reminderItem: reminderItem, isShowingCompleted: false)
+        .environmentObject(CopyShortcutCoordinator())
 }
