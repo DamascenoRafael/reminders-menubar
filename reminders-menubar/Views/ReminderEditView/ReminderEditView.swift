@@ -20,6 +20,7 @@ struct ReminderEditView: View {
     @State var notesTextFieldDynamicHeight: CGFloat = 0
 
     @State private var showingRemoveAlert = false
+    @State private var removeButtonIsHovered = false
 
     private var reminderHasChildren: Bool {
         if case .edit(_, let hasChildren) = mode {
@@ -158,8 +159,22 @@ struct ReminderEditView: View {
                     showingRemoveAlert = true
                 } label: {
                     Image(systemName: "trash")
+                        .foregroundColor(removeButtonIsHovered ? .red : .secondary)
+                        .padding(4)
                 }
                 .buttonStyle(.borderless)
+                .background(
+                    removeButtonIsHovered
+                        ? Color.rmbColor(
+                            for: .buttonHover,
+                            isTransparencyEnabled: userPreferences.isTransparencyEnabled
+                        )
+                        : nil
+                )
+                .cornerRadius(8)
+                .onHover { hovering in
+                    removeButtonIsHovered = hovering
+                }
                 .alert(isPresented: $showingRemoveAlert) {
                     removeReminderAlert(for: ekReminder) {
                         isPresented = false
@@ -175,17 +190,13 @@ struct ReminderEditView: View {
             } label: {
                 HStack {
                     Text(rmbLocalized(.reminderEditPopoverSaveButton))
-                    let saveShortcut = String("⌘⏎")
-                    if isSaveDisabled {
-                        Text(saveShortcut)
-                            .font(.footnote)
-                    } else {
-                        Text(saveShortcut)
-                            .font(.footnote)
-                            .foregroundColor(.secondary)
-                    }
+                    Text(String("⌘⏎"))
+                        .font(.footnote)
                 }
+                .padding(4)
+                .padding(.horizontal, 4)
             }
+            .modifier(ConfirmButtonModifier())
             .disabled(isSaveDisabled)
             .keyboardShortcut(.return, modifiers: .command)
         }

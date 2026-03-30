@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct CreateReminderButton: View {
-    @State private var isHovered = false
     @State private var showingCreateView = false
 
     var body: some View {
@@ -19,13 +18,7 @@ struct CreateReminderButton: View {
             }
         }
         .keyboardShortcut("n", modifiers: .command)
-        .buttonStyle(.borderless)
-        .foregroundColor(.primary)
-        .background(Color.accentColor.opacity(isHovered ? 1 : 0.5))
-        .cornerRadius(8)
-        .onHover { hovering in
-            isHovered = hovering
-        }
+        .modifier(ConfirmButtonModifier())
         .help(rmbLocalized(.newReminderButtonHelp))
         .sheet(isPresented: $showingCreateView) {
             ReminderEditView(isPresented: $showingCreateView)
