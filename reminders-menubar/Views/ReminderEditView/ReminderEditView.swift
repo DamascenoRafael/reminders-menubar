@@ -60,7 +60,7 @@ struct ReminderEditView: View {
 
             if !reminderHasChildren {
                 Divider()
-                ReminderListEditView(calendars: remindersData.calendars, selection: calendarPickerSelection)
+                ReminderListEditView(selection: calendarPickerSelection)
             }
 
             Spacer()

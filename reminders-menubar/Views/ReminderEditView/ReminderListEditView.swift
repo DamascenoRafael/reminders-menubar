@@ -2,7 +2,7 @@ import SwiftUI
 import EventKit
 
 struct ReminderListEditView: View {
-    let calendars: [EKCalendar]
+    @EnvironmentObject var remindersData: RemindersData
     @Binding var selection: EKCalendar?
 
     var body: some View {
@@ -13,7 +13,7 @@ struct ReminderListEditView: View {
                 .frame(width: 20)
 
             Picker(selection: $selection) {
-                ForEach(calendars, id: \.calendarIdentifier) { calendar in
+                ForEach(remindersData.calendars, id: \.calendarIdentifier) { calendar in
                     ColoredDotTitle.text(calendar.title, color: Color(calendar.color))
                         .tag(calendar as EKCalendar?)
                 }
@@ -33,5 +33,6 @@ struct ReminderListEditView: View {
         calendar.title = "Reminders"
         return calendar
     }
-    ReminderListEditView(calendars: [calendar], selection: .constant(calendar))
+    ReminderListEditView(selection: .constant(calendar))
+        .environmentObject(RemindersData())
 }
