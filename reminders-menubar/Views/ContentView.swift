@@ -10,7 +10,10 @@ struct ContentView: View {
         VStack(spacing: 0) {
             ToolbarView()
 
-            if userPreferences.atLeastOneFilterIsSelected {
+            if remindersData.calendars.isEmpty {
+                NoReminderListsView()
+                    .frame(maxHeight: .infinity)
+            } else if userPreferences.atLeastOneFilterIsSelected {
                 List {
                     if userPreferences.showUpcomingReminders {
                         Section(header: UpcomingRemindersTitle()) {
@@ -46,13 +49,8 @@ struct ContentView: View {
                 .animation(.default, value: remindersData.filteredReminderLists)
                 .padding(.bottom, 10)
             } else {
-                VStack(spacing: 4) {
-                    Text(rmbLocalized(.emptyListNoRemindersFilterTitle))
-                        .multilineTextAlignment(.center)
-                    Text(rmbLocalized(.emptyListNoRemindersFilterMessage))
-                        .multilineTextAlignment(.center)
-                }
-                .frame(maxHeight: .infinity)
+                NoFilterSelectedView()
+                    .frame(maxHeight: .infinity)
             }
         }
         .overlay(PopoverResizeHandleView().padding(4), alignment: .bottomTrailing)
@@ -82,5 +80,6 @@ struct ListRowSeparatorHidden: ViewModifier {
 }
 
 #Preview {
-    ContentView().environmentObject(RemindersData())
+    ContentView()
+        .environmentObject(RemindersData())
 }

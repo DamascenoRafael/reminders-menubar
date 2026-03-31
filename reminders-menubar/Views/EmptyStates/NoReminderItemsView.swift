@@ -34,4 +34,6 @@ struct NoReminderItemsView: View {
 
 #Preview {
     NoReminderItemsView(emptyList: .noReminders)
+    NoReminderItemsView(emptyList: .allItemsCompleted)
+    NoReminderItemsView(emptyList: .noUpcomingReminders)
 }
