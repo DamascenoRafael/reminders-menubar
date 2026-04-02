@@ -6,8 +6,6 @@ struct ReminderDateDescriptionView: View {
     var isExpired: Bool
     var hasRecurrenceRules: Bool
     var recurrenceRules: [EKRecurrenceRule]?
-    var calendarTitle: String
-    var showCalendarTitleOnDueDate: Bool
 
     var body: some View {
         HStack {
@@ -23,16 +21,10 @@ struct ReminderDateDescriptionView: View {
                 Text(recurrenceLabel(recurrenceRules?.first))
             }
 
-            if showCalendarTitleOnDueDate {
-                Spacer()
-
-                Text(calendarTitle)
-            }
+            Spacer()
         }
         .font(.footnote)
         .foregroundColor(.secondary)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.trailing, 12)
     }
 
     func recurrenceLabel(_ rule: EKRecurrenceRule?) -> String {
@@ -58,8 +50,6 @@ struct ReminderDateDescriptionView: View {
         dateDescription: Date().relativeDateDescription(withTime: true),
         isExpired: false,
         hasRecurrenceRules: false,
-        recurrenceRules: nil,
-        calendarTitle: "Reminders",
-        showCalendarTitleOnDueDate: true
+        recurrenceRules: nil
     )
 }

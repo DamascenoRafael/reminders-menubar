@@ -3,18 +3,18 @@ import EventKit
 
 struct NoReminderItemsView: View {
     enum EmptyListType {
-        case noReminders
         case allItemsCompleted
         case noUpcomingReminders
+        case noRecentReminders
         
         var message: String {
             switch self {
-            case .noReminders:
-                return rmbLocalized(.emptyListNoRemindersMessage)
             case .allItemsCompleted:
                 return rmbLocalized(.emptyListAllItemsCompletedMessage)
             case .noUpcomingReminders:
                 return rmbLocalized(.emptyListNoUpcomingRemindersMessage)
+            case .noRecentReminders:
+                return rmbLocalized(.emptyListNoRecentRemindersMessage)
             }
         }
     }
@@ -33,7 +33,7 @@ struct NoReminderItemsView: View {
 }
 
 #Preview {
-    NoReminderItemsView(emptyList: .noReminders)
     NoReminderItemsView(emptyList: .allItemsCompleted)
     NoReminderItemsView(emptyList: .noUpcomingReminders)
+    NoReminderItemsView(emptyList: .noRecentReminders)
 }

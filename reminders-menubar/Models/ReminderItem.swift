@@ -4,7 +4,7 @@ struct ReminderItem: Identifiable, Equatable {
     let id: String
     let reminder: EKReminder
     let lastModifiedDate: Date?
-    let childReminders: LabeledReminders
+    let childReminders: [ReminderItem]
     let isChild: Bool
     let hasChildren: Bool
     
@@ -12,7 +12,7 @@ struct ReminderItem: Identifiable, Equatable {
         self.id = reminder.calendarItemIdentifier
         self.reminder = reminder
         self.lastModifiedDate = reminder.lastModifiedDate
-        self.childReminders = LabeledReminders(for: childReminders)
+        self.childReminders = childReminders.sortedReminders
         self.isChild = isChild
         self.hasChildren = !childReminders.isEmpty
     }

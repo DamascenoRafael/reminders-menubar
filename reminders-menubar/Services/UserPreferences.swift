@@ -7,7 +7,6 @@ private enum PreferencesKeys {
     static let calendarIdentifierForSaving = "calendarIdentifierForSaving"
     static let autoSuggestTodayForNewReminders = "autoSuggestTodayForNewReminders"
     static let removeParsedDateFromTitle = "removeParsedDateFromTitle"
-    static let showUncompletedOnly = "showUncompletedOnly"
     static let rmbColorScheme = "rmbColorScheme"
     static let preferTransparentBackground = "backgroundIsTransparent"
     static let showUpcomingReminders = "showUpcomingReminders"
@@ -91,14 +90,6 @@ class UserPreferences: ObservableObject {
     }() {
         didSet {
             UserPreferences.defaults.set(removeParsedDateFromTitle, forKey: PreferencesKeys.removeParsedDateFromTitle)
-        }
-    }
-    
-    @Published var showUncompletedOnly: Bool = {
-        return defaults.boolWithDefaultValueTrue(forKey: PreferencesKeys.showUncompletedOnly)
-    }() {
-        didSet {
-            UserPreferences.defaults.set(showUncompletedOnly, forKey: PreferencesKeys.showUncompletedOnly)
         }
     }
     

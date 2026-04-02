@@ -12,8 +12,7 @@ struct UpcomingRemindersContent: View {
             ForEach(remindersData.upcomingReminders) { reminderItem in
                 ReminderItemView(
                     reminderItem: reminderItem,
-                    isShowingCompleted: false,
-                    showCalendarTitleOnDueDate: userPreferences.showUpcomingReminderListName
+                    showCalendarTitle: userPreferences.showUpcomingReminderListName
                 )
             }
         }

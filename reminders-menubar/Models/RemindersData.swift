@@ -127,6 +127,20 @@ class RemindersData: ObservableObject {
 
     @Published var filteredReminderLists: [ReminderList] = []
 
+    @Published var recentReminders: [ReminderItem]?
+
+    @Published var showingRecentReminders: Bool = false {
+        didSet {
+            if showingRecentReminders {
+                Task {
+                    self.recentReminders = await fetchRecentReminders()
+                }
+            } else {
+                recentReminders = nil
+            }
+        }
+    }
+
     @Published var calendarIdentifiersFilter: [String] = {
         guard let identifiers = UserPreferences.shared.preferredCalendarIdentifiersFilter else {
             // NOTE: On first use it will load all reminder lists.
@@ -183,6 +197,10 @@ class RemindersData: ObservableObject {
             UserPreferences.shared.upcomingRemindersInterval,
             for: calendarFilter
         )
+    }
+
+    private func fetchRecentReminders() async -> [ReminderItem] {
+        return await RemindersService.shared.getRecentReminders()
     }
 
     private func getMenuBarCount() async -> Int {

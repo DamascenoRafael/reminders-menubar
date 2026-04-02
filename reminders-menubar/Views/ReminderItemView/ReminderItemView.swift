@@ -9,8 +9,7 @@ struct ReminderItemView: View {
     @Environment(\.appHasPopoverOpen) private var appHasPopoverOpen
 
     var reminderItem: ReminderItem
-    var isShowingCompleted: Bool
-    var showCalendarTitleOnDueDate = false
+    var showCalendarTitle = false
 
     @State private var reminderItemIsHovered = false
     @State private var showingEditPopover = false
@@ -39,23 +38,47 @@ struct ReminderItemView: View {
             VStack(spacing: 4) {
                 reminderTitleRow()
 
+                let hasDueDate = reminderItem.reminder.relativeDateDescription != nil
+                let hasExternalLinks = reminderItem.reminder.attachedUrl != nil || reminderItem.reminder.mailUrl != nil
+
                 if let dateDescription = reminderItem.reminder.relativeDateDescription {
-                    ReminderDateDescriptionView(
-                        dateDescription: dateDescription,
-                        isExpired: reminderItem.reminder.isExpired,
-                        hasRecurrenceRules: reminderItem.reminder.hasRecurrenceRules,
-                        recurrenceRules: reminderItem.reminder.recurrenceRules,
-                        calendarTitle: reminderItem.reminder.calendar.title,
-                        showCalendarTitleOnDueDate: showCalendarTitleOnDueDate
-                    )
-                    .id(dateInvalidation)
+                    HStack(alignment: .bottom) {
+                        ReminderDateDescriptionView(
+                            dateDescription: dateDescription,
+                            isExpired: reminderItem.reminder.isExpired,
+                            hasRecurrenceRules: reminderItem.reminder.hasRecurrenceRules,
+                            recurrenceRules: reminderItem.reminder.recurrenceRules
+                        )
+                        .id(dateInvalidation)
+
+                        if showCalendarTitle {
+                            calendarTitleText()
+                        }
+                    }
+                    .padding(.trailing, 8)
                 }
 
-                if reminderItem.reminder.attachedUrl != nil || reminderItem.reminder.mailUrl != nil {
-                    ReminderExternalLinksView(
-                        attachedUrl: reminderItem.reminder.attachedUrl,
-                        mailUrl: reminderItem.reminder.mailUrl
-                    )
+                if hasExternalLinks {
+                    HStack(alignment: .bottom) {
+                        ReminderExternalLinksView(
+                            attachedUrl: reminderItem.reminder.attachedUrl,
+                            mailUrl: reminderItem.reminder.mailUrl
+                        )
+
+                        if showCalendarTitle && !hasDueDate {
+                            calendarTitleText()
+                        }
+                    }
+                    .padding(.trailing, 8)
+                }
+
+                if showCalendarTitle && !hasDueDate && !hasExternalLinks {
+                    HStack {
+                        Spacer()
+
+                        calendarTitleText()
+                    }
+                    .padding(.trailing, 8)
                 }
 
                 Divider()
@@ -106,7 +129,9 @@ struct ReminderItemView: View {
             appHasPopoverOpen.wrappedValue = isOpen
         }
 
-        childRemindersView()
+        ForEach(reminderItem.childReminders) { reminderItem in
+            ReminderItemView(reminderItem: reminderItem)
+        }
     }
 
     @ViewBuilder
@@ -144,16 +169,11 @@ struct ReminderItemView: View {
     }
 
     @ViewBuilder
-    private func childRemindersView() -> some View {
-        ForEach(reminderItem.childReminders.uncompleted) { reminderItem in
-            ReminderItemView(reminderItem: reminderItem, isShowingCompleted: isShowingCompleted)
-        }
-
-        if isShowingCompleted {
-            ForEach(reminderItem.childReminders.completed) { reminderItem in
-                ReminderItemView(reminderItem: reminderItem, isShowingCompleted: isShowingCompleted)
-            }
-        }
+    private func calendarTitleText() -> some View {
+        Text(reminderItem.reminder.calendar.title)
+            .font(.footnote)
+            .foregroundColor(.secondary)
+            .fixedSize()
     }
 
     private func subscribeToDueDateExpiration() {
@@ -223,6 +243,6 @@ struct ReminderItemView: View {
     }
     let reminderItem = ReminderItem(for: reminder)
 
-    ReminderItemView(reminderItem: reminderItem, isShowingCompleted: false)
+    ReminderItemView(reminderItem: reminderItem)
         .environmentObject(CopyShortcutCoordinator())
 }

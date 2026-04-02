@@ -7,7 +7,7 @@ struct ToolbarView: View {
 
             Spacer()
             
-            SettingsBarToggleButton()
+            RecentRemindersButton()
 
             FilterReminderListButton()
 

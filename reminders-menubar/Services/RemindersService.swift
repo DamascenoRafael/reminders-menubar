@@ -67,7 +67,11 @@ class RemindersService {
 
     func getReminders(of calendarIdentifiers: [String]) async -> [ReminderList] {
         let calendars = getCalendars().filter({ calendarIdentifiers.contains($0.calendarIdentifier) })
-        let predicate = eventStore.predicateForReminders(in: calendars)
+        let predicate = eventStore.predicateForIncompleteReminders(
+            withDueDateStarting: nil,
+            ending: nil,
+            calendars: calendars
+        )
         let remindersByCalendar = Dictionary(
             grouping: await fetchReminders(matching: predicate),
             by: { $0.calendar.calendarIdentifier }
@@ -81,6 +85,24 @@ class RemindersService {
         }
         
         return reminderLists
+    }
+
+    func getRecentReminders() async -> [ReminderItem] {
+        let recentRemindersDayCount = 90
+        let predicate = eventStore.predicateForReminders(in: nil)
+        let cutoffDate = Calendar.current.date(
+            byAdding: .day,
+            value: -recentRemindersDayCount,
+            to: Date()
+        ) ?? Date.distantPast
+
+        let allReminders = await fetchReminders(matching: predicate)
+        let recentReminders = allReminders
+            .filter { ($0.lastModifiedDate ?? .distantPast) >= cutoffDate }
+
+        return recentReminders
+            .map { ReminderItem(for: $0) }
+            .sorted { ($0.lastModifiedDate ?? .distantPast) > ($1.lastModifiedDate ?? .distantPast) }
     }
     
     func getUpcomingReminders(

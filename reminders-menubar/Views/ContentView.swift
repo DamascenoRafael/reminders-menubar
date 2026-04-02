@@ -13,6 +13,17 @@ struct ContentView: View {
             if remindersData.calendars.isEmpty {
                 NoReminderListsView()
                     .frame(maxHeight: .infinity)
+            } else if remindersData.showingRecentReminders {
+                List {
+                    Section(header: RecentRemindersTitle()) {
+                        RecentRemindersContent()
+                    }
+                    .modifier(ListSectionSpacing())
+                    .modifier(ListRowSeparatorHidden())
+                }
+                .listStyle(.plain)
+                .animation(.default, value: remindersData.recentReminders)
+                .padding(.bottom, 10)
             } else if userPreferences.atLeastOneFilterIsSelected {
                 List {
                     if userPreferences.showUpcomingReminders {
@@ -24,21 +35,11 @@ struct ContentView: View {
                     }
                     ForEach(remindersData.filteredReminderLists) { reminderList in
                         Section(header: CalendarTitle(calendar: reminderList.calendar)) {
-                            let uncompletedIsEmpty = reminderList.reminders.uncompleted.isEmpty
-                            let completedIsEmpty = reminderList.reminders.completed.isEmpty
-                            let calendarIsEmpty = uncompletedIsEmpty && completedIsEmpty
-                            let isShowingCompleted = !userPreferences.showUncompletedOnly
-                            let viewIsEmpty = isShowingCompleted ? calendarIsEmpty : uncompletedIsEmpty
-                            if viewIsEmpty {
-                                NoReminderItemsView(emptyList: calendarIsEmpty ? .noReminders : .allItemsCompleted)
+                            if reminderList.reminders.isEmpty {
+                                NoReminderItemsView(emptyList: .allItemsCompleted)
                             }
-                            ForEach(reminderList.reminders.uncompleted) { reminderItem in
-                                ReminderItemView(reminderItem: reminderItem, isShowingCompleted: isShowingCompleted)
-                            }
-                            if isShowingCompleted {
-                                ForEach(reminderList.reminders.completed) { reminderItem in
-                                    ReminderItemView(reminderItem: reminderItem, isShowingCompleted: isShowingCompleted)
-                                }
+                            ForEach(reminderList.reminders) { reminderItem in
+                                ReminderItemView(reminderItem: reminderItem)
                             }
                         }
                         .modifier(ListSectionSpacing())

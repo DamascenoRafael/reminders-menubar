@@ -29,15 +29,18 @@ enum RemindersMenuBarLocalizedKeys: String {
     case removeReminderAlertCancelButton
     case emptyListNoCalendarsTitle
     case emptyListNoCalendarsMessage
-    case emptyListNoRemindersMessage
+    case emptyListAllItemsCompletedMessage
     case emptyListNoRemindersFilterTitle
     case emptyListNoRemindersFilterMessage
-    case emptyListAllItemsCompletedMessage
     case emptyListNoUpcomingRemindersMessage
+    case emptyListNoRecentRemindersMessage
     case upcomingRemindersButton
     case upcomingRemindersSettingsLabel
     case remindersFilterSelectionHelp
-    case showCompletedRemindersToggleButtonHelp
+    case recentRemindersButtonHelp
+    case recentRemindersSectionTitle
+    case recentRemindersShowMoreButton
+    case recentRemindersLoadingMessage
     case updateAvailableNoticeButton
     case launchAtLoginOptionButton
     case appAppearanceReduceTransparencyOption

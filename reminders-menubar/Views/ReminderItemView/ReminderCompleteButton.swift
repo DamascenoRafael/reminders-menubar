@@ -68,9 +68,9 @@ struct ReminderCompleteButton: View {
     private func completeReminder() {
         reminderItem.reminder.isCompleted = true
         RemindersService.shared.save(reminder: reminderItem.reminder)
-        reminderItem.childReminders.uncompleted.forEach { uncompletedChild in
-            uncompletedChild.reminder.isCompleted = true
-            RemindersService.shared.save(reminder: uncompletedChild.reminder)
+        reminderItem.childReminders.forEach { child in
+            child.reminder.isCompleted = true
+            RemindersService.shared.save(reminder: child.reminder)
         }
         isFilled = false
         isPendingCompletion = false
