@@ -14,111 +14,57 @@ class RemindersData: ObservableObject {
     }
 
     private func addObservers() {
-        NotificationCenter.default.publisher(for: .EKEventStoreChanged)
-            .sink { [weak self] _ in
-                Task {
-                    await self?.update()
-                }
+        Publishers.MergeMany(
+            NotificationCenter.default.publisher(for: .EKEventStoreChanged),
+            NotificationCenter.default.publisher(for: .NSCalendarDayChanged),
+            NotificationCenter.default.publisher(for: .remindersDataShouldUpdate)
+        )
+        .sink { [weak self] _ in
+            Task {
+                await self?.update()
             }
-            .store(in: &cancellationTokens)
+        }
+        .store(in: &cancellationTokens)
 
-        NotificationCenter.default.publisher(for: .NSCalendarDayChanged)
-            .sink { [weak self] _ in
-                Task {
-                    await self?.update()
-                }
+        Publishers.MergeMany(
+            UserPreferences.shared.$showRemindersWithDueDateOnTop.map { _ in }.eraseToAnyPublisher(),
+            UserPreferences.shared.$sortRemindersByPriority.map { _ in }.eraseToAnyPublisher(),
+            UserPreferences.shared.$reminderSortingOrder.map { _ in }.eraseToAnyPublisher(),
+            $calendarIdentifiersFilter.removeDuplicates().map { _ in }.eraseToAnyPublisher()
+        )
+        .dropFirst()
+        .sink { [weak self] _ in
+            Task {
+                await self?.update()
             }
-            .store(in: &cancellationTokens)
+        }
+        .store(in: &cancellationTokens)
 
-        NotificationCenter.default.publisher(for: .remindersDataShouldUpdate)
-            .sink { [weak self] _ in
-                Task {
-                    await self?.update()
-                }
+        Publishers.MergeMany(
+            UserPreferences.shared.$upcomingRemindersInterval.map { _ in }.eraseToAnyPublisher(),
+            UserPreferences.shared.$filterUpcomingRemindersByCalendar.map { _ in }.eraseToAnyPublisher()
+        )
+        .dropFirst()
+        .sink { [weak self] _ in
+            Task {
+                guard let self else { return }
+                self.upcomingReminders = await self.getUpcomingReminders()
             }
-            .store(in: &cancellationTokens)
+        }
+        .store(in: &cancellationTokens)
 
-        UserPreferences.shared.$menuBarCounterType
-            .dropFirst()
-            .sink { [weak self] _ in
-                Task {
-                    guard let self else { return }
-                    self.updateMenuBarCount(with: await self.getMenuBarCount())
-                }
+        Publishers.MergeMany(
+            UserPreferences.shared.$menuBarCounterType.map { _ in }.eraseToAnyPublisher(),
+            UserPreferences.shared.$filterMenuBarCountByCalendar.map { _ in }.eraseToAnyPublisher()
+        )
+        .dropFirst()
+        .sink { [weak self] _ in
+            Task {
+                guard let self else { return }
+                self.updateMenuBarCount(with: await self.getMenuBarCount())
             }
-            .store(in: &cancellationTokens)
-        
-        UserPreferences.shared.$filterMenuBarCountByCalendar
-            .dropFirst()
-            .sink { [weak self] _ in
-                Task {
-                    guard let self else { return }
-                    self.updateMenuBarCount(with: await self.getMenuBarCount())
-                }
-            }
-            .store(in: &cancellationTokens)
-
-        UserPreferences.shared.$upcomingRemindersInterval
-            .dropFirst()
-            .sink { [weak self] _ in
-                Task {
-                    guard let self else { return }
-                    self.upcomingReminders = await self.getUpcomingReminders()
-                }
-            }
-            .store(in: &cancellationTokens)
-
-        UserPreferences.shared.$filterUpcomingRemindersByCalendar
-            .dropFirst()
-            .sink { [weak self] _ in
-                Task {
-                    guard let self else { return }
-                    self.upcomingReminders = await self.getUpcomingReminders()
-                }
-            }
-            .store(in: &cancellationTokens)
-
-        UserPreferences.shared.$showRemindersWithDueDateOnTop
-            .dropFirst()
-            .sink { [weak self] _ in
-                Task {
-                    await self?.update()
-                }
-            }
-            .store(in: &cancellationTokens)
-
-        UserPreferences.shared.$sortRemindersByPriority
-            .dropFirst()
-            .sink { [weak self] _ in
-                Task {
-                    await self?.update()
-                }
-            }
-            .store(in: &cancellationTokens)
-
-        UserPreferences.shared.$reminderSortingOrder
-            .dropFirst()
-            .sink { [weak self] _ in
-                Task {
-                    await self?.update()
-                }
-            }
-            .store(in: &cancellationTokens)
-
-        $calendarIdentifiersFilter
-            .dropFirst()
-            .sink { [weak self] calendarIdentifiersFilter in
-                Task {
-                    guard let self else { return }
-                    self.filteredReminderLists = await RemindersService.shared.getReminders(
-                        of: calendarIdentifiersFilter
-                    )
-
-                    self.upcomingReminders = await self.getUpcomingReminders()
-                    self.updateMenuBarCount(with: await self.getMenuBarCount())
-                }
-            }
-            .store(in: &cancellationTokens)
+        }
+        .store(in: &cancellationTokens)
     }
 
     @Published var calendars: [EKCalendar] = []
@@ -184,6 +130,9 @@ class RemindersData: ObservableObject {
 
         self.calendars = calendars
         self.calendarIdentifiersFilter = calendarIdentifiersFilter
+        self.filteredReminderLists = await RemindersService.shared.getReminders(
+            of: self.calendarIdentifiersFilter
+        )
         self.upcomingReminders = await getUpcomingReminders()
         self.updateMenuBarCount(with: await getMenuBarCount())
     }
