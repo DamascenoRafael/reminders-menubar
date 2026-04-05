@@ -28,7 +28,11 @@ struct ReminderCompleteButton: View {
         }
         .buttonStyle(PlainButtonStyle())
         .onDisappear {
-            cancelPendingCompletion()
+            if isPendingCompletion {
+                completionTask?.cancel()
+                completionTask = nil
+                completeReminder()
+            }
         }
     }
 
