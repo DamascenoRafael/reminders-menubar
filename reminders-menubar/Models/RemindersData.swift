@@ -174,6 +174,9 @@ class RemindersData: ObservableObject {
         )
         self.upcomingReminders = await getUpcomingReminders()
         self.updateMenuBarCount(with: await getMenuBarCount())
+        if showingRecentReminders {
+            self.recentReminders = await fetchRecentReminders()
+        }
     }
     
     private func getUpcomingReminders() async -> [ReminderItem] {
