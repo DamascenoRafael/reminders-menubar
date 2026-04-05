@@ -13,25 +13,31 @@ struct ContentView: View {
             if remindersData.calendars.isEmpty {
                 NoReminderListsView()
                     .frame(maxHeight: .infinity)
+            } else if remindersData.showingSearch {
+                SearchBarView()
+
+                List {
+                    Section {
+                        SearchRemindersContent()
+                    }
+                    .modifier(ListSectionModifier())
+                }
+                .modifier(ReminderListModifier(animationValue: remindersData.searchResults))
             } else if remindersData.showingRecentReminders {
                 List {
                     Section(header: RecentRemindersTitle()) {
                         RecentRemindersContent()
                     }
-                    .modifier(ListSectionSpacing())
-                    .modifier(ListRowSeparatorHidden())
+                    .modifier(ListSectionModifier())
                 }
-                .listStyle(.plain)
-                .animation(.default, value: remindersData.recentReminders)
-                .padding(.bottom, 10)
+                .modifier(ReminderListModifier(animationValue: remindersData.recentReminders))
             } else if userPreferences.atLeastOneFilterIsSelected {
                 List {
                     if userPreferences.showUpcomingReminders {
                         Section(header: UpcomingRemindersTitle()) {
                             UpcomingRemindersContent()
                         }
-                        .modifier(ListSectionSpacing())
-                        .modifier(ListRowSeparatorHidden())
+                        .modifier(ListSectionModifier())
                     }
                     ForEach(remindersData.filteredReminderLists) { reminderList in
                         Section(header: CalendarTitle(calendar: reminderList.calendar)) {
@@ -42,13 +48,10 @@ struct ContentView: View {
                                 ReminderItemView(reminderItem: reminderItem)
                             }
                         }
-                        .modifier(ListSectionSpacing())
-                        .modifier(ListRowSeparatorHidden())
+                        .modifier(ListSectionModifier())
                     }
                 }
-                .listStyle(.plain)
-                .animation(.default, value: remindersData.filteredReminderLists)
-                .padding(.bottom, 10)
+                .modifier(ReminderListModifier(animationValue: remindersData.filteredReminderLists))
             } else {
                 NoFilterSelectedView()
                     .frame(maxHeight: .infinity)
@@ -58,24 +61,36 @@ struct ContentView: View {
         .modifier(RmbBackgroundModifier())
         .preferredColorScheme(userPreferences.rmbColorScheme.colorScheme)
         .environment(\.appHasPopoverOpen, $appHasPopoverOpen)
+        .onReceive(NotificationCenter.default.publisher(for: NSPopover.didCloseNotification)) { _ in
+            remindersData.showingSearch = false
+            remindersData.showingRecentReminders = false
+        }
     }
 }
 
-struct ListSectionSpacing: ViewModifier {
+struct ReminderListModifier<V: Equatable>: ViewModifier {
+    let animationValue: V
+
     func body(content: Content) -> some View {
-        return content
-            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
-            .padding(.horizontal, 6)
+        content
+            .listStyle(.plain)
+            .animation(.default, value: animationValue)
+            .padding(.bottom, 10)
     }
 }
 
-struct ListRowSeparatorHidden: ViewModifier {
+struct ListSectionModifier: ViewModifier {
+    @ViewBuilder
     func body(content: Content) -> some View {
-        if #available(macOS 14.0, *) {
+        if #available(macOS 13.0, *) {
             content
+                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                .padding(.horizontal, 6)
                 .listRowSeparator(.hidden)
         } else {
             content
+                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                .padding(.horizontal, 6)
         }
     }
 }

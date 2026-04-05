@@ -11,12 +11,7 @@ struct RecentRemindersContent: View {
             if let recentReminders = remindersData.recentReminders {
                 mainRecentRemindersContent(recentReminders)
             } else {
-                HStack(alignment: .center) {
-                    ProgressView()
-                        .controlSize(.small)
-                    Text(rmbLocalized(.recentRemindersLoadingMessage))
-                }
-                .font(.callout)
+                ReminderLoadingView(message: rmbLocalized(.recentRemindersLoadingMessage))
             }
         }
         .onChange(of: remindersData.recentReminders) { _ in
@@ -38,15 +33,9 @@ struct RecentRemindersContent: View {
         }
 
         if displayCount < recentReminders.count {
-            Button(action: {
+            ShowMoreRemindersButton {
                 displayCount += Self.paginationBatchSize
-            }) {
-                Text(rmbLocalized(.recentRemindersShowMoreButton))
-                    .font(.callout)
-                    .frame(maxWidth: .infinity, alignment: .center)
             }
-            .buttonStyle(.borderless)
-            .padding(.vertical, 4)
         }
     }
 }

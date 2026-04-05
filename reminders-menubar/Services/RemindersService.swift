@@ -146,6 +146,43 @@ class RemindersService {
         save(reminder: newReminder)
     }
     
+    func fetchAllReminders() async -> [EKReminder] {
+        let predicate = eventStore.predicateForReminders(in: nil)
+        return await fetchReminders(matching: predicate)
+    }
+
+    func searchReminders(matching query: String, in allReminders: [EKReminder]) -> [ReminderItem] {
+        let queryWords = query.lowercased().split(separator: " ").map(String.init)
+        guard !queryWords.isEmpty else { return [] }
+
+        let scored: [(ReminderItem, Int)] = allReminders.compactMap { reminder in
+            let title = (reminder.title ?? "").lowercased()
+            let notes = (reminder.notes ?? "").lowercased()
+            let urlString = reminder.attachedUrl?.absoluteString.lowercased() ?? ""
+
+            let allFields = [title, notes, urlString]
+
+            let allWordsMatch = queryWords.allSatisfy { word in
+                allFields.contains { $0.contains(word) }
+            }
+            guard allWordsMatch else { return nil }
+
+            var score = 0
+            for word in queryWords {
+                if title.contains(word) { score += 3 }
+                if notes.contains(word) { score += 2 }
+                if urlString.contains(word) { score += 1 }
+            }
+            if !reminder.isCompleted { score += 1 }
+
+            return (ReminderItem(for: reminder), score)
+        }
+
+        return scored
+            .sorted { $0.1 > $1.1 }
+            .map { $0.0 }
+    }
+
     func remove(reminder: EKReminder) {
         do {
             try eventStore.remove(reminder, commit: true)

@@ -65,6 +65,23 @@ class RemindersData: ObservableObject {
             }
         }
         .store(in: &cancellationTokens)
+
+        $searchText
+            .dropFirst()
+            .debounce(for: .milliseconds(300), scheduler: DispatchQueue.main)
+            .combineLatest($searchableReminders)
+            .sink { [weak self] query, cached in
+                guard let self else { return }
+                guard showingSearch, !query.isEmpty, let cached else {
+                    searchResults = nil
+                    return
+                }
+                searchResults = RemindersService.shared.searchReminders(
+                    matching: query,
+                    in: cached
+                )
+            }
+            .store(in: &cancellationTokens)
     }
 
     @Published var calendars: [EKCalendar] = []
@@ -78,6 +95,7 @@ class RemindersData: ObservableObject {
     @Published var showingRecentReminders: Bool = false {
         didSet {
             if showingRecentReminders {
+                showingSearch = false
                 Task {
                     self.recentReminders = await fetchRecentReminders()
                 }
@@ -86,6 +104,27 @@ class RemindersData: ObservableObject {
             }
         }
     }
+
+    @Published var showingSearch: Bool = false {
+        didSet {
+            if showingSearch {
+                showingRecentReminders = false
+                Task {
+                    self.searchableReminders = await RemindersService.shared.fetchAllReminders()
+                }
+            } else {
+                searchText = ""
+                searchResults = nil
+                searchableReminders = nil
+            }
+        }
+    }
+
+    @Published var searchText: String = ""
+
+    @Published var searchResults: [ReminderItem]?
+
+    @Published private var searchableReminders: [EKReminder]?
 
     @Published var calendarIdentifiersFilter: [String] = {
         guard let identifiers = UserPreferences.shared.preferredCalendarIdentifiersFilter else {

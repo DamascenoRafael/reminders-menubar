@@ -39,7 +39,7 @@ enum RemindersMenuBarLocalizedKeys: String {
     case remindersFilterSelectionHelp
     case recentRemindersButtonHelp
     case recentRemindersSectionTitle
-    case recentRemindersShowMoreButton
+    case showMoreRemindersButton
     case recentRemindersLoadingMessage
     case updateAvailableNoticeButton
     case launchAtLoginOptionButton
@@ -122,6 +122,11 @@ enum RemindersMenuBarLocalizedKeys: String {
     case copySettingsTab
     case keyboardSettingsTab
     case aboutSettingsTab
+    case searchRemindersButtonHelp
+    case searchRemindersPlaceholder
+    case searchRemindersLoadingMessage
+    case emptyListSearchNoQueryMessage
+    case emptyListSearchNoResultsMessage
 }
 
 struct ReminderMenuBarLocale {

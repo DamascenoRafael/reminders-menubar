@@ -6,6 +6,8 @@ struct NoReminderItemsView: View {
         case allItemsCompleted
         case noUpcomingReminders
         case noRecentReminders
+        case noSearchQuery
+        case noSearchResults
         
         var message: String {
             switch self {
@@ -15,6 +17,10 @@ struct NoReminderItemsView: View {
                 return rmbLocalized(.emptyListNoUpcomingRemindersMessage)
             case .noRecentReminders:
                 return rmbLocalized(.emptyListNoRecentRemindersMessage)
+            case .noSearchQuery:
+                return rmbLocalized(.emptyListSearchNoQueryMessage)
+            case .noSearchResults:
+                return rmbLocalized(.emptyListSearchNoResultsMessage)
             }
         }
     }
