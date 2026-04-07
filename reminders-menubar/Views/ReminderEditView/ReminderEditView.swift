@@ -194,7 +194,7 @@ struct ReminderEditView: View {
                 } label: {
                     Image(systemName: "trash")
                         .foregroundColor(removeButtonIsHovered ? .red : .secondary)
-                        .padding(4)
+                        .frame(width: 24, height: 24)
                 }
                 .buttonStyle(.borderless)
                 .background(
