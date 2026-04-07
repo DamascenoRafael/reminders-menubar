@@ -1366,6 +1366,12 @@
             "state" : "translated",
             "value" : "Settings…"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impostazioni…"
+          }
         }
       }
     },
@@ -7006,6 +7012,12 @@
             "state" : "translated",
             "value" : "New Reminder"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuovo promemoria"
+          }
         }
       }
     },
@@ -8641,6 +8653,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Save"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salva"
           }
         }
       }
