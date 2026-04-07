@@ -137,15 +137,23 @@ struct ReminderItemView: View {
         }
     }
 
+    private func reminderTitleText() -> Text {
+        let titleText = Text(LocalizedStringKey(reminderItem.reminder.title.toDetectedLinkAttributedString()))
+
+        guard let prioritySystemImage = reminderItem.reminder.ekPriority.systemImage else {
+            return titleText
+        }
+
+        return Text(Image(systemName: prioritySystemImage))
+            .foregroundColor(Color(reminderItem.reminder.calendar.color))
+        + Text(verbatim: " ")
+        + titleText
+    }
+
     @ViewBuilder
     private func reminderTitleRow() -> some View {
         HStack(spacing: 4) {
-            if let prioritySystemImage = reminderItem.reminder.ekPriority.systemImage {
-                Image(systemName: prioritySystemImage)
-                    .foregroundColor(Color(reminderItem.reminder.calendar.color))
-            }
-
-            Text(LocalizedStringKey(reminderItem.reminder.title.toDetectedLinkAttributedString()))
+            reminderTitleText()
                 .fixedSize(horizontal: false, vertical: true)
 
             Spacer()
