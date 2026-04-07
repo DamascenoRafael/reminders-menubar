@@ -7,6 +7,7 @@ struct ReminderItemView: View {
     @EnvironmentObject private var copyCoordinator: CopyShortcutCoordinator
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.appHasPopoverOpen) private var appHasPopoverOpen
+    @ObservedObject private var userPreferences = UserPreferences.shared
 
     var reminderItem: ReminderItem
     var showCalendarTitle = false
@@ -39,7 +40,8 @@ struct ReminderItemView: View {
                 reminderTitleRow()
 
                 let hasDueDate = reminderItem.reminder.relativeDateDescription != nil
-                let hasExternalLinks = reminderItem.reminder.attachedUrl != nil || reminderItem.reminder.mailUrl != nil
+                let shouldShowExternalLinks = userPreferences.showExternalLinksInReminderItem
+                    && (reminderItem.reminder.attachedUrl != nil || reminderItem.reminder.mailUrl != nil)
 
                 if let dateDescription = reminderItem.reminder.relativeDateDescription {
                     HStack(alignment: .bottom) {
@@ -58,11 +60,12 @@ struct ReminderItemView: View {
                     .padding(.trailing, 8)
                 }
 
-                if hasExternalLinks {
+                if shouldShowExternalLinks {
                     HStack(alignment: .bottom) {
                         ReminderExternalLinksView(
                             attachedUrl: reminderItem.reminder.attachedUrl,
-                            mailUrl: reminderItem.reminder.mailUrl
+                            mailUrl: reminderItem.reminder.mailUrl,
+                            isCompact: true
                         )
 
                         if showCalendarTitle && !hasDueDate {
@@ -72,7 +75,7 @@ struct ReminderItemView: View {
                     .padding(.trailing, 8)
                 }
 
-                if showCalendarTitle && !hasDueDate && !hasExternalLinks {
+                if showCalendarTitle && !hasDueDate && !shouldShowExternalLinks {
                     HStack {
                         Spacer()
 

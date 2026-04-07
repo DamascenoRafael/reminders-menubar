@@ -23,6 +23,7 @@ private enum PreferencesKeys {
     static let sortRemindersByPriority = "sortRemindersByPriority"
     static let reminderSortingOrder = "reminderSortingOrder"
     static let timeFormatIs24Hour = "timeFormatIs24Hour"
+    static let showExternalLinksInReminderItem = "showExternalLinksInReminderItem"
 }
 
 class UserPreferences: ObservableObject {
@@ -152,6 +153,17 @@ class UserPreferences: ObservableObject {
     }() {
         didSet {
             UserPreferences.defaults.set(sortRemindersByPriority, forKey: PreferencesKeys.sortRemindersByPriority)
+        }
+    }
+    
+    @Published var showExternalLinksInReminderItem: Bool = {
+        return defaults.bool(forKey: PreferencesKeys.showExternalLinksInReminderItem)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(
+                showExternalLinksInReminderItem,
+                forKey: PreferencesKeys.showExternalLinksInReminderItem
+            )
         }
     }
     

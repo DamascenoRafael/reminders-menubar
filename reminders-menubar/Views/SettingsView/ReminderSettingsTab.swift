@@ -81,6 +81,15 @@ struct ReminderSettingsTab: View {
             SettingsDivider()
 
             SettingsSection {
+                Toggle(
+                    rmbLocalized(.showExternalLinksInReminderItemOption),
+                    isOn: $userPreferences.showExternalLinksInReminderItem
+                )
+            }
+
+            SettingsDivider()
+
+            SettingsSection {
                 Button(rmbLocalized(.reloadRemindersDataButton)) {
                     NotificationCenter.default.post(name: .remindersDataShouldUpdate, object: nil)
                 }

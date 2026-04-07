@@ -7,6 +7,7 @@ enum RemindersMenuBarLocalizedKeys: String {
     case remindersOptionsButtonHelp
     case editReminderOptionButton
     case editReminderTitleTextFieldPlaceholder
+    case editReminderExternalLinksViewOnlyLabel
     case editReminderNotesTextFieldPlaceholder
     case newReminderAddDateButton
     case newReminderAddTimeButton
@@ -100,6 +101,7 @@ enum RemindersMenuBarLocalizedKeys: String {
     case copyFormatTrimOption
     case copyFormatPreviewLabel
     case showUpcomingRemindersSettingsOption
+    case showExternalLinksInReminderItemOption
     case showUpcomingReminderListNameOption
     case dragToResizeHelp
     case popoverSizeSettingsLabel

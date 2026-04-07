@@ -329,6 +329,7 @@
 				713D91232F5DF850001B921E /* ConfirmButtonModifier.swift */,
 				718AE6D42F8208D800B53E04 /* ReminderLoadingView.swift */,
 				718AE6D22F8208CA00B53E04 /* ShowMoreRemindersButton.swift */,
+				71F93A642E03B93100D5C5BC /* ReminderExternalLinksView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -496,7 +497,6 @@
 				7115461224C0ADCB007781E2 /* ReminderItemView.swift */,
 				71F93A602E03B54100D5C5BC /* ReminderCompleteButton.swift */,
 				71F93A622E03B6DA00D5C5BC /* ReminderDateDescriptionView.swift */,
-				71F93A642E03B93100D5C5BC /* ReminderExternalLinksView.swift */,
 			);
 			path = ReminderItemView;
 			sourceTree = "<group>";

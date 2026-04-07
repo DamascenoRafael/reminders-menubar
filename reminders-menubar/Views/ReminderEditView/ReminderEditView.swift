@@ -29,6 +29,11 @@ struct ReminderEditView: View {
         return false
     }
 
+    private var hasExternalLinks: Bool {
+        guard case .edit(let reminder, _) = mode else { return false }
+        return reminder.attachedUrl != nil || reminder.mailUrl != nil
+    }
+
     init(isPresented: Binding<Bool>, reminder: EKReminder, reminderHasChildren: Bool) {
         self.mode = .edit(reminder, reminderHasChildren: reminderHasChildren)
 
@@ -63,11 +68,16 @@ struct ReminderEditView: View {
                 ReminderListEditView(selection: calendarPickerSelection)
             }
 
+            if case .edit(let reminder, _) = mode, hasExternalLinks {
+                Divider()
+                externalLinksSection(reminder: reminder)
+            }
+
             Spacer()
 
             actionButtons()
         }
-        .frame(width: 300, height: 320, alignment: .top)
+        .frame(width: 300, height: hasExternalLinks ? 370 : 320, alignment: .top)
         .padding()
         .modifier(RmbBackgroundModifier())
         .onAppear {
@@ -130,6 +140,30 @@ struct ReminderEditView: View {
             allowNewLineAndTab: true
         )
         .frame(height: notesTextFieldDynamicHeight)
+    }
+
+    // MARK: - External Links
+
+    @ViewBuilder
+    func externalLinksSection(reminder: EKReminder) -> some View {
+        HStack(alignment: .top) {
+            Image(systemName: "link")
+                .font(.system(size: 12))
+                .foregroundColor(.secondary)
+                .frame(width: 20)
+
+            VStack(alignment: .leading, spacing: 6) {
+                Text(rmbLocalized(.editReminderExternalLinksViewOnlyLabel))
+                    .font(.system(size: 12))
+                    .foregroundColor(.secondary)
+
+                ReminderExternalLinksView(
+                    attachedUrl: reminder.attachedUrl,
+                    mailUrl: reminder.mailUrl,
+                    isCompact: false
+                )
+            }
+        }
     }
 
     // MARK: - List
