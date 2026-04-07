@@ -294,9 +294,6 @@
 				7113A2802F6FB05800474582 /* ReminderEditView */,
 				71C4AC132F7B821D0045A8BA /* EmptyStates */,
 				712C32B524BF939100AC75E2 /* ContentView.swift */,
-				71B4AD4E25B7D06400214219 /* CalendarTitle.swift */,
-				71AABB002F8E5A0000000001 /* RemoveReminderAlert.swift */,
-				B55D54FD2F37E4E5002DE761 /* PopoverResizeHandleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -321,12 +318,14 @@
 		7119C2F625D86397002C8013 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				718AE6D62F84A35D00B53E04 /* Modifiers */,
+				71B4AD4E25B7D06400214219 /* CalendarTitle.swift */,
 				71A000022F724B7500000001 /* ColoredDotTitle.swift */,
+				71AABB002F8E5A0000000001 /* RemoveReminderAlert.swift */,
+				B55D54FD2F37E4E5002DE761 /* PopoverResizeHandleView.swift */,
 				714C28A72A0A056600734DAF /* RmbHighlightedTextField.swift */,
 				714598D229295330008CAA43 /* RmbDatePicker.swift */,
 				71D2624E2F5A1B0100C8A33E /* SettingsOpenerView.swift */,
-				713D91212F5DF840001B921E /* RmbBackgroundModifier.swift */,
-				713D91232F5DF850001B921E /* ConfirmButtonModifier.swift */,
 				718AE6D42F8208D800B53E04 /* ReminderLoadingView.swift */,
 				718AE6D22F8208CA00B53E04 /* ShowMoreRemindersButton.swift */,
 				71F93A642E03B93100D5C5BC /* ReminderExternalLinksView.swift */,
@@ -422,6 +421,15 @@
 				716F69F32D6421170080A5F1 /* ReminderChangeDueDateOptionMenu.swift */,
 			);
 			path = ReminderEllipsisMenuView;
+			sourceTree = "<group>";
+		};
+		718AE6D62F84A35D00B53E04 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				713D91212F5DF840001B921E /* RmbBackgroundModifier.swift */,
+				713D91232F5DF850001B921E /* ConfirmButtonModifier.swift */,
+			);
+			path = Modifiers;
 			sourceTree = "<group>";
 		};
 		7192EF37265DF2EE00B51F02 /* Resources */ = {
