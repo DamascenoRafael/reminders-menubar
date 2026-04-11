@@ -15,8 +15,8 @@ private enum PreferencesKeys {
     static let menuBarCounterType = "menuBarCounterType"
     static let filterMenuBarCountByCalendar = "filterMenuBarCountByCalendar"
     static let preferredLanguage = "preferredLanguage"
-    static let copyTemplate = "copyTemplate"
-    static let copyTrimEnabled = "copyTrimEnabled"
+    static let copyProperties = "copyProperties"
+    static let copyIncludePropertyNames = "copyIncludePropertyNames"
     static let mainPopoverSize = "mainPopoverSize"
     static let showUpcomingReminderListName = "showUpcomingReminderListName"
     static let showRemindersWithDueDateOnTop = "showRemindersWithDueDateOnTop"
@@ -251,19 +251,24 @@ class UserPreferences: ObservableObject {
         }
     }
     
-    @Published var copyTemplate: String = {
-        return defaults.string(forKey: PreferencesKeys.copyTemplate) ?? "{title}"
+    @Published var copyPropertyOptions: [CopyPropertyOption] = {
+        guard let data = defaults.data(forKey: PreferencesKeys.copyProperties),
+              let decoded = try? JSONDecoder().decode([CopyPropertyOption].self, from: data) else {
+            return CopyProperty.defaultOptions
+        }
+        return CopyProperty.reconciledOptions(from: decoded)
     }() {
         didSet {
-            UserPreferences.defaults.set(copyTemplate, forKey: PreferencesKeys.copyTemplate)
+            let data = try? JSONEncoder().encode(copyPropertyOptions)
+            UserPreferences.defaults.set(data, forKey: PreferencesKeys.copyProperties)
         }
     }
 
-    @Published var copyTrimEnabled: Bool = {
-        return defaults.boolWithDefaultValueTrue(forKey: PreferencesKeys.copyTrimEnabled)
+    @Published var copyIncludePropertyNames: Bool = {
+        return defaults.bool(forKey: PreferencesKeys.copyIncludePropertyNames)
     }() {
         didSet {
-            UserPreferences.defaults.set(copyTrimEnabled, forKey: PreferencesKeys.copyTrimEnabled)
+            UserPreferences.defaults.set(copyIncludePropertyNames, forKey: PreferencesKeys.copyIncludePropertyNames)
         }
     }
 

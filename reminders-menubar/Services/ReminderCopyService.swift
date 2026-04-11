@@ -3,65 +3,65 @@ import EventKit
 
 enum ReminderCopyService {
     static func copyReminder(_ reminder: EKReminder) {
-        let template = UserPreferences.shared.copyTemplate
-        let trimEnabled = UserPreferences.shared.copyTrimEnabled
-        let formatted = formatReminder(reminder: reminder, template: template, trim: trimEnabled)
+        let text = buildFormattedText(
+            options: UserPreferences.shared.copyPropertyOptions,
+            variables: buildVariables(from: reminder),
+            includePropertyNames: UserPreferences.shared.copyIncludePropertyNames
+        )
 
+        guard !text.isEmpty else { return }
         NSPasteboard.general.clearContents()
-        NSPasteboard.general.setString(formatted, forType: .string)
+        NSPasteboard.general.setString(text, forType: .string)
     }
 
-    static func previewText(template: String, trim: Bool) -> String {
-        let sampleVariables: [String: String] = [
-            "title": "Buy groceries",
-            "notes": "From the farmers market",
-            "date": "Tomorrow at 3:00 PM",
-            "priority": "High",
-            "list": "Shopping",
-            "url": "https://example.com"
+    static func previewText(options: [CopyPropertyOption], includePropertyNames: Bool) -> String {
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date()) ?? Date()
+        let sampleDate = Calendar.current.date(bySettingHour: 15, minute: 0, second: 0, of: tomorrow) ?? tomorrow
+
+        let sampleVariables: [CopyProperty: String] = [
+            .title: rmbLocalized(.copySampleTitle),
+            .notes: rmbLocalized(.copySampleNotes),
+            .date: sampleDate.absoluteDateDescription(withTime: true),
+            .priority: priorityLabel(for: .high),
+            .list: rmbLocalized(.copySampleList),
+            .url: "https://example.com/recipe"
         ]
 
-        var result = template
-
-        if trim {
-            result = trimmedSubstitution(template: result, variables: sampleVariables)
-        } else {
-            for (key, value) in sampleVariables {
-                result = result.replacingOccurrences(of: "{\(key)}", with: value)
-            }
-        }
-
-        return result
+        return buildFormattedText(
+            options: options,
+            variables: sampleVariables,
+            includePropertyNames: includePropertyNames
+        )
     }
 
-    // MARK: - Private
-
-    private static func formatReminder(reminder: EKReminder, template: String, trim: Bool) -> String {
-        let variables = buildVariables(from: reminder)
-        var result = template
-
-        if trim {
-            result = trimmedSubstitution(template: result, variables: variables)
-        } else {
-            for (key, value) in variables {
-                result = result.replacingOccurrences(of: "{\(key)}", with: value)
+    private static func buildFormattedText(
+        options: [CopyPropertyOption],
+        variables: [CopyProperty: String],
+        includePropertyNames: Bool
+    ) -> String {
+        return options
+            .filter(\.isEnabled)
+            .compactMap { option -> String? in
+                guard let value = variables[option.property], !value.isEmpty else {
+                    return nil
+                }
+                if includePropertyNames {
+                    return "\(option.property.displayName): \(value)"
+                }
+                return value
             }
-        }
-
-        return result
+            .joined(separator: "\n")
     }
 
-    private static func buildVariables(from reminder: EKReminder) -> [String: String] {
-        var variables: [String: String] = [:]
-
-        variables["title"] = reminder.title ?? ""
-        variables["notes"] = reminder.notes ?? ""
-        variables["date"] = reminder.relativeDateDescription ?? ""
-        variables["priority"] = priorityLabel(for: reminder.ekPriority)
-        variables["list"] = reminder.calendar?.title ?? ""
-        variables["url"] = reminder.attachedUrl?.absoluteString ?? ""
-
-        return variables
+    private static func buildVariables(from reminder: EKReminder) -> [CopyProperty: String] {
+        return [
+            .title: reminder.title ?? "",
+            .notes: reminder.notes ?? "",
+            .date: reminder.dueDateComponents?.date?.absoluteDateDescription(withTime: reminder.hasTime) ?? "",
+            .priority: priorityLabel(for: reminder.ekPriority),
+            .list: reminder.calendar?.title ?? "",
+            .url: reminder.attachedUrl?.absoluteString ?? ""
+        ]
     }
 
     private static func priorityLabel(for priority: EKReminderPriority) -> String {
@@ -69,44 +69,5 @@ enum ReminderCopyService {
             return ""
         }
         return priority.title
-    }
-
-    private static func trimmedSubstitution(template: String, variables: [String: String]) -> String {
-        let lines = template.components(separatedBy: "\\n")
-        var resultLines: [String] = []
-
-        for line in lines {
-            var processedLine = line
-
-            for (key, value) in variables {
-                processedLine = processedLine.replacingOccurrences(of: "{\(key)}", with: value)
-            }
-
-            // Remove dangling separators around empty values
-            // Clean up patterns like "text - " or " - text" or " | " left by empty values
-            processedLine = processedLine.replacingOccurrences(
-                of: "\\s*[\\-\\|:,]\\s*$",
-                with: "",
-                options: .regularExpression
-            )
-            processedLine = processedLine.replacingOccurrences(
-                of: "^\\s*[\\-\\|:,]\\s*",
-                with: "",
-                options: .regularExpression
-            )
-            // Clean up double separators (e.g., "title |  | list" -> "title | list")
-            processedLine = processedLine.replacingOccurrences(
-                of: "\\s*[\\-\\|:,]\\s*[\\-\\|:,]\\s*",
-                with: " ",
-                options: .regularExpression
-            )
-
-            let trimmed = processedLine.trimmingCharacters(in: .whitespaces)
-            if !trimmed.isEmpty {
-                resultLines.append(processedLine)
-            }
-        }
-
-        return resultLines.joined(separator: "\n")
     }
 }

@@ -95,11 +95,22 @@ enum RemindersMenuBarLocalizedKeys: String {
     case copiedToastMessage
     case reminderEditPopoverSaveButton
     case newReminderButtonHelp
-    case copyFormatTemplateLabel
-    case copyFormatTemplateHint
-    case copyFormatAvailableVariables
-    case copyFormatTrimOption
-    case copyFormatPreviewLabel
+    case copyPreviewSettingsLabel
+    case copyPropertiesSettingsLabel
+    case copyPropertiesSettingsHint
+    case copyIncludePropertyNamesOption
+    case copyNoPropertiesSelectedHint
+    case copyPropertyTitle
+    case copyPropertyNotes
+    case copyPropertyDate
+    case copyPropertyPriority
+    case copyPropertyList
+    case copyPropertyUrl
+    case movePropertyUpAccessibilityLabel
+    case movePropertyDownAccessibilityLabel
+    case copySampleTitle
+    case copySampleNotes
+    case copySampleList
     case showUpcomingRemindersSettingsOption
     case showExternalLinksInReminderItemOption
     case showUpcomingReminderListNameOption

@@ -49,13 +49,21 @@ extension Date {
     }
     
     func relativeDateDescription(withTime showTimeDescription: Bool) -> String {
+        return dateDescription(withTime: showTimeDescription, relativeFormatting: true)
+    }
+
+    func absoluteDateDescription(withTime showTimeDescription: Bool) -> String {
+        return dateDescription(withTime: showTimeDescription, relativeFormatting: false)
+    }
+
+    private func dateDescription(withTime showTimeDescription: Bool, relativeFormatting: Bool) -> String {
         let locale = rmbTimeFormattedLocale()
         let dateFormatter = DateFormatter()
 
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         dateFormatter.locale = locale
-        dateFormatter.doesRelativeDateFormatting = true
+        dateFormatter.doesRelativeDateFormatting = relativeFormatting
         let dateString = dateFormatter.string(from: self)
 
         guard showTimeDescription else {
