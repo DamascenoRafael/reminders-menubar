@@ -21,6 +21,9 @@ struct ReminderEditView: View {
 
     @State private var showingRemoveAlert = false
     @State private var removeButtonIsHovered = false
+    @State private var copyButtonIsHovered = false
+    @State private var isCopied = false
+    @State private var copiedDismissWork: DispatchWorkItem?
 
     private var reminderHasChildren: Bool {
         if case .edit(_, let hasChildren) = mode {
@@ -96,7 +99,7 @@ struct ReminderEditView: View {
     // MARK: - Cancel
 
     @ViewBuilder
-    func cancelHeader() -> some View {
+    private func cancelHeader() -> some View {
         HStack {
             Spacer()
 
@@ -118,7 +121,7 @@ struct ReminderEditView: View {
     // MARK: - Title & Notes
 
     @ViewBuilder
-    func titleAndNotesSection() -> some View {
+    private func titleAndNotesSection() -> some View {
         RmbHighlightedTextField(
             placeholder: rmbLocalized(.editReminderTitleTextFieldPlaceholder),
             text: $rmbReminder.title,
@@ -145,7 +148,7 @@ struct ReminderEditView: View {
     // MARK: - External Links
 
     @ViewBuilder
-    func externalLinksSection(reminder: EKReminder) -> some View {
+    private func externalLinksSection(reminder: EKReminder) -> some View {
         HStack(alignment: .top) {
             Image(systemName: "link")
                 .font(.system(size: 12))
@@ -186,34 +189,10 @@ struct ReminderEditView: View {
     // MARK: - Actions
 
     @ViewBuilder
-    func actionButtons() -> some View {
-        HStack {
+    private func actionButtons() -> some View {
+        HStack(spacing: 12) {
             if case .edit(let ekReminder, _) = mode {
-                Button {
-                    showingRemoveAlert = true
-                } label: {
-                    Image(systemName: "trash")
-                        .foregroundColor(removeButtonIsHovered ? .red : .secondary)
-                        .frame(width: 24, height: 24)
-                }
-                .buttonStyle(.borderless)
-                .background(
-                    removeButtonIsHovered
-                        ? Color.rmbColor(
-                            for: .buttonHover,
-                            isTransparencyEnabled: userPreferences.isTransparencyEnabled
-                        )
-                        : nil
-                )
-                .cornerRadius(8)
-                .onHover { hovering in
-                    removeButtonIsHovered = hovering
-                }
-                .alert(isPresented: $showingRemoveAlert) {
-                    removeReminderAlert(for: ekReminder) {
-                        isPresented = false
-                    }
-                }
+                editActionButtons(for: ekReminder)
             }
 
             Spacer()
@@ -233,6 +212,56 @@ struct ReminderEditView: View {
             .modifier(ConfirmButtonModifier())
             .disabled(isSaveDisabled)
             .keyboardShortcut(.return, modifiers: .command)
+        }
+    }
+
+    @ViewBuilder
+    private func editActionButtons(for ekReminder: EKReminder) -> some View {
+        let buttonHoverColor = Color.rmbColor(
+            for: .buttonHover, isTransparencyEnabled: userPreferences.isTransparencyEnabled
+        )
+
+        Button {
+            showingRemoveAlert = true
+        } label: {
+            Image(systemName: "trash")
+                .foregroundColor(removeButtonIsHovered ? .red : .secondary)
+                .frame(width: 24, height: 24)
+        }
+        .buttonStyle(.borderless)
+        .background(removeButtonIsHovered ? buttonHoverColor : nil)
+        .cornerRadius(8)
+        .onHover { hovering in
+            removeButtonIsHovered = hovering
+        }
+        .alert(isPresented: $showingRemoveAlert) {
+            removeReminderAlert(for: ekReminder) {
+                isPresented = false
+            }
+        }
+
+        Button {
+            ReminderCopyService.copyReminder(ekReminder)
+            isCopied = true
+            copiedDismissWork?.cancel()
+            let work = DispatchWorkItem { isCopied = false }
+            copiedDismissWork = work
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: work)
+        } label: {
+            HStack(spacing: 4) {
+                Image(systemName: isCopied ? "checkmark" : "doc.on.doc")
+                    .frame(width: 24, height: 24)
+                Text(isCopied ? rmbLocalized(.copiedToastMessage) : rmbLocalized(.copyReminderOptionButton))
+                    .padding(.trailing, 6)
+            }
+            .foregroundColor(isCopied ? .green : (copyButtonIsHovered ? .accentColor : .secondary))
+            .padding(.horizontal, 4)
+        }
+        .buttonStyle(.borderless)
+        .background(copyButtonIsHovered ? buttonHoverColor : nil)
+        .cornerRadius(8)
+        .onHover { hovering in
+            copyButtonIsHovered = hovering
         }
     }
 
