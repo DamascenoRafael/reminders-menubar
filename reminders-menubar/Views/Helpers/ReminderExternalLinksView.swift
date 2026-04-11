@@ -69,15 +69,17 @@ private struct CopyLinkButton: View {
     let url: URL
 
     @State private var isCopied = false
+    @State private var copiedDismissWork: DispatchWorkItem?
 
     var body: some View {
         Button {
             NSPasteboard.general.clearContents()
             NSPasteboard.general.setString(url.absoluteString, forType: .string)
             isCopied = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                isCopied = false
-            }
+            copiedDismissWork?.cancel()
+            let work = DispatchWorkItem { isCopied = false }
+            copiedDismissWork = work
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: work)
         } label: {
             Image(systemName: isCopied ? "checkmark" : "doc.on.doc")
                 .font(.system(size: 10))
