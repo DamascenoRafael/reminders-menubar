@@ -54,8 +54,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         AppDelegate.shared = self
-        
-        AppUpdateCheckHelper.shared.startBackgroundActivity()
 
         configurePopover()
         configureMenuBarButton()

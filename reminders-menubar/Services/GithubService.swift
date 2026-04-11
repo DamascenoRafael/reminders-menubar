@@ -4,28 +4,13 @@ import Foundation
 class GithubService {
     static let urlSession = URLSession(configuration: .ephemeral)
     
-    static func getLatestRelease(completion: @escaping (Result<Release, Error>) -> Void) {
+    static func getLatestRelease() async throws -> Release {
         guard let latestReleaseUrl = URL(string: ApiGithubConstants.latestRelease) else {
-            return
+            throw URLError(.badURL)
         }
         
         let request = URLRequest(url: latestReleaseUrl, cachePolicy: .reloadIgnoringLocalCacheData)
-        
-        urlSession.dataTask(with: request) { data, _, error in
-            guard let data else {
-                if let error {
-                    completion(.failure(error))
-                }
-                return
-            }
-            
-            do {
-                let release = try JSONDecoder().decode(Release.self, from: data)
-                completion(.success(release))
-            } catch let error {
-                completion(.failure(error))
-            }
-        }
-        .resume()
+        let (data, _) = try await urlSession.data(for: request)
+        return try JSONDecoder().decode(Release.self, from: data)
     }
 }

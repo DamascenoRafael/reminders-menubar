@@ -1,59 +1,57 @@
 import SwiftUI
 
+@MainActor
 class AppUpdateCheckHelper: ObservableObject {
     static let shared = AppUpdateCheckHelper()
-    
+
+    @Published private(set) var latestRelease: Release?
+    @Published private(set) var isOutdated = false
+
+    private let currentRelease = Release(version: AppConstants.currentVersion)
+    private let activityScheduler = NSBackgroundActivityScheduler(
+        identifier: AppConstants.mainBundleId + ".updatecheck"
+    )
+
     private init() {
-        // This prevents others from using the default '()' initializer for this class.
-        
-        checkLatestRelease()
+        configureScheduler()
+        Task {
+            await checkLatestRelease()
+        }
     }
-    
-    private let updateScheduler: NSBackgroundActivityScheduler = {
-        let activityScheduler = NSBackgroundActivityScheduler(identifier: AppConstants.mainBundleId + ".updatecheck")
+
+    deinit {
+        activityScheduler.invalidate()
+    }
+
+    private func configureScheduler() {
         activityScheduler.repeats = true
         activityScheduler.interval = 10 * 60 * 60 // 10 hours
-        return activityScheduler
-    }()
-    
-    @Published private(set) var isOutdated = false
-    
-    private let currentRelease = Release(version: AppConstants.currentVersion)
-    
-    private(set) var latestRelease: Release? {
-        didSet {
-            guard let latestRelease else {
-                return
-            }
-            
-            // TODO: Prefer receive(on:options:) over explicit use of dispatch queues.
-            // https://developer.apple.com/documentation/combine/fail/receive(on:options:)
-            DispatchQueue.main.async {
-                self.isOutdated = self.currentRelease < latestRelease
-            }
-        }
-    }
-    
-    func checkLatestRelease() {
-        GithubService.getLatestRelease { result in
-            switch result {
-            case .success(let release):
-                self.latestRelease = release
-            case .failure(let error):
-                print("Error getting latest release from github:", error.localizedDescription)
-            }
-        }
-    }
-    
-    func startBackgroundActivity() {
-        updateScheduler.schedule { completion in
-            if self.updateScheduler.shouldDefer {
-                completion(.deferred)
-                return
-            }
 
-            self.checkLatestRelease()
-            completion(.finished)
+        activityScheduler.schedule { [weak self] completion in
+            Task { @MainActor in
+                guard let self else {
+                    completion(.finished)
+                    return
+                }
+
+                if self.activityScheduler.shouldDefer {
+                    completion(.deferred)
+                    return
+                }
+
+                await self.checkLatestRelease()
+                completion(.finished)
+            }
+        }
+    }
+
+    private func checkLatestRelease() async {
+        do {
+            let release = try await GithubService.getLatestRelease()
+            self.latestRelease = release
+            self.isOutdated = self.currentRelease < release
+        } catch {
+            print("Error getting latest release from github:", error.localizedDescription)
         }
     }
 }
