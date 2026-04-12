@@ -9,12 +9,10 @@ enum SettingsTab: Hashable {
 }
 
 struct SettingsView: View {
-    @State private var selectedTab: SettingsTab = .general
-
-    static var initialTab: SettingsTab = .general
+    @ObservedObject private var coordinator = SettingsCoordinator.shared
 
     var body: some View {
-        TabView(selection: $selectedTab) {
+        TabView(selection: $coordinator.selectedTab) {
             GeneralSettingsTab()
                 .tabItem {
                     Label(rmbLocalized(.generalSettingsTab), systemImage: "gearshape")
@@ -44,10 +42,6 @@ struct SettingsView: View {
                     Label(rmbLocalized(.aboutSettingsTab), systemImage: "info.circle")
                 }
                 .tag(SettingsTab.about)
-        }
-        .onAppear {
-            selectedTab = Self.initialTab
-            Self.initialTab = .general
         }
         .frame(width: 620)
     }

@@ -8,7 +8,7 @@ extension Notification.Name {
 extension NSApplication {
     @MainActor
     func openAppSettings(tab: SettingsTab = .general) {
-        SettingsView.initialTab = tab
+        SettingsCoordinator.shared.selectedTab = tab
         AppDelegate.shared.popover.performClose(nil)
 
         if #available(macOS 14.0, *) {
