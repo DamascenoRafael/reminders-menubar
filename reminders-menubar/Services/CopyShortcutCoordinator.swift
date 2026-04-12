@@ -23,16 +23,20 @@ final class CopyShortcutCoordinator: ObservableObject {
 
     private func installMonitor() {
         monitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] event in
-            MainActor.assumeIsolated {
-                guard let self,
-                      self.hoveredReminderId != nil,
-                      event.modifierFlags.intersection(.deviceIndependentFlagsMask) == .command,
-                      event.charactersIgnoringModifiers?.lowercased() == "c" else {
-                    return event
+            guard event.modifierFlags.intersection(.deviceIndependentFlagsMask) == .command,
+                  event.charactersIgnoringModifiers?.lowercased() == "c" else {
+                return event
+            }
+
+            let handled = MainActor.assumeIsolated {
+                guard let self, self.hoveredReminderId != nil else {
+                    return false
                 }
                 self.copyAction?()
-                return nil
+                return true
             }
+
+            return handled ? nil : event
         }
     }
 
