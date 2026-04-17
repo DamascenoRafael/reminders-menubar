@@ -5,7 +5,7 @@ enum RemindersMenuBarLocalizedKeys: String {
     case newReminderAutoSuggestTodayOption
     case newReminderRemoveParsedDateOption
     case remindersOptionsButtonHelp
-    case editReminderOptionButton
+    case editReminderButton
     case editReminderTitleTextFieldPlaceholder
     case editReminderExternalLinksViewOnlyLabel
     case editReminderNotesTextFieldPlaceholder
@@ -23,7 +23,7 @@ enum RemindersMenuBarLocalizedKeys: String {
     case editReminderPriorityMediumOption
     case editReminderPriorityHighOption
     case editReminderPriorityNoneOption
-    case removeReminderOptionButton
+    case removeReminderButton
     case removeReminderAlertTitle
     case removeReminderAlertMessage
     case removeReminderAlertConfirmButton
@@ -43,19 +43,19 @@ enum RemindersMenuBarLocalizedKeys: String {
     case showMoreRemindersButton
     case recentRemindersLoadingMessage
     case updateAvailableNoticeButton
-    case launchAtLoginOptionButton
+    case launchAtLoginOption
     case appAppearanceReduceTransparencyOption
     case appColorSchemeSettingsLabel
-    case appAppearanceColorSystemModeOptionButton
-    case appAppearanceColorLightModeOptionButton
-    case appAppearanceColorDarkModeOptionButton
-    case menuBarIconSettingsMenu
-    case menuBarCounterSettingsMenu
-    case filterMenuBarCountByCalendarOptionButton
-    case showMenuBarDueCountOptionButton
-    case showMenuBarTodayCountOptionButton
-    case showMenuBarAllRemindersCountOptionButton
-    case showMenuBarNoCountOptionButton
+    case appAppearanceColorSystemModeOption
+    case appAppearanceColorLightModeOption
+    case appAppearanceColorDarkModeOption
+    case menuBarIconSettingsLabel
+    case menuBarCounterSettingsLabel
+    case filterMenuBarCountByCalendarOption
+    case showMenuBarDueCountOption
+    case showMenuBarTodayCountOption
+    case showMenuBarAllRemindersCountOption
+    case showMenuBarNoCountOption
     case reloadRemindersDataButton
     case appAboutButton
     case appQuitButton
@@ -84,20 +84,20 @@ enum RemindersMenuBarLocalizedKeys: String {
     case upcomingRemindersInAMonthSectionTitle
     case upcomingRemindersScheduledSectionTitle
     case upcomingRemindersFilterByCalendarEnabledHelp // swiftlint:disable:this identifier_name
-    case filterUpcomingRemindersByCalendarOptionButton // swiftlint:disable:this identifier_name
+    case filterUpcomingRemindersByCalendarOption // swiftlint:disable:this identifier_name
     case appNoRemindersAccessAlertMessage
     case appNoRemindersAccessAlertReasonDescription // swiftlint:disable:this identifier_name
     case appNoRemindersAccessAlertActionDescription // swiftlint:disable:this identifier_name
     case openSystemPreferencesButton
     case openAppleRemindersButton
     case okButton
-    case preferredLanguageMenu
+    case preferredLanguageSettingsLabel
     case preferredLanguageSystemSettingsOption
     case reminderRecurrenceDailyLabel
     case reminderRecurrenceWeeklyLabel
     case reminderRecurrenceMonthlyLabel
     case reminderRecurrenceYearlyLabel
-    case copyReminderOptionButton
+    case copyReminderButton
     case copiedToastMessage
     case reminderEditPopoverSaveButton
     case newReminderButtonHelp
@@ -112,6 +112,8 @@ enum RemindersMenuBarLocalizedKeys: String {
     case copyPropertyPriority
     case copyPropertyList
     case copyPropertyUrl
+    case copyPropertyEnabledAccessibilityValue
+    case copyPropertyDisabledAccessibilityValue
     case movePropertyUpAccessibilityLabel
     case movePropertyDownAccessibilityLabel
     case copySampleTitle

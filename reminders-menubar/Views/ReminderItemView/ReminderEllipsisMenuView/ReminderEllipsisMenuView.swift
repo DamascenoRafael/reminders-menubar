@@ -40,7 +40,7 @@ struct ReminderEllipsisMenuView: View {
         }) {
             HStack {
                 Image(systemName: "doc.on.doc")
-                Text(rmbLocalized(.copyReminderOptionButton))
+                Text(rmbLocalized(.copyReminderButton))
             }
         }
     }
@@ -51,7 +51,7 @@ struct ReminderEllipsisMenuView: View {
         }) {
             HStack {
                 Image(systemName: "pencil")
-                Text(rmbLocalized(.editReminderOptionButton))
+                Text(rmbLocalized(.editReminderButton))
             }
         }
     }
@@ -62,7 +62,7 @@ struct ReminderEllipsisMenuView: View {
         }) {
             HStack {
                 Image(systemName: "trash")
-                Text(rmbLocalized(.removeReminderOptionButton))
+                Text(rmbLocalized(.removeReminderButton))
             }
         }
     }

@@ -26,7 +26,7 @@ struct ReminderSettingsTab: View {
 
                 Toggle(isOn: $userPreferences.filterUpcomingRemindersByCalendar) {
                     HStack {
-                        Text(rmbLocalized(.filterUpcomingRemindersByCalendarOptionButton))
+                        Text(rmbLocalized(.filterUpcomingRemindersByCalendarOption))
                         Image(systemName: "line.horizontal.3.decrease.circle")
                     }
                 }

@@ -251,7 +251,7 @@ struct ReminderEditView: View {
             HStack(spacing: 4) {
                 Image(systemName: isCopied ? "checkmark" : "doc.on.doc")
                     .frame(width: 24, height: 24)
-                Text(isCopied ? rmbLocalized(.copiedToastMessage) : rmbLocalized(.copyReminderOptionButton))
+                Text(isCopied ? rmbLocalized(.copiedToastMessage) : rmbLocalized(.copyReminderButton))
                     .padding(.trailing, 6)
             }
             .foregroundColor(isCopied ? .green : (copyButtonIsHovered ? .accentColor : .secondary))

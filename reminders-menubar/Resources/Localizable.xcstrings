@@ -251,7 +251,7 @@
         }
       }
     },
-    "appAppearanceColorDarkModeOptionButton" : {
+    "appAppearanceColorDarkModeOption" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
@@ -300,6 +300,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Scuro"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ダークモード"
           }
         },
         "ko" : {
@@ -370,7 +376,7 @@
         }
       }
     },
-    "appAppearanceColorLightModeOptionButton" : {
+    "appAppearanceColorLightModeOption" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
@@ -419,6 +425,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chiaro"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライトモード"
           }
         },
         "ko" : {
@@ -489,7 +501,7 @@
         }
       }
     },
-    "appAppearanceColorSystemModeOptionButton" : {
+    "appAppearanceColorSystemModeOption" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
@@ -538,6 +550,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aspetto di sistema"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "システム設定に合わせる"
           }
         },
         "ko" : {
@@ -1361,16 +1379,124 @@
     "appSettingsButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nastavení…"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen…"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Settings…"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajustes…"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mga Setting…"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réglages…"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pengaturan…"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Impostazioni…"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定…"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "설정…"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instellingen…"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ustawienia…"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configurações…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройки…"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nastavenia…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayarlar…"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Налаштування…"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cài đặt…"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置…"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定…"
           }
         }
       }
@@ -1551,6 +1677,12 @@
             "value" : "Data di scadenza"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "期限"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1575,10 +1707,34 @@
             "value" : "Data"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Срок"
+          }
+        },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Termín ukončenia"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitiş tarihi"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Термін"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ngày đến hạn"
           }
         },
         "zh-Hans" : {
@@ -1648,8 +1804,8 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "移動"
+            "state" : "translated",
+            "value" : "リスト"
           }
         },
         "ko" : {
@@ -1667,7 +1823,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Przenieś do ..."
+            "value" : "Lista"
           }
         },
         "pt-BR" : {
@@ -1678,8 +1834,8 @@
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Перейти к ..."
+            "state" : "translated",
+            "value" : "Список"
           }
         },
         "sk" : {
@@ -1690,20 +1846,20 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Taşı ..."
+            "state" : "translated",
+            "value" : "Liste"
           }
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Перенести у ..."
+            "state" : "translated",
+            "value" : "Список"
           }
         },
         "vi" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Di chuyển tới ..."
+            "state" : "translated",
+            "value" : "Danh sách"
           }
         },
         "zh-Hans" : {
@@ -2845,6 +3001,256 @@
         }
       }
     },
+    "copyPropertyDisabledAccessibilityValue" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zakázáno"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deaktiviert"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disabled"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desactivado"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Naka-disable"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Désactivé"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dinonaktifkan"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disabilitato"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無効"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "비활성화됨"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uitgeschakeld"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyłączono"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desativado"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отключено"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zakázané"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devre dışı"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вимкнено"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đã tắt"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已禁用"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已停用"
+          }
+        }
+      }
+    },
+    "copyPropertyEnabledAccessibilityValue" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Povoleno"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktiviert"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enabled"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activado"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Naka-enable"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activé"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diaktifkan"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abilitato"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有効"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "활성화됨"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingeschakeld"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Włączono"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ativado"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Включено"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Povolené"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Etkin"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Увімкнено"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đã bật"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已启用"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已啟用"
+          }
+        }
+      }
+    },
     "copyPropertyList" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3470,7 +3876,7 @@
         }
       }
     },
-    "copyReminderOptionButton" : {
+    "copyReminderButton" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
@@ -4095,9 +4501,6 @@
         }
       }
     },
-    "disabled" : {
-
-    },
     "dragToResizeHelp" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4223,6 +4626,131 @@
         }
       }
     },
+    "editReminderButton" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upravit"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bearbeiten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baguhin"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifier"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifica"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "編集"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "수정"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bewerken"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edytuj"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Редактировать"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upraviť"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Düzenle"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Редагувати"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chỉnh sửa"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "编辑"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "編輯"
+          }
+        }
+      }
+    },
     "editReminderDueDateNextWeekOption" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4274,6 +4802,12 @@
             "value" : "Prossima settimana"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "来週"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4298,10 +4832,34 @@
             "value" : "Próxima semana"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "На следующей неделе"
+          }
+        },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nasledujúci týždeň"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gelecek hafta"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Наступного тижня"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tuần sau"
           }
         },
         "zh-Hans" : {
@@ -4369,6 +4927,12 @@
             "value" : "Nessuna"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "なし"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4393,10 +4957,34 @@
             "value" : "Nenhuma"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет"
+          }
+        },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Žiadny"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yok"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Немає"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không"
           }
         },
         "zh-Hans" : {
@@ -4464,6 +5052,12 @@
             "value" : "Questo fine settimana"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今週末"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4488,10 +5082,34 @@
             "value" : "Este fim de semana"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "На выходных"
+          }
+        },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cez víkend"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu hafta sonu"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ці вихідні"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cuối tuần này"
           }
         },
         "zh-Hans" : {
@@ -4559,6 +5177,12 @@
             "value" : "Oggi"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今日"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4583,10 +5207,34 @@
             "value" : "Hoje"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сегодня"
+          }
+        },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dnes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сьогодні"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hôm nay"
           }
         },
         "zh-Hans" : {
@@ -4654,6 +5302,12 @@
             "value" : "Domani"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "明日"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4678,10 +5332,34 @@
             "value" : "Amanhã"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Завтра"
+          }
+        },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zajtra"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yarın"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Завтра"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ngày mai"
           }
         },
         "zh-Hans" : {
@@ -4944,131 +5622,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "附註"
-          }
-        }
-      }
-    },
-    "editReminderOptionButton" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Upravit"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bearbeiten"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Edit"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Editar"
-          }
-        },
-        "fil-PH" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Baguhin"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Modifier"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Edit"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Modifica"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "編集"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "수정"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bewerken"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Edytuj"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Editar"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Редактировать"
-          }
-        },
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Upraviť"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Düzenle"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Редагувати"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chỉnh sửa"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "编辑"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "編輯"
           }
         }
       }
@@ -6823,11 +7376,7 @@
         }
       }
     },
-    "enabled" : {
-      "comment" : "A label describing an enabled state.",
-      "isCommentAutoGenerated" : true
-    },
-    "filterMenuBarCountByCalendarOptionButton" : {
+    "filterMenuBarCountByCalendarOption" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
@@ -6878,6 +7427,12 @@
             "value" : "Filtra per liste selezionate"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選択したリストで絞り込む"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6902,10 +7457,34 @@
             "value" : "Filtrar por listas selecionadas"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фильтровать по выбранным спискам"
+          }
+        },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Filtrovať podľa vybraných zoznamov"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seçili listelere göre filtrele"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фільтрувати за вибраними списками"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lọc theo danh sách đã chọn"
           }
         },
         "zh-Hans" : {
@@ -6922,7 +7501,7 @@
         }
       }
     },
-    "filterUpcomingRemindersByCalendarOptionButton" : {
+    "filterUpcomingRemindersByCalendarOption" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
@@ -6973,6 +7552,12 @@
             "value" : "Filtra per liste selezionate"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選択したリストで絞り込む"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6997,10 +7582,34 @@
             "value" : "Filtrar por listas selecionadas"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фильтровать по выбранным спискам"
+          }
+        },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Filtrovať podľa vybraných zoznamov"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seçili listelere göre filtrele"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фільтрувати за вибраними списками"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lọc theo danh sách đã chọn"
           }
         },
         "zh-Hans" : {
@@ -7517,7 +8126,7 @@
         }
       }
     },
-    "launchAtLoginOptionButton" : {
+    "launchAtLoginOption" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
@@ -7642,246 +8251,252 @@
         }
       }
     },
-    "menuBarCounterSettingsMenu" : {
+    "menuBarCounterSettingsLabel" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Počítadlo"
+            "value" : "Počítadlo:"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Anzahl in Menüleiste"
+            "value" : "Anzahl in Menüleiste:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Menu bar counter"
+            "value" : "Menu bar counter:"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Indicador en la barra de menú"
+            "value" : "Indicador en la barra de menú:"
           }
         },
         "fil-PH" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Counter sa menu bar"
+            "value" : "Counter sa menu bar:"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Compteur de la barre de menu"
+            "value" : "Compteur de la barre de menu:"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Penghitung menu bar"
+            "value" : "Penghitung menu bar:"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Contatore barra dei menu"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "메뉴 막대 카운트"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Menubalk teller"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pokaż liczbę na pasku"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Contagem da barra de menu"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Счетчик строки меню"
-          }
-        },
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Počítadlo v lište"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Menü çubuğu sayacı"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Menu bar counter"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bộ đếm ở thanh menu"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "菜单栏计数"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "選單列計數"
-          }
-        }
-      }
-    },
-    "menuBarIconSettingsMenu" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ikona"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Menüleistensymbol"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Menu bar icon"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ícono de la barra de menú"
-          }
-        },
-        "fil-PH" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Icon sa menu bar"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Icon de la barre de menu"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ikon menu bar"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Icona barra dei menu"
+            "value" : "Contatore barra dei menu:"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "メニューバー"
+            "state" : "translated",
+            "value" : "メニューバーカウンター:"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "메뉴 막대 아이콘"
+            "value" : "메뉴 막대 카운트:"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Menubalkpictogram"
+            "value" : "Menubalk teller:"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ikona na Pasku Menu"
+            "value" : "Pokaż liczbę na pasku:"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ícone da barra de menu"
+            "value" : "Contagem da barra de menu:"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Значок строки меню"
+            "value" : "Счетчик строки меню:"
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ikona v lište"
+            "value" : "Počítadlo v lište:"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Menü çubuğu simgesi"
+            "value" : "Menü çubuğu sayacı:"
           }
         },
         "uk" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Смуга меню"
+            "state" : "translated",
+            "value" : "Лічильник смуги меню:"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Biểu tượng ở thanh menu"
+            "value" : "Bộ đếm ở thanh menu:"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "菜单栏图标"
+            "value" : "菜单栏计数:"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "選單列圖示"
+            "value" : "選單列計數:"
+          }
+        }
+      }
+    },
+    "menuBarIconSettingsLabel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ikona:"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menüleistensymbol:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menu bar icon:"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ícono de la barra de menú:"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Icon sa menu bar:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Icon de la barre de menu:"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ikon menu bar:"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Icona barra dei menu:"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メニューバーアイコン:"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "메뉴 막대 아이콘:"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menubalkpictogram:"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ikona na Pasku Menu:"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ícone da barra de menu:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Значок строки меню:"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ikona v lište:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menü çubuğu simgesi:"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Іконка смуги меню:"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biểu tượng ở thanh menu:"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "菜单栏图标:"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選單列圖示:"
           }
         }
       }
@@ -8514,16 +9129,124 @@
     "newReminderButtonHelp" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nová připomínka"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neue Erinnerung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "New Reminder"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuevo recordatorio"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bagong Paalala"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nouveau rappel"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pengingat Baru"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nuovo promemoria"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新規リマインダー"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "새로운 미리 알림"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nieuwe herinnering"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nowe przypomnienie"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Novo Lembrete"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Новое напоминание"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nová pripomienka"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeni Hatırlatıcı"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нове нагадування"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lời nhắc mới"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新建提醒"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新增提醒事項"
           }
         }
       }
@@ -9034,121 +9757,121 @@
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Otevřít App Store"
+            "value" : "Otevřít %@"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App Store öffnen"
+            "value" : "%@ öffnen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Open App Store"
+            "value" : "Open %@"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abrir App Store"
+            "value" : "Abrir %@"
           }
         },
         "fil-PH" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Buksan ang App Store"
+            "value" : "Buksan ang %@"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ouvrir l’App Store"
+            "value" : "Ouvrir l’%@"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Buka App Store"
+            "value" : "Buka %@"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Apri App Store"
+            "value" : "Apri %@"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App Storeを開く"
+            "value" : "%@を開く"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App Store 열기"
+            "value" : "%@ 열기"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Open App Store"
+            "value" : "Open %@"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Otwórz App Store"
+            "value" : "Otwórz %@"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abrir App Store"
+            "value" : "Abrir %@"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Открыть App Store"
+            "value" : "Открыть %@"
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Otvoriť App Store"
+            "value" : "Otvoriť %@"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App Store’u Aç"
+            "value" : "%@’u Aç"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Відкрити App Store"
+            "value" : "Відкрити %@"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mở App Store"
+            "value" : "Mở %@"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "打开 App Store"
+            "value" : "打开 %@"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "打開 App Store"
+            "value" : "打開 %@"
           }
         }
       }
@@ -9409,246 +10132,246 @@
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Velikost okna"
+            "value" : "Velikost okna:"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fenstergröße"
+            "value" : "Fenstergröße:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Window size"
+            "value" : "Window size:"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tamaño de ventana"
+            "value" : "Tamaño de ventana:"
           }
         },
         "fil-PH" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Laki ng window"
+            "value" : "Laki ng window:"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Taille de la fenêtre"
+            "value" : "Taille de la fenêtre:"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ukuran jendela"
+            "value" : "Ukuran jendela:"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dimensione finestra"
+            "value" : "Dimensione finestra:"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ウィンドウサイズ"
+            "value" : "ウィンドウサイズ:"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "윈도우 크기"
+            "value" : "윈도우 크기:"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Venstergrootte"
+            "value" : "Venstergrootte:"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rozmiar okna"
+            "value" : "Rozmiar okna:"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tamanho da janela"
+            "value" : "Tamanho da janela:"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Размер окна"
+            "value" : "Размер окна:"
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Veľkosť okna"
+            "value" : "Veľkosť okna:"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pencere boyutu"
+            "value" : "Pencere boyutu:"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Розмір вікна"
+            "value" : "Розмір вікна:"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kích thước cửa sổ"
+            "value" : "Kích thước cửa sổ:"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "窗口大小"
+            "value" : "窗口大小:"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "視窗大小"
+            "value" : "視窗大小:"
           }
         }
       }
     },
-    "preferredLanguageMenu" : {
+    "preferredLanguageSettingsLabel" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Preferovaný jazyk"
+            "value" : "Preferovaný jazyk:"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bevorzugte Sprache"
+            "value" : "Bevorzugte Sprache:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Preferred language"
+            "value" : "Preferred language:"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Idioma preferido"
+            "value" : "Idioma preferido:"
           }
         },
         "fil-PH" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gustong Wika"
+            "value" : "Gustong Wika:"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Langue"
+            "value" : "Langue:"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bahasa pilihan"
+            "value" : "Bahasa pilihan:"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lingua preferita"
+            "value" : "Lingua preferita:"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "優先する言語"
+            "value" : "優先する言語:"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "선호하는 언어"
+            "value" : "선호하는 언어:"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Voorkeurstaal"
+            "value" : "Voorkeurstaal:"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Preferowany język"
+            "value" : "Preferowany język:"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Idioma preferido"
+            "value" : "Idioma preferido:"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Предпочтительный язык"
+            "value" : "Предпочтительный язык:"
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Preferovaný jazyk"
+            "value" : "Preferovaný jazyk:"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tercih edilen dil"
+            "value" : "Tercih edilen dil:"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Вибір мови"
+            "value" : "Вибір мови:"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ngôn ngữ"
+            "value" : "Ngôn ngữ:"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "首选语言"
+            "value" : "首选语言:"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "語言"
+            "value" : "語言:"
           }
         }
       }
@@ -10281,16 +11004,124 @@
     "reminderEditPopoverSaveButton" : {
       "extractionState" : "manual",
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uložit"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sichern"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Save"
           }
         },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I-save"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistrer"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simpan"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Salva"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "저장"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bewaar"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zachowaj"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salvar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сохранить"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uložiť"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaydet"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зберегти"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lưu"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "儲存"
           }
         }
       }
@@ -10448,6 +11279,18 @@
             }
           }
         },
+        "ja" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%i日ごと"
+                }
+              }
+            }
+          }
+        },
         "ko" : {
           "variations" : {
             "plural" : {
@@ -10526,6 +11369,36 @@
             }
           }
         },
+        "ru" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Каждые %i дня"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Каждые %i дней"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Ежедневно"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Каждые %i дней"
+                }
+              }
+            }
+          }
+        },
         "sk" : {
           "variations" : {
             "plural" : {
@@ -10551,6 +11424,66 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Každých %i dní"
+                }
+              }
+            }
+          }
+        },
+        "tr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Her gün"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Her %i günde bir"
+                }
+              }
+            }
+          }
+        },
+        "uk" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Кожні %i дні"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Кожні %i днів"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Щодня"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Кожні %i днів"
+                }
+              }
+            }
+          }
+        },
+        "vi" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Mỗi %i ngày"
                 }
               }
             }
@@ -10735,6 +11668,18 @@
             }
           }
         },
+        "ja" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%iか月ごと"
+                }
+              }
+            }
+          }
+        },
         "ko" : {
           "variations" : {
             "plural" : {
@@ -10813,6 +11758,36 @@
             }
           }
         },
+        "ru" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Каждые %i месяца"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Каждые %i месяцев"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Ежемесячно"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Каждые %i месяцев"
+                }
+              }
+            }
+          }
+        },
         "sk" : {
           "variations" : {
             "plural" : {
@@ -10838,6 +11813,66 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Každých %i mesiacov"
+                }
+              }
+            }
+          }
+        },
+        "tr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Her ay"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Her %i ayda bir"
+                }
+              }
+            }
+          }
+        },
+        "uk" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Кожні %i місяці"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Кожні %i місяців"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Щомісяця"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Кожні %i місяців"
+                }
+              }
+            }
+          }
+        },
+        "vi" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Mỗi %i tháng"
                 }
               }
             }
@@ -11022,6 +12057,18 @@
             }
           }
         },
+        "ja" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%i週ごと"
+                }
+              }
+            }
+          }
+        },
         "ko" : {
           "variations" : {
             "plural" : {
@@ -11100,6 +12147,36 @@
             }
           }
         },
+        "ru" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Каждые %i недели"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Каждые %i недель"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Еженедельно"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Каждые %i недель"
+                }
+              }
+            }
+          }
+        },
         "sk" : {
           "variations" : {
             "plural" : {
@@ -11125,6 +12202,66 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Každých %i týždňov"
+                }
+              }
+            }
+          }
+        },
+        "tr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Her hafta"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Her %i haftada bir"
+                }
+              }
+            }
+          }
+        },
+        "uk" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Кожні %i тижні"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Кожні %i тижнів"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Щотижня"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Кожні %i тижнів"
+                }
+              }
+            }
+          }
+        },
+        "vi" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Mỗi %i tuần"
                 }
               }
             }
@@ -11309,6 +12446,18 @@
             }
           }
         },
+        "ja" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%i年ごと"
+                }
+              }
+            }
+          }
+        },
         "ko" : {
           "variations" : {
             "plural" : {
@@ -11387,6 +12536,36 @@
             }
           }
         },
+        "ru" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Каждые %i года"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Каждые %i лет"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Ежегодно"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Каждые %i лет"
+                }
+              }
+            }
+          }
+        },
         "sk" : {
           "variations" : {
             "plural" : {
@@ -11412,6 +12591,66 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "Každých %i rokov"
+                }
+              }
+            }
+          }
+        },
+        "tr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Her yıl"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Her %i yılda bir"
+                }
+              }
+            }
+          }
+        },
+        "uk" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Кожні %i роки"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Кожні %i років"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Щороку"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Кожні %i років"
+                }
+              }
+            }
+          }
+        },
+        "vi" : {
+          "variations" : {
+            "plural" : {
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Mỗi %i năm"
                 }
               }
             }
@@ -13693,7 +14932,7 @@
         }
       }
     },
-    "removeReminderOptionButton" : {
+    "removeReminderButton" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
@@ -14568,7 +15807,7 @@
         }
       }
     },
-    "showMenuBarAllRemindersCountOptionButton" : {
+    "showMenuBarAllRemindersCountOption" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
@@ -14619,6 +15858,12 @@
             "value" : "Mostra conteggio di tutti"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべてのリマインダー数を表示"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14661,6 +15906,12 @@
             "value" : "Tüm hatırlatıcıların sayısını göster"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показати кількість усіх нагадувань"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14681,7 +15932,7 @@
         }
       }
     },
-    "showMenuBarDueCountOptionButton" : {
+    "showMenuBarDueCountOption" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
@@ -14732,6 +15983,12 @@
             "value" : "Mostra conteggio in scadenza"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "期限のカウントを表示"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14756,10 +16013,34 @@
             "value" : "Mostrar contagem de vencidos"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показать количество просроченных"
+          }
+        },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zobraziť počet po termíne"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vadesi gelen sayısını göster"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показати кількість прострочених"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hiển thị số đến hạn"
           }
         },
         "zh-Hans" : {
@@ -14776,7 +16057,7 @@
         }
       }
     },
-    "showMenuBarNoCountOptionButton" : {
+    "showMenuBarNoCountOption" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
@@ -14827,6 +16108,12 @@
             "value" : "Non mostrare conteggio"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カウントを表示しない"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14869,6 +16156,12 @@
             "value" : "Sayacı gösterme"
           }
         },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не показувати кількість"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14889,7 +16182,7 @@
         }
       }
     },
-    "showMenuBarTodayCountOptionButton" : {
+    "showMenuBarTodayCountOption" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
@@ -17395,121 +18688,121 @@
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nová verze je k dispozici v App Store."
+            "value" : "Nová verze je k dispozici v %@."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Eine neue Version ist im App Store verfügbar."
+            "value" : "Eine neue Version ist im %@ verfügbar."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A new version is available on the App Store."
+            "value" : "A new version is available on the %@."
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Una nueva versión está disponible en la App Store."
+            "value" : "Una nueva versión está disponible en la %@."
           }
         },
         "fil-PH" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "May bagong bersyon na available sa App Store."
+            "value" : "May bagong bersyon na available sa %@."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Une nouvelle version est disponible sur l’App Store."
+            "value" : "Une nouvelle version est disponible sur l’%@."
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Versi baru tersedia di App Store."
+            "value" : "Versi baru tersedia di %@."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Una nuova versione è disponibile sull’App Store."
+            "value" : "Una nuova versione è disponibile sull’%@."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App Storeで新しいバージョンが利用可能です。"
+            "value" : "%@で新しいバージョンが利用可能です。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App Store에서 새로운 버전을 사용할 수 있습니다."
+            "value" : "%@에서 새로운 버전을 사용할 수 있습니다."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Een nieuwe versie is beschikbaar in de App Store."
+            "value" : "Een nieuwe versie is beschikbaar in de %@."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nowa wersja jest dostępna w App Store."
+            "value" : "Nowa wersja jest dostępna w %@."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Uma nova versão está disponível na App Store."
+            "value" : "Uma nova versão está disponível na %@."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Новая версия доступна в App Store."
+            "value" : "Новая версия доступна в %@."
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nová verzia je dostupná v App Store."
+            "value" : "Nová verzia je dostupná v %@."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App Store’da yeni bir sürüm mevcut."
+            "value" : "%@’da yeni bir sürüm mevcut."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Нова версія доступна в App Store."
+            "value" : "Нова версія доступна в %@."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Phiên bản mới có sẵn trên App Store."
+            "value" : "Phiên bản mới có sẵn trên %@."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App Store 上有新版本可用。"
+            "value" : "%@ 上有新版本可用。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "App Store 上有新版本可用。"
+            "value" : "%@ 上有新版本可用。"
           }
         }
       }

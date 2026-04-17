@@ -96,7 +96,11 @@ private struct CopyPropertyRow: View {
             }
             .buttonStyle(.plain)
             .accessibilityLabel(option.property.displayName)
-            .accessibilityValue(option.isEnabled ? "enabled" : "disabled")
+            .accessibilityValue(rmbLocalized(
+                option.isEnabled
+                    ? .copyPropertyEnabledAccessibilityValue
+                    : .copyPropertyDisabledAccessibilityValue
+            ))
 
             Text(option.property.displayName)
                 .foregroundColor(option.isEnabled ? .primary : .secondary)

@@ -14,7 +14,7 @@ final class RightClickMenuHelper: NSObject {
         let menu = NSMenu()
 
         let launchAtLoginItem = NSMenuItem(
-            title: rmbLocalized(.launchAtLoginOptionButton),
+            title: rmbLocalized(.launchAtLoginOption),
             action: #selector(toggleLaunchAtLogin),
             keyEquivalent: ""
         )

@@ -7,13 +7,13 @@ enum RmbMenuBarCounterType: String, Codable, CaseIterable {
     var title: String {
         switch self {
         case .due:
-            return rmbLocalized(.showMenuBarDueCountOptionButton)
+            return rmbLocalized(.showMenuBarDueCountOption)
         case .today:
-            return rmbLocalized(.showMenuBarTodayCountOptionButton)
+            return rmbLocalized(.showMenuBarTodayCountOption)
         case .allReminders:
-            return rmbLocalized(.showMenuBarAllRemindersCountOptionButton)
+            return rmbLocalized(.showMenuBarAllRemindersCountOption)
         case .disabled:
-            return rmbLocalized(.showMenuBarNoCountOptionButton)
+            return rmbLocalized(.showMenuBarNoCountOption)
         }
     }
 }

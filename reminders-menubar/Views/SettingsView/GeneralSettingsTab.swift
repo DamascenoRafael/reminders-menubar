@@ -7,7 +7,7 @@ struct GeneralSettingsTab: View {
         Form {
             SettingsSection {
                 Toggle(
-                    rmbLocalized(.launchAtLoginOptionButton),
+                    rmbLocalized(.launchAtLoginOption),
                     isOn: $userPreferences.launchAtLoginIsEnabled
                 )
             }
@@ -36,7 +36,7 @@ struct GeneralSettingsTab: View {
 
             SettingsDivider()
 
-            SettingsSection(rmbLocalized(.menuBarIconSettingsMenu)) {
+            SettingsSection(rmbLocalized(.menuBarIconSettingsLabel)) {
                 Picker(String(""), selection: Binding(
                     get: { userPreferences.reminderMenuBarIcon },
                     set: { newIcon in
@@ -58,7 +58,7 @@ struct GeneralSettingsTab: View {
 
             SettingsDivider()
 
-            SettingsSection(rmbLocalized(.menuBarCounterSettingsMenu)) {
+            SettingsSection(rmbLocalized(.menuBarCounterSettingsLabel)) {
                 Picker(String(""), selection: $userPreferences.menuBarCounterType) {
                     ForEach(RmbMenuBarCounterType.allCases, id: \.self) { counterType in
                         Text(counterType.title).tag(counterType)
@@ -68,7 +68,7 @@ struct GeneralSettingsTab: View {
                 .labelsHidden()
 
                 Toggle(
-                    rmbLocalized(.filterMenuBarCountByCalendarOptionButton),
+                    rmbLocalized(.filterMenuBarCountByCalendarOption),
                     isOn: $userPreferences.filterMenuBarCountByCalendar
                 )
             }
@@ -86,7 +86,7 @@ struct GeneralSettingsTab: View {
 
             SettingsDivider()
 
-            SettingsSection(rmbLocalized(.preferredLanguageMenu)) {
+            SettingsSection(rmbLocalized(.preferredLanguageSettingsLabel)) {
                 Picker(String(""), selection: Binding(
                     get: { userPreferences.preferredLanguage ?? "" },
                     set: { newValue in
