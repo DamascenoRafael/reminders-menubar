@@ -14,6 +14,9 @@
 		7113A2822F724A7500474582 /* CreateReminderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113A2812F724A7500474582 /* CreateReminderButton.swift */; };
 		7115461324C0ADCB007781E2 /* ReminderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115461224C0ADCB007781E2 /* ReminderItemView.swift */; };
 		7115461924C0C280007781E2 /* RemindersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115461824C0C280007781E2 /* RemindersService.swift */; };
+		71217B9D2F8C4D3300E5FEB4 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 71217B9C2F8C4D3300E5FEB4 /* Sparkle */; };
+		71217B9F2F8C4D7F00E5FEB4 /* SparkleUpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71217B9E2F8C4D7F00E5FEB4 /* SparkleUpdateController.swift */; };
+		71217BA82F8C8BEB00E5FEB4 /* AppStoreUpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71217BA72F8C8BEB00E5FEB4 /* AppStoreUpdateController.swift */; };
 		712C32B424BF939100AC75E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712C32B324BF939100AC75E2 /* AppDelegate.swift */; };
 		712C32B624BF939100AC75E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712C32B524BF939100AC75E2 /* ContentView.swift */; };
 		712C32B824BF939200AC75E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 712C32B724BF939200AC75E2 /* Assets.xcassets */; };
@@ -25,7 +28,6 @@
 		713D91222F5DF840001B921E /* RmbBackgroundModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D91212F5DF840001B921E /* RmbBackgroundModifier.swift */; };
 		713D91242F5DF850001B921E /* ConfirmButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D91232F5DF850001B921E /* ConfirmButtonModifier.swift */; };
 		713F234524C130D400FF0BEC /* ReminderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F234424C130D400FF0BEC /* ReminderList.swift */; };
-		7141456325CF9693006695B2 /* Release.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7141456225CF9693006695B2 /* Release.swift */; };
 		714598D329295330008CAA43 /* RmbDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714598D229295330008CAA43 /* RmbDatePicker.swift */; };
 		714C28A82A0A056600734DAF /* RmbHighlightedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714C28A72A0A056600734DAF /* RmbHighlightedTextField.swift */; };
 		714C4980267FA56F00721516 /* remindersLocalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714C497F267FA56F00721516 /* remindersLocalized.swift */; };
@@ -56,11 +58,10 @@
 		719C712C2C1FADB000C622FF /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 719C712B2C1FADB000C622FF /* InfoPlist.xcstrings */; };
 		71A000012F61000100000001 /* RmbSortingOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A000002F61000100000001 /* RmbSortingOrder.swift */; };
 		71A000032F724B7500000001 /* ColoredDotTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A000022F724B7500000001 /* ColoredDotTitle.swift */; };
-		71A0B2DC25CE20AC004E06AE /* AppUpdateCheckHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A0B2DB25CE20AC004E06AE /* AppUpdateCheckHelper.swift */; };
+		71A0B2DC25CE20AC004E06AE /* UpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A0B2DB25CE20AC004E06AE /* UpdateController.swift */; };
 		71A3834325BCA69C00975B4C /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A3834225BCA69C00975B4C /* Date+Extensions.swift */; };
 		71A3834425BDD2AC00975B4C /* EKCalendar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A3834425BDD2AC00975B4B /* EKCalendar+Extensions.swift */; };
 		71A3834625BDD2AC00975B4C /* EKReminder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A3834525BDD2AC00975B4C /* EKReminder+Extensions.swift */; };
-		71A4163725CED8FE00CA4F81 /* GithubService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A4163625CED8FE00CA4F81 /* GithubService.swift */; };
 		71A6583A2908B0DD006F3A50 /* ReminderEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A658392908B0DD006F3A50 /* ReminderEditView.swift */; };
 		71A73E8A25CCC6960064D528 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A73E8925CCC6960064D528 /* main.swift */; };
 		71AA00012FA7000100000001 /* SearchRemindersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA00002FA7000100000001 /* SearchRemindersButton.swift */; };
@@ -140,6 +141,9 @@
 		7113A2812F724A7500474582 /* CreateReminderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReminderButton.swift; sourceTree = "<group>"; };
 		7115461224C0ADCB007781E2 /* ReminderItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderItemView.swift; sourceTree = "<group>"; };
 		7115461824C0C280007781E2 /* RemindersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersService.swift; sourceTree = "<group>"; };
+		71217B9E2F8C4D7F00E5FEB4 /* SparkleUpdateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkleUpdateController.swift; sourceTree = "<group>"; };
+		71217BA02F8C4DAB00E5FEB4 /* reminders_menubar_appstore.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = reminders_menubar_appstore.entitlements; sourceTree = "<group>"; };
+		71217BA72F8C8BEB00E5FEB4 /* AppStoreUpdateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreUpdateController.swift; sourceTree = "<group>"; };
 		712C32B024BF939100AC75E2 /* Reminders MenuBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reminders MenuBar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		712C32B324BF939100AC75E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		712C32B524BF939100AC75E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -154,7 +158,6 @@
 		713D91212F5DF840001B921E /* RmbBackgroundModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbBackgroundModifier.swift; sourceTree = "<group>"; };
 		713D91232F5DF850001B921E /* ConfirmButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmButtonModifier.swift; sourceTree = "<group>"; };
 		713F234424C130D400FF0BEC /* ReminderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderList.swift; sourceTree = "<group>"; };
-		7141456225CF9693006695B2 /* Release.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Release.swift; sourceTree = "<group>"; };
 		714598D229295330008CAA43 /* RmbDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbDatePicker.swift; sourceTree = "<group>"; };
 		714C28A72A0A056600734DAF /* RmbHighlightedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbHighlightedTextField.swift; sourceTree = "<group>"; };
 		714C497F267FA56F00721516 /* remindersLocalized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = remindersLocalized.swift; sourceTree = "<group>"; };
@@ -183,11 +186,10 @@
 		719C712B2C1FADB000C622FF /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		71A000002F61000100000001 /* RmbSortingOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbSortingOrder.swift; sourceTree = "<group>"; };
 		71A000022F724B7500000001 /* ColoredDotTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredDotTitle.swift; sourceTree = "<group>"; };
-		71A0B2DB25CE20AC004E06AE /* AppUpdateCheckHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUpdateCheckHelper.swift; sourceTree = "<group>"; };
+		71A0B2DB25CE20AC004E06AE /* UpdateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateController.swift; sourceTree = "<group>"; };
 		71A3834225BCA69C00975B4C /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		71A3834425BDD2AC00975B4B /* EKCalendar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EKCalendar+Extensions.swift"; sourceTree = "<group>"; };
 		71A3834525BDD2AC00975B4C /* EKReminder+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EKReminder+Extensions.swift"; sourceTree = "<group>"; };
-		71A4163625CED8FE00CA4F81 /* GithubService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubService.swift; sourceTree = "<group>"; };
 		71A658392908B0DD006F3A50 /* ReminderEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderEditView.swift; sourceTree = "<group>"; };
 		71A73E8925CCC6960064D528 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		71AA00002FA7000100000001 /* SearchRemindersButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRemindersButton.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				716BCF0E28C97C7100537081 /* KeyboardShortcuts in Frameworks */,
+				71217B9D2F8C4D3300E5FEB4 /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +308,7 @@
 		7115461724C0C273007781E2 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				71217BA92F8DEF1000E5FEB4 /* UpdateService */,
 				B55D54F72F37DF4E002DE761 /* ReminderCopyService.swift */,
 				71CC00012FA6000100000001 /* CopyShortcutCoordinator.swift */,
 				71CC00032FA6000300000002 /* SettingsCoordinator.swift */,
@@ -312,7 +316,6 @@
 				96A54A6A29A3ADB70060403F /* DateParser.swift */,
 				71CAF8422A3444EA003160FF /* CalendarParser.swift */,
 				718C0C622D43220A00BF04B0 /* PriorityParser.swift */,
-				71A4163625CED8FE00CA4F81 /* GithubService.swift */,
 				71F301F9259FB5CF00CDD81E /* UserPreferences.swift */,
 				715B4DD428D56FE5008C6683 /* KeyboardShortcutService.swift */,
 				71D2624C2F5A1B0000C8A33E /* RightClickMenuHelper.swift */,
@@ -336,6 +339,16 @@
 				71F93A642E03B93100D5C5BC /* ReminderExternalLinksView.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		71217BA92F8DEF1000E5FEB4 /* UpdateService */ = {
+			isa = PBXGroup;
+			children = (
+				71A0B2DB25CE20AC004E06AE /* UpdateController.swift */,
+				71217B9E2F8C4D7F00E5FEB4 /* SparkleUpdateController.swift */,
+				71217BA72F8C8BEB00E5FEB4 /* AppStoreUpdateController.swift */,
+			);
+			path = UpdateService;
 			sourceTree = "<group>";
 		};
 		712C32A724BF939100AC75E2 = {
@@ -366,11 +379,11 @@
 				7192EF37265DF2EE00B51F02 /* Resources */,
 				712C32B324BF939100AC75E2 /* AppDelegate.swift */,
 				71D6B97F28E25B9F0004EEBB /* AppCommands.swift */,
-				71A0B2DB25CE20AC004E06AE /* AppUpdateCheckHelper.swift */,
 				71F06B472F4FF3EC009C91E6 /* MainPopoverSizing.swift */,
 				714E6F6025CCF66000BA0099 /* Constants.swift */,
 				712C32BF24BF939200AC75E2 /* Info.plist */,
 				712C32C024BF939200AC75E2 /* reminders_menubar.entitlements */,
+				71217BA02F8C4DAB00E5FEB4 /* reminders_menubar_appstore.entitlements */,
 				712C32B924BF939200AC75E2 /* Preview Content */,
 			);
 			path = "reminders-menubar";
@@ -390,7 +403,6 @@
 				716CAFEF2AC28E5500EEB1DB /* ReminderItem.swift */,
 				713F234424C130D400FF0BEC /* ReminderList.swift */,
 				7172A74724C776E6001F96F1 /* RemindersData.swift */,
-				7141456225CF9693006695B2 /* Release.swift */,
 				7102422F25F55D5600451D15 /* ReminderInterval.swift */,
 				71564447260324FA005E81FD /* PrioritizedReminders.swift */,
 				71ED5D6A290B6B3C00626185 /* RmbReminder.swift */,
@@ -577,6 +589,7 @@
 			name = "Reminders MenuBar";
 			packageProductDependencies = (
 				716BCF0D28C97C7100537081 /* KeyboardShortcuts */,
+				71217B9C2F8C4D3300E5FEB4 /* Sparkle */,
 			);
 			productName = "reminders-menubar";
 			productReference = 712C32B024BF939100AC75E2 /* Reminders MenuBar.app */;
@@ -631,6 +644,7 @@
 			mainGroup = 712C32A724BF939100AC75E2;
 			packageReferences = (
 				716BCF0C28C97C7100537081 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+				71217B9B2F8C4D3300E5FEB4 /* XCRemoteSwiftPackageReference "Sparkle" */,
 			);
 			productRefGroup = 712C32B124BF939100AC75E2 /* Products */;
 			projectDirPath = "";
@@ -701,9 +715,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71A4163725CED8FE00CA4F81 /* GithubService.swift in Sources */,
 				71D6B98028E25B9F0004EEBB /* AppCommands.swift in Sources */,
-				7141456325CF9693006695B2 /* Release.swift in Sources */,
 				718AE6D52F8208D800B53E04 /* ReminderLoadingView.swift in Sources */,
 				71F36A9829C16B7A0099D337 /* RmbColorKey.swift in Sources */,
 				71CCF9842D43148100D334F8 /* EKReminderPriority+Extensions.swift in Sources */,
@@ -714,6 +726,7 @@
 				71F93A632E03B6DA00D5C5BC /* ReminderDateDescriptionView.swift in Sources */,
 				7115461924C0C280007781E2 /* RemindersService.swift in Sources */,
 				715B4DD728D59BF2008C6683 /* FilterReminderListButton.swift in Sources */,
+				71217B9F2F8C4D7F00E5FEB4 /* SparkleUpdateController.swift in Sources */,
 				71B6D1FB24C6511000E66EDB /* ToolbarView.swift in Sources */,
 				712C836229E6635200BF6C24 /* RmbMenuBarCounterType.swift in Sources */,
 				71A000012F61000100000001 /* RmbSortingOrder.swift in Sources */,
@@ -744,6 +757,7 @@
 				71D262492F57DD860073C0FD /* OpenSettingButton.swift in Sources */,
 				71D2624D2F5A1B0000C8A33E /* RightClickMenuHelper.swift in Sources */,
 				71D2624F2F5A1B0100C8A33E /* SettingsOpenerView.swift in Sources */,
+				71217BA82F8C8BEB00E5FEB4 /* AppStoreUpdateController.swift in Sources */,
 				71F301FA259FB5CF00CDD81E /* UserPreferences.swift in Sources */,
 				716CAFF02AC28E5500EEB1DB /* ReminderItem.swift in Sources */,
 				71B0CA022FA4000100000C01 /* CopyProperty.swift in Sources */,
@@ -796,7 +810,7 @@
 				71B4AD5325B7F37D00214219 /* NSTextField+Extensions.swift in Sources */,
 				96A54A6B29A3ADB70060403F /* DateParser.swift in Sources */,
 				716F69EC2D641A090080A5F1 /* ReminderEllipsisMenuView.swift in Sources */,
-				71A0B2DC25CE20AC004E06AE /* AppUpdateCheckHelper.swift in Sources */,
+				71A0B2DC25CE20AC004E06AE /* UpdateController.swift in Sources */,
 				716F69F02D641E2F0080A5F1 /* ReminderChangePriorityOptionMenu.swift in Sources */,
 				71BD8ADB2F7DC5F400AE8D00 /* RecentRemindersTitle.swift in Sources */,
 			);
@@ -854,6 +868,244 @@
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
+		};
+		71217BA12F8C58D100E5FEB4 /* Debug-AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 3398VKLH28;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG APPSTORE";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = "Debug-AppStore";
+		};
+		71217BA22F8C58D100E5FEB4 /* Debug-AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "reminders-menubar/reminders_menubar_appstore.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"reminders-menubar/Preview Content\"";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "reminders-menubar/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.25.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.damascenorafael.reminders-menubar";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = "Debug-AppStore";
+		};
+		71217BA32F8C58D100E5FEB4 /* Debug-AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "reminders-menubar-launcher/reminders_menubar_launcher.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "reminders-menubar-launcher/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.damascenorafael.reminders-menubar-launcher";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = "Debug-AppStore";
+		};
+		71217BA42F8C58E700E5FEB4 /* Release-AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 3398VKLH28;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = APPSTORE;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = "Release-AppStore";
+		};
+		71217BA52F8C58E700E5FEB4 /* Release-AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "reminders-menubar/reminders_menubar_appstore.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Distribution";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Distribution";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"reminders-menubar/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 3398VKLH28;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "reminders-menubar/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.25.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.damascenorafael.reminders-menubar";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = "Release-AppStore";
+		};
+		71217BA62F8C58E700E5FEB4 /* Release-AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "reminders-menubar-launcher/reminders_menubar_launcher.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "reminders-menubar-launcher/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.damascenorafael.reminders-menubar-launcher";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = "Release-AppStore";
 		};
 		712C32C124BF939200AC75E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1015,11 +1267,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "reminders-menubar/reminders_menubar.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"reminders-menubar/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 3398VKLH28;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -1033,6 +1288,7 @@
 				MARKETING_VERSION = 1.25.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.damascenorafael.reminders-menubar";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -1045,7 +1301,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				71059DB825CA5245001F3063 /* Debug */,
+				71217BA32F8C58D100E5FEB4 /* Debug-AppStore */,
 				71059DB925CA5245001F3063 /* Release */,
+				71217BA62F8C58E700E5FEB4 /* Release-AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1054,7 +1312,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				712C32C124BF939200AC75E2 /* Debug */,
+				71217BA12F8C58D100E5FEB4 /* Debug-AppStore */,
 				712C32C224BF939200AC75E2 /* Release */,
+				71217BA42F8C58E700E5FEB4 /* Release-AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1063,7 +1323,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				712C32C424BF939200AC75E2 /* Debug */,
+				71217BA22F8C58D100E5FEB4 /* Debug-AppStore */,
 				712C32C524BF939200AC75E2 /* Release */,
+				71217BA52F8C58E700E5FEB4 /* Release-AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1071,6 +1333,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		71217B9B2F8C4D3300E5FEB4 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = exactVersion;
+				version = 2.9.1;
+			};
+		};
 		716BCF0C28C97C7100537081 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
@@ -1082,6 +1352,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		71217B9C2F8C4D3300E5FEB4 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 71217B9B2F8C4D3300E5FEB4 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
 		716BCF0D28C97C7100537081 /* KeyboardShortcuts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 716BCF0C28C97C7100537081 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;

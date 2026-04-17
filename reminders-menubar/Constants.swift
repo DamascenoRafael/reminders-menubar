@@ -1,8 +1,10 @@
 import Foundation
 
 enum AppConstants {
-    static let currentVersion: String = {
-        guard let bundleVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else {
+    static let bundleVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+
+    static let displayVersion: String = {
+        guard let bundleVersion else {
             return "-"
         }
         
@@ -20,6 +22,10 @@ enum GithubConstants {
     static let latestReleasePage = "\(repositoryPage)/releases/latest"
 }
 
-enum ApiGithubConstants {
-    static let latestRelease = "https://api.github.com/repos/\(GithubConstants.repository)/releases/latest"
+#if APPSTORE
+enum AppStoreConstants {
+    static let appId = "PLACEHOLDER_APP_ID"
+    static let appPage = "macappstore://apps.apple.com/app/id\(appId)"
+    static let versionCheckUrl = "https://itunes.apple.com/lookup?bundleId=\(AppConstants.mainBundleId)"
 }
+#endif

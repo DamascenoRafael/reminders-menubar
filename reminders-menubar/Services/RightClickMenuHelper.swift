@@ -35,6 +35,24 @@ final class RightClickMenuHelper: NSObject {
 
         menu.addItem(.separator())
 
+        let updateItem: NSMenuItem
+        if UpdateController.shared.isOutdated {
+            updateItem = NSMenuItem(
+                title: rmbLocalized(.updateAvailableNoticeButton),
+                action: #selector(showUpdate),
+                keyEquivalent: ""
+            )
+        } else {
+            updateItem = NSMenuItem(
+                title: rmbLocalized(.checkForUpdatesButton),
+                action: #selector(checkForUpdates),
+                keyEquivalent: ""
+            )
+        }
+        updateItem.target = self
+        updateItem.image = NSImage(systemSymbolName: "arrow.down.circle", accessibilityDescription: nil)
+        menu.addItem(updateItem)
+
         let settingsItem = NSMenuItem(
             title: rmbLocalized(.appSettingsButton),
             action: #selector(openSettingsAction),
@@ -77,6 +95,14 @@ final class RightClickMenuHelper: NSObject {
 
     @objc private func openSettingsAction() {
         NSApp.openAppSettings()
+    }
+
+    @objc private func checkForUpdates() {
+        UpdateController.shared.checkForUpdates()
+    }
+
+    @objc private func showUpdate() {
+        UpdateController.shared.showUpdate()
     }
 
     @objc private func openAbout() {

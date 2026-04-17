@@ -1,14 +1,12 @@
 import SwiftUI
 
 struct UpdateAvailableButton: View {
-    @ObservedObject var appUpdateCheckHelper = AppUpdateCheckHelper.shared
-    
+    @ObservedObject var updateController = UpdateController.shared
+
     var body: some View {
-        if appUpdateCheckHelper.isOutdated {
+        if updateController.isOutdated {
             Button(action: {
-                if let url = URL(string: GithubConstants.latestReleasePage) {
-                    NSWorkspace.shared.open(url)
-                }
+                updateController.showUpdate()
             }) {
                 ToolbarButtonLabel {
                     Image(systemName: "arrow.down.circle")

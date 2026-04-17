@@ -63,8 +63,14 @@ enum RemindersMenuBarLocalizedKeys: String {
     case settingsButtonHelp
     case appVersionDescription
     case remindersMenuBarAppAboutDescription
-    case remindersMenuBarGitHubAboutDescription
     case seeMoreOnGitHubButton
+    case checkForUpdatesButton
+    case updateAvailableAlertTitle
+    case updateAvailableAlertMessage
+    case upToDateAlertTitle
+    case upToDateAlertMessage
+    case openAppStoreButton
+    case updateLaterButton
     case keyboardShortcutEnableOpenShortcutOption
     case keyboardShortcutRestoreDefaultButton
     case upcomingRemindersDueFilterOption

@@ -11,33 +11,38 @@ struct AboutSettingsTab: View {
                 Text(AppConstants.appName)
                     .font(.system(size: 28))
 
-                Text(rmbLocalized(.appVersionDescription, arguments: AppConstants.currentVersion))
+                Text(rmbLocalized(.appVersionDescription, arguments: AppConstants.displayVersion))
                     .font(.callout)
                     .foregroundColor(.secondary)
                     .padding(.top, 12)
 
-                VStack(alignment: .leading, spacing: 10) {
-                    Text(rmbLocalized(
-                        .remindersMenuBarAppAboutDescription,
-                        arguments: AppConstants.appName,
-                        "GNU General Public License v3.0"
-                    ))
-                    Text(rmbLocalized(.remindersMenuBarGitHubAboutDescription))
-                }
+                Text(rmbLocalized(
+                    .remindersMenuBarAppAboutDescription,
+                    arguments: AppConstants.appName,
+                    "GNU General Public License v3.0"
+                ))
                 .font(.system(size: 11))
                 .padding(.trailing, 24)
                 .foregroundColor(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.top, 28)
 
-                Button(action: {
-                    if let url = URL(string: GithubConstants.repositoryPage) {
-                        NSWorkspace.shared.open(url)
+                HStack {
+                    Button(action: {
+                        if let url = URL(string: GithubConstants.repositoryPage) {
+                            NSWorkspace.shared.open(url)
+                        }
+                    }) {
+                        Text(rmbLocalized(.seeMoreOnGitHubButton))
                     }
-                }) {
-                    Text(rmbLocalized(.seeMoreOnGitHubButton))
+
+                    Button(action: {
+                        UpdateController.shared.checkForUpdates()
+                    }) {
+                        Text(rmbLocalized(.checkForUpdatesButton))
+                    }
                 }
-                .padding(.top, 12)
+                .padding(.top, 16)
             }
             .padding(.top, 32)
             .padding(.bottom, 20)
