@@ -13,74 +13,74 @@ final class RightClickMenuHelper: NSObject {
     func buildRightClickMenu() -> NSMenu {
         let menu = NSMenu()
 
-        let launchAtLoginItem = NSMenuItem(
+        menu.addItem(makeMenuItem(
             title: rmbLocalized(.launchAtLoginOption),
             action: #selector(toggleLaunchAtLogin),
-            keyEquivalent: ""
-        )
-        launchAtLoginItem.target = self
-        launchAtLoginItem.state = UserPreferences.shared.launchAtLoginIsEnabled ? .on : .off
-        menu.addItem(launchAtLoginItem)
+            state: UserPreferences.shared.launchAtLoginIsEnabled ? .on : .off
+        ))
 
         menu.addItem(.separator())
 
-        let reloadItem = NSMenuItem(
+        menu.addItem(makeMenuItem(
             title: rmbLocalized(.reloadRemindersDataButton),
             action: #selector(reloadData),
-            keyEquivalent: ""
-        )
-        reloadItem.target = self
-        reloadItem.image = NSImage(systemSymbolName: "arrow.clockwise", accessibilityDescription: nil)
-        menu.addItem(reloadItem)
+            systemSymbolName: "arrow.clockwise"
+        ))
 
         menu.addItem(.separator())
 
-        let updateItem: NSMenuItem
         if UpdateController.shared.isOutdated {
-            updateItem = NSMenuItem(
+            menu.addItem(makeMenuItem(
                 title: rmbLocalized(.updateAvailableNoticeButton),
                 action: #selector(showUpdate),
-                keyEquivalent: ""
-            )
+                systemSymbolName: "arrow.down.circle"
+            ))
         } else {
-            updateItem = NSMenuItem(
+            menu.addItem(makeMenuItem(
                 title: rmbLocalized(.checkForUpdatesButton),
                 action: #selector(checkForUpdates),
-                keyEquivalent: ""
-            )
+                systemSymbolName: "arrow.down.circle"
+            ))
         }
-        updateItem.target = self
-        updateItem.image = NSImage(systemSymbolName: "arrow.down.circle", accessibilityDescription: nil)
-        menu.addItem(updateItem)
 
-        let settingsItem = NSMenuItem(
+        menu.addItem(makeMenuItem(
             title: rmbLocalized(.appSettingsButton),
             action: #selector(openSettingsAction),
-            keyEquivalent: ""
-        )
-        settingsItem.target = self
-        settingsItem.image = NSImage(systemSymbolName: "gearshape", accessibilityDescription: nil)
-        menu.addItem(settingsItem)
+            systemSymbolName: "gearshape"
+        ))
 
-        let aboutItem = NSMenuItem(
+        menu.addItem(makeMenuItem(
             title: rmbLocalized(.appAboutButton),
             action: #selector(openAbout),
-            keyEquivalent: ""
-        )
-        aboutItem.target = self
-        aboutItem.image = NSImage(systemSymbolName: "info.circle", accessibilityDescription: nil)
-        menu.addItem(aboutItem)
+            systemSymbolName: "info.circle"
+        ))
 
-        let quitItem = NSMenuItem(
+        menu.addItem(makeMenuItem(
             title: rmbLocalized(.appQuitButton),
             action: #selector(quitApp),
-            keyEquivalent: ""
-        )
-        quitItem.target = self
-        quitItem.image = NSImage(systemSymbolName: "xmark.rectangle", accessibilityDescription: nil)
-        menu.addItem(quitItem)
+            systemSymbolName: "xmark.rectangle"
+        ))
 
         return menu
+    }
+
+    // MARK: - Helpers
+
+    private func makeMenuItem(
+        title: String,
+        action: Selector,
+        systemSymbolName: String? = nil,
+        state: NSControl.StateValue? = nil
+    ) -> NSMenuItem {
+        let item = NSMenuItem(title: title, action: action, keyEquivalent: "")
+        item.target = self
+        if let systemSymbolName {
+            item.image = NSImage(systemSymbolName: systemSymbolName, accessibilityDescription: nil)
+        }
+        if let state {
+            item.state = state
+        }
+        return item
     }
 
     // MARK: - Actions
