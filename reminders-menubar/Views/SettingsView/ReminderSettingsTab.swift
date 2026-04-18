@@ -81,6 +81,10 @@ struct ReminderSettingsTab: View {
                     rmbLocalized(.showExternalLinksInReminderItemOption),
                     isOn: $userPreferences.showExternalLinksInReminderItem
                 )
+
+                Text(rmbLocalized(.showExternalLinksInReminderItemNote))
+                    .modifier(SettingsNoteStyle())
+                    .padding(.leading, 20)
             }
 
             SettingsDivider()

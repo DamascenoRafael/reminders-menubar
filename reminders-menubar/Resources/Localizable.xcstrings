@@ -15682,6 +15682,131 @@
         }
       }
     },
+    "showExternalLinksInReminderItemNote" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Externí odkazy jsou vždy viditelné při otevření připomínky."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Externe Links sind beim Öffnen einer Erinnerung immer sichtbar."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "External links are always visible when opening a reminder."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los enlaces externos siempre son visibles al abrir un recordatorio."
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Palaging nakikita ang mga external na link kapag binuksan ang isang paalala."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les liens externes sont toujours visibles lors de l’ouverture d’un rappel."
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tautan eksternal selalu terlihat saat membuka pengingat."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I link esterni sono sempre visibili quando si apre un promemoria."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "外部リンクはリマインダーを開くと常に表示されます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "외부 링크는 미리 알림을 열 때 항상 표시됩니다."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Externe links zijn altijd zichtbaar bij het openen van een herinnering."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Linki zewnętrzne są zawsze widoczne po otwarciu przypomnienia."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Links externos são sempre visíveis ao abrir um lembrete."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Внешние ссылки всегда видны при открытии напоминания."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Externé odkazy sú vždy viditeľné pri otvorení pripomienky."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Harici bağlantılar bir hatırlatıcı açıldığında her zaman görünür."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зовнішні посилання завжди видимі при відкритті нагадування."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liên kết ngoài luôn hiển thị khi mở lời nhắc."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "打开提醒事项时，外部链接始终可见。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "打開提醒事項時，外部連結始終可見。"
+          }
+        }
+      }
+    },
     "showExternalLinksInReminderItemOption" : {
       "extractionState" : "manual",
       "localizations" : {
