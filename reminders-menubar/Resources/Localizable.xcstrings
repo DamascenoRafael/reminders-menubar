@@ -2376,7 +2376,7 @@
         }
       }
     },
-    "copyNoPropertiesSelectedHint" : {
+    "copyNoPropertiesSelectedNote" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
@@ -2626,131 +2626,6 @@
         }
       }
     },
-    "copyPropertiesSettingsHint" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vyberte a seřaďte vlastnosti, které se zahrnou při kopírování připomínky"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eigenschaften auswählen und sortieren, die beim Kopieren einer Erinnerung einbezogen werden"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Select and reorder the properties to include when copying a reminder"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Selecciona y reordena las propiedades a incluir al copiar un recordatorio"
-          }
-        },
-        "fil-PH" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pumili at ayusin ang mga property na isasama kapag kinopya ang paalala"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sélectionnez et réorganisez les propriétés à inclure lors de la copie d'un rappel"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pilih dan urutkan properti yang disertakan saat menyalin pengingat"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seleziona e riordina le proprietà da includere durante la copia di un promemoria"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "リマインダーのコピー時に含めるプロパティを選択して並べ替えます"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "미리 알림을 복사할 때 포함할 속성을 선택하고 순서를 변경하세요"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Selecteer en rangschik de eigenschappen die worden opgenomen bij het kopiëren van een herinnering"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wybierz i uporządkuj właściwości do uwzględnienia podczas kopiowania przypomnienia"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Selecione e reordene as propriedades a incluir ao copiar um lembrete"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Выберите и упорядочьте свойства для включения при копировании напоминания"
-          }
-        },
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vyberte a zoraďte vlastnosti, ktoré sa zahrnú pri kopírovaní pripomienky"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bir hatırlatıcıyı kopyalarken dahil edilecek özellikleri seçin ve sıralayın"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Виберіть та впорядкуйте властивості для включення при копіюванні нагадування"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chọn và sắp xếp các thuộc tính để bao gồm khi sao chép lời nhắc"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "选择并排列复制提醒时要包含的属性"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "選擇並排列拷貝提醒事項時要包含的屬性"
-          }
-        }
-      }
-    },
     "copyPropertiesSettingsLabel" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2872,6 +2747,131 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "屬性:"
+          }
+        }
+      }
+    },
+    "copyPropertiesSettingsNote" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vyberte a seřaďte vlastnosti, které se zahrnou při kopírování připomínky"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eigenschaften auswählen und sortieren, die beim Kopieren einer Erinnerung einbezogen werden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select and reorder the properties to include when copying a reminder"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecciona y reordena las propiedades a incluir al copiar un recordatorio"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pumili at ayusin ang mga property na isasama kapag kinopya ang paalala"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sélectionnez et réorganisez les propriétés à inclure lors de la copie d'un rappel"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pilih dan urutkan properti yang disertakan saat menyalin pengingat"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleziona e riordina le proprietà da includere durante la copia di un promemoria"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リマインダーのコピー時に含めるプロパティを選択して並べ替えます"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "미리 알림을 복사할 때 포함할 속성을 선택하고 순서를 변경하세요"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecteer en rangschik de eigenschappen die worden opgenomen bij het kopiëren van een herinnering"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybierz i uporządkuj właściwości do uwzględnienia podczas kopiowania przypomnienia"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecione e reordene as propriedades a incluir ao copiar um lembrete"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите и упорядочьте свойства для включения при копировании напоминания"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vyberte a zoraďte vlastnosti, ktoré sa zahrnú pri kopírovaní pripomienky"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir hatırlatıcıyı kopyalarken dahil edilecek özellikleri seçin ve sıralayın"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Виберіть та впорядкуйте властивості для включення при копіюванні нагадування"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chọn và sắp xếp các thuộc tính để bao gồm khi sao chép lời nhắc"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择并排列复制提醒时要包含的属性"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選擇並排列拷貝提醒事項時要包含的屬性"
           }
         }
       }

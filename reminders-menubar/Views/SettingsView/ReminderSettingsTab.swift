@@ -57,9 +57,7 @@ struct ReminderSettingsTab: View {
                 .labelsHidden()
 
                 Text(userPreferences.reminderSortingOrder.note)
-                    .font(.caption)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .padding(.bottom, 4)
+                    .modifier(SettingsNoteStyle())
 
                 Toggle(
                     rmbLocalized(.reminderSortingDueDateOnTopOption),
@@ -67,10 +65,8 @@ struct ReminderSettingsTab: View {
                 )
 
                 Text(rmbLocalized(.reminderSortingDueDateOnTopNote))
-                    .font(.caption)
-                    .fixedSize(horizontal: false, vertical: true)
+                    .modifier(SettingsNoteStyle())
                     .padding(.leading, 20)
-                    .padding(.bottom, 4)
 
                 Toggle(
                     rmbLocalized(.reminderSortingByPriorityOption),

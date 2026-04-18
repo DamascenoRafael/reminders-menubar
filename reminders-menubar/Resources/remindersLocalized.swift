@@ -103,9 +103,9 @@ enum RemindersMenuBarLocalizedKeys: String {
     case newReminderButtonHelp
     case copyPreviewSettingsLabel
     case copyPropertiesSettingsLabel
-    case copyPropertiesSettingsHint
+    case copyPropertiesSettingsNote
     case copyIncludePropertyNamesOption
-    case copyNoPropertiesSelectedHint
+    case copyNoPropertiesSelectedNote
     case copyPropertyTitle
     case copyPropertyNotes
     case copyPropertyDate

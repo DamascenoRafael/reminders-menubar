@@ -32,10 +32,9 @@ struct CopySettingsTab: View {
                 .background(Color.secondary.opacity(0.08))
                 .cornerRadius(8)
 
-                Text(rmbLocalized(.copyPropertiesSettingsHint))
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                    .padding(.bottom, 10)
+                Text(rmbLocalized(.copyPropertiesSettingsNote))
+                    .modifier(SettingsNoteStyle())
+                    .padding(.bottom, 6)
 
                 Toggle(rmbLocalized(.copyIncludePropertyNamesOption), isOn: $userPreferences.copyIncludePropertyNames)
             }
@@ -51,9 +50,8 @@ struct CopySettingsTab: View {
                         .background(Color.secondary.opacity(0.08))
                         .cornerRadius(8)
                 } else {
-                    Text(rmbLocalized(.copyNoPropertiesSelectedHint))
-                        .font(.caption)
-                        .foregroundColor(.secondary)
+                    Text(rmbLocalized(.copyNoPropertiesSelectedNote))
+                        .modifier(SettingsNoteStyle())
                 }
             }
         }

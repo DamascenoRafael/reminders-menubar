@@ -92,6 +92,7 @@
 		71D262472F57D51C0073C0FD /* AboutSettingsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D262462F57D51C0073C0FD /* AboutSettingsTab.swift */; };
 		71D262492F57DD860073C0FD /* OpenSettingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D262482F57DD860073C0FD /* OpenSettingButton.swift */; };
 		71D2624B2F592E2A0073C0FD /* SettingsDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D2624A2F592E2A0073C0FD /* SettingsDivider.swift */; };
+		71D2624B2F592E2B0073C0FD /* SettingsNoteStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D2624A2F592E2B0073C0FD /* SettingsNoteStyle.swift */; };
 		71D2624D2F5A1B0000C8A33E /* RightClickMenuHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D2624C2F5A1B0000C8A33E /* RightClickMenuHelper.swift */; };
 		71D2624F2F5A1B0100C8A33E /* SettingsOpenerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D2624E2F5A1B0100C8A33E /* SettingsOpenerView.swift */; };
 		71D262502F5B8A0000C8A33E /* CopySettingsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D262512F5B8A0000C8A33E /* CopySettingsTab.swift */; };
@@ -220,6 +221,7 @@
 		71D262462F57D51C0073C0FD /* AboutSettingsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSettingsTab.swift; sourceTree = "<group>"; };
 		71D262482F57DD860073C0FD /* OpenSettingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSettingButton.swift; sourceTree = "<group>"; };
 		71D2624A2F592E2A0073C0FD /* SettingsDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDivider.swift; sourceTree = "<group>"; };
+		71D2624A2F592E2B0073C0FD /* SettingsNoteStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNoteStyle.swift; sourceTree = "<group>"; };
 		71D2624C2F5A1B0000C8A33E /* RightClickMenuHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightClickMenuHelper.swift; sourceTree = "<group>"; };
 		71D2624E2F5A1B0100C8A33E /* SettingsOpenerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOpenerView.swift; sourceTree = "<group>"; };
 		71D262512F5B8A0000C8A33E /* CopySettingsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopySettingsTab.swift; sourceTree = "<group>"; };
@@ -498,6 +500,7 @@
 				71D2623B2F57935F0073C0FD /* SettingsView.swift */,
 				71D2623E2F57D4490073C0FD /* SettingsSection.swift */,
 				71D2624A2F592E2A0073C0FD /* SettingsDivider.swift */,
+				71D2624A2F592E2B0073C0FD /* SettingsNoteStyle.swift */,
 				71D262402F57D4E60073C0FD /* GeneralSettingsTab.swift */,
 				71D262422F57D4F60073C0FD /* ReminderSettingsTab.swift */,
 				71D262512F5B8A0000C8A33E /* CopySettingsTab.swift */,
@@ -733,6 +736,7 @@
 				710980D22600419F001F69B2 /* UpcomingRemindersContent.swift in Sources */,
 				713F234524C130D400FF0BEC /* ReminderList.swift in Sources */,
 				71D2624B2F592E2A0073C0FD /* SettingsDivider.swift in Sources */,
+				71D2624B2F592E2B0073C0FD /* SettingsNoteStyle.swift in Sources */,
 				71D262432F57D4F60073C0FD /* ReminderSettingsTab.swift in Sources */,
 				71D262502F5B8A0000C8A33E /* CopySettingsTab.swift in Sources */,
 				71D262472F57D51C0073C0FD /* AboutSettingsTab.swift in Sources */,
