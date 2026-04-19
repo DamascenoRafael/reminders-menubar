@@ -299,7 +299,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Scuro"
+            "value" : "Modalità scura"
           }
         },
         "ja" : {
@@ -424,7 +424,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Chiaro"
+            "value" : "Modalità chiara"
           }
         },
         "ja" : {
@@ -799,7 +799,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Schema colori:"
+            "value" : "Aspetto:"
           }
         },
         "ja" : {
@@ -2799,7 +2799,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Seleziona e riordina le proprietà da includere durante la copia di un promemoria"
+            "value" : "Seleziona e riordina le proprietà da includere quando copi un promemoria"
           }
         },
         "ja" : {
@@ -4174,7 +4174,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Controlla la ricetta per le quantità"
+            "value" : "Controlla le quantità della ricetta"
           }
         },
         "ja" : {
@@ -4299,7 +4299,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Comprare la spesa"
+            "value" : "Fai la spesa"
           }
         },
         "ja" : {
@@ -6424,7 +6424,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Crea un elenco in Promemoria Apple per iniziare"
+            "value" : "Crea un elenco in Promemoria di Apple per iniziare"
           }
         },
         "ja" : {
@@ -6549,7 +6549,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nessun elenco di promemoria trovato"
+            "value" : "Nessun elenco promemoria trovato"
           }
         },
         "ja" : {
@@ -6799,7 +6799,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Modifica le opzioni del filtro dei promemoria"
+            "value" : "Modifica le opzioni di filtro dei promemoria"
           }
         },
         "ja" : {
@@ -7174,7 +7174,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Digita per cercare promemoria"
+            "value" : "Digita per cercare i promemoria"
           }
         },
         "ja" : {
@@ -7924,7 +7924,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abilita la scorciatoia da tastiera per aprire %@"
+            "value" : "Abilita l’abbreviazione da tastiera per aprire %@"
           }
         },
         "ja" : {
@@ -9674,7 +9674,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Apri Promemoria Apple"
+            "value" : "Apri Promemoria di Apple"
           }
         },
         "ja" : {
@@ -10049,7 +10049,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ripristina dimensione predefinita"
+            "value" : "Ripristina dimensione di default"
           }
         },
         "ja" : {
@@ -10674,7 +10674,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Caricamento promemoria…"
+            "value" : "Carico promemoria…"
           }
         },
         "ja" : {
@@ -12980,7 +12980,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Opzioni promemoria"
+            "value" : "Opzioni di modifica del promemoria"
           }
         },
         "ja" : {
@@ -13105,7 +13105,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mostra prima le priorità più alte"
+            "value" : "Mostra prima i promemoria con priorità più alta"
           }
         },
         "ja" : {
@@ -13355,7 +13355,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Predefinito"
+            "value" : "Default"
           }
         },
         "ja" : {
@@ -13480,7 +13480,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quando attivato, i promemoria con scadenza vengono sempre mostrati per primi, ordinati per data. Le altre opzioni di ordinamento si applicano solo ai promemoria senza data."
+            "value" : "Quando l’opzione è attiva, i promemoria con scadenza vengono sempre mostrati per primi, in ordine di data. Le altre opzioni di ordinamento si applicano solo ai promemoria senza scadenza."
           }
         },
         "ja" : {
@@ -13730,7 +13730,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ordina i promemoria per data di creazione o completamento, i più recenti per primi."
+            "value" : "Ordina i promemoria per data di creazione o di completamento, a partire dai più recenti."
           }
         },
         "ja" : {
@@ -13980,7 +13980,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ordina i promemoria per data di creazione o completamento, i più vecchi per primi."
+            "value" : "Ordina i promemoria per data di creazione o di completamento, a partire dai meno recenti."
           }
         },
         "ja" : {
@@ -14105,7 +14105,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Più vecchi per primi"
+            "value" : "Meno recenti per primi"
           }
         },
         "ja" : {
@@ -14730,7 +14730,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "'%@' verrà rimosso definitivamente"
+            "value" : "Questa azione rimuoverà ‘%@' e non può essere annullata"
           }
         },
         "ja" : {
@@ -15230,7 +15230,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ricerca…"
+            "value" : "Cerco…"
           }
         },
         "ja" : {
@@ -16605,7 +16605,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mostra nome lista per i prossimi promemoria"
+            "value" : "Mostra nome lista dei prossimi promemoria"
           }
         },
         "ja" : {
@@ -19480,7 +19480,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sei aggiornato"
+            "value" : "Aggiornamento completato"
           }
         },
         "ja" : {
