@@ -101,6 +101,7 @@
 		71DDDD012F8E700100000001 /* RecentRemindersContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DDDD002F8E700000000001 /* RecentRemindersContent.swift */; };
 		71E5C75529B7D45600568292 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E5C75429B7D45600568292 /* UserDefaults+Extensions.swift */; };
 		71E7126A2908C6D100DA97BD /* Binding+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E712692908C6D100DA97BD /* Binding+Extensions.swift */; };
+		71EA20722F96E41D003F5220 /* EKRecurrenceRule+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA20712F96E414003F5220 /* EKRecurrenceRule+Extensions.swift */; };
 		71ED5D6B290B6B3C00626185 /* RmbReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ED5D6A290B6B3C00626185 /* RmbReminder.swift */; };
 		71F06B482F4FF3EC009C91E6 /* MainPopoverSizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F06B472F4FF3EC009C91E6 /* MainPopoverSizing.swift */; };
 		71F301FA259FB5CF00CDD81E /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F301F9259FB5CF00CDD81E /* UserPreferences.swift */; };
@@ -230,6 +231,7 @@
 		71DDDD002F8E700000000001 /* RecentRemindersContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentRemindersContent.swift; sourceTree = "<group>"; };
 		71E5C75429B7D45600568292 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		71E712692908C6D100DA97BD /* Binding+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extensions.swift"; sourceTree = "<group>"; };
+		71EA20712F96E414003F5220 /* EKRecurrenceRule+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EKRecurrenceRule+Extensions.swift"; sourceTree = "<group>"; };
 		71ED5D6A290B6B3C00626185 /* RmbReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbReminder.swift; sourceTree = "<group>"; };
 		71F06B472F4FF3EC009C91E6 /* MainPopoverSizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPopoverSizing.swift; sourceTree = "<group>"; };
 		71F301F9259FB5CF00CDD81E /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
@@ -540,6 +542,7 @@
 				71A3834525BDD2AC00975B4C /* EKReminder+Extensions.swift */,
 				71A3834425BDD2AC00975B4B /* EKCalendar+Extensions.swift */,
 				71CCF9832D43148000D334F8 /* EKReminderPriority+Extensions.swift */,
+				71EA20712F96E414003F5220 /* EKRecurrenceRule+Extensions.swift */,
 				7156444126031CA9005E81FD /* Array+Extension.swift */,
 				7156443926030591005E81FD /* ArrayReminderItem+Extension.swift */,
 				71F84A4529541D6700C5A24D /* URL+Extensions.swift */,
@@ -787,6 +790,7 @@
 				71564448260324FA005E81FD /* PrioritizedReminders.swift in Sources */,
 				7156443A26030591005E81FD /* ArrayReminderItem+Extension.swift in Sources */,
 				717A01B72F4FDE5C00C8A33E /* Comparable+Extensions.swift in Sources */,
+				71EA20722F96E41D003F5220 /* EKRecurrenceRule+Extensions.swift in Sources */,
 				71D262412F57D4E60073C0FD /* GeneralSettingsTab.swift in Sources */,
 				71F36A9A29C2BA0C0099D337 /* RmbColorScheme.swift in Sources */,
 				71F93A612E03B54100D5C5BC /* ReminderCompleteButton.swift in Sources */,

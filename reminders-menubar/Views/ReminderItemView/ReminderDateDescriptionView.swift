@@ -18,7 +18,7 @@ struct ReminderDateDescriptionView: View {
 
             if hasRecurrenceRules {
                 Image(systemName: "repeat")
-                Text(recurrenceLabel(recurrenceRules?.first))
+                Text(recurrenceLabel(recurrenceRules))
             }
 
             Spacer()
@@ -27,10 +27,13 @@ struct ReminderDateDescriptionView: View {
         .foregroundColor(.secondary)
     }
 
-    func recurrenceLabel(_ rule: EKRecurrenceRule?) -> String {
-        let interval = rule?.interval ?? 1
+    func recurrenceLabel(_ rules: [EKRecurrenceRule]?) -> String {
+        guard rules?.count == 1, let rule = rules?.first, rule.hasNoAdditionalConstraints else {
+            return ""
+        }
 
-        switch rule?.frequency {
+        let interval = rule.interval
+        switch rule.frequency {
         case .daily:
             return rmbLocalized(.reminderRecurrenceDailyLabel, arguments: interval)
         case .weekly:
