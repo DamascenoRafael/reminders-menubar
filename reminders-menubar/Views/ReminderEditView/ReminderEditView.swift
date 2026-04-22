@@ -62,6 +62,8 @@ struct ReminderEditView: View {
             ReminderDateTimeEditView(date: $rmbReminder.date, components: .date, hasComponent: $rmbReminder.hasDueDate)
             ReminderDateTimeEditView(date: $rmbReminder.date, components: .time, hasComponent: $rmbReminder.hasTime)
 
+            ReminderRecurrenceEditView(recurrence: $rmbReminder.recurrence, isEnabled: rmbReminder.hasDueDate)
+
             Divider()
 
             ReminderPriorityEditView(priority: $rmbReminder.priority)
@@ -80,7 +82,8 @@ struct ReminderEditView: View {
 
             actionButtons()
         }
-        .frame(width: 300, height: hasExternalLinks ? 370 : 320, alignment: .top)
+        .frame(width: 300, alignment: .top)
+        .frame(minHeight: hasExternalLinks ? 390 : 340)
         .padding()
         .modifier(RmbBackgroundModifier())
         .onAppear {

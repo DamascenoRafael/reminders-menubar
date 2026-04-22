@@ -79,6 +79,7 @@
 		71C0B0022F70A00100000001 /* ReminderDateTimeEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C0B0012F70A00100000001 /* ReminderDateTimeEditView.swift */; };
 		71C0B0042F70A00200000002 /* ReminderPriorityEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C0B0032F70A00200000002 /* ReminderPriorityEditView.swift */; };
 		71C0B0062F70A00300000003 /* ReminderListEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C0B0052F70A00300000003 /* ReminderListEditView.swift */; };
+		71C0B0082F70A00400000004 /* ReminderRecurrenceEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C0B0072F70A00400000004 /* ReminderRecurrenceEditView.swift */; };
 		71CAF8432A3444EA003160FF /* CalendarParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CAF8422A3444EA003160FF /* CalendarParser.swift */; };
 		71CC00022FA6000200000001 /* CopyShortcutCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CC00012FA6000100000001 /* CopyShortcutCoordinator.swift */; };
 		71CC00042FA6000400000002 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CC00032FA6000300000002 /* SettingsCoordinator.swift */; };
@@ -102,6 +103,7 @@
 		71E5C75529B7D45600568292 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E5C75429B7D45600568292 /* UserDefaults+Extensions.swift */; };
 		71E7126A2908C6D100DA97BD /* Binding+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E712692908C6D100DA97BD /* Binding+Extensions.swift */; };
 		71EA20722F96E41D003F5220 /* EKRecurrenceRule+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA20712F96E414003F5220 /* EKRecurrenceRule+Extensions.swift */; };
+		71EA20742F97FC11003F5220 /* RmbRecurrenceOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA20732F97FC0C003F5220 /* RmbRecurrenceOption.swift */; };
 		71ED5D6B290B6B3C00626185 /* RmbReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ED5D6A290B6B3C00626185 /* RmbReminder.swift */; };
 		71F06B482F4FF3EC009C91E6 /* MainPopoverSizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F06B472F4FF3EC009C91E6 /* MainPopoverSizing.swift */; };
 		71F301FA259FB5CF00CDD81E /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F301F9259FB5CF00CDD81E /* UserPreferences.swift */; };
@@ -209,6 +211,7 @@
 		71C0B0012F70A00100000001 /* ReminderDateTimeEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderDateTimeEditView.swift; sourceTree = "<group>"; };
 		71C0B0032F70A00200000002 /* ReminderPriorityEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderPriorityEditView.swift; sourceTree = "<group>"; };
 		71C0B0052F70A00300000003 /* ReminderListEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderListEditView.swift; sourceTree = "<group>"; };
+		71C0B0072F70A00400000004 /* ReminderRecurrenceEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderRecurrenceEditView.swift; sourceTree = "<group>"; };
 		71CAF8422A3444EA003160FF /* CalendarParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarParser.swift; sourceTree = "<group>"; };
 		71CC00012FA6000100000001 /* CopyShortcutCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyShortcutCoordinator.swift; sourceTree = "<group>"; };
 		71CC00032FA6000300000002 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
@@ -232,6 +235,7 @@
 		71E5C75429B7D45600568292 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		71E712692908C6D100DA97BD /* Binding+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extensions.swift"; sourceTree = "<group>"; };
 		71EA20712F96E414003F5220 /* EKRecurrenceRule+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EKRecurrenceRule+Extensions.swift"; sourceTree = "<group>"; };
+		71EA20732F97FC0C003F5220 /* RmbRecurrenceOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbRecurrenceOption.swift; sourceTree = "<group>"; };
 		71ED5D6A290B6B3C00626185 /* RmbReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbReminder.swift; sourceTree = "<group>"; };
 		71F06B472F4FF3EC009C91E6 /* MainPopoverSizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPopoverSizing.swift; sourceTree = "<group>"; };
 		71F301F9259FB5CF00CDD81E /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
@@ -288,6 +292,7 @@
 				71C0B0012F70A00100000001 /* ReminderDateTimeEditView.swift */,
 				71C0B0032F70A00200000002 /* ReminderPriorityEditView.swift */,
 				71C0B0052F70A00300000003 /* ReminderListEditView.swift */,
+				71C0B0072F70A00400000004 /* ReminderRecurrenceEditView.swift */,
 			);
 			path = ReminderEditView;
 			sourceTree = "<group>";
@@ -410,6 +415,7 @@
 				7102422F25F55D5600451D15 /* ReminderInterval.swift */,
 				71564447260324FA005E81FD /* PrioritizedReminders.swift */,
 				71ED5D6A290B6B3C00626185 /* RmbReminder.swift */,
+				71EA20732F97FC0C003F5220 /* RmbRecurrenceOption.swift */,
 				717748F729622FCB00654CAA /* RmbIcon.swift */,
 				712C836129E6635200BF6C24 /* RmbMenuBarCounterType.swift */,
 				71A000002F61000100000001 /* RmbSortingOrder.swift */,
@@ -748,6 +754,7 @@
 				71C0B0022F70A00100000001 /* ReminderDateTimeEditView.swift in Sources */,
 				71C0B0042F70A00200000002 /* ReminderPriorityEditView.swift in Sources */,
 				71C0B0062F70A00300000003 /* ReminderListEditView.swift in Sources */,
+				71C0B0082F70A00400000004 /* ReminderRecurrenceEditView.swift in Sources */,
 				71B4AD4F25B7D06400214219 /* CalendarTitle.swift in Sources */,
 				716F69F42D6421170080A5F1 /* ReminderChangeDueDateOptionMenu.swift in Sources */,
 				B55D54F82F37DF4E002DE761 /* ReminderCopyService.swift in Sources */,
@@ -804,6 +811,7 @@
 				71DDDD012F8E700100000001 /* RecentRemindersContent.swift in Sources */,
 				714D03B226042416003063F7 /* Calendar+Extensions.swift in Sources */,
 				712C32B424BF939100AC75E2 /* AppDelegate.swift in Sources */,
+				71EA20742F97FC11003F5220 /* RmbRecurrenceOption.swift in Sources */,
 				715B4DD228D41071008C6683 /* UpdateAvailableButton.swift in Sources */,
 				71CAF8432A3444EA003160FF /* CalendarParser.swift in Sources */,
 				7172A74824C776E6001F96F1 /* RemindersData.swift in Sources */,

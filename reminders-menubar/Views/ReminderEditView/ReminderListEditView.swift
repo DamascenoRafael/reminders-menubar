@@ -20,6 +20,7 @@ struct ReminderListEditView: View {
             } label: {
                 Text(verbatim: "")
             }
+            .controlSize(.small)
             .labelsHidden()
             .frame(maxWidth: .infinity, alignment: .leading)
         }

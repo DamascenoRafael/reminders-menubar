@@ -32,19 +32,7 @@ struct ReminderDateDescriptionView: View {
             return ""
         }
 
-        let interval = rule.interval
-        switch rule.frequency {
-        case .daily:
-            return rmbLocalized(.reminderRecurrenceDailyLabel, arguments: interval)
-        case .weekly:
-            return rmbLocalized(.reminderRecurrenceWeeklyLabel, arguments: interval)
-        case .monthly:
-            return rmbLocalized(.reminderRecurrenceMonthlyLabel, arguments: interval)
-        case .yearly:
-            return rmbLocalized(.reminderRecurrenceYearlyLabel, arguments: interval)
-        default:
-            return ""
-        }
+        return rule.title
     }
 }
 

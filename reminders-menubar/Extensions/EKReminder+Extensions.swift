@@ -161,14 +161,27 @@ extension EKReminder {
         
         notes = rmbReminder.notes
         
-        // NOTE: Preventing unnecessary reminder dueDate/EKAlarm overwriting.
+        // NOTE: Preventing unnecessary dueDate/EKAlarm overwriting.
         if rmbReminder.hasDateChanges {
             removeDueDateAndAlarms()
             if rmbReminder.hasDueDate {
                 addDueDateAndAlarm(for: rmbReminder.date, withTime: rmbReminder.hasTime)
-            } else {
-                // NOTE: A reminder that has no due date cannot be a repeating reminder
+            }
+        }
+        
+        // NOTE: Preventing unnecessary recurrence overwriting.
+        if rmbReminder.hasRecurrenceChanges {
+            switch rmbReminder.recurrence {
+            case .custom:
+                // NOTE: Custom recurrence should not be modified; preserve original rules
+                break
+            case .none:
                 removeAllRecurrenceRules()
+            case .daily, .weekly, .monthly, .yearly:
+                removeAllRecurrenceRules()
+                if let rule = rmbReminder.recurrence.ekRecurrenceRule {
+                    addRecurrenceRule(rule)
+                }
             }
         }
         

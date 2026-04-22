@@ -16,6 +16,14 @@ struct RmbReminder {
             date != originalReminder.dueDateComponents?.date
     }
     
+    var hasRecurrenceChanges: Bool {
+        guard let originalReminder else {
+            return recurrence != .none
+        }
+        
+        return recurrence != RmbRecurrenceOption(from: originalReminder.recurrenceRules)
+    }
+    
     var title: String {
         willSet {
             guard !isPreparingToSave else {
@@ -38,9 +46,10 @@ struct RmbReminder {
     }
     var hasDueDate: Bool {
         didSet {
-            // NOTE: When hasDueDate option is disabled, it must disable hasTime
+            // NOTE: When hasDueDate option is disabled, it must disable hasTime and recurrence
             if !hasDueDate {
                 hasTime = false
+                recurrence = .none
             }
         }
     }
@@ -54,6 +63,7 @@ struct RmbReminder {
             }
         }
     }
+    var recurrence: RmbRecurrenceOption
     var priority: EKReminderPriority
     var calendar: EKCalendar?
     
@@ -70,6 +80,7 @@ struct RmbReminder {
         date = .nextExactHour()
         hasDueDate = false
         hasTime = false
+        recurrence = .none
         priority = .none
     }
     
@@ -80,6 +91,7 @@ struct RmbReminder {
         date = reminder.dueDateComponents?.date ?? .nextExactHour()
         hasDueDate = reminder.hasDueDate
         hasTime = reminder.hasTime
+        recurrence = RmbRecurrenceOption(from: reminder.recurrenceRules)
         priority = reminder.ekPriority
         calendar = reminder.calendar
     }

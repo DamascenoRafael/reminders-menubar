@@ -97,6 +97,9 @@ enum RemindersMenuBarLocalizedKeys: String {
     case reminderRecurrenceWeeklyLabel
     case reminderRecurrenceMonthlyLabel
     case reminderRecurrenceYearlyLabel
+    case reminderRecurrenceNoneLabel
+    case reminderRecurrenceCustomLabel
+    case reminderRecurrenceCustomNote
     case copyReminderButton
     case copiedToastMessage
     case reminderEditPopoverSaveButton
