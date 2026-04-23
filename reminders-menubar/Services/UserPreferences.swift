@@ -14,6 +14,7 @@ private enum PreferencesKeys {
     static let filterUpcomingRemindersByCalendar = "filterUpcomingRemindersByCalendar"
     static let menuBarCounterType = "menuBarCounterType"
     static let filterMenuBarCountByCalendar = "filterMenuBarCountByCalendar"
+    static let hideMenuBarIconWhenCounterIsShown = "hideMenuBarIconWhenCounterIsShown"
     static let preferredLanguage = "preferredLanguage"
     static let copyProperties = "copyProperties"
     static let copyIncludePropertyNames = "copyIncludePropertyNames"
@@ -247,6 +248,17 @@ class UserPreferences: ObservableObject {
             UserPreferences.defaults.set(
                 filterMenuBarCountByCalendar,
                 forKey: PreferencesKeys.filterMenuBarCountByCalendar
+            )
+        }
+    }
+    
+    @Published var hideMenuBarIconWhenCounterIsShown: Bool = {
+        return defaults.bool(forKey: PreferencesKeys.hideMenuBarIconWhenCounterIsShown)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(
+                hideMenuBarIconWhenCounterIsShown,
+                forKey: PreferencesKeys.hideMenuBarIconWhenCounterIsShown
             )
         }
     }

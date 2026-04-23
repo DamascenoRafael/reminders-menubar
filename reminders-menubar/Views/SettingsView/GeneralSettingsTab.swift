@@ -54,6 +54,19 @@ struct GeneralSettingsTab: View {
                 }
                 .pickerStyle(.menu)
                 .labelsHidden()
+
+                let isMenuBarCounterDisabled = userPreferences.menuBarCounterType == .disabled
+                Toggle(
+                    rmbLocalized(.hideMenuBarIconWhenCounterIsShownOption),
+                    isOn: Binding(
+                        get: { userPreferences.hideMenuBarIconWhenCounterIsShown && !isMenuBarCounterDisabled },
+                        set: { newValue in
+                            userPreferences.hideMenuBarIconWhenCounterIsShown = newValue
+                            AppDelegate.shared.loadMenuBarIcon()
+                        }
+                    )
+                )
+                .disabled(isMenuBarCounterDisabled)
             }
 
             SettingsDivider()

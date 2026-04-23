@@ -52,6 +52,7 @@ enum RemindersMenuBarLocalizedKeys: String {
     case menuBarIconSettingsLabel
     case menuBarCounterSettingsLabel
     case filterMenuBarCountByCalendarOption
+    case hideMenuBarIconWhenCounterIsShownOption
     case showMenuBarDueCountOption
     case showMenuBarTodayCountOption
     case showMenuBarAllRemindersCountOption

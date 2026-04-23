@@ -37,6 +37,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var localOutsideClickMonitor: Any?
     
     private var sharedAuthorizationErrorMessage: String?
+    private var currentMenuBarCount = 0
 
     let popover = NSPopover()
     lazy var statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -77,13 +78,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func updateMenuBarTodayCount(to todayCount: Int) {
+        currentMenuBarCount = todayCount
         let buttonTitle = todayCount > 0 ? String(todayCount) : ""
         statusBarItem.button?.title = buttonTitle
+        loadMenuBarIcon()
     }
     
     func loadMenuBarIcon() {
-        let menuBarIcon = UserPreferences.shared.reminderMenuBarIcon
-        statusBarItem.button?.image = menuBarIcon.image
+        let isCounterVisible = currentMenuBarCount > 0
+        let shouldHideIcon = UserPreferences.shared.hideMenuBarIconWhenCounterIsShown && isCounterVisible
+        statusBarItem.button?.image = shouldHideIcon ? nil : UserPreferences.shared.reminderMenuBarIcon.image
     }
     
     private func configureMenuBarButton() {
