@@ -106,6 +106,7 @@
 		71EA20742F97FC11003F5220 /* RmbRecurrenceOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA20732F97FC0C003F5220 /* RmbRecurrenceOption.swift */; };
 		71ED5D6B290B6B3C00626185 /* RmbReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ED5D6A290B6B3C00626185 /* RmbReminder.swift */; };
 		71F06B482F4FF3EC009C91E6 /* MainPopoverSizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F06B472F4FF3EC009C91E6 /* MainPopoverSizing.swift */; };
+		71F2AF652F9AAED900C59519 /* MenuBarSettingsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F2AF642F9AAED900C59519 /* MenuBarSettingsTab.swift */; };
 		71F301FA259FB5CF00CDD81E /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F301F9259FB5CF00CDD81E /* UserPreferences.swift */; };
 		71F36A9829C16B7A0099D337 /* RmbColorKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F36A9729C16B7A0099D337 /* RmbColorKey.swift */; };
 		71F36A9A29C2BA0C0099D337 /* RmbColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F36A9929C2BA0C0099D337 /* RmbColorScheme.swift */; };
@@ -238,6 +239,7 @@
 		71EA20732F97FC0C003F5220 /* RmbRecurrenceOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbRecurrenceOption.swift; sourceTree = "<group>"; };
 		71ED5D6A290B6B3C00626185 /* RmbReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbReminder.swift; sourceTree = "<group>"; };
 		71F06B472F4FF3EC009C91E6 /* MainPopoverSizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPopoverSizing.swift; sourceTree = "<group>"; };
+		71F2AF642F9AAED900C59519 /* MenuBarSettingsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarSettingsTab.swift; sourceTree = "<group>"; };
 		71F301F9259FB5CF00CDD81E /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		71F36A9729C16B7A0099D337 /* RmbColorKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbColorKey.swift; sourceTree = "<group>"; };
 		71F36A9929C2BA0C0099D337 /* RmbColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbColorScheme.swift; sourceTree = "<group>"; };
@@ -510,6 +512,7 @@
 				71D2624A2F592E2A0073C0FD /* SettingsDivider.swift */,
 				71D2624A2F592E2B0073C0FD /* SettingsNoteStyle.swift */,
 				71D262402F57D4E60073C0FD /* GeneralSettingsTab.swift */,
+				71F2AF642F9AAED900C59519 /* MenuBarSettingsTab.swift */,
 				71D262422F57D4F60073C0FD /* ReminderSettingsTab.swift */,
 				71D262512F5B8A0000C8A33E /* CopySettingsTab.swift */,
 				71D262442F57D50A0073C0FD /* KeyboardSettingsTab.swift */,
@@ -813,6 +816,7 @@
 				712C32B424BF939100AC75E2 /* AppDelegate.swift in Sources */,
 				71EA20742F97FC11003F5220 /* RmbRecurrenceOption.swift in Sources */,
 				715B4DD228D41071008C6683 /* UpdateAvailableButton.swift in Sources */,
+				71F2AF652F9AAED900C59519 /* MenuBarSettingsTab.swift in Sources */,
 				71CAF8432A3444EA003160FF /* CalendarParser.swift in Sources */,
 				7172A74824C776E6001F96F1 /* RemindersData.swift in Sources */,
 				71F84A4629541D6700C5A24D /* URL+Extensions.swift in Sources */,

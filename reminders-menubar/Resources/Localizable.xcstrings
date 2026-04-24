@@ -8388,115 +8388,115 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Anzahl in Menüleiste:"
+            "value" : "Anzahl:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Menu bar counter:"
+            "value" : "Counter:"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Indicador en la barra de menú:"
+            "value" : "Indicador:"
           }
         },
         "fil-PH" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Counter sa menu bar:"
+            "value" : "Counter:"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Compteur de la barre de menu:"
+            "value" : "Compteur :"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Penghitung menu bar:"
+            "value" : "Penghitung:"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Contatore barra dei menu:"
+            "value" : "Contatore:"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "メニューバーカウンター:"
+            "value" : "カウンター:"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "메뉴 막대 카운트:"
+            "value" : "카운트:"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Menubalk teller:"
+            "value" : "Teller:"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pokaż liczbę na pasku:"
+            "value" : "Liczba:"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Contagem da barra de menu:"
+            "value" : "Contagem:"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Счетчик строки меню:"
+            "value" : "Счётчик:"
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Počítadlo v lište:"
+            "value" : "Počítadlo:"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Menü çubuğu sayacı:"
+            "value" : "Sayaç:"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Лічильник смуги меню:"
+            "value" : "Лічильник:"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bộ đếm ở thanh menu:"
+            "value" : "Bộ đếm:"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "菜单栏计数:"
+            "value" : "计数:"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "選單列計數:"
+            "value" : "計數:"
           }
         }
       }
@@ -8513,115 +8513,115 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Menüleistensymbol:"
+            "value" : "Symbol:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Menu bar icon:"
+            "value" : "Icon:"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ícono de la barra de menú:"
+            "value" : "Ícono:"
           }
         },
         "fil-PH" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Icon sa menu bar:"
+            "value" : "Icon:"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Icon de la barre de menu:"
+            "value" : "Icône :"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ikon menu bar:"
+            "value" : "Ikon:"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Icona barra dei menu:"
+            "value" : "Icona:"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "メニューバーアイコン:"
+            "value" : "アイコン:"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "메뉴 막대 아이콘:"
+            "value" : "아이콘:"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Menubalkpictogram:"
+            "value" : "Pictogram:"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ikona na Pasku Menu:"
+            "value" : "Ikona:"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ícone da barra de menu:"
+            "value" : "Ícone:"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Значок строки меню:"
+            "value" : "Значок:"
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ikona v lište:"
+            "value" : "Ikona:"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Menü çubuğu simgesi:"
+            "value" : "Simge:"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Іконка смуги меню:"
+            "value" : "Іконка:"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Biểu tượng ở thanh menu:"
+            "value" : "Biểu tượng:"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "菜单栏图标:"
+            "value" : "图标:"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "選單列圖示:"
+            "value" : "圖示:"
           }
         }
       }

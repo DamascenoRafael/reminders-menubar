@@ -2,6 +2,7 @@ import SwiftUI
 
 enum SettingsTab: Hashable {
     case general
+    case menuBar
     case reminders
     case copy
     case keyboard
@@ -18,6 +19,12 @@ struct SettingsView: View {
                     Label(rmbLocalized(.generalSettingsTab), systemImage: "gearshape")
                 }
                 .tag(SettingsTab.general)
+
+            MenuBarSettingsTab()
+                .tabItem {
+                    Label(rmbLocalized(.menuBarSettingsTab), systemImage: "menubar.rectangle")
+                }
+                .tag(SettingsTab.menuBar)
 
             ReminderSettingsTab()
                 .tabItem {

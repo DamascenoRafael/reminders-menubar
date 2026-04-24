@@ -144,6 +144,7 @@ enum RemindersMenuBarLocalizedKeys: String {
     case timeFormat12HourOption
     case timeFormat24HourOption
     case generalSettingsTab
+    case menuBarSettingsTab
     case remindersSettingsTab
     case copySettingsTab
     case keyboardSettingsTab
