@@ -5,6 +5,7 @@ import EventKit
 @MainActor
 class RemindersData: ObservableObject {
     private var cancellationTokens: [AnyCancellable] = []
+    private let previewService = MenuBarPreviewService()
 
     init() {
         addObservers()
@@ -53,18 +54,36 @@ class RemindersData: ObservableObject {
         }
         .store(in: &cancellationTokens)
 
-        Publishers.MergeMany(
-            UserPreferences.shared.$menuBarCounterType.map { _ in }.eraseToAnyPublisher(),
-            UserPreferences.shared.$filterMenuBarCountByCalendar.map { _ in }.eraseToAnyPublisher()
-        )
-        .dropFirst()
-        .sink { [weak self] _ in
-            Task {
-                guard let self else { return }
-                self.updateMenuBarCount(with: await self.getMenuBarCount())
+        UserPreferences.shared.$menuBarCounterType
+            .dropFirst()
+            .sink { [weak self] _ in
+                Task {
+                    guard let self else { return }
+                    self.updateMenuBarCount(to: await self.getMenuBarCount())
+                }
             }
-        }
-        .store(in: &cancellationTokens)
+            .store(in: &cancellationTokens)
+
+        UserPreferences.shared.$filterMenuBarContentByCalendar
+            .dropFirst()
+            .sink { [weak self] _ in
+                Task {
+                    guard let self else { return }
+                    self.updateMenuBarCount(to: await self.getMenuBarCount())
+                    await self.refreshPreview()
+                }
+            }
+            .store(in: &cancellationTokens)
+
+        UserPreferences.shared.$menuBarReminderPreviewEnabled
+            .dropFirst()
+            .sink { [weak self] _ in
+                Task {
+                    guard let self else { return }
+                    await self.refreshPreview()
+                }
+            }
+            .store(in: &cancellationTokens)
 
         $searchText
             .dropFirst()
@@ -173,7 +192,8 @@ class RemindersData: ObservableObject {
             of: self.calendarIdentifiersFilter
         )
         self.upcomingReminders = await getUpcomingReminders()
-        self.updateMenuBarCount(with: await getMenuBarCount())
+        self.updateMenuBarCount(to: await getMenuBarCount())
+        await self.refreshPreview()
         if showingRecentReminders {
             self.recentReminders = await fetchRecentReminders()
         }
@@ -195,7 +215,7 @@ class RemindersData: ObservableObject {
     }
 
     private func getMenuBarCount() async -> Int {
-        let calendarFilter = UserPreferences.shared.filterMenuBarCountByCalendar
+        let calendarFilter = UserPreferences.shared.filterMenuBarContentByCalendar
             ? self.calendarIdentifiersFilter
             : nil
         
@@ -211,7 +231,14 @@ class RemindersData: ObservableObject {
         }
     }
 
-    private func updateMenuBarCount(with count: Int) {
-        AppDelegate.shared.updateMenuBarTodayCount(to: count)
+    private func updateMenuBarCount(to count: Int) {
+        AppDelegate.shared.updateMenuBarCount(to: count)
+    }
+
+    private func refreshPreview() async {
+        let calendarFilter = UserPreferences.shared.filterMenuBarContentByCalendar
+            ? calendarIdentifiersFilter
+            : nil
+        await previewService.refresh(calendarFilter: calendarFilter)
     }
 }

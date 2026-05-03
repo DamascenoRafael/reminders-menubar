@@ -51,8 +51,8 @@ enum RemindersMenuBarLocalizedKeys: String {
     case appAppearanceColorDarkModeOption
     case menuBarIconSettingsLabel
     case menuBarCounterSettingsLabel
-    case filterMenuBarCountByCalendarOption
-    case hideMenuBarIconWhenCounterIsShownOption
+    case filterMenuBarContentByCalendarOption
+    case hideMenuBarIconWhenContentIsShownOption
     case showMenuBarDueCountOption
     case showMenuBarTodayCountOption
     case showMenuBarAllRemindersCountOption
@@ -154,6 +154,18 @@ enum RemindersMenuBarLocalizedKeys: String {
     case searchRemindersLoadingMessage
     case emptyListSearchNoQueryMessage
     case emptyListSearchNoResultsMessage
+    case menuBarPreviewSettingsLabel
+    case menuBarPreviewEnableOption
+    case menuBarPreviewTimeAheadLabel
+    case menuBarPreviewTimeAheadAtTimeOption
+    case menuBarPreviewTimeAheadMinOption
+    case menuBarPreviewTimeAheadHourOption
+    case menuBarPreviewMaxLengthLabel
+    case hideCounterWhenPreviewShownOption
+    case menuBarPreviewGracePeriodNote
+    case menuBarPreviewNowPrefix
+    case menuBarPreviewShowTodayOption
+    case menuBarPreviewTodayPrefix
 }
 
 struct ReminderMenuBarLocale {

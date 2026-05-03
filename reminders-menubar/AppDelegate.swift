@@ -38,6 +38,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     private var sharedAuthorizationErrorMessage: String?
     private var currentMenuBarCount = 0
+    private var currentReminderPreview: String?
 
     let popover = NSPopover()
     lazy var statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -77,16 +78,38 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    func updateMenuBarTodayCount(to todayCount: Int) {
-        currentMenuBarCount = todayCount
-        let buttonTitle = todayCount > 0 ? String(todayCount) : ""
-        statusBarItem.button?.title = buttonTitle
+    func updateMenuBarCount(to count: Int) {
+        currentMenuBarCount = count
+        applyMenuBarButtonAppearance()
+    }
+
+    func updateMenuBarReminderPreview(_ title: String?) {
+        currentReminderPreview = title
+        applyMenuBarButtonAppearance()
+    }
+
+    private func applyMenuBarButtonAppearance() {
+        let reminderPreview = currentReminderPreview
+        let menuBarCount = currentMenuBarCount
+
+        if let reminderPreview {
+            let hideCounter = UserPreferences.shared.hideCounterWhenReminderPreviewIsShown
+            if !hideCounter && menuBarCount > 0 {
+                statusBarItem.button?.title = "\(menuBarCount) · \(reminderPreview)"
+            } else {
+                statusBarItem.button?.title = reminderPreview
+            }
+        } else {
+            let buttonTitle = menuBarCount > 0 ? String(menuBarCount) : ""
+            statusBarItem.button?.title = buttonTitle
+        }
+
         loadMenuBarIcon()
     }
     
     func loadMenuBarIcon() {
-        let isCounterVisible = currentMenuBarCount > 0
-        let shouldHideIcon = UserPreferences.shared.hideMenuBarIconWhenCounterIsShown && isCounterVisible
+        let isContentVisible = currentMenuBarCount > 0 || currentReminderPreview != nil
+        let shouldHideIcon = UserPreferences.shared.hideMenuBarIconWhenContentIsShown && isContentVisible
         statusBarItem.button?.image = shouldHideIcon ? nil : UserPreferences.shared.reminderMenuBarIcon.image
     }
     

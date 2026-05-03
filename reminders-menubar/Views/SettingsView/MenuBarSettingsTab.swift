@@ -5,6 +5,9 @@ struct MenuBarSettingsTab: View {
 
     var body: some View {
         Form {
+            let isMenuBarCounterDisabled = userPreferences.menuBarCounterType == .disabled
+            let isReminderPreviewDisabled = !userPreferences.menuBarReminderPreviewEnabled
+
             SettingsSection(rmbLocalized(.menuBarIconSettingsLabel)) {
                 Picker(String(""), selection: Binding(
                     get: { userPreferences.reminderMenuBarIcon },
@@ -24,18 +27,29 @@ struct MenuBarSettingsTab: View {
                 .pickerStyle(.menu)
                 .labelsHidden()
 
-                let isMenuBarCounterDisabled = userPreferences.menuBarCounterType == .disabled
                 Toggle(
-                    rmbLocalized(.hideMenuBarIconWhenCounterIsShownOption),
+                    rmbLocalized(.hideMenuBarIconWhenContentIsShownOption),
                     isOn: Binding(
-                        get: { userPreferences.hideMenuBarIconWhenCounterIsShown && !isMenuBarCounterDisabled },
+                        get: {
+                            userPreferences.hideMenuBarIconWhenContentIsShown
+                            && (!isMenuBarCounterDisabled || !isReminderPreviewDisabled)
+                        },
                         set: { newValue in
-                            userPreferences.hideMenuBarIconWhenCounterIsShown = newValue
+                            userPreferences.hideMenuBarIconWhenContentIsShown = newValue
                             AppDelegate.shared.loadMenuBarIcon()
                         }
                     )
                 )
-                .disabled(isMenuBarCounterDisabled)
+                .disabled(isMenuBarCounterDisabled && isReminderPreviewDisabled)
+            }
+
+            SettingsDivider()
+
+            SettingsSection {
+                Toggle(
+                    rmbLocalized(.filterMenuBarContentByCalendarOption),
+                    isOn: $userPreferences.filterMenuBarContentByCalendar
+                )
             }
 
             SettingsDivider()
@@ -48,11 +62,66 @@ struct MenuBarSettingsTab: View {
                 }
                 .pickerStyle(.menu)
                 .labelsHidden()
+            }
+
+            SettingsDivider()
+
+            SettingsSection(rmbLocalized(.menuBarPreviewSettingsLabel)) {
+                Toggle(
+                    rmbLocalized(.menuBarPreviewEnableOption),
+                    isOn: $userPreferences.menuBarReminderPreviewEnabled
+                )
+
+                HStack {
+                    Text(rmbLocalized(.menuBarPreviewTimeAheadLabel))
+
+                    Picker(String(""), selection: $userPreferences.menuBarReminderPreviewTimeAhead) {
+                        ForEach(RmbMenuBarPreviewTimeAhead.allCases, id: \.self) { timeAhead in
+                            Text(timeAhead.title).tag(timeAhead)
+                        }
+                    }
+                    .pickerStyle(.menu)
+                    .labelsHidden()
+                    .disabled(isReminderPreviewDisabled)
+                }
+                .padding(.leading, 20)
+
+                Text(rmbLocalized(.menuBarPreviewGracePeriodNote))
+                    .modifier(SettingsNoteStyle())
+                    .padding(.leading, 20)
+
+                HStack {
+                    Text(rmbLocalized(.menuBarPreviewMaxLengthLabel))
+                    Slider(
+                        value: Binding(
+                            get: { Double(userPreferences.menuBarReminderPreviewMaxLength) },
+                            set: { userPreferences.menuBarReminderPreviewMaxLength = Int($0) }
+                        ),
+                        in: 5...30,
+                        step: 5
+                    )
+                    .labelsHidden()
+                    .disabled(isReminderPreviewDisabled)
+                    .frame(maxWidth: 260)
+
+                    Text(String(userPreferences.menuBarReminderPreviewMaxLength))
+                        .foregroundColor(.secondary)
+                        .frame(minWidth: 20, alignment: .trailing)
+                }
+                .padding(.leading, 20)
+                .padding(.bottom, 8)
 
                 Toggle(
-                    rmbLocalized(.filterMenuBarCountByCalendarOption),
-                    isOn: $userPreferences.filterMenuBarCountByCalendar
+                    rmbLocalized(.menuBarPreviewShowTodayOption),
+                    isOn: $userPreferences.menuBarReminderPreviewShowTodayReminders
                 )
+                .disabled(isReminderPreviewDisabled)
+
+                Toggle(
+                    rmbLocalized(.hideCounterWhenPreviewShownOption),
+                    isOn: $userPreferences.hideCounterWhenReminderPreviewIsShown
+                )
+                .disabled(isReminderPreviewDisabled)
             }
         }
         .padding(20)

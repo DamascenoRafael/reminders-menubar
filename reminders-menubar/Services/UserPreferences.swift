@@ -13,8 +13,8 @@ private enum PreferencesKeys {
     static let upcomingRemindersInterval = "upcomingRemindersInterval"
     static let filterUpcomingRemindersByCalendar = "filterUpcomingRemindersByCalendar"
     static let menuBarCounterType = "menuBarCounterType"
-    static let filterMenuBarCountByCalendar = "filterMenuBarCountByCalendar"
-    static let hideMenuBarIconWhenCounterIsShown = "hideMenuBarIconWhenCounterIsShown"
+    static let filterMenuBarContentByCalendar = "filterMenuBarCountByCalendar"
+    static let hideMenuBarIconWhenContentIsShown = "hideMenuBarIconWhenCounterIsShown"
     static let preferredLanguage = "preferredLanguage"
     static let copyProperties = "copyProperties"
     static let copyIncludePropertyNames = "copyIncludePropertyNames"
@@ -25,6 +25,11 @@ private enum PreferencesKeys {
     static let reminderSortingOrder = "reminderSortingOrder"
     static let timeFormatIs24Hour = "timeFormatIs24Hour"
     static let showExternalLinksInReminderItem = "showExternalLinksInReminderItem"
+    static let menuBarReminderPreviewEnabled = "menuBarReminderPreviewEnabled"
+    static let menuBarReminderPreviewTimeAhead = "menuBarReminderPreviewTimeAhead"
+    static let menuBarReminderPreviewMaxLength = "menuBarReminderPreviewMaxLength"
+    static let hideCounterWhenReminderPreviewIsShown = "hideCounterWhenReminderPreviewIsShown"
+    static let menuBarReminderPreviewShowTodayReminders = "menuBarReminderPreviewShowTodayReminders"
 }
 
 class UserPreferences: ObservableObject {
@@ -241,28 +246,86 @@ class UserPreferences: ObservableObject {
         }
     }
     
-    @Published var filterMenuBarCountByCalendar: Bool = {
-        return defaults.bool(forKey: PreferencesKeys.filterMenuBarCountByCalendar)
+    @Published var filterMenuBarContentByCalendar: Bool = {
+        return defaults.bool(forKey: PreferencesKeys.filterMenuBarContentByCalendar)
     }() {
         didSet {
             UserPreferences.defaults.set(
-                filterMenuBarCountByCalendar,
-                forKey: PreferencesKeys.filterMenuBarCountByCalendar
+                filterMenuBarContentByCalendar,
+                forKey: PreferencesKeys.filterMenuBarContentByCalendar
             )
         }
     }
     
-    @Published var hideMenuBarIconWhenCounterIsShown: Bool = {
-        return defaults.bool(forKey: PreferencesKeys.hideMenuBarIconWhenCounterIsShown)
+    @Published var hideMenuBarIconWhenContentIsShown: Bool = {
+        return defaults.bool(forKey: PreferencesKeys.hideMenuBarIconWhenContentIsShown)
     }() {
         didSet {
             UserPreferences.defaults.set(
-                hideMenuBarIconWhenCounterIsShown,
-                forKey: PreferencesKeys.hideMenuBarIconWhenCounterIsShown
+                hideMenuBarIconWhenContentIsShown,
+                forKey: PreferencesKeys.hideMenuBarIconWhenContentIsShown
             )
         }
     }
-    
+
+    @Published var menuBarReminderPreviewEnabled: Bool = {
+        return defaults.bool(forKey: PreferencesKeys.menuBarReminderPreviewEnabled)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(
+                menuBarReminderPreviewEnabled,
+                forKey: PreferencesKeys.menuBarReminderPreviewEnabled
+            )
+        }
+    }
+
+    @Published var menuBarReminderPreviewTimeAhead: RmbMenuBarPreviewTimeAhead = {
+        guard let data = defaults.data(forKey: PreferencesKeys.menuBarReminderPreviewTimeAhead),
+              let timeAhead = try? JSONDecoder().decode(RmbMenuBarPreviewTimeAhead.self, from: data) else {
+            return .fifteenMinutes
+        }
+        return timeAhead
+    }() {
+        didSet {
+            let data = try? JSONEncoder().encode(menuBarReminderPreviewTimeAhead)
+            UserPreferences.defaults.set(data, forKey: PreferencesKeys.menuBarReminderPreviewTimeAhead)
+        }
+    }
+
+    @Published var menuBarReminderPreviewMaxLength: Int = {
+        let value = defaults.integer(forKey: PreferencesKeys.menuBarReminderPreviewMaxLength)
+        return value > 0 ? value : 10
+    }() {
+        didSet {
+            UserPreferences.defaults.set(
+                menuBarReminderPreviewMaxLength,
+                forKey: PreferencesKeys.menuBarReminderPreviewMaxLength
+            )
+        }
+    }
+
+    @Published var hideCounterWhenReminderPreviewIsShown: Bool = {
+        return defaults.bool(forKey: PreferencesKeys.hideCounterWhenReminderPreviewIsShown)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(
+                hideCounterWhenReminderPreviewIsShown,
+                forKey: PreferencesKeys.hideCounterWhenReminderPreviewIsShown
+            )
+        }
+    }
+
+    @Published var menuBarReminderPreviewShowTodayReminders: Bool = {
+        return defaults.bool(forKey: PreferencesKeys.menuBarReminderPreviewShowTodayReminders)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(
+                menuBarReminderPreviewShowTodayReminders,
+                forKey: PreferencesKeys.menuBarReminderPreviewShowTodayReminders
+            )
+        }
+    }
+
     @Published var copyPropertyOptions: [CopyPropertyOption] = {
         guard let data = defaults.data(forKey: PreferencesKeys.copyProperties),
               let decoded = try? JSONDecoder().decode([CopyPropertyOption].self, from: data) else {
