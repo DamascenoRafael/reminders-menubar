@@ -10,8 +10,12 @@ class RemindersService {
     
     private let eventStore = EKEventStore()
     
-    func authorizationStatus() -> EKAuthorizationStatus {
-        return EKEventStore.authorizationStatus(for: .reminder)
+    var isAuthorized: Bool {
+        if #available(macOS 14.0, *) {
+            return EKEventStore.authorizationStatus(for: .reminder) == .fullAccess
+        } else {
+            return EKEventStore.authorizationStatus(for: .reminder) == .authorized
+        }
     }
     
     func requestAccess(completion: @escaping (Bool, String?) -> Void) {

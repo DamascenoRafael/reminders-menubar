@@ -30,6 +30,8 @@
 	<string>Copyright © Rafael Damasceno, GNU General Public License v3.</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSRemindersFullAccessUsageDescription</key>
+	<string>The App uses Apple Reminders as a source for lists and tasks. Access is required to view and edit reminders.</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>The App uses Apple Reminders as a source for lists and tasks. Access is required to view and edit reminders.</string>
 	<key>NSSupportsAutomaticTermination</key>

@@ -73,7 +73,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         popover.animates = false
         popover.behavior = .transient
 
-        if RemindersService.shared.authorizationStatus() == .authorized {
+        if RemindersService.shared.isAuthorized {
             popover.contentViewController = contentViewController
         }
     }
@@ -143,7 +143,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc private func togglePopover() {
-        guard RemindersService.shared.authorizationStatus() == .authorized else {
+        guard RemindersService.shared.isAuthorized else {
             requestAuthorization()
             return
         }

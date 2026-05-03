@@ -170,7 +170,7 @@ class RemindersData: ObservableObject {
     }
 
     @Published var calendarForSaving: EKCalendar? = {
-        guard RemindersService.shared.authorizationStatus() == .authorized else {
+        guard RemindersService.shared.isAuthorized else {
             return nil
         }
 
