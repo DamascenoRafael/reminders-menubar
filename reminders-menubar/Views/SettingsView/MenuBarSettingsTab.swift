@@ -9,13 +9,7 @@ struct MenuBarSettingsTab: View {
             let isReminderPreviewDisabled = !userPreferences.menuBarReminderPreviewEnabled
 
             SettingsSection(rmbLocalized(.menuBarIconSettingsLabel)) {
-                Picker(String(""), selection: Binding(
-                    get: { userPreferences.reminderMenuBarIcon },
-                    set: { newIcon in
-                        userPreferences.reminderMenuBarIcon = newIcon
-                        AppDelegate.shared.loadMenuBarIcon()
-                    }
-                )) {
+                Picker(String(""), selection: $userPreferences.reminderMenuBarIcon) {
                     ForEach(RmbIcon.allCases, id: \.self) { icon in
                         HStack {
                             Image(nsImage: icon.image)
@@ -36,7 +30,6 @@ struct MenuBarSettingsTab: View {
                         },
                         set: { newValue in
                             userPreferences.hideMenuBarIconWhenContentIsShown = newValue
-                            AppDelegate.shared.loadMenuBarIcon()
                         }
                     )
                 )

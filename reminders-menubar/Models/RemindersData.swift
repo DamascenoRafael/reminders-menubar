@@ -85,6 +85,16 @@ class RemindersData: ObservableObject {
             }
             .store(in: &cancellationTokens)
 
+        Publishers.MergeMany(
+            UserPreferences.shared.$reminderMenuBarIcon.map { _ in }.eraseToAnyPublisher(),
+            UserPreferences.shared.$hideMenuBarIconWhenContentIsShown.map { _ in }.eraseToAnyPublisher()
+        )
+        .dropFirst()
+        .sink { _ in
+            AppDelegate.shared.loadMenuBarIcon()
+        }
+        .store(in: &cancellationTokens)
+
         $searchText
             .dropFirst()
             .debounce(for: .milliseconds(300), scheduler: DispatchQueue.main)
