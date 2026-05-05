@@ -174,12 +174,12 @@ struct ReminderMenuBarLocale {
 }
 
 func rmbLocalized(_ key: RemindersMenuBarLocalizedKeys, arguments: CVarArg...) -> String {
-    let preferredLanguage = rmbCurrentLocale().identifier
-    let localePath = Bundle.main.path(forResource: preferredLanguage, ofType: "lproj") ?? ""
-    let localeBundle = Bundle(path: localePath) ?? Bundle.main
-    
+    let localizedBundle = rmbLocalizedBundle()
     let fallbackString = Bundle.main.localizedString(forKey: key.rawValue, value: nil, table: nil)
-    let localizedString = localeBundle.localizedString(forKey: key.rawValue, value: fallbackString, table: nil)
+    let localizedString = localizedBundle.localizedString(forKey: key.rawValue, value: fallbackString, table: nil)
+    if arguments.isEmpty {
+        return localizedString
+    }
     return String(format: localizedString, arguments: arguments)
 }
 
@@ -203,10 +203,17 @@ func rmbTimeFormattedLocale() -> Locale {
 }
 
 private func rmbCurrentLocale() -> Locale {
-    var currentLocale = Locale.current
-    if let preferredLanguage = UserPreferences.shared.preferredLanguage {
-        currentLocale = Locale(identifier: preferredLanguage)
+    guard let preferredLanguage = UserPreferences.shared.preferredLanguage else {
+        return Locale.current
     }
+    return Locale(identifier: preferredLanguage)
+}
 
-    return currentLocale
+private func rmbLocalizedBundle() -> Bundle {
+    guard let preferredLanguage = UserPreferences.shared.preferredLanguage,
+          let localizedPath = Bundle.main.path(forResource: preferredLanguage, ofType: "lproj"),
+          let localizedBundle = Bundle(path: localizedPath) else {
+        return Bundle.main
+    }
+    return localizedBundle
 }
