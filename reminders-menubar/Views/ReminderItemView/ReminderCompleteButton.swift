@@ -26,7 +26,7 @@ struct ReminderCompleteButton: View {
                 .id(isShowingFilled)
                 .padding(.top, 2)
         }
-        .buttonStyle(PlainButtonStyle())
+        .buttonStyle(.plain)
         .onDisappear {
             if isPendingCompletion {
                 completionTask?.cancel()
