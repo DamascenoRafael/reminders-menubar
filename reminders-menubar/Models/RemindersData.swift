@@ -20,6 +20,7 @@ class RemindersData: ObservableObject {
             NotificationCenter.default.publisher(for: .NSCalendarDayChanged),
             NotificationCenter.default.publisher(for: .remindersDataShouldUpdate)
         )
+        .debounce(for: .milliseconds(300), scheduler: DispatchQueue.main)
         .sink { [weak self] _ in
             Task {
                 await self?.update()
