@@ -38,12 +38,32 @@ class UserPreferences: ObservableObject {
     private var accessibilityObserver: NSObjectProtocol?
 
     private init() {
+        migrateLaunchAtLoginIfNeeded()
+
         accessibilityObserver = NSWorkspace.shared.notificationCenter.addObserver(
             forName: NSWorkspace.accessibilityDisplayOptionsDidChangeNotification,
             object: nil,
             queue: .main
         ) { [weak self] _ in
             self?.reduceTransparency = NSWorkspace.shared.accessibilityDisplayShouldReduceTransparency
+        }
+    }
+
+    private func migrateLaunchAtLoginIfNeeded() {
+        let launchAtLoginMigratedPreferencesKey = "launchAtLoginMigrated"
+        guard !UserPreferences.defaults.bool(forKey: launchAtLoginMigratedPreferencesKey) else {
+            return
+        }
+        UserPreferences.defaults.set(true, forKey: launchAtLoginMigratedPreferencesKey)
+
+        if #available(macOS 13.0, *) {
+            let launcherService = SMAppService.loginItem(identifier: AppConstants.launcherBundleId)
+            guard launcherService.status == .enabled else {
+                return
+            }
+            // Unregister the old launcher and register the main app instead
+            try? launcherService.unregister()
+            try? SMAppService.mainApp.register()
         }
     }
 
@@ -195,13 +215,31 @@ class UserPreferences: ObservableObject {
     
     var launchAtLoginIsEnabled: Bool {
         get {
-            let allJobs = SMCopyAllJobDictionaries(kSMDomainUserLaunchd).takeRetainedValue() as? [[String: AnyObject]]
-            let launcherJob = allJobs?.first { $0["Label"] as? String == AppConstants.launcherBundleId }
-            return launcherJob?["OnDemand"] as? Bool ?? false
+            if #available(macOS 13.0, *) {
+                return SMAppService.mainApp.status == .enabled
+            } else {
+                let allJobs = SMCopyAllJobDictionaries(
+                    kSMDomainUserLaunchd
+                ).takeRetainedValue() as? [[String: AnyObject]]
+                let launcherJob = allJobs?.first { $0["Label"] as? String == AppConstants.launcherBundleId }
+                return launcherJob?["OnDemand"] as? Bool ?? false
+            }
         }
-        
         set {
-            SMLoginItemSetEnabled(AppConstants.launcherBundleId as CFString, newValue)
+            objectWillChange.send()
+            if #available(macOS 13.0, *) {
+                do {
+                    if newValue {
+                        try SMAppService.mainApp.register()
+                    } else {
+                        try SMAppService.mainApp.unregister()
+                    }
+                } catch {
+                    print("Failed to \(newValue ? "enable" : "disable") launch at login:", error.localizedDescription)
+                }
+            } else {
+                SMLoginItemSetEnabled(AppConstants.launcherBundleId as CFString, newValue)
+            }
         }
     }
     
