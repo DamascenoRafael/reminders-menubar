@@ -24,7 +24,7 @@ class MenuBarPreviewService {
         .sink { [weak self] _ in
             Task { [weak self] in
                 guard let self else { return }
-                self.recompute()
+                recompute()
             }
         }
         .store(in: &cancellationTokens)
