@@ -1,6 +1,9 @@
 import EventKit
 
 extension EKReminder {
+
+    // MARK: - Computed properties
+
     private var maxDueDate: Date? {
         guard let date = dueDateComponents?.date else {
             return nil
@@ -44,33 +47,13 @@ extension EKReminder {
         return date.relativeDateDescription(withTime: hasTime)
     }
     
-    private var reminderBackingObject: AnyObject? {
-        let backingObjectSelector = NSSelectorFromString("backingObject")
-        let reminderSelector = NSSelectorFromString("_reminder")
+    // MARK: - Private API access
 
-        guard self.responds(to: backingObjectSelector),
-              let unmanagedBackingObject = self.perform(backingObjectSelector) else {
-            return nil
-        }
-
-        let backingObject = unmanagedBackingObject.takeUnretainedValue()
-        guard backingObject.responds(to: reminderSelector),
-              let unmanagedReminder = backingObject.perform(reminderSelector) else {
-            return nil
-        }
-
-        return unmanagedReminder.takeUnretainedValue()
-    }
-    
     // NOTE: This is a workaround to access the URL saved in a reminder.
     // This property is not accessible through the conventional API.
     var attachedUrl: URL? {
-        let attachmentsSelector = NSSelectorFromString("attachments")
-
         guard let backingObject = reminderBackingObject,
-              (backingObject as AnyObject).responds(to: attachmentsSelector),
-              let unmanagedAttachments = (backingObject as AnyObject).perform(attachmentsSelector),
-              let attachments = unmanagedAttachments.takeUnretainedValue() as? [AnyObject] else {
+              let attachments = performPrivateSelector("attachments", on: backingObject) as? [AnyObject] else {
             return nil
         }
         
@@ -81,14 +64,9 @@ extension EKReminder {
                 continue
             }
 
-            let urlSelector = NSSelectorFromString("url")
-            guard item.responds(to: urlSelector),
-                  let unmanagedUrl = item.perform(urlSelector),
-                  let url = unmanagedUrl.takeUnretainedValue() as? URL else {
-                continue
+            if let url = performPrivateSelector("url", on: item) as? URL {
+                return url
             }
-            
-            return url
         }
         
         return nil
@@ -97,23 +75,9 @@ extension EKReminder {
     // NOTE: This is a workaround to access the mail linked to a reminder.
     // This property is not accessible through the conventional API.
     var mailUrl: URL? {
-        let userActivitySelector = NSSelectorFromString("userActivity")
-        let storageSelector = NSSelectorFromString("storage")
-
-        guard let backingObject = reminderBackingObject else {
-            return nil
-        }
-
-        let obj = backingObject as AnyObject
-        guard obj.responds(to: userActivitySelector),
-              let unmanagedUserActivity = obj.perform(userActivitySelector) else {
-            return nil
-        }
-
-        let userActivity = unmanagedUserActivity.takeUnretainedValue()
-        guard userActivity.responds(to: storageSelector),
-              let unmanagedUserActivityStorage = userActivity.perform(storageSelector),
-              let userActivityStorageData = unmanagedUserActivityStorage.takeUnretainedValue() as? Data else {
+        guard let backingObject = reminderBackingObject,
+              let userActivity = performPrivateSelector("userActivity", on: backingObject),
+              let userActivityStorageData = performPrivateSelector("storage", on: userActivity) as? Data else {
             return nil
         }
         
@@ -130,29 +94,33 @@ extension EKReminder {
     // NOTE: This is a workaround to access the parent reminder id of a reminder.
     // This property is not accessible through the conventional API.
     var parentId: String? {
-        let parentReminderSelector = NSSelectorFromString("parentReminderID")
-        let uuidSelector = NSSelectorFromString("uuid")
-
-        guard let backingObject = reminderBackingObject else {
-            return nil
-        }
-
-        let obj = backingObject as AnyObject
-        guard obj.responds(to: parentReminderSelector),
-              let unmanagedParentReminder = obj.perform(parentReminderSelector) else {
-            return nil
-        }
-
-        let parentReminder = unmanagedParentReminder.takeUnretainedValue()
-        guard parentReminder.responds(to: uuidSelector),
-              let unmanagedParentReminderId = parentReminder.perform(uuidSelector),
-              let parentReminderId = unmanagedParentReminderId.takeUnretainedValue() as? UUID else {
+        guard let backingObject = reminderBackingObject,
+              let parentReminder = performPrivateSelector("parentReminderID", on: backingObject),
+              let parentReminderId = performPrivateSelector("uuid", on: parentReminder) as? UUID else {
             return nil
         }
         
         return parentReminderId.uuidString
     }
-    
+
+    private var reminderBackingObject: AnyObject? {
+        guard let backingObject = performPrivateSelector("backingObject", on: self) else {
+            return nil
+        }
+        return performPrivateSelector("_reminder", on: backingObject)
+    }
+
+    private func performPrivateSelector(_ name: String, on object: AnyObject, with arg: AnyObject? = nil) -> AnyObject? {
+        let selector = NSSelectorFromString(name)
+        guard object.responds(to: selector) else { return nil }
+        if let arg {
+            return object.perform(selector, with: arg)?.takeUnretainedValue()
+        }
+        return object.perform(selector)?.takeUnretainedValue()
+    }
+
+    // MARK: - Update reminder methods
+
     func update(with rmbReminder: RmbReminder) {
         let trimmedTitle = rmbReminder.title.trimmingCharacters(in: .whitespaces)
         if !trimmedTitle.isEmpty {
