@@ -39,6 +39,10 @@ struct ReminderItemView: View {
             VStack(spacing: 4) {
                 reminderTitleRow()
 
+                if #available(macOS 12, *), !reminderItem.reminder.ekTags.isEmpty {
+                    ReminderTagsView(tags: reminderItem.reminder.ekTags)
+                }
+
                 let hasDueDate = reminderItem.reminder.relativeDateDescription != nil
                 let shouldShowExternalLinks = userPreferences.showExternalLinksInReminderItem
                     && (reminderItem.reminder.attachedUrl != nil || reminderItem.reminder.mailUrl != nil)

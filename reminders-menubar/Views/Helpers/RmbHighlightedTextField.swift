@@ -19,7 +19,7 @@ struct RmbHighlightedTextField: NSViewRepresentable {
     private var textFont = NSFont.systemFont(ofSize: NSFont.systemFontSize)
     private var onSubmit: (() -> Void)?
     private var isInitialCharValidToAutoComplete: ((_ initialChar: String?) -> Bool)?
-    private var autoCompleteSuggestions: ((_ typingWord: String) -> [String])?
+    private var autoCompleteSuggestions: ((_ initialChar: String?, _ typingWord: String) -> [String])?
 
     init(
         placeholder: String,
@@ -209,7 +209,8 @@ struct RmbHighlightedTextField: NSViewRepresentable {
                 return []
             }
 
-            return autoCompleteSuggestions(typingWord)
+            let initialChar = textView.string[safe: charRange.lowerBound - 1]
+            return autoCompleteSuggestions(initialChar, typingWord)
         }
 
         private func isValidToAutocomplete(_ string: String, charRange: NSRange) -> Bool {
@@ -235,7 +236,7 @@ extension RmbHighlightedTextField {
 
     func autoComplete(
         isInitialCharValid: @escaping (_ initialChar: String?) -> Bool,
-        suggestions: @escaping (_ typingWord: String) -> [String]
+        suggestions: @escaping (_ initialChar: String?, _ typingWord: String) -> [String]
     ) -> RmbHighlightedTextField {
         var view = self
         view.isInitialCharValidToAutoComplete = isInitialCharValid

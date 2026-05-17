@@ -68,6 +68,16 @@ struct ReminderEditView: View {
 
             ReminderPriorityEditView(priority: $rmbReminder.priority)
 
+            if #available(macOS 12, *) {
+                Divider()
+                ReminderTagsEditView(
+                    tags: rmbReminder.tags,
+                    onCommitTag: { rmbReminder.addTag($0) },
+                    onRemoveTag: { rmbReminder.removeTag(named: $0) },
+                    onRemoveLastTag: { rmbReminder.removeLastTag() }
+                )
+            }
+
             if !reminderHasChildren {
                 Divider()
                 ReminderListEditView(selection: calendarPickerSelection)
@@ -83,13 +93,11 @@ struct ReminderEditView: View {
             actionButtons()
         }
         .frame(width: 300, alignment: .top)
-        .frame(minHeight: hasExternalLinks ? 390 : 340)
+        .frame(minHeight: hasExternalLinks ? 410 : 360)
+        .fixedSize(horizontal: false, vertical: true)
         .padding()
         .modifier(RmbBackgroundModifier())
         .onAppear {
-            // swiftlint:disable:next redundant_discardable_let
-            let _ = CalendarParser.updateShared(with: remindersData.calendars)
-            
             if case .create = mode {
                 rmbReminder.calendar = remindersData.calendarForSaving
                 if userPreferences.autoSuggestToday {
@@ -133,8 +141,19 @@ struct ReminderEditView: View {
             focusTrigger: $titleTextFieldFocusTrigger
         )
         .autoComplete(
-            isInitialCharValid: CalendarParser.isInitialCharValid(_:),
-            suggestions: CalendarParser.autoCompleteSuggestions(_:)
+            isInitialCharValid: { char in
+                if #available(macOS 12, *) {
+                    CalendarParser.isInitialCharValid(char) || TagParser.isInitialCharValid(char)
+                } else {
+                    CalendarParser.isInitialCharValid(char)
+                }
+            },
+            suggestions: { initialChar, typingWord in
+                if #available(macOS 12, *), TagParser.isInitialCharValid(initialChar) {
+                    return TagParser.autoCompleteSuggestions(typingWord)
+                }
+                return CalendarParser.autoCompleteSuggestions(typingWord)
+            }
         )
         .fontStyle(.title3)
         .frame(height: titleTextFieldDynamicHeight)
@@ -290,8 +309,8 @@ struct ReminderEditView: View {
             remindersData.calendarForSaving = calendar
         } else if case .edit(let ekReminder, _) = mode {
             ekReminder.update(with: rmbReminder)
-            if ekReminder.hasChanges {
-                RemindersService.shared.save(reminder: ekReminder)
+            if ekReminder.hasChanges || rmbReminder.hasTagChanges {
+                RemindersService.shared.save(reminder: ekReminder, tags: rmbReminder.tags)
             }
         }
 
@@ -307,6 +326,9 @@ struct ReminderEditView: View {
             title = title.replacingOccurrences(of: rmbReminder.textDateResult.string, with: "")
         }
         title = title.replacingOccurrences(of: rmbReminder.textCalendarResult.string, with: "")
+        for tagResult in rmbReminder.textTagResults.sorted(by: { $0.string.count > $1.string.count }) {
+            title = title.replacingOccurrences(of: tagResult.string, with: "")
+        }
         return title.trimmingCharacters(in: .whitespaces)
     }
 }

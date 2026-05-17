@@ -208,6 +208,11 @@ class RemindersData: ObservableObject {
         if showingRecentReminders {
             self.recentReminders = await fetchRecentReminders()
         }
+
+        CalendarParser.updateShared(with: calendars)
+        if #available(macOS 12, *) {
+            TagParser.updateShared(with: await RemindersService.shared.getAllTags())
+        }
     }
     
     private func getUpcomingReminders() async -> [ReminderItem] {

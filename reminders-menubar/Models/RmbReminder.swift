@@ -24,6 +24,17 @@ struct RmbReminder {
         return recurrence != RmbRecurrenceOption(from: originalReminder.recurrenceRules)
     }
     
+    var hasTagChanges: Bool {
+        guard let originalReminder else {
+            return !tags.isEmpty
+        }
+        
+        if #available(macOS 12, *) {
+            return Set(tags.map { $0.lowercased() }) != Set(originalReminder.ekTags.map { $0.lowercased() })
+        }
+        return false
+    }
+    
     var title: String {
         willSet {
             guard !isPreparingToSave else {
@@ -32,6 +43,9 @@ struct RmbReminder {
             updateTextDateResult(with: newValue)
             updateTextCalendarResult(with: newValue)
             updateTextPriorityResult(with: newValue)
+            if #available(macOS 12, *) {
+                updateTextTagResults(with: newValue)
+            }
         }
     }
     
@@ -65,14 +79,22 @@ struct RmbReminder {
     }
     var recurrence: RmbRecurrenceOption
     var priority: EKReminderPriority
+    private(set) var tags: [String]
     var calendar: EKCalendar?
     
     var textDateResult = DateParser.TextDateResult()
     var textCalendarResult = CalendarParser.TextCalendarResult()
     var textPriorityResult = PriorityParser.PriorityParserResult()
+    var textTagResults: [TagParser.TextTagResult] = []
     
     var highlightedTexts: [RmbHighlightedTextField.HighlightedText] {
-        [textDateResult.highlightedText, textCalendarResult.highlightedText, textPriorityResult.highlightedText]
+        var texts = [
+            textDateResult.highlightedText,
+            textCalendarResult.highlightedText,
+            textPriorityResult.highlightedText
+        ]
+        texts.append(contentsOf: textTagResults.map({ $0.highlightedText }))
+        return texts
     }
 
     init() {
@@ -82,6 +104,7 @@ struct RmbReminder {
         hasTime = false
         recurrence = .none
         priority = .none
+        tags = []
     }
     
     init(reminder: EKReminder) {
@@ -94,6 +117,10 @@ struct RmbReminder {
         recurrence = RmbRecurrenceOption(from: reminder.recurrenceRules)
         priority = reminder.ekPriority
         calendar = reminder.calendar
+        tags = []
+        if #available(macOS 12, *) {
+            tags = reminder.ekTags
+        }
     }
 
     mutating func setIsAutoSuggestingTodayForCreation() {
@@ -109,6 +136,34 @@ struct RmbReminder {
         textDateResult = DateParser.TextDateResult()
         textCalendarResult = CalendarParser.TextCalendarResult()
         textPriorityResult = PriorityParser.PriorityParserResult()
+        textTagResults = []
+    }
+
+    mutating func addTag(_ tagName: String) {
+        let sanitizedTagName = TagParser.sanitizedTagName(tagName)
+        guard !sanitizedTagName.isEmpty else {
+            return
+        }
+
+        let resolvedTagName = TagParser.resolvedTagName(sanitizedTagName)
+        guard !tags.contains(where: { $0.caseInsensitiveCompare(resolvedTagName) == .orderedSame }) else {
+            return
+        }
+
+        tags.append(resolvedTagName)
+    }
+
+    mutating func removeTag(named tagName: String) {
+        tags.removeAll(where: { $0.caseInsensitiveCompare(tagName) == .orderedSame })
+        textTagResults.removeAll(where: { $0.tagName.caseInsensitiveCompare(tagName) == .orderedSame })
+    }
+
+    mutating func removeLastTag() {
+        guard let lastTag = tags.last else {
+            return
+        }
+        
+        removeTag(named: lastTag)
     }
     
     private mutating func updateTextDateResult(with newTitle: String) {
@@ -178,5 +233,36 @@ struct RmbReminder {
         
         priority = priorityResult.priority
         textPriorityResult = priorityResult
+    }
+    
+    @available(macOS 12, *)
+    private mutating func updateTextTagResults(with newTitle: String) {
+        let previousParsedTagNames = Set(textTagResults.map({ $0.tagName.lowercased() }))
+
+        textTagResults = TagParser.getTags(from: newTitle)
+
+        let currentParsedTagNames = Set(textTagResults.map({ $0.tagName.lowercased() }))
+        let removedFromTitle = previousParsedTagNames.subtracting(currentParsedTagNames)
+
+        var newParsedTags = textTagResults
+            .map({ $0.tagName })
+            .filter({ tagName in !tags.contains(where: { $0.caseInsensitiveCompare(tagName) == .orderedSame }) })
+
+        // NOTE: Replace a renamed tag in-place to preserve the user's tag order.
+        // Only triggers when exactly one tag was removed and one was added, ensuring it's genuinely a rename.
+        if removedFromTitle.count == 1, newParsedTags.count == 1,
+           let newTag = newParsedTags.first,
+           let index = tags.firstIndex(where: { removedFromTitle.contains($0.lowercased()) }) {
+            tags[index] = newTag
+            newParsedTags.removeFirst()
+        }
+
+        // NOTE: Remove any remaining tags that were parsed from the title but are no longer present.
+        tags.removeAll(where: { removedFromTitle.contains($0.lowercased()) })
+
+        // NOTE: Append any remaining new tags that are not yet in the tags array.
+        for newTag in newParsedTags {
+            addTag(newTag)
+        }
     }
 }

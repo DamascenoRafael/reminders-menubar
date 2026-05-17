@@ -9,6 +9,7 @@ enum RemindersMenuBarLocalizedKeys: String {
     case editReminderTitleTextFieldPlaceholder
     case editReminderExternalLinksViewOnlyLabel
     case editReminderNotesTextFieldPlaceholder
+    case editReminderTagsTextFieldPlaceholder
     case newReminderAddDateButton
     case newReminderAddTimeButton
     case changeReminderListMenuOption

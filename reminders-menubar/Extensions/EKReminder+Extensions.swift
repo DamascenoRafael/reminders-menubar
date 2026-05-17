@@ -1,7 +1,6 @@
 import EventKit
 
 extension EKReminder {
-
     // MARK: - Computed properties
 
     private var maxDueDate: Date? {
@@ -103,6 +102,21 @@ extension EKReminder {
         return parentReminderId.uuidString
     }
 
+    // NOTE: This is a workaround to access the tags (hashtags) saved in a reminder.
+    // This property is not accessible through the conventional API.
+    @available(macOS 12, *)
+    var ekTags: [String] {
+        guard let backingObject = reminderBackingObject,
+              let hashtags = performPrivateSelector("hashtags", on: backingObject) as? NSSet else {
+            return []
+        }
+
+        return hashtags.allObjects.compactMap {
+            performPrivateSelector("name", on: $0 as AnyObject) as? String
+        }
+        .sorted()
+    }
+
     private var reminderBackingObject: AnyObject? {
         guard let backingObject = performPrivateSelector("backingObject", on: self) else {
             return nil
@@ -155,6 +169,50 @@ extension EKReminder {
         
         ekPriority = rmbReminder.priority
         calendar = rmbReminder.calendar
+    }
+
+    @available(macOS 12, *)
+    func updateTags(_ newTags: [String]) {
+        guard Set(ekTags) != Set(newTags) else {
+            return
+        }
+
+        // NOTE: Setup save request via REMSaveRequest.
+        guard let backingObject = reminderBackingObject,
+              let store = performPrivateSelector("store", on: backingObject),
+              let saveRequestClass: AnyObject = NSClassFromString("REMSaveRequest"),
+              let allocedClass = performPrivateSelector("alloc", on: saveRequestClass),
+              let saveRequest = performPrivateSelector("initWithStore:", on: allocedClass, with: store),
+              let changeItem = performPrivateSelector("updateReminder:", on: saveRequest, with: backingObject),
+              let hashtagContext = performPrivateSelector("hashtagContext", on: changeItem) else {
+            return
+        }
+
+        // NOTE: Remove all existing hashtags
+        _ = performPrivateSelector("removeAllHashtags", on: hashtagContext)
+
+        // NOTE: Add new tags. Abort save if we can't add them to prevent partial state
+        if !newTags.isEmpty {
+            let addHashtagSel = NSSelectorFromString("addHashtagWithType:name:")
+            guard hashtagContext.responds(to: addHashtagSel),
+                  let hashtagContextClass = object_getClass(hashtagContext),
+                  let addMethod = class_getInstanceMethod(hashtagContextClass, addHashtagSel),
+                  method_getNumberOfArguments(addMethod) == 4 else {
+                return
+            }
+            let imp = method_getImplementation(addMethod)
+            typealias AddFunc = @convention(c) (AnyObject, Selector, Int, AnyObject) -> Void
+            let addFunc = unsafeBitCast(imp, to: AddFunc.self)
+            for tagName in newTags {
+                addFunc(hashtagContext, addHashtagSel, 0, tagName as NSString)
+            }
+        }
+
+        // NOTE: Save to persist changes
+        let saveSyncSel = NSSelectorFromString("saveSynchronouslyWithError:")
+        if saveRequest.responds(to: saveSyncSel) {
+            _ = saveRequest.perform(saveSyncSel, with: nil)
+        }
     }
     
     func removeDueDateAndAlarms() {
