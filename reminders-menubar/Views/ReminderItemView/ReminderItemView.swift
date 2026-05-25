@@ -40,7 +40,7 @@ struct ReminderItemView: View {
                 reminderTitleRow()
 
                 if #available(macOS 12, *), !reminderItem.reminder.ekTags.isEmpty {
-                    ReminderTagsView(tags: reminderItem.reminder.ekTags)
+                    ReminderTagsView(tagNames: reminderItem.reminder.ekTags.map(\.name))
                 }
 
                 let hasDueDate = reminderItem.reminder.relativeDateDescription != nil

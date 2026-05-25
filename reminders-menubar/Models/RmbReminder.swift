@@ -30,7 +30,7 @@ struct RmbReminder {
         }
         
         if #available(macOS 12, *) {
-            return Set(tags.map { $0.lowercased() }) != Set(originalReminder.ekTags.map { $0.lowercased() })
+            return Set(tags) != Set(originalReminder.ekTags)
         }
         return false
     }
@@ -79,7 +79,7 @@ struct RmbReminder {
     }
     var recurrence: RmbRecurrenceOption
     var priority: EKReminderPriority
-    private(set) var tags: [String]
+    private(set) var tags: [Tag]
     var calendar: EKCalendar?
     
     var textDateResult = DateParser.TextDateResult()
@@ -139,23 +139,25 @@ struct RmbReminder {
         textTagResults = []
     }
 
-    mutating func addTag(_ tagName: String) {
+    mutating func addTag(named tagName: String) {
         let sanitizedTagName = TagParser.sanitizedTagName(tagName)
         guard !sanitizedTagName.isEmpty else {
             return
         }
 
         let resolvedTagName = TagParser.resolvedTagName(sanitizedTagName)
-        guard !tags.contains(where: { $0.caseInsensitiveCompare(resolvedTagName) == .orderedSame }) else {
+        let newTag = Tag(resolvedTagName)
+        guard !tags.contains(newTag) else {
             return
         }
 
-        tags.append(resolvedTagName)
+        tags.append(newTag)
     }
 
     mutating func removeTag(named tagName: String) {
-        tags.removeAll(where: { $0.caseInsensitiveCompare(tagName) == .orderedSame })
-        textTagResults.removeAll(where: { $0.tagName.caseInsensitiveCompare(tagName) == .orderedSame })
+        let tagToRemove = Tag(tagName)
+        tags.removeAll(where: { $0 == tagToRemove })
+        textTagResults.removeAll(where: { $0.tag == tagToRemove })
     }
 
     mutating func removeLastTag() {
@@ -163,7 +165,7 @@ struct RmbReminder {
             return
         }
         
-        removeTag(named: lastTag)
+        removeTag(named: lastTag.name)
     }
     
     private mutating func updateTextDateResult(with newTitle: String) {
@@ -237,32 +239,31 @@ struct RmbReminder {
     
     @available(macOS 12, *)
     private mutating func updateTextTagResults(with newTitle: String) {
-        let previousParsedTagNames = Set(textTagResults.map({ $0.tagName.lowercased() }))
+        let newTextTagResults = TagParser.getTags(from: newTitle)
 
-        textTagResults = TagParser.getTags(from: newTitle)
+        let newParsedTags = Set(newTextTagResults.map(\.tag))
+        let previousParsedTags = Set(textTagResults.map(\.tag))
 
-        let currentParsedTagNames = Set(textTagResults.map({ $0.tagName.lowercased() }))
-        let removedFromTitle = previousParsedTagNames.subtracting(currentParsedTagNames)
+        let removedFromTitle = previousParsedTags.subtracting(newParsedTags)
+        var addedFromTitle = newParsedTags.subtracting(tags)
 
-        var newParsedTags = textTagResults
-            .map({ $0.tagName })
-            .filter({ tagName in !tags.contains(where: { $0.caseInsensitiveCompare(tagName) == .orderedSame }) })
+        textTagResults = newTextTagResults
 
         // NOTE: Replace a renamed tag in-place to preserve the user's tag order.
         // Only triggers when exactly one tag was removed and one was added, ensuring it's genuinely a rename.
-        if removedFromTitle.count == 1, newParsedTags.count == 1,
-           let newTag = newParsedTags.first,
-           let index = tags.firstIndex(where: { removedFromTitle.contains($0.lowercased()) }) {
+        if removedFromTitle.count == 1, addedFromTitle.count == 1,
+           let newTag = addedFromTitle.first,
+           let index = tags.firstIndex(where: { removedFromTitle.contains($0) }) {
             tags[index] = newTag
-            newParsedTags.removeFirst()
+            addedFromTitle.removeFirst()
         }
 
         // NOTE: Remove any remaining tags that were parsed from the title but are no longer present.
-        tags.removeAll(where: { removedFromTitle.contains($0.lowercased()) })
+        tags.removeAll(where: { removedFromTitle.contains($0) })
 
         // NOTE: Append any remaining new tags that are not yet in the tags array.
         for newTag in newParsedTags {
-            addTag(newTag)
+            addTag(named: newTag.name)
         }
     }
 }

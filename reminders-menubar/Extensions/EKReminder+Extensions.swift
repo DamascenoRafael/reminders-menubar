@@ -105,7 +105,7 @@ extension EKReminder {
     // NOTE: This is a workaround to access the tags (hashtags) saved in a reminder.
     // This property is not accessible through the conventional API.
     @available(macOS 12, *)
-    var ekTags: [String] {
+    var ekTags: [Tag] {
         guard let backingObject = reminderBackingObject,
               let hashtags = performPrivateSelector("hashtags", on: backingObject) as? NSSet else {
             return []
@@ -114,6 +114,7 @@ extension EKReminder {
         return hashtags.allObjects.compactMap {
             performPrivateSelector("name", on: $0 as AnyObject) as? String
         }
+        .map { Tag($0) }
         .sorted()
     }
 
@@ -172,7 +173,7 @@ extension EKReminder {
     }
 
     @available(macOS 12, *)
-    func updateTags(_ newTags: [String]) {
+    func updateTags(_ newTags: [Tag]) {
         guard Set(ekTags) != Set(newTags) else {
             return
         }
@@ -203,8 +204,8 @@ extension EKReminder {
             let imp = method_getImplementation(addMethod)
             typealias AddFunc = @convention(c) (AnyObject, Selector, Int, AnyObject) -> Void
             let addFunc = unsafeBitCast(imp, to: AddFunc.self)
-            for tagName in newTags {
-                addFunc(hashtagContext, addHashtagSel, 0, tagName as NSString)
+            for tag in newTags {
+                addFunc(hashtagContext, addHashtagSel, 0, tag.name as NSString)
             }
         }
 

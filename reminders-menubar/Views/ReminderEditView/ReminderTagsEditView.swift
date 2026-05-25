@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ReminderTagsEditView: View {
-    let tags: [String]
+    let tagNames: [String]
     let onCommitTag: (String) -> Void
     let onRemoveTag: (String) -> Void
     let onRemoveLastTag: () -> Void
@@ -17,7 +17,7 @@ struct ReminderTagsEditView: View {
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .center, spacing: 4) {
-                    ForEach(tags, id: \.self) { tag in
+                    ForEach(tagNames, id: \.self) { tag in
                         TagPillView(name: tag, onRemove: { onRemoveTag(tag) })
                     }
 
@@ -63,7 +63,7 @@ private struct TagPillView: View {
 
 #Preview {
     ReminderTagsEditView(
-        tags: ["sample", "review", "important"],
+        tagNames: ["sample", "review", "important"],
         onCommitTag: { _ in },
         onRemoveTag: { _ in },
         onRemoveLastTag: {}

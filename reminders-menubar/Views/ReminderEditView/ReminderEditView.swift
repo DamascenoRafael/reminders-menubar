@@ -71,8 +71,8 @@ struct ReminderEditView: View {
             if #available(macOS 12, *) {
                 Divider()
                 ReminderTagsEditView(
-                    tags: rmbReminder.tags,
-                    onCommitTag: { rmbReminder.addTag($0) },
+                    tagNames: rmbReminder.tags.map(\.name),
+                    onCommitTag: { rmbReminder.addTag(named: $0) },
                     onRemoveTag: { rmbReminder.removeTag(named: $0) },
                     onRemoveLastTag: { rmbReminder.removeLastTag() }
                 )

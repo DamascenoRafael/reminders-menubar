@@ -121,6 +121,7 @@
 		71F93A652E03B93100D5C5BC /* ReminderExternalLinksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F93A642E03B93100D5C5BC /* ReminderExternalLinksView.swift */; };
 		71F9726A25981EDF00D0A118 /* NSTableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F9726925981EDF00D0A118 /* NSTableView+Extensions.swift */; };
 		71TAG0012F80000100000001 /* TagParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71TAG0002F80000000000001 /* TagParser.swift */; };
+		71TAG001FA50000100000001 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71TAG000FA50000100000001 /* Tag.swift */; };
 		71TAG0032F80000300000003 /* ReminderTagsEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71TAG0022F80000200000002 /* ReminderTagsEditView.swift */; };
 		71TAG0052F80000500000005 /* ReminderTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71TAG0042F80000400000004 /* ReminderTagsView.swift */; };
 		96A54A6B29A3ADB70060403F /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A54A6A29A3ADB70060403F /* DateParser.swift */; };
@@ -260,6 +261,7 @@
 		71F93A642E03B93100D5C5BC /* ReminderExternalLinksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderExternalLinksView.swift; sourceTree = "<group>"; };
 		71F9726925981EDF00D0A118 /* NSTableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableView+Extensions.swift"; sourceTree = "<group>"; };
 		71TAG0002F80000000000001 /* TagParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagParser.swift; sourceTree = "<group>"; };
+		71TAG000FA50000100000001 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		71TAG0022F80000200000002 /* ReminderTagsEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTagsEditView.swift; sourceTree = "<group>"; };
 		71TAG0042F80000400000004 /* ReminderTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTagsView.swift; sourceTree = "<group>"; };
 		96A54A6A29A3ADB70060403F /* DateParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateParser.swift; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 				7102422F25F55D5600451D15 /* ReminderInterval.swift */,
 				71564447260324FA005E81FD /* PrioritizedReminders.swift */,
 				71ED5D6A290B6B3C00626185 /* RmbReminder.swift */,
+				71TAG000FA50000100000001 /* Tag.swift */,
 				71EA20732F97FC0C003F5220 /* RmbRecurrenceOption.swift */,
 				717748F729622FCB00654CAA /* RmbIcon.swift */,
 				712C836129E6635200BF6C24 /* RmbMenuBarCounterType.swift */,
@@ -798,6 +801,7 @@
 				719A36E42F52C04100C93474 /* NSCursor+Extensions.swift in Sources */,
 				71F5A0012F5C8A0000D1E2F3 /* NSApplication+Extensions.swift in Sources */,
 				71ED5D6B290B6B3C00626185 /* RmbReminder.swift in Sources */,
+				71TAG001FA50000100000001 /* Tag.swift in Sources */,
 				7156444226031CA9005E81FD /* Array+Extension.swift in Sources */,
 				71D262492F57DD860073C0FD /* OpenSettingButton.swift in Sources */,
 				71D2624D2F5A1B0000C8A33E /* RightClickMenuHelper.swift in Sources */,

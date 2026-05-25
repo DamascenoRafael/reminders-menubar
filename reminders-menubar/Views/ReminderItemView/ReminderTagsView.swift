@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ReminderTagsView: View {
-    let tags: [String]
+    let tagNames: [String]
 
     var body: some View {
         HStack(spacing: 4) {
@@ -9,7 +9,7 @@ struct ReminderTagsView: View {
                 .font(.system(size: 9))
                 .foregroundColor(.secondary)
 
-            ForEach(tags, id: \.self) { tag in
+            ForEach(tagNames, id: \.self) { tag in
                 Text(tag)
                     .modifier(TagPillModifier(size: .compact))
             }
@@ -21,5 +21,5 @@ struct ReminderTagsView: View {
 }
 
 #Preview {
-    ReminderTagsView(tags: ["sample", "review"])
+    ReminderTagsView(tagNames: ["sample", "review"])
 }

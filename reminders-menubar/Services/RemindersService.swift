@@ -135,7 +135,7 @@ class RemindersService {
         return reminders.sortedUpcomingReminders
     }
     
-    func save(reminder: EKReminder, tags: [String]? = nil) {
+    func save(reminder: EKReminder, tags: [Tag]? = nil) {
         do {
             try eventStore.save(reminder, commit: true)
             // NOTE: Tags are persisted via REMSaveRequest directly.
@@ -159,17 +159,17 @@ class RemindersService {
         return await fetchReminders(matching: predicate)
     }
 
-    func getAllTags() async -> [String] {
+    func getAllTags() async -> [Tag] {
         guard #available(macOS 12, *) else { return [] }
 
         let allReminders = await fetchAllReminders()
-        var tagNames: Set<String> = []
+        var tags: Set<Tag> = []
         for reminder in allReminders {
             for tag in reminder.ekTags {
-                tagNames.insert(tag)
+                tags.insert(tag)
             }
         }
-        return tagNames.sorted()
+        return tags.sorted()
     }
 
     func searchReminders(matching query: String, in allReminders: [EKReminder]) -> [ReminderItem] {
