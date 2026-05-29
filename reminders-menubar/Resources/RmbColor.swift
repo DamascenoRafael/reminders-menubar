@@ -17,8 +17,6 @@ enum RmbColor {
     case expiredDate
     case destructiveAction
     case successIndicator
-    case toastStroke
-    case toastBackground
 
     var color: Color {
         switch self {
@@ -57,10 +55,6 @@ enum RmbColor {
             return .red
         case .successIndicator:
             return .green
-        case .toastStroke:
-            return .gray.opacity(0.2)
-        case .toastBackground:
-            return Color("toastBackground")
         }
     }
 

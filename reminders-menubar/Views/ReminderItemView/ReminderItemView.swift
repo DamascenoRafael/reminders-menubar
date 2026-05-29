@@ -99,11 +99,6 @@ struct ReminderItemView: View {
             .onTapGesture {
                 showingEditPopover = true
             }
-            .overlay(
-                copiedToastOverlay()
-                    .opacity(showingCopiedToast ? 1 : 0)
-                    .animation(.easeInOut(duration: 0.3), value: showingCopiedToast)
-            )
         }
         .onHover { isHovered in
             reminderItemIsHovered = isHovered
@@ -155,12 +150,38 @@ struct ReminderItemView: View {
 
     @ViewBuilder
     private func reminderTitleRow() -> some View {
-        HStack(spacing: 4) {
+        ZStack(alignment: .topTrailing) {
             reminderTitleText()
                 .fixedSize(horizontal: false, vertical: true)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.trailing, 22)
 
-            Spacer()
+            trailingIndicator()
+        }
+        .alert(isPresented: $showingRemoveAlert) {
+            removeReminderAlert(for: reminderItem.reminder)
+        }
+    }
 
+    @ViewBuilder
+    private func trailingIndicator() -> some View {
+        if showingCopiedToast {
+            HStack(spacing: 4) {
+                Image(systemName: "checkmark")
+                Text(rmbLocalized(.copiedToastMessage))
+            }
+            .font(.footnote.weight(.semibold))
+            .foregroundColor(.rmbColor(.successIndicator))
+            .padding(.horizontal, 6)
+            .padding(.vertical, 2)
+            .background(
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(Color.rmbColor(.buttonHover))
+            )
+            .transition(.opacity)
+            .animation(.easeInOut(duration: 0.3), value: showingCopiedToast)
+            .allowsHitTesting(false)
+        } else {
             ReminderEllipsisMenuView(
                 showingEditPopover: $showingEditPopover,
                 showingRemoveAlert: $showingRemoveAlert,
@@ -176,9 +197,6 @@ struct ReminderItemView: View {
                     reminderHasChildren: reminderItem.hasChildren
                 )
             }
-        }
-        .alert(isPresented: $showingRemoveAlert) {
-            removeReminderAlert(for: reminderItem.reminder)
         }
     }
 
@@ -206,6 +224,7 @@ struct ReminderItemView: View {
     }
 
     private func shouldShowEllipsisButton() -> Bool {
+        guard !showingCopiedToast else { return false }
         let hoverWithNoPopoverOpen = reminderItemIsHovered && !appHasPopoverOpen.wrappedValue
         return !isPendingCompletion && (hoverWithNoPopoverOpen || showingEditPopover)
     }
@@ -219,26 +238,6 @@ struct ReminderItemView: View {
         let work = DispatchWorkItem { showingCopiedToast = false }
         copiedToastDismissWork = work
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: work)
-    }
-
-    @ViewBuilder
-    private func copiedToastOverlay() -> some View {
-        GeometryReader { geometry in
-            Text(rmbLocalized(.copiedToastMessage))
-                .font(.system(.headline, design: .rounded).weight(.semibold))
-                .foregroundColor(.primary)
-                .padding(.horizontal, 32)
-                .frame(maxHeight: min(32, geometry.size.height - 4))
-                .background(
-                    Capsule()
-                        .fill(Color.rmbColor(.toastBackground))
-                        .overlay(Capsule().stroke(Color.rmbColor(.toastStroke)))
-                        .opacity(0.9)
-                )
-                .frame(width: geometry.size.width, height: geometry.size.height)
-        }
-        .transition(.opacity)
-        .allowsHitTesting(false)
     }
 }
 

@@ -30,7 +30,7 @@ struct ReminderEllipsisMenuView: View {
         .menuStyle(BorderlessButtonMenuStyle(showsMenuIndicator: false))
         .frame(width: 16, height: 16)
         .padding(.top, 1)
-        .padding(.trailing, 10)
+        .padding(.trailing, 6)
         .help(rmbLocalized(.remindersOptionsButtonHelp))
     }
 
