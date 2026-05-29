@@ -2,8 +2,7 @@ import SwiftUI
 
 struct RecentRemindersButton: View {
     @EnvironmentObject var remindersData: RemindersData
-    @ObservedObject var userPreferences = UserPreferences.shared
-    
+
     var body: some View {
         Button(action: {
             remindersData.showingRecentReminders.toggle()
@@ -15,10 +14,7 @@ struct RecentRemindersButton: View {
         .modifier(ToolbarButtonModifier())
         .background(
             remindersData.showingRecentReminders
-                ? Color.rmbColor(
-                    for: .buttonHover,
-                    isTransparencyEnabled: userPreferences.isTransparencyEnabled
-                )
+                ? Color.rmbColor(.buttonHover)
                 : nil
         )
         .cornerRadius(8)

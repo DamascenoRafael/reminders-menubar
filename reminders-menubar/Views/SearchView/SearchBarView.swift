@@ -22,10 +22,7 @@ struct SearchBarView: View {
         .padding(8)
         .padding(.horizontal, 4)
         .background(
-            Color.rmbColor(
-                for: .textFieldBackground,
-                isTransparencyEnabled: userPreferences.isTransparencyEnabled
-            )
+            Color.rmbColor(.textFieldBackground(isTransparent: userPreferences.isTransparencyEnabled))
         )
         .cornerRadius(8)
         .padding(.horizontal, 14)

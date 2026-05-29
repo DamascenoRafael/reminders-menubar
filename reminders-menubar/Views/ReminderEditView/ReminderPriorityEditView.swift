@@ -36,7 +36,7 @@ struct ReminderPriorityEditView: View {
             .padding(.horizontal, 8)
         }
         .buttonStyle(.borderless)
-        .background(isSelected ? Color.accentColor.opacity(0.4) : Color.secondary.opacity(0.1))
+        .background(isSelected ? Color.rmbColor(.prioritySelectedBackground) : Color.secondary.opacity(0.1))
         .clipShape(RoundedRectangle(cornerRadius: 6))
     }
 }

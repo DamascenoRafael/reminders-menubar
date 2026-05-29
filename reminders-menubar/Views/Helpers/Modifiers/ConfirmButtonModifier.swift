@@ -9,7 +9,7 @@ struct ConfirmButtonModifier: ViewModifier {
         content
             .buttonStyle(.borderless)
             .foregroundColor(isEnabled ? .primary : .secondary)
-            .background(Color.accentColor.opacity(backgroundOpacity))
+            .background(Color.rmbColor(.confirmButtonBackground).opacity(backgroundOpacity))
             .cornerRadius(8)
             .onHover { hovering in
                 isHovered = hovering

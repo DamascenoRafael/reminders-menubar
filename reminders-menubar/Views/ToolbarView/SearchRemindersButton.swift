@@ -2,7 +2,6 @@ import SwiftUI
 
 struct SearchRemindersButton: View {
     @EnvironmentObject var remindersData: RemindersData
-    @ObservedObject var userPreferences = UserPreferences.shared
 
     var body: some View {
         Button(action: {
@@ -16,10 +15,7 @@ struct SearchRemindersButton: View {
         .modifier(ToolbarButtonModifier())
         .background(
             remindersData.showingSearch
-                ? Color.rmbColor(
-                    for: .buttonHover,
-                    isTransparencyEnabled: userPreferences.isTransparencyEnabled
-                )
+                ? Color.rmbColor(.buttonHover)
                 : nil
         )
         .cornerRadius(8)

@@ -239,19 +239,15 @@ struct ReminderEditView: View {
 
     @ViewBuilder
     private func editActionButtons(for ekReminder: EKReminder) -> some View {
-        let buttonHoverColor = Color.rmbColor(
-            for: .buttonHover, isTransparencyEnabled: userPreferences.isTransparencyEnabled
-        )
-
         Button {
             showingRemoveAlert = true
         } label: {
             Image(systemName: "trash")
-                .foregroundColor(removeButtonIsHovered ? .red : .secondary)
+                .foregroundColor(removeButtonIsHovered ? .rmbColor(.destructiveAction) : .secondary)
                 .frame(width: 24, height: 24)
         }
         .buttonStyle(.borderless)
-        .background(removeButtonIsHovered ? buttonHoverColor : nil)
+        .background(removeButtonIsHovered ? Color.rmbColor(.buttonHover) : nil)
         .cornerRadius(8)
         .onHover { hovering in
             removeButtonIsHovered = hovering
@@ -276,11 +272,15 @@ struct ReminderEditView: View {
                 Text(isCopied ? rmbLocalized(.copiedToastMessage) : rmbLocalized(.copyReminderButton))
                     .padding(.trailing, 6)
             }
-            .foregroundColor(isCopied ? .green : (copyButtonIsHovered ? .accentColor : .secondary))
+            .foregroundColor(
+                isCopied
+                ? .rmbColor(.successIndicator)
+                : (copyButtonIsHovered ? .accentColor : .secondary)
+            )
             .padding(.horizontal, 4)
         }
         .buttonStyle(.borderless)
-        .background(copyButtonIsHovered ? buttonHoverColor : nil)
+        .background(copyButtonIsHovered ? Color.rmbColor(.buttonHover) : nil)
         .cornerRadius(8)
         .onHover { hovering in
             copyButtonIsHovered = hovering

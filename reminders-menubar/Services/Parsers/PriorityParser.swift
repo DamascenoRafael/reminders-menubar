@@ -7,7 +7,7 @@ class PriorityParser {
         let priority: EKReminderPriority
         
         var highlightedText: RmbHighlightedTextField.HighlightedText {
-            RmbHighlightedTextField.HighlightedText(range: range, color: .systemRed)
+            RmbHighlightedTextField.HighlightedText(range: range, color: RmbColor.priorityHighlight.nsColor)
         }
         
         init() {

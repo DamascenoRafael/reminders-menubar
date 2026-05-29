@@ -10,7 +10,7 @@ class DateParser {
         let string: String
         
         var highlightedText: RmbHighlightedTextField.HighlightedText {
-            RmbHighlightedTextField.HighlightedText(range: range, color: .systemBlue)
+            RmbHighlightedTextField.HighlightedText(range: range, color: RmbColor.dateHighlight.nsColor)
         }
         
         init() {

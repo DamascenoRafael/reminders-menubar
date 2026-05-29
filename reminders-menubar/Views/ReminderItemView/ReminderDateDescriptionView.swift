@@ -12,7 +12,7 @@ struct ReminderDateDescriptionView: View {
             HStack {
                 Image(systemName: "calendar")
                 Text(dateDescription)
-                    .foregroundColor(isExpired ? .red : .secondary)
+                    .foregroundColor(isExpired ? .rmbColor(.expiredDate) : .secondary)
             }
             .padding(.trailing, 5)
 

@@ -7,7 +7,7 @@ class TagParser {
         let tag: Tag
 
         var highlightedText: RmbHighlightedTextField.HighlightedText {
-            RmbHighlightedTextField.HighlightedText(range: range, color: .systemPurple)
+            RmbHighlightedTextField.HighlightedText(range: range, color: RmbColor.tagHighlight.nsColor)
         }
 
         init(range: NSRange, string: String, tag: Tag) {

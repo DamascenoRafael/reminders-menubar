@@ -111,7 +111,7 @@
 		71F06B482F4FF3EC009C91E6 /* MainPopoverSizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F06B472F4FF3EC009C91E6 /* MainPopoverSizing.swift */; };
 		71F2AF652F9AAED900C59519 /* MenuBarSettingsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F2AF642F9AAED900C59519 /* MenuBarSettingsTab.swift */; };
 		71F301FA259FB5CF00CDD81E /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F301F9259FB5CF00CDD81E /* UserPreferences.swift */; };
-		71F36A9829C16B7A0099D337 /* RmbColorKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F36A9729C16B7A0099D337 /* RmbColorKey.swift */; };
+		71F36A9829C16B7A0099D337 /* RmbColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F36A9729C16B7A0099D337 /* RmbColor.swift */; };
 		71F36A9A29C2BA0C0099D337 /* RmbColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F36A9929C2BA0C0099D337 /* RmbColorScheme.swift */; };
 		71F36AA029C3E79E0099D337 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F36A9F29C3E79E0099D337 /* Color+Extensions.swift */; };
 		71F5A0012F5C8A0000D1E2F3 /* NSApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F5A0002F5C8A0000D1E2F3 /* NSApplication+Extensions.swift */; };
@@ -251,7 +251,7 @@
 		71F06B472F4FF3EC009C91E6 /* MainPopoverSizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPopoverSizing.swift; sourceTree = "<group>"; };
 		71F2AF642F9AAED900C59519 /* MenuBarSettingsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarSettingsTab.swift; sourceTree = "<group>"; };
 		71F301F9259FB5CF00CDD81E /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
-		71F36A9729C16B7A0099D337 /* RmbColorKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbColorKey.swift; sourceTree = "<group>"; };
+		71F36A9729C16B7A0099D337 /* RmbColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbColor.swift; sourceTree = "<group>"; };
 		71F36A9929C2BA0C0099D337 /* RmbColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbColorScheme.swift; sourceTree = "<group>"; };
 		71F36A9F29C3E79E0099D337 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		71F5A0002F5C8A0000D1E2F3 /* NSApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSApplication+Extensions.swift"; sourceTree = "<group>"; };
@@ -487,7 +487,7 @@
 				719C71292C1FADB000C622FF /* Localizable.xcstrings */,
 				719C712B2C1FADB000C622FF /* InfoPlist.xcstrings */,
 				714C497F267FA56F00721516 /* remindersLocalized.swift */,
-				71F36A9729C16B7A0099D337 /* RmbColorKey.swift */,
+				71F36A9729C16B7A0099D337 /* RmbColor.swift */,
 				71F36A9929C2BA0C0099D337 /* RmbColorScheme.swift */,
 			);
 			path = Resources;
@@ -761,7 +761,7 @@
 			files = (
 				71D6B98028E25B9F0004EEBB /* AppCommands.swift in Sources */,
 				718AE6D52F8208D800B53E04 /* ReminderLoadingView.swift in Sources */,
-				71F36A9829C16B7A0099D337 /* RmbColorKey.swift in Sources */,
+				71F36A9829C16B7A0099D337 /* RmbColor.swift in Sources */,
 				71CCF9842D43148100D334F8 /* EKReminderPriority+Extensions.swift in Sources */,
 				71E7126A2908C6D100DA97BD /* Binding+Extensions.swift in Sources */,
 				714C28A82A0A056600734DAF /* RmbHighlightedTextField.swift in Sources */,

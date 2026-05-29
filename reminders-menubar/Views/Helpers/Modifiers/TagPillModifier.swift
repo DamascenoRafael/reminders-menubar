@@ -47,10 +47,10 @@ struct TagPillModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(size: fontSize))
-            .foregroundColor(.purple)
+            .foregroundColor(Color.rmbColor(.tagHighlight))
             .padding(.horizontal, horizontalPadding)
             .padding(.vertical, verticalPadding)
-            .background(Color.purple.opacity(0.12))
+            .background(Color.rmbColor(.tagHighlight).opacity(0.12))
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
     }
 }

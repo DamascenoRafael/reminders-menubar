@@ -2,8 +2,6 @@ import SwiftUI
 import AppKit
 
 struct PopoverResizeHandleView: View {
-    @ObservedObject private var userPreferences = UserPreferences.shared
-
     @State private var isHovering = false
     @State private var isDragging = false
     @State private var dragStartSize: CGSize?
@@ -16,22 +14,13 @@ struct PopoverResizeHandleView: View {
         ZStack {
             CornerArcGrabber()
                 .stroke(
-                    Color.rmbColor(
-                        for: .borderContrast,
-                        isTransparencyEnabled: userPreferences.isTransparencyEnabled
-                    )
-                        .opacity(shouldShowResizeCursor ? 0.85 : 0.35),
+                    Color.rmbColor(.borderContrast).opacity(shouldShowResizeCursor ? 0.85 : 0.35),
                     style: StrokeStyle(lineWidth: 1.3, lineCap: .round)
                 )
                 .background(
                     CornerArcGrabber()
                         .stroke(
-                            shouldShowResizeCursor
-                                ? Color.rmbColor(
-                                    for: .buttonHover,
-                                    isTransparencyEnabled: userPreferences.isTransparencyEnabled
-                                )
-                                : .clear,
+                            shouldShowResizeCursor ? Color.rmbColor(.buttonHover) : .clear,
                             style: StrokeStyle(lineWidth: 9.0, lineCap: .round)
                         )
                 )

@@ -6,11 +6,8 @@ struct RmbBackgroundModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .background(
-                Color.rmbColor(
-                    for: .backgroundTheme,
-                    isTransparencyEnabled: userPreferences.isTransparencyEnabled
-                )
-                .padding(-80)
+                Color.rmbColor(.backgroundTheme(isTransparent: userPreferences.isTransparencyEnabled))
+                    .padding(-80)
             )
     }
 }

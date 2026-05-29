@@ -5,7 +5,6 @@ import Combine
 @MainActor
 struct ReminderItemView: View {
     @EnvironmentObject private var copyCoordinator: CopyShortcutCoordinator
-    @Environment(\.colorScheme) private var colorScheme
     @Environment(\.appHasPopoverOpen) private var appHasPopoverOpen
     @ObservedObject private var userPreferences = UserPreferences.shared
 
@@ -232,8 +231,8 @@ struct ReminderItemView: View {
                 .frame(maxHeight: min(32, geometry.size.height - 4))
                 .background(
                     Capsule()
-                        .fill(colorScheme == .light ? Color.white : Color.black)
-                        .overlay(Capsule().stroke(Color.gray.opacity(0.2)))
+                        .fill(Color.rmbColor(.toastBackground))
+                        .overlay(Capsule().stroke(Color.rmbColor(.toastStroke)))
                         .opacity(0.9)
                 )
                 .frame(width: geometry.size.width, height: geometry.size.height)

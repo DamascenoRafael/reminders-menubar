@@ -1,7 +1,7 @@
 import SwiftUI
 
 extension Color {
-    static func rmbColor(for colorKey: RmbColorKey, isTransparencyEnabled: Bool) -> Color {
-        return colorKey.color(withTransparency: isTransparencyEnabled)
+    static func rmbColor(_ key: RmbColor) -> Color {
+        return key.color
     }
 }
