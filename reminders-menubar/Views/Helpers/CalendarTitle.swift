@@ -1,18 +1,27 @@
 import SwiftUI
 import EventKit
 
-struct CalendarTitle: View {
+struct CalendarTitle<Icon: View>: View {
     var title: String
     var color: Color
+    var icon: Icon
 
-    init(calendar: EKCalendar) {
+    init(calendar: EKCalendar) where Icon == EmptyView {
         self.title = calendar.title
         self.color = Color(calendar.color)
+        self.icon = EmptyView()
     }
 
-    init(title: String, color: Color) {
+    init(title: String, color: Color) where Icon == EmptyView {
         self.title = title
         self.color = color
+        self.icon = EmptyView()
+    }
+
+    init(title: String, color: Color, @ViewBuilder icon: () -> Icon) {
+        self.title = title
+        self.color = color
+        self.icon = icon()
     }
     
     var body: some View {
@@ -22,7 +31,10 @@ struct CalendarTitle: View {
                 .foregroundColor(color)
                 .padding(.top, 2)
                 .padding(.bottom, 5)
-            
+
+            icon
+                .padding(.bottom, 3)
+
             Spacer()
         }
     }

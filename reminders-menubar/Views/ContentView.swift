@@ -53,7 +53,13 @@ struct ContentView: View {
 
     @ViewBuilder private var recentRemindersContent: some View {
         List {
-            Section(header: RecentRemindersTitle()) {
+            Section(header: CalendarTitle(
+                title: rmbLocalized(.recentRemindersSectionTitle),
+                color: .rmbColor(.recentSectionTitle),
+                icon: {
+                    Image(systemName: "clock.arrow.trianglehead.counterclockwise.rotate.90")
+                }
+            )) {
                 RecentRemindersContent()
             }
             .modifier(ListSectionModifier())
@@ -64,7 +70,16 @@ struct ContentView: View {
     @ViewBuilder private var filteredRemindersContent: some View {
         List {
             if userPreferences.showUpcomingReminders {
-                Section(header: UpcomingRemindersTitle()) {
+                Section(header: CalendarTitle(
+                    title: userPreferences.upcomingRemindersInterval.sectionTitle,
+                    color: .rmbColor(.upcomingSectionTitle),
+                    icon: {
+                        if userPreferences.filterUpcomingRemindersByCalendar {
+                            Image(systemName: "line.horizontal.3.decrease.circle")
+                                .help(rmbLocalized(.upcomingRemindersFilterByCalendarEnabledHelp))
+                        }
+                    }
+                )) {
                     UpcomingRemindersContent()
                 }
                 .modifier(ListSectionModifier())
