@@ -11,50 +11,15 @@ struct ContentView: View {
             ToolbarView()
 
             if remindersData.calendars.isEmpty {
-                NoReminderListsView()
-                    .frame(maxHeight: .infinity)
+                emptyStateContent
             } else if remindersData.showingSearch {
-                SearchBarView()
-
-                List {
-                    Section {
-                        SearchRemindersContent()
-                    }
-                    .modifier(ListSectionModifier())
-                }
-                .modifier(ReminderListModifier(animationValue: remindersData.searchResults))
+                searchContent
             } else if remindersData.showingRecentReminders {
-                List {
-                    Section(header: RecentRemindersTitle()) {
-                        RecentRemindersContent()
-                    }
-                    .modifier(ListSectionModifier())
-                }
-                .modifier(ReminderListModifier(animationValue: remindersData.recentReminders))
+                recentRemindersContent
             } else if userPreferences.atLeastOneFilterIsSelected {
-                List {
-                    if userPreferences.showUpcomingReminders {
-                        Section(header: UpcomingRemindersTitle()) {
-                            UpcomingRemindersContent()
-                        }
-                        .modifier(ListSectionModifier())
-                    }
-                    ForEach(remindersData.filteredReminderLists) { reminderList in
-                        Section(header: CalendarTitle(calendar: reminderList.calendar)) {
-                            if reminderList.reminders.isEmpty {
-                                NoReminderItemsView(emptyList: .allItemsCompleted)
-                            }
-                            ForEach(reminderList.reminders) { reminderItem in
-                                ReminderItemView(reminderItem: reminderItem)
-                            }
-                        }
-                        .modifier(ListSectionModifier())
-                    }
-                }
-                .modifier(ReminderListModifier(animationValue: remindersData.filteredReminderLists))
+                filteredRemindersContent
             } else {
-                NoFilterSelectedView()
-                    .frame(maxHeight: .infinity)
+                noFilterContent
             }
         }
         .overlay(PopoverResizeHandleView().padding(4), alignment: .bottomTrailing)
@@ -66,7 +31,67 @@ struct ContentView: View {
             remindersData.showingRecentReminders = false
         }
     }
+
+    // MARK: - Content subviews
+
+    @ViewBuilder private var emptyStateContent: some View {
+        NoReminderListsView()
+            .frame(maxHeight: .infinity)
+    }
+
+    @ViewBuilder private var searchContent: some View {
+        SearchBarView()
+
+        List {
+            Section {
+                SearchRemindersContent()
+            }
+            .modifier(ListSectionModifier())
+        }
+        .modifier(ReminderListModifier(animationValue: remindersData.searchResults))
+    }
+
+    @ViewBuilder private var recentRemindersContent: some View {
+        List {
+            Section(header: RecentRemindersTitle()) {
+                RecentRemindersContent()
+            }
+            .modifier(ListSectionModifier())
+        }
+        .modifier(ReminderListModifier(animationValue: remindersData.recentReminders))
+    }
+
+    @ViewBuilder private var filteredRemindersContent: some View {
+        List {
+            if userPreferences.showUpcomingReminders {
+                Section(header: UpcomingRemindersTitle()) {
+                    UpcomingRemindersContent()
+                }
+                .modifier(ListSectionModifier())
+            }
+
+            ForEach(remindersData.filteredReminderLists) { reminderList in
+                Section(header: CalendarTitle(calendar: reminderList.calendar)) {
+                    if reminderList.reminders.isEmpty {
+                        NoReminderItemsView(emptyList: .allItemsCompleted)
+                    }
+                    ForEach(reminderList.reminders) { reminderItem in
+                        ReminderItemView(reminderItem: reminderItem)
+                    }
+                }
+                .modifier(ListSectionModifier())
+            }
+        }
+        .modifier(ReminderListModifier(animationValue: remindersData.filteredReminderLists))
+    }
+
+    @ViewBuilder private var noFilterContent: some View {
+        NoFilterSelectedView()
+            .frame(maxHeight: .infinity)
+    }
 }
+
+// MARK: - View Modifiers
 
 struct ReminderListModifier<V: Equatable>: ViewModifier {
     let animationValue: V
@@ -80,17 +105,15 @@ struct ReminderListModifier<V: Equatable>: ViewModifier {
 }
 
 struct ListSectionModifier: ViewModifier {
-    @ViewBuilder
     func body(content: Content) -> some View {
+        let base = content
+            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+            .padding(.horizontal, 6)
+
         if #available(macOS 13.0, *) {
-            content
-                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
-                .padding(.horizontal, 6)
-                .listRowSeparator(.hidden)
+            base.listRowSeparator(.hidden)
         } else {
-            content
-                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
-                .padding(.horizontal, 6)
+            base
         }
     }
 }
