@@ -12035,121 +12035,121 @@
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nová připomínka"
+            "value" : "Vytvořit novou připomínku"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Neue Erinnerung"
+            "value" : "Neue Erinnerung erstellen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "New Reminder"
+            "value" : "Create new reminder"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nuevo recordatorio"
+            "value" : "Crear nuevo recordatorio"
           }
         },
         "fil-PH" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bagong Paalala"
+            "value" : "Gumawa ng bagong paalala"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nouveau rappel"
+            "value" : "Créer un nouveau rappel"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pengingat Baru"
+            "value" : "Buat pengingat baru"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nuovo promemoria"
+            "value" : "Crea nuovo promemoria"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "新規リマインダー"
+            "value" : "新規リマインダーを作成"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "새로운 미리 알림"
+            "value" : "새 미리 알림 만들기"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nieuwe herinnering"
+            "value" : "Nieuwe herinnering aanmaken"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nowe przypomnienie"
+            "value" : "Utwórz nowe przypomnienie"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Novo Lembrete"
+            "value" : "Criar novo lembrete"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Новое напоминание"
+            "value" : "Создать новое напоминание"
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nová pripomienka"
+            "value" : "Vytvoriť novú pripomienku"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Yeni Hatırlatıcı"
+            "value" : "Yeni hatırlatıcı oluştur"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Нове нагадування"
+            "value" : "Створити нове нагадування"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lời nhắc mới"
+            "value" : "Tạo lời nhắc mới"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "新建提醒"
+            "value" : "创建新提醒"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "新增提醒事項"
+            "value" : "建立新提醒事項"
           }
         }
       }

@@ -73,6 +73,7 @@ struct ReminderEditView: View {
                 ReminderTagsEditView(
                     tagNames: rmbReminder.tags.map(\.name),
                     onCommitTag: { rmbReminder.addTag(named: $0) },
+                    onCommitEmpty: { confirmAction() },
                     onRemoveTag: { rmbReminder.removeTag(named: $0) },
                     onRemoveLastTag: { rmbReminder.removeLastTag() }
                 )
@@ -140,6 +141,7 @@ struct ReminderEditView: View {
             textContainerDynamicHeight: $titleTextFieldDynamicHeight,
             focusTrigger: $titleTextFieldFocusTrigger
         )
+        .onSubmit { confirmAction() }
         .autoComplete(
             isInitialCharValid: { char in
                 if #available(macOS 12, *) {
@@ -164,6 +166,7 @@ struct ReminderEditView: View {
             textContainerDynamicHeight: $notesTextFieldDynamicHeight,
             allowNewLineAndTab: true
         )
+        .onSubmit { confirmAction() }
         .frame(height: notesTextFieldDynamicHeight)
     }
 
@@ -225,7 +228,7 @@ struct ReminderEditView: View {
             } label: {
                 HStack {
                     Text(rmbLocalized(.reminderEditPopoverSaveButton))
-                    Text(String("⌘⏎"))
+                    Text(String("⏎"))
                         .font(.footnote)
                 }
                 .padding(4)
@@ -233,7 +236,7 @@ struct ReminderEditView: View {
             }
             .modifier(ConfirmButtonModifier())
             .disabled(isSaveDisabled)
-            .keyboardShortcut(.return, modifiers: .command)
+            .keyboardShortcut(.return, modifiers: [])
         }
     }
 

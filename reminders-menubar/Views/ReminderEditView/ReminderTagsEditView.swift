@@ -3,6 +3,7 @@ import SwiftUI
 struct ReminderTagsEditView: View {
     let tagNames: [String]
     let onCommitTag: (String) -> Void
+    var onCommitEmpty: (() -> Void)?
     let onRemoveTag: (String) -> Void
     let onRemoveLastTag: () -> Void
 
@@ -25,6 +26,7 @@ struct ReminderTagsEditView: View {
                         text: $newTagText,
                         placeholder: rmbLocalized(.editReminderTagsTextFieldPlaceholder),
                         onCommit: commitTag,
+                        onCommitEmpty: onCommitEmpty,
                         onDeleteBackward: onRemoveLastTag,
                         autoCompleteSuggestions: { TagParser.autoCompleteSuggestions($0) }
                     )
@@ -76,6 +78,7 @@ private struct TagTextField: NSViewRepresentable {
     @Binding var text: String
     var placeholder: String
     var onCommit: () -> Void
+    var onCommitEmpty: (() -> Void)?
     var onDeleteBackward: () -> Void
     var autoCompleteSuggestions: ((_ typingWord: String) -> [String])?
 
@@ -135,7 +138,11 @@ private struct TagTextField: NSViewRepresentable {
 
         func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
             if commandSelector == #selector(NSResponder.insertNewline(_:)) {
-                parent.onCommit()
+                if textView.string.isEmpty {
+                    parent.onCommitEmpty?()
+                } else {
+                    parent.onCommit()
+                }
                 return true
             }
             if commandSelector == #selector(NSResponder.deleteBackward(_:)) {

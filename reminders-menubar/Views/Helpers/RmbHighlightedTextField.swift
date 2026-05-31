@@ -133,14 +133,23 @@ struct RmbHighlightedTextField: NSViewRepresentable {
         }
 
         func textView(_ textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
-            if commandSelector == #selector(NSResponder.deleteBackward(_:))
-                || commandSelector == #selector(NSResponder.deleteForward(_:)) {
+            switch commandSelector {
+            case #selector(NSResponder.deleteBackward(_:)),
+                 #selector(NSResponder.deleteForward(_:)):
                 isDeletePressed = true
                 return false
+            case #selector(NSResponder.insertNewline(_:)):
+                return handleNewline()
+            default:
+                return false
             }
+        }
 
-            guard commandSelector == #selector(NSResponder.insertNewline(_:)),
-                  !textView.string.isEmpty else {
+        private func handleNewline() -> Bool {
+            let relevantModifiers: NSEvent.ModifierFlags = [.command, .option, .shift, .control]
+            let modifiers = NSApp.currentEvent?.modifierFlags.intersection(relevantModifiers) ?? []
+
+            if parent.allowNewLineAndTab, !modifiers.isEmpty {
                 return false
             }
 
