@@ -21,6 +21,7 @@ struct ReminderEditView: View {
 
     @State private var showingRemoveAlert = false
     @State private var removeButtonIsHovered = false
+    @State private var cancelButtonIsHovered = false
     @State private var copyButtonIsHovered = false
     @State private var isCopied = false
     @State private var copiedDismissWork: DispatchWorkItem?
@@ -125,6 +126,17 @@ struct ReminderEditView: View {
                         .font(.caption)
                 }
                 .foregroundColor(.secondary)
+                .padding(4)
+            }
+            .buttonStyle(.borderless)
+            .background(
+                cancelButtonIsHovered
+                ? Color.rmbColor(.buttonHover)
+                : Color.rmbColor(.buttonHover).opacity(0.2)
+            )
+            .cornerRadius(4)
+            .onHover { hovering in
+                cancelButtonIsHovered = hovering
             }
             .keyboardShortcut(.cancelAction)
         }
