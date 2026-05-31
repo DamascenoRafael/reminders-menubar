@@ -55,6 +55,12 @@ struct MenuBarSettingsTab: View {
                 }
                 .pickerStyle(.menu)
                 .labelsHidden()
+
+                Toggle(
+                    rmbLocalized(.hideCounterWhenPreviewShownOption),
+                    isOn: $userPreferences.hideCounterWhenReminderPreviewIsShown
+                )
+                .disabled(isReminderPreviewDisabled)
             }
 
             SettingsDivider()
@@ -99,6 +105,7 @@ struct MenuBarSettingsTab: View {
 
                     Text(String(userPreferences.menuBarReminderPreviewMaxLength))
                         .foregroundColor(.secondary)
+                        .opacity(isReminderPreviewDisabled ? 0.4 : 1.0)
                         .frame(minWidth: 20, alignment: .trailing)
                 }
                 .padding(.leading, 20)
@@ -107,12 +114,6 @@ struct MenuBarSettingsTab: View {
                 Toggle(
                     rmbLocalized(.menuBarPreviewShowTodayOption),
                     isOn: $userPreferences.menuBarReminderPreviewShowTodayReminders
-                )
-                .disabled(isReminderPreviewDisabled)
-
-                Toggle(
-                    rmbLocalized(.hideCounterWhenPreviewShownOption),
-                    isOn: $userPreferences.hideCounterWhenReminderPreviewIsShown
                 )
                 .disabled(isReminderPreviewDisabled)
             }
