@@ -14,8 +14,15 @@ class RemindersData: ObservableObject {
         }
     }
 
-    // swiftlint:disable:next function_body_length
     private func addObservers() {
+        addDataObservers()
+        addUpcomingObservers()
+        addTagObservers()
+        addMenuBarObservers()
+        addSearchObservers()
+    }
+
+    private func addDataObservers() {
         Publishers.MergeMany(
             NotificationCenter.default.publisher(for: .EKEventStoreChanged),
             NotificationCenter.default.publisher(for: .NSCalendarDayChanged),
@@ -42,7 +49,9 @@ class RemindersData: ObservableObject {
             }
         }
         .store(in: &cancellationTokens)
+    }
 
+    private func addUpcomingObservers() {
         Publishers.MergeMany(
             UserPreferences.shared.$upcomingRemindersInterval.map { _ in }.eraseToAnyPublisher(),
             UserPreferences.shared.$filterUpcomingRemindersByCalendar.map { _ in }.eraseToAnyPublisher()
@@ -55,7 +64,24 @@ class RemindersData: ObservableObject {
             }
         }
         .store(in: &cancellationTokens)
+    }
 
+    private func addTagObservers() {
+        Publishers.MergeMany(
+            $tagsFilter.removeDuplicates().map { _ in }.eraseToAnyPublisher(),
+            UserPreferences.shared.$filterTagRemindersByCalendar.map { _ in }.eraseToAnyPublisher()
+        )
+        .dropFirst()
+        .sink { [weak self] _ in
+            Task {
+                guard let self else { return }
+                self.filteredTagReminderLists = await self.getTagReminders()
+            }
+        }
+        .store(in: &cancellationTokens)
+    }
+
+    private func addMenuBarObservers() {
         UserPreferences.shared.$menuBarCounterType
             .dropFirst()
             .sink { [weak self] _ in
@@ -96,7 +122,9 @@ class RemindersData: ObservableObject {
             AppDelegate.shared.loadMenuBarIcon()
         }
         .store(in: &cancellationTokens)
+    }
 
+    private func addSearchObservers() {
         $searchText
             .dropFirst()
             .debounce(for: .milliseconds(300), scheduler: DispatchQueue.main)
@@ -113,19 +141,6 @@ class RemindersData: ObservableObject {
                 )
             }
             .store(in: &cancellationTokens)
-
-        Publishers.MergeMany(
-            $tagsFilter.removeDuplicates().map { _ in }.eraseToAnyPublisher(),
-            UserPreferences.shared.$filterTagRemindersByCalendar.map { _ in }.eraseToAnyPublisher()
-        )
-        .dropFirst()
-        .sink { [weak self] _ in
-            Task {
-                guard let self else { return }
-                self.filteredTagReminderLists = await self.getTagReminders()
-            }
-        }
-        .store(in: &cancellationTokens)
     }
 
     @Published var availableCalendars: [EKCalendar] = []
