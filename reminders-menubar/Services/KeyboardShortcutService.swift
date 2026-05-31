@@ -31,14 +31,6 @@ class KeyboardShortcutService: ObservableObject {
         }
     }
     
-    func activeShortcut(for shortcutName: KeyboardShortcuts.Name) -> String {
-        guard isEnabled(shortcutName) else {
-            return ""
-        }
-        
-        return KeyboardShortcuts.Shortcut(name: shortcutName)?.description ?? ""
-    }
-    
     func action(for shortcutName: KeyboardShortcuts.Name, action: @escaping () -> Void) {
         KeyboardShortcuts.onKeyDown(for: shortcutName) {
             action()

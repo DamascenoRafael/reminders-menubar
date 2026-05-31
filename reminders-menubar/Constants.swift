@@ -19,7 +19,6 @@ enum AppConstants {
 enum GithubConstants {
     static let repository = "DamascenoRafael/reminders-menubar"
     static let repositoryPage = "https://github.com/\(repository)"
-    static let latestReleasePage = "\(repositoryPage)/releases/latest"
 }
 
 #if APPSTORE
