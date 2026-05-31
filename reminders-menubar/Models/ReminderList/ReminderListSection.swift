@@ -1,7 +1,7 @@
 import SwiftUI
 
 enum ReminderListSection: Identifiable, Equatable {
-    case calendar(ReminderList)
+    case calendar(CalendarReminderList)
     case tag(TagReminderList)
 
     var id: String {

@@ -1,6 +1,6 @@
 import EventKit
 
-struct ReminderList: Identifiable, Equatable {
+struct CalendarReminderList: Identifiable, Equatable {
     let id: String
     let calendar: EKCalendar
     let reminders: [ReminderItem]

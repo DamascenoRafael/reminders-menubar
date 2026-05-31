@@ -27,7 +27,7 @@
 		713D91202F5DF830001B921E /* ToolbarButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D911F2F5DF830001B921E /* ToolbarButtonLabel.swift */; };
 		713D91222F5DF840001B921E /* RmbBackgroundModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D91212F5DF840001B921E /* RmbBackgroundModifier.swift */; };
 		713D91242F5DF850001B921E /* ConfirmButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D91232F5DF850001B921E /* ConfirmButtonModifier.swift */; };
-		713F234524C130D400FF0BEC /* ReminderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F234424C130D400FF0BEC /* ReminderList.swift */; };
+		713F234524C130D400FF0BEC /* CalendarReminderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F234424C130D400FF0BEC /* CalendarReminderList.swift */; };
 		714598D329295330008CAA43 /* RmbDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714598D229295330008CAA43 /* RmbDatePicker.swift */; };
 		714C28A82A0A056600734DAF /* RmbHighlightedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714C28A72A0A056600734DAF /* RmbHighlightedTextField.swift */; };
 		714C4980267FA56F00721516 /* remindersLocalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714C497F267FA56F00721516 /* remindersLocalized.swift */; };
@@ -169,7 +169,7 @@
 		713D911F2F5DF830001B921E /* ToolbarButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarButtonLabel.swift; sourceTree = "<group>"; };
 		713D91212F5DF840001B921E /* RmbBackgroundModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbBackgroundModifier.swift; sourceTree = "<group>"; };
 		713D91232F5DF850001B921E /* ConfirmButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmButtonModifier.swift; sourceTree = "<group>"; };
-		713F234424C130D400FF0BEC /* ReminderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderList.swift; sourceTree = "<group>"; };
+		713F234424C130D400FF0BEC /* CalendarReminderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarReminderList.swift; sourceTree = "<group>"; };
 		714598D229295330008CAA43 /* RmbDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbDatePicker.swift; sourceTree = "<group>"; };
 		714C28A72A0A056600734DAF /* RmbHighlightedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbHighlightedTextField.swift; sourceTree = "<group>"; };
 		714C497F267FA56F00721516 /* remindersLocalized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = remindersLocalized.swift; sourceTree = "<group>"; };
@@ -598,7 +598,7 @@
 			isa = PBXGroup;
 			children = (
 				71FS00002FA8000100000001 /* ReminderListSection.swift */,
-				713F234424C130D400FF0BEC /* ReminderList.swift */,
+				713F234424C130D400FF0BEC /* CalendarReminderList.swift */,
 				71TA00002FA8000100000001 /* TagReminderList.swift */,
 			);
 			path = ReminderList;
@@ -785,7 +785,7 @@
 				71C0D002E1700002A8000002 /* MenuBarPreviewService.swift in Sources */,
 				71A000012F61000100000001 /* RmbSortingOrder.swift in Sources */,
 				710980D22600419F001F69B2 /* UpcomingRemindersContent.swift in Sources */,
-				713F234524C130D400FF0BEC /* ReminderList.swift in Sources */,
+				713F234524C130D400FF0BEC /* CalendarReminderList.swift in Sources */,
 				71TA00012FA8000100000001 /* TagReminderList.swift in Sources */,
 				71FS00012FA8000100000001 /* ReminderListSection.swift in Sources */,
 				71D2624B2F592E2A0073C0FD /* SettingsDivider.swift in Sources */,

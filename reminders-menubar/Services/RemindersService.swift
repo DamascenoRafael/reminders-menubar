@@ -55,7 +55,7 @@ class RemindersService {
     }
 
     private func createReminderItems(for calendarReminders: [EKReminder]) -> [ReminderItem] {
-        var reminderListItems: [ReminderItem] = []
+        var reminderItems: [ReminderItem] = []
         
         let noParentKey = "noParentKey"
         let remindersByParentId = Dictionary(grouping: calendarReminders, by: { $0.parentId ?? noParentKey })
@@ -64,12 +64,12 @@ class RemindersService {
         parentReminders.forEach { parentReminder in
             let parentId = parentReminder.calendarItemIdentifier
             let children = remindersByParentId[parentId, default: []].map({ ReminderItem(for: $0, isChild: true) })
-            reminderListItems.append(ReminderItem(for: parentReminder, withChildren: children))
+            reminderItems.append(ReminderItem(for: parentReminder, withChildren: children))
         }
-        return reminderListItems
+        return reminderItems
     }
 
-    func getReminders(of calendarIdentifiers: [String]) async -> [ReminderList] {
+    func getReminders(of calendarIdentifiers: [String]) async -> [CalendarReminderList] {
         let calendars = getCalendars().filter({ calendarIdentifiers.contains($0.calendarIdentifier) })
         let predicate = eventStore.predicateForIncompleteReminders(
             withDueDateStarting: nil,
@@ -81,14 +81,14 @@ class RemindersService {
             by: { $0.calendar.calendarIdentifier }
         )
 
-        var reminderLists: [ReminderList] = []
+        var calendarReminderLists: [CalendarReminderList] = []
         for calendar in calendars {
             let calendarReminders = remindersByCalendar[calendar.calendarIdentifier, default: []]
-            let reminderListItems = createReminderItems(for: calendarReminders)
-            reminderLists.append(ReminderList(for: calendar, with: reminderListItems))
+            let reminderItems = createReminderItems(for: calendarReminders)
+            calendarReminderLists.append(CalendarReminderList(for: calendar, with: reminderItems))
         }
         
-        return reminderLists
+        return calendarReminderLists
     }
 
     func getRecentReminders() async -> [ReminderItem] {

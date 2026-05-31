@@ -149,12 +149,12 @@ class RemindersData: ObservableObject {
 
     @Published var upcomingReminders: [ReminderItem] = []
 
-    @Published private var filteredReminderLists: [ReminderList] = []
+    @Published private var filteredCalendarReminderLists: [CalendarReminderList] = []
 
     @Published private var filteredTagReminderLists: [TagReminderList] = []
 
     var orderedFilteredSections: [ReminderListSection] {
-        let calendarSections = filteredReminderLists.map { ReminderListSection.calendar($0) }
+        let calendarSections = filteredCalendarReminderLists.map { ReminderListSection.calendar($0) }
         let tagSections = filteredTagReminderLists.map { ReminderListSection.tag($0) }
 
         if UserPreferences.shared.showTagsBeforeCalendars {
@@ -256,7 +256,7 @@ class RemindersData: ObservableObject {
         }
 
         // Fetch reminder data with validated filters
-        self.filteredReminderLists = await RemindersService.shared.getReminders(of: self.calendarIdentifiersFilter)
+        self.filteredCalendarReminderLists = await RemindersService.shared.getReminders(of: self.calendarIdentifiersFilter)
         self.upcomingReminders = await getUpcomingReminders()
         self.filteredTagReminderLists = await getTagReminders()
 
