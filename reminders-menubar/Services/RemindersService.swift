@@ -173,25 +173,37 @@ class RemindersService {
     }
 
     func searchReminders(matching query: String, in allReminders: [EKReminder]) -> [ReminderItem] {
-        let queryWords = query.lowercased().split(separator: " ").map(String.init)
+        let queryWords = query
+            .lowercased()
+            .split(separator: " ")
+            .map { (word: String($0), tagWord: $0.hasPrefix("#") ? String($0.dropFirst()) : nil) }
         guard !queryWords.isEmpty else { return [] }
 
         let scored: [(ReminderItem, Int)] = allReminders.compactMap { reminder in
             let title = (reminder.title ?? "").lowercased()
             let notes = (reminder.notes ?? "").lowercased()
             let urlString = reminder.attachedUrl?.absoluteString.lowercased() ?? ""
+            var tagNames: [String] = []
+            if #available(macOS 12, *) {
+                tagNames = reminder.ekTags.map({ $0.name.lowercased() })
+            }
 
-            let allFields = [title, notes, urlString]
+            let allFields = [title, notes, urlString] + tagNames
 
-            let allWordsMatch = queryWords.allSatisfy { word in
-                allFields.contains { $0.contains(word) }
+            let allWordsMatch = queryWords.allSatisfy { word, tagWord in
+                if let tagWord, !tagWord.isEmpty,
+                   tagNames.contains(where: { $0.contains(tagWord) }) {
+                    return true
+                }
+                return allFields.contains { $0.contains(word) }
             }
             guard allWordsMatch else { return nil }
 
             var score = 0
-            for word in queryWords {
+            for (word, tagWord) in queryWords {
                 if title.contains(word) { score += 3 }
                 if notes.contains(word) { score += 2 }
+                if tagNames.contains(where: { $0.contains(tagWord ?? word) }) { score += 2 }
                 if urlString.contains(word) { score += 1 }
             }
             if !reminder.isCompleted { score += 1 }
