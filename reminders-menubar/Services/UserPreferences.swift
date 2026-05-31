@@ -30,8 +30,12 @@ private enum PreferencesKeys {
     static let menuBarReminderPreviewMaxLength = "menuBarReminderPreviewMaxLength"
     static let hideCounterWhenReminderPreviewIsShown = "hideCounterWhenReminderPreviewIsShown"
     static let menuBarReminderPreviewShowTodayReminders = "menuBarReminderPreviewShowTodayReminders"
+    static let tagsFilter = "tagsFilter"
+    static let showTagsBeforeCalendars = "showTagsBeforeCalendars"
+    static let filterTagRemindersByCalendar = "filterTagRemindersByCalendar"
 }
 
+// swiftlint:disable:next type_body_length
 class UserPreferences: ObservableObject {
     static let shared = UserPreferences()
 
@@ -210,9 +214,38 @@ class UserPreferences: ObservableObject {
         return
             showUpcomingReminders ||
             preferredCalendarIdentifiersFilter == nil ||
-            !(preferredCalendarIdentifiersFilter ?? []).isEmpty
+            !(preferredCalendarIdentifiersFilter ?? []).isEmpty ||
+            !(preferredTagsFilter ?? []).isEmpty
     }
-    
+
+    var preferredTagsFilter: [String]? {
+        get {
+            return UserPreferences.defaults.stringArray(forKey: PreferencesKeys.tagsFilter)
+        }
+        set {
+            UserPreferences.defaults.set(newValue, forKey: PreferencesKeys.tagsFilter)
+        }
+    }
+
+    @Published var showTagsBeforeCalendars: Bool = {
+        return defaults.boolWithDefaultValueTrue(forKey: PreferencesKeys.showTagsBeforeCalendars)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(showTagsBeforeCalendars, forKey: PreferencesKeys.showTagsBeforeCalendars)
+        }
+    }
+
+    @Published var filterTagRemindersByCalendar: Bool = {
+        return defaults.bool(forKey: PreferencesKeys.filterTagRemindersByCalendar)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(
+                filterTagRemindersByCalendar,
+                forKey: PreferencesKeys.filterTagRemindersByCalendar
+            )
+        }
+    }
+
     var launchAtLoginIsEnabled: Bool {
         get {
             if #available(macOS 13.0, *) {

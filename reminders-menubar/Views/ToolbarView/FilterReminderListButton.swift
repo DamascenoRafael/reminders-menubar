@@ -30,11 +30,15 @@ struct FilterReminderListButton: View {
 
         menu.addItem(.separator())
 
-        for calendar in remindersData.calendars {
+        for calendar in remindersData.availableCalendars {
             let calendarIdentifier = calendar.calendarIdentifier
             let isSelected = remindersData.calendarIdentifiersFilter.contains(calendarIdentifier)
 
-            let item = CallbackMenuItem(title: calendar.title) { [weak remindersData] in
+            let item = makeToggleItem(
+                title: calendar.title,
+                attributedTitle: ColoredDotTitle.attributedString(calendar.title, color: calendar.color),
+                isSelected: isSelected
+            ) { [weak remindersData] in
                 guard let remindersData else { return }
                 if let index = remindersData.calendarIdentifiersFilter.firstIndex(of: calendarIdentifier) {
                     remindersData.calendarIdentifiersFilter.remove(at: index)
@@ -42,17 +46,51 @@ struct FilterReminderListButton: View {
                     remindersData.calendarIdentifiersFilter.append(calendarIdentifier)
                 }
             }
-            item.state = isSelected ? .on : .off
-
-            item.attributedTitle = ColoredDotTitle.attributedString(calendar.title, color: calendar.color)
-
             menu.addItem(item)
+        }
+
+        if #available(macOS 12, *), !remindersData.availableTags.isEmpty {
+            menu.addItem(.separator())
+
+            for tag in remindersData.availableTags {
+                let isSelected = remindersData.tagsFilter.contains(tag)
+
+                let item = makeToggleItem(
+                    title: tag.name,
+                    attributedTitle: ColoredDotTitle.attributedString(
+                        tag.name,
+                        color: RmbColor.tagHighlight.nsColor,
+                        prefix: "#"
+                    ),
+                    isSelected: isSelected
+                ) { [weak remindersData] in
+                    guard let remindersData else { return }
+                    if let index = remindersData.tagsFilter.firstIndex(of: tag) {
+                        remindersData.tagsFilter.remove(at: index)
+                    } else {
+                        remindersData.tagsFilter.append(tag)
+                    }
+                }
+                menu.addItem(item)
+            }
         }
 
         if let anchorView = menuAnchorView {
             let position = NSPoint(x: 0, y: -4)
             menu.popUp(positioning: nil, at: position, in: anchorView)
         }
+    }
+
+    private func makeToggleItem(
+        title: String,
+        attributedTitle: NSAttributedString,
+        isSelected: Bool,
+        callback: @escaping () -> Void
+    ) -> CallbackMenuItem {
+        let item = CallbackMenuItem(title: title, callback: callback)
+        item.state = isSelected ? .on : .off
+        item.attributedTitle = attributedTitle
+        return item
     }
 }
 

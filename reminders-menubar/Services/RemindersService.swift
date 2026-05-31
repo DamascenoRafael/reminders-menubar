@@ -172,6 +172,38 @@ class RemindersService {
         return tags.sorted()
     }
 
+    @available(macOS 12, *)
+    func getReminders(byTags tags: [Tag], calendarIdentifiers: [String]?) async -> [TagReminderList] {
+        guard !tags.isEmpty else { return [] }
+
+        var calendars: [EKCalendar]?
+        if let calendarIdentifiers {
+            if calendarIdentifiers.isEmpty {
+                return []
+            }
+            calendars = getCalendars().filter({ calendarIdentifiers.contains($0.calendarIdentifier) })
+        }
+
+        let predicate = eventStore.predicateForIncompleteReminders(
+            withDueDateStarting: nil,
+            ending: nil,
+            calendars: calendars
+        )
+        let allReminders = await fetchReminders(matching: predicate)
+
+        var tagReminderLists: [TagReminderList] = []
+
+        for tag in tags {
+            let matchingReminders = allReminders.filter { reminder in
+                reminder.ekTags.contains(tag)
+            }
+            let reminderItems = createReminderItems(for: matchingReminders)
+            tagReminderLists.append(TagReminderList(for: tag, with: reminderItems))
+        }
+
+        return tagReminderLists
+    }
+
     func searchReminders(matching query: String, in allReminders: [EKReminder]) -> [ReminderItem] {
         let queryWords = query
             .lowercased()

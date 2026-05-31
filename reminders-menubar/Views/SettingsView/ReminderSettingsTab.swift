@@ -32,6 +32,24 @@ struct ReminderSettingsTab: View {
                 }
             }
 
+            if #available(macOS 12, *) {
+                SettingsDivider()
+
+                SettingsSection(rmbLocalized(.tagRemindersSettingsLabel)) {
+                    Toggle(
+                        rmbLocalized(.showTagsBeforeCalendarsOption),
+                        isOn: $userPreferences.showTagsBeforeCalendars
+                    )
+
+                    Toggle(isOn: $userPreferences.filterTagRemindersByCalendar) {
+                        HStack {
+                            Text(rmbLocalized(.filterTagRemindersByCalendarOption))
+                            Image(systemName: "line.horizontal.3.decrease.circle")
+                        }
+                    }
+                }
+            }
+
             SettingsDivider()
 
             SettingsSection(rmbLocalized(.newReminderSettingsLabel)) {

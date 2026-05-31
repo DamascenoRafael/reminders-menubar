@@ -7876,127 +7876,377 @@
         }
       }
     },
+    "filterTagRemindersByCalendarEnabledHelp" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Připomínky ze štítků filtrované podle vybraných seznamů"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag-Erinnerungen nach ausgewählten Listen gefiltert"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag reminders filtered by selected lists"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recordatorios de etiquetas filtrados por listas seleccionadas"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mga paalala sa tag na na-filter ayon sa napiling mga listahan"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rappels par tags filtrés par listes sélectionnées"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pengingat tag difilter berdasarkan daftar yang dipilih"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Promemoria tag filtrati per liste selezionate"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選択したリストでタグのリマインダーをフィルタリング中"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "선택된 목록으로 태그 미리 알림 필터링됨"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag-herinneringen gefilterd op geselecteerde lijsten"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przypomnienia tagów filtrowane po wybranych listach"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lembretes de tags filtrados por listas selecionadas"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Напоминания по тегам отфильтрованы по выбранным спискам"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pripomienky zo štítkov filtrované podľa vybraných zoznamov"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Etiket hatırlatıcıları seçilen listelere göre filtrelendi"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нагадування за тегами відфільтровані за вибраними списками"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lời nhắc theo thẻ được lọc theo danh sách đã chọn"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "标签提醒事项已按选定列表筛选"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "標籤提醒事項已依選取清單篩選"
+          }
+        }
+      }
+    },
+    "filterTagRemindersByCalendarOption" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtrovat dle vybraných seznamů kalendářů"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach ausgewählten Kalenderlisten filtern"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter by selected calendar lists"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtrar por listas de calendario seleccionadas"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salain ayon sa napiling mga listahan ng kalendaryo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtrer par listes de calendriers sélectionnées"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter berdasarkan daftar kalender yang dipilih"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtra per liste calendario selezionate"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選択したカレンダーリストで絞り込む"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "선택된 캘린더 목록으로 필터링"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter op geselecteerde kalenderlijsten"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtruj po wybranych listach kalendarza"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtrar por listas de calendário selecionadas"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фильтровать по выбранным спискам календаря"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtrovať podľa vybraných zoznamov kalendára"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seçili takvim listelerine göre filtrele"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фільтрувати за вибраними списками календаря"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lọc theo danh sách lịch đã chọn"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按选定的日历列表筛选"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "依選取日曆清單篩選"
+          }
+        }
+      }
+    },
     "filterUpcomingRemindersByCalendarOption" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Filtrovat dle vybraného seznamu"
+            "value" : "Filtrovat dle vybraných seznamů kalendářů"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nach ausgewählter Liste filtern"
+            "value" : "Nach ausgewählten Kalenderlisten filtern"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Filter by selected lists"
+            "value" : "Filter by selected calendar lists"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Filtrar por listas seleccionadas"
+            "value" : "Filtrar por listas de calendario seleccionadas"
           }
         },
         "fil-PH" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Salain ayon sa napiling mga listahan"
+            "value" : "Salain ayon sa napiling mga listahan ng kalendaryo"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Filtrer à partir des listes séléctionneés"
+            "value" : "Filtrer par listes de calendriers sélectionnées"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Filter berdasarkan daftar yang dipilih"
+            "value" : "Filter berdasarkan daftar kalender yang dipilih"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Filtra per liste selezionate"
+            "value" : "Filtra per liste calendario selezionate"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "選択したリストで絞り込む"
+            "value" : "選択したカレンダーリストで絞り込む"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "선택된 목록으로 필터링"
+            "value" : "선택된 캘린더 목록으로 필터링"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Filter op geselecteerde lijsten"
+            "value" : "Filter op geselecteerde kalenderlijsten"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Filtruj po zaznaczonych listach"
+            "value" : "Filtruj po wybranych listach kalendarza"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Filtrar por listas selecionadas"
+            "value" : "Filtrar por listas de calendário selecionadas"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Фильтровать по выбранным спискам"
+            "value" : "Фильтровать по выбранным спискам календаря"
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Filtrovať podľa vybraných zoznamov"
+            "value" : "Filtrovať podľa vybraných zoznamov kalendára"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Seçili listelere göre filtrele"
+            "value" : "Seçili takvim listelerine göre filtrele"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Фільтрувати за вибраними списками"
+            "value" : "Фільтрувати за вибраними списками календаря"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lọc theo danh sách đã chọn"
+            "value" : "Lọc theo danh sách lịch đã chọn"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "按选定列表筛选"
+            "value" : "按选定的日历列表筛选"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "依選取清單篩選"
+            "value" : "依選取日曆清單篩選"
           }
         }
       }
@@ -19585,127 +19835,252 @@
         }
       }
     },
+    "showTagsBeforeCalendarsOption" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobrazit seznamy štítků před seznamy kalendářů"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag-Listen vor Kalenderlisten anzeigen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show tag lists before calendar lists"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar listas de etiquetas antes de listas de calendario"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ipakita ang mga listahan ng tag bago ang mga listahan ng kalendaryo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher les listes de tags avant les listes de calendriers"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tampilkan daftar tag sebelum daftar kalender"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra liste tag prima delle liste calendario"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タグリストをカレンダーリストの前に表示"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "태그 목록을 캘린더 목록 앞에 표시"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taglijsten vóór kalenderlijsten tonen"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokaż listy tagów przed listami kalendarza"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar listas de tags antes das listas de calendário"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показывать списки тегов перед списками календаря"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobraziť zoznamy štítkov pred zoznamami kalendára"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Etiket listelerini takvim listelerinden önce göster"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показувати списки тегів перед списками календаря"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hiển thị danh sách thẻ trước danh sách lịch"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在日历列表之前显示标签列表"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在日曆清單之前顯示標籤清單"
+          }
+        }
+      }
+    },
     "showUpcomingReminderListNameOption" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zobrazit název seznamu u naplánovaných připomínek"
+            "value" : "Zobrazit název seznamu kalendáře u naplánovaných připomínek"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Listenname bei zukünftigen Erinnerungen anzeigen"
+            "value" : "Kalenderlistenname bei zukünftigen Erinnerungen anzeigen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Show list name for upcoming reminders"
+            "value" : "Show calendar list name for upcoming reminders"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mostrar nombre de la lista en los próximos recordatorios"
+            "value" : "Mostrar nombre de la lista de calendario en los próximos recordatorios"
           }
         },
         "fil-PH" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ipakita ang pangalan ng listahan para sa mga paparating na paalala"
+            "value" : "Ipakita ang pangalan ng listahan ng kalendaryo para sa mga paparating na paalala"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Afficher le nom de la liste pour les prochains rappels"
+            "value" : "Afficher le nom de la liste de calendrier pour les prochains rappels"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tampilkan nama daftar untuk pengingat yang akan datang"
+            "value" : "Tampilkan nama daftar kalender untuk pengingat yang akan datang"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mostra nome lista dei prossimi promemoria"
+            "value" : "Mostra nome lista calendario dei prossimi promemoria"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "今後のリマインダーにリスト名を表示"
+            "value" : "今後のリマインダーにカレンダーリスト名を表示"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "예정된 미리 알림에 목록 이름 표시"
+            "value" : "예정된 미리 알림에 캘린더 목록 이름 표시"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lijstnaam tonen bij opkomende herinneringen"
+            "value" : "Kalenderlijstnaam tonen bij opkomende herinneringen"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pokaż nazwę listy przy nadchodzących przypomnieniach"
+            "value" : "Pokaż nazwę listy kalendarza przy nadchodzących przypomnieniach"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mostrar nome da lista nos próximos lembretes"
+            "value" : "Mostrar nome da lista de calendário nos próximos lembretes"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Показывать название списка для запланированных напоминаний"
+            "value" : "Показывать название списка календаря для запланированных напоминаний"
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zobraziť názov zoznamu pre nadchádzajúce pripomienky"
+            "value" : "Zobraziť názov zoznamu kalendára pre nadchádzajúce pripomienky"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Yaklaşan hatırlatıcılar için liste adını göster"
+            "value" : "Yaklaşan hatırlatıcılar için takvim listesi adını göster"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Показувати назву списку для запланованих нагадувань"
+            "value" : "Показувати назву списку календаря для запланованих нагадувань"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hiển thị tên danh sách cho lời nhắc sắp tới"
+            "value" : "Hiển thị tên danh sách lịch cho lời nhắc sắp tới"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "显示即将到来的提醒事项的列表名称"
+            "value" : "显示即将到来的提醒事项的日历列表名称"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "顯示即將到來的提醒事項的列表名稱"
+            "value" : "顯示即將到來的提醒事項的日曆清單名稱"
           }
         }
       }
@@ -19831,6 +20206,256 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "顯示即將到來的提醒事項區段"
+          }
+        }
+      }
+    },
+    "tagRemindersFilterByCalendarEnabledHelp" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Připomínky se štítky filtrované podle vybraných seznamů"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag-Erinnerungen nach ausgewählten Listen gefiltert"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag reminders filtered by selected lists"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recordatorios con etiquetas filtrados por listas seleccionadas"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mga paalala na may tag na na-filter ayon sa napiling mga listahan"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rappels avec tags filtrés par listes sélectionnées"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pengingat dengan tag difilter berdasarkan daftar yang dipilih"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Promemoria con tag filtrati per liste selezionate"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選択したリストでタグ付きリマインダーをフィルタリング中"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "선택된 목록으로 태그 미리 알림 필터링됨"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Herinneringen met tags gefilterd op geselecteerde lijsten"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przypomnienia z tagami filtrowane po wybranych listach"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lembretes com tags filtrados por listas selecionadas"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Напоминания с тегами отфильтрованы по выбранным спискам"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pripomienky so štítkami filtrované podľa vybraných zoznamov"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Etiketli hatırlatıcılar seçilen listelere göre filtrelendi"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нагадування з тегами відфільтровані за вибраними списками"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lời nhắc có thẻ được lọc theo danh sách đã chọn"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "带标签的提醒事项已按选定列表筛选"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "帶標籤的提醒事項已依選取清單篩選"
+          }
+        }
+      }
+    },
+    "tagRemindersSettingsLabel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seznamy štítků:"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag-Listen:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag lists:"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listas de etiquetas:"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mga listahan ng tag:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listes de tags :"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daftar tag:"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liste tag:"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タグリスト:"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "태그 목록:"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taglijsten:"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listy tagów:"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listas de tags:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Списки тегов:"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zoznamy štítkov:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Etiket listeleri:"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Списки тегів:"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Danh sách thẻ:"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "标签列表:"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "標籤清單:"
           }
         }
       }

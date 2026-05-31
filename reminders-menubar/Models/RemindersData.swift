@@ -14,6 +14,7 @@ class RemindersData: ObservableObject {
         }
     }
 
+    // swiftlint:disable:next function_body_length
     private func addObservers() {
         Publishers.MergeMany(
             NotificationCenter.default.publisher(for: .EKEventStoreChanged),
@@ -112,13 +113,40 @@ class RemindersData: ObservableObject {
                 )
             }
             .store(in: &cancellationTokens)
+
+        Publishers.MergeMany(
+            $tagsFilter.removeDuplicates().map { _ in }.eraseToAnyPublisher(),
+            UserPreferences.shared.$filterTagRemindersByCalendar.map { _ in }.eraseToAnyPublisher()
+        )
+        .dropFirst()
+        .sink { [weak self] _ in
+            Task {
+                guard let self else { return }
+                self.filteredTagReminderLists = await self.getTagReminders()
+            }
+        }
+        .store(in: &cancellationTokens)
     }
 
-    @Published var calendars: [EKCalendar] = []
+    @Published var availableCalendars: [EKCalendar] = []
+
+    @Published var availableTags: [Tag] = []
 
     @Published var upcomingReminders: [ReminderItem] = []
 
-    @Published var filteredReminderLists: [ReminderList] = []
+    @Published private var filteredReminderLists: [ReminderList] = []
+
+    @Published private var filteredTagReminderLists: [TagReminderList] = []
+
+    var orderedFilteredSections: [ReminderListSection] {
+        let calendarSections = filteredReminderLists.map { ReminderListSection.calendar($0) }
+        let tagSections = filteredTagReminderLists.map { ReminderListSection.tag($0) }
+
+        if UserPreferences.shared.showTagsBeforeCalendars {
+            return tagSections + calendarSections
+        }
+        return calendarSections + tagSections
+    }
 
     @Published var recentReminders: [ReminderItem]?
 
@@ -170,6 +198,14 @@ class RemindersData: ObservableObject {
         }
     }
 
+    @Published var tagsFilter: [Tag] = {
+        return (UserPreferences.shared.preferredTagsFilter ?? []).map { Tag($0) }
+    }() {
+        didSet {
+            UserPreferences.shared.preferredTagsFilter = tagsFilter.map(\.name)
+        }
+    }
+
     @Published var calendarForSaving: EKCalendar? = {
         guard RemindersService.shared.isAuthorized else {
             return nil
@@ -189,29 +225,33 @@ class RemindersData: ObservableObject {
     }
 
     func update() async {
+        // Validate filter — remove stale calendars that no longer exist
         let calendars = RemindersService.shared.getCalendars()
-
         let calendarsSet = Set(calendars.map({ $0.calendarIdentifier }))
-        let calendarIdentifiersFilter = self.calendarIdentifiersFilter.filter({
-            // NOTE: Checking if calendar in filter still exist
-            calendarsSet.contains($0)
-        })
+        self.availableCalendars = calendars
+        self.calendarIdentifiersFilter = self.calendarIdentifiersFilter.filter({ calendarsSet.contains($0) })
+        CalendarParser.updateShared(with: calendars)
 
-        self.calendars = calendars
-        self.calendarIdentifiersFilter = calendarIdentifiersFilter
-        self.filteredReminderLists = await RemindersService.shared.getReminders(
-            of: self.calendarIdentifiersFilter
-        )
-        self.upcomingReminders = await getUpcomingReminders()
-        self.updateMenuBarCount(to: await getMenuBarCount())
-        await self.refreshPreview()
-        if showingRecentReminders {
-            self.recentReminders = await fetchRecentReminders()
+        // Validate filter — remove stale tags that no longer exist
+        if #available(macOS 12, *) {
+            let tags = await RemindersService.shared.getAllTags()
+            self.availableTags = tags
+            self.tagsFilter = self.tagsFilter.filter({ tags.contains($0) })
+            TagParser.updateShared(with: tags)
         }
 
-        CalendarParser.updateShared(with: calendars)
-        if #available(macOS 12, *) {
-            TagParser.updateShared(with: await RemindersService.shared.getAllTags())
+        // Fetch reminder data with validated filters
+        self.filteredReminderLists = await RemindersService.shared.getReminders(of: self.calendarIdentifiersFilter)
+        self.upcomingReminders = await getUpcomingReminders()
+        self.filteredTagReminderLists = await getTagReminders()
+
+        // Update menu bar
+        self.updateMenuBarCount(to: await getMenuBarCount())
+        await self.refreshPreview()
+
+        // Update search data
+        if showingRecentReminders {
+            self.recentReminders = await fetchRecentReminders()
         }
     }
     
@@ -223,6 +263,20 @@ class RemindersData: ObservableObject {
         return await RemindersService.shared.getUpcomingReminders(
             UserPreferences.shared.upcomingRemindersInterval,
             for: calendarFilter
+        )
+    }
+
+    private func getTagReminders() async -> [TagReminderList] {
+        guard #available(macOS 12, *) else { return [] }
+        guard !tagsFilter.isEmpty else { return [] }
+
+        let calendarFilter = UserPreferences.shared.filterTagRemindersByCalendar
+            ? self.calendarIdentifiersFilter
+            : nil
+
+        return await RemindersService.shared.getReminders(
+            byTags: self.tagsFilter,
+            calendarIdentifiers: calendarFilter
         )
     }
 

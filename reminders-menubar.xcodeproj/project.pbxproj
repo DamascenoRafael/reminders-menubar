@@ -118,6 +118,8 @@
 		71F93A632E03B6DA00D5C5BC /* ReminderDateDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F93A622E03B6DA00D5C5BC /* ReminderDateDescriptionView.swift */; };
 		71F93A652E03B93100D5C5BC /* ReminderExternalLinksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F93A642E03B93100D5C5BC /* ReminderExternalLinksView.swift */; };
 		71F9726A25981EDF00D0A118 /* NSTableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F9726925981EDF00D0A118 /* NSTableView+Extensions.swift */; };
+		71FS00012FA8000100000001 /* ReminderListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FS00002FA8000100000001 /* ReminderListSection.swift */; };
+		71TA00012FA8000100000001 /* TagReminderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71TA00002FA8000100000001 /* TagReminderList.swift */; };
 		71TAG0012F80000100000001 /* TagParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71TAG0002F80000000000001 /* TagParser.swift */; };
 		71TAG001FA50000100000001 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71TAG000FA50000100000001 /* Tag.swift */; };
 		71TAG0032F80000300000003 /* ReminderTagsEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71TAG0022F80000200000002 /* ReminderTagsEditView.swift */; };
@@ -256,6 +258,8 @@
 		71F93A622E03B6DA00D5C5BC /* ReminderDateDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderDateDescriptionView.swift; sourceTree = "<group>"; };
 		71F93A642E03B93100D5C5BC /* ReminderExternalLinksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderExternalLinksView.swift; sourceTree = "<group>"; };
 		71F9726925981EDF00D0A118 /* NSTableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableView+Extensions.swift"; sourceTree = "<group>"; };
+		71FS00002FA8000100000001 /* ReminderListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderListSection.swift; sourceTree = "<group>"; };
+		71TA00002FA8000100000001 /* TagReminderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagReminderList.swift; sourceTree = "<group>"; };
 		71TAG0002F80000000000001 /* TagParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagParser.swift; sourceTree = "<group>"; };
 		71TAG000FA50000100000001 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		71TAG0022F80000200000002 /* ReminderTagsEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTagsEditView.swift; sourceTree = "<group>"; };
@@ -421,8 +425,8 @@
 		713F234324C130AE00FF0BEC /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				71RL00002FA9000100000001 /* ReminderList */,
 				716CAFEF2AC28E5500EEB1DB /* ReminderItem.swift */,
-				713F234424C130D400FF0BEC /* ReminderList.swift */,
 				7172A74724C776E6001F96F1 /* RemindersData.swift */,
 				7102422F25F55D5600451D15 /* ReminderInterval.swift */,
 				71564447260324FA005E81FD /* PrioritizedReminders.swift */,
@@ -588,6 +592,16 @@
 				71DB50F92F79B83E006DC143 /* EnvironmentValues+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		71RL00002FA9000100000001 /* ReminderList */ = {
+			isa = PBXGroup;
+			children = (
+				71FS00002FA8000100000001 /* ReminderListSection.swift */,
+				713F234424C130D400FF0BEC /* ReminderList.swift */,
+				71TA00002FA8000100000001 /* TagReminderList.swift */,
+			);
+			path = ReminderList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -772,6 +786,8 @@
 				71A000012F61000100000001 /* RmbSortingOrder.swift in Sources */,
 				710980D22600419F001F69B2 /* UpcomingRemindersContent.swift in Sources */,
 				713F234524C130D400FF0BEC /* ReminderList.swift in Sources */,
+				71TA00012FA8000100000001 /* TagReminderList.swift in Sources */,
+				71FS00012FA8000100000001 /* ReminderListSection.swift in Sources */,
 				71D2624B2F592E2A0073C0FD /* SettingsDivider.swift in Sources */,
 				71D2624B2F592E2B0073C0FD /* SettingsNoteStyle.swift in Sources */,
 				71D262432F57D4F60073C0FD /* ReminderSettingsTab.swift in Sources */,

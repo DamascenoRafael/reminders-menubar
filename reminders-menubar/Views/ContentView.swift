@@ -10,7 +10,7 @@ struct ContentView: View {
         VStack(spacing: 0) {
             ToolbarView()
 
-            if remindersData.calendars.isEmpty {
+            if remindersData.availableCalendars.isEmpty {
                 emptyStateContent
             } else if remindersData.showingSearch {
                 searchContent
@@ -85,19 +85,28 @@ struct ContentView: View {
                 .modifier(ListSectionModifier())
             }
 
-            ForEach(remindersData.filteredReminderLists) { reminderList in
-                Section(header: CalendarTitle(calendar: reminderList.calendar)) {
-                    if reminderList.reminders.isEmpty {
+            ForEach(remindersData.orderedFilteredSections) { section in
+                Section(header: CalendarTitle(
+                    title: section.title,
+                    color: section.color,
+                    icon: {
+                        if case .tag = section, userPreferences.filterTagRemindersByCalendar {
+                            Image(systemName: "line.horizontal.3.decrease.circle")
+                                .help(rmbLocalized(.tagRemindersFilterByCalendarEnabledHelp))
+                        }
+                    }
+                )) {
+                    if section.reminders.isEmpty {
                         NoReminderItemsView(emptyList: .allItemsCompleted)
                     }
-                    ForEach(reminderList.reminders) { reminderItem in
+                    ForEach(section.reminders) { reminderItem in
                         ReminderItemView(reminderItem: reminderItem)
                     }
                 }
                 .modifier(ListSectionModifier())
             }
         }
-        .modifier(ReminderListModifier(animationValue: remindersData.filteredReminderLists))
+        .modifier(ReminderListModifier(animationValue: remindersData.orderedFilteredSections))
     }
 
     @ViewBuilder private var noFilterContent: some View {

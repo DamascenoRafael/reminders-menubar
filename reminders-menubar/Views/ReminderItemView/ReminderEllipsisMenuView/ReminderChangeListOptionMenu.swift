@@ -10,7 +10,7 @@ struct ReminderChangeListOptionMenu: View {
     var body: some View {
         if !reminderHasChildren {
             Menu {
-                ForEach(remindersData.calendars, id: \.calendarIdentifier) { calendar in
+                ForEach(remindersData.availableCalendars, id: \.calendarIdentifier) { calendar in
                     // TODO: Fix the warning from Xcode when editing the reminder calendar:
                     // [utility] You are about to trigger decoding the resolution token map from JSON data.
                     // This is probably not what you want for performance to trigger it from -isEqual:,

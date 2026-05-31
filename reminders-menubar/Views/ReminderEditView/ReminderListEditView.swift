@@ -13,7 +13,7 @@ struct ReminderListEditView: View {
                 .frame(width: 20)
 
             Picker(selection: $selection) {
-                ForEach(remindersData.calendars, id: \.calendarIdentifier) { calendar in
+                ForEach(remindersData.availableCalendars, id: \.calendarIdentifier) { calendar in
                     ColoredDotTitle.text(calendar.title, color: Color(calendar.color))
                         .tag(calendar as EKCalendar?)
                 }
