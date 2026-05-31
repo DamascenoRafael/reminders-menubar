@@ -117,6 +117,7 @@ enum RemindersMenuBarLocalizedKeys: String {
     case copyPropertyPriority
     case copyPropertyList
     case copyPropertyUrl
+    case copyPropertyTags
     case copyPropertyEnabledAccessibilityValue
     case copyPropertyDisabledAccessibilityValue
     case movePropertyUpAccessibilityLabel
@@ -124,6 +125,7 @@ enum RemindersMenuBarLocalizedKeys: String {
     case copySampleTitle
     case copySampleNotes
     case copySampleList
+    case copySampleTags
     case showUpcomingRemindersSettingsOption
     case showExternalLinksInReminderItemOption
     case showExternalLinksInReminderItemNote

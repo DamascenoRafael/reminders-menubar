@@ -7,8 +7,10 @@ struct CopySettingsTab: View {
         Form {
             SettingsSection(rmbLocalized(.copyPropertiesSettingsLabel)) {
                 VStack(spacing: 0) {
-                    let copyPropertyOptionsEnumerated = Array(userPreferences.copyPropertyOptions.enumerated())
-                    ForEach(copyPropertyOptionsEnumerated, id: \.element.id) { index, option in
+                    let visibleOptions = userPreferences.copyPropertyOptions
+                        .enumerated()
+                        .filter { $0.element.property.isAvailable }
+                    ForEach(Array(visibleOptions), id: \.element.id) { index, option in
                         if index > 0 {
                             Divider()
                         }
