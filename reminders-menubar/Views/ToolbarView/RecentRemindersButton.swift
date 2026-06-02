@@ -11,13 +11,7 @@ struct RecentRemindersButton: View {
                 Image(systemName: "clock.arrow.trianglehead.counterclockwise.rotate.90")
             }
         }
-        .modifier(ToolbarButtonModifier())
-        .background(
-            remindersData.showingRecentReminders
-                ? Color.rmbColor(.buttonHover)
-                : nil
-        )
-        .cornerRadius(8)
+        .modifier(ToolbarButtonModifier(isActive: remindersData.showingRecentReminders))
         .help(rmbLocalized(.recentRemindersButtonHelp))
     }
 }

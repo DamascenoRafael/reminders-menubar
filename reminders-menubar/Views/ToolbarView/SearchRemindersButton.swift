@@ -12,13 +12,7 @@ struct SearchRemindersButton: View {
             }
         }
         .keyboardShortcut("f", modifiers: .command)
-        .modifier(ToolbarButtonModifier())
-        .background(
-            remindersData.showingSearch
-                ? Color.rmbColor(.buttonHover)
-                : nil
-        )
-        .cornerRadius(8)
+        .modifier(ToolbarButtonModifier(isActive: remindersData.showingSearch))
         .help(rmbLocalized(.searchRemindersButtonHelp))
     }
 }
