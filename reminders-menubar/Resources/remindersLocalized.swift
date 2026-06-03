@@ -80,6 +80,7 @@ enum RemindersMenuBarLocalizedKeys: String {
     case upcomingRemindersInAWeekFilterOption
     case upcomingRemindersInAMonthFilterOption
     case upcomingRemindersAllFilterOption
+    case upcomingRemindersNoneFilterOption
     case upcomingRemindersDueSectionTitle
     case upcomingRemindersTodaySectionTitle
     case upcomingRemindersInAWeekSectionTitle
