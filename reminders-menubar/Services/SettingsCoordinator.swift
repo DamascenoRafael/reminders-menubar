@@ -5,5 +5,7 @@ class SettingsCoordinator: ObservableObject {
 
     @Published var selectedTab: SettingsTab = .general
 
-    private init() {}
+    private init() {
+        // This prevents others from using the default '()' initializer for this class.
+    }
 }

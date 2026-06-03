@@ -125,7 +125,11 @@ extension EKReminder {
         return performPrivateSelector("_reminder", on: backingObject)
     }
 
-    private func performPrivateSelector(_ name: String, on object: AnyObject, with arg: AnyObject? = nil) -> AnyObject? {
+    private func performPrivateSelector(
+        _ name: String,
+        on object: AnyObject,
+        with arg: AnyObject? = nil
+    ) -> AnyObject? {
         let selector = NSSelectorFromString(name)
         guard object.responds(to: selector) else { return nil }
         if let arg {
