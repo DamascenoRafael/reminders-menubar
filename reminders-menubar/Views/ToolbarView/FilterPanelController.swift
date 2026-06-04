@@ -149,7 +149,7 @@ final class FilterPanelController: ObservableObject {
 
     private static func clampedOrigin(panelSize: NSSize, anchorRect: NSRect, screen: NSScreen?) -> NSPoint {
         let screenFrame = screen?.visibleFrame ?? NSScreen.main?.visibleFrame ?? .zero
-        let spacing: CGFloat = 4
+        let spacing: CGFloat = 1
 
         let originX = anchorRect.minX
             .constrainedTo(min: screenFrame.minX, max: screenFrame.maxX - panelSize.width)
