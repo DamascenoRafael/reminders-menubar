@@ -5,6 +5,7 @@ struct ContentView: View {
     @EnvironmentObject var remindersData: RemindersData
     @ObservedObject var userPreferences = UserPreferences.shared
     @State private var appHasPopoverOpen = false
+    @State private var escapeKeyMonitor: Any?
 
     var body: some View {
         VStack(spacing: 0) {
@@ -26,6 +27,8 @@ struct ContentView: View {
         .modifier(RmbBackgroundModifier())
         .preferredColorScheme(userPreferences.rmbColorScheme.colorScheme)
         .environment(\.appHasPopoverOpen, $appHasPopoverOpen)
+        .onAppear { startEscapeKeyMonitor() }
+        .onDisappear { stopEscapeKeyMonitor() }
         .onReceive(
             NotificationCenter.default.publisher(
                 for: NSPopover.didCloseNotification,
@@ -34,6 +37,39 @@ struct ContentView: View {
         ) { _ in
             remindersData.showingSearch = false
             remindersData.showingRecentReminders = false
+        }
+    }
+
+    // MARK: - Escape key handling
+
+    private func startEscapeKeyMonitor() {
+        guard escapeKeyMonitor == nil else { return }
+        escapeKeyMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [remindersData] event in
+            guard event.keyCode == RmbKeyCode.escape else { return event }
+            // Let other UI layers (edit popovers, filter panel, sheets, alerts) handle their own escape
+            guard !appHasPopoverOpen else { return event }
+            guard !FilterPanelController.shared.isVisible else { return event }
+            let popoverWindow = AppDelegate.shared.popover.contentViewController?.view.window
+            guard popoverWindow?.attachedSheet == nil else { return event }
+
+            if remindersData.showingSearch {
+                remindersData.showingSearch = false
+                return nil
+            }
+            if remindersData.showingRecentReminders {
+                remindersData.showingRecentReminders = false
+                return nil
+            }
+
+            AppDelegate.shared.popover.performClose(nil)
+            return nil
+        }
+    }
+
+    private func stopEscapeKeyMonitor() {
+        if let monitor = escapeKeyMonitor {
+            NSEvent.removeMonitor(monitor)
+            escapeKeyMonitor = nil
         }
     }
 

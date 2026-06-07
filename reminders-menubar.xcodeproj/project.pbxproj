@@ -60,6 +60,7 @@
 		719C712C2C1FADB000C622FF /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 719C712B2C1FADB000C622FF /* InfoPlist.xcstrings */; };
 		71A000012F61000100000001 /* RmbSortingOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A000002F61000100000001 /* RmbSortingOrder.swift */; };
 		71A000032F724B7500000001 /* ColoredDotTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A000022F724B7500000001 /* ColoredDotTitle.swift */; };
+		71A0823293046B8C43603367 /* RmbKeyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A1823293046B8C43603367 /* RmbKeyCode.swift */; };
 		71A0B2DC25CE20AC004E06AE /* UpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A0B2DB25CE20AC004E06AE /* UpdateController.swift */; };
 		71A3834325BCA69C00975B4C /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A3834225BCA69C00975B4C /* Date+Extensions.swift */; };
 		71A3834425BDD2AC00975B4C /* EKCalendar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A3834425BDD2AC00975B4B /* EKCalendar+Extensions.swift */; };
@@ -203,6 +204,7 @@
 		71A000022F724B7500000001 /* ColoredDotTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredDotTitle.swift; sourceTree = "<group>"; };
 		71A043BAE1603803A839C0CB /* RmbMenuBarPreviewTimeAhead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbMenuBarPreviewTimeAhead.swift; sourceTree = "<group>"; };
 		71A0B2DB25CE20AC004E06AE /* UpdateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateController.swift; sourceTree = "<group>"; };
+		71A1823293046B8C43603367 /* RmbKeyCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbKeyCode.swift; sourceTree = "<group>"; };
 		71A3834225BCA69C00975B4C /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		71A3834425BDD2AC00975B4B /* EKCalendar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EKCalendar+Extensions.swift"; sourceTree = "<group>"; };
 		71A3834525BDD2AC00975B4C /* EKReminder+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EKReminder+Extensions.swift"; sourceTree = "<group>"; };
@@ -442,6 +444,7 @@
 				71A043BAE1603803A839C0CB /* RmbMenuBarPreviewTimeAhead.swift */,
 				71A000002F61000100000001 /* RmbSortingOrder.swift */,
 				71B0CA012FA4000100000C01 /* CopyProperty.swift */,
+				71A1823293046B8C43603367 /* RmbKeyCode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -792,6 +795,7 @@
 				7152F511D9CB8F68D9D9B034 /* RmbMenuBarPreviewTimeAhead.swift in Sources */,
 				71C0D002E1700002A8000002 /* MenuBarPreviewService.swift in Sources */,
 				71A000012F61000100000001 /* RmbSortingOrder.swift in Sources */,
+				71A0823293046B8C43603367 /* RmbKeyCode.swift in Sources */,
 				710980D22600419F001F69B2 /* UpcomingRemindersContent.swift in Sources */,
 				713F234524C130D400FF0BEC /* CalendarReminderList.swift in Sources */,
 				71TA00012FA8000100000001 /* TagReminderList.swift in Sources */,

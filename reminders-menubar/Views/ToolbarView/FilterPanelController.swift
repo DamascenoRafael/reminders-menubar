@@ -201,7 +201,7 @@ final class FilterPanelController: ObservableObject {
         }
 
         let keyMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] event in
-            guard let self, event.charactersIgnoringModifiers == "\u{1B}" else { return event }
+            guard let self, event.keyCode == RmbKeyCode.escape else { return event }
             close()
             return nil
         }

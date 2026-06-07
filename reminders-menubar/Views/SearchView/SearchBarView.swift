@@ -12,10 +12,7 @@ struct SearchBarView: View {
 
             FocusableTextField(
                 text: $remindersData.searchText,
-                placeholder: rmbLocalized(.searchRemindersPlaceholder),
-                onEscape: {
-                    remindersData.showingSearch = false
-                }
+                placeholder: rmbLocalized(.searchRemindersPlaceholder)
             )
             .font(.body)
         }
@@ -33,7 +30,6 @@ struct SearchBarView: View {
 private struct FocusableTextField: NSViewRepresentable {
     @Binding var text: String
     var placeholder: String
-    var onEscape: () -> Void
 
     func makeNSView(context: Context) -> NSTextField {
         let textField = NSTextField()
@@ -69,14 +65,6 @@ private struct FocusableTextField: NSViewRepresentable {
         func controlTextDidChange(_ obj: Notification) {
             guard let textField = obj.object as? NSTextField else { return }
             parent.text = textField.stringValue
-        }
-
-        func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
-            if commandSelector == #selector(NSResponder.cancelOperation(_:)) {
-                parent.onEscape()
-                return true
-            }
-            return false
         }
     }
 }
