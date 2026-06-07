@@ -45,12 +45,7 @@ final class FilterPanelController: ObservableObject {
             screen: anchorView.window?.screen
         )
         panel.setFrameOrigin(panelOrigin)
-
-        if let popoverWindow = anchorView.window {
-            popoverWindow.addChildWindow(panel, ordered: .above)
-        } else {
-            panel.orderFrontRegardless()
-        }
+        panel.orderFrontRegardless()
 
         self.panel = panel
         isVisible = true
@@ -62,7 +57,6 @@ final class FilterPanelController: ObservableObject {
     private func close() {
         closeSubmenu()
         if let panel {
-            panel.parent?.removeChildWindow(panel)
             panel.orderOut(nil)
         }
         panel = nil
