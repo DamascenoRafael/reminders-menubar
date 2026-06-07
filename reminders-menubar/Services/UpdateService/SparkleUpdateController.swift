@@ -6,6 +6,7 @@ import Sparkle
 final class SparkleUpdateController: NSObject, ObservableObject, SPUUpdaterDelegate, SPUStandardUserDriverDelegate {
     static let shared = SparkleUpdateController()
 
+    // swiftlint:disable:next implicitly_unwrapped_optional
     private var sparkleUpdater: SPUStandardUpdaterController!
     private var didTemporarilyBecomeRegular = false
 

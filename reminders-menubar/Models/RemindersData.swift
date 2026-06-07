@@ -256,7 +256,8 @@ class RemindersData: ObservableObject {
         }
 
         // Fetch reminder data with validated filters
-        self.filteredCalendarReminderLists = await RemindersService.shared.getReminders(of: self.calendarIdentifiersFilter)
+        self.filteredCalendarReminderLists =
+            await RemindersService.shared.getReminders(of: self.calendarIdentifiersFilter)
         self.upcomingReminders = await getUpcomingReminders()
         self.filteredTagReminderLists = await getTagReminders()
 

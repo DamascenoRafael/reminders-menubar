@@ -27,6 +27,7 @@ struct RemindersMenuBar: App {
 
 @MainActor
 class AppDelegate: NSObject, NSApplicationDelegate {
+    // swiftlint:disable:next implicitly_unwrapped_optional
     static private(set) var shared: AppDelegate!
 
     private var didCloseCancellationToken: AnyCancellable?
