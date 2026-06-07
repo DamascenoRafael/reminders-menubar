@@ -26,7 +26,12 @@ struct ContentView: View {
         .modifier(RmbBackgroundModifier())
         .preferredColorScheme(userPreferences.rmbColorScheme.colorScheme)
         .environment(\.appHasPopoverOpen, $appHasPopoverOpen)
-        .onReceive(NotificationCenter.default.publisher(for: NSPopover.didCloseNotification)) { _ in
+        .onReceive(
+            NotificationCenter.default.publisher(
+                for: NSPopover.didCloseNotification,
+                object: AppDelegate.shared.popover
+            )
+        ) { _ in
             remindersData.showingSearch = false
             remindersData.showingRecentReminders = false
         }
