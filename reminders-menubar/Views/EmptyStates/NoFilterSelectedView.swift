@@ -3,7 +3,7 @@ import SwiftUI
 struct NoFilterSelectedView: View {
     var body: some View {
         VStack(spacing: 4) {
-            Image(systemName: "line.horizontal.3.decrease.circle")
+            Image(rmbSymbol: .filterCircle)
                 .font(.title)
 
             Text(rmbLocalized(.emptyListNoRemindersFilterTitle))

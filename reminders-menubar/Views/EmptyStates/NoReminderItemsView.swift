@@ -29,7 +29,7 @@ struct NoReminderItemsView: View {
     
     var body: some View {
         HStack(alignment: .center) {
-            Image(systemName: "tray")
+            Image(rmbSymbol: .tray)
             Text(emptyList.message)
         }
         .font(.callout)

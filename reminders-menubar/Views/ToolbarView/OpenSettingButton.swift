@@ -6,7 +6,7 @@ struct OpenSettingButton: View {
             NSApp.openAppSettings()
         } label: {
             ToolbarButtonLabel {
-                Image(systemName: "gearshape")
+                Image(rmbSymbol: .gearshape)
             }
         }
         .modifier(ToolbarButtonModifier())

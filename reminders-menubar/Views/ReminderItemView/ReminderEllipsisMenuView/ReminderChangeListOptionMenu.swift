@@ -25,7 +25,7 @@ struct ReminderChangeListOptionMenu: View {
                 }
             } label: {
                 HStack {
-                    Image(systemName: "folder")
+                    Image(rmbSymbol: .folder)
                     Text(rmbLocalized(.changeReminderListMenuOption))
                 }
             }

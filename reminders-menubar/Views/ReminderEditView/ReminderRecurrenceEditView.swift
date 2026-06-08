@@ -21,7 +21,7 @@ struct ReminderRecurrenceEditView: View {
     @ViewBuilder
     private func pickerRow() -> some View {
         HStack {
-            Image(systemName: "repeat")
+            Image(rmbSymbol: .recurrence)
                 .font(.system(size: 12))
                 .foregroundColor(.secondary)
                 .frame(width: 20)
@@ -44,7 +44,7 @@ struct ReminderRecurrenceEditView: View {
     @ViewBuilder
     private func customRecurrenceRow() -> some View {
         HStack {
-            Image(systemName: "repeat")
+            Image(rmbSymbol: .recurrence)
                 .font(.system(size: 12))
                 .foregroundColor(.secondary)
                 .frame(width: 20)
@@ -57,7 +57,7 @@ struct ReminderRecurrenceEditView: View {
             Button {
                 recurrence = .none
             } label: {
-                Image(systemName: "xmark.circle.fill")
+                Image(rmbSymbol: .xmarkCircleFill)
                     .font(.system(size: 12))
                     .foregroundColor(.secondary)
             }

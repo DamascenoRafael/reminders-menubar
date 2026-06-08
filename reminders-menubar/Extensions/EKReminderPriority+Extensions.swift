@@ -1,14 +1,14 @@
 import EventKit
 
 extension EKReminderPriority {
-    var systemImage: String? {
+    var rmbSymbol: RmbSymbol? {
         switch self {
         case .high:
-            return "exclamationmark.3"
+            return .priorityHigh
         case .medium:
-            return "exclamationmark.2"
+            return .priorityMedium
         case .low:
-            return "exclamationmark"
+            return .priorityLow
         default:
             return nil
         }

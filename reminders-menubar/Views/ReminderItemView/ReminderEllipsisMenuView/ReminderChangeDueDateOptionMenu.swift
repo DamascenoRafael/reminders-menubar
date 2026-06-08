@@ -93,7 +93,7 @@ struct ReminderChangeDueDateOptionMenu: View {
             }
         } label: {
             HStack {
-                Image(systemName: "calendar")
+                Image(rmbSymbol: .calendar)
                 Text(rmbLocalized(.changeReminderDueDateMenuOption))
             }
         }

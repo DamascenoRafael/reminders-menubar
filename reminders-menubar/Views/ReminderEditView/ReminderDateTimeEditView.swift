@@ -6,14 +6,14 @@ struct ReminderDateTimeEditView: View {
     @Binding var hasComponent: Bool
 
     private var isTime: Bool { components == .time }
-    private var pickerIcon: String { isTime ? "clock" : "calendar" }
+    private var pickerSymbol: RmbSymbol { isTime ? .clock : .calendar }
     private var addButtonText: String {
         rmbLocalized(isTime ? .newReminderAddTimeButton : .newReminderAddDateButton)
     }
 
     var body: some View {
         HStack {
-            Image(systemName: pickerIcon)
+            Image(rmbSymbol: pickerSymbol)
                 .font(.system(size: 12))
                 .foregroundColor(.secondary)
                 .frame(width: 20)
@@ -27,7 +27,7 @@ struct ReminderDateTimeEditView: View {
                 Button {
                     hasComponent = false
                 } label: {
-                    Image(systemName: "xmark.circle.fill")
+                    Image(rmbSymbol: .xmarkCircleFill)
                         .font(.system(size: 12))
                         .foregroundColor(.secondary)
                 }

@@ -25,7 +25,7 @@ struct ReminderChangePriorityOptionMenu: View {
             changePriorityToggle(.none)
         } label: {
             HStack {
-                Image(systemName: "exclamationmark.3")
+                Image(rmbSymbol: .priorityHigh)
                 Text(rmbLocalized(.changeReminderPriorityMenuOption))
             }
         }

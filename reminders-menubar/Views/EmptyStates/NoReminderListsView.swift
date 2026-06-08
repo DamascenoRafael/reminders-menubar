@@ -5,7 +5,7 @@ struct NoReminderListsView: View {
 
     var body: some View {
         VStack(spacing: 4) {
-            Image(systemName: "calendar.badge.exclamationmark")
+            Image(rmbSymbol: .calendarBadgeExclamationmark)
                 .font(.title)
 
             Text(rmbLocalized(.emptyListNoCalendarsTitle))

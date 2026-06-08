@@ -6,7 +6,7 @@ struct SearchBarView: View {
 
     var body: some View {
         HStack(spacing: 6) {
-            Image(systemName: "magnifyingglass")
+            Image(rmbSymbol: .magnifyingglass)
                 .foregroundColor(.secondary)
                 .font(.callout)
 

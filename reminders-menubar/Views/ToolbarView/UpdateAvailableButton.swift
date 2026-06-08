@@ -9,7 +9,7 @@ struct UpdateAvailableButton: View {
                 updateController.showUpdate()
             }) {
                 ToolbarButtonLabel {
-                    Image(systemName: "arrow.down.circle")
+                    Image(rmbSymbol: .arrowDownCircle)
                 }
             }
             .modifier(ToolbarButtonModifier())

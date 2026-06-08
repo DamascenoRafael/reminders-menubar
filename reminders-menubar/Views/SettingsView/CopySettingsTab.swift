@@ -91,7 +91,7 @@ private struct CopyPropertyRow: View {
     var body: some View {
         HStack {
             Button(action: onToggle) {
-                Image(systemName: option.isEnabled ? "checkmark.circle.fill" : "circle")
+                Image(rmbSymbol: option.isEnabled ? .checkmarkCircleFill : .circle)
                     .foregroundColor(option.isEnabled ? .accentColor : .secondary)
             }
             .buttonStyle(.plain)
@@ -109,7 +109,7 @@ private struct CopyPropertyRow: View {
 
             HStack(spacing: 2) {
                 Button(action: onMoveUp) {
-                    Image(systemName: "chevron.up")
+                    Image(rmbSymbol: .chevronUp)
                         .font(.caption)
                         .frame(width: 28, height: 28)
                         .contentShape(Rectangle())
@@ -122,7 +122,7 @@ private struct CopyPropertyRow: View {
                 )
 
                 Button(action: onMoveDown) {
-                    Image(systemName: "chevron.down")
+                    Image(rmbSymbol: .chevronDown)
                         .font(.caption)
                         .frame(width: 28, height: 28)
                         .contentShape(Rectangle())

@@ -98,7 +98,7 @@ struct ContentView: View {
                 title: rmbLocalized(.recentRemindersSectionTitle),
                 color: .rmbColor(.recentSectionTitle),
                 icon: {
-                    Image(systemName: "clock.arrow.trianglehead.counterclockwise.rotate.90")
+                    Image(rmbSymbol: .recentReminders)
                 }
             )) {
                 RecentRemindersContent()
@@ -116,7 +116,7 @@ struct ContentView: View {
                     color: .rmbColor(.upcomingSectionTitle),
                     icon: {
                         if userPreferences.filterUpcomingRemindersByCalendar {
-                            Image(systemName: "line.horizontal.3.decrease.circle")
+                            Image(rmbSymbol: .filterCircle)
                                 .help(rmbLocalized(.upcomingRemindersFilterByCalendarEnabledHelp))
                         }
                     }
@@ -132,7 +132,7 @@ struct ContentView: View {
                     color: section.color,
                     icon: {
                         if case .tag = section, userPreferences.filterTagRemindersByCalendar {
-                            Image(systemName: "line.horizontal.3.decrease.circle")
+                            Image(rmbSymbol: .filterCircle)
                                 .help(rmbLocalized(.tagRemindersFilterByCalendarEnabledHelp))
                         }
                     }

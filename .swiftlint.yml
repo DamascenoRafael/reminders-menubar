@@ -98,6 +98,11 @@ custom_rules:
     message: "Don't use double space between keywords"
     match_kinds: keyword
     severity: warning
+  use_rmb_symbol:
+    name: "Use RmbSymbol"
+    regex: '(Image\(systemName:|Label\([^)]*systemImage:|\.tabItem\s*\{[^}]*systemImage:)'
+    message: "Use Image(rmbSymbol:) or Label(_:rmbSymbol:) instead of raw system image strings. See RmbSymbol.swift."
+    severity: warning
   empty_commented_line:
     name: "Empty commented out line"
     regex: '(\t+| +)//\n'

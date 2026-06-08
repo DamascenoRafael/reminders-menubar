@@ -138,11 +138,11 @@ struct ReminderItemView: View {
     private func reminderTitleText() -> Text {
         let titleText = Text(LocalizedStringKey(reminderItem.reminder.title.toDetectedLinkAttributedString()))
 
-        guard let prioritySystemImage = reminderItem.reminder.ekPriority.systemImage else {
+        guard let prioritySymbol = reminderItem.reminder.ekPriority.rmbSymbol else {
             return titleText
         }
 
-        return Text(Image(systemName: prioritySystemImage))
+        return Text(Image(rmbSymbol: prioritySymbol))
             .foregroundColor(Color(reminderItem.reminder.calendar.color))
         + Text(verbatim: " ")
         + titleText
@@ -167,7 +167,7 @@ struct ReminderItemView: View {
     private func trailingIndicator() -> some View {
         if showingCopiedToast {
             HStack(spacing: 4) {
-                Image(systemName: "checkmark")
+                Image(rmbSymbol: .checkmark)
                 Text(rmbLocalized(.copiedToastMessage))
             }
             .font(.footnote.weight(.semibold))

@@ -10,14 +10,14 @@ struct ReminderDateDescriptionView: View {
     var body: some View {
         HStack {
             HStack {
-                Image(systemName: "calendar")
+                Image(rmbSymbol: .calendar)
                 Text(dateDescription)
                     .foregroundColor(isExpired ? .rmbColor(.expiredDate) : .secondary)
             }
             .padding(.trailing, 5)
 
             if hasRecurrenceRules {
-                Image(systemName: "repeat")
+                Image(rmbSymbol: .recurrence)
                 Text(recurrenceLabel(recurrenceRules))
             }
 

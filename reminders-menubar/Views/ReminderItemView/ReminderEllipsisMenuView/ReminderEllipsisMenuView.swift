@@ -25,7 +25,7 @@ struct ReminderEllipsisMenuView: View {
 
             showRemoveAlertOptionButton()
         } label: {
-            Image(systemName: "ellipsis")
+            Image(rmbSymbol: .ellipsis)
         }
         .menuStyle(BorderlessButtonMenuStyle(showsMenuIndicator: false))
         .frame(width: 16, height: 16)
@@ -39,7 +39,7 @@ struct ReminderEllipsisMenuView: View {
             onCopyReminder()
         }) {
             HStack {
-                Image(systemName: "doc.on.doc")
+                Image(rmbSymbol: .docOnDoc)
                 Text(rmbLocalized(.copyReminderButton))
             }
         }
@@ -50,7 +50,7 @@ struct ReminderEllipsisMenuView: View {
             showingEditPopover = true
         }) {
             HStack {
-                Image(systemName: "pencil")
+                Image(rmbSymbol: .pencil)
                 Text(rmbLocalized(.editReminderButton))
             }
         }
@@ -61,7 +61,7 @@ struct ReminderEllipsisMenuView: View {
             showingRemoveAlert = true
         }) {
             HStack {
-                Image(systemName: "trash")
+                Image(rmbSymbol: .trash)
                 Text(rmbLocalized(.removeReminderButton))
             }
         }

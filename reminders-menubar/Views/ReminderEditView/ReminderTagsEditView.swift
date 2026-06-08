@@ -11,7 +11,7 @@ struct ReminderTagsEditView: View {
 
     var body: some View {
         HStack(alignment: .center, spacing: 6) {
-            Image(systemName: "number")
+            Image(rmbSymbol: .hashtag)
                 .font(.system(size: 12))
                 .foregroundColor(.secondary)
                 .frame(width: 20)
@@ -52,7 +52,7 @@ private struct TagPillView: View {
             Text(name)
 
             Button(action: onRemove) {
-                Image(systemName: "xmark")
+                Image(rmbSymbol: .xmark)
                     .font(.system(size: 7, weight: .bold))
                     .foregroundColor(.secondary)
                     .padding(.top, 1)

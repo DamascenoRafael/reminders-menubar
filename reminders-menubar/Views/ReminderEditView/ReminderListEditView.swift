@@ -7,7 +7,7 @@ struct ReminderListEditView: View {
 
     var body: some View {
         HStack {
-            Image(systemName: "folder")
+            Image(rmbSymbol: .folder)
                 .font(.system(size: 12))
                 .foregroundColor(.secondary)
                 .frame(width: 20)

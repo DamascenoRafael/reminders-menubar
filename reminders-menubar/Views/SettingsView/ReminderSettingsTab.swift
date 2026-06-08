@@ -27,7 +27,7 @@ struct ReminderSettingsTab: View {
                 Toggle(isOn: $userPreferences.filterUpcomingRemindersByCalendar) {
                     HStack {
                         Text(rmbLocalized(.filterUpcomingRemindersByCalendarOption))
-                        Image(systemName: "line.horizontal.3.decrease.circle")
+                        Image(rmbSymbol: .filterCircle)
                     }
                 }
             }
@@ -44,7 +44,7 @@ struct ReminderSettingsTab: View {
                     Toggle(isOn: $userPreferences.filterTagRemindersByCalendar) {
                         HStack {
                             Text(rmbLocalized(.filterTagRemindersByCalendarOption))
-                            Image(systemName: "line.horizontal.3.decrease.circle")
+                            Image(rmbSymbol: .filterCircle)
                         }
                     }
                 }

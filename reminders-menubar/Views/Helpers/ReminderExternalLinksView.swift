@@ -21,7 +21,7 @@ struct ReminderExternalLinksView: View {
     @ViewBuilder private var linkRows: some View {
         if let attachedUrl {
             ExternalLinkRow(
-                icon: "safari",
+                icon: .safari,
                 displayText: isCompact ? attachedUrl.displayedUrl : attachedUrl.absoluteString,
                 url: attachedUrl,
                 isCompact: isCompact
@@ -30,7 +30,7 @@ struct ReminderExternalLinksView: View {
 
         if let mailUrl {
             ExternalLinkRow(
-                icon: "envelope",
+                icon: .envelope,
                 displayText: isCompact ? nil : "Mail",
                 url: mailUrl,
                 isCompact: isCompact
@@ -40,7 +40,7 @@ struct ReminderExternalLinksView: View {
 }
 
 private struct ExternalLinkRow: View {
-    let icon: String
+    let icon: RmbSymbol
     let displayText: String?
     let url: URL
     let isCompact: Bool
@@ -48,7 +48,7 @@ private struct ExternalLinkRow: View {
     var body: some View {
         HStack(spacing: 4) {
             Link(destination: url) {
-                Image(systemName: icon)
+                Image(rmbSymbol: icon)
 
                 if let displayText {
                     Text(displayText)
@@ -81,7 +81,7 @@ private struct CopyLinkButton: View {
             copiedDismissWork = work
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: work)
         } label: {
-            Image(systemName: isCopied ? "checkmark" : "doc.on.doc")
+            Image(rmbSymbol: isCopied ? .checkmark : .docOnDoc)
                 .font(.system(size: 10))
                 .frame(width: 10)
                 .foregroundColor(.secondary)

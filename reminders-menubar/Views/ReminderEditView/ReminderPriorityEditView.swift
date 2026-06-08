@@ -6,7 +6,7 @@ struct ReminderPriorityEditView: View {
 
     var body: some View {
         HStack(spacing: 6) {
-            Image(systemName: "exclamationmark.3")
+            Image(rmbSymbol: .priorityHigh)
                 .font(.system(size: 12))
                 .foregroundColor(.secondary)
                 .frame(width: 20)
@@ -26,8 +26,8 @@ struct ReminderPriorityEditView: View {
             self.priority = priority
         } label: {
             HStack {
-                if let systemImage = priority.systemImage {
-                    Image(systemName: systemImage)
+                if let symbol = priority.rmbSymbol {
+                    Image(rmbSymbol: symbol)
                 }
                 Text(priority.title)
             }

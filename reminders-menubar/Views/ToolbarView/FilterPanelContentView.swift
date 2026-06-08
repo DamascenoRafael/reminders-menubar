@@ -111,7 +111,7 @@ private struct MenuRow: View {
         Button(action: action) {
             PanelRow { _ in
                 HStack(spacing: 0) {
-                    Image(systemName: "checkmark")
+                    Image(rmbSymbol: .checkmark)
                         .font(.system(size: 11, weight: .semibold))
                         .frame(width: 20, alignment: .center)
                         .opacity(isSelected ? 1 : 0)
@@ -143,7 +143,7 @@ private struct SubmenuParentRow: View {
 
                 Spacer()
 
-                Image(systemName: "chevron.right")
+                Image(rmbSymbol: .chevronRight)
                     .font(.system(size: 10, weight: .semibold))
                     .foregroundColor(isHovered ? .white.opacity(0.8) : .secondary)
                     .padding(.trailing, 2)

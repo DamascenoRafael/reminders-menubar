@@ -120,7 +120,7 @@ struct ReminderEditView: View {
                 isPresented = false
             } label: {
                 HStack {
-                    Image(systemName: "xmark")
+                    Image(rmbSymbol: .xmark)
                         .font(.system(size: 8, weight: .medium))
                     Text(String("esc"))
                         .font(.caption)
@@ -187,7 +187,7 @@ struct ReminderEditView: View {
     @ViewBuilder
     private func externalLinksSection(reminder: EKReminder) -> some View {
         HStack(alignment: .top) {
-            Image(systemName: "link")
+            Image(rmbSymbol: .link)
                 .font(.system(size: 12))
                 .foregroundColor(.secondary)
                 .frame(width: 20)
@@ -257,7 +257,7 @@ struct ReminderEditView: View {
         Button {
             showingRemoveAlert = true
         } label: {
-            Image(systemName: "trash")
+            Image(rmbSymbol: .trash)
                 .foregroundColor(removeButtonIsHovered ? .rmbColor(.destructiveAction) : .secondary)
                 .frame(width: 24, height: 24)
         }
@@ -282,7 +282,7 @@ struct ReminderEditView: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: work)
         } label: {
             HStack(spacing: 4) {
-                Image(systemName: isCopied ? "checkmark" : "doc.on.doc")
+                Image(rmbSymbol: isCopied ? .checkmark : .docOnDoc)
                     .frame(width: 24, height: 24)
                 Text(isCopied ? rmbLocalized(.copiedToastMessage) : rmbLocalized(.copyReminderButton))
                     .padding(.trailing, 6)

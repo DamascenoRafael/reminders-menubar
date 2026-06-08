@@ -11,7 +11,7 @@ struct FilterReminderListButton: View {
             showFilterPanel()
         } label: {
             ToolbarButtonLabel {
-                Image(systemName: "line.horizontal.3.decrease.circle")
+                Image(rmbSymbol: .filterCircle)
             }
         }
         .modifier(ToolbarButtonModifier(isActive: panelController.isVisible))

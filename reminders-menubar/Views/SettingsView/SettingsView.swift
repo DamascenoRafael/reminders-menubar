@@ -16,37 +16,37 @@ struct SettingsView: View {
         TabView(selection: $coordinator.selectedTab) {
             GeneralSettingsTab()
                 .tabItem {
-                    Label(rmbLocalized(.generalSettingsTab), systemImage: "gearshape")
+                    Label(rmbLocalized(.generalSettingsTab), rmbSymbol: .gearshape)
                 }
                 .tag(SettingsTab.general)
 
             MenuBarSettingsTab()
                 .tabItem {
-                    Label(rmbLocalized(.menuBarSettingsTab), systemImage: "menubar.rectangle")
+                    Label(rmbLocalized(.menuBarSettingsTab), rmbSymbol: .menubarRectangle)
                 }
                 .tag(SettingsTab.menuBar)
 
             ReminderSettingsTab()
                 .tabItem {
-                    Label(rmbLocalized(.remindersSettingsTab), systemImage: "list.bullet")
+                    Label(rmbLocalized(.remindersSettingsTab), rmbSymbol: .listBullet)
                 }
                 .tag(SettingsTab.reminders)
 
             CopySettingsTab()
                 .tabItem {
-                    Label(rmbLocalized(.copySettingsTab), systemImage: "doc.on.doc")
+                    Label(rmbLocalized(.copySettingsTab), rmbSymbol: .docOnDoc)
                 }
                 .tag(SettingsTab.copy)
 
             KeyboardSettingsTab()
                 .tabItem {
-                    Label(rmbLocalized(.keyboardSettingsTab), systemImage: "keyboard")
+                    Label(rmbLocalized(.keyboardSettingsTab), rmbSymbol: .keyboard)
                 }
                 .tag(SettingsTab.keyboard)
 
             AboutSettingsTab()
                 .tabItem {
-                    Label(rmbLocalized(.aboutSettingsTab), systemImage: "info.circle")
+                    Label(rmbLocalized(.aboutSettingsTab), rmbSymbol: .infoCircle)
                 }
                 .tag(SettingsTab.about)
         }

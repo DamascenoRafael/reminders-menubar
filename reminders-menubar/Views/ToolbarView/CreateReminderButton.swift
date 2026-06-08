@@ -10,7 +10,7 @@ struct CreateReminderButton: View {
         } label: {
             ToolbarButtonLabel {
                 HStack {
-                    Image(systemName: "plus")
+                    Image(rmbSymbol: .plus)
                     Text(String("⌘N"))
                         .foregroundColor(.secondary)
                         .font(.footnote)

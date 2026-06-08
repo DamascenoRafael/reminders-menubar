@@ -8,7 +8,7 @@ struct RecentRemindersButton: View {
             remindersData.showingRecentReminders.toggle()
         }) {
             ToolbarButtonLabel {
-                Image(systemName: "clock.arrow.trianglehead.counterclockwise.rotate.90")
+                Image(rmbSymbol: .recentReminders)
             }
         }
         .modifier(ToolbarButtonModifier(isActive: remindersData.showingRecentReminders))

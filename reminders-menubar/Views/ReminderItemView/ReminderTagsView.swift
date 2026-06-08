@@ -5,7 +5,7 @@ struct ReminderTagsView: View {
 
     var body: some View {
         HStack(spacing: 4) {
-            Image(systemName: "number")
+            Image(rmbSymbol: .hashtag)
                 .font(.system(size: 9))
                 .foregroundColor(.secondary)
 

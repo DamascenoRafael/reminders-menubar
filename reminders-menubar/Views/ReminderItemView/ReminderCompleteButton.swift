@@ -18,7 +18,7 @@ struct ReminderCompleteButton: View {
         Button(action: {
             handleButtonTap()
         }) {
-            Image(systemName: isShowingFilled ? "largecircle.fill.circle" : "circle")
+            Image(rmbSymbol: isShowingFilled ? .circleFilled : .circle)
                 .resizable()
                 .frame(width: 14, height: 14)
                 .foregroundColor(Color(reminderItem.reminder.calendar.color))

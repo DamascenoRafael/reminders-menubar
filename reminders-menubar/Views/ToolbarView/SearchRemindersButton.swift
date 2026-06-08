@@ -8,7 +8,7 @@ struct SearchRemindersButton: View {
             remindersData.showingSearch.toggle()
         }) {
             ToolbarButtonLabel {
-                Image(systemName: "magnifyingglass")
+                Image(rmbSymbol: .magnifyingglass)
             }
         }
         .keyboardShortcut("f", modifiers: .command)
