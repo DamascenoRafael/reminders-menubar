@@ -14,7 +14,7 @@ final class FilterPanelController: ObservableObject {
     private weak var anchorView: NSView?
 
     private var eventMonitors: [Any] = []
-    private var closeObservers: [NSObjectProtocol] = []
+    private var closeObserver: NSObjectProtocol?
 
     @Published private(set) var isVisible = false
 
@@ -50,6 +50,9 @@ final class FilterPanelController: ObservableObject {
         self.panel = panel
         isVisible = true
 
+        // NOTE: Prevent macOS from auto-dismissing the popover when clicking the filter panel.
+        AppDelegate.shared.popover.behavior = .applicationDefined
+
         startEventMonitors()
         observePopoverClose()
     }
@@ -61,6 +64,10 @@ final class FilterPanelController: ObservableObject {
         }
         panel = nil
         isVisible = false
+
+        // NOTE: Restore default popover dismissal behavior.
+        AppDelegate.shared.popover.behavior = .transient
+
         stopEventMonitors()
         stopPopoverCloseObserver()
     }
@@ -219,30 +226,21 @@ final class FilterPanelController: ObservableObject {
     private func observePopoverClose() {
         stopPopoverCloseObserver()
 
-        closeObservers = [
-            NotificationCenter.default.addObserver(
-                forName: NSPopover.didCloseNotification,
-                object: AppDelegate.shared.popover,
-                queue: .main
-            ) { [weak self] _ in
-                MainActor.assumeIsolated {
-                    self?.close()
-                }
-            },
-            NotificationCenter.default.addObserver(
-                forName: NSApplication.didResignActiveNotification,
-                object: nil,
-                queue: .main
-            ) { [weak self] _ in
-                MainActor.assumeIsolated {
-                    self?.close()
-                }
+        closeObserver = NotificationCenter.default.addObserver(
+            forName: NSPopover.didCloseNotification,
+            object: AppDelegate.shared.popover,
+            queue: .main
+        ) { [weak self] _ in
+            MainActor.assumeIsolated {
+                self?.close()
             }
-        ]
+        }
     }
 
     private func stopPopoverCloseObserver() {
-        closeObservers.forEach { NotificationCenter.default.removeObserver($0) }
-        closeObservers.removeAll()
+        if let closeObserver {
+            NotificationCenter.default.removeObserver(closeObserver)
+        }
+        closeObserver = nil
     }
 }
