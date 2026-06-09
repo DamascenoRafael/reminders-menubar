@@ -38,12 +38,13 @@
 
 * All interactions through the macOS menu bar
 * Keep everything in sync with Apple Reminders
-* Create new reminders in your chosen list
-* Set a reminder's due date using natural language
-* Mark reminders as completed / uncompleted
-* Edit reminders, Remove reminders or Move reminders between lists
-* View a list of upcoming reminders
-* Filter reminders through lists or through completed status
+* Create new reminders using natural language for due dates, lists, and tags
+* Mark as completed or edit due dates, priorities, recurrences, lists, tags, and more
+* View upcoming reminders with a configurable time interval
+* Search across all your reminders
+* Filter reminders through lists and tags
+* Customize the menu bar with icon, counter, or next upcoming reminder
+* Toggle the app with a global keyboard shortcut
 
 <div align="center">
   <img
@@ -58,7 +59,7 @@
 
 ### Homebrew
 
-Reminders MenuBar can be installed using [Homebrew](http://brew.sh).
+Reminders MenuBar can be installed using [Homebrew](https://brew.sh).
 
 ```bash
 brew install --cask reminders-menubar
@@ -71,7 +72,7 @@ After downloading and extracting, just drag the *.app* file to the *Applications
 
 ## Permission Request
 
-Reminders MenuBar uses [EKEventStore](https://developer.apple.com/documentation/eventkit/ekeventstore) to access reminders on macOS (which are available in Apple Reminders and can be synced through iCloud). On first use, the app should request permission to access reminders as shown in the image below. Also, in *System Settings > Privacy & Security > Reminders* it is possible to manage this permission.
+Reminders MenuBar uses [EKEventStore](https://developer.apple.com/documentation/eventkit/ekeventstore) to access reminders on macOS (which are available in Apple Reminders and can be synced through iCloud). On first use, the app should request permission to access reminders as shown in the image below. Also, in *System Settings > Privacy & Security > Reminders* it is possible to manage this permission. [Click here if you are using *OpenCore Legacy Patcher*](docs/fix-for-opencore-legacy-patcher.md).
 
 <div>
   <img
@@ -80,10 +81,6 @@ Reminders MenuBar uses [EKEventStore](https://developer.apple.com/documentation/
     alt="macOS window asking permission for Reminders MenuBar to access reminders"
   >
 </div>
-
-### OpenCore Legacy Patcher
-
-[▶︎ Click here if you are using *OpenCore Legacy Patcher*](docs/fix-for-opencore-legacy-patcher.md)
 
 ## Contributing
 
