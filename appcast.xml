@@ -3,5 +3,40 @@
     <channel>
         <title>Reminders MenuBar</title>
         <language>en</language>
+        <item>
+            <title>Version 2.0.0</title>
+            <sparkle:version>2.0.0</sparkle:version>
+            <sparkle:shortVersionString>2.0.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[
+                <ul>
+                    <li>Redesigned interface with a dedicated settings window 🎨 ⚙️</li>
+                    <li>Auto-update support via Sparkle 🔄 ✨</li>
+                    <li>Add full Tags support: view, edit, search, and filter 🏷️</li>
+                    <li>Display next upcoming reminder title in the menu bar 📌</li>
+                    <li>Drag to resize the popup window ↕️ ↔️</li>
+                    <li>Search across all reminders 🔍</li>
+                    <li>Copy reminder option with configurable fields 📋</li>
+                    <li>Add option to hide menu bar icon when counter is shown 🙈</li>
+                    <li>New "Recent Reminders" section ⏪</li>
+                    <li>Filter list menu stays open for multiple selections 🗂️</li>
+                    <li>Edit and set recurrence rules for reminders 🔁</li>
+                    <li>Animation when marking a reminder as completed ✨</li>
+                    <li>Support 12-hour / 24-hour time format 🕐</li>
+                    <li>Add advanced sorting options 🔃</li>
+                    <li>Fix upcoming reminders with "all" option showing undated items 🐛</li>
+                    <li>Fix reduce transparency option 🐛</li>
+                    <li>Add translation for Filipino 🇵🇭 🌐</li>
+                    <li>Add missing translations and other minor improvements in code ⚡</li>
+                </ul>
+                <p><a href="https://github.com/DamascenoRafael/reminders-menubar/releases/tag/v2.0.0">Details</a></p>
+            ]]></description>
+            <pubDate>Tue, 09 Jun 2026 00:02:02 -0300</pubDate>
+            <enclosure
+                url="https://github.com/DamascenoRafael/reminders-menubar/releases/download/v2.0.0/reminders-menubar.zip"
+                sparkle:edSignature="bSdCsVWUbcZZnN3hsZOa0G413okxjBQ7hdO+x8cjZRzrjdnxXE4LV48HX3JMlu4i5HieTgYIy1KYl0t0S6uNAA=="
+                length="3586990"
+                type="application/octet-stream" />
+        </item>
     </channel>
 </rss>
