@@ -18,6 +18,7 @@ struct SettingsSection<Content: View>: View {
             VStack(alignment: .leading, spacing: 8) {
                 content
             }
+            .fixedSize(horizontal: false, vertical: true)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
