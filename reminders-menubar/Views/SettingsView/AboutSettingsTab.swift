@@ -1,6 +1,9 @@
 import SwiftUI
 
 struct AboutSettingsTab: View {
+    // NOTE: Observing userPreferences triggers body re-evaluation when language changes.
+    @ObservedObject var userPreferences = UserPreferences.shared
+
     var body: some View {
         HStack(alignment: .top, spacing: 0) {
             Image(nsImage: NSApp.applicationIconImage)
@@ -48,6 +51,7 @@ struct AboutSettingsTab: View {
             .padding(.bottom, 20)
             .padding(.trailing, 24)
         }
+        .padding(.horizontal, 12)
     }
 }
 
