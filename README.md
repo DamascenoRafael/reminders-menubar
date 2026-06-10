@@ -67,8 +67,10 @@ brew install --cask reminders-menubar
 
 ### Direct Download
 
-Direct downloads can be found on the [releases page](https://github.com/DamascenoRafael/reminders-menubar/releases).  
-After downloading and extracting, just drag the *.app* file to the *Applications* folder.
+Direct downloads are available on the [releases page](https://github.com/DamascenoRafael/reminders-menubar/releases):
+
+* Disk image (`.dmg`): double-click to open, then drag the app to *Applications*
+* Zip archive (`.zip`): extract and drag the app to *Applications*
 
 ## Permission Request
 
