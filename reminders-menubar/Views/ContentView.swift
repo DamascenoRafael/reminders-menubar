@@ -6,10 +6,12 @@ struct ContentView: View {
     @ObservedObject var userPreferences = UserPreferences.shared
     @State private var appHasPopoverOpen = false
     @State private var escapeKeyMonitor: Any?
+    @State private var showingCreateView = false
+    @State private var pendingCreateTitle = ""
 
     var body: some View {
         VStack(spacing: 0) {
-            ToolbarView()
+            ToolbarView(showingCreateView: $showingCreateView)
 
             if remindersData.availableCalendars.isEmpty {
                 emptyStateContent
@@ -37,6 +39,24 @@ struct ContentView: View {
         ) { _ in
             remindersData.showingSearch = false
             remindersData.showingRecentReminders = false
+            showingCreateView = false
+            pendingCreateTitle = ""
+        }
+        .onReceive(remindersData.createReminderPublisher) { title in
+            if showingCreateView {
+                pendingCreateTitle += title
+            } else {
+                pendingCreateTitle = title
+                showingCreateView = true
+            }
+        }
+        .sheet(isPresented: $showingCreateView, onDismiss: {
+            pendingCreateTitle = ""
+        }) {
+            ReminderEditView(
+                isPresented: $showingCreateView,
+                initialTitle: pendingCreateTitle
+            )
         }
     }
 
@@ -45,11 +65,29 @@ struct ContentView: View {
     private func startEscapeKeyMonitor() {
         guard escapeKeyMonitor == nil else { return }
         escapeKeyMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [remindersData] event in
+            let popoverWindow = AppDelegate.shared.popover.contentViewController?.view.window
+
+            // When user types a printable character and no sheet/popover is open, open the create reminder sheet.
+            if !appHasPopoverOpen,
+               popoverWindow?.attachedSheet == nil,
+               !FilterPanelController.shared.isVisible,
+               let characters = event.charactersIgnoringModifiers,
+               characters.count == 1,
+               let scalar = characters.unicodeScalars.first,
+               scalar.value >= 0x20, scalar.value <= 0x7E,
+               !event.modifierFlags.contains(.command),
+               !event.modifierFlags.contains(.option),
+               !event.modifierFlags.contains(.control) {
+
+                let typedText = event.characters ?? characters
+                remindersData.createReminderPublisher.send(typedText)
+                return nil
+            }
+
             guard event.keyCode == RmbKeyCode.escape else { return event }
             // Let other UI layers (edit popovers, filter panel, sheets, alerts) handle their own escape
             guard !appHasPopoverOpen else { return event }
             guard !FilterPanelController.shared.isVisible else { return event }
-            let popoverWindow = AppDelegate.shared.popover.contentViewController?.view.window
             guard popoverWindow?.attachedSheet == nil else { return event }
 
             if remindersData.showingSearch {

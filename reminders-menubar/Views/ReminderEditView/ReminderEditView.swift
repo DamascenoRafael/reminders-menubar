@@ -25,6 +25,7 @@ struct ReminderEditView: View {
     @State private var copyButtonIsHovered = false
     @State private var isCopied = false
     @State private var copiedDismissWork: DispatchWorkItem?
+    @State private var appliedInitialTitle: String
 
     private var reminderHasChildren: Bool {
         if case .edit(_, let hasChildren) = mode {
@@ -38,18 +39,27 @@ struct ReminderEditView: View {
         return reminder.attachedUrl != nil || reminder.mailUrl != nil
     }
 
+    let initialTitle: String
+
     init(isPresented: Binding<Bool>, reminder: EKReminder, reminderHasChildren: Bool) {
         self.mode = .edit(reminder, reminderHasChildren: reminderHasChildren)
+        self.initialTitle = ""
 
         _isPresented = isPresented
         _rmbReminder = State(initialValue: RmbReminder(reminder: reminder))
+        _appliedInitialTitle = State(initialValue: "")
     }
 
-    init(isPresented: Binding<Bool>) {
+    init(isPresented: Binding<Bool>, initialTitle: String = "") {
         self.mode = .create
+        self.initialTitle = initialTitle
+
+        var reminder = RmbReminder()
+        reminder.title = initialTitle
 
         _isPresented = isPresented
-        _rmbReminder = State(initialValue: RmbReminder())
+        _rmbReminder = State(initialValue: reminder)
+        _appliedInitialTitle = State(initialValue: initialTitle)
     }
 
     var body: some View {
@@ -106,6 +116,23 @@ struct ReminderEditView: View {
                     rmbReminder.setIsAutoSuggestingTodayForCreation()
                 }
             }
+        }
+        .onChange(of: initialTitle) { newInitialTitle in
+            guard case .create = mode,
+                  newInitialTitle != appliedInitialTitle else {
+                return
+            }
+
+            let typedSuffix: Substring
+            if rmbReminder.title.hasPrefix(appliedInitialTitle) {
+                typedSuffix = rmbReminder.title.dropFirst(appliedInitialTitle.count)
+            } else {
+                typedSuffix = ""
+            }
+
+            rmbReminder.title = newInitialTitle + typedSuffix
+            appliedInitialTitle = newInitialTitle
+            titleTextFieldFocusTrigger = UUID()
         }
     }
 

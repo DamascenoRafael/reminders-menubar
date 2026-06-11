@@ -14,8 +14,6 @@ struct RmbHighlightedTextField: NSViewRepresentable {
     var allowNewLineAndTab: Bool
     var focusTrigger: Binding<UUID>?
 
-    private var lastFocusTrigger: UUID?
-
     private var textFont = NSFont.systemFont(ofSize: NSFont.systemFontSize)
     private var onSubmit: (() -> Void)?
     private var isInitialCharValidToAutoComplete: ((_ initialChar: String?) -> Bool)?
@@ -62,18 +60,27 @@ struct RmbHighlightedTextField: NSViewRepresentable {
             return
         }
 
-        if let trigger = focusTrigger?.wrappedValue,
-           trigger != context.coordinator.parent.lastFocusTrigger,
-           nsView.window?.firstResponder != textView {
-            context.coordinator.parent.lastFocusTrigger = trigger
-            nsView.window?.makeFirstResponder(textView)
-        }
+        context.coordinator.parent = self
 
         let selectedRange = textView.selectedRange()
-        textView.textStorage?.setAttributedString(getAttributedString(from: text.wrappedValue))
-        textView.setSelectedRange(selectedRange)
+        let updatedText = text.wrappedValue
+        let updatedTextLength = (updatedText as NSString).length
+        let selectionLocation = min(selectedRange.location, updatedTextLength)
+        let selectionLength = min(selectedRange.length, updatedTextLength - selectionLocation)
 
-        textView.scrollRangeToVisible(NSRange(location: text.wrappedValue.count, length: 0))
+        textView.textStorage?.setAttributedString(getAttributedString(from: updatedText))
+        textView.setSelectedRange(NSRange(location: selectionLocation, length: selectionLength))
+
+        if let trigger = focusTrigger?.wrappedValue,
+           trigger != context.coordinator.lastFocusTrigger {
+            context.coordinator.lastFocusTrigger = trigger
+            if nsView.window?.firstResponder != textView {
+                nsView.window?.makeFirstResponder(textView)
+            }
+            textView.setSelectedRange(NSRange(location: updatedTextLength, length: 0))
+        }
+
+        textView.scrollRangeToVisible(NSRange(location: updatedTextLength, length: 0))
 
         adjustDynamicHeight(for: textView, context: context)
     }
@@ -127,6 +134,7 @@ struct RmbHighlightedTextField: NSViewRepresentable {
 
         var isAutoCompleting = false
         var isDeletePressed = false
+        var lastFocusTrigger: UUID?
 
         init(_ parent: RmbHighlightedTextField) {
             self.parent = parent
