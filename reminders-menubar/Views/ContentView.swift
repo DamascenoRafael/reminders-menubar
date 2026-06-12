@@ -30,7 +30,7 @@ struct ContentView: View {
         .preferredColorScheme(userPreferences.rmbColorScheme.colorScheme)
         .environment(\.appHasPopoverOpen, $appHasPopoverOpen)
         .onAppear { startKeyMonitor() }
-        .onDisappear { stopEscapeKeyMonitor() }
+        .onDisappear { stopKeyMonitor() }
         .onReceive(
             NotificationCenter.default.publisher(
                 for: NSPopover.didCloseNotification,
@@ -102,7 +102,7 @@ struct ContentView: View {
         }
     }
 
-    private func stopEscapeKeyMonitor() {
+    private func stopKeyMonitor() {
         if let monitor = keyMonitor {
             NSEvent.removeMonitor(monitor)
             keyMonitor = nil
