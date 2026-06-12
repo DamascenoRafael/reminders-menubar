@@ -1,7 +1,9 @@
 import SwiftUI
 
 struct CreateReminderButton: View {
-    @Binding var showingCreateView: Bool
+    @EnvironmentObject var remindersData: RemindersData
+    @State private var showingCreateView = false
+    @State private var pendingCreateTitle = ""
 
     var body: some View {
         Button {
@@ -20,9 +22,35 @@ struct CreateReminderButton: View {
         .keyboardShortcut("n", modifiers: .command)
         .modifier(ConfirmButtonModifier())
         .help(rmbLocalized(.newReminderButtonHelp))
+        .onReceive(
+            NotificationCenter.default.publisher(
+                for: NSPopover.didCloseNotification,
+                object: AppDelegate.shared.popover
+            )
+        ) { _ in
+            showingCreateView = false
+            pendingCreateTitle = ""
+        }
+        .onReceive(remindersData.createReminderPublisher) { title in
+            if showingCreateView {
+                pendingCreateTitle += title
+            } else {
+                pendingCreateTitle = title
+                showingCreateView = true
+            }
+        }
+        .sheet(isPresented: $showingCreateView, onDismiss: {
+            pendingCreateTitle = ""
+        }) {
+            ReminderEditView(
+                isPresented: $showingCreateView,
+                initialTitle: pendingCreateTitle
+            )
+        }
     }
 }
 
 #Preview {
-    CreateReminderButton(showingCreateView: .constant(false))
+    CreateReminderButton()
+        .environmentObject(RemindersData())
 }

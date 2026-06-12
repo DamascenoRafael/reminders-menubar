@@ -6,12 +6,10 @@ struct ContentView: View {
     @ObservedObject var userPreferences = UserPreferences.shared
     @State private var appHasPopoverOpen = false
     @State private var keyMonitor: Any?
-    @State private var showingCreateView = false
-    @State private var pendingCreateTitle = ""
 
     var body: some View {
         VStack(spacing: 0) {
-            ToolbarView(showingCreateView: $showingCreateView)
+            ToolbarView()
 
             if remindersData.availableCalendars.isEmpty {
                 emptyStateContent
@@ -39,24 +37,6 @@ struct ContentView: View {
         ) { _ in
             remindersData.showingSearch = false
             remindersData.showingRecentReminders = false
-            showingCreateView = false
-            pendingCreateTitle = ""
-        }
-        .onReceive(remindersData.createReminderPublisher) { title in
-            if showingCreateView {
-                pendingCreateTitle += title
-            } else {
-                pendingCreateTitle = title
-                showingCreateView = true
-            }
-        }
-        .sheet(isPresented: $showingCreateView, onDismiss: {
-            pendingCreateTitle = ""
-        }) {
-            ReminderEditView(
-                isPresented: $showingCreateView,
-                initialTitle: pendingCreateTitle
-            )
         }
     }
 

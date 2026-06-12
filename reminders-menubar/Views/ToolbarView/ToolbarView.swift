@@ -2,11 +2,10 @@ import SwiftUI
 
 struct ToolbarView: View {
     @EnvironmentObject var remindersData: RemindersData
-    @Binding var showingCreateView: Bool
 
     var body: some View {
         HStack(spacing: 4) {
-            CreateReminderButton(showingCreateView: $showingCreateView)
+            CreateReminderButton()
                 .disabled(remindersData.availableCalendars.isEmpty)
 
             Spacer()
@@ -32,6 +31,6 @@ struct ToolbarView: View {
 }
 
 #Preview {
-    ToolbarView(showingCreateView: .constant(false))
+    ToolbarView()
         .environmentObject(RemindersData())
 }
