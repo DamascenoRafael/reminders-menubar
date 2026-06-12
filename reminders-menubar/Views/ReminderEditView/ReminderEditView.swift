@@ -25,7 +25,6 @@ struct ReminderEditView: View {
     @State private var copyButtonIsHovered = false
     @State private var isCopied = false
     @State private var copiedDismissWork: DispatchWorkItem?
-    @State private var appliedInitialTitle: String
 
     private var reminderHasChildren: Bool {
         if case .edit(_, let hasChildren) = mode {
@@ -39,27 +38,21 @@ struct ReminderEditView: View {
         return reminder.attachedUrl != nil || reminder.mailUrl != nil
     }
 
-    let initialTitle: String
-
     init(isPresented: Binding<Bool>, reminder: EKReminder, reminderHasChildren: Bool) {
         self.mode = .edit(reminder, reminderHasChildren: reminderHasChildren)
-        self.initialTitle = ""
 
         _isPresented = isPresented
         _rmbReminder = State(initialValue: RmbReminder(reminder: reminder))
-        _appliedInitialTitle = State(initialValue: "")
     }
 
     init(isPresented: Binding<Bool>, initialTitle: String = "") {
         self.mode = .create
-        self.initialTitle = initialTitle
 
         var reminder = RmbReminder()
         reminder.title = initialTitle
 
         _isPresented = isPresented
         _rmbReminder = State(initialValue: reminder)
-        _appliedInitialTitle = State(initialValue: initialTitle)
     }
 
     var body: some View {
@@ -115,22 +108,11 @@ struct ReminderEditView: View {
                 if userPreferences.autoSuggestToday {
                     rmbReminder.setIsAutoSuggestingTodayForCreation()
                 }
+                consumePendingCreateReminderTyping()
             }
         }
-        .onChange(of: initialTitle) { newInitialTitle in
-            guard case .create = mode,
-                  newInitialTitle != appliedInitialTitle else {
-                return
-            }
-
-            var typedSuffix: Substring = ""
-            if rmbReminder.title.hasPrefix(appliedInitialTitle) {
-                typedSuffix = rmbReminder.title.dropFirst(appliedInitialTitle.count)
-            }
-
-            rmbReminder.title = newInitialTitle + typedSuffix
-            appliedInitialTitle = newInitialTitle
-            titleTextFieldFocusTrigger = UUID()
+        .onChange(of: remindersData.pendingCreateReminderTyping) { _ in
+            consumePendingCreateReminderTyping()
         }
     }
 
@@ -229,6 +211,17 @@ struct ReminderEditView: View {
                 )
             }
         }
+    }
+
+    private func consumePendingCreateReminderTyping() {
+        guard case .create = mode else { return }
+
+        let pendingTyping = remindersData.pendingCreateReminderTyping
+        guard !pendingTyping.isEmpty else { return }
+
+        rmbReminder.title += pendingTyping
+        remindersData.pendingCreateReminderTyping = ""
+        titleTextFieldFocusTrigger = UUID()
     }
 
     // MARK: - List

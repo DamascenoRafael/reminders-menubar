@@ -222,6 +222,8 @@ class RemindersData: ObservableObject {
     }
 
     let createReminderPublisher = PassthroughSubject<String, Never>()
+    var isOpeningCreateReminderSheet = false
+    @Published var pendingCreateReminderTyping = ""
 
     @Published var calendarForSaving: EKCalendar? = {
         guard RemindersService.shared.isAuthorized else {

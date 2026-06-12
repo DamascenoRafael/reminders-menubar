@@ -7,6 +7,7 @@ struct CreateReminderButton: View {
 
     var body: some View {
         Button {
+            remindersData.isOpeningCreateReminderSheet = true
             showingCreateView = true
         } label: {
             ToolbarButtonLabel {
@@ -28,8 +29,7 @@ struct CreateReminderButton: View {
                 object: AppDelegate.shared.popover
             )
         ) { _ in
-            showingCreateView = false
-            pendingCreateTitle = ""
+            resetCreateReminderSheetState()
         }
         .onReceive(remindersData.createReminderPublisher) { title in
             if showingCreateView {
@@ -39,14 +39,19 @@ struct CreateReminderButton: View {
                 showingCreateView = true
             }
         }
-        .sheet(isPresented: $showingCreateView, onDismiss: {
-            pendingCreateTitle = ""
-        }) {
+        .sheet(isPresented: $showingCreateView, onDismiss: resetCreateReminderSheetState) {
             ReminderEditView(
                 isPresented: $showingCreateView,
                 initialTitle: pendingCreateTitle
             )
         }
+    }
+
+    private func resetCreateReminderSheetState() {
+        showingCreateView = false
+        pendingCreateTitle = ""
+        remindersData.isOpeningCreateReminderSheet = false
+        remindersData.pendingCreateReminderTyping = ""
     }
 }
 

@@ -40,32 +40,38 @@ struct ContentView: View {
         }
     }
 
-    // MARK: - Escape key handling
+    // MARK: - Key handling
 
     private func startKeyMonitor() {
         guard keyMonitor == nil else { return }
         keyMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [remindersData] event in
-            let popoverWindow = AppDelegate.shared.popover.contentViewController?.view.window
+            let popover = AppDelegate.shared.popover
+            guard popover.isShown,
+                  let popoverWindow = popover.contentViewController?.view.window,
+                  event.window === popoverWindow else {
+                return event
+            }
 
             // Let other UI layers (edit popovers, filter panel, sheets, alerts) handle their own keys
             guard !appHasPopoverOpen else { return event }
             guard !FilterPanelController.shared.isVisible else { return event }
-            guard popoverWindow?.attachedSheet == nil else { return event }
 
             // When user types a printable character, open the create reminder sheet.
-            if let characters = event.charactersIgnoringModifiers,
-               characters.count == 1,
-               let scalar = characters.unicodeScalars.first,
-               scalar.value >= 0x20, scalar.value <= 0x7E,
-               !event.modifierFlags.contains(.command),
-               !event.modifierFlags.contains(.option),
-               !event.modifierFlags.contains(.control) {
-
-                let typedText = event.characters ?? characters
-                remindersData.createReminderPublisher.send(typedText)
+            if !remindersData.showingSearch,
+               !remindersData.availableCalendars.isEmpty,
+               popoverWindow.attachedSheet == nil || remindersData.isOpeningCreateReminderSheet,
+               let typedText = printableText(from: event) {
+                if remindersData.isOpeningCreateReminderSheet {
+                    // Buffer text until the sheet is attached and can focus the title field.
+                    remindersData.pendingCreateReminderTyping += typedText
+                } else {
+                    remindersData.isOpeningCreateReminderSheet = true
+                    remindersData.createReminderPublisher.send(typedText)
+                }
                 return nil
             }
 
+            guard popoverWindow.attachedSheet == nil else { return event }
             guard event.keyCode == RmbKeyCode.escape else { return event }
 
             if remindersData.showingSearch {
@@ -80,6 +86,18 @@ struct ContentView: View {
             AppDelegate.shared.popover.performClose(nil)
             return nil
         }
+    }
+
+    private func printableText(from event: NSEvent) -> String? {
+        let shortcutModifiers: NSEvent.ModifierFlags = [.command, .control]
+        guard event.modifierFlags.intersection(shortcutModifiers).isEmpty,
+              let characters = event.characters,
+              !characters.isEmpty,
+              characters.unicodeScalars.allSatisfy(\.isPrintable) else {
+            return nil
+        }
+
+        return characters
     }
 
     private func stopKeyMonitor() {
@@ -169,6 +187,17 @@ struct ContentView: View {
     @ViewBuilder private var noFilterContent: some View {
         NoFilterSelectedView()
             .frame(maxHeight: .infinity)
+    }
+}
+
+private extension Unicode.Scalar {
+    var isPrintable: Bool {
+        switch properties.generalCategory {
+        case .control, .format, .surrogate, .privateUse, .unassigned:
+            return false
+        default:
+            return true
+        }
     }
 }
 
