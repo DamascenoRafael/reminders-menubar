@@ -126,8 +126,6 @@ struct ReminderEditView: View {
             let typedSuffix: Substring
             if rmbReminder.title.hasPrefix(appliedInitialTitle) {
                 typedSuffix = rmbReminder.title.dropFirst(appliedInitialTitle.count)
-            } else {
-                typedSuffix = ""
             }
 
             rmbReminder.title = newInitialTitle + typedSuffix

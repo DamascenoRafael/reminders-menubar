@@ -5,7 +5,7 @@ struct ContentView: View {
     @EnvironmentObject var remindersData: RemindersData
     @ObservedObject var userPreferences = UserPreferences.shared
     @State private var appHasPopoverOpen = false
-    @State private var escapeKeyMonitor: Any?
+    @State private var keyMonitor: Any?
     @State private var showingCreateView = false
     @State private var pendingCreateTitle = ""
 
@@ -29,7 +29,7 @@ struct ContentView: View {
         .modifier(RmbBackgroundModifier())
         .preferredColorScheme(userPreferences.rmbColorScheme.colorScheme)
         .environment(\.appHasPopoverOpen, $appHasPopoverOpen)
-        .onAppear { startEscapeKeyMonitor() }
+        .onAppear { startKeyMonitor() }
         .onDisappear { stopEscapeKeyMonitor() }
         .onReceive(
             NotificationCenter.default.publisher(
@@ -62,9 +62,9 @@ struct ContentView: View {
 
     // MARK: - Escape key handling
 
-    private func startEscapeKeyMonitor() {
-        guard escapeKeyMonitor == nil else { return }
-        escapeKeyMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [remindersData] event in
+    private func startKeyMonitor() {
+        guard keyMonitor == nil else { return }
+        keyMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [remindersData] event in
             let popoverWindow = AppDelegate.shared.popover.contentViewController?.view.window
 
             // When user types a printable character and no sheet/popover is open, open the create reminder sheet.
@@ -105,9 +105,9 @@ struct ContentView: View {
     }
 
     private func stopEscapeKeyMonitor() {
-        if let monitor = escapeKeyMonitor {
+        if let monitor = keyMonitor {
             NSEvent.removeMonitor(monitor)
-            escapeKeyMonitor = nil
+            keyMonitor = nil
         }
     }
 
