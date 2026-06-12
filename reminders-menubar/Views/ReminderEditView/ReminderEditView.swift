@@ -123,7 +123,7 @@ struct ReminderEditView: View {
                 return
             }
 
-            let typedSuffix: Substring
+            let typedSuffix: Substring = ""
             if rmbReminder.title.hasPrefix(appliedInitialTitle) {
                 typedSuffix = rmbReminder.title.dropFirst(appliedInitialTitle.count)
             }
