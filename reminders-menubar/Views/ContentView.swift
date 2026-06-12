@@ -67,11 +67,13 @@ struct ContentView: View {
         keyMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [remindersData] event in
             let popoverWindow = AppDelegate.shared.popover.contentViewController?.view.window
 
-            // When user types a printable character and no sheet/popover is open, open the create reminder sheet.
-            if !appHasPopoverOpen,
-               popoverWindow?.attachedSheet == nil,
-               !FilterPanelController.shared.isVisible,
-               let characters = event.charactersIgnoringModifiers,
+            // Let other UI layers (edit popovers, filter panel, sheets, alerts) handle their own keys
+            guard !appHasPopoverOpen else { return event }
+            guard !FilterPanelController.shared.isVisible else { return event }
+            guard popoverWindow?.attachedSheet == nil else { return event }
+
+            // When user types a printable character, open the create reminder sheet.
+            if let characters = event.charactersIgnoringModifiers,
                characters.count == 1,
                let scalar = characters.unicodeScalars.first,
                scalar.value >= 0x20, scalar.value <= 0x7E,
@@ -85,10 +87,6 @@ struct ContentView: View {
             }
 
             guard event.keyCode == RmbKeyCode.escape else { return event }
-            // Let other UI layers (edit popovers, filter panel, sheets, alerts) handle their own escape
-            guard !appHasPopoverOpen else { return event }
-            guard !FilterPanelController.shared.isVisible else { return event }
-            guard popoverWindow?.attachedSheet == nil else { return event }
 
             if remindersData.showingSearch {
                 remindersData.showingSearch = false
