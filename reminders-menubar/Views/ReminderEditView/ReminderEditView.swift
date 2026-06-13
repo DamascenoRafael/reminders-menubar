@@ -45,14 +45,11 @@ struct ReminderEditView: View {
         _rmbReminder = State(initialValue: RmbReminder(reminder: reminder))
     }
 
-    init(isPresented: Binding<Bool>, initialTitle: String = "") {
+    init(isPresented: Binding<Bool>) {
         self.mode = .create
 
-        var reminder = RmbReminder()
-        reminder.title = initialTitle
-
         _isPresented = isPresented
-        _rmbReminder = State(initialValue: reminder)
+        _rmbReminder = State(initialValue: RmbReminder())
     }
 
     var body: some View {
@@ -108,11 +105,12 @@ struct ReminderEditView: View {
                 if userPreferences.autoSuggestToday {
                     rmbReminder.setIsAutoSuggestingTodayForCreation()
                 }
-                consumePendingCreateReminderTyping()
+                if let pendingTitle = remindersData.pendingNewReminderTitle, !pendingTitle.isEmpty {
+                    rmbReminder.title = pendingTitle
+                    titleTextFieldFocusTrigger = UUID()
+                }
+                remindersData.pendingNewReminderTitle = nil
             }
-        }
-        .onChange(of: remindersData.pendingCreateReminderTyping) { _ in
-            consumePendingCreateReminderTyping()
         }
     }
 
@@ -211,17 +209,6 @@ struct ReminderEditView: View {
                 )
             }
         }
-    }
-
-    private func consumePendingCreateReminderTyping() {
-        guard case .create = mode else { return }
-
-        let pendingTyping = remindersData.pendingCreateReminderTyping
-        guard !pendingTyping.isEmpty else { return }
-
-        rmbReminder.title += pendingTyping
-        remindersData.pendingCreateReminderTyping = ""
-        titleTextFieldFocusTrigger = UUID()
     }
 
     // MARK: - List

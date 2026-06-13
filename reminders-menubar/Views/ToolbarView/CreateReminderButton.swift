@@ -3,11 +3,9 @@ import SwiftUI
 struct CreateReminderButton: View {
     @EnvironmentObject var remindersData: RemindersData
     @State private var showingCreateView = false
-    @State private var pendingCreateTitle = ""
 
     var body: some View {
         Button {
-            remindersData.isOpeningCreateReminderSheet = true
             showingCreateView = true
         } label: {
             ToolbarButtonLabel {
@@ -31,27 +29,18 @@ struct CreateReminderButton: View {
         ) { _ in
             resetCreateReminderSheetState()
         }
-        .onReceive(remindersData.createReminderPublisher) { title in
-            if showingCreateView {
-                pendingCreateTitle += title
-            } else {
-                pendingCreateTitle = title
-                showingCreateView = true
-            }
+        .onChange(of: remindersData.pendingNewReminderTitle) { newValue in
+            guard newValue != nil, !showingCreateView else { return }
+            showingCreateView = true
         }
         .sheet(isPresented: $showingCreateView, onDismiss: resetCreateReminderSheetState) {
-            ReminderEditView(
-                isPresented: $showingCreateView,
-                initialTitle: pendingCreateTitle
-            )
+            ReminderEditView(isPresented: $showingCreateView)
         }
     }
 
     private func resetCreateReminderSheetState() {
         showingCreateView = false
-        pendingCreateTitle = ""
-        remindersData.isOpeningCreateReminderSheet = false
-        remindersData.pendingCreateReminderTyping = ""
+        remindersData.pendingNewReminderTitle = nil
     }
 }
 

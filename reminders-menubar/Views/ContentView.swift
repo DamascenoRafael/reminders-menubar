@@ -59,15 +59,9 @@ struct ContentView: View {
             // When user types a printable character, open the create reminder sheet.
             if !remindersData.showingSearch,
                !remindersData.availableCalendars.isEmpty,
-               popoverWindow.attachedSheet == nil || remindersData.isOpeningCreateReminderSheet,
+               popoverWindow.attachedSheet == nil || remindersData.pendingNewReminderTitle != nil,
                let typedText = printableText(from: event) {
-                if remindersData.isOpeningCreateReminderSheet {
-                    // Buffer text until the sheet is attached and can focus the title field.
-                    remindersData.pendingCreateReminderTyping += typedText
-                } else {
-                    remindersData.isOpeningCreateReminderSheet = true
-                    remindersData.createReminderPublisher.send(typedText)
-                }
+                remindersData.pendingNewReminderTitle = (remindersData.pendingNewReminderTitle ?? "") + typedText
                 return nil
             }
 
