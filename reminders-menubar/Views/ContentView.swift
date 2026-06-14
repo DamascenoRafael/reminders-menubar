@@ -5,7 +5,7 @@ struct ContentView: View {
     @EnvironmentObject var remindersData: RemindersData
     @ObservedObject var userPreferences = UserPreferences.shared
     @State private var appHasPopoverOpen = false
-    @State private var escapeKeyMonitor: Any?
+    @State private var keyMonitor: Any?
 
     var body: some View {
         VStack(spacing: 0) {
@@ -27,8 +27,8 @@ struct ContentView: View {
         .modifier(RmbBackgroundModifier())
         .preferredColorScheme(userPreferences.rmbColorScheme.colorScheme)
         .environment(\.appHasPopoverOpen, $appHasPopoverOpen)
-        .onAppear { startEscapeKeyMonitor() }
-        .onDisappear { stopEscapeKeyMonitor() }
+        .onAppear { startKeyMonitor() }
+        .onDisappear { stopKeyMonitor() }
         .onReceive(
             NotificationCenter.default.publisher(
                 for: NSPopover.didCloseNotification,
@@ -40,36 +40,85 @@ struct ContentView: View {
         }
     }
 
-    // MARK: - Escape key handling
+    // MARK: - Key handling
 
-    private func startEscapeKeyMonitor() {
-        guard escapeKeyMonitor == nil else { return }
-        escapeKeyMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [remindersData] event in
-            guard event.keyCode == RmbKeyCode.escape else { return event }
-            // Let other UI layers (edit popovers, filter panel, sheets, alerts) handle their own escape
+    private func startKeyMonitor() {
+        guard keyMonitor == nil else { return }
+        keyMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { event in
+            guard let popoverWindow = activePopoverWindow(for: event) else { return event }
             guard !appHasPopoverOpen else { return event }
             guard !FilterPanelController.shared.isVisible else { return event }
-            let popoverWindow = AppDelegate.shared.popover.contentViewController?.view.window
-            guard popoverWindow?.attachedSheet == nil else { return event }
 
-            if remindersData.showingSearch {
-                remindersData.showingSearch = false
+            if handlePrintableKey(event, popoverWindow: popoverWindow) {
                 return nil
             }
-            if remindersData.showingRecentReminders {
-                remindersData.showingRecentReminders = false
+            if handleEscapeKey(event, popoverWindow: popoverWindow) {
                 return nil
             }
-
-            AppDelegate.shared.popover.performClose(nil)
-            return nil
+            return event
         }
     }
 
-    private func stopEscapeKeyMonitor() {
-        if let monitor = escapeKeyMonitor {
+    private func activePopoverWindow(for event: NSEvent) -> NSWindow? {
+        let popover = AppDelegate.shared.popover
+        guard popover.isShown,
+              let window = popover.contentViewController?.view.window,
+              event.window === window else {
+            return nil
+        }
+        return window
+    }
+
+    private func handlePrintableKey(_ event: NSEvent, popoverWindow: NSWindow) -> Bool {
+        guard !remindersData.showingSearch,
+              !remindersData.availableCalendars.isEmpty,
+              popoverWindow.attachedSheet == nil || remindersData.pendingNewReminderTitle != nil,
+              let typedText = printableText(from: event) else {
+            return false
+        }
+        remindersData.pendingNewReminderTitle = (remindersData.pendingNewReminderTitle ?? "") + typedText
+        return true
+    }
+
+    private func handleEscapeKey(_ event: NSEvent, popoverWindow: NSWindow) -> Bool {
+        guard popoverWindow.attachedSheet == nil else { return false }
+        guard event.keyCode == RmbKeyCode.escape else { return false }
+
+        if remindersData.showingSearch {
+            remindersData.showingSearch = false
+            return true
+        }
+        if remindersData.showingRecentReminders {
+            remindersData.showingRecentReminders = false
+            return true
+        }
+
+        AppDelegate.shared.popover.performClose(nil)
+        return true
+    }
+
+    private static let nonPrintableCategories: Set<Unicode.GeneralCategory> = [
+        .control, .format, .surrogate, .privateUse, .unassigned
+    ]
+
+    private func printableText(from event: NSEvent) -> String? {
+        let nonTypingModifiers: NSEvent.ModifierFlags = [.command, .control]
+        guard event.modifierFlags.intersection(.deviceIndependentFlagsMask).isDisjoint(with: nonTypingModifiers),
+              let characters = event.characters,
+              !characters.isEmpty,
+              characters.unicodeScalars.allSatisfy({
+                  !Self.nonPrintableCategories.contains($0.properties.generalCategory)
+              }) else {
+            return nil
+        }
+
+        return characters
+    }
+
+    private func stopKeyMonitor() {
+        if let monitor = keyMonitor {
             NSEvent.removeMonitor(monitor)
-            escapeKeyMonitor = nil
+            keyMonitor = nil
         }
     }
 

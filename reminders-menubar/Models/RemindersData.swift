@@ -221,6 +221,8 @@ class RemindersData: ObservableObject {
         }
     }
 
+    @Published var pendingNewReminderTitle: String?
+
     @Published var calendarForSaving: EKCalendar? = {
         guard RemindersService.shared.isAuthorized else {
             return nil

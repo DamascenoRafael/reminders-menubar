@@ -105,6 +105,11 @@ struct ReminderEditView: View {
                 if userPreferences.autoSuggestToday {
                     rmbReminder.setIsAutoSuggestingTodayForCreation()
                 }
+                if let pendingTitle = remindersData.pendingNewReminderTitle, !pendingTitle.isEmpty {
+                    rmbReminder.title = pendingTitle
+                    titleTextFieldFocusTrigger = UUID()
+                }
+                remindersData.pendingNewReminderTitle = nil
             }
         }
     }

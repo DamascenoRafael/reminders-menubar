@@ -21,15 +21,30 @@ struct CreateReminderButton: View {
         .keyboardShortcut("n", modifiers: .command)
         .modifier(ConfirmButtonModifier())
         .help(rmbLocalized(.newReminderButtonHelp))
-        .sheet(isPresented: $showingCreateView) {
+        .onReceive(
+            NotificationCenter.default.publisher(
+                for: NSPopover.didCloseNotification,
+                object: AppDelegate.shared.popover
+            )
+        ) { _ in
+            resetCreateReminderSheetState()
+        }
+        .onChange(of: remindersData.pendingNewReminderTitle) { newValue in
+            guard newValue != nil, !showingCreateView else { return }
+            showingCreateView = true
+        }
+        .sheet(isPresented: $showingCreateView, onDismiss: resetCreateReminderSheetState) {
             ReminderEditView(isPresented: $showingCreateView)
         }
-        .onReceive(NotificationCenter.default.publisher(for: NSPopover.didCloseNotification)) { _ in
-            showingCreateView = false
-        }
+    }
+
+    private func resetCreateReminderSheetState() {
+        showingCreateView = false
+        remindersData.pendingNewReminderTitle = nil
     }
 }
 
 #Preview {
     CreateReminderButton()
+        .environmentObject(RemindersData())
 }
