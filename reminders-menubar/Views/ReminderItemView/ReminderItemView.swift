@@ -94,7 +94,7 @@ struct ReminderItemView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .contentShape(Rectangle())
             .opacity(isPendingCompletion || reminderItem.reminder.isCompleted ? 0.6 : 1.0)
-            .animation(.easeInOut(duration: 0.3), value: isPendingCompletion)
+            .animation(.easeInOut(duration: 0.15), value: isPendingCompletion)
             .allowsHitTesting(!isPendingCompletion && !appHasPopoverOpen.wrappedValue)
             .onTapGesture {
                 showingEditPopover = true

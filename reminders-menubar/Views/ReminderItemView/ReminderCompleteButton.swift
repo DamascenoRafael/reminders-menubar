@@ -7,8 +7,9 @@ struct ReminderCompleteButton: View {
 
     @State private var isFilled = false
     @State private var completionTask: Task<Void, Never>?
+    @State private var childrenCompletedByTask: [ReminderItem] = []
 
-    private let completionDelayInSeconds: Double = 1.5
+    private let completionDelayInSeconds: Double = 0.35
 
     private var isShowingFilled: Bool {
         reminderItem.reminder.isCompleted || isFilled
@@ -28,7 +29,7 @@ struct ReminderCompleteButton: View {
         }
         .buttonStyle(.plain)
         .onDisappear {
-            if isPendingCompletion {
+            if isPendingCompletion && !reminderItem.reminder.isCompleted {
                 completionTask?.cancel()
                 completionTask = nil
                 completeReminder()
@@ -49,11 +50,11 @@ struct ReminderCompleteButton: View {
 
     private func startPendingCompletion() {
         isPendingCompletion = true
-        withAnimation(.easeOut(duration: 0.25)) {
+        withAnimation(.easeOut(duration: 0.15)) {
             isFilled = true
         }
 
-        completionTask = Task {
+        completionTask = Task { @MainActor in
             try? await Task.sleep(nanoseconds: UInt64(completionDelayInSeconds * 1_000_000_000))
             guard !Task.isCancelled else { return }
             completeReminder()
@@ -63,21 +64,31 @@ struct ReminderCompleteButton: View {
     private func cancelPendingCompletion() {
         completionTask?.cancel()
         completionTask = nil
-        withAnimation(.easeOut(duration: 0.25)) {
+
+        if reminderItem.reminder.isCompleted {
+            reminderItem.reminder.isCompleted = false
+            RemindersService.shared.save(reminder: reminderItem.reminder)
+            childrenCompletedByTask.forEach { child in
+                child.reminder.isCompleted = false
+                RemindersService.shared.save(reminder: child.reminder)
+            }
+            childrenCompletedByTask = []
+        }
+
+        withAnimation(.easeOut(duration: 0.15)) {
             isFilled = false
         }
         isPendingCompletion = false
     }
 
     private func completeReminder() {
+        childrenCompletedByTask = reminderItem.childReminders.filter { !$0.reminder.isCompleted }
         reminderItem.reminder.isCompleted = true
         RemindersService.shared.save(reminder: reminderItem.reminder)
-        reminderItem.childReminders.forEach { child in
+        childrenCompletedByTask.forEach { child in
             child.reminder.isCompleted = true
             RemindersService.shared.save(reminder: child.reminder)
         }
-        isFilled = false
-        isPendingCompletion = false
     }
 }
 
