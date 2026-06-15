@@ -306,14 +306,19 @@ class RemindersData: ObservableObject {
         let calendarFilter = UserPreferences.shared.filterMenuBarContentByCalendar
             ? self.calendarIdentifiersFilter
             : nil
-        
+
         switch UserPreferences.shared.menuBarCounterType {
         case .due:
             return await RemindersService.shared.getUpcomingReminders(.due, for: calendarFilter).count
         case .today:
             return await RemindersService.shared.getUpcomingReminders(.today, for: calendarFilter).count
         case .allReminders:
-            return await RemindersService.shared.getUpcomingReminders(.all, for: calendarFilter).count
+            // "Show all reminders" must include reminders with no due date.
+            // `getUpcomingReminders(.all, ...)` uses `predicateForIncompleteReminders`,
+            // which inherently requires a due date and therefore skips undated
+            // reminders. Use a dedicated counter that fetches every reminder and
+            // filters out completed ones in Swift.
+            return await RemindersService.shared.getIncompleteRemindersCount(for: calendarFilter)
         case .disabled:
             return -1
         }
