@@ -313,11 +313,7 @@ class RemindersData: ObservableObject {
         case .today:
             return await RemindersService.shared.getUpcomingReminders(.today, for: calendarFilter).count
         case .allReminders:
-            // "Show all reminders" must include reminders with no due date.
-            // `getUpcomingReminders(.all, ...)` uses `predicateForIncompleteReminders`,
-            // which inherently requires a due date and therefore skips undated
-            // reminders. Use a dedicated counter that fetches every reminder and
-            // filters out completed ones in Swift.
+            // getUpcomingReminders only returns dated reminders. `.allReminders` must include reminders with no due date.
             return await RemindersService.shared.getIncompleteRemindersCount(for: calendarFilter)
         case .disabled:
             return -1

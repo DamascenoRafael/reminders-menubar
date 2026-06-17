@@ -135,14 +135,6 @@ class RemindersService {
         return reminders.sortedUpcomingReminders
     }
 
-    /// Counts all incomplete reminders across the given calendars, including
-    /// reminders that have no due date. Used by the menu bar counter when
-    /// "Show all reminders count" is selected.
-    ///
-    /// `predicateForIncompleteReminders` (used by `getUpcomingReminders`)
-    /// inherently requires a due date, so it would skip undated reminders.
-    /// This method uses `predicateForReminders(in:)` to fetch every reminder
-    /// in the given calendars and then filters out completed ones in Swift.
     func getIncompleteRemindersCount(for calendarIdentifiers: [String]? = nil) async -> Int {
         var calendars: [EKCalendar]?
         if let calendarIdentifiers {
