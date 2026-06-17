@@ -134,6 +134,23 @@ class RemindersService {
         }
         return reminders.sortedUpcomingReminders
     }
+
+    func getAllIncompleteRemindersCount(for calendarIdentifiers: [String]? = nil) async -> Int {
+        var calendars: [EKCalendar]?
+        if let calendarIdentifiers {
+            if calendarIdentifiers.isEmpty {
+                // If the filter does not have any calendar selected, return 0
+                return 0
+            }
+            calendars = getCalendars().filter({ calendarIdentifiers.contains($0.calendarIdentifier) })
+        }
+        let predicate = eventStore.predicateForIncompleteReminders(
+            withDueDateStarting: nil,
+            ending: nil,
+            calendars: calendars
+        )
+        return await fetchReminders(matching: predicate).count
+    }
     
     func save(reminder: EKReminder, tags: [Tag]? = nil) {
         do {

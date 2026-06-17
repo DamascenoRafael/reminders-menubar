@@ -306,14 +306,15 @@ class RemindersData: ObservableObject {
         let calendarFilter = UserPreferences.shared.filterMenuBarContentByCalendar
             ? self.calendarIdentifiersFilter
             : nil
-        
+
         switch UserPreferences.shared.menuBarCounterType {
         case .due:
             return await RemindersService.shared.getUpcomingReminders(.due, for: calendarFilter).count
         case .today:
             return await RemindersService.shared.getUpcomingReminders(.today, for: calendarFilter).count
         case .allReminders:
-            return await RemindersService.shared.getUpcomingReminders(.all, for: calendarFilter).count
+            // getUpcomingReminders only returns dated reminders. `.allReminders` must include reminders with no due date.
+            return await RemindersService.shared.getAllIncompleteRemindersCount(for: calendarFilter)
         case .disabled:
             return -1
         }
