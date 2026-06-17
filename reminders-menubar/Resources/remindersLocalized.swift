@@ -130,6 +130,8 @@ enum RemindersMenuBarLocalizedKeys: String {
     case showUpcomingRemindersSettingsOption
     case showExternalLinksInReminderItemOption
     case showExternalLinksInReminderItemNote
+    case completionAnimationSettingsOption
+    case completionAnimationSettingsNote
     case showUpcomingReminderListNameOption
     case dragToResizeHelp
     case popoverSizeSettingsLabel

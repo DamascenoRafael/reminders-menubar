@@ -5,6 +5,8 @@ struct ReminderCompleteButton: View {
     var reminderItem: ReminderItem
     @Binding var isPendingCompletion: Bool
 
+    @EnvironmentObject private var remindersData: RemindersData
+    @ObservedObject private var userPreferences = UserPreferences.shared
     @State private var isFilled = false
     @State private var completionTask: Task<Void, Never>?
     @State private var childrenCompletedByTask: [ReminderItem] = []
@@ -43,8 +45,11 @@ struct ReminderCompleteButton: View {
         } else if reminderItem.reminder.isCompleted {
             reminderItem.reminder.isCompleted = false
             RemindersService.shared.save(reminder: reminderItem.reminder)
-        } else {
+        } else if userPreferences.completionAnimationEnabled {
             startPendingCompletion()
+        } else {
+            completeReminder()
+            remindersData.optimisticallyRemove(reminderItem: reminderItem)
         }
     }
 
@@ -112,4 +117,5 @@ struct ReminderCompleteButton: View {
         ReminderCompleteButton(reminderItem: reminderItem, isPendingCompletion: .constant(true))
     }
     .frame(width: 100)
+    .environmentObject(RemindersData())
 }

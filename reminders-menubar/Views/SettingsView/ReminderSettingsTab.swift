@@ -103,6 +103,15 @@ struct ReminderSettingsTab: View {
                 Text(rmbLocalized(.showExternalLinksInReminderItemNote))
                     .modifier(SettingsNoteStyle())
                     .padding(.leading, 20)
+
+                Toggle(
+                    rmbLocalized(.completionAnimationSettingsOption),
+                    isOn: $userPreferences.completionAnimationEnabled
+                )
+
+                Text(rmbLocalized(.completionAnimationSettingsNote))
+                    .modifier(SettingsNoteStyle())
+                    .padding(.leading, 20)
             }
 
             SettingsDivider()

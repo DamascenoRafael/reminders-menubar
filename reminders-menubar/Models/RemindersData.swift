@@ -329,4 +329,20 @@ class RemindersData: ObservableObject {
             : nil
         await previewService.refresh(calendarFilter: calendarFilter)
     }
+
+    func optimisticallyRemove(reminderItem: ReminderItem) {
+        let idsToRemove = Set([reminderItem.id] + reminderItem.childReminders.map(\.id))
+
+        filteredCalendarReminderLists = filteredCalendarReminderLists.map { list in
+            let filtered = list.reminders.filter { !idsToRemove.contains($0.id) }
+            return CalendarReminderList(for: list.calendar, with: filtered)
+        }
+
+        filteredTagReminderLists = filteredTagReminderLists.map { list in
+            let filtered = list.reminders.filter { !idsToRemove.contains($0.id) }
+            return TagReminderList(for: list.tag, with: filtered)
+        }
+
+        upcomingReminders = upcomingReminders.filter { !idsToRemove.contains($0.id) }
+    }
 }
