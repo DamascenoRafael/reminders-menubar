@@ -135,7 +135,7 @@ class RemindersService {
         return reminders.sortedUpcomingReminders
     }
 
-    func getIncompleteRemindersCount(for calendarIdentifiers: [String]? = nil) async -> Int {
+    func getAllIncompleteRemindersCount(for calendarIdentifiers: [String]? = nil) async -> Int {
         var calendars: [EKCalendar]?
         if let calendarIdentifiers {
             if calendarIdentifiers.isEmpty {
@@ -144,9 +144,12 @@ class RemindersService {
             }
             calendars = getCalendars().filter({ calendarIdentifiers.contains($0.calendarIdentifier) })
         }
-        let predicate = eventStore.predicateForReminders(in: calendars)
-        let allReminders = await fetchReminders(matching: predicate)
-        return allReminders.filter { !$0.isCompleted }.count
+        let predicate = eventStore.predicateForIncompleteReminders(
+            withDueDateStarting: nil,
+            ending: nil,
+            calendars: calendars
+        )
+        return await fetchReminders(matching: predicate).count
     }
     
     func save(reminder: EKReminder, tags: [Tag]? = nil) {

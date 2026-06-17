@@ -314,7 +314,7 @@ class RemindersData: ObservableObject {
             return await RemindersService.shared.getUpcomingReminders(.today, for: calendarFilter).count
         case .allReminders:
             // getUpcomingReminders only returns dated reminders. `.allReminders` must include reminders with no due date.
-            return await RemindersService.shared.getIncompleteRemindersCount(for: calendarFilter)
+            return await RemindersService.shared.getAllIncompleteRemindersCount(for: calendarFilter)
         case .disabled:
             return -1
         }
