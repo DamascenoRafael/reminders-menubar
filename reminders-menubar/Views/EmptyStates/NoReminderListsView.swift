@@ -24,6 +24,7 @@ struct NoReminderListsView: View {
             }
         }
         .padding(.bottom, 36)
+        .padding(.horizontal, 12)
     }
 }
 

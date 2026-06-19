@@ -15,6 +15,7 @@ struct NoFilterSelectedView: View {
                 .multilineTextAlignment(.center)
         }
         .padding(.bottom, 36)
+        .padding(.horizontal, 12)
     }
 }
 
