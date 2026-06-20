@@ -45,6 +45,32 @@ extension EKReminder {
         
         return date.relativeDateDescription(withTime: hasTime)
     }
+
+    // MARK: - Date and recurrence helpers
+
+    func removeDueDateAndAlarms() {
+        dueDateComponents = nil
+        alarms?.forEach { alarm in
+            removeAlarm(alarm)
+        }
+    }
+
+    func removeAllRecurrenceRules() {
+        recurrenceRules?.forEach { rule in
+            removeRecurrenceRule(rule)
+        }
+    }
+
+    func addDueDateAndAlarm(for date: Date, withTime hasTime: Bool) {
+        let dateComponents = date.dateComponents(withTime: hasTime)
+        dueDateComponents = dateComponents
+
+        // NOTE: In Apple Reminders only reminders with time have an alarm.
+        if hasTime {
+            let ekAlarm = EKAlarm(absoluteDate: dateComponents.date!)
+            addAlarm(ekAlarm)
+        }
+    }
     
     // MARK: - Private API access
 
@@ -217,30 +243,6 @@ extension EKReminder {
         let saveSyncSel = NSSelectorFromString("saveSynchronouslyWithError:")
         if saveRequest.responds(to: saveSyncSel) {
             _ = saveRequest.perform(saveSyncSel, with: nil)
-        }
-    }
-    
-    func removeDueDateAndAlarms() {
-        dueDateComponents = nil
-        alarms?.forEach { alarm in
-            removeAlarm(alarm)
-        }
-    }
-
-    func removeAllRecurrenceRules() {
-        recurrenceRules?.forEach { rule in
-            removeRecurrenceRule(rule)
-        }
-    }
-
-    func addDueDateAndAlarm(for date: Date, withTime hasTime: Bool) {
-        let dateComponents = date.dateComponents(withTime: hasTime)
-        dueDateComponents = dateComponents
-
-        // NOTE: In Apple Reminders only reminders with time have an alarm.
-        if hasTime {
-            let ekAlarm = EKAlarm(absoluteDate: dateComponents.date!)
-            addAlarm(ekAlarm)
         }
     }
 }
