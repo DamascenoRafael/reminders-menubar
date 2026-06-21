@@ -60,8 +60,19 @@ struct ReminderEditView: View {
 
             Divider()
 
-            ReminderDateTimeEditView(date: $rmbReminder.date, components: .date, hasComponent: $rmbReminder.hasDueDate)
-            ReminderDateTimeEditView(date: $rmbReminder.date, components: .time, hasComponent: $rmbReminder.hasTime)
+            LazyVGrid(columns: [GridItem(), GridItem()], alignment: .leading) {
+                ReminderDateTimeEditView(
+                    date: $rmbReminder.date,
+                    components: .date,
+                    hasComponent: $rmbReminder.hasDueDate
+                )
+
+                ReminderDateTimeEditView(
+                    date: $rmbReminder.date,
+                    components: .time,
+                    hasComponent: $rmbReminder.hasTime
+                )
+            }
 
             ReminderRecurrenceEditView(recurrence: $rmbReminder.recurrence, isEnabled: rmbReminder.hasDueDate)
 

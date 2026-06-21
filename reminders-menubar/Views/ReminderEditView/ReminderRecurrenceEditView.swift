@@ -52,7 +52,7 @@ struct ReminderRecurrenceEditView: View {
             Text(RmbRecurrenceOption.custom.title)
                 .font(.system(size: 12))
                 .foregroundColor(.secondary)
-                .frame(minWidth: 80, alignment: .leading)
+                .frame(minWidth: 72, alignment: .leading)
 
             Button {
                 recurrence = .none

@@ -21,7 +21,7 @@ struct ReminderDateTimeEditView: View {
             if hasComponent {
                 RmbDatePicker(selection: $date, components: components)
                     .font(.systemFont(ofSize: 12, weight: .light))
-                    .frame(width: 80)
+                    .frame(width: 72)
                     .fixedSize(horizontal: true, vertical: true)
 
                 Button {
