@@ -4,6 +4,29 @@
         <title>Reminders MenuBar</title>
         <language>en</language>
         <item>
+            <title>Version 2.1.0</title>
+            <sparkle:version>2.1.0</sparkle:version>
+            <sparkle:shortVersionString>2.1.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[
+                <ul>
+                    <li>Automatically open the create view when typing on the keyboard ⌨️</li>
+                    <li>Improve completion animation and add setting to disable it ✨</li>
+                    <li>Add support for flagged reminders 🚩</li>
+                    <li>Add support for urgent reminders ⏰</li>
+                    <li>Fix "Show all reminders count" in menu bar 🐛</li>
+                    <li>Other minor improvements in code ⚡</li>
+                </ul>
+                <p><a href="https://github.com/DamascenoRafael/reminders-menubar/releases/tag/v2.1.0">Details</a></p>
+            ]]></description>
+            <pubDate>Mon, 22 Jun 2026 03:00:00 -0300</pubDate>
+            <enclosure
+                url="https://github.com/DamascenoRafael/reminders-menubar/releases/download/v2.1.0/reminders-menubar.zip"
+                sparkle:edSignature="QrdwY77EuH/J+tiV5Kp7aEftkxOQQADb1jGp5ms+0SJl9vLTPrq58SaQBOvwa0cM6gUVXHmHpRk6fX9Lr17ICQ=="
+                length="3622645"
+                type="application/octet-stream" />
+        </item>
+        <item>
             <title>Version 2.0.0</title>
             <sparkle:version>2.0.0</sparkle:version>
             <sparkle:shortVersionString>2.0.0</sparkle:shortVersionString>
