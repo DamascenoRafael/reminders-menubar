@@ -2,6 +2,9 @@ import SwiftUI
 
 enum RmbSymbol {
     case recentReminders
+    case alarm
+    case flag
+    case flagFill
     case priorityHigh
     case priorityMedium
     case priorityLow
@@ -30,6 +33,7 @@ enum RmbSymbol {
     case magnifyingglass
     case hashtag
     case pencil
+    case pin
     case plus
     case recurrence
     case safari
@@ -48,6 +52,12 @@ enum RmbSymbol {
             } else {
                 return "clock"
             }
+        case .alarm:
+            return "alarm"
+        case .flag:
+            return "flag"
+        case .flagFill:
+            return "flag.fill"
         case .priorityHigh:
             if #available(macOS 13, *) {
                 return "exclamationmark.3"
@@ -120,6 +130,8 @@ enum RmbSymbol {
             return "number"
         case .pencil:
             return "pencil"
+        case .pin:
+            return "pin"
         case .plus:
             return "plus"
         case .recurrence:

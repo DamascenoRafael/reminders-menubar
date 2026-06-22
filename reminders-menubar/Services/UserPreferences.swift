@@ -21,7 +21,7 @@ private enum PreferencesKeys {
     static let mainPopoverSize = "mainPopoverSize"
     static let showUpcomingReminderListName = "showUpcomingReminderListName"
     static let showRemindersWithDueDateOnTop = "showRemindersWithDueDateOnTop"
-    static let sortRemindersByPriority = "sortRemindersByPriority"
+    static let sortRemindersByFlagAndPriority = "sortRemindersByPriority"
     static let reminderSortingOrder = "reminderSortingOrder"
     static let timeFormatIs24Hour = "timeFormatIs24Hour"
     static let showExternalLinksInReminderItem = "showExternalLinksInReminderItem"
@@ -180,11 +180,14 @@ class UserPreferences: ObservableObject {
         }
     }
     
-    @Published var sortRemindersByPriority: Bool = {
-        return defaults.boolWithDefaultValueTrue(forKey: PreferencesKeys.sortRemindersByPriority)
+    @Published var sortRemindersByFlagAndPriority: Bool = {
+        return defaults.boolWithDefaultValueTrue(forKey: PreferencesKeys.sortRemindersByFlagAndPriority)
     }() {
         didSet {
-            UserPreferences.defaults.set(sortRemindersByPriority, forKey: PreferencesKeys.sortRemindersByPriority)
+            UserPreferences.defaults.set(
+                sortRemindersByFlagAndPriority,
+                forKey: PreferencesKeys.sortRemindersByFlagAndPriority
+            )
         }
     }
     

@@ -4,6 +4,7 @@ import EventKit
 struct ReminderDateDescriptionView: View {
     var dateDescription: String
     var isExpired: Bool
+    var isUrgent: Bool
     var hasRecurrenceRules: Bool
     var recurrenceRules: [EKRecurrenceRule]?
 
@@ -11,6 +12,9 @@ struct ReminderDateDescriptionView: View {
         HStack {
             HStack {
                 Image(rmbSymbol: .calendar)
+                if isUrgent {
+                    Image(rmbSymbol: .alarm)
+                }
                 Text(dateDescription)
                     .foregroundColor(isExpired ? .rmbColor(.expiredDate) : .secondary)
             }
@@ -40,6 +44,7 @@ struct ReminderDateDescriptionView: View {
     ReminderDateDescriptionView(
         dateDescription: Date().relativeDateDescription(withTime: true),
         isExpired: false,
+        isUrgent: false,
         hasRecurrenceRules: false,
         recurrenceRules: nil
     )

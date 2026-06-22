@@ -24,6 +24,8 @@ enum RemindersMenuBarLocalizedKeys: String {
     case editReminderPriorityMediumOption
     case editReminderPriorityHighOption
     case editReminderPriorityNoneOption
+    case editReminderFlaggedOption
+    case editReminderUrgentOption
     case removeReminderButton
     case removeReminderAlertTitle
     case removeReminderAlertMessage
@@ -139,7 +141,7 @@ enum RemindersMenuBarLocalizedKeys: String {
     case reminderSortingSettingsLabel
     case reminderSortingDueDateOnTopOption
     case reminderSortingDueDateOnTopNote
-    case reminderSortingByPriorityOption
+    case reminderSortingByFlagAndPriorityOption
     case reminderSortingDefaultOrderOption
     case reminderSortingDefaultOrderNote
     case reminderSortingNewestFirstOption

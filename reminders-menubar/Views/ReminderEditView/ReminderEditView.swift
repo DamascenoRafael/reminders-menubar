@@ -78,6 +78,8 @@ struct ReminderEditView: View {
 
             Divider()
 
+            ReminderFlagUrgentEditView(isFlagged: $rmbReminder.isFlagged, isUrgent: $rmbReminder.isUrgent)
+
             ReminderPriorityEditView(priority: $rmbReminder.priority)
 
             if #available(macOS 12, *) {
@@ -340,8 +342,13 @@ struct ReminderEditView: View {
             remindersData.calendarForSaving = calendar
         } else if case .edit(let ekReminder, _) = mode {
             ekReminder.update(with: rmbReminder)
-            if ekReminder.hasChanges || rmbReminder.hasTagChanges {
-                RemindersService.shared.save(reminder: ekReminder, tags: rmbReminder.tags)
+            if ekReminder.hasChanges || rmbReminder.hasPrivateApiChanges {
+                RemindersService.shared.save(
+                    reminder: ekReminder,
+                    tags: rmbReminder.tags,
+                    isFlagged: rmbReminder.isFlagged,
+                    isUrgent: rmbReminder.isUrgent
+                )
             }
         }
 

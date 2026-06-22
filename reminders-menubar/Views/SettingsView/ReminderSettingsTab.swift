@@ -87,8 +87,8 @@ struct ReminderSettingsTab: View {
                     .padding(.leading, 20)
 
                 Toggle(
-                    rmbLocalized(.reminderSortingByPriorityOption),
-                    isOn: $userPreferences.sortRemindersByPriority
+                    rmbLocalized(.reminderSortingByFlagAndPriorityOption),
+                    isOn: $userPreferences.sortRemindersByFlagAndPriority
                 )
             }
 

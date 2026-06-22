@@ -47,10 +47,18 @@ struct ReminderItemView: View {
                     && (reminderItem.reminder.attachedUrl != nil || reminderItem.reminder.mailUrl != nil)
 
                 if let dateDescription = reminderItem.reminder.relativeDateDescription {
+                    let isUrgent: Bool = {
+                        if #available(macOS 26, *) {
+                            return reminderItem.reminder.isUrgent
+                        }
+                        return false
+                    }()
+
                     HStack(alignment: .bottom) {
                         ReminderDateDescriptionView(
                             dateDescription: dateDescription,
                             isExpired: reminderItem.reminder.isExpired,
+                            isUrgent: isUrgent,
                             hasRecurrenceRules: reminderItem.reminder.hasRecurrenceRules,
                             recurrenceRules: reminderItem.reminder.recurrenceRules
                         )
@@ -138,14 +146,23 @@ struct ReminderItemView: View {
     private func reminderTitleText() -> Text {
         let titleText = Text(LocalizedStringKey(reminderItem.reminder.title.toDetectedLinkAttributedString()))
 
-        guard let prioritySymbol = reminderItem.reminder.ekPriority.rmbSymbol else {
+        var prefixes: [(symbol: RmbSymbol, color: Color)] = []
+        if reminderItem.reminder.isFlagged {
+            prefixes.append((.flagFill, .orange))
+        }
+        if let prioritySymbol = reminderItem.reminder.ekPriority.rmbSymbol {
+            prefixes.append((prioritySymbol, Color(reminderItem.reminder.calendar.color)))
+        }
+
+        guard !prefixes.isEmpty else {
             return titleText
         }
 
-        return Text(Image(rmbSymbol: prioritySymbol))
-            .foregroundColor(Color(reminderItem.reminder.calendar.color))
-        + Text(verbatim: " ")
-        + titleText
+        let prefixText = prefixes.reduce(Text(verbatim: "")) { result, prefix in
+            result + Text(Image(rmbSymbol: prefix.symbol)).foregroundColor(prefix.color) + Text(verbatim: " ")
+        }
+
+        return prefixText + titleText
     }
 
     @ViewBuilder

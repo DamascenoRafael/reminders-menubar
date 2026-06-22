@@ -5,7 +5,7 @@ extension Array where Element == ReminderItem {
         return sorted(
             self,
             dueDateOnTop: UserPreferences.shared.showRemindersWithDueDateOnTop,
-            byPriority: UserPreferences.shared.sortRemindersByPriority,
+            byFlagAndPriority: UserPreferences.shared.sortRemindersByFlagAndPriority,
             using: UserPreferences.shared.reminderSortingOrder
         )
     }
@@ -17,29 +17,34 @@ extension Array where Element == ReminderItem {
     private func sorted(
         _ reminders: [ReminderItem],
         dueDateOnTop: Bool,
-        byPriority: Bool,
+        byFlagAndPriority: Bool,
         using sortingOrder: RmbSortingOrder
     ) -> [ReminderItem] {
         if dueDateOnTop {
             var (dueDateReminders, undatedReminders) = reminders.separated(by: { $0.reminder.hasDueDate })
 
             dueDateReminders = sortedByDueDate(dueDateReminders)
-            undatedReminders = sortedByPriority(undatedReminders, enabled: byPriority, using: sortingOrder)
+            undatedReminders = sortedByFlagAndPriority(
+                undatedReminders, enabled: byFlagAndPriority, using: sortingOrder
+            )
 
             return dueDateReminders + undatedReminders
         }
 
-        return sortedByPriority(reminders, enabled: byPriority, using: sortingOrder)
+        return sortedByFlagAndPriority(reminders, enabled: byFlagAndPriority, using: sortingOrder)
     }
 
-    private func sortedByPriority(
+    private func sortedByFlagAndPriority(
         _ reminders: [ReminderItem],
         enabled: Bool,
         using sortingOrder: RmbSortingOrder
     ) -> [ReminderItem] {
         if enabled {
-            let remindersByPriority = PrioritizedReminders(reminders)
-            return sortedByOrder(remindersByPriority.high, using: sortingOrder) +
+            let (flaggedReminders, unflaggedReminders) = reminders.separated(by: { $0.reminder.isFlagged })
+            let remindersByPriority = PrioritizedReminders(unflaggedReminders)
+
+            return sortedByOrder(flaggedReminders, using: sortingOrder) +
+                sortedByOrder(remindersByPriority.high, using: sortingOrder) +
                 sortedByOrder(remindersByPriority.medium, using: sortingOrder) +
                 sortedByOrder(remindersByPriority.low, using: sortingOrder) +
                 sortedByOrder(remindersByPriority.none, using: sortingOrder)

@@ -34,7 +34,29 @@ struct RmbReminder {
         }
         return false
     }
-    
+
+    var hasFlagChanges: Bool {
+        guard let originalReminder else {
+            return isFlagged
+        }
+        return isFlagged != originalReminder.isFlagged
+    }
+
+    var hasUrgentChanges: Bool {
+        guard let originalReminder else {
+            return isUrgent
+        }
+
+        if #available(macOS 26, *) {
+            return isUrgent != originalReminder.isUrgent
+        }
+        return false
+    }
+
+    var hasPrivateApiChanges: Bool {
+        hasTagChanges || hasFlagChanges || hasUrgentChanges
+    }
+
     var title: String {
         willSet {
             guard !isPreparingToSave else {
@@ -64,6 +86,7 @@ struct RmbReminder {
             if !hasDueDate {
                 hasTime = false
                 recurrence = .none
+                isUrgent = false
             }
         }
     }
@@ -74,11 +97,24 @@ struct RmbReminder {
             if hasTime {
                 date = .nextExactHour(of: date)
                 hasDueDate = true
+            } else {
+                // NOTE: Urgent requires date+time, so disable it when time is removed.
+                isUrgent = false
             }
         }
     }
     var recurrence: RmbRecurrenceOption
     var priority: EKReminderPriority
+    var isFlagged: Bool
+    var isUrgent: Bool {
+        didSet {
+            // NOTE: Urgent requires date+time, so enable them when urgent is turned on.
+            if isUrgent {
+                hasDueDate = true
+                hasTime = true
+            }
+        }
+    }
     private(set) var tags: [Tag]
     var calendar: EKCalendar?
     
@@ -104,6 +140,8 @@ struct RmbReminder {
         hasTime = false
         recurrence = .none
         priority = .none
+        isFlagged = false
+        isUrgent = false
         tags = []
     }
     
@@ -116,6 +154,11 @@ struct RmbReminder {
         hasTime = reminder.hasTime
         recurrence = RmbRecurrenceOption(from: reminder.recurrenceRules)
         priority = reminder.ekPriority
+        isFlagged = reminder.isFlagged
+        isUrgent = false
+        if #available(macOS 26, *) {
+            isUrgent = reminder.isUrgent
+        }
         calendar = reminder.calendar
         tags = []
         if #available(macOS 12, *) {

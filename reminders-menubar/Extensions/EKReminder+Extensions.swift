@@ -144,6 +144,21 @@ extension EKReminder {
         .sorted()
     }
 
+    // NOTE: This is a workaround to access the flagged state of a reminder.
+    // This property is not accessible through the conventional API.
+    var isFlagged: Bool {
+        guard let backingObject = reminderBackingObject else { return false }
+        return performPrivateBoolGetter("flagged", on: backingObject)
+    }
+
+    // NOTE: This is a workaround to access the urgent state of a reminder.
+    // This property is not accessible through the conventional API.
+    @available(macOS 26, *)
+    var isUrgent: Bool {
+        guard let backingObject = reminderBackingObject else { return false }
+        return performPrivateBoolGetter("isUrgentStateEnabledForCurrentUser", on: backingObject)
+    }
+
     private var reminderBackingObject: AnyObject? {
         guard let backingObject = performPrivateSelector("backingObject", on: self) else {
             return nil
@@ -162,6 +177,15 @@ extension EKReminder {
             return object.perform(selector, with: arg)?.takeUnretainedValue()
         }
         return object.perform(selector)?.takeUnretainedValue()
+    }
+
+    private func performPrivateBoolGetter(
+        _ name: String,
+        on object: AnyObject
+    ) -> Bool {
+        let selector = NSSelectorFromString(name)
+        guard object.responds(to: selector) else { return false }
+        return object.perform(selector) != nil
     }
 
     // MARK: - Update reminder methods
@@ -208,14 +232,7 @@ extension EKReminder {
             return
         }
 
-        // NOTE: Setup save request via REMSaveRequest.
-        guard let backingObject = reminderBackingObject,
-              let store = performPrivateSelector("store", on: backingObject),
-              let saveRequestClass: AnyObject = NSClassFromString("REMSaveRequest"),
-              let allocedClass = performPrivateSelector("alloc", on: saveRequestClass),
-              let saveRequest = performPrivateSelector("initWithStore:", on: allocedClass, with: store),
-              let changeItem = performPrivateSelector("updateReminder:", on: saveRequest, with: backingObject),
-              let hashtagContext = performPrivateSelector("hashtagContext", on: changeItem) else {
+        guard let (saveRequest, hashtagContext) = createSaveRequest(context: "hashtagContext") else {
             return
         }
 
@@ -239,7 +256,57 @@ extension EKReminder {
             }
         }
 
-        // NOTE: Save to persist changes
+        commitSaveRequest(saveRequest)
+    }
+
+    // NOTE: This is a workaround to set the flagged state of a reminder.
+    // This property is not accessible through the conventional API.
+    func updateFlagged(_ newValue: Bool) {
+        guard isFlagged != newValue else { return }
+
+        guard let (saveRequest, flaggedContext) = createSaveRequest(context: "flaggedContext") else {
+            return
+        }
+
+        flaggedContext.setValue(NSNumber(value: newValue), forKey: "flagged")
+        commitSaveRequest(saveRequest)
+    }
+
+    // NOTE: This is a workaround to set the urgent state of a reminder.
+    // This property is not accessible through the conventional API.
+    @available(macOS 26, *)
+    func updateUrgent(_ newValue: Bool) {
+        guard isUrgent != newValue else { return }
+
+        guard let (saveRequest, urgentAlarmContext) = createSaveRequest(context: "urgentAlarmContext") else {
+            return
+        }
+
+        urgentAlarmContext.setValue(NSNumber(value: newValue), forKey: "isUrgentStateEnabledForCurrentUser")
+        commitSaveRequest(saveRequest)
+    }
+
+    // MARK: - Private API save helpers
+
+    /// NOTE: Creates a REMSaveRequest, registers the reminder for update, and retrieves the named context.
+    /// Returns the save request and context, or nil if any step fails.
+    private func createSaveRequest(
+        context contextName: String
+    ) -> (saveRequest: AnyObject, context: AnyObject)? {
+        guard let backingObject = reminderBackingObject,
+              let store = performPrivateSelector("store", on: backingObject),
+              let saveRequestClass: AnyObject = NSClassFromString("REMSaveRequest"),
+              let allocedClass = performPrivateSelector("alloc", on: saveRequestClass),
+              let saveRequest = performPrivateSelector("initWithStore:", on: allocedClass, with: store),
+              let changeItem = performPrivateSelector("updateReminder:", on: saveRequest, with: backingObject),
+              let context = performPrivateSelector(contextName, on: changeItem) else {
+            return nil
+        }
+        return (saveRequest, context)
+    }
+
+    /// NOTE: Commits the save request synchronously.
+    private func commitSaveRequest(_ saveRequest: AnyObject) {
         let saveSyncSel = NSSelectorFromString("saveSynchronouslyWithError:")
         if saveRequest.responds(to: saveSyncSel) {
             _ = saveRequest.perform(saveSyncSel, with: nil)

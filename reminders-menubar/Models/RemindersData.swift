@@ -38,7 +38,7 @@ class RemindersData: ObservableObject {
 
         Publishers.MergeMany(
             UserPreferences.shared.$showRemindersWithDueDateOnTop.map { _ in }.eraseToAnyPublisher(),
-            UserPreferences.shared.$sortRemindersByPriority.map { _ in }.eraseToAnyPublisher(),
+            UserPreferences.shared.$sortRemindersByFlagAndPriority.map { _ in }.eraseToAnyPublisher(),
             UserPreferences.shared.$reminderSortingOrder.map { _ in }.eraseToAnyPublisher(),
             $calendarIdentifiersFilter.removeDuplicates().map { _ in }.eraseToAnyPublisher()
         )

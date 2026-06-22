@@ -152,23 +152,35 @@ class RemindersService {
         return await fetchReminders(matching: predicate).count
     }
     
-    func save(reminder: EKReminder, tags: [Tag]? = nil) {
+    func save(reminder: EKReminder) {
         do {
             try eventStore.save(reminder, commit: true)
-            // NOTE: Tags are persisted via REMSaveRequest directly.
-            if #available(macOS 12, *), let tags {
-                reminder.updateTags(tags)
-            }
         } catch {
             print("Error saving reminder:", error.localizedDescription)
         }
+    }
+
+    func save(reminder: EKReminder, tags: [Tag], isFlagged: Bool, isUrgent: Bool) {
+        save(reminder: reminder)
+        if #available(macOS 12, *) {
+            reminder.updateTags(tags)
+        }
+        if #available(macOS 26, *) {
+            reminder.updateUrgent(isUrgent)
+        }
+        reminder.updateFlagged(isFlagged)
     }
     
     func createNew(with rmbReminder: RmbReminder, in calendar: EKCalendar) {
         let newReminder = EKReminder(eventStore: eventStore)
         newReminder.update(with: rmbReminder)
         newReminder.calendar = calendar
-        save(reminder: newReminder, tags: rmbReminder.tags)
+        save(
+            reminder: newReminder,
+            tags: rmbReminder.tags,
+            isFlagged: rmbReminder.isFlagged,
+            isUrgent: rmbReminder.isUrgent
+        )
     }
     
     func fetchAllReminders() async -> [EKReminder] {
