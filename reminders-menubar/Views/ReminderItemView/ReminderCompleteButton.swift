@@ -34,6 +34,7 @@ struct ReminderCompleteButton: View {
             if isPendingCompletion && !reminderItem.reminder.isCompleted {
                 completionTask?.cancel()
                 completionTask = nil
+                isPendingCompletion = false
                 completeReminder()
             }
         }
@@ -62,6 +63,7 @@ struct ReminderCompleteButton: View {
         completionTask = Task { @MainActor in
             try? await Task.sleep(nanoseconds: UInt64(completionDelayInSeconds * 1_000_000_000))
             guard !Task.isCancelled else { return }
+            isPendingCompletion = false
             completeReminder()
         }
     }

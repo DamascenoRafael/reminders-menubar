@@ -26,7 +26,11 @@ struct ReminderItemView: View {
             // Returning Empty to avoid issues since calendar is a force unwrap.
             EmptyView()
         } else {
+            // .id(dateInvalidation) forces subtree recreation to keep the item view up to date,
+            // mainly for relative date descriptions and to reset stale completion state on recurring
+            // reminders, where EventKit advances the same object to the next occurrence causing view reuse.
             mainReminderItemView()
+                .id(dateInvalidation)
         }
     }
 
@@ -62,7 +66,6 @@ struct ReminderItemView: View {
                             hasRecurrenceRules: reminderItem.reminder.hasRecurrenceRules,
                             recurrenceRules: reminderItem.reminder.recurrenceRules
                         )
-                        .id(dateInvalidation)
 
                         if showCalendarTitle {
                             calendarTitleText()
@@ -132,6 +135,7 @@ struct ReminderItemView: View {
             subscribeToDueDateExpiration()
         }
         .onChange(of: reminderItem) { _ in
+            dateInvalidation = Date()
             subscribeToDueDateExpiration()
         }
         .onChange(of: showingEditPopover) { isOpen in
