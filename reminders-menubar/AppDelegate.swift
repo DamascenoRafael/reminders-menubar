@@ -8,7 +8,7 @@ struct RemindersMenuBar: App {
     
     var body: some Scene {
         if #available(macOS 14.0, *) {
-            Window(String(""), id: "SettingsOpener") {
+            Window(String(""), id: AppConstants.settingsOpenerWindowId) {
                 SettingsOpenerView()
             }
             .windowResizability(.contentSize)

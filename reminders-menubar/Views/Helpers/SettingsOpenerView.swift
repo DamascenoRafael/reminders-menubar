@@ -12,6 +12,7 @@ struct SettingsOpenerView: View {
         Color.clear
             .frame(width: 0, height: 0)
             .allowsHitTesting(false)
+            .onAppear(perform: hideWindowFromMissionControl)
             .onReceive(NotificationCenter.default.publisher(for: .openSettingsRequest)) { _ in
                 Task { @MainActor in
                     await handleOpenSettingsRequest()
@@ -87,6 +88,18 @@ struct SettingsOpenerView: View {
 
     private static func isSettingsWindow(_ window: NSWindow) -> Bool {
         window.isVisible && window.frame.height > 100
+    }
+
+    private func hideWindowFromMissionControl() {
+        DispatchQueue.main.async {
+            guard let window = NSApp.windows.first(where: {
+                $0.identifier?.rawValue == AppConstants.settingsOpenerWindowId
+            }) else {
+                return
+            }
+            window.collectionBehavior.insert(.ignoresCycle)
+            window.isExcludedFromWindowsMenu = true
+        }
     }
 
     private func observeSettingsClose(_ window: NSWindow, wasAccessory: Bool) {
