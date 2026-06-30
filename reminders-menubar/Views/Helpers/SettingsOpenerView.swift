@@ -9,10 +9,9 @@ struct SettingsOpenerView: View {
     @State private var settingsWindow: NSWindow?
 
     var body: some View {
-        Color.clear
+        SettingsOpenerHiddenWindow()
             .frame(width: 0, height: 0)
             .allowsHitTesting(false)
-            .onAppear(perform: hideWindowFromMissionControl)
             .onReceive(NotificationCenter.default.publisher(for: .openSettingsRequest)) { _ in
                 Task { @MainActor in
                     await handleOpenSettingsRequest()
@@ -90,18 +89,6 @@ struct SettingsOpenerView: View {
         window.isVisible && window.frame.height > 100
     }
 
-    private func hideWindowFromMissionControl() {
-        DispatchQueue.main.async {
-            guard let window = NSApp.windows.first(where: {
-                $0.identifier?.rawValue == AppConstants.settingsOpenerWindowId
-            }) else {
-                return
-            }
-            window.collectionBehavior.insert(.ignoresCycle)
-            window.isExcludedFromWindowsMenu = true
-        }
-    }
-
     private func observeSettingsClose(_ window: NSWindow, wasAccessory: Bool) {
         settingsCloseCancellable?.cancel()
         settingsCloseCancellable = NotificationCenter.default
@@ -113,5 +100,42 @@ struct SettingsOpenerView: View {
                     NSApp.setActivationPolicy(.accessory)
                 }
             }
+    }
+}
+
+private struct SettingsOpenerHiddenWindow: NSViewRepresentable {
+    func makeNSView(context: Context) -> NSView {
+        HelperNSView()
+    }
+
+    func updateNSView(_ nsView: NSView, context: Context) {}
+
+    private class HelperNSView: NSView {
+        private var observer: NSObjectProtocol?
+
+        override func viewDidMoveToWindow() {
+            super.viewDidMoveToWindow()
+            applyHiddenBehavior()
+            // Re-apply whenever app becomes active (covers activation policy resets)
+            observer = NotificationCenter.default.addObserver(
+                forName: NSApplication.didBecomeActiveNotification,
+                object: nil,
+                queue: .main
+            ) { [weak self] _ in
+                self?.applyHiddenBehavior()
+            }
+        }
+
+        private func applyHiddenBehavior() {
+            guard let window else { return }
+            window.collectionBehavior.insert([.ignoresCycle, .transient])
+            window.isExcludedFromWindowsMenu = true
+        }
+
+        deinit {
+            if let observer {
+                NotificationCenter.default.removeObserver(observer)
+            }
+        }
     }
 }

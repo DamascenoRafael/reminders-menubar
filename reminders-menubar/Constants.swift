@@ -1,8 +1,6 @@
 import Foundation
 
 enum AppConstants {
-    static let settingsOpenerWindowId = "SettingsOpener"
-
     static let bundleVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
 
     static let displayVersion: String = {
