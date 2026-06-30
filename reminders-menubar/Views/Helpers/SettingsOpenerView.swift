@@ -76,6 +76,7 @@ struct SettingsOpenerView: View {
             settingsWindow = window
             NSApp.activate()
             window.makeKeyAndOrderFront(nil)
+            window.orderFrontRegardless()
 
             // Clean settingsWindow state and restore accessory policy when the settings window closes.
             observeSettingsClose(window, wasAccessory: wasAccessory)
