@@ -4,6 +4,25 @@
         <title>Reminders MenuBar</title>
         <language>en</language>
         <item>
+            <title>Version 2.1.1</title>
+            <sparkle:version>2.1.1</sparkle:version>
+            <sparkle:shortVersionString>2.1.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[
+                <ul>
+                    <li>Fix an issue where the next reminder occurrence could be incorrectly shown and saved as completed 🐛</li>
+                    <li>Fix a scenario that could cause Mission Control to show an empty window 🐛</li>
+                </ul>
+                <p><a href="https://github.com/DamascenoRafael/reminders-menubar/releases/tag/v2.1.1">Details</a></p>
+            ]]></description>
+            <pubDate>Mon, 30 Jun 2026 12:00:00 -0300</pubDate>
+            <enclosure
+                url="https://github.com/DamascenoRafael/reminders-menubar/releases/download/v2.1.1/reminders-menubar.zip"
+                sparkle:edSignature="o8S4bq+W2RAA2A4jPsrLV+VkBv1ITnerFww5UNYwesDMTcwNDq9mKqvCbZhKfhPSehwrdMufC6Bh8z2NxwQzCQ=="
+                length="3625717"
+                type="application/octet-stream" />
+        </item>
+        <item>
             <title>Version 2.1.0</title>
             <sparkle:version>2.1.0</sparkle:version>
             <sparkle:shortVersionString>2.1.0</sparkle:shortVersionString>
