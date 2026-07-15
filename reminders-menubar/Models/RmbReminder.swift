@@ -109,8 +109,7 @@ struct RmbReminder {
     var isUrgent: Bool {
         didSet {
             // NOTE: Urgent requires date+time, so enable them when urgent is turned on.
-            if isUrgent {
-                hasDueDate = true
+            if isUrgent && !hasTime {
                 hasTime = true
             }
         }
