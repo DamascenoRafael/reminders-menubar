@@ -2,7 +2,7 @@ import SwiftUI
 import KeyboardShortcuts
 
 extension KeyboardShortcuts.Name {
-    static let openRemindersMenuBar = Self("OpenRemindersMenuBar", default: .init(.r, modifiers: [.command, .option]))
+    static let openRemindersMenuBar = Self("OpenRemindersMenuBar", initial: .init(.r, modifiers: [.command, .option]))
 }
 
 private enum ShortcutsKeys {
