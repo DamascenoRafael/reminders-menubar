@@ -165,6 +165,14 @@ struct RmbReminder {
         }
     }
 
+    mutating func userDidSetCalendar(_ newCalendar: EKCalendar) {
+        calendar = newCalendar
+        let parsedCalendarIdentifier = textCalendarResult.calendar?.calendarIdentifier
+        if newCalendar.calendarIdentifier != parsedCalendarIdentifier {
+            textCalendarResult = CalendarParser.TextCalendarResult()
+        }
+    }
+
     mutating func setIsAutoSuggestingTodayForCreation() {
         guard !hasDueDate else {
             return

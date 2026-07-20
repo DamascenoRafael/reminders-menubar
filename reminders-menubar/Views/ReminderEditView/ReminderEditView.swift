@@ -231,12 +231,7 @@ struct ReminderEditView: View {
             get: { getCalendarForSaving() },
             set: { newCalendar in
                 guard let newCalendar else { return }
-                rmbReminder.calendar = newCalendar
-                let parsedCalendarIdentifier = rmbReminder.textCalendarResult.calendar?.calendarIdentifier
-                if newCalendar.calendarIdentifier != parsedCalendarIdentifier {
-                    // NOTE: Clear textCalendarResult because user overwrote the calendar.
-                    rmbReminder.textCalendarResult = CalendarParser.TextCalendarResult()
-                }
+                rmbReminder.userDidSetCalendar(newCalendar)
             }
         )
     }
