@@ -3,8 +3,17 @@ import EventKit
 struct RmbReminder {
     private var originalReminder: EKReminder?
     private var isPreparingToSave = false
-    private var isAutoSuggestingTodayForCreation = false
-    
+
+    private struct DateTimeFallback {
+        let hasDueDate: Bool
+        let hasTime: Bool
+        let date: Date
+    }
+
+    private var dateTimeFallback: DateTimeFallback?
+
+    // MARK: - Change detection
+
     var hasDateChanges: Bool {
         guard let originalReminder else {
             return true
@@ -57,6 +66,8 @@ struct RmbReminder {
         hasTagChanges || hasFlagChanges || hasUrgentChanges
     }
 
+    // MARK: - Properties
+
     var title: String {
         willSet {
             guard !isPreparingToSave else {
@@ -72,55 +83,20 @@ struct RmbReminder {
     }
     
     var notes: String?
-    var date: Date {
-        didSet {
-            // NOTE: When date is changed, we assume that it was done by the user.
-            // If it was changed by DateParser it is necessary to add textDateResult after changing the date.
-            textDateResult = DateParser.TextDateResult()
-            isAutoSuggestingTodayForCreation = false
-        }
-    }
-    var hasDueDate: Bool {
-        didSet {
-            // NOTE: When hasDueDate option is disabled, it must disable hasTime and recurrence
-            if !hasDueDate {
-                hasTime = false
-                recurrence = .none
-                isUrgent = false
-            }
-        }
-    }
-    var hasTime: Bool {
-        didSet {
-            // NOTE: When hasTime option is enabled, adjust the suggestion to the next hour of the current moment.
-            // Enabling time always requires a due date, so ensure it's turned on.
-            if hasTime {
-                date = .nextExactHour(of: date)
-                hasDueDate = true
-            } else {
-                // NOTE: Urgent requires date+time, so disable it when time is removed.
-                isUrgent = false
-            }
-        }
-    }
+    private(set) var date: Date
+    private(set) var hasDueDate: Bool
+    private(set) var hasTime: Bool
     var recurrence: RmbRecurrenceOption
     var priority: EKReminderPriority
     var isFlagged: Bool
-    var isUrgent: Bool {
-        didSet {
-            // NOTE: Urgent requires date+time, so enable them when urgent is turned on.
-            if isUrgent && !hasTime {
-                hasTime = true
-            }
-        }
-    }
+    private(set) var isUrgent: Bool
     private(set) var tags: [Tag]
     var calendar: EKCalendar?
     
-    var textDateResult = DateParser.TextDateResult()
-    var textCalendarResult = CalendarParser.TextCalendarResult()
-    var textPriorityResult = PriorityParser.PriorityParserResult()
-    var textTagResults: [TagParser.TextTagResult] = []
+    private(set) var textDateResult = DateParser.TextDateResult()
+    private(set) var textCalendarResult = CalendarParser.TextCalendarResult()
+    private(set) var textPriorityResult = PriorityParser.PriorityParserResult()
+    private(set) var textTagResults: [TagParser.TextTagResult] = []
     
     var highlightedTexts: [RmbHighlightedTextField.HighlightedText] {
         var texts = [
@@ -165,6 +141,48 @@ struct RmbReminder {
         }
     }
 
+    // MARK: - User-intent mutations
+
+    mutating func userDidSetDate(_ newDate: Date) {
+        date = newDate
+        textDateResult = DateParser.TextDateResult()
+        updateFallbackFromUserAction()
+    }
+
+    mutating func userDidSetHasDueDate(_ enabled: Bool) {
+        hasDueDate = enabled
+        if !enabled {
+            hasTime = false
+            recurrence = .none
+            isUrgent = false
+            textDateResult = DateParser.TextDateResult()
+        }
+        updateFallbackFromUserAction()
+    }
+
+    mutating func userDidSetHasTime(_ enabled: Bool) {
+        hasTime = enabled
+        if enabled {
+            date = .nextExactHour(of: date)
+            hasDueDate = true
+        } else {
+            isUrgent = false
+        }
+        updateFallbackFromUserAction()
+    }
+
+    mutating func userDidSetIsUrgent(_ enabled: Bool) {
+        isUrgent = enabled
+        // NOTE: Urgent requires date+time.
+        if enabled && !hasTime {
+            let urgentDate: Date = .nextExactHour(of: date)
+            hasDueDate = true
+            hasTime = true
+            date = urgentDate
+            dateTimeFallback = DateTimeFallback(hasDueDate: true, hasTime: true, date: urgentDate)
+        }
+    }
+
     mutating func userDidSetCalendar(_ newCalendar: EKCalendar) {
         calendar = newCalendar
         let parsedCalendarIdentifier = textCalendarResult.calendar?.calendarIdentifier
@@ -174,11 +192,8 @@ struct RmbReminder {
     }
 
     mutating func setIsAutoSuggestingTodayForCreation() {
-        guard !hasDueDate else {
-            return
-        }
-        self.hasDueDate = true
-        self.isAutoSuggestingTodayForCreation = true
+        hasDueDate = true
+        dateTimeFallback = DateTimeFallback(hasDueDate: true, hasTime: false, date: date)
     }
 
     mutating func prepareToSave() {
@@ -217,51 +232,75 @@ struct RmbReminder {
         
         removeTag(named: lastTag.name)
     }
-    
+
+    private mutating func updateFallbackFromUserAction() {
+        if !hasDueDate && !hasTime {
+            dateTimeFallback = nil
+        } else {
+            dateTimeFallback = DateTimeFallback(hasDueDate: hasDueDate, hasTime: hasTime, date: date)
+        }
+    }
+
+    // MARK: - Text parsing
+
     private mutating func updateTextDateResult(with newTitle: String) {
-        if isAutoSuggestingTodayForCreation {
-            updateTextDateResultTimeOnly(with: newTitle, isAutoSuggestingToday: true)
-            return
-        }
-        
-        // NOTE: If a date was defined by the user then the DateParser should not be applied.
-        if hasDueDate && textDateResult.string.isEmpty {
-            return
-        }
-        
         guard let dateResult = DateParser.shared.getDate(from: newTitle) else {
-            hasDueDate = false
-            hasTime = false
-            date = .nextExactHour()
-            textDateResult = DateParser.TextDateResult()
+            // NOTE: If there was a previous parse result, revert to the fallback state.
+            if !textDateResult.string.isEmpty {
+                revertToDateTimeFallback()
+                textDateResult = DateParser.TextDateResult()
+            }
             return
         }
         
         hasDueDate = true
-        hasTime = dateResult.hasTime
-        date = dateResult.date
+        if dateResult.hasDate && dateResult.hasTime {
+            hasTime = true
+            date = dateResult.date
+        } else if dateResult.hasDate {
+            // NOTE: Parser found date-only (e.g. "tomorrow"). Check fallback for time.
+            if dateTimeFallback?.hasTime == true, let fallbackDate = dateTimeFallback?.date {
+                hasTime = true
+                date = dateResult.date.withTime(from: fallbackDate)
+            } else {
+                hasTime = false
+                isUrgent = false
+                date = dateResult.date
+            }
+        } else if dateResult.hasTime {
+            // NOTE: Parser found time-only (e.g. "9pm"). Check fallback for date.
+            hasTime = true
+            if dateTimeFallback?.hasDueDate == true, let fallbackDate = dateTimeFallback?.date {
+                date = fallbackDate.withTime(from: dateResult.date)
+            } else {
+                date = dateResult.date
+            }
+        }
+
         textDateResult = dateResult.textDateResult
     }
     
-    private mutating func updateTextDateResultTimeOnly(with newTitle: String, isAutoSuggestingToday: Bool) {
-        // NOTE: If a time was defined by the user then the DateParser should not be applied.
-        if hasTime && textDateResult.string.isEmpty {
-            return
-        }
-        
-        guard let dateResult = DateParser.shared.getTimeOnly(from: newTitle, on: date) else {
+    private mutating func revertToDateTimeFallback() {
+        if let fallback = dateTimeFallback {
+            hasDueDate = fallback.hasDueDate
+            hasTime = fallback.hasTime
+            date = fallback.date
+            // NOTE: Enforce consistency for properties not stored in the fallback.
+            if !fallback.hasDueDate {
+                recurrence = .none
+                isUrgent = false
+            } else if !fallback.hasTime {
+                isUrgent = false
+            }
+        } else {
+            hasDueDate = false
             hasTime = false
-            textDateResult = DateParser.TextDateResult()
-            isAutoSuggestingTodayForCreation = isAutoSuggestingToday
-            return
+            date = .nextExactHour()
+            recurrence = .none
+            isUrgent = false
         }
-        
-        hasTime = true
-        date = dateResult.date
-        textDateResult = dateResult.textDateResult
-        isAutoSuggestingTodayForCreation = isAutoSuggestingToday
     }
-    
+
     private mutating func updateTextCalendarResult(with newTitle: String) {
         // NOTE: Unlike other properties, reminder calendar will not be overwritten by the parser.
         guard let calendarResult = CalendarParser.getCalendar(from: newTitle) else {

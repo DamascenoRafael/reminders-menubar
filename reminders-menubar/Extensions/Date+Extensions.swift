@@ -47,6 +47,17 @@ extension Date {
     func isSameDay(as otherDate: Date) -> Bool {
         return Calendar.current.isDate(self, inSameDayAs: otherDate)
     }
+
+    func withTime(from timeSource: Date) -> Date {
+        let calendar = Calendar.current
+        let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: timeSource)
+        return calendar.date(
+            bySettingHour: timeComponents.hour ?? 0,
+            minute: timeComponents.minute ?? 0,
+            second: timeComponents.second ?? 0,
+            of: self
+        ) ?? self
+    }
     
     func relativeDateDescription(withTime showTimeDescription: Bool) -> String {
         return dateDescription(withTime: showTimeDescription, relativeFormatting: true)

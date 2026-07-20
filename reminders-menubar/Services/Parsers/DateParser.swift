@@ -27,7 +27,7 @@ class DateParser {
     struct DateParserResult {
         let date: Date
         let hasTime: Bool
-        let isTimeOnly: Bool
+        let hasDate: Bool
         let textDateResult: TextDateResult
     }
     
@@ -52,7 +52,7 @@ class DateParser {
             return DateParserResult(
                 date: .nextYear(of: dateResult.date),
                 hasTime: dateResult.hasTime,
-                isTimeOnly: dateResult.isTimeOnly,
+                hasDate: dateResult.hasDate,
                 textDateResult: dateResult.textDateResult
             )
         }
@@ -69,14 +69,14 @@ class DateParser {
         return false
     }
     
-    private func isTimeOnlyResult(in match: NSTextCheckingResult) -> Bool {
+    private func hasDateComponent(in match: NSTextCheckingResult) -> Bool {
         let underlyingResultKey = "underlyingResult"
         if match.responds(to: NSSelectorFromString(underlyingResultKey)) {
             let underlyingResult = match.value(forKey: underlyingResultKey)
             let description = underlyingResult.debugDescription
-            return description.contains("Time") && !description.contains("Date")
+            return description.contains("Date")
         }
-        return false
+        return true
     }
     
     func getDate(from textString: String) -> DateParserResult? {
@@ -88,7 +88,7 @@ class DateParser {
         }
         
         let hasTime = isTimeSignificant(in: match)
-        let isTimeOnly = isTimeOnlyResult(in: match)
+        let hasDate = hasDateComponent(in: match)
         let textDateResult = TextDateResult(
             range: match.range,
             string: textString.substring(in: match.range)
@@ -97,20 +97,10 @@ class DateParser {
         let dateResult = DateParserResult(
             date: date,
             hasTime: hasTime,
-            isTimeOnly: isTimeOnly,
+            hasDate: hasDate,
             textDateResult: textDateResult
         )
 
         return adjustDateAccordingToNow(dateResult)
-    }
-    
-    func getTimeOnly(from textString: String, on date: Date) -> DateParserResult? {
-        guard let dateResult = getDate(from: textString),
-              dateResult.date.isSameDay(as: date) || dateResult.isTimeOnly,
-              dateResult.hasTime else {
-            return nil
-        }
-        
-        return dateResult
     }
 }

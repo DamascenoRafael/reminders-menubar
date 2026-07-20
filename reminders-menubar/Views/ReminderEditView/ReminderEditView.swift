@@ -62,15 +62,15 @@ struct ReminderEditView: View {
 
             LazyVGrid(columns: [GridItem(), GridItem()], alignment: .leading) {
                 ReminderDateTimeEditView(
-                    date: $rmbReminder.date,
+                    date: dateBinding,
                     components: .date,
-                    hasComponent: $rmbReminder.hasDueDate
+                    hasComponent: hasDueDateBinding
                 )
 
                 ReminderDateTimeEditView(
-                    date: $rmbReminder.date,
+                    date: dateBinding,
                     components: .time,
-                    hasComponent: $rmbReminder.hasTime
+                    hasComponent: hasTimeBinding
                 )
             }
 
@@ -78,7 +78,7 @@ struct ReminderEditView: View {
 
             Divider()
 
-            ReminderFlagUrgentEditView(isFlagged: $rmbReminder.isFlagged, isUrgent: $rmbReminder.isUrgent)
+            ReminderFlagUrgentEditView(isFlagged: $rmbReminder.isFlagged, isUrgent: isUrgentBinding)
 
             ReminderPriorityEditView(priority: $rmbReminder.priority)
 
@@ -222,6 +222,36 @@ struct ReminderEditView: View {
                 )
             }
         }
+    }
+
+    // MARK: - Date/Time/Urgent Bindings
+
+    private var dateBinding: Binding<Date> {
+        Binding(
+            get: { rmbReminder.date },
+            set: { rmbReminder.userDidSetDate($0) }
+        )
+    }
+
+    private var hasDueDateBinding: Binding<Bool> {
+        Binding(
+            get: { rmbReminder.hasDueDate },
+            set: { rmbReminder.userDidSetHasDueDate($0) }
+        )
+    }
+
+    private var hasTimeBinding: Binding<Bool> {
+        Binding(
+            get: { rmbReminder.hasTime },
+            set: { rmbReminder.userDidSetHasTime($0) }
+        )
+    }
+
+    private var isUrgentBinding: Binding<Bool> {
+        Binding(
+            get: { rmbReminder.isUrgent },
+            set: { rmbReminder.userDidSetIsUrgent($0) }
+        )
     }
 
     // MARK: - List
