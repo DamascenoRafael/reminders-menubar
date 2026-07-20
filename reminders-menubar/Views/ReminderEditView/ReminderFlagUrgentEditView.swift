@@ -15,7 +15,7 @@ struct ReminderFlagUrgentEditView: View {
                 label: rmbLocalized(.editReminderFlaggedOption),
                 symbol: isFlagged ? .flagFill : .flag,
                 isActive: isFlagged,
-                activeColor: .orange
+                activeColor: Color.rmbColor(.flaggedActive)
             ) {
                 isFlagged.toggle()
             }
@@ -25,7 +25,7 @@ struct ReminderFlagUrgentEditView: View {
                     label: rmbLocalized(.editReminderUrgentOption),
                     symbol: .alarm,
                     isActive: isUrgent,
-                    activeColor: .purple
+                    activeColor: Color.rmbColor(.urgentActive)
                 ) {
                     isUrgent.toggle()
                 }

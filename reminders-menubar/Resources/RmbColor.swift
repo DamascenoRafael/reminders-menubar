@@ -11,6 +11,8 @@ enum RmbColor {
     case dateHighlight
     case priorityHighlight
     case prioritySelectedBackground
+    case urgentActive
+    case flaggedActive
     case confirmButtonBackground
     case upcomingSectionTitle
     case recentSectionTitle
@@ -43,6 +45,10 @@ enum RmbColor {
             return .red
         case .prioritySelectedBackground:
             return .accentColor.opacity(0.4)
+        case .urgentActive:
+            return .purple
+        case .flaggedActive:
+            return .orange
         case .confirmButtonBackground:
             return .accentColor
         case .upcomingSectionTitle:
