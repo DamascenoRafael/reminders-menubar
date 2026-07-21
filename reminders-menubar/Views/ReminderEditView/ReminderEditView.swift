@@ -277,7 +277,7 @@ struct ReminderEditView: View {
 
             Spacer()
 
-            let isSaveDisabled = finalNewReminderTitle().isEmpty
+            let isSaveDisabled = rmbReminder.titleRemovingParsedTokens().isEmpty
             Button {
                 confirmAction()
             } label: {
@@ -352,14 +352,14 @@ struct ReminderEditView: View {
     }
 
     private func confirmAction() {
-        let trimmedTitle = finalNewReminderTitle()
-        guard !trimmedTitle.isEmpty,
+        let finalTitle = rmbReminder.titleRemovingParsedTokens()
+        guard !finalTitle.isEmpty,
               let calendar = getCalendarForSaving() else {
             return
         }
 
         rmbReminder.prepareToSave()
-        rmbReminder.title = trimmedTitle
+        rmbReminder.title = finalTitle
         rmbReminder.calendar = calendar
 
         if case .create = mode {
@@ -378,19 +378,6 @@ struct ReminderEditView: View {
         }
 
         isPresented = false
-    }
-
-    private func finalNewReminderTitle() -> String {
-        var title = rmbReminder.title
-        if let parsedPriorityRange = Range(rmbReminder.textPriorityResult.highlightedText.range, in: title) {
-            title.replaceSubrange(parsedPriorityRange, with: "")
-        }
-        title = title.replacingOccurrences(of: rmbReminder.textDateResult.string, with: "")
-        title = title.replacingOccurrences(of: rmbReminder.textCalendarResult.string, with: "")
-        for tagResult in rmbReminder.textTagResults.sorted(by: { $0.string.count > $1.string.count }) {
-            title = title.replacingOccurrences(of: tagResult.string, with: "")
-        }
-        return title.trimmingCharacters(in: .whitespaces)
     }
 }
 

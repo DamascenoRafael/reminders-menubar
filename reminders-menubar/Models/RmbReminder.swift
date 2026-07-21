@@ -93,10 +93,10 @@ struct RmbReminder {
     private(set) var tags: [Tag]
     var calendar: EKCalendar?
     
-    private(set) var textDateResult = DateParser.TextDateResult()
+    private var textDateResult = DateParser.TextDateResult()
     private(set) var textCalendarResult = CalendarParser.TextCalendarResult()
-    private(set) var textPriorityResult = PriorityParser.PriorityParserResult()
-    private(set) var textTagResults: [TagParser.TextTagResult] = []
+    private var textPriorityResult = PriorityParser.PriorityParserResult()
+    private var textTagResults: [TagParser.TextTagResult] = []
     
     var highlightedTexts: [RmbHighlightedTextField.HighlightedText] {
         var texts = [
@@ -194,6 +194,21 @@ struct RmbReminder {
     mutating func setIsAutoSuggestingTodayForCreation() {
         hasDueDate = true
         dateTimeFallback = DateTimeFallback(hasDueDate: true, hasTime: false, date: date)
+    }
+
+    func titleRemovingParsedTokens() -> String {
+        var title = self.title
+
+        if let parsedPriorityRange = Range(textPriorityResult.highlightedText.range, in: title) {
+            title.replaceSubrange(parsedPriorityRange, with: "")
+        }
+        title = title.replacingOccurrences(of: textDateResult.string, with: "")
+        title = title.replacingOccurrences(of: textCalendarResult.string, with: "")
+        for tagResult in textTagResults.sorted(by: { $0.string.count > $1.string.count }) {
+            title = title.replacingOccurrences(of: tagResult.string, with: "")
+        }
+
+        return title.trimmingCharacters(in: .whitespaces)
     }
 
     mutating func prepareToSave() {
