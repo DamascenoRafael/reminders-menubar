@@ -57,10 +57,6 @@ struct ReminderSettingsTab: View {
                     rmbLocalized(.newReminderAutoSuggestTodayOption),
                     isOn: $userPreferences.autoSuggestToday
                 )
-                Toggle(
-                    rmbLocalized(.newReminderRemoveParsedDateOption),
-                    isOn: $userPreferences.removeParsedDateFromTitle
-                )
             }
 
             SettingsDivider()

@@ -385,9 +385,7 @@ struct ReminderEditView: View {
         if let parsedPriorityRange = Range(rmbReminder.textPriorityResult.highlightedText.range, in: title) {
             title.replaceSubrange(parsedPriorityRange, with: "")
         }
-        if userPreferences.removeParsedDateFromTitle {
-            title = title.replacingOccurrences(of: rmbReminder.textDateResult.string, with: "")
-        }
+        title = title.replacingOccurrences(of: rmbReminder.textDateResult.string, with: "")
         title = title.replacingOccurrences(of: rmbReminder.textCalendarResult.string, with: "")
         for tagResult in rmbReminder.textTagResults.sorted(by: { $0.string.count > $1.string.count }) {
             title = title.replacingOccurrences(of: tagResult.string, with: "")
