@@ -114,7 +114,9 @@ struct ReminderEditView: View {
         .modifier(RmbBackgroundModifier())
         .onAppear {
             if case .create = mode {
-                rmbReminder.calendar = remindersData.calendarForSaving
+                if let calendar = remindersData.calendarForSaving {
+                    rmbReminder.userDidSetCalendar(calendar)
+                }
                 if userPreferences.autoSuggestToday {
                     rmbReminder.setIsAutoSuggestingTodayForCreation()
                 }
@@ -258,7 +260,7 @@ struct ReminderEditView: View {
 
     private var calendarPickerSelection: Binding<EKCalendar?> {
         Binding(
-            get: { getCalendarForSaving() },
+            get: { rmbReminder.calendar },
             set: { newCalendar in
                 guard let newCalendar else { return }
                 rmbReminder.userDidSetCalendar(newCalendar)
@@ -347,20 +349,15 @@ struct ReminderEditView: View {
 
     // MARK: - Helpers
 
-    private func getCalendarForSaving() -> EKCalendar? {
-        rmbReminder.textCalendarResult.calendar ?? rmbReminder.calendar
-    }
-
     private func confirmAction() {
         let finalTitle = rmbReminder.titleRemovingParsedTokens()
         guard !finalTitle.isEmpty,
-              let calendar = getCalendarForSaving() else {
+              let calendar = rmbReminder.calendar else {
             return
         }
 
         rmbReminder.prepareToSave()
         rmbReminder.title = finalTitle
-        rmbReminder.calendar = calendar
 
         if case .create = mode {
             RemindersService.shared.createNew(with: rmbReminder, in: calendar)

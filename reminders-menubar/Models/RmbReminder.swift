@@ -11,6 +11,7 @@ struct RmbReminder {
     }
 
     private var dateTimeFallback: DateTimeFallback?
+    private var calendarFallback: EKCalendar?
 
     // MARK: - Change detection
 
@@ -91,10 +92,10 @@ struct RmbReminder {
     var isFlagged: Bool
     private(set) var isUrgent: Bool
     private(set) var tags: [Tag]
-    var calendar: EKCalendar?
+    private(set) var calendar: EKCalendar?
     
     private var textDateResult = DateParser.TextDateResult()
-    private(set) var textCalendarResult = CalendarParser.TextCalendarResult()
+    private var textCalendarResult = CalendarParser.TextCalendarResult()
     private var textPriorityResult = PriorityParser.PriorityParserResult()
     private var textTagResults: [TagParser.TextTagResult] = []
     
@@ -135,6 +136,7 @@ struct RmbReminder {
             isUrgent = reminder.isUrgent
         }
         calendar = reminder.calendar
+        calendarFallback = reminder.calendar
         tags = []
         if #available(macOS 12, *) {
             tags = reminder.ekTags
@@ -189,6 +191,7 @@ struct RmbReminder {
 
     mutating func userDidSetCalendar(_ newCalendar: EKCalendar) {
         calendar = newCalendar
+        calendarFallback = newCalendar
         let parsedCalendarIdentifier = textCalendarResult.calendar?.calendarIdentifier
         if newCalendar.calendarIdentifier != parsedCalendarIdentifier {
             textCalendarResult = CalendarParser.TextCalendarResult()
@@ -321,11 +324,15 @@ struct RmbReminder {
     }
 
     private mutating func updateTextCalendarResult(with newTitle: String) {
-        // NOTE: Unlike other properties, reminder calendar will not be overwritten by the parser.
         guard let calendarResult = CalendarParser.getCalendar(from: newTitle) else {
+            // NOTE: If there was a previous parse result, revert to the fallback state.
+            if !textCalendarResult.string.isEmpty, let fallback = calendarFallback {
+                calendar = fallback
+            }
             textCalendarResult = CalendarParser.TextCalendarResult()
             return
         }
+        calendar = calendarResult.calendar
         textCalendarResult = calendarResult
     }
     
