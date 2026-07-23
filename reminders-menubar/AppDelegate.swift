@@ -42,16 +42,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var currentReminderPreview: String?
 
     let popover = NSPopover()
+    private(set) var remindersWindow: NSWindow?
     lazy var statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    private var remindersWindowCloseCancellationToken: AnyCancellable?
+    private var remindersWindowRemindersData: RemindersData?
+    private var remindersWindowCopyShortcutCoordinator: CopyShortcutCoordinator?
     
     var contentViewController: NSViewController {
-        let contentView = ContentView()
         let remindersData = RemindersData()
         let copyShortcutCoordinator = CopyShortcutCoordinator()
-        return NSHostingController(
-            rootView: contentView
-                .environmentObject(remindersData)
-                .environmentObject(copyShortcutCoordinator)
+        return makeContentViewController(
+            presentationStyle: .popover,
+            remindersData: remindersData,
+            copyShortcutCoordinator: copyShortcutCoordinator
         )
     }
 
@@ -165,6 +168,107 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             NSApp.activate(ignoringOtherApps: true)
             popover.contentViewController?.view.window?.makeKey()
         }
+    }
+
+    func showRemindersWindow() {
+        guard RemindersService.shared.isAuthorized else {
+            requestAuthorization()
+            return
+        }
+
+        popover.performClose(nil)
+
+        if let remindersWindow {
+            NSApp.activate(ignoringOtherApps: true)
+            remindersWindow.makeKeyAndOrderFront(nil)
+            remindersWindow.orderFrontRegardless()
+            return
+        }
+
+        let remindersData = RemindersData()
+        let copyShortcutCoordinator = CopyShortcutCoordinator()
+        let contentViewController = makeContentViewController(
+            presentationStyle: .window,
+            remindersData: remindersData,
+            copyShortcutCoordinator: copyShortcutCoordinator
+        )
+        remindersWindowRemindersData = remindersData
+        remindersWindowCopyShortcutCoordinator = copyShortcutCoordinator
+
+        let window = NSWindow(
+            contentRect: NSRect(origin: .zero, size: MainPopoverSizing.defaultSize),
+            styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
+            backing: .buffered,
+            defer: false
+        )
+        window.title = AppConstants.appName
+        window.contentViewController = contentViewController
+        window.minSize = MainPopoverSizing.minSize
+        window.maxSize = MainPopoverSizing.maxSize
+        window.isReleasedWhenClosed = false
+        let frameAutosaveName = "RemindersMenuBarWindow"
+        if !window.setFrameUsingName(frameAutosaveName) {
+            window.center()
+        }
+        window.setFrameAutosaveName(frameAutosaveName)
+
+        remindersWindow = window
+        applyRemindersWindowFloatingPreference()
+        observeRemindersWindowClose(window)
+
+        NSApp.activate(ignoringOtherApps: true)
+        window.makeKeyAndOrderFront(nil)
+        window.orderFrontRegardless()
+    }
+
+    func closeRemindersWindow() {
+        remindersWindow?.performClose(nil)
+    }
+
+    func toggleRemindersWindowFloating() {
+        UserPreferences.shared.remindersWindowFloatsOnTop.toggle()
+        applyRemindersWindowFloatingPreference()
+    }
+
+    private func makeContentViewController(
+        presentationStyle: ContentPresentationStyle,
+        remindersData: RemindersData,
+        copyShortcutCoordinator: CopyShortcutCoordinator
+    ) -> NSViewController {
+        let contentView = ContentView(presentationStyle: presentationStyle)
+        return NSHostingController(
+            rootView: contentView
+                .environmentObject(remindersData)
+                .environmentObject(copyShortcutCoordinator)
+        )
+    }
+
+    private func applyRemindersWindowFloatingPreference() {
+        guard let remindersWindow else { return }
+
+        if UserPreferences.shared.remindersWindowFloatsOnTop {
+            remindersWindow.level = .floating
+            remindersWindow.collectionBehavior = [
+                .canJoinAllSpaces,
+                .fullScreenAuxiliary,
+                .managed
+            ]
+        } else {
+            remindersWindow.level = .normal
+            remindersWindow.collectionBehavior = [.managed]
+        }
+    }
+
+    private func observeRemindersWindowClose(_ window: NSWindow) {
+        remindersWindowCloseCancellationToken = NotificationCenter.default
+            .publisher(for: NSWindow.willCloseNotification, object: window)
+            .first()
+            .sink { [weak self] _ in
+                self?.remindersWindow = nil
+                self?.remindersWindowRemindersData = nil
+                self?.remindersWindowCopyShortcutCoordinator = nil
+                self?.remindersWindowCloseCancellationToken = nil
+            }
     }
 
     // - MARK: Popover sizing

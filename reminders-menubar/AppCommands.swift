@@ -2,6 +2,22 @@ import SwiftUI
 
 struct AppCommands: Commands {
     @CommandsBuilder var body: some Commands {
+        CommandMenu(Text(verbatim: "Window")) {
+            Button {
+                AppDelegate.shared.showRemindersWindow()
+            } label: {
+                Text(rmbLocalized(.openRemindersWindowButton))
+            }
+            .keyboardShortcut(KeyEquivalent("0"), modifiers: [.command, .option])
+
+            Button {
+                AppDelegate.shared.toggleRemindersWindowFloating()
+            } label: {
+                Text(rmbLocalized(.keepRemindersWindowFloatingButton))
+            }
+            .keyboardShortcut(KeyEquivalent("f"), modifiers: [.command, .option])
+        }
+
         CommandMenu(Text(verbatim: "Edit")) {
             // NOTE: macOS 13.0 already has the below shortcuts for TextField.
             // Shortcuts only need to be registered for versions earlier than macOS 13.0.
