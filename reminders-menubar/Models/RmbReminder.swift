@@ -139,6 +139,11 @@ struct RmbReminder {
         if #available(macOS 12, *) {
             tags = reminder.ekTags
         }
+
+        defer {
+            // NOTE: defer ensures updateDateTimeFallback() runs after all stored properties are initialized.
+            updateDateTimeFallback()
+        }
     }
 
     // MARK: - User-intent mutations
@@ -146,7 +151,7 @@ struct RmbReminder {
     mutating func userDidSetDate(_ newDate: Date) {
         date = newDate
         textDateResult = DateParser.TextDateResult()
-        updateFallbackFromUserAction()
+        updateDateTimeFallback()
     }
 
     mutating func userDidSetHasDueDate(_ enabled: Bool) {
@@ -157,7 +162,7 @@ struct RmbReminder {
             isUrgent = false
             textDateResult = DateParser.TextDateResult()
         }
-        updateFallbackFromUserAction()
+        updateDateTimeFallback()
     }
 
     mutating func userDidSetHasTime(_ enabled: Bool) {
@@ -168,18 +173,17 @@ struct RmbReminder {
         } else {
             isUrgent = false
         }
-        updateFallbackFromUserAction()
+        updateDateTimeFallback()
     }
 
     mutating func userDidSetIsUrgent(_ enabled: Bool) {
         isUrgent = enabled
         // NOTE: Urgent requires date+time.
         if enabled && !hasTime {
-            let urgentDate: Date = .nextExactHour(of: date)
+            date = .nextExactHour(of: date)
             hasDueDate = true
             hasTime = true
-            date = urgentDate
-            dateTimeFallback = DateTimeFallback(hasDueDate: true, hasTime: true, date: urgentDate)
+            updateDateTimeFallback()
         }
     }
 
@@ -193,7 +197,7 @@ struct RmbReminder {
 
     mutating func setIsAutoSuggestingTodayForCreation() {
         hasDueDate = true
-        dateTimeFallback = DateTimeFallback(hasDueDate: true, hasTime: false, date: date)
+        updateDateTimeFallback()
     }
 
     func titleRemovingParsedTokens() -> String {
@@ -248,7 +252,7 @@ struct RmbReminder {
         removeTag(named: lastTag.name)
     }
 
-    private mutating func updateFallbackFromUserAction() {
+    private mutating func updateDateTimeFallback() {
         if !hasDueDate && !hasTime {
             dateTimeFallback = nil
         } else {
