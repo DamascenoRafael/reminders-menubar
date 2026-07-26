@@ -1,5 +1,7 @@
 import EventKit
 
+// TODO: Resolve body length of RmbReminder
+// swiftlint:disable:next type_body_length
 struct RmbReminder {
     private var originalReminder: EKReminder?
     private var isPreparingToSave = false
@@ -77,6 +79,10 @@ struct RmbReminder {
             updateTextDateResult(with: newValue)
             updateTextCalendarResult(with: newValue)
             updateTextPriorityResult(with: newValue)
+            if #available(macOS 26, *) {
+                updateTextUrgentResult(with: newValue)
+            }
+            updateTextFlaggedResult(with: newValue)
             if #available(macOS 12, *) {
                 updateTextTagResults(with: newValue)
             }
@@ -89,7 +95,7 @@ struct RmbReminder {
     private(set) var hasTime: Bool
     var recurrence: RmbRecurrenceOption
     var priority: EKReminderPriority
-    var isFlagged: Bool
+    private(set) var isFlagged: Bool
     private(set) var isUrgent: Bool
     private(set) var tags: [Tag]
     private(set) var calendar: EKCalendar?
@@ -97,13 +103,17 @@ struct RmbReminder {
     private var textDateResult = DateParser.TextDateResult()
     private var textCalendarResult = CalendarParser.TextCalendarResult()
     private var textPriorityResult = PriorityParser.PriorityParserResult()
+    private var textUrgentResult = UrgentParser.UrgentParserResult()
+    private var textFlaggedResult = FlaggedParser.FlaggedParserResult()
     private var textTagResults: [TagParser.TextTagResult] = []
     
     var highlightedTexts: [RmbHighlightedTextField.HighlightedText] {
         var texts = [
             textDateResult.highlightedText,
             textCalendarResult.highlightedText,
-            textPriorityResult.highlightedText
+            textPriorityResult.highlightedText,
+            textUrgentResult.highlightedText,
+            textFlaggedResult.highlightedText
         ]
         texts.append(contentsOf: textTagResults.map({ $0.highlightedText }))
         return texts
@@ -180,12 +190,18 @@ struct RmbReminder {
 
     mutating func userDidSetIsUrgent(_ enabled: Bool) {
         isUrgent = enabled
-        // NOTE: Urgent requires date+time.
         if enabled && !hasTime {
-            date = .nextExactHour(of: date)
-            hasDueDate = true
-            hasTime = true
+            setDateTimeForUrgent()
             updateDateTimeFallback()
+        } else if !enabled {
+            textUrgentResult = UrgentParser.UrgentParserResult()
+        }
+    }
+
+    mutating func userDidSetIsFlagged(_ enabled: Bool) {
+        isFlagged = enabled
+        if !enabled {
+            textFlaggedResult = FlaggedParser.FlaggedParserResult()
         }
     }
 
@@ -206,13 +222,18 @@ struct RmbReminder {
     func titleRemovingParsedTokens() -> String {
         var title = self.title
 
-        if let parsedPriorityRange = Range(textPriorityResult.highlightedText.range, in: title) {
-            title.replaceSubrange(parsedPriorityRange, with: "")
-        }
-        title = title.replacingOccurrences(of: textDateResult.string, with: "")
-        title = title.replacingOccurrences(of: textCalendarResult.string, with: "")
-        for tagResult in textTagResults.sorted(by: { $0.string.count > $1.string.count }) {
-            title = title.replacingOccurrences(of: tagResult.string, with: "")
+        let rangesToRemove = [
+            textPriorityResult.highlightedText.range,
+            textUrgentResult.highlightedText.range,
+            textFlaggedResult.highlightedText.range,
+            textCalendarResult.highlightedText.range,
+            textDateResult.highlightedText.range
+        ]
+        + textTagResults.map(\.highlightedText.range)
+
+        for nsRange in rangesToRemove.sorted(by: { $0.location > $1.location }) {
+            guard nsRange.length > 0, let range = Range(nsRange, in: title) else { continue }
+            title.replaceSubrange(range, with: "")
         }
 
         return title.trimmingCharacters(in: .whitespaces)
@@ -223,6 +244,8 @@ struct RmbReminder {
         textDateResult = DateParser.TextDateResult()
         textCalendarResult = CalendarParser.TextCalendarResult()
         textPriorityResult = PriorityParser.PriorityParserResult()
+        textUrgentResult = UrgentParser.UrgentParserResult()
+        textFlaggedResult = FlaggedParser.FlaggedParserResult()
         textTagResults = []
     }
 
@@ -352,6 +375,49 @@ struct RmbReminder {
         textPriorityResult = priorityResult
     }
     
+    @available(macOS 26, *)
+    private mutating func updateTextUrgentResult(with newTitle: String) {
+        // NOTE: If urgent was set by the user then the UrgentParser should not be applied.
+        if isUrgent && textUrgentResult.string.isEmpty {
+            return
+        }
+        
+        guard let urgentResult = UrgentParser.getUrgent(from: newTitle) else {
+            textUrgentResult = UrgentParser.UrgentParserResult()
+            isUrgent = false
+            return
+        }
+        
+        isUrgent = true
+        if !hasTime {
+            setDateTimeForUrgent()
+        }
+        textUrgentResult = urgentResult
+    }
+
+    /// Sets date+time, as required by urgent reminders.
+    private mutating func setDateTimeForUrgent() {
+        hasDueDate = true
+        hasTime = true
+        date = .nextExactHour(of: date)
+    }
+
+    private mutating func updateTextFlaggedResult(with newTitle: String) {
+        // NOTE: If flagged was set by the user then the FlaggedParser should not be applied.
+        if isFlagged && textFlaggedResult.string.isEmpty {
+            return
+        }
+        
+        guard let flaggedResult = FlaggedParser.getFlagged(from: newTitle) else {
+            textFlaggedResult = FlaggedParser.FlaggedParserResult()
+            isFlagged = false
+            return
+        }
+        
+        isFlagged = true
+        textFlaggedResult = flaggedResult
+    }
+
     @available(macOS 12, *)
     private mutating func updateTextTagResults(with newTitle: String) {
         let newTextTagResults = TagParser.getTags(from: newTitle)

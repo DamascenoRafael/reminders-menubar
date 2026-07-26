@@ -78,7 +78,7 @@ struct ReminderEditView: View {
 
             Divider()
 
-            ReminderFlagUrgentEditView(isFlagged: $rmbReminder.isFlagged, isUrgent: isUrgentBinding)
+            ReminderFlagUrgentEditView(isFlagged: isFlaggedBinding, isUrgent: isUrgentBinding)
 
             ReminderPriorityEditView(priority: $rmbReminder.priority)
 
@@ -253,6 +253,13 @@ struct ReminderEditView: View {
         Binding(
             get: { rmbReminder.isUrgent },
             set: { rmbReminder.userDidSetIsUrgent($0) }
+        )
+    }
+
+    private var isFlaggedBinding: Binding<Bool> {
+        Binding(
+            get: { rmbReminder.isFlagged },
+            set: { rmbReminder.userDidSetIsFlagged($0) }
         )
     }
 

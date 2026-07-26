@@ -117,6 +117,8 @@
 		71F36A9829C16B7A0099D337 /* RmbColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F36A9729C16B7A0099D337 /* RmbColor.swift */; };
 		71F36A9A29C2BA0C0099D337 /* RmbColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F36A9929C2BA0C0099D337 /* RmbColorScheme.swift */; };
 		71F36AA029C3E79E0099D337 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F36A9F29C3E79E0099D337 /* Color+Extensions.swift */; };
+		71F47851300DBB020068C16D /* UrgentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F47850300DBB020068C16D /* UrgentParser.swift */; };
+		71F47853300DBD7C0068C16D /* FlaggedParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F47852300DBD7C0068C16D /* FlaggedParser.swift */; };
 		71F5A0012F5C8A0000D1E2F3 /* NSApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F5A0002F5C8A0000D1E2F3 /* NSApplication+Extensions.swift */; };
 		71F84A4629541D6700C5A24D /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F84A4529541D6700C5A24D /* URL+Extensions.swift */; };
 		71F93A612E03B54100D5C5BC /* ReminderCompleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F93A602E03B54100D5C5BC /* ReminderCompleteButton.swift */; };
@@ -264,6 +266,8 @@
 		71F36A9729C16B7A0099D337 /* RmbColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbColor.swift; sourceTree = "<group>"; };
 		71F36A9929C2BA0C0099D337 /* RmbColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbColorScheme.swift; sourceTree = "<group>"; };
 		71F36A9F29C3E79E0099D337 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
+		71F47850300DBB020068C16D /* UrgentParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrgentParser.swift; sourceTree = "<group>"; };
+		71F47852300DBD7C0068C16D /* FlaggedParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlaggedParser.swift; sourceTree = "<group>"; };
 		71F5A0002F5C8A0000D1E2F3 /* NSApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSApplication+Extensions.swift"; sourceTree = "<group>"; };
 		71F84A4529541D6700C5A24D /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		71F93A602E03B54100D5C5BC /* ReminderCompleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCompleteButton.swift; sourceTree = "<group>"; };
@@ -571,6 +575,8 @@
 				71CAF8422A3444EA003160FF /* CalendarParser.swift */,
 				718C0C622D43220A00BF04B0 /* PriorityParser.swift */,
 				71TAG0002F80000000000001 /* TagParser.swift */,
+				71F47852300DBD7C0068C16D /* FlaggedParser.swift */,
+				71F47850300DBB020068C16D /* UrgentParser.swift */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -809,6 +815,7 @@
 				712C836229E6635200BF6C24 /* RmbMenuBarCounterType.swift in Sources */,
 				7152F511D9CB8F68D9D9B034 /* RmbMenuBarPreviewTimeAhead.swift in Sources */,
 				71C0D002E1700002A8000002 /* MenuBarPreviewService.swift in Sources */,
+				71F47851300DBB020068C16D /* UrgentParser.swift in Sources */,
 				71A000012F61000100000001 /* RmbSortingOrder.swift in Sources */,
 				71A0823293046B8C43603367 /* RmbKeyCode.swift in Sources */,
 				710980D22600419F001F69B2 /* UpcomingRemindersContent.swift in Sources */,
@@ -852,6 +859,7 @@
 				71F36AA029C3E79E0099D337 /* Color+Extensions.swift in Sources */,
 				7113A2822F724A7500474582 /* CreateReminderButton.swift in Sources */,
 				71A3834625BDD2AC00975B4C /* EKReminder+Extensions.swift in Sources */,
+				71F47853300DBD7C0068C16D /* FlaggedParser.swift in Sources */,
 				71A3834425BDD2AC00975B4C /* EKCalendar+Extensions.swift in Sources */,
 				71B4AD6525B9118100214219 /* NoReminderListsView.swift in Sources */,
 				71B4AD6525B9118200214219 /* NoFilterSelectedView.swift in Sources */,

@@ -10,6 +10,8 @@ enum RmbColor {
     case tagHighlight
     case dateHighlight
     case priorityHighlight
+    case urgentHighlight
+    case flaggedHighlight
     case prioritySelectedBackground
     case urgentActive
     case flaggedActive
@@ -43,6 +45,10 @@ enum RmbColor {
             return .blue
         case .priorityHighlight:
             return .red
+        case .urgentHighlight:
+            return .purple
+        case .flaggedHighlight:
+            return .orange
         case .prioritySelectedBackground:
             return .accentColor.opacity(0.4)
         case .urgentActive:
