@@ -59,6 +59,8 @@ enum RemindersMenuBarLocalizedKeys: String {
     case showMenuBarTodayCountOption
     case showMenuBarAllRemindersCountOption
     case showMenuBarNoCountOption
+    case openRemindersWindowButton
+    case keepRemindersWindowFloatingButton
     case reloadRemindersDataButton
     case appAboutButton
     case appQuitButton

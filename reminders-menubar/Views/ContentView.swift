@@ -1,11 +1,22 @@
 import SwiftUI
 import EventKit
 
+enum ContentPresentationStyle {
+    case popover
+    case window
+}
+
 struct ContentView: View {
+    let presentationStyle: ContentPresentationStyle
+
     @EnvironmentObject var remindersData: RemindersData
     @ObservedObject var userPreferences = UserPreferences.shared
     @State private var appHasPopoverOpen = false
     @State private var keyMonitor: Any?
+
+    init(presentationStyle: ContentPresentationStyle = .popover) {
+        self.presentationStyle = presentationStyle
+    }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -23,7 +34,7 @@ struct ContentView: View {
                 noFilterContent
             }
         }
-        .overlay(PopoverResizeHandleView().padding(4), alignment: .bottomTrailing)
+        .overlay(resizeHandleOverlay, alignment: .bottomTrailing)
         .modifier(RmbBackgroundModifier())
         .preferredColorScheme(userPreferences.rmbColorScheme.colorScheme)
         .environment(\.appHasPopoverOpen, $appHasPopoverOpen)
@@ -35,6 +46,7 @@ struct ContentView: View {
                 object: AppDelegate.shared.popover
             )
         ) { _ in
+            guard presentationStyle == .popover else { return }
             remindersData.showingSearch = false
             remindersData.showingRecentReminders = false
         }
@@ -42,37 +54,52 @@ struct ContentView: View {
 
     // MARK: - Key handling
 
+    @ViewBuilder private var resizeHandleOverlay: some View {
+        if presentationStyle == .popover {
+            PopoverResizeHandleView().padding(4)
+        }
+    }
+
     private func startKeyMonitor() {
         guard keyMonitor == nil else { return }
         keyMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { event in
-            guard let popoverWindow = activePopoverWindow(for: event) else { return event }
+            guard let activeWindow = activePresentationWindow(for: event) else { return event }
             guard !appHasPopoverOpen else { return event }
             guard !FilterPanelController.shared.isVisible else { return event }
 
-            if handlePrintableKey(event, popoverWindow: popoverWindow) {
+            if handlePrintableKey(event, activeWindow: activeWindow) {
                 return nil
             }
-            if handleEscapeKey(event, popoverWindow: popoverWindow) {
+            if handleEscapeKey(event, activeWindow: activeWindow) {
                 return nil
             }
             return event
         }
     }
 
-    private func activePopoverWindow(for event: NSEvent) -> NSWindow? {
-        let popover = AppDelegate.shared.popover
-        guard popover.isShown,
-              let window = popover.contentViewController?.view.window,
-              event.window === window else {
-            return nil
+    private func activePresentationWindow(for event: NSEvent) -> NSWindow? {
+        switch presentationStyle {
+        case .popover:
+            let popover = AppDelegate.shared.popover
+            guard popover.isShown,
+                  let window = popover.contentViewController?.view.window,
+                  event.window === window else {
+                return nil
+            }
+            return window
+        case .window:
+            guard let window = AppDelegate.shared.remindersWindow,
+                  event.window === window else {
+                return nil
+            }
+            return window
         }
-        return window
     }
 
-    private func handlePrintableKey(_ event: NSEvent, popoverWindow: NSWindow) -> Bool {
+    private func handlePrintableKey(_ event: NSEvent, activeWindow: NSWindow) -> Bool {
         guard !remindersData.showingSearch,
               !remindersData.availableCalendars.isEmpty,
-              popoverWindow.attachedSheet == nil || remindersData.pendingNewReminderTitle != nil,
+              activeWindow.attachedSheet == nil || remindersData.pendingNewReminderTitle != nil,
               let typedText = printableText(from: event) else {
             return false
         }
@@ -80,8 +107,8 @@ struct ContentView: View {
         return true
     }
 
-    private func handleEscapeKey(_ event: NSEvent, popoverWindow: NSWindow) -> Bool {
-        guard popoverWindow.attachedSheet == nil else { return false }
+    private func handleEscapeKey(_ event: NSEvent, activeWindow: NSWindow) -> Bool {
+        guard activeWindow.attachedSheet == nil else { return false }
         guard event.keyCode == RmbKeyCode.escape else { return false }
 
         if remindersData.showingSearch {
@@ -93,7 +120,12 @@ struct ContentView: View {
             return true
         }
 
-        AppDelegate.shared.popover.performClose(nil)
+        switch presentationStyle {
+        case .popover:
+            AppDelegate.shared.popover.performClose(nil)
+        case .window:
+            AppDelegate.shared.closeRemindersWindow()
+        }
         return true
     }
 
@@ -233,6 +265,6 @@ struct ListSectionModifier: ViewModifier {
 }
 
 #Preview {
-    ContentView()
+    ContentView(presentationStyle: .window)
         .environmentObject(RemindersData())
 }

@@ -22,6 +22,21 @@ final class RightClickMenuHelper: NSObject {
         menu.addItem(.separator())
 
         menu.addItem(makeMenuItem(
+            title: rmbLocalized(.openRemindersWindowButton),
+            action: #selector(openRemindersWindow),
+            systemSymbolName: "macwindow"
+        ))
+
+        menu.addItem(makeMenuItem(
+            title: rmbLocalized(.keepRemindersWindowFloatingButton),
+            action: #selector(toggleRemindersWindowFloating),
+            systemSymbolName: "pin",
+            state: UserPreferences.shared.remindersWindowFloatsOnTop ? .on : .off
+        ))
+
+        menu.addItem(.separator())
+
+        menu.addItem(makeMenuItem(
             title: rmbLocalized(.reloadRemindersDataButton),
             action: #selector(reloadData),
             systemSymbolName: "arrow.clockwise"
@@ -91,6 +106,14 @@ final class RightClickMenuHelper: NSObject {
 
     @objc private func reloadData() {
         NotificationCenter.default.post(name: .remindersDataShouldUpdate, object: nil)
+    }
+
+    @objc private func openRemindersWindow() {
+        AppDelegate.shared.showRemindersWindow()
+    }
+
+    @objc private func toggleRemindersWindowFloating() {
+        AppDelegate.shared.toggleRemindersWindowFloating()
     }
 
     @objc private func openSettingsAction() {

@@ -33,6 +33,7 @@ private enum PreferencesKeys {
     static let showTagsBeforeCalendars = "showTagsBeforeCalendars"
     static let filterTagRemindersByCalendar = "filterTagRemindersByCalendar"
     static let completionAnimationEnabled = "completionAnimationEnabled"
+    static let remindersWindowFloatsOnTop = "remindersWindowFloatsOnTop"
 }
 
 // TODO: Resolve body length of UserPreferences
@@ -198,6 +199,17 @@ class UserPreferences: ObservableObject {
     }() {
         didSet {
             UserPreferences.defaults.set(completionAnimationEnabled, forKey: PreferencesKeys.completionAnimationEnabled)
+        }
+    }
+
+    @Published var remindersWindowFloatsOnTop: Bool = {
+        return defaults.bool(forKey: PreferencesKeys.remindersWindowFloatsOnTop)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(
+                remindersWindowFloatsOnTop,
+                forKey: PreferencesKeys.remindersWindowFloatsOnTop
+            )
         }
     }
     
