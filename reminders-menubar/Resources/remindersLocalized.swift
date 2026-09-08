@@ -82,6 +82,14 @@ enum RemindersMenuBarLocalizedKeys: String {
     case updateLaterButton
     case keyboardShortcutEnableOpenShortcutOption
     case keyboardShortcutRestoreDefaultButton
+    case keyboardTypingShortcutsSettingsLabel
+    case keyboardTypingShortcutsNote
+    case keyboardTypingShortcutsDateDescription
+    case keyboardTypingShortcutsListDescription
+    case keyboardTypingShortcutsPriorityDescription
+    case keyboardTypingShortcutsFlagDescription
+    case keyboardTypingShortcutsUrgentDescription
+    case keyboardTypingShortcutsTagDescription
     case upcomingRemindersDueFilterOption
     case upcomingRemindersTodayFilterOption
     case upcomingRemindersInAWeekFilterOption
