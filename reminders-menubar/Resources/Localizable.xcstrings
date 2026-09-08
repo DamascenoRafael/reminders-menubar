@@ -6001,6 +6001,131 @@
         }
       }
     },
+    "editReminderExternalLinksEmptyMessage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Žádné"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "None"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ninguno"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wala"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tidak ada"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessuno"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "なし"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "없음"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geen"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nenhum"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Žiadne"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yok"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Немає"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không có"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無"
+          }
+        }
+      }
+    },
     "editReminderExternalLinksViewOnlyLabel" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -20341,121 +20466,121 @@
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Externí odkazy jsou vždy viditelné při otevření připomínky."
+            "value" : "Zahrnuje připojené odkazy, odkazy na e-maily a odkazy nalezené v názvech nebo poznámkách."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Externe Links sind beim Öffnen einer Erinnerung immer sichtbar."
+            "value" : "Umfasst angehängte Links, E-Mail-Links und Links in Titeln oder Notizen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "External links are always visible when opening a reminder."
+            "value" : "Includes attached links, Mail links, and links found in titles or notes."
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Los enlaces externos siempre son visibles al abrir un recordatorio."
+            "value" : "Incluye enlaces adjuntos, enlaces de Mail y enlaces encontrados en títulos o notas."
           }
         },
         "fil-PH" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Palaging nakikita ang mga external na link kapag binuksan ang isang paalala."
+            "value" : "Kasama ang mga naka-attach na link, mga link sa Mail, at mga link na makikita sa mga pamagat o tala."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les liens externes sont toujours visibles lors de l’ouverture d’un rappel."
+            "value" : "Inclut les liens joints, les liens Mail et les liens trouvés dans les titres ou les notes."
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tautan eksternal selalu terlihat saat membuka pengingat."
+            "value" : "Mencakup tautan lampiran, tautan Mail, dan tautan yang ditemukan dalam judul atau catatan."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "I link esterni sono sempre visibili quando si apre un promemoria."
+            "value" : "Include link allegati, link di Mail e link presenti nei titoli o nelle note."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "外部リンクはリマインダーを開くと常に表示されます。"
+            "value" : "添付リンク、メールリンク、およびタイトルやメモ内のリンクが含まれます。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "외부 링크는 미리 알림을 열 때 항상 표시됩니다."
+            "value" : "첨부된 링크, Mail 링크 및 제목이나 메모에 있는 링크가 포함됩니다."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Externe links zijn altijd zichtbaar bij het openen van een herinnering."
+            "value" : "Omvat bijgevoegde links, Mail-links en links in titels of notities."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Linki zewnętrzne są zawsze widoczne po otwarciu przypomnienia."
+            "value" : "Obejmuje dołączone łącza, łącza Mail oraz łącza znalezione w tytułach lub notatkach."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Links externos são sempre visíveis ao abrir um lembrete."
+            "value" : "Inclui links anexados, links do Mail e links encontrados em títulos ou notas."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Внешние ссылки всегда видны при открытии напоминания."
+            "value" : "Включает прикреплённые ссылки, ссылки Mail и ссылки из названий или заметок."
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Externé odkazy sú vždy viditeľné pri otvorení pripomienky."
+            "value" : "Zahŕňa pripojené odkazy, odkazy na e-maily a odkazy nájdené v názvoch alebo poznámkach."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Harici bağlantılar bir hatırlatıcı açıldığında her zaman görünür."
+            "value" : "Ekli bağlantıları, Mail bağlantılarını ve başlıklarda veya notlarda bulunan bağlantıları içerir."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Зовнішні посилання завжди видимі при відкритті нагадування."
+            "value" : "Включає прикріплені посилання, посилання Mail і посилання з назв або нотаток."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Liên kết ngoài luôn hiển thị khi mở lời nhắc."
+            "value" : "Bao gồm liên kết đính kèm, liên kết Mail và liên kết có trong tiêu đề hoặc ghi chú."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "打开提醒事项时，外部链接始终可见。"
+            "value" : "包括附加链接、邮件链接以及标题或备注中的链接。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "打開提醒事項時，外部連結始終可見。"
+            "value" : "包括附加連結、郵件連結以及標題或備註中的連結。"
           }
         }
       }
@@ -21216,121 +21341,121 @@
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Náhledy poznámek jsou omezeny na dva řádky. Úplné poznámky jsou vždy viditelné při otevření připomínky."
+            "value" : "Náhledy poznámek jsou omezeny na dva řádky."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Notizvorschauen sind auf zwei Zeilen begrenzt. Vollständige Notizen sind beim Öffnen einer Erinnerung immer sichtbar."
+            "value" : "Notizvorschauen sind auf zwei Zeilen begrenzt."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Note previews are limited to two lines. Full notes are always visible when opening a reminder."
+            "value" : "Note previews are limited to two lines."
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Las vistas previas de las notas están limitadas a dos líneas. Las notas completas siempre están visibles al abrir un recordatorio."
+            "value" : "Las vistas previas de las notas están limitadas a dos líneas."
           }
         },
         "fil-PH" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Limitado sa dalawang linya ang mga preview ng tala. Palaging makikita ang buong tala kapag binuksan ang isang paalala."
+            "value" : "Limitado sa dalawang linya ang mga preview ng tala."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les aperçus des notes sont limités à deux lignes. Les notes complètes sont toujours visibles lors de l’ouverture d’un rappel."
+            "value" : "Les aperçus des notes sont limités à deux lignes."
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pratinjau catatan dibatasi hingga dua baris. Catatan lengkap selalu terlihat saat membuka pengingat."
+            "value" : "Pratinjau catatan dibatasi hingga dua baris."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le anteprime delle note sono limitate a due righe. Le note complete sono sempre visibili quando si apre un promemoria."
+            "value" : "Le anteprime delle note sono limitate a due righe."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "メモのプレビューは2行まで表示されます。リマインダーを開くと、メモの全文をいつでも確認できます。"
+            "value" : "メモのプレビューは2行まで表示されます。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "메모 미리보기는 두 줄로 제한됩니다. 미리 알림을 열면 전체 메모가 항상 표시됩니다."
+            "value" : "메모 미리보기는 두 줄로 제한됩니다."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Voorvertoningen van notities zijn beperkt tot twee regels. Volledige notities zijn altijd zichtbaar wanneer je een herinnering opent."
+            "value" : "Voorvertoningen van notities zijn beperkt tot twee regels."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Podglądy notatek są ograniczone do dwóch wierszy. Pełne notatki są zawsze widoczne po otwarciu przypomnienia."
+            "value" : "Podglądy notatek są ograniczone do dwóch wierszy."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "As prévias das notas são limitadas a duas linhas. As notas completas estão sempre visíveis ao abrir um lembrete."
+            "value" : "As prévias das notas são limitadas a duas linhas."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Предварительный просмотр заметок ограничен двумя строками. Полные заметки всегда видны при открытии напоминания."
+            "value" : "Предварительный просмотр заметок ограничен двумя строками."
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Náhľady poznámok sú obmedzené na dva riadky. Úplné poznámky sú vždy viditeľné pri otvorení pripomienky."
+            "value" : "Náhľady poznámok sú obmedzené na dva riadky."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Not önizlemeleri iki satırla sınırlıdır. Bir hatırlatıcı açıldığında notların tamamı her zaman görünür."
+            "value" : "Not önizlemeleri iki satırla sınırlıdır."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Попередній перегляд нотаток обмежено двома рядками. Повні нотатки завжди видно після відкриття нагадування."
+            "value" : "Попередній перегляд нотаток обмежено двома рядками."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bản xem trước ghi chú được giới hạn ở hai dòng. Ghi chú đầy đủ luôn hiển thị khi mở lời nhắc."
+            "value" : "Bản xem trước ghi chú được giới hạn ở hai dòng."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "备注预览最多显示两行。打开提醒事项时始终可以查看完整备注。"
+            "value" : "备注预览最多显示两行。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "備註預覽最多顯示兩行。打開提醒事項時始終可以查看完整備註。"
+            "value" : "備註預覽最多顯示兩行。"
           }
         }
       }

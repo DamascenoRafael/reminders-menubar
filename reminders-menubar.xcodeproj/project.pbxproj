@@ -97,7 +97,6 @@
 		71D2623F2F57D4490073C0FD /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D2623E2F57D4490073C0FD /* SettingsSection.swift */; };
 		71D262412F57D4E60073C0FD /* GeneralSettingsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D262402F57D4E60073C0FD /* GeneralSettingsTab.swift */; };
 		71D262432F57D4F60073C0FD /* ReminderSettingsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D262422F57D4F60073C0FD /* ReminderSettingsTab.swift */; };
-		71D262532F57D5B00073C0FD /* SectionsSettingsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D262522F57D5B00073C0FD /* SectionsSettingsTab.swift */; };
 		71D262452F57D50A0073C0FD /* KeyboardSettingsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D262442F57D50A0073C0FD /* KeyboardSettingsTab.swift */; };
 		71D262472F57D51C0073C0FD /* AboutSettingsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D262462F57D51C0073C0FD /* AboutSettingsTab.swift */; };
 		71D262492F57DD860073C0FD /* OpenSettingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D262482F57DD860073C0FD /* OpenSettingButton.swift */; };
@@ -107,6 +106,7 @@
 		71D2624D2F5A1B0200C8A33E /* LaunchAtLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D2624C2F5A1B0200C8A33E /* LaunchAtLoginService.swift */; };
 		71D2624F2F5A1B0100C8A33E /* SettingsOpenerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D2624E2F5A1B0100C8A33E /* SettingsOpenerView.swift */; };
 		71D262502F5B8A0000C8A33E /* CopySettingsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D262512F5B8A0000C8A33E /* CopySettingsTab.swift */; };
+		71D262532F57D5B00073C0FD /* SectionsSettingsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D262522F57D5B00073C0FD /* SectionsSettingsTab.swift */; };
 		71D6B98028E25B9F0004EEBB /* AppCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D6B97F28E25B9F0004EEBB /* AppCommands.swift */; };
 		71DB50FA2F79B852006DC143 /* EnvironmentValues+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DB50F92F79B83E006DC143 /* EnvironmentValues+Extensions.swift */; };
 		71DDDD012F8E700100000001 /* RecentRemindersContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DDDD002F8E700000000001 /* RecentRemindersContent.swift */; };
@@ -115,6 +115,7 @@
 		71EA20722F96E41D003F5220 /* EKRecurrenceRule+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA20712F96E414003F5220 /* EKRecurrenceRule+Extensions.swift */; };
 		71EA20742F97FC11003F5220 /* RmbRecurrenceOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EA20732F97FC0C003F5220 /* RmbRecurrenceOption.swift */; };
 		71ED5D6B290B6B3C00626185 /* RmbReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71ED5D6A290B6B3C00626185 /* RmbReminder.swift */; };
+		71EE0001308A000100000001 /* ReminderExternalLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EE0000308A000100000001 /* ReminderExternalLinks.swift */; };
 		71F06B482F4FF3EC009C91E6 /* MainPopoverSizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F06B472F4FF3EC009C91E6 /* MainPopoverSizing.swift */; };
 		71F2AF652F9AAED900C59519 /* MenuBarSettingsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F2AF642F9AAED900C59519 /* MenuBarSettingsTab.swift */; };
 		71F301FA259FB5CF00CDD81E /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F301F9259FB5CF00CDD81E /* UserPreferences.swift */; };
@@ -251,7 +252,6 @@
 		71D2623E2F57D4490073C0FD /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		71D262402F57D4E60073C0FD /* GeneralSettingsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsTab.swift; sourceTree = "<group>"; };
 		71D262422F57D4F60073C0FD /* ReminderSettingsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSettingsTab.swift; sourceTree = "<group>"; };
-		71D262522F57D5B00073C0FD /* SectionsSettingsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsSettingsTab.swift; sourceTree = "<group>"; };
 		71D262442F57D50A0073C0FD /* KeyboardSettingsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSettingsTab.swift; sourceTree = "<group>"; };
 		71D262462F57D51C0073C0FD /* AboutSettingsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSettingsTab.swift; sourceTree = "<group>"; };
 		71D262482F57DD860073C0FD /* OpenSettingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSettingButton.swift; sourceTree = "<group>"; };
@@ -261,6 +261,7 @@
 		71D2624C2F5A1B0200C8A33E /* LaunchAtLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLoginService.swift; sourceTree = "<group>"; };
 		71D2624E2F5A1B0100C8A33E /* SettingsOpenerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOpenerView.swift; sourceTree = "<group>"; };
 		71D262512F5B8A0000C8A33E /* CopySettingsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopySettingsTab.swift; sourceTree = "<group>"; };
+		71D262522F57D5B00073C0FD /* SectionsSettingsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsSettingsTab.swift; sourceTree = "<group>"; };
 		71D6B97F28E25B9F0004EEBB /* AppCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCommands.swift; sourceTree = "<group>"; };
 		71DB50F92F79B83E006DC143 /* EnvironmentValues+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+Extensions.swift"; sourceTree = "<group>"; };
 		71DDDD002F8E700000000001 /* RecentRemindersContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentRemindersContent.swift; sourceTree = "<group>"; };
@@ -269,6 +270,7 @@
 		71EA20712F96E414003F5220 /* EKRecurrenceRule+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EKRecurrenceRule+Extensions.swift"; sourceTree = "<group>"; };
 		71EA20732F97FC0C003F5220 /* RmbRecurrenceOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbRecurrenceOption.swift; sourceTree = "<group>"; };
 		71ED5D6A290B6B3C00626185 /* RmbReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RmbReminder.swift; sourceTree = "<group>"; };
+		71EE0000308A000100000001 /* ReminderExternalLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderExternalLinks.swift; sourceTree = "<group>"; };
 		71F06B472F4FF3EC009C91E6 /* MainPopoverSizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPopoverSizing.swift; sourceTree = "<group>"; };
 		71F2AF642F9AAED900C59519 /* MenuBarSettingsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarSettingsTab.swift; sourceTree = "<group>"; };
 		71F301F9259FB5CF00CDD81E /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 				7102422F25F55D5600451D15 /* ReminderInterval.swift */,
 				71564447260324FA005E81FD /* PrioritizedReminders.swift */,
 				71ED5D6A290B6B3C00626185 /* RmbReminder.swift */,
+				71EE0000308A000100000001 /* ReminderExternalLinks.swift */,
 				71TAG000FA50000100000001 /* Tag.swift */,
 				71EA20732F97FC0C003F5220 /* RmbRecurrenceOption.swift */,
 				717748F729622FCB00654CAA /* RmbIcon.swift */,
@@ -865,6 +868,7 @@
 				719A36E42F52C04100C93474 /* NSCursor+Extensions.swift in Sources */,
 				71F5A0012F5C8A0000D1E2F3 /* NSApplication+Extensions.swift in Sources */,
 				71ED5D6B290B6B3C00626185 /* RmbReminder.swift in Sources */,
+				71EE0001308A000100000001 /* ReminderExternalLinks.swift in Sources */,
 				71TAG001FA50000100000001 /* Tag.swift in Sources */,
 				7156444226031CA9005E81FD /* Array+Extension.swift in Sources */,
 				71D262492F57DD860073C0FD /* OpenSettingButton.swift in Sources */,

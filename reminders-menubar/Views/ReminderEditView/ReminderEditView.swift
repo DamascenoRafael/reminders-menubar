@@ -38,9 +38,13 @@ struct ReminderEditView: View {
         return false
     }
 
-    private var hasExternalLinks: Bool {
-        guard case .edit(let reminder, _) = mode else { return false }
-        return reminder.attachedUrl != nil || reminder.mailUrl != nil
+    private var externalLinks: ReminderExternalLinks {
+        switch mode {
+        case .create:
+            return ReminderExternalLinks(draft: rmbReminder)
+        case .edit(let reminder, _):
+            return ReminderExternalLinks(reminder: reminder, draft: rmbReminder)
+        }
     }
 
     init(isPresented: Binding<Bool>, reminder: EKReminder, reminderHasChildren: Bool) {
@@ -105,17 +109,15 @@ struct ReminderEditView: View {
                 ReminderListEditView(selection: calendarPickerSelection)
             }
 
-            if case .edit(let reminder, _) = mode, hasExternalLinks {
-                Divider()
-                externalLinksSection(reminder: reminder)
-            }
+            Divider()
+            externalLinksSection(externalLinks)
 
             Spacer()
 
             actionButtons()
         }
         .frame(width: 300, alignment: .top)
-        .frame(minHeight: hasExternalLinks ? 410 : 360)
+        .frame(minHeight: 410)
         .fixedSize(horizontal: false, vertical: true)
         .padding()
         .modifier(RmbBackgroundModifier())
@@ -213,7 +215,7 @@ struct ReminderEditView: View {
     // MARK: - External Links
 
     @ViewBuilder
-    private func externalLinksSection(reminder: EKReminder) -> some View {
+    private func externalLinksSection(_ externalLinks: ReminderExternalLinks) -> some View {
         HStack(alignment: .top) {
             Image(rmbSymbol: .link)
                 .font(.system(size: 12))
@@ -225,11 +227,16 @@ struct ReminderEditView: View {
                     .font(.system(size: 12))
                     .foregroundColor(.secondary)
 
-                ReminderExternalLinksView(
-                    attachedUrl: reminder.attachedUrl,
-                    mailUrl: reminder.mailUrl,
-                    isCompact: false
-                )
+                if externalLinks.isEmpty {
+                    Text(rmbLocalized(.editReminderExternalLinksEmptyMessage))
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                } else {
+                    ReminderExternalLinksView(
+                        externalLinks: externalLinks,
+                        isCompact: false
+                    )
+                }
             }
         }
     }

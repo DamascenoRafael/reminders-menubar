@@ -1,15 +1,15 @@
 import SwiftUI
 
 struct ReminderExternalLinksView: View {
-    var attachedUrl: URL?
-    var mailUrl: URL?
-    var isCompact: Bool
+    let externalLinks: ReminderExternalLinks
+    let isCompact: Bool
 
     var body: some View {
         if isCompact {
-            HStack {
-                linkRows
-                Spacer()
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 6) {
+                    linkRows
+                }
             }
         } else {
             VStack(alignment: .leading, spacing: 6) {
@@ -19,23 +19,32 @@ struct ReminderExternalLinksView: View {
     }
 
     @ViewBuilder private var linkRows: some View {
-        if let attachedUrl {
+        ForEach(externalLinks.links) { externalLink in
             ExternalLinkRow(
-                icon: .safari,
-                displayText: isCompact ? attachedUrl.displayedUrl : attachedUrl.absoluteString,
-                url: attachedUrl,
+                icon: icon(for: externalLink.source),
+                displayText: displayText(for: externalLink),
+                url: externalLink.url,
                 isCompact: isCompact
             )
         }
+    }
 
-        if let mailUrl {
-            ExternalLinkRow(
-                icon: .envelope,
-                displayText: isCompact ? nil : "Mail",
-                url: mailUrl,
-                isCompact: isCompact
-            )
+    private func icon(for source: ReminderExternalLinks.Source) -> RmbSymbol {
+        switch source {
+        case .attached:
+            return .safari
+        case .mail:
+            return .envelope
+        case .text:
+            return .link
         }
+    }
+
+    private func displayText(for link: ReminderExternalLinks.Link) -> String? {
+        if link.source == .mail {
+            return isCompact ? nil : "Mail"
+        }
+        return isCompact ? link.url.displayedUrl : link.url.absoluteString
     }
 }
 
@@ -105,8 +114,15 @@ private struct ExternalLinkStyle: ViewModifier {
 
 #Preview("Compact") {
     ReminderExternalLinksView(
-        attachedUrl: URL(string: "https://www.github.com"),
-        mailUrl: URL(string: "message://test"),
+        externalLinks: ReminderExternalLinks(
+            links: [
+                .init(url: URL(string: "https://www.github.com")!, source: .attached),
+                .init(url: URL(string: "message://test")!, source: .mail),
+                .init(url: URL(string: "https://swift.org")!, source: .text),
+                .init(url: URL(string: "https://developer.apple.com")!, source: .text),
+                .init(url: URL(string: "https://github.com/apple/swift")!, source: .text)
+            ]
+        ),
         isCompact: true
     )
     .padding()
@@ -115,8 +131,14 @@ private struct ExternalLinkStyle: ViewModifier {
 
 #Preview("Expanded") {
     ReminderExternalLinksView(
-        attachedUrl: URL(string: "https://www.github.com/DamascenoRafael/reminders-menubar"),
-        mailUrl: URL(string: "message://test"),
+        externalLinks: ReminderExternalLinks(
+            links: [
+                .init(url: URL(string: "https://www.github.com/DamascenoRafael/reminders-menubar")!, source: .attached),
+                .init(url: URL(string: "message://test")!, source: .mail),
+                .init(url: URL(string: "https://swift.org")!, source: .text),
+                .init(url: URL(string: "mailto:test@example.com")!, source: .text)
+            ]
+        ),
         isCompact: false
     )
     .padding()

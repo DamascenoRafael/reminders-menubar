@@ -49,10 +49,6 @@ struct ReminderItemView: View {
                     ReminderTagsView(tagNames: reminderItem.reminder.ekTags.map(\.name))
                 }
 
-                let hasDueDate = reminderItem.reminder.relativeDateDescription != nil
-                let shouldShowExternalLinks = userPreferences.showExternalLinksInReminderItem
-                    && (reminderItem.reminder.attachedUrl != nil || reminderItem.reminder.mailUrl != nil)
-
                 if let dateDescription = reminderItem.reminder.relativeDateDescription {
                     let isUrgent: Bool = {
                         if #available(macOS 26, *) {
@@ -77,22 +73,19 @@ struct ReminderItemView: View {
                     .padding(.trailing, 8)
                 }
 
-                if shouldShowExternalLinks {
-                    HStack(alignment: .bottom) {
+                if userPreferences.showExternalLinksInReminderItem {
+                    let externalLinks = ReminderExternalLinks(reminder: reminderItem.reminder)
+                    if !externalLinks.isEmpty {
                         ReminderExternalLinksView(
-                            attachedUrl: reminderItem.reminder.attachedUrl,
-                            mailUrl: reminderItem.reminder.mailUrl,
+                            externalLinks: externalLinks,
                             isCompact: true
                         )
-
-                        if showCalendarTitle && !hasDueDate {
-                            calendarTitleText()
-                        }
+                        .padding(.trailing, 8)
                     }
-                    .padding(.trailing, 8)
                 }
 
-                if showCalendarTitle && !hasDueDate && !shouldShowExternalLinks {
+                let hasDueDate = reminderItem.reminder.relativeDateDescription != nil
+                if showCalendarTitle && !hasDueDate {
                     HStack {
                         Spacer()
 

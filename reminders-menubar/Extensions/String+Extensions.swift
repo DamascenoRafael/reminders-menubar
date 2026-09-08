@@ -1,6 +1,10 @@
 import Foundation
 
 extension String {
+    private static let linkDetector = try? NSDataDetector(
+        types: NSTextCheckingResult.CheckingType.link.rawValue
+    )
+
     subscript(safe offset: Int) -> String? {
         guard offset >= 0, offset < endIndex.utf16Offset(in: self) else {
             return nil
@@ -20,16 +24,23 @@ extension String {
     
     @available(macOS 12, *)
     func toDetectedLinkAttributedString() -> AttributedString {
-        let range = NSRange(self.startIndex..., in: self)
-        let detector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
         let attributedString = NSMutableAttributedString(string: self)
 
-        for match in detector?.matches(in: self, options: [], range: range) ?? [] {
+        for match in detectedLinkMatches() {
             if let url = match.url {
                 attributedString.addAttribute(.link, value: url, range: match.range)
             }
         }
 
         return AttributedString(attributedString)
+    }
+
+    func detectedUrls() -> [URL] {
+        detectedLinkMatches().compactMap(\.url)
+    }
+
+    private func detectedLinkMatches() -> [NSTextCheckingResult] {
+        let range = NSRange(startIndex..., in: self)
+        return Self.linkDetector?.matches(in: self, options: [], range: range) ?? []
     }
 }
