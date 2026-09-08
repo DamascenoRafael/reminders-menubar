@@ -3,16 +3,14 @@ import Foundation
 class TagParser {
     struct TextTagResult {
         private let range: NSRange
-        let string: String
         let tag: Tag
 
         var highlightedText: RmbHighlightedTextField.HighlightedText {
             RmbHighlightedTextField.HighlightedText(range: range, color: RmbColor.tagHighlight.nsColor)
         }
 
-        init(range: NSRange, string: String, tag: Tag) {
+        init(range: NSRange, tag: Tag) {
             self.range = range
-            self.string = string
             self.tag = tag
         }
     }
@@ -70,7 +68,7 @@ class TagParser {
 
             let tagName = resolvedTagName(sanitized)
             let range = NSRange(word.startIndex..<word.endIndex, in: textString)
-            results.append(TextTagResult(range: range, string: String(word), tag: Tag(tagName)))
+            results.append(TextTagResult(range: range, tag: Tag(tagName)))
         }
 
         return results

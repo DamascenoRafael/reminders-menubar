@@ -18,10 +18,6 @@ extension String {
         return String(self[range])
     }
     
-    var fullRange: NSRange {
-        return NSRange(location: 0, length: endIndex.utf16Offset(in: self))
-    }
-    
     @available(macOS 12, *)
     func toDetectedLinkAttributedString() -> AttributedString {
         let range = NSRange(self.startIndex..., in: self)
