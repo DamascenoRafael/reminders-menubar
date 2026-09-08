@@ -40,38 +40,38 @@ struct KeyboardSettingsTab: View {
 
             SettingsDivider()
 
-            SettingsSection(rmbLocalized(.keyboardTypingShortcutsSettingsLabel)) {
-                Text(rmbLocalized(.keyboardTypingShortcutsNote))
+            SettingsSection(rmbLocalized(.keyboardSmartTypingSettingsLabel)) {
+                Text(rmbLocalized(.keyboardSmartTypingNote))
 
                 TypingShortcutRow(
                     shortcuts: [dateShortcutExample],
-                    description: rmbLocalized(.keyboardTypingShortcutsDateDescription),
+                    description: rmbLocalized(.keyboardSmartTypingDateDescription),
                     highlightColor: .rmbColor(.dateHighlight)
                 )
                 TypingShortcutRow(
                     shortcuts: ["@work", "/personal"],
-                    description: rmbLocalized(.keyboardTypingShortcutsListDescription)
+                    description: rmbLocalized(.keyboardSmartTypingListDescription)
                 )
                 TypingShortcutRow(
                     shortcuts: ["!", "!!", "!!!"],
-                    description: rmbLocalized(.keyboardTypingShortcutsPriorityDescription),
+                    description: rmbLocalized(.keyboardSmartTypingPriorityDescription),
                     highlightColor: .rmbColor(.priorityHighlight)
                 )
                 TypingShortcutRow(
                     shortcuts: ["!f"],
-                    description: rmbLocalized(.keyboardTypingShortcutsFlagDescription),
+                    description: rmbLocalized(.keyboardSmartTypingFlagDescription),
                     highlightColor: .rmbColor(.flaggedHighlight)
                 )
                 if #available(macOS 26, *) {
                     TypingShortcutRow(
                         shortcuts: ["!u"],
-                        description: rmbLocalized(.keyboardTypingShortcutsUrgentDescription),
+                        description: rmbLocalized(.keyboardSmartTypingUrgentDescription),
                         highlightColor: .rmbColor(.urgentHighlight)
                     )
                 }
                 TypingShortcutRow(
                     shortcuts: ["#tag"],
-                    description: rmbLocalized(.keyboardTypingShortcutsTagDescription),
+                    description: rmbLocalized(.keyboardSmartTypingTagDescription),
                     highlightColor: .rmbColor(.tagHighlight)
                 )
             }

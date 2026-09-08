@@ -9751,7 +9751,7 @@
         }
       }
     },
-    "keyboardTypingShortcutsDateDescription" : {
+    "keyboardSmartTypingDateDescription" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
@@ -9876,7 +9876,7 @@
         }
       }
     },
-    "keyboardTypingShortcutsFlagDescription" : {
+    "keyboardSmartTypingFlagDescription" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
@@ -10001,7 +10001,7 @@
         }
       }
     },
-    "keyboardTypingShortcutsListDescription" : {
+    "keyboardSmartTypingListDescription" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
@@ -10126,7 +10126,7 @@
         }
       }
     },
-    "keyboardTypingShortcutsNote" : {
+    "keyboardSmartTypingNote" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
@@ -10251,7 +10251,7 @@
         }
       }
     },
-    "keyboardTypingShortcutsPriorityDescription" : {
+    "keyboardSmartTypingPriorityDescription" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
@@ -10376,7 +10376,7 @@
         }
       }
     },
-    "keyboardTypingShortcutsSettingsLabel" : {
+    "keyboardSmartTypingSettingsLabel" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
@@ -10501,7 +10501,7 @@
         }
       }
     },
-    "keyboardTypingShortcutsTagDescription" : {
+    "keyboardSmartTypingTagDescription" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
@@ -10626,7 +10626,7 @@
         }
       }
     },
-    "keyboardTypingShortcutsUrgentDescription" : {
+    "keyboardSmartTypingUrgentDescription" : {
       "extractionState" : "manual",
       "localizations" : {
         "cs" : {
