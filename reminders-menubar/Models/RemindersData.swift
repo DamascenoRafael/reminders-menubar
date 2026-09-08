@@ -248,12 +248,10 @@ class RemindersData: ObservableObject {
         CalendarParser.updateShared(with: calendars)
 
         // Validate filter — remove stale tags that no longer exist
-        if #available(macOS 12, *) {
-            let tags = await RemindersService.shared.getAllTags()
-            self.availableTags = tags
-            self.tagsFilter = self.tagsFilter.filter({ tags.contains($0) })
-            TagParser.updateShared(with: tags)
-        }
+        let tags = await RemindersService.shared.getAllTags()
+        self.availableTags = tags
+        self.tagsFilter = self.tagsFilter.filter({ tags.contains($0) })
+        TagParser.updateShared(with: tags)
 
         // Fetch reminder data with validated filters
         self.filteredCalendarReminderLists =
@@ -283,7 +281,6 @@ class RemindersData: ObservableObject {
     }
 
     private func getTagReminders() async -> [TagReminderList] {
-        guard #available(macOS 12, *) else { return [] }
         guard !tagsFilter.isEmpty else { return [] }
 
         let calendarFilter = UserPreferences.shared.filterTagRemindersByCalendar

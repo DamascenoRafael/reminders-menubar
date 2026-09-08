@@ -130,7 +130,6 @@ extension EKReminder {
 
     // NOTE: This is a workaround to access the tags (hashtags) saved in a reminder.
     // This property is not accessible through the conventional API.
-    @available(macOS 12, *)
     var ekTags: [Tag] {
         guard let backingObject = reminderBackingObject,
               let hashtags = performPrivateSelector("hashtags", on: backingObject) as? NSSet else {
@@ -226,7 +225,6 @@ extension EKReminder {
         calendar = rmbReminder.calendar
     }
 
-    @available(macOS 12, *)
     func updateTags(_ newTags: [Tag]) {
         guard Set(ekTags) != Set(newTags) else {
             return

@@ -11,7 +11,7 @@ struct FilterPanelContentView: View {
 
             calendarsSection
 
-            if #available(macOS 12, *), !remindersData.availableTags.isEmpty {
+            if !remindersData.availableTags.isEmpty {
                 MenuSeparator()
                 tagsSection
             }
@@ -50,7 +50,6 @@ struct FilterPanelContentView: View {
 
     // MARK: - Tags
 
-    @available(macOS 12, *)
     private var tagsSection: some View {
         ForEach(remindersData.availableTags, id: \.self) { tag in
             let isSelected = remindersData.tagsFilter.contains(tag)
@@ -197,36 +196,20 @@ private struct SubmenuHoverBehavior: ViewModifier {
 // MARK: - Panel Container Style
 
 private struct PanelContainerStyle: ViewModifier {
+    @ObservedObject private var userPreferences = UserPreferences.shared
+
     func body(content: Content) -> some View {
         content
             .padding(.vertical, 5)
             .frame(minWidth: 120, maxWidth: 300)
             .fixedSize()
-            .modifier(MaterialBackgroundModifier())
+            .background(Color.rmbColor(.backgroundTheme(isTransparent: userPreferences.isTransparencyEnabled)))
+            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
             .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
             .overlay(
                 RoundedRectangle(cornerRadius: 12, style: .continuous)
                     .strokeBorder(Color.primary.opacity(0.15), lineWidth: 0.5)
             )
-    }
-}
-
-private struct MaterialBackgroundModifier: ViewModifier {
-    @ObservedObject private var userPreferences = UserPreferences.shared
-
-    func body(content: Content) -> some View {
-        if #available(macOS 12, *) {
-            content
-                .background(
-                    Color.rmbColor(.backgroundTheme(isTransparent: userPreferences.isTransparencyEnabled))
-                )
-                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
-        } else {
-            content
-                .background(
-                    Color.rmbColor(.backgroundTheme(isTransparent: false))
-                )
-        }
     }
 }
 

@@ -74,11 +74,7 @@ enum RmbSymbol {
         case .priorityLow:
             return "exclamationmark"
         case .menubarRectangle:
-            if #available(macOS 12, *) {
-                return "menubar.rectangle"
-            } else {
-                return "rectangle"
-            }
+            return "menubar.rectangle"
         case .arrowDownCircle:
             return "arrow.down.circle"
         case .calendar:

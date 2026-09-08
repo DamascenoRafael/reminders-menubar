@@ -32,20 +32,18 @@ struct SectionsSettingsTab: View {
                 }
             }
 
-            if #available(macOS 12, *) {
-                SettingsDivider()
+            SettingsDivider()
 
-                SettingsSection(rmbLocalized(.tagRemindersSettingsLabel)) {
-                    Toggle(
-                        rmbLocalized(.showTagsBeforeCalendarsOption),
-                        isOn: $userPreferences.showTagsBeforeCalendars
-                    )
+            SettingsSection(rmbLocalized(.tagRemindersSettingsLabel)) {
+                Toggle(
+                    rmbLocalized(.showTagsBeforeCalendarsOption),
+                    isOn: $userPreferences.showTagsBeforeCalendars
+                )
 
-                    Toggle(isOn: $userPreferences.filterTagRemindersByCalendar) {
-                        HStack {
-                            Text(rmbLocalized(.filterTagRemindersByCalendarOption))
-                            Image(rmbSymbol: .filterCircle)
-                        }
+                Toggle(isOn: $userPreferences.filterTagRemindersByCalendar) {
+                    HStack {
+                        Text(rmbLocalized(.filterTagRemindersByCalendarOption))
+                        Image(rmbSymbol: .filterCircle)
                     }
                 }
             }

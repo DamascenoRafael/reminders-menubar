@@ -40,11 +40,8 @@ struct RmbReminder {
         guard let originalReminder else {
             return !tags.isEmpty
         }
-        
-        if #available(macOS 12, *) {
-            return Set(tags) != Set(originalReminder.ekTags)
-        }
-        return false
+
+        return Set(tags) != Set(originalReminder.ekTags)
     }
 
     var hasFlagChanges: Bool {
@@ -83,9 +80,7 @@ struct RmbReminder {
                 updateTextUrgentResult(with: newValue)
             }
             updateTextFlaggedResult(with: newValue)
-            if #available(macOS 12, *) {
-                updateTextTagResults(with: newValue)
-            }
+            updateTextTagResults(with: newValue)
         }
     }
     
@@ -147,10 +142,7 @@ struct RmbReminder {
         }
         calendar = reminder.calendar
         calendarFallback = reminder.calendar
-        tags = []
-        if #available(macOS 12, *) {
-            tags = reminder.ekTags
-        }
+        tags = reminder.ekTags
 
         defer {
             // NOTE: defer ensures updateDateTimeFallback() runs after all stored properties are initialized.
@@ -418,7 +410,6 @@ struct RmbReminder {
         textFlaggedResult = flaggedResult
     }
 
-    @available(macOS 12, *)
     private mutating func updateTextTagResults(with newTitle: String) {
         let newTextTagResults = TagParser.getTags(from: newTitle)
 

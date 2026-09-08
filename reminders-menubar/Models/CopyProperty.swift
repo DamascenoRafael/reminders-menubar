@@ -25,18 +25,6 @@ enum CopyProperty: String, Codable, CaseIterable {
         return validOptions + newOptions
     }
 
-    var isAvailable: Bool {
-        switch self {
-        case .tags:
-            if #available(macOS 12, *) {
-                return true
-            }
-            return false
-        default:
-            return true
-        }
-    }
-
     var displayName: String {
         switch self {
         case .title:

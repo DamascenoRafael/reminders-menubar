@@ -22,7 +22,6 @@ extension String {
         return String(self[range])
     }
     
-    @available(macOS 12, *)
     func toDetectedLinkAttributedString() -> AttributedString {
         let attributedString = NSMutableAttributedString(string: self)
 

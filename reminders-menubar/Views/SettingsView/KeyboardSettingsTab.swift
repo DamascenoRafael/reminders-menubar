@@ -69,13 +69,11 @@ struct KeyboardSettingsTab: View {
                         highlightColor: .rmbColor(.urgentHighlight)
                     )
                 }
-                if #available(macOS 12, *) {
-                    TypingShortcutRow(
-                        shortcuts: ["#tag"],
-                        description: rmbLocalized(.keyboardTypingShortcutsTagDescription),
-                        highlightColor: .rmbColor(.tagHighlight)
-                    )
-                }
+                TypingShortcutRow(
+                    shortcuts: ["#tag"],
+                    description: rmbLocalized(.keyboardTypingShortcutsTagDescription),
+                    highlightColor: .rmbColor(.tagHighlight)
+                )
             }
         }
         .padding(20)

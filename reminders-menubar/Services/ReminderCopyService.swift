@@ -41,7 +41,7 @@ enum ReminderCopyService {
         includePropertyNames: Bool
     ) -> String {
         return options
-            .filter { $0.isEnabled && $0.property.isAvailable }
+            .filter(\.isEnabled)
             .compactMap { option -> String? in
                 guard let value = variables[option.property], !value.isEmpty else {
                     return nil
@@ -55,19 +55,15 @@ enum ReminderCopyService {
     }
 
     private static func buildVariables(from reminder: EKReminder) -> [CopyProperty: String] {
-        var variables: [CopyProperty: String] = [
+        return [
             .title: reminder.title ?? "",
             .notes: reminder.notes ?? "",
             .date: reminder.dueDateComponents?.date?.absoluteDateDescription(withTime: reminder.hasTime) ?? "",
             .priority: priorityLabel(for: reminder.ekPriority),
             .list: reminder.calendar?.title ?? "",
-            .url: reminder.attachedUrl?.absoluteString ?? ""
+            .url: reminder.attachedUrl?.absoluteString ?? "",
+            .tags: reminder.ekTags.map { "#\($0.name)" }.joined(separator: " ")
         ]
-        if #available(macOS 12, *) {
-            let tags = reminder.ekTags
-            variables[.tags] = tags.isEmpty ? "" : tags.map { "#\($0.name)" }.joined(separator: " ")
-        }
-        return variables
     }
 
     private static func priorityLabel(for priority: EKReminderPriority) -> String {

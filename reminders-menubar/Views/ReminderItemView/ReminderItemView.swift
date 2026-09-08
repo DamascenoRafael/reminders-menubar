@@ -45,7 +45,7 @@ struct ReminderItemView: View {
                     reminderNotesText()
                 }
 
-                if #available(macOS 12, *), !reminderItem.reminder.ekTags.isEmpty {
+                if !reminderItem.reminder.ekTags.isEmpty {
                     ReminderTagsView(tagNames: reminderItem.reminder.ekTags.map(\.name))
                 }
 
@@ -143,16 +143,8 @@ struct ReminderItemView: View {
         }
     }
 
-    private func detectedLinkText(_ string: String) -> Text {
-        if #available(macOS 12, *) {
-            return Text(string.toDetectedLinkAttributedString())
-        }
-
-        return Text(verbatim: string)
-    }
-
     private func reminderTitleText() -> Text {
-        let titleText = detectedLinkText(reminderItem.reminder.title)
+        let titleText = Text(reminderItem.reminder.title.toDetectedLinkAttributedString())
 
         var prefixes: [(symbol: RmbSymbol, color: Color)] = []
         if reminderItem.reminder.isFlagged {
@@ -230,7 +222,7 @@ struct ReminderItemView: View {
         if userPreferences.showNotesInReminderItem,
            let notes = reminderItem.reminder.notes,
            !notes.isEmpty {
-            detectedLinkText(notes)
+            Text(notes.toDetectedLinkAttributedString())
                 .font(.footnote)
                 .foregroundColor(.secondary)
                 .lineLimit(2)

@@ -91,18 +91,17 @@ struct ReminderEditView: View {
 
             ReminderPriorityEditView(priority: $rmbReminder.priority)
 
-            if #available(macOS 12, *) {
-                Divider()
-                ReminderTagsEditView(
-                    tagNames: rmbReminder.tags.map(\.name),
-                    onCommitTag: { rmbReminder.addTag(named: $0) },
-                    onCommitEmpty: { confirmAction() },
-                    onRemoveTag: { rmbReminder.removeTag(named: $0) },
-                    onRemoveLastTag: { rmbReminder.removeLastTag() },
-                    focusTrigger: $focusCoordinator.tagsTrigger,
-                    onMoveFocus: { focusCoordinator.moveFocus(from: .tags, direction: $0) }
-                )
-            }
+            Divider()
+
+            ReminderTagsEditView(
+                tagNames: rmbReminder.tags.map(\.name),
+                onCommitTag: { rmbReminder.addTag(named: $0) },
+                onCommitEmpty: { confirmAction() },
+                onRemoveTag: { rmbReminder.removeTag(named: $0) },
+                onRemoveLastTag: { rmbReminder.removeLastTag() },
+                focusTrigger: $focusCoordinator.tagsTrigger,
+                onMoveFocus: { focusCoordinator.moveFocus(from: .tags, direction: $0) }
+            )
 
             if !reminderHasChildren {
                 Divider()
@@ -184,14 +183,10 @@ struct ReminderEditView: View {
         .onSubmit { confirmAction() }
         .autoComplete(
             isInitialCharValid: { char in
-                if #available(macOS 12, *) {
-                    CalendarParser.isInitialCharValid(char) || TagParser.isInitialCharValid(char)
-                } else {
-                    CalendarParser.isInitialCharValid(char)
-                }
+                CalendarParser.isInitialCharValid(char) || TagParser.isInitialCharValid(char)
             },
             suggestions: { initialChar, typingWord in
-                if #available(macOS 12, *), TagParser.isInitialCharValid(initialChar) {
+                if TagParser.isInitialCharValid(initialChar) {
                     return TagParser.autoCompleteSuggestions(typingWord)
                 }
                 return CalendarParser.autoCompleteSuggestions(typingWord)
@@ -448,13 +443,7 @@ private final class ReminderEditFocusCoordinator: ObservableObject {
     @Published var notesTrigger: UUID?
     @Published var tagsTrigger: UUID?
 
-    private var fieldOrder: [Field] {
-        if #available(macOS 12, *) {
-            return [.title, .notes, .tags]
-        } else {
-            return [.title, .notes]
-        }
-    }
+    private let fieldOrder: [Field] = [.title, .notes, .tags]
 
     func moveFocus(from field: Field, direction: FocusDirection) {
         guard let currentIndex = fieldOrder.firstIndex(of: field) else { return }

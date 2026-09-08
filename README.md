@@ -55,7 +55,7 @@
 
 ## Installation
 
-*Reminders MenuBar requires macOS Big Sur 11 or later.*
+*Reminders MenuBar requires macOS Monterey 12 or later.*
 
 ### Homebrew
 

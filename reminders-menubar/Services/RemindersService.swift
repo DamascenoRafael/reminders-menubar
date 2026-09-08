@@ -162,9 +162,7 @@ class RemindersService {
 
     func save(reminder: EKReminder, tags: [Tag], isFlagged: Bool, isUrgent: Bool) {
         save(reminder: reminder)
-        if #available(macOS 12, *) {
-            reminder.updateTags(tags)
-        }
+        reminder.updateTags(tags)
         if #available(macOS 26, *) {
             reminder.updateUrgent(isUrgent)
         }
@@ -189,8 +187,6 @@ class RemindersService {
     }
 
     func getAllTags() async -> [Tag] {
-        guard #available(macOS 12, *) else { return [] }
-
         let allReminders = await fetchAllReminders()
         var tags: Set<Tag> = []
         for reminder in allReminders {
@@ -201,7 +197,6 @@ class RemindersService {
         return tags.sorted()
     }
 
-    @available(macOS 12, *)
     func getReminders(byTags tags: [Tag], calendarIdentifiers: [String]?) async -> [TagReminderList] {
         guard !tags.isEmpty else { return [] }
 
@@ -244,10 +239,7 @@ class RemindersService {
             let title = (reminder.title ?? "").lowercased()
             let notes = (reminder.notes ?? "").lowercased()
             let urlString = reminder.attachedUrl?.absoluteString.lowercased() ?? ""
-            var tagNames: [String] = []
-            if #available(macOS 12, *) {
-                tagNames = reminder.ekTags.map({ $0.name.lowercased() })
-            }
+            let tagNames = reminder.ekTags.map({ $0.name.lowercased() })
 
             let allFields = [title, notes, urlString] + tagNames
 
