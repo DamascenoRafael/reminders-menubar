@@ -4,6 +4,34 @@
         <title>Reminders MenuBar</title>
         <language>en</language>
         <item>
+            <title>Version 2.2.0</title>
+            <sparkle:version>2.2.0</sparkle:version>
+            <sparkle:shortVersionString>2.2.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[
+                <ul>
+                    <li>This version requires macOS Monterey 12 or later 🍎</li>
+                    <li>Add smart typing shortcuts for flagged (<code>!f</code>) and urgent (<code>!u</code>) reminders 🚩 ⏰</li>
+                    <li>Add keyboard navigation between reminder fields using Tab and Shift-Tab ⌨️</li>
+                    <li>Improve type-to-create support, including non-Latin characters ✏️</li>
+                    <li>Fix text field resizing when creating reminders on macOS Golden Gate 27 🐛</li>
+                    <li>Add an option to display notes in the reminder list 📝</li>
+                    <li>Add an option to close the popover after creating a reminder ✨</li>
+                    <li>Display links found in reminder titles and notes alongside attached links 🔗</li>
+                    <li>Fix launch at login migration and unexpected termination 🐛</li>
+                    <li>Fix reminder time being overwritten when marking a reminder as urgent 🐛</li>
+                    <li>Other minor improvements in code ⚡</li>
+                </ul>
+                <p><a href="https://github.com/DamascenoRafael/reminders-menubar/releases/tag/v2.2.0">Details</a></p>
+            ]]></description>
+            <pubDate>Tue, 08 Sep 2026 12:00:00 -0300</pubDate>
+            <enclosure
+                url="https://github.com/DamascenoRafael/reminders-menubar/releases/download/v2.2.0/reminders-menubar.zip"
+                sparkle:edSignature="Kiv+49FNKlGI3l2fj4Gjf8QuFJhCKBov5R1KqggY+GSGteSkWXCZxo70HX/2PXKj+lVTiJUghBoBBROclHbSAw=="
+                length="3428184"
+                type="application/octet-stream" />
+        </item>
+        <item>
             <title>Version 2.1.1</title>
             <sparkle:version>2.1.1</sparkle:version>
             <sparkle:shortVersionString>2.1.1</sparkle:shortVersionString>
