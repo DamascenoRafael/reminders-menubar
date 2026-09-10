@@ -24,4 +24,13 @@ struct ReminderItem: Identifiable, Equatable {
             && lhs.childReminders == rhs.childReminders
         )
     }
+
+    func removingReminders(withIDs reminderIDs: Set<String>) -> ReminderItem? {
+        guard !reminderIDs.contains(id) else { return nil }
+
+        let remainingChildren = childReminders.compactMap {
+            $0.removingReminders(withIDs: reminderIDs)
+        }
+        return ReminderItem(for: reminder, isChild: isChild, withChildren: remainingChildren)
+    }
 }

@@ -154,13 +154,36 @@ class RemindersData: ObservableObject {
     @Published private var filteredTagReminderLists: [TagReminderList] = []
 
     var orderedFilteredSections: [ReminderListSection] {
-        let calendarSections = filteredCalendarReminderLists.map { ReminderListSection.calendar($0) }
-        let tagSections = filteredTagReminderLists.map { ReminderListSection.tag($0) }
+        let upcomingReminderIDs = remindersToHideFromLists
+        let calendarSections = filteredCalendarReminderLists.map {
+            ReminderListSection.calendar(
+                CalendarReminderList(
+                    for: $0.calendar,
+                    with: $0.reminders.compactMap { $0.removingReminders(withIDs: upcomingReminderIDs) }
+                )
+            )
+        }
+        let tagSections = filteredTagReminderLists.map {
+            ReminderListSection.tag(
+                TagReminderList(
+                    for: $0.tag,
+                    with: $0.reminders.compactMap { $0.removingReminders(withIDs: upcomingReminderIDs) }
+                )
+            )
+        }
 
         if UserPreferences.shared.showTagsBeforeCalendars {
             return tagSections + calendarSections
         }
         return calendarSections + tagSections
+    }
+
+    private var remindersToHideFromLists: Set<String> {
+        guard UserPreferences.shared.showUpcomingReminders,
+              UserPreferences.shared.hideUpcomingRemindersFromLists else {
+            return []
+        }
+        return Set(upcomingReminders.map(\.id))
     }
 
     @Published var recentReminders: [ReminderItem]?
