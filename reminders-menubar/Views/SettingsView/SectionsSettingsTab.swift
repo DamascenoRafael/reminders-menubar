@@ -20,6 +20,11 @@ struct SectionsSettingsTab: View {
                 )
 
                 Toggle(
+                    rmbLocalized(.hideUpcomingRemindersFromListsOption),
+                    isOn: $userPreferences.hideUpcomingRemindersFromLists
+                )
+
+                Toggle(
                     rmbLocalized(.showUpcomingReminderListNameOption),
                     isOn: $userPreferences.showUpcomingReminderListName
                 )
