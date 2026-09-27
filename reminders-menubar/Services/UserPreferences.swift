@@ -37,6 +37,8 @@ private enum PreferencesKeys {
     static let completionAnimationEnabled = "completionAnimationEnabled"
 }
 
+// TODO: Resolve body length of UserPreferences
+// swiftlint:disable:next type_body_length
 class UserPreferences: ObservableObject {
     static let shared = UserPreferences()
 
