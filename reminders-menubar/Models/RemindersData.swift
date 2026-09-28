@@ -154,12 +154,15 @@ class RemindersData: ObservableObject {
     @Published private var filteredTagReminderLists: [TagReminderList] = []
 
     var orderedFilteredSections: [ReminderListSection] {
-        let upcomingReminderIDs = remindersToHideFromLists
+        let reminderIdsToExclude = upcomingReminderIdsToExcludeFromLists
         let calendarSections = filteredCalendarReminderLists.map {
             ReminderListSection.calendar(
                 CalendarReminderList(
                     for: $0.calendar,
-                    with: $0.reminders.compactMap { $0.removingReminders(withIDs: upcomingReminderIDs) }
+                    with: ReminderItemTree.excluding(
+                        reminderIds: reminderIdsToExclude,
+                        from: $0.reminders
+                    )
                 )
             )
         }
@@ -167,7 +170,10 @@ class RemindersData: ObservableObject {
             ReminderListSection.tag(
                 TagReminderList(
                     for: $0.tag,
-                    with: $0.reminders.compactMap { $0.removingReminders(withIDs: upcomingReminderIDs) }
+                    with: ReminderItemTree.excluding(
+                        reminderIds: reminderIdsToExclude,
+                        from: $0.reminders
+                    )
                 )
             )
         }
@@ -178,7 +184,7 @@ class RemindersData: ObservableObject {
         return calendarSections + tagSections
     }
 
-    private var remindersToHideFromLists: Set<String> {
+    private var upcomingReminderIdsToExcludeFromLists: Set<String> {
         guard UserPreferences.shared.showUpcomingReminders,
               UserPreferences.shared.hideUpcomingRemindersFromLists else {
             return []
