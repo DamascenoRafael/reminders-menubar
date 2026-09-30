@@ -9,6 +9,7 @@ private enum PreferencesKeys {
     static let rmbColorScheme = "rmbColorScheme"
     static let preferTransparentBackground = "backgroundIsTransparent"
     static let showUpcomingReminders = "showUpcomingReminders"
+    static let hideUpcomingRemindersFromLists = "hideUpcomingRemindersFromLists"
     static let upcomingRemindersInterval = "upcomingRemindersInterval"
     static let filterUpcomingRemindersByCalendar = "filterUpcomingRemindersByCalendar"
     static let menuBarCounterType = "menuBarCounterType"
@@ -36,6 +37,8 @@ private enum PreferencesKeys {
     static let completionAnimationEnabled = "completionAnimationEnabled"
 }
 
+// TODO: Resolve body length of UserPreferences
+// swiftlint:disable:next type_body_length
 class UserPreferences: ObservableObject {
     static let shared = UserPreferences()
 
@@ -136,6 +139,17 @@ class UserPreferences: ObservableObject {
     }() {
         didSet {
             UserPreferences.defaults.set(showUpcomingReminders, forKey: PreferencesKeys.showUpcomingReminders)
+        }
+    }
+
+    @Published var hideUpcomingRemindersFromLists: Bool = {
+        return defaults.bool(forKey: PreferencesKeys.hideUpcomingRemindersFromLists)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(
+                hideUpcomingRemindersFromLists,
+                forKey: PreferencesKeys.hideUpcomingRemindersFromLists
+            )
         }
     }
     
