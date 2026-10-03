@@ -54,13 +54,16 @@ class RemindersService {
         }
     }
 
-    private func createReminderItems(for calendarReminders: [EKReminder]) -> [ReminderItem] {
+    private func createReminderItems(for reminders: [EKReminder]) -> [ReminderItem] {
         var reminderItems: [ReminderItem] = []
-        
-        let noParentKey = "noParentKey"
-        let remindersByParentId = Dictionary(grouping: calendarReminders, by: { $0.parentId ?? noParentKey })
-        let parentReminders = remindersByParentId[noParentKey, default: []]
-        
+
+        let reminderIds = Set(reminders.map(\.calendarItemIdentifier))
+        let remindersByParentId = Dictionary(grouping: reminders, by: { $0.parentId })
+        let parentReminders = reminders.filter { reminder in
+            guard let parentId = reminder.parentId else { return true }
+            return !reminderIds.contains(parentId)
+        }
+
         parentReminders.forEach { parentReminder in
             let parentId = parentReminder.calendarItemIdentifier
             let children = remindersByParentId[parentId, default: []].map({ ReminderItem(for: $0, isChild: true) })
