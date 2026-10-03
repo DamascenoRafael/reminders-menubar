@@ -205,10 +205,13 @@ class RemindersService {
 
         var calendars: [EKCalendar]?
         if let calendarIdentifiers {
-            if calendarIdentifiers.isEmpty {
-                return []
+            let selectedCalendars = getCalendars().filter {
+                calendarIdentifiers.contains($0.calendarIdentifier)
             }
-            calendars = getCalendars().filter({ calendarIdentifiers.contains($0.calendarIdentifier) })
+            guard !selectedCalendars.isEmpty else {
+                return tags.map { TagReminderList(for: $0, with: []) }
+            }
+            calendars = selectedCalendars
         }
 
         let predicate = eventStore.predicateForIncompleteReminders(
