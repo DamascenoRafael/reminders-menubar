@@ -116,7 +116,7 @@ struct ReminderEditView: View {
             actionButtons()
         }
         .frame(width: 300, alignment: .top)
-        .frame(minHeight: 410)
+        .frame(minHeight: 360)
         .fixedSize(horizontal: false, vertical: true)
         .padding()
         .modifier(RmbBackgroundModifier())
@@ -218,13 +218,9 @@ struct ReminderEditView: View {
                 .frame(width: 20)
 
             VStack(alignment: .leading, spacing: 6) {
-                Text(rmbLocalized(.editReminderExternalLinksViewOnlyLabel))
-                    .font(.system(size: 12))
-                    .foregroundColor(.secondary)
-
                 if externalLinks.isEmpty {
-                    Text(rmbLocalized(.editReminderExternalLinksEmptyMessage))
-                        .font(.footnote)
+                    Text(rmbLocalized(.editReminderExternalLinksViewOnlyLabel))
+                        .font(.system(size: 11))
                         .foregroundColor(.secondary)
                 } else {
                     ReminderExternalLinksView(
