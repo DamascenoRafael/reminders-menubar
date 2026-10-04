@@ -156,25 +156,29 @@ class RemindersData: ObservableObject {
     var orderedFilteredSections: [ReminderListSection] {
         let reminderIdsToExclude = upcomingReminderIdsToExcludeFromLists
         let calendarSections = filteredCalendarReminderLists.map {
-            ReminderListSection.calendar(
+            let exclusionResult = ReminderItemTree.excluding(
+                reminderIds: reminderIdsToExclude,
+                from: $0.reminders
+            )
+            return ReminderListSection.calendar(
                 CalendarReminderList(
                     for: $0.calendar,
-                    with: ReminderItemTree.excluding(
-                        reminderIds: reminderIdsToExclude,
-                        from: $0.reminders
-                    )
-                )
+                    with: exclusionResult.reminders
+                ),
+                hiddenUpcomingReminderCount: exclusionResult.excludedCount
             )
         }
         let tagSections = filteredTagReminderLists.map {
-            ReminderListSection.tag(
+            let exclusionResult = ReminderItemTree.excluding(
+                reminderIds: reminderIdsToExclude,
+                from: $0.reminders
+            )
+            return ReminderListSection.tag(
                 TagReminderList(
                     for: $0.tag,
-                    with: ReminderItemTree.excluding(
-                        reminderIds: reminderIdsToExclude,
-                        from: $0.reminders
-                    )
-                )
+                    with: exclusionResult.reminders
+                ),
+                hiddenUpcomingReminderCount: exclusionResult.excludedCount
             )
         }
 

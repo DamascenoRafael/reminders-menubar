@@ -151,7 +151,7 @@ struct ContentView: View {
             Section(header: CalendarTitle(
                 title: rmbLocalized(.recentRemindersSectionTitle),
                 color: .rmbColor(.recentSectionTitle),
-                icon: {
+                accessories: {
                     Image(rmbSymbol: .recentReminders)
                 }
             )) {
@@ -168,10 +168,12 @@ struct ContentView: View {
                 Section(header: CalendarTitle(
                     title: userPreferences.upcomingRemindersInterval.sectionTitle,
                     color: .rmbColor(.upcomingSectionTitle),
-                    icon: {
+                    accessories: {
                         if userPreferences.filterUpcomingRemindersByCalendar {
-                            Image(rmbSymbol: .filterCircle)
-                                .help(rmbLocalized(.upcomingRemindersFilterByCalendarEnabledHelp))
+                            CalendarTitleIndicator(
+                                symbol: .filterCircle,
+                                helpText: rmbLocalized(.upcomingRemindersFilterByCalendarEnabledHelp)
+                            )
                         }
                     }
                 )) {
@@ -184,10 +186,20 @@ struct ContentView: View {
                 Section(header: CalendarTitle(
                     title: section.title,
                     color: section.color,
-                    icon: {
+                    accessories: {
                         if case .tag = section, userPreferences.filterTagRemindersByCalendar {
-                            Image(rmbSymbol: .filterCircle)
-                                .help(rmbLocalized(.tagRemindersFilterByCalendarEnabledHelp))
+                            CalendarTitleIndicator(
+                                symbol: .filterCircle,
+                                helpText: rmbLocalized(.tagRemindersFilterByCalendarEnabledHelp)
+                            )
+                        }
+                        let hiddenCount = section.hiddenUpcomingReminderCount
+                        if hiddenCount > 0 {
+                            CalendarTitleIndicator(
+                                symbol: .calendar,
+                                helpText: rmbLocalized(.hiddenUpcomingRemindersInListHelp, arguments: hiddenCount),
+                                text: "+\(hiddenCount)"
+                            )
                         }
                     }
                 )) {

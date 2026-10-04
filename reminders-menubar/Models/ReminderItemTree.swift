@@ -1,45 +1,57 @@
 enum ReminderItemTree {
+    struct ExclusionResult {
+        let reminders: [ReminderItem]
+        let excludedCount: Int
+    }
+
     static func excluding(
         reminderIds excludedReminderIds: Set<String>,
         from reminders: [ReminderItem]
-    ) -> [ReminderItem] {
-        guard !excludedReminderIds.isEmpty else { return reminders }
+    ) -> ExclusionResult {
+        guard !excludedReminderIds.isEmpty else {
+            return ExclusionResult(reminders: reminders, excludedCount: 0)
+        }
+
         return excluding(
             reminderIds: excludedReminderIds,
             from: reminders,
-            itemsAreChildren: false
+            isChildLevel: false
         )
     }
 
     private static func excluding(
         reminderIds excludedReminderIds: Set<String>,
         from reminders: [ReminderItem],
-        itemsAreChildren: Bool
-    ) -> [ReminderItem] {
-        return reminders.flatMap { reminderItem in
-            let remainingChildren = excluding(
+        isChildLevel: Bool
+    ) -> ExclusionResult {
+        var remainingReminders: [ReminderItem] = []
+        var excludedCount = 0
+
+        for reminderItem in reminders {
+            let isExcluded = excludedReminderIds.contains(reminderItem.id)
+            let remainingChildrenResult = excluding(
                 reminderIds: excludedReminderIds,
                 from: reminderItem.childReminders,
-                itemsAreChildren: true
+                isChildLevel: isExcluded ? isChildLevel : true // Promote retained children to the excluded item's level
+
             )
+            excludedCount += remainingChildrenResult.excludedCount
 
-            if excludedReminderIds.contains(reminderItem.id) {
-                return remainingChildren.map {
-                    ReminderItem(
-                        for: $0.reminder,
-                        isChild: itemsAreChildren,
-                        withChildren: $0.childReminders
-                    )
-                }
-            }
-
-            return [
-                ReminderItem(
+            if isExcluded {
+                excludedCount += 1
+                remainingReminders.append(contentsOf: remainingChildrenResult.reminders)
+            } else {
+                remainingReminders.append(ReminderItem(
                     for: reminderItem.reminder,
-                    isChild: itemsAreChildren,
-                    withChildren: remainingChildren
-                )
-            ]
+                    isChild: isChildLevel,
+                    withChildren: remainingChildrenResult.reminders
+                ))
+            }
         }
+
+        return ExclusionResult(
+            reminders: remainingReminders,
+            excludedCount: excludedCount
+        )
     }
 }

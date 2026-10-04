@@ -143,6 +143,7 @@ enum RemindersMenuBarLocalizedKeys: String {
     case copySampleTags
     case showUpcomingRemindersSettingsOption
     case hideUpcomingRemindersFromListsOption
+    case hiddenUpcomingRemindersInListHelp
     case reminderDisplaySettingsLabel
     case showExternalLinksInReminderItemOption
     case showExternalLinksInReminderItemNote
