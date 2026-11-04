@@ -15,7 +15,7 @@ struct KeyboardSettingsTab: View {
         return exampleDate
             .relativeDateDescription(withTime: true)
             .replacingOccurrences(of: ", ", with: " ")
-            .lowercased(with: rmbTimeFormattedLocale())
+            .lowercased(with: rmbDateTimeFormattedLocale())
     }
 
     var body: some View {

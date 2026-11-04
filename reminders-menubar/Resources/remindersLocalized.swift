@@ -169,6 +169,8 @@ enum RemindersMenuBarLocalizedKeys: String {
     case timeFormatSettingsLabel
     case timeFormat12HourOption
     case timeFormat24HourOption
+    case firstWeekdaySettingsLabel
+    case firstWeekdaySystemOption
     case generalSettingsTab
     case menuBarSettingsTab
     case sectionsSettingsTab
@@ -227,10 +229,20 @@ func rmbAvailableLocales() -> [ReminderMenuBarLocale] {
     return locales.sorted(by: { $0.name < $1.name })
 }
 
-func rmbTimeFormattedLocale() -> Locale {
-    let base = rmbCurrentLocale()
+func rmbDateTimeFormattedLocale() -> Locale {
+    var components = NSLocale.components(fromLocaleIdentifier: rmbCurrentLocale().identifier)
     let hourCycle = UserPreferences.shared.timeFormatIs24Hour ? "h23" : "h12"
-    return Locale(identifier: "\(base.identifier)@hours=\(hourCycle)")
+    components["hours"] = hourCycle
+    let weekday = UserPreferences.shared.firstWeekday ?? Calendar.current.firstWeekday
+    components["fw"] = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"][weekday - 1]
+    return Locale(identifier: NSLocale.localeIdentifier(fromComponents: components))
+}
+
+func rmbWeekdaySymbols() -> [String] {
+    let formatter = DateFormatter()
+    formatter.locale = rmbCurrentLocale()
+    formatter.formattingContext = .standalone
+    return formatter.standaloneWeekdaySymbols
 }
 
 private func rmbCurrentLocale() -> Locale {

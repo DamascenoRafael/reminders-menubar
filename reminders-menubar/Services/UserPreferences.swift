@@ -24,6 +24,7 @@ private enum PreferencesKeys {
     static let sortRemindersByFlagAndPriority = "sortRemindersByPriority"
     static let reminderSortingOrder = "reminderSortingOrder"
     static let timeFormatIs24Hour = "timeFormatIs24Hour"
+    static let firstWeekday = "firstWeekday"
     static let showExternalLinksInReminderItem = "showExternalLinksInReminderItem"
     static let showNotesInReminderItem = "showNotesInReminderItem"
     static let menuBarReminderPreviewEnabled = "menuBarReminderPreviewEnabled"
@@ -423,6 +424,15 @@ class UserPreferences: ObservableObject {
     }() {
         didSet {
             UserPreferences.defaults.set(timeFormatIs24Hour, forKey: PreferencesKeys.timeFormatIs24Hour)
+        }
+    }
+
+    @Published var firstWeekday: Int? = {
+        let weekday = defaults.integer(forKey: PreferencesKeys.firstWeekday)
+        return (1...7).contains(weekday) ? weekday : nil
+    }() {
+        didSet {
+            UserPreferences.defaults.set(firstWeekday, forKey: PreferencesKeys.firstWeekday)
         }
     }
 

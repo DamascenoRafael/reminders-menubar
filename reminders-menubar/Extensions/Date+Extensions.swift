@@ -68,7 +68,7 @@ extension Date {
     }
 
     private func dateDescription(withTime showTimeDescription: Bool, relativeFormatting: Bool) -> String {
-        let locale = rmbTimeFormattedLocale()
+        let locale = rmbDateTimeFormattedLocale()
         let dateFormatter = DateFormatter()
 
         dateFormatter.dateStyle = .medium

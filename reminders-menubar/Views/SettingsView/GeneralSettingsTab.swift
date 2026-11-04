@@ -82,6 +82,18 @@ struct GeneralSettingsTab: View {
                 .labelsHidden()
             }
 
+            SettingsSection(rmbLocalized(.firstWeekdaySettingsLabel)) {
+                Picker(String(""), selection: $userPreferences.firstWeekday) {
+                    Text(rmbLocalized(.firstWeekdaySystemOption)).tag(Int?.none)
+                    Divider()
+                    ForEach(Array(rmbWeekdaySymbols().enumerated()), id: \.element) { index, weekday in
+                        Text(weekday).tag(Optional(index + 1))
+                    }
+                }
+                .pickerStyle(.menu)
+                .labelsHidden()
+            }
+
             SettingsDivider()
 
             SettingsSection {

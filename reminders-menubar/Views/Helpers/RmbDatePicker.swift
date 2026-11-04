@@ -33,11 +33,12 @@ struct RmbDatePicker: NSViewRepresentable {
         picker.datePickerElements = displayedComponents
         picker.action = #selector(Coordinator.onValueChange(_:))
         picker.target = context.coordinator
-        picker.locale = rmbTimeFormattedLocale()
+        picker.locale = rmbDateTimeFormattedLocale()
         return picker
     }
 
     func updateNSView(_ picker: NSDatePicker, context: Context) {
+        picker.locale = rmbDateTimeFormattedLocale()
         picker.dateValue = selection
     }
 
