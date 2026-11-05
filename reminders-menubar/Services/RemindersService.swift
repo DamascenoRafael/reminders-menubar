@@ -299,6 +299,7 @@ extension RemindersService {
             return
         }
         guard let subtask = eventStore.calendarItem(withIdentifier: subtaskId) as? EKReminder else {
+            print("Error finding new subtask:", subtaskId)
             return
         }
 
