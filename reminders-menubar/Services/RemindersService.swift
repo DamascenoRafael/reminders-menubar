@@ -283,3 +283,31 @@ class RemindersService {
         }
     }
 }
+
+// MARK: - Subtasks
+
+extension RemindersService {
+    func createNewSubtask(with rmbReminder: RmbReminder, parent: EKReminder) {
+        // NOTE: A subtask always lives in the list of its parent.
+        var rmbSubtask = rmbReminder
+        rmbSubtask.userDidSetCalendar(parent.calendar)
+
+        // NOTE: The subtask is created with its title only, then the other properties are saved through EventKit.
+        guard let subtaskId = parent.addSubtask(titled: rmbSubtask.title) else {
+            // NOTE: Keep what the user typed as a regular reminder if the subtask could not be created.
+            createNew(with: rmbSubtask, in: parent.calendar)
+            return
+        }
+        guard let subtask = eventStore.calendarItem(withIdentifier: subtaskId) as? EKReminder else {
+            return
+        }
+
+        subtask.update(with: rmbSubtask)
+        save(
+            reminder: subtask,
+            tags: rmbSubtask.tags,
+            isFlagged: rmbSubtask.isFlagged,
+            isUrgent: rmbSubtask.isUrgent
+        )
+    }
+}

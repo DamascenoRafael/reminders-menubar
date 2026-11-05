@@ -4,6 +4,7 @@ import EventKit
 struct ReminderEditView: View {
     enum Mode {
         case create
+        case createSubtask(parent: EKReminder)
         case edit(EKReminder, reminderHasChildren: Bool)
     }
 
@@ -40,7 +41,7 @@ struct ReminderEditView: View {
 
     private var externalLinks: ReminderExternalLinks {
         switch mode {
-        case .create:
+        case .create, .createSubtask:
             return ReminderExternalLinks(draft: rmbReminder)
         case .edit(let reminder, _):
             return ReminderExternalLinks(reminder: reminder, draft: rmbReminder)
@@ -56,6 +57,13 @@ struct ReminderEditView: View {
 
     init(isPresented: Binding<Bool>) {
         self.mode = .create
+
+        _isPresented = isPresented
+        _rmbReminder = State(initialValue: RmbReminder())
+    }
+
+    init(isPresented: Binding<Bool>, parentReminder: EKReminder) {
+        self.mode = .createSubtask(parent: parentReminder)
 
         _isPresented = isPresented
         _rmbReminder = State(initialValue: RmbReminder())
@@ -103,7 +111,7 @@ struct ReminderEditView: View {
                 onMoveFocus: { focusCoordinator.moveFocus(from: .tags, direction: $0) }
             )
 
-            if !reminderHasChildren {
+            if !reminderHasChildren && !mode.isCreatingSubtask {
                 Divider()
                 ReminderListEditView(selection: calendarPickerSelection)
             }
@@ -121,13 +129,18 @@ struct ReminderEditView: View {
         .padding()
         .modifier(RmbBackgroundModifier())
         .onAppear {
-            if case .create = mode {
+            switch mode {
+            case .create:
                 if let calendar = remindersData.calendarForSaving {
                     rmbReminder.userDidSetCalendar(calendar)
                 }
-                if userPreferences.autoSuggestToday {
-                    rmbReminder.setIsAutoSuggestingTodayForCreation()
-                }
+            case .createSubtask(let parentReminder):
+                rmbReminder.userDidSetCalendar(parentReminder.calendar)
+            case .edit:
+                return
+            }
+            if userPreferences.autoSuggestToday {
+                rmbReminder.setIsAutoSuggestingTodayForCreation()
             }
         }
     }
@@ -137,6 +150,10 @@ struct ReminderEditView: View {
     @ViewBuilder
     private func cancelHeader() -> some View {
         HStack {
+            if case .createSubtask(let parentReminder) = mode {
+                SubtaskParentTitleView(parentReminder: parentReminder)
+            }
+
             Spacer()
 
             Button {
@@ -378,6 +395,11 @@ struct ReminderEditView: View {
             if userPreferences.closePopoverAfterCreatingReminder {
                 AppDelegate.shared.popover.performClose(nil)
             }
+        } else if case .createSubtask(let parentReminder) = mode {
+            RemindersService.shared.createNewSubtask(with: rmbReminder, parent: parentReminder)
+            if userPreferences.closePopoverAfterCreatingReminder {
+                AppDelegate.shared.popover.performClose(nil)
+            }
         } else if case .edit(let ekReminder, _) = mode {
             ekReminder.update(with: rmbReminder)
             if ekReminder.hasChanges || rmbReminder.hasPrivateApiChanges {
@@ -391,6 +413,31 @@ struct ReminderEditView: View {
         }
 
         isPresented = false
+    }
+}
+
+extension ReminderEditView.Mode {
+    var isCreatingSubtask: Bool {
+        if case .createSubtask = self {
+            return true
+        }
+        return false
+    }
+}
+
+private struct SubtaskParentTitleView: View {
+    let parentReminder: EKReminder
+
+    var body: some View {
+        HStack(spacing: 4) {
+            Image(rmbSymbol: .arrowTurnDownRight)
+            Text(parentReminder.title)
+                .lineLimit(1)
+                .truncationMode(.tail)
+        }
+        .font(.caption)
+        .foregroundColor(.secondary)
+        .help(rmbLocalized(.addSubtaskButton))
     }
 }
 
