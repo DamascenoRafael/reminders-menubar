@@ -170,10 +170,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             didCloseEventDate = .distantPast
             popover.performClose(button)
         } else {
-            popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
-            NSApp.activate(ignoringOtherApps: true)
-            popover.contentViewController?.view.window?.makeKey()
+            showPopover(relativeTo: button)
         }
+    }
+
+    private func showPopover(relativeTo button: NSStatusBarButton) {
+        if #available(macOS 14.0, *) {
+            NSApp.activate()
+        } else {
+            NSApp.activate(ignoringOtherApps: true)
+        }
+
+        popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
+        popover.contentViewController?.view.window?.makeKey()
     }
 
     // - MARK: Popover sizing
