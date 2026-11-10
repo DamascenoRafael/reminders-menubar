@@ -13,6 +13,7 @@ struct ReminderItemView: View {
 
     @State private var reminderItemIsHovered = false
     @State private var showingEditPopover = false
+    @State private var showingAddSubtaskSheet = false
     @State private var showingRemoveAlert = false
     @State private var showingCopiedToast = false
     @State private var isPendingCompletion = false
@@ -178,6 +179,17 @@ struct ReminderItemView: View {
         .alert(isPresented: $showingRemoveAlert) {
             removeReminderAlert(for: reminderItem.reminder)
         }
+        .sheet(isPresented: $showingAddSubtaskSheet) {
+            ReminderEditView(isPresented: $showingAddSubtaskSheet, parentReminder: reminderItem.reminder)
+        }
+        .onReceive(
+            NotificationCenter.default.publisher(
+                for: NSPopover.didCloseNotification,
+                object: AppDelegate.shared.popover
+            )
+        ) { _ in
+            showingAddSubtaskSheet = false
+        }
     }
 
     @ViewBuilder
@@ -201,6 +213,7 @@ struct ReminderItemView: View {
         } else {
             ReminderEllipsisMenuView(
                 showingEditPopover: $showingEditPopover,
+                showingAddSubtaskSheet: $showingAddSubtaskSheet,
                 showingRemoveAlert: $showingRemoveAlert,
                 onCopyReminder: { copyReminderToClipboard() },
                 reminder: reminderItem.reminder,

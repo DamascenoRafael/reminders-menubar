@@ -10,6 +10,7 @@ enum RmbSymbol {
     case priorityLow
     case menubarRectangle
     case arrowDownCircle
+    case arrowTurnDownRight
     case calendar
     case calendarBadgeExclamationmark
     case checkmark
@@ -77,6 +78,8 @@ enum RmbSymbol {
             return "menubar.rectangle"
         case .arrowDownCircle:
             return "arrow.down.circle"
+        case .arrowTurnDownRight:
+            return "arrow.turn.down.right"
         case .calendar:
             return "calendar"
         case .calendarBadgeExclamationmark:

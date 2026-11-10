@@ -3,6 +3,7 @@ import EventKit
 
 struct ReminderEllipsisMenuView: View {
     @Binding var showingEditPopover: Bool
+    @Binding var showingAddSubtaskSheet: Bool
     @Binding var showingRemoveAlert: Bool
     var onCopyReminder: () -> Void
 
@@ -12,6 +13,11 @@ struct ReminderEllipsisMenuView: View {
     var body: some View {
         Menu {
             showEditPopoverOptionButton()
+
+            // NOTE: Apple Reminders only supports one level of subtasks.
+            if reminder.parentId == nil {
+                showAddSubtaskSheetOptionButton()
+            }
 
             copyReminderButton()
 
@@ -57,6 +63,17 @@ struct ReminderEllipsisMenuView: View {
         }
     }
 
+    func showAddSubtaskSheetOptionButton() -> some View {
+        Button(action: {
+            showingAddSubtaskSheet = true
+        }) {
+            HStack {
+                Image(rmbSymbol: .plus)
+                Text(rmbLocalized(.addSubtaskButton))
+            }
+        }
+    }
+
     func showRemoveAlertOptionButton() -> some View {
         Button(action: {
             showingRemoveAlert = true
@@ -86,6 +103,7 @@ struct ReminderEllipsisMenuView: View {
 
     ReminderEllipsisMenuView(
         showingEditPopover: .constant(false),
+        showingAddSubtaskSheet: .constant(false),
         showingRemoveAlert: .constant(false),
         onCopyReminder: {},
         reminder: reminder,
