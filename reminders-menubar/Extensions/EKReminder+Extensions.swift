@@ -168,10 +168,14 @@ extension EKReminder {
     private func performPrivateSelector(
         _ name: String,
         on object: AnyObject,
-        with arg: AnyObject? = nil
+        with arg: AnyObject? = nil,
+        and secondArg: AnyObject? = nil
     ) -> AnyObject? {
         let selector = NSSelectorFromString(name)
         guard object.responds(to: selector) else { return nil }
+        if let arg, let secondArg {
+            return object.perform(selector, with: arg, with: secondArg)?.takeUnretainedValue()
+        }
         if let arg {
             return object.perform(selector, with: arg)?.takeUnretainedValue()
         }
@@ -282,6 +286,27 @@ extension EKReminder {
 
         urgentAlarmContext.setValue(NSNumber(value: newValue), forKey: "isUrgentStateEnabledForCurrentUser")
         commitSaveRequest(saveRequest)
+    }
+
+    // NOTE: This is a workaround to create a subtask of a reminder.
+    // Subtasks are not accessible through the conventional API.
+    // Returns the calendarItemIdentifier of the new subtask, or nil if it could not be created.
+    func addSubtask(titled title: String) -> String? {
+        guard let (saveRequest, subtaskContext) = createSaveRequest(context: "subtaskContext"),
+              let subtaskChangeItem = performPrivateSelector(
+                "addReminderWithTitle:toReminderSubtaskContextChangeItem:",
+                on: saveRequest,
+                with: title as NSString,
+                and: subtaskContext
+              ),
+              let subtaskStorage = performPrivateSelector("storage", on: subtaskChangeItem),
+              let subtaskObjectId = performPrivateSelector("objectID", on: subtaskStorage),
+              let subtaskId = performPrivateSelector("uuid", on: subtaskObjectId) as? UUID else {
+            return nil
+        }
+
+        commitSaveRequest(saveRequest)
+        return subtaskId.uuidString
     }
 
     // MARK: - Private API save helpers

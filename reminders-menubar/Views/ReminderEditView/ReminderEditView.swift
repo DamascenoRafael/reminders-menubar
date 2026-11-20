@@ -4,6 +4,7 @@ import EventKit
 struct ReminderEditView: View {
     enum Mode {
         case create
+        case createSubtask(parent: EKReminder)
         case edit(EKReminder, reminderHasChildren: Bool)
     }
 
@@ -30,6 +31,7 @@ struct ReminderEditView: View {
     @State private var copyButtonIsHovered = false
     @State private var isCopied = false
     @State private var copiedDismissWork: DispatchWorkItem?
+    @State private var textFieldsIdentity = UUID()
 
     private var reminderHasChildren: Bool {
         if case .edit(_, let hasChildren) = mode {
@@ -40,7 +42,7 @@ struct ReminderEditView: View {
 
     private var externalLinks: ReminderExternalLinks {
         switch mode {
-        case .create:
+        case .create, .createSubtask:
             return ReminderExternalLinks(draft: rmbReminder)
         case .edit(let reminder, _):
             return ReminderExternalLinks(reminder: reminder, draft: rmbReminder)
@@ -56,6 +58,13 @@ struct ReminderEditView: View {
 
     init(isPresented: Binding<Bool>) {
         self.mode = .create
+
+        _isPresented = isPresented
+        _rmbReminder = State(initialValue: RmbReminder())
+    }
+
+    init(isPresented: Binding<Bool>, parentReminder: EKReminder) {
+        self.mode = .createSubtask(parent: parentReminder)
 
         _isPresented = isPresented
         _rmbReminder = State(initialValue: RmbReminder())
@@ -103,7 +112,7 @@ struct ReminderEditView: View {
                 onMoveFocus: { focusCoordinator.moveFocus(from: .tags, direction: $0) }
             )
 
-            if !reminderHasChildren {
+            if !reminderHasChildren && !mode.isCreatingSubtask {
                 Divider()
                 ReminderListEditView(selection: calendarPickerSelection)
             }
@@ -121,14 +130,7 @@ struct ReminderEditView: View {
         .padding()
         .modifier(RmbBackgroundModifier())
         .onAppear {
-            if case .create = mode {
-                if let calendar = remindersData.calendarForSaving {
-                    rmbReminder.userDidSetCalendar(calendar)
-                }
-                if userPreferences.autoSuggestToday {
-                    rmbReminder.setIsAutoSuggestingTodayForCreation()
-                }
-            }
+            prepareNewReminder()
         }
     }
 
@@ -137,6 +139,10 @@ struct ReminderEditView: View {
     @ViewBuilder
     private func cancelHeader() -> some View {
         HStack {
+            if case .createSubtask(let parentReminder) = mode {
+                SubtaskParentTitleView(parentReminder: parentReminder)
+            }
+
             Spacer()
 
             Button {
@@ -194,6 +200,7 @@ struct ReminderEditView: View {
         )
         .fontStyle(.title3)
         .frame(height: titleTextFieldDynamicHeight)
+        .id(textFieldsIdentity)
 
         RmbHighlightedTextField(
             placeholder: rmbLocalized(.editReminderNotesTextFieldPlaceholder),
@@ -205,6 +212,7 @@ struct ReminderEditView: View {
         .onMoveFocus { focusCoordinator.moveFocus(from: .notes, direction: $0) }
         .onSubmit { confirmAction() }
         .frame(height: notesTextFieldDynamicHeight)
+        .id(textFieldsIdentity)
     }
 
     // MARK: - External Links
@@ -366,6 +374,10 @@ struct ReminderEditView: View {
         let finalTitle = rmbReminder.titleRemovingParsedTokens()
         guard !finalTitle.isEmpty,
               let calendar = rmbReminder.calendar else {
+            // NOTE: Return on an empty subtask closes the sheet.
+            if mode.isCreatingSubtask && rmbReminder.title.isEmpty {
+                isPresented = false
+            }
             return
         }
 
@@ -378,6 +390,11 @@ struct ReminderEditView: View {
             if userPreferences.closePopoverAfterCreatingReminder {
                 AppDelegate.shared.popover.performClose(nil)
             }
+        } else if case .createSubtask(let parentReminder) = mode {
+            RemindersService.shared.createNewSubtask(with: rmbReminder, parent: parentReminder)
+            // NOTE: The sheet stays open so several subtasks can be added in a row.
+            startNextSubtask()
+            return
         } else if case .edit(let ekReminder, _) = mode {
             ekReminder.update(with: rmbReminder)
             if ekReminder.hasChanges || rmbReminder.hasPrivateApiChanges {
@@ -391,6 +408,58 @@ struct ReminderEditView: View {
         }
 
         isPresented = false
+    }
+}
+
+extension ReminderEditView {
+    func prepareNewReminder() {
+        switch mode {
+        case .create:
+            if let calendar = remindersData.calendarForSaving {
+                rmbReminder.userDidSetCalendar(calendar)
+            }
+        case .createSubtask(let parentReminder):
+            rmbReminder.userDidSetCalendar(parentReminder.calendar)
+        case .edit:
+            return
+        }
+        if userPreferences.autoSuggestToday {
+            rmbReminder.setIsAutoSuggestingTodayForCreation()
+        }
+    }
+
+    func startNextSubtask() {
+        rmbReminder = RmbReminder()
+        prepareNewReminder()
+        // NOTE: A focused text field keeps its own text, so new fields replace the old ones.
+        textFieldsIdentity = UUID()
+        focusCoordinator.notesTrigger = nil
+        focusCoordinator.titleTrigger = UUID()
+    }
+}
+
+extension ReminderEditView.Mode {
+    var isCreatingSubtask: Bool {
+        if case .createSubtask = self {
+            return true
+        }
+        return false
+    }
+}
+
+private struct SubtaskParentTitleView: View {
+    let parentReminder: EKReminder
+
+    var body: some View {
+        HStack(spacing: 4) {
+            Image(rmbSymbol: .arrowTurnDownRight)
+            Text(parentReminder.title)
+                .lineLimit(1)
+                .truncationMode(.tail)
+        }
+        .font(.caption)
+        .foregroundColor(.secondary)
+        .help(rmbLocalized(.addSubtaskButton))
     }
 }
 

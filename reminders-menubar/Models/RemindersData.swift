@@ -230,6 +230,10 @@ class RemindersData: ObservableObject {
 
     @Published var searchResults: [ReminderItem]?
 
+    // NOTE: The reminder whose add subtask sheet is open. The sheet lives in ContentView,
+    // so that it stays open while the list reloads after each new subtask.
+    @Published var reminderItemAddingSubtask: ReminderItem?
+
     @Published private var searchableReminders: [EKReminder]?
 
     @Published var calendarIdentifiersFilter: [String] = {

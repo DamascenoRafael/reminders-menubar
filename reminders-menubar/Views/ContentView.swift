@@ -38,7 +38,22 @@ struct ContentView: View {
         ) { _ in
             remindersData.showingSearch = false
             remindersData.showingRecentReminders = false
+            remindersData.reminderItemAddingSubtask = nil
         }
+        .sheet(item: $remindersData.reminderItemAddingSubtask) { parentItem in
+            ReminderEditView(isPresented: isAddingSubtask, parentReminder: parentItem.reminder)
+        }
+    }
+
+    private var isAddingSubtask: Binding<Bool> {
+        Binding(
+            get: { remindersData.reminderItemAddingSubtask != nil },
+            set: { isPresented in
+                if !isPresented {
+                    remindersData.reminderItemAddingSubtask = nil
+                }
+            }
+        )
     }
 
     // MARK: - Key handling

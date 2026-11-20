@@ -5,6 +5,7 @@ import Combine
 @MainActor
 struct ReminderItemView: View {
     @EnvironmentObject private var copyCoordinator: CopyShortcutCoordinator
+    @EnvironmentObject private var remindersData: RemindersData
     @Environment(\.appHasPopoverOpen) private var appHasPopoverOpen
     @ObservedObject private var userPreferences = UserPreferences.shared
 
@@ -202,6 +203,7 @@ struct ReminderItemView: View {
             ReminderEllipsisMenuView(
                 showingEditPopover: $showingEditPopover,
                 showingRemoveAlert: $showingRemoveAlert,
+                onAddSubtask: { remindersData.reminderItemAddingSubtask = reminderItem },
                 onCopyReminder: { copyReminderToClipboard() },
                 reminder: reminderItem.reminder,
                 reminderHasChildren: reminderItem.hasChildren
@@ -291,4 +293,5 @@ struct ReminderItemView: View {
 
     ReminderItemView(reminderItem: reminderItem)
         .environmentObject(CopyShortcutCoordinator())
+        .environmentObject(RemindersData())
 }

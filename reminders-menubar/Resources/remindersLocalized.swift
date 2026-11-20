@@ -118,6 +118,7 @@ enum RemindersMenuBarLocalizedKeys: String {
     case reminderRecurrenceCustomLabel
     case reminderRecurrenceCustomNote
     case copyReminderButton
+    case addSubtaskButton
     case copiedToastMessage
     case reminderEditPopoverSaveButton
     case newReminderButtonHelp
