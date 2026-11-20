@@ -288,6 +288,12 @@ class RemindersService {
 
 extension RemindersService {
     func createNewSubtask(with rmbReminder: RmbReminder, parent: EKReminder) {
+        // NOTE: Reload the parent so that subtasks added in a row each build on the latest saved state.
+        guard parent.refresh() else {
+            print("Error adding subtask: parent reminder no longer exists")
+            return
+        }
+
         // NOTE: A subtask always lives in the list of its parent.
         var rmbSubtask = rmbReminder
         rmbSubtask.userDidSetCalendar(parent.calendar)
