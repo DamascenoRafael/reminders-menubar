@@ -15,6 +15,7 @@
 		7113A2822F724A7500474582 /* CreateReminderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113A2812F724A7500474582 /* CreateReminderButton.swift */; };
 		7115461324C0ADCB007781E2 /* ReminderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115461224C0ADCB007781E2 /* ReminderItemView.swift */; };
 		7115461924C0C280007781E2 /* RemindersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7115461824C0C280007781E2 /* RemindersService.swift */; };
+		71C7A1003FABC00100000002 /* ReminderListSectionsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C7A1003FABC00100000001 /* ReminderListSectionsService.swift */; };
 		71217B9D2F8C4D3300E5FEB4 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 71217B9C2F8C4D3300E5FEB4 /* Sparkle */; };
 		71217B9F2F8C4D7F00E5FEB4 /* SparkleUpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71217B9E2F8C4D7F00E5FEB4 /* SparkleUpdateController.swift */; };
 		71217BA82F8C8BEB00E5FEB4 /* AppStoreUpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71217BA72F8C8BEB00E5FEB4 /* AppStoreUpdateController.swift */; };
@@ -170,6 +171,7 @@
 		7113A2812F724A7500474582 /* CreateReminderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReminderButton.swift; sourceTree = "<group>"; };
 		7115461224C0ADCB007781E2 /* ReminderItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderItemView.swift; sourceTree = "<group>"; };
 		7115461824C0C280007781E2 /* RemindersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersService.swift; sourceTree = "<group>"; };
+		71C7A1003FABC00100000001 /* ReminderListSectionsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderListSectionsService.swift; sourceTree = "<group>"; };
 		71217B9E2F8C4D7F00E5FEB4 /* SparkleUpdateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkleUpdateController.swift; sourceTree = "<group>"; };
 		71217BA02F8C4DAB00E5FEB4 /* reminders_menubar_appstore.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = reminders_menubar_appstore.entitlements; sourceTree = "<group>"; };
 		71217BA72F8C8BEB00E5FEB4 /* AppStoreUpdateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreUpdateController.swift; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 				71CE00012FA6000100000001 /* NewReminderTypingCoordinator.swift */,
 				71CC00032FA6000300000002 /* SettingsCoordinator.swift */,
 				7115461824C0C280007781E2 /* RemindersService.swift */,
+				71C7A1003FABC00100000001 /* ReminderListSectionsService.swift */,
 				71F301F9259FB5CF00CDD81E /* UserPreferences.swift */,
 				71D2624C2F5A1B0200C8A33E /* LaunchAtLoginService.swift */,
 				715B4DD428D56FE5008C6683 /* KeyboardShortcutService.swift */,
@@ -827,6 +830,7 @@
 				718C0C632D43220A00BF04B0 /* PriorityParser.swift in Sources */,
 				71F93A632E03B6DA00D5C5BC /* ReminderDateDescriptionView.swift in Sources */,
 				7115461924C0C280007781E2 /* RemindersService.swift in Sources */,
+				71C7A1003FABC00100000002 /* ReminderListSectionsService.swift in Sources */,
 				71A8B2782FD659F800778996 /* Image+Extensions.swift in Sources */,
 				71A8B2792FD659F800778996 /* Label+Extensions.swift in Sources */,
 				715B4DD728D59BF2008C6683 /* FilterReminderListButton.swift in Sources */,

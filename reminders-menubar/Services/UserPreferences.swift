@@ -36,6 +36,8 @@ private enum PreferencesKeys {
     static let showTagsBeforeCalendars = "showTagsBeforeCalendars"
     static let filterTagRemindersByCalendar = "filterTagRemindersByCalendar"
     static let completionAnimationEnabled = "completionAnimationEnabled"
+    static let showReminderListSections = "showReminderListSections"
+    static let reminderListSectionsFolderBookmark = "reminderListSectionsFolderBookmark"
 }
 
 // TODO: Resolve body length of UserPreferences
@@ -184,6 +186,26 @@ class UserPreferences: ObservableObject {
                 sortRemindersByFlagAndPriority,
                 forKey: PreferencesKeys.sortRemindersByFlagAndPriority
             )
+        }
+    }
+
+    @Published var showReminderListSections: Bool = {
+        return defaults.bool(forKey: PreferencesKeys.showReminderListSections)
+    }() {
+        didSet {
+            UserPreferences.defaults.set(
+                showReminderListSections,
+                forKey: PreferencesKeys.showReminderListSections
+            )
+        }
+    }
+
+    var reminderListSectionsFolderBookmark: Data? {
+        get {
+            return UserPreferences.defaults.data(forKey: PreferencesKeys.reminderListSectionsFolderBookmark)
+        }
+        set {
+            UserPreferences.defaults.set(newValue, forKey: PreferencesKeys.reminderListSectionsFolderBookmark)
         }
     }
     

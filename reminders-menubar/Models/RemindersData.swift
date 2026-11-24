@@ -40,6 +40,7 @@ class RemindersData: ObservableObject {
             UserPreferences.shared.$showRemindersWithDueDateOnTop.map { _ in }.eraseToAnyPublisher(),
             UserPreferences.shared.$sortRemindersByFlagAndPriority.map { _ in }.eraseToAnyPublisher(),
             UserPreferences.shared.$reminderSortingOrder.map { _ in }.eraseToAnyPublisher(),
+            UserPreferences.shared.$showReminderListSections.map { _ in }.eraseToAnyPublisher(),
             $calendarIdentifiersFilter.removeDuplicates().map { _ in }.eraseToAnyPublisher()
         )
         .dropFirst()
@@ -153,6 +154,8 @@ class RemindersData: ObservableObject {
 
     @Published private var filteredTagReminderLists: [TagReminderList] = []
 
+    @Published private var reminderListSections = ReminderListSections()
+
     var orderedFilteredSections: [ReminderListSection] {
         let reminderIdsToExclude = upcomingReminderIdsToExcludeFromLists
         let calendarSections = filteredCalendarReminderLists.map {
@@ -186,6 +189,10 @@ class RemindersData: ObservableObject {
             return tagSections + calendarSections
         }
         return calendarSections + tagSections
+    }
+
+    func reminderGroups(in section: ReminderListSection) -> [ReminderSectionGroup] {
+        return reminderListSections.groups(in: section)
     }
 
     private var upcomingReminderIdsToExcludeFromLists: Set<String> {
@@ -289,6 +296,8 @@ class RemindersData: ObservableObject {
         // Fetch reminder data with validated filters
         self.filteredCalendarReminderLists =
             await RemindersService.shared.getReminders(of: self.calendarIdentifiersFilter)
+        self.reminderListSections =
+            ReminderListSectionsService.shared.fetchSections(for: self.calendarIdentifiersFilter)
         self.upcomingReminders = await getUpcomingReminders()
         self.filteredTagReminderLists = await getTagReminders()
 

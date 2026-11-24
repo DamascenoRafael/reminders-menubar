@@ -17049,6 +17049,756 @@
         }
       }
     },
+    "reminderListSectionsAccessAlertMessage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobrazení sekcí vyžaduje přístup pro čtení ke složce s daty Připomínek. Znovu zapněte volbu a vyberte složku, která se otevře jako výchozí."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zum Anzeigen von Abschnitten ist Lesezugriff auf den Datenordner von Erinnerungen nötig. Aktiviere die Option erneut und wähle den standardmäßig geöffneten Ordner aus."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Showing sections needs read access to the Reminders data folder. Turn the option on again and select the folder that opens by default."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para mostrar las secciones se necesita acceso de lectura a la carpeta de datos de Recordatorios. Vuelve a activar la opción y selecciona la carpeta que se abre por defecto."
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kailangan ng read access sa data folder ng Reminders para maipakita ang mga seksyon. I-on muli ang opsyon at piliin ang folder na bumubukas bilang default."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'affichage des sections nécessite un accès en lecture au dossier de données de Rappels. Réactivez l'option et sélectionnez le dossier proposé par défaut."
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menampilkan bagian memerlukan akses baca ke folder data Pengingat. Nyalakan lagi opsi ini dan pilih folder yang terbuka secara default."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per mostrare le sezioni è necessario l'accesso in lettura alla cartella dei dati di Promemoria. Riattiva l'opzione e seleziona la cartella proposta per impostazione predefinita."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "セクションを表示するには、リマインダーのデータフォルダへの読み取りアクセスが必要です。オプションを再度オンにして、最初に開かれるフォルダを選択してください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "섹션을 표시하려면 미리 알림 데이터 폴더에 대한 읽기 권한이 필요합니다. 옵션을 다시 켜고 기본으로 열리는 폴더를 선택하십시오."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voor het tonen van secties is leestoegang tot de gegevensmap van Herinneringen nodig. Schakel de optie opnieuw in en selecteer de map die standaard wordt geopend."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokazywanie sekcji wymaga dostępu do odczytu folderu danych Przypomnień. Włącz ponownie opcję i wybierz folder otwierany domyślnie."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar as seções requer acesso de leitura à pasta de dados do Lembretes. Reative a opção e selecione a pasta que abre por padrão."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Для показа разделов нужен доступ на чтение к папке данных Напоминаний. Снова включите параметр и выберите папку, открытую по умолчанию."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobrazenie sekcií vyžaduje prístup na čítanie k priečinku s dátami Pripomienok. Znova zapnite voľbu a vyberte priečinok, ktorý sa otvorí predvolene."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bölümleri göstermek için Anımsatıcılar veri klasörüne okuma erişimi gerekir. Seçeneği yeniden açın ve varsayılan olarak açılan klasörü seçin."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Для показу розділів потрібен доступ на читання до папки даних Нагадувань. Знову увімкніть параметр і виберіть папку, що відкривається за замовчуванням."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Để hiển thị các phần cần quyền đọc thư mục dữ liệu Lời nhắc. Hãy bật lại tùy chọn và chọn thư mục được mở mặc định."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "显示分区需要“提醒事项”数据文件夹的读取权限。请重新打开此选项，并选择默认打开的文件夹。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "顯示區段需要「提醒事項」資料檔案夾的讀取權限。請重新開啟此選項，並選擇預設開啟的檔案夾。"
+          }
+        }
+      }
+    },
+    "reminderListSectionsAccessAlertTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sekce nelze zobrazit"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abschnitte können nicht angezeigt werden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sections can't be shown"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pueden mostrar las secciones"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hindi maipakita ang mga seksyon"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible d'afficher les sections"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bagian tidak dapat ditampilkan"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossibile mostrare le sezioni"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "セクションを表示できません"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "섹션을 표시할 수 없음"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Secties kunnen niet worden getoond"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie można pokazać sekcji"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não é possível mostrar as seções"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удаётся показать разделы"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sekcie nie je možné zobraziť"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bölümler gösterilemiyor"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдається показати розділи"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không thể hiển thị các phần"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法显示分区"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無法顯示區段"
+          }
+        }
+      }
+    },
+    "reminderListSectionsFolderPanelButton" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Povolit"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erlauben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Payagan"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autoriser"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Izinkan"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consenti"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "許可"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "허용"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sta toe"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zezwól"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разрешить"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Povoliť"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İzin Ver"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дозволити"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cho phép"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允许"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "允許"
+          }
+        }
+      }
+    },
+    "reminderListSectionsFolderPanelMessage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vyberte složku s daty Připomínek, aby se zobrazily sekce vašich seznamů. Přístup je pouze pro čtení."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle den Datenordner von Erinnerungen aus, um die Abschnitte deiner Listen anzuzeigen. Der Zugriff ist nur lesend."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select the Reminders data folder to show the sections of your lists. Access is read-only."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecciona la carpeta de datos de Recordatorios para mostrar las secciones de tus listas. El acceso es solo de lectura."
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Piliin ang data folder ng Reminders para ipakita ang mga seksyon ng iyong mga listahan. Read-only ang access."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sélectionnez le dossier de données de Rappels pour afficher les sections de vos listes. L'accès est en lecture seule."
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pilih folder data Pengingat untuk menampilkan bagian dari daftar Anda. Aksesnya hanya-baca."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleziona la cartella dei dati di Promemoria per mostrare le sezioni dei tuoi elenchi. L'accesso è in sola lettura."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リストのセクションを表示するには、リマインダーのデータフォルダを選択してください。アクセスは読み取り専用です。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "목록의 섹션을 표시하려면 미리 알림 데이터 폴더를 선택하십시오. 접근은 읽기 전용입니다."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecteer de gegevensmap van Herinneringen om de secties van je lijsten te tonen. De toegang is alleen-lezen."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybierz folder danych Przypomnień, aby pokazać sekcje swoich list. Dostęp jest tylko do odczytu."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecione a pasta de dados do Lembretes para mostrar as seções das suas listas. O acesso é somente para leitura."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите папку данных Напоминаний, чтобы показать разделы ваших списков. Доступ только для чтения."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vyberte priečinok s dátami Pripomienok, aby sa zobrazili sekcie vašich zoznamov. Prístup je len na čítanie."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listelerinizin bölümlerini göstermek için Anımsatıcılar veri klasörünü seçin. Erişim salt okunurdur."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Виберіть папку даних Нагадувань, щоб показати розділи ваших списків. Доступ лише для читання."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chọn thư mục dữ liệu Lời nhắc để hiển thị các phần trong danh sách của bạn. Quyền truy cập chỉ đọc."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择“提醒事项”数据文件夹以显示列表中的分区。访问权限为只读。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選擇「提醒事項」資料檔案夾以顯示列表中的區段。取用權限為唯讀。"
+          }
+        }
+      }
+    },
+    "reminderListSectionsSettingsLabel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sekce seznamů"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listenabschnitte"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "List sections"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Secciones de las listas"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mga seksyon ng listahan"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sections des listes"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bagian daftar"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sezioni degli elenchi"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リストのセクション"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "목록 섹션"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lijstsecties"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sekcje list"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seções das listas"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разделы списков"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sekcie zoznamov"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liste bölümleri"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Розділи списків"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phần của danh sách"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "列表分区"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "列表區段"
+          }
+        }
+      }
+    },
+    "reminderListSectionsUnavailableNote" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sekce teď nelze načíst, proto se seznamy zobrazují bez nich. Vypněte a znovu zapněte volbu a vyberte složku znovu."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abschnitte können derzeit nicht gelesen werden, daher werden Listen ohne sie angezeigt. Deaktiviere die Option und aktiviere sie erneut, um den Ordner wieder auszuwählen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sections can't be read right now, so lists are shown without them. Turn the option off and on again to select the folder again."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se pueden leer las secciones en este momento, así que las listas se muestran sin ellas. Desactiva y vuelve a activar la opción para seleccionar la carpeta de nuevo."
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hindi mabasa ang mga seksyon sa ngayon, kaya ipinapakita ang mga listahan nang wala ang mga ito. I-off at i-on muli ang opsyon para piliin muli ang folder."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les sections ne peuvent pas être lues pour le moment : les listes s'affichent sans elles. Désactivez puis réactivez l'option pour sélectionner à nouveau le dossier."
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bagian tidak dapat dibaca saat ini, jadi daftar ditampilkan tanpa bagian. Matikan lalu nyalakan lagi opsi ini untuk memilih folder kembali."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al momento non è possibile leggere le sezioni, quindi gli elenchi vengono mostrati senza. Disattiva e riattiva l'opzione per selezionare di nuovo la cartella."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "現在セクションを読み込めないため、リストはセクションなしで表示されています。フォルダを選択し直すには、オプションをオフにしてから再度オンにしてください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지금은 섹션을 읽을 수 없어 목록이 섹션 없이 표시됩니다. 폴더를 다시 선택하려면 옵션을 껐다가 다시 켜십시오."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Secties kunnen nu niet worden gelezen, dus lijsten worden zonder secties getoond. Schakel de optie uit en weer in om de map opnieuw te selecteren."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie można teraz odczytać sekcji, więc listy są wyświetlane bez nich. Wyłącz i ponownie włącz opcję, aby ponownie wybrać folder."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não é possível ler as seções agora, então as listas são exibidas sem elas. Desative e reative a opção para selecionar a pasta novamente."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сейчас не удаётся прочитать разделы, поэтому списки показаны без них. Выключите и снова включите параметр, чтобы заново выбрать папку."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sekcie teraz nie je možné načítať, preto sa zoznamy zobrazujú bez nich. Vypnite a znova zapnite voľbu a vyberte priečinok znova."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bölümler şu anda okunamıyor, bu yüzden listeler bölümsüz gösteriliyor. Klasörü yeniden seçmek için seçeneği kapatıp yeniden açın."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зараз не вдається прочитати розділи, тому списки показано без них. Вимкніть і знову увімкніть параметр, щоб повторно вибрати папку."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hiện không thể đọc các phần nên danh sách được hiển thị không có phần. Hãy tắt rồi bật lại tùy chọn để chọn lại thư mục."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目前无法读取分区，因此列表不显示分区。请关闭并重新打开此选项以重新选择文件夹。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目前無法讀取區段，因此列表不顯示區段。請關閉後再重新開啟此選項以重新選擇檔案夾。"
+          }
+        }
+      }
+    },
     "reminderRecurrenceCustomLabel" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -23226,6 +23976,256 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在每個提醒事項下方顯示備註"
+          }
+        }
+      }
+    },
+    "showReminderListSectionsNote" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Načítá sekce z dat Připomínek v tomto Macu. O přístup k jejich složce se žádá jen jednou, pouze pro čtení."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liest die Abschnitte aus den Daten von Erinnerungen auf diesem Mac. Der Zugriff auf den Ordner wird einmal angefragt, nur lesend."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reads sections from the Reminders data on this Mac. Access to its folder is requested once, read-only."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lee las secciones de los datos de Recordatorios en esta Mac. El acceso a su carpeta se solicita una sola vez, solo de lectura."
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Binabasa ang mga seksyon mula sa data ng Reminders sa Mac na ito. Isang beses lang hihingin ang access sa folder nito, read-only."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lit les sections dans les données de Rappels sur ce Mac. L'accès à leur dossier est demandé une seule fois, en lecture seule."
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Membaca bagian dari data Pengingat di Mac ini. Akses ke foldernya diminta sekali saja, hanya-baca."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Legge le sezioni dai dati di Promemoria su questo Mac. L'accesso alla cartella viene richiesto una sola volta, in sola lettura."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このMac上のリマインダーのデータからセクションを読み込みます。フォルダへのアクセスは一度だけ、読み取り専用で要求されます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 Mac에 있는 미리 알림 데이터에서 섹션을 읽습니다. 폴더 접근 권한은 읽기 전용으로 한 번만 요청됩니다."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leest de secties uit de gegevens van Herinneringen op deze Mac. Toegang tot de map wordt één keer gevraagd, alleen-lezen."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odczytuje sekcje z danych Przypomnień na tym Macu. Dostęp do ich folderu jest wymagany tylko raz, wyłącznie do odczytu."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lê as seções dos dados do Lembretes neste Mac. O acesso à pasta é solicitado uma única vez, somente para leitura."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Читает разделы из данных Напоминаний на этом Mac. Доступ к их папке запрашивается один раз, только для чтения."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Načítava sekcie z dát Pripomienok v tomto Macu. O prístup k ich priečinku sa žiada iba raz, len na čítanie."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bölümleri bu Mac'teki Anımsatıcılar verilerinden okur. Klasörüne erişim yalnızca bir kez, salt okunur olarak istenir."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зчитує розділи з даних Нагадувань на цьому Mac. Доступ до їхньої папки запитується один раз, лише для читання."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đọc các phần từ dữ liệu Lời nhắc trên máy Mac này. Quyền truy cập thư mục chỉ được yêu cầu một lần, ở chế độ chỉ đọc."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "从这台 Mac 上的“提醒事项”数据中读取分区。只会请求一次文件夹访问权限，且为只读。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "從這台 Mac 上的「提醒事項」資料中讀取區段。只會要求一次檔案夾取用權限，且為唯讀。"
+          }
+        }
+      }
+    },
+    "showReminderListSectionsOption" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobrazit sekce z Připomínek"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abschnitte aus Erinnerungen anzeigen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show sections from Reminders"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar secciones de Recordatorios"
+          }
+        },
+        "fil-PH" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ipakita ang mga seksyon mula sa Reminders"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher les sections de Rappels"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tampilkan bagian dari Pengingat"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra le sezioni di Promemoria"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リマインダーのセクションを表示"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "미리 알림의 섹션 보기"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toon secties uit Herinneringen"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokazuj sekcje z Przypomnień"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar seções do Lembretes"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показывать разделы из Напоминаний"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobraziť sekcie z Pripomienok"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anımsatıcılar'daki bölümleri göster"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показувати розділи з Нагадувань"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hiển thị các phần từ Lời nhắc"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "显示“提醒事项”中的分区"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "顯示「提醒事項」中的區段"
           }
         }
       }
