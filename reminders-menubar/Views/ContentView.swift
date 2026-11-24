@@ -206,8 +206,13 @@ struct ContentView: View {
                     if section.reminders.isEmpty {
                         NoReminderItemsView(emptyList: .allItemsCompleted)
                     }
-                    ForEach(section.reminders) { reminderItem in
-                        ReminderItemView(reminderItem: reminderItem)
+                    ForEach(remindersData.reminderGroups(in: section)) { group in
+                        if let title = group.title {
+                            ReminderSectionGroupTitle(title: title)
+                        }
+                        ForEach(group.reminders) { reminderItem in
+                            ReminderItemView(reminderItem: reminderItem)
+                        }
                     }
                 }
                 .modifier(ListSectionModifier())

@@ -47,3 +47,10 @@ enum ReminderListSection: Identifiable, Equatable {
         }
     }
 }
+
+// A section of a list as shown in Reminders. A nil title holds the reminders outside any section.
+struct ReminderSectionGroup: Identifiable, Equatable {
+    let id: String
+    let title: String?
+    let reminders: [ReminderItem]
+}

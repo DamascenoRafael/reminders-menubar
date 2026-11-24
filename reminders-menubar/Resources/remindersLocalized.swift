@@ -166,6 +166,14 @@ enum RemindersMenuBarLocalizedKeys: String {
     case reminderSortingNewestFirstNote
     case reminderSortingOldestFirstOption
     case reminderSortingOldestFirstNote
+    case reminderListSectionsSettingsLabel
+    case showReminderListSectionsOption
+    case showReminderListSectionsNote
+    case reminderListSectionsUnavailableNote
+    case reminderListSectionsFolderPanelMessage
+    case reminderListSectionsFolderPanelButton
+    case reminderListSectionsAccessAlertTitle
+    case reminderListSectionsAccessAlertMessage
     case timeFormatSettingsLabel
     case timeFormat12HourOption
     case timeFormat24HourOption

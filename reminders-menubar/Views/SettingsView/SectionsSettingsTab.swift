@@ -2,6 +2,27 @@ import SwiftUI
 
 struct SectionsSettingsTab: View {
     @ObservedObject var userPreferences = UserPreferences.shared
+    @ObservedObject var reminderListSectionsService = ReminderListSectionsService.shared
+
+    @State private var showingSectionsAccessAlert = false
+
+    private var showReminderListSectionsBinding: Binding<Bool> {
+        Binding(
+            get: { userPreferences.showReminderListSections },
+            set: { isOn in
+                guard isOn else {
+                    userPreferences.showReminderListSections = false
+                    userPreferences.reminderListSectionsFolderBookmark = nil
+                    return
+                }
+                if reminderListSectionsService.requestStoresFolderAccess() {
+                    userPreferences.showReminderListSections = true
+                } else {
+                    showingSectionsAccessAlert = true
+                }
+            }
+        )
+    }
 
     var body: some View {
         Form {
@@ -81,8 +102,32 @@ struct SectionsSettingsTab: View {
                     isOn: $userPreferences.sortRemindersByFlagAndPriority
                 )
             }
+
+            SettingsDivider()
+
+            SettingsSection(rmbLocalized(.reminderListSectionsSettingsLabel)) {
+                Toggle(
+                    rmbLocalized(.showReminderListSectionsOption),
+                    isOn: showReminderListSectionsBinding
+                )
+
+                Text(rmbLocalized(.showReminderListSectionsNote))
+                    .modifier(SettingsNoteStyle())
+
+                if userPreferences.showReminderListSections && reminderListSectionsService.isUnavailable {
+                    Text(rmbLocalized(.reminderListSectionsUnavailableNote))
+                        .modifier(SettingsNoteStyle())
+                }
+            }
         }
         .padding(20)
+        .alert(isPresented: $showingSectionsAccessAlert) {
+            Alert(
+                title: Text(rmbLocalized(.reminderListSectionsAccessAlertTitle)),
+                message: Text(rmbLocalized(.reminderListSectionsAccessAlertMessage)),
+                dismissButton: .default(Text(rmbLocalized(.okButton)))
+            )
+        }
     }
 }
 

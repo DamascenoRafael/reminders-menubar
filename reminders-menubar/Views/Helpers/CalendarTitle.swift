@@ -86,3 +86,17 @@ struct CalendarTitleIndicator: View {
 
     CalendarTitle(calendar: calendar)
 }
+
+struct ReminderSectionGroupTitle: View {
+    let title: String
+
+    var body: some View {
+        Text(title)
+            .font(.subheadline.weight(.semibold))
+            .foregroundColor(.secondary)
+            .lineLimit(1)
+            .truncationMode(.tail)
+            .padding(.top, 6)
+            .padding(.bottom, 2)
+    }
+}
